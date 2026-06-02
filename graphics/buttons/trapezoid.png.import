@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2ka012ylc4b3"
-path="res://.godot/imported/buttonbg.png-f82d9ca999a5947f5907a99645392ada.ctex"
+uid="uid://tx106r3c4smf"
+path="res://.godot/imported/trapezoid.png-6fbdb22291ef4e5ee5700e9c8cd30cb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/buttons/buttonbg.png"
-dest_files=["res://.godot/imported/buttonbg.png-f82d9ca999a5947f5907a99645392ada.ctex"]
+source_file="res://graphics/buttons/trapezoid.png"
+dest_files=["res://.godot/imported/trapezoid.png-6fbdb22291ef4e5ee5700e9c8cd30cb7.ctex"]
 
 [params]
 

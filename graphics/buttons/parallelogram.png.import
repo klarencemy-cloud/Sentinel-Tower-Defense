@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2ka012ylc4b3"
-path="res://.godot/imported/buttonbg.png-f82d9ca999a5947f5907a99645392ada.ctex"
+uid="uid://csrbid1q0uu35"
+path="res://.godot/imported/parallelogram.png-e03234b0931b49c1309dc9d334846166.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/buttons/buttonbg.png"
-dest_files=["res://.godot/imported/buttonbg.png-f82d9ca999a5947f5907a99645392ada.ctex"]
+source_file="res://graphics/buttons/parallelogram.png"
+dest_files=["res://.godot/imported/parallelogram.png-e03234b0931b49c1309dc9d334846166.ctex"]
 
 [params]
 
