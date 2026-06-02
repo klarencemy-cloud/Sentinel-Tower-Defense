@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://djodiaoyky37i" path="res://scenes/mainmenu/main_menu.gd" id="1_ysd44"]
 [ext_resource type="Texture2D" uid="uid://5ge7bvss4fud" path="res://graphics/backgrounds/brownbg.png" id="2_yn0lx"]
-[ext_resource type="Texture2D" uid="uid://dn6qvd3njls75" path="res://graphics/buttons/startbtn.png" id="3_3n1md"]
-[ext_resource type="Texture2D" uid="uid://pms8ffyrkyj6" path="res://graphics/buttons/sandboxbtn.png" id="4_a3yut"]
-[ext_resource type="Texture2D" uid="uid://dh5cgx3jv1yl" path="res://graphics/buttons/databasebtn.png" id="5_l3hwl"]
+[ext_resource type="Texture2D" uid="uid://icldnh2l2j6m" path="res://graphics/buttons/buttonbg.png" id="3_jl081"]
+[ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="3_ukhca"]
 
 [node name="MainMenu" type="Node2D" unique_id=1824020899]
 script = ExtResource("1_ysd44")
@@ -14,10 +13,11 @@ position = Vector2(960, 540)
 texture = ExtResource("2_yn0lx")
 
 [node name="Title" type="Label" parent="." unique_id=369088243]
-offset_left = 558.0
-offset_top = 188.0
-offset_right = 1337.0
-offset_bottom = 393.0
+offset_left = 599.0
+offset_top = 191.0
+offset_right = 1320.0
+offset_bottom = 363.0
+theme_override_fonts/font = ExtResource("3_ukhca")
 theme_override_font_sizes/font_size = 150
 text = "SENTINELS"
 
@@ -29,30 +29,60 @@ offset_bottom = 40.0
 
 [node name="StartGame" type="TextureButton" parent="ButtonManager" unique_id=2003042709]
 layout_mode = 0
-offset_left = 738.0
-offset_top = 449.0
-offset_right = 1138.0
-offset_bottom = 584.0
-texture_normal = ExtResource("3_3n1md")
+offset_left = 677.0
+offset_top = 436.0
+offset_right = 1197.0
+offset_bottom = 586.0
+texture_normal = ExtResource("3_jl081")
+ignore_texture_size = true
 stretch_mode = 5
+
+[node name="Start" type="Label" parent="ButtonManager/StartGame" unique_id=1348868350]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 41.0
+offset_right = 346.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 50
+text = "START"
 
 [node name="Sandbox" type="TextureButton" parent="ButtonManager" unique_id=1387129630]
 layout_mode = 0
-offset_left = 725.0
-offset_top = 580.0
-offset_right = 1140.0
-offset_bottom = 763.0
-texture_normal = ExtResource("4_a3yut")
+offset_left = 704.0
+offset_top = 604.0
+offset_right = 1164.0
+offset_bottom = 764.0
+texture_normal = ExtResource("3_jl081")
+ignore_texture_size = true
 stretch_mode = 5
+
+[node name="Sandbox" type="Label" parent="ButtonManager/Sandbox" unique_id=1259746007]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 52.0
+offset_right = 360.0
+offset_bottom = 122.0
+theme_override_font_sizes/font_size = 50
+text = "SANDBOX"
 
 [node name="Database" type="TextureButton" parent="ButtonManager" unique_id=103459929]
 layout_mode = 0
-offset_left = 722.0
-offset_top = 718.0
-offset_right = 1150.0
-offset_bottom = 926.0
-texture_normal = ExtResource("5_l3hwl")
+offset_left = 706.0
+offset_top = 790.0
+offset_right = 1166.0
+offset_bottom = 950.0
+texture_normal = ExtResource("3_jl081")
+ignore_texture_size = true
 stretch_mode = 5
+
+[node name="Database" type="Label" parent="ButtonManager/Database" unique_id=577674168]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 49.0
+offset_right = 363.0
+offset_bottom = 119.0
+theme_override_font_sizes/font_size = 50
+text = "DATABASE"
 
 [node name="Exit" type="TextureButton" parent="ButtonManager" unique_id=1936843108]
 layout_mode = 0

@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://n6jec2cv0g36"]
 
+[ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="1_g5kkh"]
+[ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="1_kp6ki"]
 [ext_resource type="Texture2D" uid="uid://3h23upf4gv76" path="res://graphics/bosses/Virus.png" id="1_x83g6"]
 [ext_resource type="Texture2D" uid="uid://dn6qvd3njls75" path="res://graphics/buttons/startbtn.png" id="2_6jlqx"]
+[ext_resource type="FontFile" uid="uid://tujnohddqv1k" path="res://font/Libre_Franklin/LibreFranklin-Italic-VariableFont_wght.ttf" id="2_kp6ki"]
 
 [node name="VirtualMachineUI" type="CanvasLayer" unique_id=446436674]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1913294768]
+position = Vector2(960, 539)
+texture = ExtResource("1_kp6ki")
 
 [node name="Text" type="Control" parent="." unique_id=972504179]
 layout_mode = 3
@@ -23,46 +30,54 @@ text = "VIRAL CITY"
 
 [node name="DifficultyLevel" type="Label" parent="Text" unique_id=829644449]
 layout_mode = 0
-offset_left = 1041.0
-offset_top = 566.0
-offset_right = 1344.0
-offset_bottom = 636.0
+offset_left = 1036.0
+offset_top = 525.0
+offset_right = 1339.0
+offset_bottom = 595.0
+theme_override_colors/font_color = Color(0.53333336, 0.60784316, 0.654902, 1)
+theme_override_fonts/font = ExtResource("1_g5kkh")
 theme_override_font_sizes/font_size = 40
 text = "Difficulty Level:"
 
 [node name="Difficulty" type="Label" parent="Text" unique_id=1572276724]
 layout_mode = 0
-offset_left = 1357.0
-offset_top = 566.0
-offset_right = 1564.0
-offset_bottom = 629.0
+offset_left = 1352.0
+offset_top = 525.0
+offset_right = 1559.0
+offset_bottom = 588.0
+theme_override_colors/font_color = Color(1, 0, 0.015686275, 1)
 theme_override_font_sizes/font_size = 40
 text = "EXTREME"
 
 [node name="SuggestedLevel" type="Label" parent="Text" unique_id=1470301378]
 layout_mode = 0
-offset_left = 1653.0
-offset_top = 566.0
-offset_right = 1702.0
-offset_bottom = 629.0
+offset_left = 1647.0
+offset_top = 526.0
+offset_right = 1696.0
+offset_bottom = 589.0
+theme_override_colors/font_color = Color(0.3137255, 0.654902, 0.87058824, 1)
+theme_override_fonts/font = ExtResource("1_g5kkh")
 theme_override_font_sizes/font_size = 40
 text = "lvl"
 
 [node name="Suggested" type="Label" parent="Text" unique_id=2062969500]
 layout_mode = 0
-offset_left = 1717.0
-offset_top = 566.0
-offset_right = 1766.0
-offset_bottom = 629.0
+offset_left = 1706.0
+offset_top = 526.0
+offset_right = 1755.0
+offset_bottom = 589.0
+theme_override_colors/font_color = Color(0.3137255, 0.654902, 0.87058824, 1)
+theme_override_fonts/font = ExtResource("1_g5kkh")
 theme_override_font_sizes/font_size = 40
 text = "30"
 
 [node name="Description" type="Label" parent="Text" unique_id=657947781]
 layout_mode = 0
-offset_left = 1042.0
-offset_top = 627.0
-offset_right = 1523.0
-offset_bottom = 666.0
+offset_left = 1037.0
+offset_top = 586.0
+offset_right = 1518.0
+offset_bottom = 625.0
+theme_override_fonts/font = ExtResource("2_kp6ki")
 theme_override_font_sizes/font_size = 21
 text = "Defeat 1000 viruses without taking any damage"
 
@@ -73,10 +88,11 @@ anchor_left = -6.518
 anchor_top = 5.3760004
 anchor_right = -6.518
 anchor_bottom = 5.3760004
-offset_left = 1357.72
-offset_top = 464.96
-offset_right = 1405.72
-offset_bottom = 503.96
+offset_left = 1352.72
+offset_top = 427.96
+offset_right = 1400.72
+offset_bottom = 466.96
+theme_override_colors/font_color = Color(0.8392157, 0.8509804, 0.85490197, 1)
 theme_override_font_sizes/font_size = 28
 text = "230"
 
@@ -87,10 +103,11 @@ anchor_left = -6.518
 anchor_top = 5.3760004
 anchor_right = -6.518
 anchor_bottom = 5.3760004
-offset_left = 1516.72
-offset_top = 464.96
-offset_right = 1532.72
-offset_bottom = 503.96
+offset_left = 1511.72
+offset_top = 427.96
+offset_right = 1527.72
+offset_bottom = 466.96
+theme_override_colors/font_color = Color(0.8352941, 0.5686275, 0.19607843, 1)
 theme_override_font_sizes/font_size = 28
 text = "2"
 
@@ -101,10 +118,11 @@ anchor_left = -6.518
 anchor_top = 5.3760004
 anchor_right = -6.518
 anchor_bottom = 5.3760004
-offset_left = 1653.72
-offset_top = 464.96
-offset_right = 1701.72
-offset_bottom = 503.96
+offset_left = 1648.72
+offset_top = 427.96
+offset_right = 1668.72
+offset_bottom = 460.96
+theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_font_sizes/font_size = 28
 text = "1"
 
@@ -126,30 +144,30 @@ stretch_mode = 5
 
 [node name="Gold" type="TextureRect" parent="Image" unique_id=1070007890]
 layout_mode = 0
-offset_left = 1040.0
-offset_top = 678.0
-offset_right = 1092.0
-offset_bottom = 724.0
+offset_left = 1035.0
+offset_top = 637.0
+offset_right = 1087.0
+offset_bottom = 683.0
 texture = ExtResource("1_x83g6")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="XP" type="TextureRect" parent="Image" unique_id=856008150]
 layout_mode = 0
-offset_left = 1336.0
-offset_top = 679.0
-offset_right = 1388.0
-offset_bottom = 725.0
+offset_left = 1331.0
+offset_top = 638.0
+offset_right = 1383.0
+offset_bottom = 684.0
 texture = ExtResource("1_x83g6")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="ServerPts" type="TextureRect" parent="Image" unique_id=1029772809]
 layout_mode = 0
-offset_left = 1199.0
-offset_top = 678.0
-offset_right = 1251.0
-offset_bottom = 724.0
+offset_left = 1194.0
+offset_top = 637.0
+offset_right = 1246.0
+offset_bottom = 683.0
 texture = ExtResource("1_x83g6")
 expand_mode = 1
 stretch_mode = 5

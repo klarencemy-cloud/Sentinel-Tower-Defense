@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://do8lrkkqrojji"]
 
+[ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="1_ni1gf"]
 [ext_resource type="Texture2D" uid="uid://3h23upf4gv76" path="res://graphics/bosses/Virus.png" id="1_s8cvc"]
+[ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="2_88i85"]
 
 [node name="MainStoryUI" type="CanvasLayer" unique_id=86464915]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2055092162]
+position = Vector2(960, 540)
+texture = ExtResource("1_ni1gf")
 
 [node name="Text" type="Control" parent="." unique_id=749517713]
 layout_mode = 3
@@ -12,10 +18,12 @@ offset_bottom = 40.0
 
 [node name="DifficultyLevel" type="Label" parent="Text" unique_id=1499104398]
 layout_mode = 0
-offset_left = 838.0
-offset_top = 547.0
-offset_right = 1141.0
-offset_bottom = 617.0
+offset_left = 836.0
+offset_top = 531.0
+offset_right = 1139.0
+offset_bottom = 601.0
+theme_override_colors/font_color = Color(0.53333336, 0.60784316, 0.654902, 1)
+theme_override_fonts/font = ExtResource("2_88i85")
 theme_override_font_sizes/font_size = 40
 text = "Difficulty Level:"
 
@@ -31,10 +39,11 @@ text = "WAVE 30"
 
 [node name="Difficulty" type="Label" parent="Text" unique_id=620605534]
 layout_mode = 0
-offset_left = 1154.0
-offset_top = 548.0
-offset_right = 1361.0
-offset_bottom = 611.0
+offset_left = 1152.0
+offset_top = 532.0
+offset_right = 1325.0
+offset_bottom = 584.0
+theme_override_colors/font_color = Color(1, 0, 0.015686275, 1)
 theme_override_font_sizes/font_size = 40
 text = "EXTREME"
 

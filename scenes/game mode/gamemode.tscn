@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c0hgo3avjolal"]
 
 [ext_resource type="Script" uid="uid://bm64vsg7dinwi" path="res://scenes/game mode/gamemode.gd" id="1_twu2m"]
+[ext_resource type="Texture2D" uid="uid://icldnh2l2j6m" path="res://graphics/buttons/buttonbg.png" id="2_fcp5m"]
 [ext_resource type="PackedScene" uid="uid://do8lrkkqrojji" path="res://scenes/ui/main_story_ui.tscn" id="2_i73ug"]
 [ext_resource type="Script" uid="uid://decm3saaukfun" path="res://scenes/ui/main_story_ui.gd" id="3_fcp5m"]
 
@@ -22,6 +23,30 @@ offset_bottom = 112.0
 theme_override_font_sizes/font_size = 40
 text = "Main Menu"
 
+[node name="StartGame" type="TextureButton" parent="ButtonManager" unique_id=1564473157]
+layout_mode = 0
+offset_left = 1414.0
+offset_top = 884.0
+offset_right = 1934.0
+offset_bottom = 1034.0
+texture_normal = ExtResource("2_fcp5m")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Start" type="Label" parent="ButtonManager/StartGame" unique_id=1573689058]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.7960001
+anchor_top = 3.009
+anchor_right = 1.7960001
+anchor_bottom = 3.009
+offset_left = -738.92004
+offset_top = -410.35
+offset_right = -587.92004
+offset_bottom = -340.35
+theme_override_font_sizes/font_size = 50
+text = "START"
+
 [node name="MainStory" type="Button" parent="ButtonManager" unique_id=1536478555]
 layout_mode = 0
 offset_left = 370.0
@@ -41,6 +66,7 @@ theme_override_font_sizes/font_size = 40
 text = "VM Mode"
 
 [node name="Start" type="Button" parent="ButtonManager" unique_id=902500246]
+visible = false
 layout_mode = 0
 offset_left = 1585.0
 offset_top = 912.0
@@ -50,6 +76,7 @@ theme_override_font_sizes/font_size = 80
 text = "Start"
 
 [node name="MainStoryUI" parent="." unique_id=86464915 instance=ExtResource("2_i73ug")]
+layer = -1
 script = ExtResource("3_fcp5m")
 
 [connection signal="pressed" from="ButtonManager/MainMenu" to="." method="_on_main_menu_pressed"]
