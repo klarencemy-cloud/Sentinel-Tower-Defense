@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://4e4dveqj5cpq"]
+[gd_scene format=3 uid="uid://4e4dveqj5cpq"]
 
 [ext_resource type="Script" uid="uid://3hcup8i3nmiv" path="res://scenes/ui/ui.gd" id="1_pfayw"]
 [ext_resource type="FontFile" uid="uid://bqm53gushpubk" path="res://graphics/ui/Digitalt.otf" id="1_u7n8c"]
@@ -41,10 +41,10 @@ texture_margin_top = 6.0
 texture_margin_right = 6.0
 texture_margin_bottom = 6.0
 
-[node name="UI" type="CanvasLayer" groups=["UI"]]
+[node name="UI" type="CanvasLayer" unique_id=1846012905 groups=["UI"]]
 script = ExtResource("1_pfayw")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=818495937]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,7 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="WaveButton" type="Button" parent="Control"]
+[node name="WaveButton" type="Button" parent="Control" unique_id=1492432400]
 custom_minimum_size = Vector2(240, 50)
 layout_mode = 1
 anchors_preset = -1
@@ -68,7 +68,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_f5cxw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_u7n8c")
 text = "Start wave"
 
-[node name="StatsContainer" type="VBoxContainer" parent="Control"]
+[node name="StatsContainer" type="VBoxContainer" parent="Control" unique_id=1023310108]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -82,47 +82,47 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/StatsContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/StatsContainer" unique_id=625609761]
 self_modulate = Color(0.15294118, 0.15294118, 0.15294118, 1)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7vp6q")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/StatsContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/StatsContainer/PanelContainer" unique_id=299066597]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/StatsContainer/PanelContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/StatsContainer/PanelContainer/HBoxContainer" unique_id=331916768]
 modulate = Color(1, 0.22352941, 0.13333334, 1)
 layout_mode = 2
 texture = ExtResource("3_0dwhk")
 
-[node name="Label" type="Label" parent="Control/StatsContainer/PanelContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Control/StatsContainer/PanelContainer/HBoxContainer" unique_id=2140871254]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_u7n8c")
 theme_override_font_sizes/font_size = 40
 text = "100"
 
-[node name="PanelContainer2" type="PanelContainer" parent="Control/StatsContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="Control/StatsContainer" unique_id=1002781053]
 self_modulate = Color(0.15294118, 0.15294118, 0.15294118, 1)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7vp6q")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/StatsContainer/PanelContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/StatsContainer/PanelContainer2" unique_id=507404986]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/StatsContainer/PanelContainer2/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/StatsContainer/PanelContainer2/HBoxContainer" unique_id=1191801401]
 modulate = Color(1, 0.9411765, 0.09019608, 1)
 layout_mode = 2
 texture = ExtResource("4_pfayw")
 
-[node name="Label" type="Label" parent="Control/StatsContainer/PanelContainer2/HBoxContainer"]
+[node name="Label" type="Label" parent="Control/StatsContainer/PanelContainer2/HBoxContainer" unique_id=723430324]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_u7n8c")
 theme_override_font_sizes/font_size = 40
 text = "50"
 
-[node name="TowerCards" type="Control" parent="."]
+[node name="TowerCards" type="Control" parent="." unique_id=1637863101]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -131,7 +131,7 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="TowerCardsContainer" type="HBoxContainer" parent="TowerCards"]
+[node name="TowerCardsContainer" type="HBoxContainer" parent="TowerCards" unique_id=1909906848]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -142,7 +142,7 @@ offset_right = 140.0
 offset_bottom = -10.0
 grow_vertical = 0
 
-[node name="MenuToggleButton" type="TextureButton" parent="TowerCards"]
+[node name="MenuToggleButton" type="TextureButton" parent="TowerCards" unique_id=1641019703]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = -1
