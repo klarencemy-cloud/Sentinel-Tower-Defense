@@ -10,6 +10,44 @@ var upgrade_cost: int
 signal shoot(pos: Vector2, direction: float, bullet_enum: Data.Bullet)
 signal select(tower: Tower)
 
+var range_indicator: Line2D
+
+func _ready() -> void:
+	create_range_indicator()
+
+func create_range_indicator() -> void:
+	if range_indicator:
+		return
+
+	range_indicator = Line2D.new()
+	range_indicator.width = 2
+	range_indicator.default_color = Color(1, 1, 1, 1)
+	range_indicator.visible = false
+	range_indicator.z_index = 100
+	add_child(range_indicator)
+
+func _update_range_indicator() -> void:
+	var shape = $EnemyDetectionArea/CollisionShape2D.shape
+	var radius = 0.0
+	if shape is CircleShape2D:
+		radius = shape.radius
+
+	var points = []
+	var segments = 100
+	for i in range(segments + 1):
+		points.append(Vector2(cos(TAU * i / segments), sin(TAU * i / segments)) * radius)
+
+	range_indicator.points = points
+
+func show_range() -> void:
+	create_range_indicator()
+	_update_range_indicator()
+	range_indicator.visible = true
+
+func hide_range() -> void:
+	if range_indicator:
+		range_indicator.visible = false
+
 func setup(tower_type: Data.Tower):
 	$ReloadTimer.wait_time = Data.TOWER_DATA[tower_type]['reload_time']
 	$TowerMenu.cost = Data.TOWER_DATA[tower_type]['upgrade_cost']
@@ -17,6 +55,8 @@ func setup(tower_type: Data.Tower):
 	cost = Data.TOWER_DATA[tower_type]['cost']
 	upgrade_cost = Data.TOWER_DATA[tower_type]['upgrade_cost']
 	type = tower_type
+	create_range_indicator()
+	_update_range_indicator()
 
 
 func _on_enemy_detection_area_area_entered(area: Area2D) -> void:
@@ -34,6 +74,7 @@ func _on_click_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: 
 		if not $DelayTimer.time_left:
 			select.emit(self)
 			$TowerMenu.reveal(upgraded)
+			show_range()
 
 
 func _on_tower_menu_upgrade_press() -> void:
@@ -55,3 +96,4 @@ func _on_tower_menu_delete_press() -> void:
 
 func hide_ui():
 	$TowerMenu.hide()
+	hide_range()

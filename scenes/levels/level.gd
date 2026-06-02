@@ -73,10 +73,14 @@ func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet):
 
 
 func tower_selection(tower: Tower):
+	if current_tower and current_tower != tower:
+		current_tower.hide_ui()
+
 	current_tower = tower
 	tower_menu = true
 	if tower.type == Data.Tower.MORTAR:
 		tower.show_crosshair()
+	tower.show_range()
 
 
 func _on_ui_place_tower(tower_type: Data.Tower) -> void:

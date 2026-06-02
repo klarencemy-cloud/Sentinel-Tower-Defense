@@ -30,5 +30,5 @@ func _input(event: InputEvent) -> void:
 	if visible and event is InputEventMouseButton and event.button_index == 1 and event.pressed:
 		var tap_pos = get_global_mouse_position()
 		if not $UpgradeButton.get_global_rect().has_point(tap_pos) and not $DeleteButton.get_global_rect().has_point(tap_pos):
-			hide()
+			get_parent().hide_ui()
 
