@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c0hgo3avjolal"]
+
+[ext_resource type="Script" uid="uid://bm64vsg7dinwi" path="res://scenes/game mode/gamemode.gd" id="1_twu2m"]
+[ext_resource type="PackedScene" uid="uid://do8lrkkqrojji" path="res://scenes/ui/main_story_ui.tscn" id="2_i73ug"]
+[ext_resource type="Script" uid="uid://decm3saaukfun" path="res://scenes/ui/main_story_ui.gd" id="3_fcp5m"]
+
+[node name="GameMode" type="Node2D" unique_id=1490702173]
+script = ExtResource("1_twu2m")
+
+[node name="ButtonManager" type="Control" parent="." unique_id=1053888138]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainMenu" type="Button" parent="ButtonManager" unique_id=141761809]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 35.0
+offset_right = 335.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 40
+text = "Main Menu"
+
+[node name="MainStory" type="Button" parent="ButtonManager" unique_id=1536478555]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 35.0
+offset_right = 638.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 40
+text = "Main Story"
+
+[node name="VirtualMachineMode" type="Button" parent="ButtonManager" unique_id=729452551]
+layout_mode = 0
+offset_left = 678.0
+offset_top = 35.0
+offset_right = 913.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 40
+text = "VM Mode"
+
+[node name="Start" type="Button" parent="ButtonManager" unique_id=902500246]
+layout_mode = 0
+offset_left = 1585.0
+offset_top = 912.0
+offset_right = 1828.0
+offset_bottom = 1057.0
+theme_override_font_sizes/font_size = 80
+text = "Start"
+
+[node name="MainStoryUI" parent="." unique_id=86464915 instance=ExtResource("2_i73ug")]
+script = ExtResource("3_fcp5m")
+
+[connection signal="pressed" from="ButtonManager/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="ButtonManager/MainStory" to="." method="_on_main_story_pressed"]
+[connection signal="pressed" from="ButtonManager/VirtualMachineMode" to="." method="_on_virtual_machine_mode_pressed"]
+[connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]

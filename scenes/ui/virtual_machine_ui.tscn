@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://n6jec2cv0g36"]
+
+[ext_resource type="Texture2D" uid="uid://3h23upf4gv76" path="res://graphics/bosses/Virus.png" id="1_x83g6"]
+[ext_resource type="Texture2D" uid="uid://dn6qvd3njls75" path="res://graphics/buttons/startbtn.png" id="2_6jlqx"]
+
+[node name="VirtualMachineUI" type="CanvasLayer" unique_id=446436674]
+
+[node name="Text" type="Control" parent="." unique_id=972504179]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="vmName" type="Label" parent="Text" unique_id=1022964517]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 377.0
+offset_right = 1682.0
+offset_bottom = 555.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 130
+text = "VIRAL CITY"
+
+[node name="DifficultyLevel" type="Label" parent="Text" unique_id=829644449]
+layout_mode = 0
+offset_left = 1041.0
+offset_top = 566.0
+offset_right = 1344.0
+offset_bottom = 636.0
+theme_override_font_sizes/font_size = 40
+text = "Difficulty Level:"
+
+[node name="Difficulty" type="Label" parent="Text" unique_id=1572276724]
+layout_mode = 0
+offset_left = 1357.0
+offset_top = 566.0
+offset_right = 1564.0
+offset_bottom = 629.0
+theme_override_font_sizes/font_size = 40
+text = "EXTREME"
+
+[node name="SuggestedLevel" type="Label" parent="Text" unique_id=1470301378]
+layout_mode = 0
+offset_left = 1653.0
+offset_top = 566.0
+offset_right = 1702.0
+offset_bottom = 629.0
+theme_override_font_sizes/font_size = 40
+text = "lvl"
+
+[node name="Suggested" type="Label" parent="Text" unique_id=2062969500]
+layout_mode = 0
+offset_left = 1717.0
+offset_top = 566.0
+offset_right = 1766.0
+offset_bottom = 629.0
+theme_override_font_sizes/font_size = 40
+text = "30"
+
+[node name="Description" type="Label" parent="Text" unique_id=657947781]
+layout_mode = 0
+offset_left = 1042.0
+offset_top = 627.0
+offset_right = 1523.0
+offset_bottom = 666.0
+theme_override_font_sizes/font_size = 21
+text = "Defeat 1000 viruses without taking any damage"
+
+[node name="Gold" type="Label" parent="Text" unique_id=788093660]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -6.518
+anchor_top = 5.3760004
+anchor_right = -6.518
+anchor_bottom = 5.3760004
+offset_left = 1357.72
+offset_top = 464.96
+offset_right = 1405.72
+offset_bottom = 503.96
+theme_override_font_sizes/font_size = 28
+text = "230"
+
+[node name="XP" type="Label" parent="Text" unique_id=1033305044]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -6.518
+anchor_top = 5.3760004
+anchor_right = -6.518
+anchor_bottom = 5.3760004
+offset_left = 1516.72
+offset_top = 464.96
+offset_right = 1532.72
+offset_bottom = 503.96
+theme_override_font_sizes/font_size = 28
+text = "2"
+
+[node name="Serverpt" type="Label" parent="Text" unique_id=156563275]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -6.518
+anchor_top = 5.3760004
+anchor_right = -6.518
+anchor_bottom = 5.3760004
+offset_left = 1653.72
+offset_top = 464.96
+offset_right = 1701.72
+offset_bottom = 503.96
+theme_override_font_sizes/font_size = 28
+text = "1"
+
+[node name="Image" type="Control" parent="." unique_id=16854379]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Boss" type="TextureRect" parent="Image" unique_id=317186128]
+layout_mode = 0
+offset_left = 299.0
+offset_top = 305.0
+offset_right = 809.0
+offset_bottom = 799.0
+texture = ExtResource("1_x83g6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Gold" type="TextureRect" parent="Image" unique_id=1070007890]
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 678.0
+offset_right = 1092.0
+offset_bottom = 724.0
+texture = ExtResource("1_x83g6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="XP" type="TextureRect" parent="Image" unique_id=856008150]
+layout_mode = 0
+offset_left = 1336.0
+offset_top = 679.0
+offset_right = 1388.0
+offset_bottom = 725.0
+texture = ExtResource("1_x83g6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ServerPts" type="TextureRect" parent="Image" unique_id=1029772809]
+layout_mode = 0
+offset_left = 1199.0
+offset_top = 678.0
+offset_right = 1251.0
+offset_bottom = 724.0
+texture = ExtResource("1_x83g6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ButtonManager" type="Control" parent="." unique_id=652685244]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="ButtonManager" unique_id=955201350]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 860.0
+offset_right = 675.0
+offset_bottom = 978.0
+texture_normal = ExtResource("2_6jlqx")
+stretch_mode = 5

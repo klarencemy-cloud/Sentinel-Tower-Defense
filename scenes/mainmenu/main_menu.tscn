@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cqbx8rnwyexfe"]
+
+[ext_resource type="Script" uid="uid://djodiaoyky37i" path="res://scenes/mainmenu/main_menu.gd" id="1_ysd44"]
+[ext_resource type="Texture2D" uid="uid://5ge7bvss4fud" path="res://graphics/backgrounds/brownbg.png" id="2_yn0lx"]
+[ext_resource type="Texture2D" uid="uid://dn6qvd3njls75" path="res://graphics/buttons/startbtn.png" id="3_3n1md"]
+[ext_resource type="Texture2D" uid="uid://pms8ffyrkyj6" path="res://graphics/buttons/sandboxbtn.png" id="4_a3yut"]
+[ext_resource type="Texture2D" uid="uid://dh5cgx3jv1yl" path="res://graphics/buttons/databasebtn.png" id="5_l3hwl"]
+
+[node name="MainMenu" type="Node2D" unique_id=1824020899]
+script = ExtResource("1_ysd44")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=55792358]
+position = Vector2(960, 540)
+texture = ExtResource("2_yn0lx")
+
+[node name="Title" type="Label" parent="." unique_id=369088243]
+offset_left = 558.0
+offset_top = 188.0
+offset_right = 1337.0
+offset_bottom = 393.0
+theme_override_font_sizes/font_size = 150
+text = "SENTINELS"
+
+[node name="ButtonManager" type="Control" parent="." unique_id=641525363]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartGame" type="TextureButton" parent="ButtonManager" unique_id=2003042709]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 449.0
+offset_right = 1138.0
+offset_bottom = 584.0
+texture_normal = ExtResource("3_3n1md")
+stretch_mode = 5
+
+[node name="Sandbox" type="TextureButton" parent="ButtonManager" unique_id=1387129630]
+layout_mode = 0
+offset_left = 725.0
+offset_top = 580.0
+offset_right = 1140.0
+offset_bottom = 763.0
+texture_normal = ExtResource("4_a3yut")
+stretch_mode = 5
+
+[node name="Database" type="TextureButton" parent="ButtonManager" unique_id=103459929]
+layout_mode = 0
+offset_left = 722.0
+offset_top = 718.0
+offset_right = 1150.0
+offset_bottom = 926.0
+texture_normal = ExtResource("5_l3hwl")
+stretch_mode = 5
+
+[node name="Exit" type="TextureButton" parent="ButtonManager" unique_id=1936843108]
+layout_mode = 0
+offset_left = 1642.0
+offset_top = 273.0
+offset_right = 1814.0
+offset_bottom = 391.0
+
+[node name="Settings" type="TextureButton" parent="ButtonManager" unique_id=1508697269]
+layout_mode = 0
+offset_left = 1521.0
+offset_top = 145.0
+offset_right = 1897.0
+offset_bottom = 263.0
+
+[connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="ButtonManager/Sandbox" to="." method="_on_sandbox_pressed"]
+[connection signal="pressed" from="ButtonManager/Database" to="." method="_on_database_pressed"]
+[connection signal="pressed" from="ButtonManager/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ButtonManager/Settings" to="." method="_on_settings_pressed"]
