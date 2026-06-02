@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="1_ni1gf"]
 [ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="2_88i85"]
 [ext_resource type="Texture2D" uid="uid://s8xhvy48k726" path="res://graphics/bosses/virus.png" id="3_ni1gf"]
+[ext_resource type="Texture2D" uid="uid://c2ka012ylc4b3" path="res://graphics/buttons/buttonbg.png" id="4_88i85"]
 
 [node name="MainStoryUI" type="CanvasLayer" unique_id=86464915]
 
@@ -62,3 +63,26 @@ offset_bottom = 799.0
 texture = ExtResource("3_ni1gf")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="StartGame" type="TextureButton" parent="." unique_id=853356986]
+offset_left = 1325.0
+offset_top = 878.0
+offset_right = 1845.0
+offset_bottom = 1028.0
+texture_normal = ExtResource("4_88i85")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Start" type="Label" parent="StartGame" unique_id=174734030]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.7960001
+anchor_top = 3.009
+anchor_right = 1.7960001
+anchor_bottom = 3.009
+offset_left = -738.92004
+offset_top = -410.35
+offset_right = -587.92004
+offset_bottom = -340.35
+theme_override_font_sizes/font_size = 50
+text = "START"

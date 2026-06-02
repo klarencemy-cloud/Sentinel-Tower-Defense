@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c0hgo3avjolal"]
 
 [ext_resource type="Script" uid="uid://bm64vsg7dinwi" path="res://scenes/game mode/gamemode.gd" id="1_twu2m"]
-[ext_resource type="Texture2D" uid="uid://c2ka012ylc4b3" path="res://graphics/buttons/buttonbg.png" id="2_fcp5m"]
 [ext_resource type="PackedScene" uid="uid://do8lrkkqrojji" path="res://scenes/ui/main_story_ui.tscn" id="2_i73ug"]
 [ext_resource type="Texture2D" uid="uid://tx106r3c4smf" path="res://graphics/buttons/trapezoid.png" id="3_8kmsr"]
 [ext_resource type="Script" uid="uid://decm3saaukfun" path="res://scenes/ui/main_story_ui.gd" id="3_fcp5m"]
 [ext_resource type="Texture2D" uid="uid://csrbid1q0uu35" path="res://graphics/buttons/parallelogram.png" id="5_spdbb"]
+[ext_resource type="PackedScene" uid="uid://n6jec2cv0g36" path="res://scenes/ui/virtual_machine_ui.tscn" id="6_8kmsr"]
 
 [node name="GameMode" type="Node2D" unique_id=1490702173]
 script = ExtResource("1_twu2m")
@@ -16,31 +16,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="StartGame" type="TextureButton" parent="ButtonManager" unique_id=1564473157]
-layout_mode = 0
-offset_left = 1325.0
-offset_top = 878.0
-offset_right = 1845.0
-offset_bottom = 1028.0
-texture_normal = ExtResource("2_fcp5m")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Start" type="Label" parent="ButtonManager/StartGame" unique_id=1573689058]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.7960001
-anchor_top = 3.009
-anchor_right = 1.7960001
-anchor_bottom = 3.009
-offset_left = -738.92004
-offset_top = -410.35
-offset_right = -587.92004
-offset_bottom = -340.35
-theme_override_font_sizes/font_size = 50
-text = "START"
-
-[node name="Home" type="TextureButton" parent="ButtonManager" unique_id=1857379134]
+[node name="MainMenu" type="TextureButton" parent="ButtonManager" unique_id=1857379134]
 layout_mode = 0
 offset_left = -1.0
 offset_right = 474.44373
@@ -49,7 +25,7 @@ texture_normal = ExtResource("3_8kmsr")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="ButtonManager/Home" unique_id=223139268]
+[node name="Label" type="Label" parent="ButtonManager/MainMenu" unique_id=223139268]
 layout_mode = 0
 offset_left = 67.0
 offset_right = 305.0
@@ -59,7 +35,7 @@ text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StoryMode" type="TextureButton" parent="ButtonManager" unique_id=1460826395]
+[node name="MainStory" type="TextureButton" parent="ButtonManager" unique_id=1460826395]
 layout_mode = 0
 offset_left = 361.0
 offset_right = 836.4437
@@ -68,7 +44,7 @@ texture_normal = ExtResource("5_spdbb")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="ButtonManager/StoryMode" unique_id=1673360371]
+[node name="Label" type="Label" parent="ButtonManager/MainStory" unique_id=1673360371]
 layout_mode = 0
 offset_left = 113.0
 offset_right = 351.0
@@ -101,4 +77,9 @@ vertical_alignment = 1
 layer = -1
 script = ExtResource("3_fcp5m")
 
-[connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
+[node name="VirtualMachineUI" parent="." unique_id=446436674 instance=ExtResource("6_8kmsr")]
+layer = -1
+
+[connection signal="pressed" from="ButtonManager/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="ButtonManager/MainStory" to="." method="_on_main_story_pressed"]
+[connection signal="pressed" from="ButtonManager/VmMode" to="." method="_on_vm_mode_pressed"]
