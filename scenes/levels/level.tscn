@@ -513,6 +513,7 @@ curve = SubResource("Curve2D_d4w6o")
 [node name="Bullets" type="Node2D" parent="." unique_id=1114794130]
 
 [node name="PlayerCamera" parent="." unique_id=2052181342 instance=ExtResource("5_urvlt")]
+position = Vector2(326, 201)
 acceleration = 0.25
 
 [node name="UI" parent="." unique_id=1090151980 instance=ExtResource("6_d4w6o")]
