@@ -4,7 +4,7 @@ var drag: bool
 @export var acceleration: float = 0.4
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == 3:
+	if event is InputEventMouseButton and event.button_index == 1:
 		drag = event.pressed
 	if event is InputEventMouseMotion:
 		if drag:
