@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://tx106r3c4smf" path="res://graphics/buttons/trapezoid.png" id="3_8kmsr"]
 [ext_resource type="Script" uid="uid://decm3saaukfun" path="res://scenes/ui/main_story_ui.gd" id="3_fcp5m"]
 [ext_resource type="Texture2D" uid="uid://csrbid1q0uu35" path="res://graphics/buttons/parallelogram.png" id="5_spdbb"]
+[ext_resource type="PackedScene" uid="uid://n6jec2cv0g36" path="res://scenes/ui/virtual_machine_ui.tscn" id="6_8kmsr"]
 
 [node name="GameMode" type="Node2D" unique_id=1490702173]
 script = ExtResource("1_twu2m")
@@ -20,7 +21,6 @@ layout_mode = 0
 offset_left = -1.0
 offset_right = 474.44373
 offset_bottom = 112.0
-toggle_mode = true
 texture_normal = ExtResource("3_8kmsr")
 ignore_texture_size = true
 stretch_mode = 0
@@ -76,3 +76,10 @@ vertical_alignment = 1
 [node name="MainStoryUI" parent="." unique_id=86464915 instance=ExtResource("2_i73ug")]
 layer = -1
 script = ExtResource("3_fcp5m")
+
+[node name="VirtualMachineUI" parent="." unique_id=446436674 instance=ExtResource("6_8kmsr")]
+layer = -1
+
+[connection signal="pressed" from="ButtonManager/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="ButtonManager/MainStory" to="." method="_on_main_story_pressed"]
+[connection signal="pressed" from="ButtonManager/VmMode" to="." method="_on_vm_mode_pressed"]
