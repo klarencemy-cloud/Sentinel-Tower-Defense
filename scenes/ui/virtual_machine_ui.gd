@@ -27,10 +27,17 @@ func _on_map_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			dragging = event.pressed
+			if event.pressed == false:
+				for child in $MapContainer/Map.get_children():
+					if child is TextureButton:
+						child.mouse_filter = Control.MOUSE_FILTER_STOP
 			
-
 	elif event is InputEventMouseMotion and dragging:
 		$MapContainer/Map.position += event.relative
+		for child in $MapContainer/Map.get_children():
+			if child is TextureButton:
+				child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			
 
 
 var toggleMap = false;
@@ -46,3 +53,119 @@ func _on_map_btn_pressed() -> void:
 		$ButtonManager/MapBtn/ToggleLabel.text = "MAP"
 		toggleMap = false
 		
+
+
+func _on_final_pressed() -> void:
+	pass
+
+
+func _on_final_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			dragging = event.pressed
+			if event.pressed == false:
+				for child in $MapContainer/Map.get_children():
+					if child is TextureButton:
+						child.mouse_filter = Control.MOUSE_FILTER_STOP
+			
+	elif event is InputEventMouseMotion and dragging:
+		$MapContainer/Map.position += event.relative
+		for child in $MapContainer/Map.get_children():
+			if child is TextureButton:
+				child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+func _on_final_2_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			dragging = event.pressed
+			if event.pressed == false:
+				for child in $MapContainer/Map.get_children():
+					if child is TextureButton:
+						child.mouse_filter = Control.MOUSE_FILTER_STOP
+			
+	elif event is InputEventMouseMotion and dragging:
+		$MapContainer/Map.position += event.relative
+		for child in $MapContainer/Map.get_children():
+			if child is TextureButton:
+				child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+func _on_final_3_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			dragging = event.pressed
+			if event.pressed == false:
+				for child in $MapContainer/Map.get_children():
+					if child is TextureButton:
+						child.mouse_filter = Control.MOUSE_FILTER_STOP
+			
+	elif event is InputEventMouseMotion and dragging:
+		$MapContainer/Map.position += event.relative
+		for child in $MapContainer/Map.get_children():
+			if child is TextureButton:
+				child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+func _on_final_4_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			dragging = event.pressed
+			if event.pressed == false:
+				for child in $MapContainer/Map.get_children():
+					if child is TextureButton:
+						child.mouse_filter = Control.MOUSE_FILTER_STOP
+			
+	elif event is InputEventMouseMotion and dragging:
+		$MapContainer/Map.position += event.relative
+		for child in $MapContainer/Map.get_children():
+			if child is TextureButton:
+				child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+func _on_final_5_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			dragging = event.pressed
+			if event.pressed == false:
+				for child in $MapContainer/Map.get_children():
+					if child is TextureButton:
+						child.mouse_filter = Control.MOUSE_FILTER_STOP
+			
+	elif event is InputEventMouseMotion and dragging:
+		$MapContainer/Map.position += event.relative
+		for child in $MapContainer/Map.get_children():
+			if child is TextureButton:
+				child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+func _on_final_6_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			dragging = event.pressed
+			if event.pressed == false:
+				for child in $MapContainer/Map.get_children():
+					if child is TextureButton:
+						child.mouse_filter = Control.MOUSE_FILTER_STOP
+			
+	elif event is InputEventMouseMotion and dragging:
+		$MapContainer/Map.position += event.relative
+		for child in $MapContainer/Map.get_children():
+			if child is TextureButton:
+				child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+func _on_final_7_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			dragging = event.pressed
+			if event.pressed == false:
+				for child in $MapContainer/Map.get_children():
+					if child is TextureButton:
+						child.mouse_filter = Control.MOUSE_FILTER_STOP
+			
+	elif event is InputEventMouseMotion and dragging:
+		$MapContainer/Map.position += event.relative
+		for child in $MapContainer/Map.get_children():
+			if child is TextureButton:
+				child.mouse_filter = Control.MOUSE_FILTER_IGNORE

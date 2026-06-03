@@ -345,3 +345,11 @@ stretch_mode = 0
 
 [connection signal="pressed" from="ButtonManager/MapBtn" to="." method="_on_map_btn_pressed"]
 [connection signal="gui_input" from="MapContainer/Map" to="." method="_on_map_gui_input"]
+[connection signal="gui_input" from="MapContainer/Map/Final" to="." method="_on_final_gui_input"]
+[connection signal="pressed" from="MapContainer/Map/Final" to="." method="_on_final_pressed"]
+[connection signal="gui_input" from="MapContainer/Map/Final2" to="." method="_on_final_2_gui_input"]
+[connection signal="gui_input" from="MapContainer/Map/Final3" to="." method="_on_final_3_gui_input"]
+[connection signal="gui_input" from="MapContainer/Map/Final4" to="." method="_on_final_4_gui_input"]
+[connection signal="gui_input" from="MapContainer/Map/Final5" to="." method="_on_final_5_gui_input"]
+[connection signal="gui_input" from="MapContainer/Map/Final6" to="." method="_on_final_6_gui_input"]
+[connection signal="gui_input" from="MapContainer/Map/Final7" to="." method="_on_final_7_gui_input"]
