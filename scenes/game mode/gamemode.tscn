@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bm64vsg7dinwi" path="res://scenes/game mode/gamemode.gd" id="1_twu2m"]
 [ext_resource type="PackedScene" uid="uid://do8lrkkqrojji" path="res://scenes/ui/main_story_ui.tscn" id="2_i73ug"]
+[ext_resource type="BitMap" uid="uid://bw1qq000amyyn" path="res://graphics/buttons/active_parallelogramBit.png" id="3_1pu8h"]
 [ext_resource type="Texture2D" uid="uid://tx106r3c4smf" path="res://graphics/buttons/trapezoid.png" id="3_8kmsr"]
 [ext_resource type="Texture2D" uid="uid://87fv6xu2jrp3" path="res://graphics/buttons/active_parallelogram.png" id="3_bg0p3"]
-[ext_resource type="Script" uid="uid://decm3saaukfun" path="res://scenes/ui/main_story_ui.gd" id="3_fcp5m"]
 [ext_resource type="Texture2D" uid="uid://csrbid1q0uu35" path="res://graphics/buttons/parallelogram.png" id="5_spdbb"]
 [ext_resource type="PackedScene" uid="uid://n6jec2cv0g36" path="res://scenes/ui/virtual_machine_ui.tscn" id="6_8kmsr"]
 
@@ -23,6 +23,7 @@ offset_left = -1.0
 offset_right = 474.44373
 offset_bottom = 112.0
 texture_normal = ExtResource("3_8kmsr")
+texture_click_mask = ExtResource("3_1pu8h")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -42,6 +43,7 @@ offset_left = 361.0
 offset_right = 836.4437
 offset_bottom = 112.0
 texture_normal = ExtResource("3_bg0p3")
+texture_click_mask = ExtResource("3_1pu8h")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -61,6 +63,7 @@ offset_left = 725.0
 offset_right = 1200.4437
 offset_bottom = 112.0
 texture_normal = ExtResource("5_spdbb")
+texture_click_mask = ExtResource("3_1pu8h")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -76,7 +79,6 @@ vertical_alignment = 1
 
 [node name="MainStoryUI" parent="." unique_id=86464915 instance=ExtResource("2_i73ug")]
 layer = -1
-script = ExtResource("3_fcp5m")
 
 [node name="VirtualMachineUI" parent="." unique_id=446436674 instance=ExtResource("6_8kmsr")]
 layer = -2

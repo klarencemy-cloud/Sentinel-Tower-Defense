@@ -60,6 +60,7 @@ offset_bottom = 1414.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower1" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=128861833]
+clip_contents = true
 layout_mode = 0
 offset_right = 207.0
 offset_bottom = 242.0

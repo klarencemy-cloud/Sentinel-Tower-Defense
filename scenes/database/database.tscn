@@ -22,7 +22,7 @@ layer = -2
 [node name="SentinelDatabaseUi" parent="." unique_id=933853222 instance=ExtResource("4_avy77")]
 layer = -3
 
-[node name="Control" type="Control" parent="." unique_id=1288441716]
+[node name="ButtonManager" type="Control" parent="." unique_id=1288441716]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 558.0
@@ -30,7 +30,7 @@ offset_top = 632.5
 offset_right = 598.0
 offset_bottom = 672.5
 
-[node name="Sentinels" type="TextureButton" parent="Control" unique_id=209773581]
+[node name="Sentinels" type="TextureButton" parent="ButtonManager" unique_id=209773581]
 layout_mode = 0
 offset_left = 933.0
 offset_top = 334.5
@@ -40,7 +40,7 @@ texture_normal = ExtResource("1_gi3dj")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Sentinels" type="Label" parent="Control/Sentinels" unique_id=484350815]
+[node name="Sentinels" type="Label" parent="ButtonManager/Sentinels" unique_id=484350815]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.09885502
@@ -54,7 +54,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Towers" type="TextureButton" parent="Control" unique_id=833400313]
+[node name="Towers" type="TextureButton" parent="ButtonManager" unique_id=833400313]
 layout_mode = 0
 offset_left = 276.0
 offset_top = 335.5
@@ -65,7 +65,7 @@ texture_click_mask = ExtResource("6_x2ibx")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Towers" type="Label" parent="Control/Towers" unique_id=1909820539]
+[node name="Towers" type="Label" parent="ButtonManager/Towers" unique_id=1909820539]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.03743183
@@ -80,7 +80,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Threats" type="TextureButton" parent="Control" unique_id=1035486888]
+[node name="Threats" type="TextureButton" parent="ButtonManager" unique_id=1035486888]
 layout_mode = 0
 offset_left = 606.0
 offset_top = 334.5
@@ -91,7 +91,7 @@ texture_click_mask = ExtResource("6_x2ibx")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Threats" type="Label" parent="Control/Threats" unique_id=1147695740]
+[node name="Threats" type="Label" parent="ButtonManager/Threats" unique_id=1147695740]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.50351286
@@ -108,7 +108,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Back" type="TextureButton" parent="Control" unique_id=53933660]
+[node name="Back" type="TextureButton" parent="ButtonManager" unique_id=53933660]
 layout_mode = 0
 offset_left = -466.0
 offset_top = -580.0
@@ -118,7 +118,7 @@ texture_normal = ExtResource("4_3vw0r")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Back" type="Label" parent="Control/Back" unique_id=58268059]
+[node name="Back" type="Label" parent="ButtonManager/Back" unique_id=58268059]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.7960001
@@ -134,7 +134,7 @@ text = "Back"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Control/Sentinels" to="." method="_on_sentinels_pressed"]
-[connection signal="pressed" from="Control/Towers" to="." method="_on_towers_pressed"]
-[connection signal="pressed" from="Control/Threats" to="." method="_on_threats_pressed"]
-[connection signal="pressed" from="Control/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ButtonManager/Sentinels" to="." method="_on_sentinels_pressed"]
+[connection signal="pressed" from="ButtonManager/Towers" to="." method="_on_towers_pressed"]
+[connection signal="pressed" from="ButtonManager/Threats" to="." method="_on_threats_pressed"]
+[connection signal="pressed" from="ButtonManager/Back" to="." method="_on_back_pressed"]

@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c2ka012ylc4b3" path="res://graphics/buttons/buttonbg.png" id="3_jl081"]
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="3_ukhca"]
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="5_yn0lx"]
+[ext_resource type="Texture2D" uid="uid://dvfuyhj16jpip" path="res://graphics/buttons/exitbg.png" id="6_a3yut"]
+[ext_resource type="Texture2D" uid="uid://decdw7l8aj21x" path="res://graphics/buttons/settingsbg.png" id="7_l3hwl"]
 
 [node name="MainMenu" type="Node2D" unique_id=1824020899]
 script = ExtResource("1_ysd44")
@@ -88,17 +90,39 @@ text = "DATABASE"
 
 [node name="Exit" type="TextureButton" parent="ButtonManager" unique_id=1936843108]
 layout_mode = 0
-offset_left = 1642.0
-offset_top = 273.0
-offset_right = 1814.0
-offset_bottom = 391.0
+offset_left = 1689.0
+offset_top = 270.0
+offset_right = 1890.0
+offset_bottom = 364.0
+texture_normal = ExtResource("6_a3yut")
+stretch_mode = 0
+
+[node name="Exit" type="Label" parent="ButtonManager/Exit" unique_id=1862442719]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 15.0
+offset_right = 152.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 50
+text = "EXIT"
 
 [node name="Settings" type="TextureButton" parent="ButtonManager" unique_id=1508697269]
 layout_mode = 0
-offset_left = 1521.0
+offset_left = 1635.0
 offset_top = 145.0
 offset_right = 1897.0
-offset_bottom = 263.0
+offset_bottom = 255.0
+texture_normal = ExtResource("7_l3hwl")
+stretch_mode = 0
+
+[node name="Settings" type="Label" parent="ButtonManager/Settings" unique_id=2070110009]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 23.0
+offset_right = 277.0
+offset_bottom = 93.0
+theme_override_font_sizes/font_size = 50
+text = "SETTINGS"
 
 [connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ButtonManager/Sandbox" to="." method="_on_sandbox_pressed"]
