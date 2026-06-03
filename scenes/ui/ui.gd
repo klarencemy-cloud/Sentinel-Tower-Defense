@@ -23,6 +23,7 @@ func _ready() -> void:
 		tower_card.setup(tower_enum)
 		$TowerCards/TowerCardsContainer.add_child(tower_card)
 		tower_card.connect('press', tower_select)
+	update_wave_label()
 
 
 func tower_select(tower_enum: Data.Tower):
@@ -32,6 +33,15 @@ func tower_select(tower_enum: Data.Tower):
 func update_stats(money: int, health: int):
 	$Control/StatsContainer/PanelContainer2/HBoxContainer/Label.text = str(money)
 	$Control/StatsContainer/PanelContainer/HBoxContainer/Label.text = str(health)
+
+
+func update_wave_label() -> void:
+	$Control/WaveNum.text = "Wave " + str(Data.current_wave + 1)
+
+
+func is_auto_enabled() -> bool:
+	var auto_button = $Control/AutoLabel/AutoButton
+	return auto_button.is_pressed()
 
 
 func _on_wave_button_pressed() -> void:

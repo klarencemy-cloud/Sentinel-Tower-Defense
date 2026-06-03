@@ -39,11 +39,6 @@ const UPGRADE_DATA = {
 	Tower.MORTAR: {
 		'reload_time': 1.5,
 		'bullet': Bullet.MORTAR_EXPLOSION}}
-const ENEMY_WAVES = {
-	0: {Enemy.DEFAULT: 5, Enemy.STRONG: 2, Enemy.FAST: 1},
-	1: {Enemy.DEFAULT: 5, Enemy.FAST: 1},
-	2: {Enemy.DEFAULT: 20, Enemy.FAST: 1, Enemy.BIG: 2, Enemy.STRONG: 3},
-	}
 const ENEMY_DATA = {
 	Enemy.DEFAULT: {'health': 3, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 20},
 	Enemy.FAST: {'health': 3, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 50},

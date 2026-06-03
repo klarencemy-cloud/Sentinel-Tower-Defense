@@ -46,9 +46,14 @@ script = ExtResource("1_pfayw")
 
 [node name="Control" type="Control" parent="." unique_id=818495937]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.38900003
+anchor_top = 0.065000005
+anchor_right = 0.4
+anchor_bottom = 0.109000005
+offset_left = -746.88007
+offset_top = -70.200005
+offset_right = 1152.0
+offset_bottom = 962.27997
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -59,7 +64,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
-offset_top = 20.0
+offset_left = 687.0
+offset_top = 1003.0
+offset_right = 927.0
+offset_bottom = 1053.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_u7n8c")
 theme_override_font_sizes/font_size = 40
@@ -76,8 +84,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -20.0
-offset_bottom = -20.0
+offset_left = -191.0
+offset_top = -1057.0
+offset_right = -25.0
+offset_bottom = -883.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 10
@@ -121,6 +131,39 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_u7n8c")
 theme_override_font_sizes/font_size = 40
 text = "50"
+
+[node name="AutoLabel" type="Label" parent="Control" unique_id=320005110]
+layout_mode = 0
+offset_left = 1551.0
+offset_top = 1012.0
+offset_right = 1610.0
+offset_bottom = 1041.0
+theme_override_font_sizes/font_size = 24
+text = "Auto"
+
+[node name="AutoButton" type="CheckButton" parent="Control/AutoLabel" unique_id=1872802199]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.021000002
+anchor_right = 0.093
+anchor_bottom = 0.074
+offset_left = 41.69603
+offset_top = 4.3910007
+offset_right = 83.51303
+offset_bottom = 26.854
+
+[node name="WaveNum" type="Label" parent="Control" unique_id=890659221]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.20400001
+anchor_bottom = 0.123
+offset_left = 1717.0
+offset_top = 969.0
+offset_right = 1404.32
+offset_bottom = 866.16003
+theme_override_font_sizes/font_size = 26
+text = "Wave 1"
 
 [node name="TowerCards" type="Control" parent="." unique_id=1637863101]
 layout_mode = 3

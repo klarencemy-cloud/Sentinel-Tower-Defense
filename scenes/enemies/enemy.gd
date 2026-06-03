@@ -30,7 +30,7 @@ func hit():
 	health -= 1
 	flash()
 	if health <= 0:
-		Data.money += 1
+		Data.money += 10
 		queue_free()
 
 func flash():

@@ -15,9 +15,22 @@ var tower_scenes = {
 	Data.Tower.BLAST: "res://scenes/towers/tower_blaster.tscn",
 	Data.Tower.MORTAR: "res://scenes/towers/tower_mortar.tscn",}
 var used_cells: Array[Vector2i]
+var wave_active: bool = false
+var spawning_wave: bool = false
 
 func _ready() -> void:
+	randomize()
 	RenderingServer.set_default_clear_color('dff6f5')
+
+func _process(delta: float) -> void:
+	var enemies = get_tree().get_nodes_in_group('Enemies')
+	if wave_active and not spawning_wave and enemies.size() == 0:
+		wave_active = false
+
+	if not wave_active and not spawning_wave and enemies.size() == 0:
+		var ui = get_tree().get_first_node_in_group('UI')
+		if ui and ui.is_auto_enabled():
+			_on_ui_start_wave()
 
 
 func _input(event: InputEvent) -> void:
@@ -90,9 +103,11 @@ func _on_ui_place_tower(tower_type: Data.Tower) -> void:
 
 
 func _on_ui_start_wave() -> void:
-	var data = Data.ENEMY_WAVES[Data.current_wave]
+	var data = _random_wave_size()
+	get_tree().get_first_node_in_group('UI').update_wave_label()
 	Data.current_wave += 1
-	# {enum: num}
+	wave_active = true
+	spawning_wave = true
 	for enemy_enum in data:
 		for i in data[enemy_enum]:
 			var path_follow = PathFollow2D.new()
@@ -101,3 +116,30 @@ func _on_ui_start_wave() -> void:
 			path_follow.add_child(enemy)
 			$Path2D.add_child(path_follow)
 			await get_tree().create_timer(0.5).timeout
+	spawning_wave = false
+
+
+func _random_wave_size() -> Dictionary:
+	var difficulty = Data.current_wave
+	var total_enemies = randi_range(5 + difficulty * 2, 8 + difficulty * 3)
+	var wave: Dictionary = {}
+	for i in total_enemies:
+		var enemy_type = _choose_random_enemy_type(difficulty)
+		wave[enemy_type] = wave.get(enemy_type, 0) + 1
+	return wave
+
+
+func _choose_random_enemy_type(difficulty: int) -> Data.Enemy:
+	var default_chance = clamp(70 - difficulty * 4, 15, 70)
+	var fast_chance = clamp(20 + difficulty * 3, 15, 40)
+	var strong_chance = clamp(8 + difficulty * 2, 10, 30)
+	var big_chance = 100 - default_chance - fast_chance - strong_chance
+
+	var roll = randi() % 100
+	if roll < default_chance:
+		return Data.Enemy.DEFAULT
+	elif roll < default_chance + fast_chance:
+		return Data.Enemy.FAST
+	elif roll < default_chance + fast_chance + strong_chance:
+		return Data.Enemy.STRONG
+	return Data.Enemy.BIG
