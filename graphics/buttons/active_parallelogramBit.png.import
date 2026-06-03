@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bw1qq000amyyn"
+path="res://.godot/imported/active_parallelogramBit.png-f3bbbcfd5e89f78242782995628b6475.res"
+
+[deps]
+
+source_file="res://graphics/buttons/active_parallelogramBit.png"
+dest_files=["res://.godot/imported/active_parallelogramBit.png-f3bbbcfd5e89f78242782995628b6475.res"]
+
+[params]
+
+create_from=0
+threshold=0.0
