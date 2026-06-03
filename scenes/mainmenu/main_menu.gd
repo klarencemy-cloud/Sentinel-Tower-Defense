@@ -20,7 +20,7 @@ func _on_sandbox_pressed() -> void:
 
 
 func _on_database_pressed() -> void:
-	pass
+	get_tree().change_scene_to_file("res://scenes/database/database.tscn")
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()

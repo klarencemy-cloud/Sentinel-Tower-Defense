@@ -44,6 +44,13 @@ exit={
 ]
 }
 
+[internationalization]
+
+pseudolocalization/per_pixel_transparency/allowed=false
+pseudolocalization/size/viewport_height=1080
+pseudolocalization/size/viewport_width=1920
+pseudolocalization/size/window_height_override=720
+
 [layer_names]
 
 2d_physics/layer_1="Enemies"
@@ -52,5 +59,4 @@ exit={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
 textures/vram_compression/import_etc2_astc=true

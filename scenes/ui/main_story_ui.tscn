@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://do8lrkkqrojji"]
 
+[ext_resource type="Script" uid="uid://decm3saaukfun" path="res://scenes/ui/main_story_ui.gd" id="1_llfrq"]
 [ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="1_ni1gf"]
 [ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="2_88i85"]
 [ext_resource type="Texture2D" uid="uid://s8xhvy48k726" path="res://graphics/bosses/virus.png" id="3_ni1gf"]
 [ext_resource type="Texture2D" uid="uid://c2ka012ylc4b3" path="res://graphics/buttons/buttonbg.png" id="4_88i85"]
 
 [node name="MainStoryUI" type="CanvasLayer" unique_id=86464915]
+script = ExtResource("1_llfrq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2055092162]
 position = Vector2(960, 540)
@@ -88,3 +90,5 @@ theme_override_font_sizes/font_size = 50
 text = "START"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]

@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,5 +11,5 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_start_game_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/levels/level.tscn") # Replace with function body.
+func _on_back_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/mainmenu/main_menu.tscn")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://blrtpot4nxmw4"]
+
+[ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="1_6q7xd"]
+
+[node name="TowerDatabaseUi" type="CanvasLayer" unique_id=1088580883]
+
+[node name="Bluebg" type="Sprite2D" parent="." unique_id=360259117]
+position = Vector2(960, 540)
+texture = ExtResource("1_6q7xd")

@@ -188,10 +188,10 @@ offset_bottom = 40.0
 
 [node name="MapBtn" type="TextureButton" parent="ButtonManager" unique_id=955201350]
 layout_mode = 0
-offset_left = 439.0
-offset_top = 858.0
-offset_right = 642.7241
-offset_bottom = 914.0
+offset_left = 432.0
+offset_top = 919.0
+offset_right = 635.7241
+offset_bottom = 975.0
 texture_normal = ExtResource("6_wbmct")
 ignore_texture_size = true
 stretch_mode = 0
@@ -260,16 +260,16 @@ clip_contents = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 299.0
-offset_top = 196.0
+offset_top = 210.0
 offset_right = 809.0
-offset_bottom = 799.0
+offset_bottom = 813.0
 
 [node name="Map" type="TextureButton" parent="MapContainer" unique_id=1204325682]
 layout_mode = 0
-offset_left = 57.0
-offset_top = -394.0
-offset_right = 476.0
-offset_bottom = 483.33716
+offset_left = 39.0
+offset_top = -302.0
+offset_right = 458.0
+offset_bottom = 575.33716
 texture_normal = ExtResource("10_hpveb")
 ignore_texture_size = true
 stretch_mode = 0
