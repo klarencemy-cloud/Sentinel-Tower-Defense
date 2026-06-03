@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c2ka012ylc4b3" path="res://graphics/buttons/buttonbg.png" id="6_wbmct"]
 [ext_resource type="Texture2D" uid="uid://bmgpyq7aikwk0" path="res://graphics/currency/experience.png" id="7_6qbrb"]
 [ext_resource type="Texture2D" uid="uid://m2v4co1jqaap" path="res://graphics/buttons/right.png" id="9_q5btu"]
-[ext_resource type="Texture2D" uid="uid://63o46sfygycm" path="res://graphics/vm_maps/worldmap.png" id="10_hpveb"]
+[ext_resource type="Texture2D" uid="uid://cull0ts6jhf25" path="res://graphics/vm_maps/worldmap.png" id="10_hpveb"]
 [ext_resource type="Texture2D" uid="uid://css1nofmamha6" path="res://graphics/vm_maps/base.png" id="12_4vhxa"]
 
 [node name="VirtualMachineUI" type="CanvasLayer" unique_id=446436674]
@@ -196,7 +196,7 @@ texture_normal = ExtResource("6_wbmct")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ToggleLabel" type="Label" parent="ButtonManager/MapBtn" unique_id=536671535]
+[node name="Label" type="Label" parent="ButtonManager/MapBtn" unique_id=536671535]
 layout_mode = 0
 offset_left = 70.0
 offset_top = 11.0
@@ -206,7 +206,6 @@ theme_override_font_sizes/font_size = 30
 text = "MAP"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="RightBtn" type="TextureButton" parent="ButtonManager" unique_id=1752650449]
 layout_mode = 0
@@ -255,7 +254,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MapContainer" type="Control" parent="." unique_id=1227266268]
-visible = false
 clip_contents = true
 layout_mode = 3
 anchors_preset = 0
@@ -266,79 +264,80 @@ offset_bottom = 799.0
 
 [node name="Map" type="TextureButton" parent="MapContainer" unique_id=1204325682]
 layout_mode = 0
-offset_left = 57.0
-offset_top = -394.0
-offset_right = 476.0
-offset_bottom = 483.33716
+offset_left = 36.0
+offset_top = -287.0
+offset_right = 455.0
+offset_bottom = 590.33716
 texture_normal = ExtResource("10_hpveb")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Final" type="TextureButton" parent="MapContainer/Map" unique_id=2077303727]
 layout_mode = 0
-offset_left = 179.0
-offset_right = 297.0
-offset_bottom = 118.0
+offset_left = 178.0
+offset_top = 24.0
+offset_right = 296.0
+offset_bottom = 142.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Final2" type="TextureButton" parent="MapContainer/Map" unique_id=1971704751]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 142.0
-offset_right = 135.0
-offset_bottom = 260.0
+offset_left = 23.0
+offset_top = 175.0
+offset_right = 141.0
+offset_bottom = 293.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Final3" type="TextureButton" parent="MapContainer/Map" unique_id=1432426411]
 layout_mode = 0
-offset_left = 194.0
-offset_top = 213.0
-offset_right = 312.0
-offset_bottom = 331.0
+offset_left = 197.0
+offset_top = 235.0
+offset_right = 315.0
+offset_bottom = 353.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Final4" type="TextureButton" parent="MapContainer/Map" unique_id=2100657951]
 layout_mode = 0
-offset_left = 76.0
-offset_top = 353.0
-offset_right = 194.0
-offset_bottom = 471.0
+offset_left = 77.0
+offset_top = 375.0
+offset_right = 195.0
+offset_bottom = 493.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Final5" type="TextureButton" parent="MapContainer/Map" unique_id=1883669251]
 layout_mode = 0
-offset_left = 315.0
-offset_top = 511.0
-offset_right = 433.0
-offset_bottom = 629.0
+offset_left = 312.0
+offset_top = 521.0
+offset_right = 430.0
+offset_bottom = 639.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Final6" type="TextureButton" parent="MapContainer/Map" unique_id=1428982173]
 layout_mode = 0
-offset_left = -9.0
-offset_top = 559.0
-offset_right = 109.0
-offset_bottom = 677.0
+offset_left = -11.0
+offset_top = 580.0
+offset_right = 107.0
+offset_bottom = 698.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Final7" type="TextureButton" parent="MapContainer/Map" unique_id=1279870115]
 layout_mode = 0
-offset_left = 194.0
-offset_top = 760.0
-offset_right = 312.0
-offset_bottom = 878.0
+offset_left = 188.0
+offset_top = 763.0
+offset_right = 306.0
+offset_bottom = 881.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0

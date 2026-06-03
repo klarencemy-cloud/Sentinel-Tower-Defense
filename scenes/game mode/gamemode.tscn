@@ -78,7 +78,7 @@ layer = -1
 script = ExtResource("3_fcp5m")
 
 [node name="VirtualMachineUI" parent="." unique_id=446436674 instance=ExtResource("6_8kmsr")]
-layer = -1
+layer = -2
 
 [connection signal="pressed" from="ButtonManager/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="ButtonManager/MainStory" to="." method="_on_main_story_pressed"]

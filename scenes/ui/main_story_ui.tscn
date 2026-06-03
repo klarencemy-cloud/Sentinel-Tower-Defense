@@ -19,10 +19,10 @@ offset_bottom = 40.0
 
 [node name="DifficultyLevel" type="Label" parent="Text" unique_id=1499104398]
 layout_mode = 0
-offset_left = 836.0
-offset_top = 531.0
-offset_right = 1139.0
-offset_bottom = 601.0
+offset_left = 862.0
+offset_top = 534.0
+offset_right = 1165.0
+offset_bottom = 604.0
 theme_override_colors/font_color = Color(0.53333336, 0.60784316, 0.654902, 1)
 theme_override_fonts/font = ExtResource("2_88i85")
 theme_override_font_sizes/font_size = 40
@@ -30,20 +30,20 @@ text = "Difficulty Level:"
 
 [node name="Wave" type="Label" parent="Text" unique_id=373776111]
 layout_mode = 0
-offset_left = 824.0
-offset_top = 374.0
-offset_right = 1368.0
-offset_bottom = 552.0
+offset_left = 850.0
+offset_top = 377.0
+offset_right = 1394.0
+offset_bottom = 555.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 130
 text = "WAVE 30"
 
 [node name="Difficulty" type="Label" parent="Text" unique_id=620605534]
 layout_mode = 0
-offset_left = 1152.0
-offset_top = 532.0
-offset_right = 1325.0
-offset_bottom = 584.0
+offset_left = 1178.0
+offset_top = 535.0
+offset_right = 1351.0
+offset_bottom = 587.0
 theme_override_colors/font_color = Color(1, 0, 0.015686275, 1)
 theme_override_font_sizes/font_size = 40
 text = "EXTREME"
@@ -56,10 +56,10 @@ offset_bottom = 40.0
 
 [node name="Boss" type="TextureRect" parent="Image" unique_id=2130297845]
 layout_mode = 0
-offset_left = 299.0
-offset_top = 305.0
-offset_right = 809.0
-offset_bottom = 799.0
+offset_left = 325.0
+offset_top = 308.0
+offset_right = 835.0
+offset_bottom = 802.0
 texture = ExtResource("3_ni1gf")
 expand_mode = 1
 stretch_mode = 5
@@ -80,9 +80,11 @@ anchor_left = 1.7960001
 anchor_top = 3.009
 anchor_right = 1.7960001
 anchor_bottom = 3.009
-offset_left = -738.92004
+offset_left = -746.92004
 offset_top = -410.35
-offset_right = -587.92004
+offset_right = -595.92004
 offset_bottom = -340.35
 theme_override_font_sizes/font_size = 50
 text = "START"
+horizontal_alignment = 1
+vertical_alignment = 1

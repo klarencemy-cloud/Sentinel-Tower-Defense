@@ -37,6 +37,7 @@ offset_bottom = 581.0
 texture_normal = ExtResource("3_jl081")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Start" type="Label" parent="ButtonManager/StartGame" unique_id=1348868350]
 layout_mode = 0
@@ -49,9 +50,9 @@ text = "START"
 
 [node name="Sandbox" type="TextureButton" parent="ButtonManager" unique_id=1387129630]
 layout_mode = 0
-offset_left = 720.0
+offset_left = 728.0
 offset_top = 616.0
-offset_right = 1180.0
+offset_right = 1188.0
 offset_bottom = 725.0
 texture_normal = ExtResource("5_yn0lx")
 ignore_texture_size = true
@@ -68,10 +69,10 @@ text = "SANDBOX"
 
 [node name="Database" type="TextureButton" parent="ButtonManager" unique_id=103459929]
 layout_mode = 0
-offset_left = 720.0
-offset_top = 744.0
-offset_right = 1180.0
-offset_bottom = 853.0
+offset_left = 728.0
+offset_top = 743.0
+offset_right = 1188.0
+offset_bottom = 852.0
 texture_normal = ExtResource("5_yn0lx")
 ignore_texture_size = true
 stretch_mode = 0
