@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://xntjmfdxjb2f"]
+
+[ext_resource type="Script" uid="uid://dqlm5aafgy0en" path="res://scenes/ui/sentinel_database_ui.gd" id="1_15viw"]
+[ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="1_x7vdu"]
+[ext_resource type="Texture2D" uid="uid://chcqohmh42w05" path="res://graphics/scrollbar/scrollcontainer.png" id="2_x7vdu"]
+[ext_resource type="Texture2D" uid="uid://c81w57xp22b8b" path="res://graphics/scrollbar/bar.png" id="3_15viw"]
+[ext_resource type="Texture2D" uid="uid://h0g75frj1eg4" path="res://graphics/database/sentinel_container.png" id="4_x7vdu"]
+[ext_resource type="Texture2D" uid="uid://cdpfmjb5ui3he" path="res://graphics/backgrounds/databasebg.png" id="5_u5m5o"]
+
+[node name="SentinelDatabaseUi" type="CanvasLayer" unique_id=933853222]
+script = ExtResource("1_15viw")
+
+[node name="Bluebg" type="Sprite2D" parent="." unique_id=610979879]
+position = Vector2(960, 540)
+texture = ExtResource("1_x7vdu")
+
+[node name="ScrollBarContainer" type="Control" parent="." unique_id=536384295]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 239.0
+offset_top = 163.0
+offset_right = 276.0
+offset_bottom = 960.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Bar" type="TextureButton" parent="ScrollBarContainer" unique_id=267961889]
+clip_contents = true
+layout_mode = 0
+offset_right = 37.0
+offset_bottom = 797.0
+texture_normal = ExtResource("2_x7vdu")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Scroll" type="TextureButton" parent="ScrollBarContainer/Bar" unique_id=1703188915]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 12.0
+offset_right = 29.0
+offset_bottom = 98.0
+texture_normal = ExtResource("3_15viw")
+metadata/_edit_use_anchors_ = true
+
+[node name="SentinelContainer" type="Control" parent="." unique_id=1532261738]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 330.0
+offset_top = 152.0
+offset_right = 799.0
+offset_bottom = 960.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CardContainer" type="Control" parent="SentinelContainer" unique_id=1055687972]
+anchors_preset = 0
+offset_top = 11.0
+offset_right = 468.0
+offset_bottom = 1414.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sentinel1" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=1421220990]
+layout_mode = 0
+offset_right = 207.0
+offset_bottom = 242.0
+texture_normal = ExtResource("4_x7vdu")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sentinel2" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=568840570]
+layout_mode = 0
+offset_left = 259.0
+offset_right = 466.0
+offset_bottom = 242.0
+texture_normal = ExtResource("4_x7vdu")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sentinel3" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=1419071215]
+layout_mode = 0
+offset_top = 278.0
+offset_right = 207.0
+offset_bottom = 520.0
+texture_normal = ExtResource("4_x7vdu")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sentinel4" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=1049039864]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 278.0
+offset_right = 466.0
+offset_bottom = 520.0
+texture_normal = ExtResource("4_x7vdu")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sentinel5" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=1222275939]
+layout_mode = 0
+offset_top = 563.0
+offset_right = 207.0
+offset_bottom = 805.0
+texture_normal = ExtResource("4_x7vdu")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sentinel6" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=1027380043]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 563.0
+offset_right = 466.0
+offset_bottom = 805.0
+texture_normal = ExtResource("4_x7vdu")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sentinel7" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=1094722670]
+layout_mode = 0
+offset_top = 854.0
+offset_right = 207.0
+offset_bottom = 1096.0
+texture_normal = ExtResource("4_x7vdu")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sentinel8" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=83643053]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 854.0
+offset_right = 466.0
+offset_bottom = 1096.0
+texture_normal = ExtResource("4_x7vdu")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sentinel9" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=221702572]
+layout_mode = 0
+offset_top = 1148.0
+offset_right = 207.0
+offset_bottom = 1390.0
+texture_normal = ExtResource("4_x7vdu")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sentinel10" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=956745986]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 1148.0
+offset_right = 466.0
+offset_bottom = 1390.0
+texture_normal = ExtResource("4_x7vdu")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Databasebg" type="Sprite2D" parent="." unique_id=541380225]
+position = Vector2(1401, 517.5)
+texture = ExtResource("5_u5m5o")
+
+[connection signal="gui_input" from="ScrollBarContainer/Bar/Scroll" to="." method="_on_scroll_gui_input"]
+[connection signal="gui_input" from="SentinelContainer/CardContainer" to="." method="_on_card_container_gui_input"]
+[connection signal="gui_input" from="SentinelContainer/CardContainer/Sentinel1" to="." method="_on_sentinel_1_gui_input"]
+[connection signal="gui_input" from="SentinelContainer/CardContainer/Sentinel2" to="." method="_on_sentinel_2_gui_input"]
+[connection signal="gui_input" from="SentinelContainer/CardContainer/Sentinel3" to="." method="_on_sentinel_3_gui_input"]
+[connection signal="gui_input" from="SentinelContainer/CardContainer/Sentinel4" to="." method="_on_sentinel_4_gui_input"]
+[connection signal="gui_input" from="SentinelContainer/CardContainer/Sentinel5" to="." method="_on_sentinel_5_gui_input"]
+[connection signal="gui_input" from="SentinelContainer/CardContainer/Sentinel6" to="." method="_on_sentinel_6_gui_input"]
+[connection signal="gui_input" from="SentinelContainer/CardContainer/Sentinel7" to="." method="_on_sentinel_7_gui_input"]
+[connection signal="gui_input" from="SentinelContainer/CardContainer/Sentinel8" to="." method="_on_sentinel_8_gui_input"]
+[connection signal="gui_input" from="SentinelContainer/CardContainer/Sentinel9" to="." method="_on_sentinel_9_gui_input"]
+[connection signal="gui_input" from="SentinelContainer/CardContainer/Sentinel10" to="." method="_on_sentinel_10_gui_input"]

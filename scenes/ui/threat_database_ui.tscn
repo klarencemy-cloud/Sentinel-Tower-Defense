@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://cqovkbfo3y4fb"]
+
+[ext_resource type="Script" uid="uid://dtwrk0ymcl4iv" path="res://scenes/ui/threat_database_ui.gd" id="1_tshpw"]
+[ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="2_p0omb"]
+[ext_resource type="Texture2D" uid="uid://ba2dgayn2wsmt" path="res://graphics/scrollbar/redscrollcontainer.png" id="3_bxw4m"]
+[ext_resource type="Texture2D" uid="uid://cy57t062ydhm6" path="res://graphics/scrollbar/redbar.png" id="4_tl1kg"]
+[ext_resource type="Texture2D" uid="uid://5rw502kfg28j" path="res://graphics/database/threat_container.png" id="5_bxw4m"]
+[ext_resource type="Texture2D" uid="uid://cfb74qasoy8u0" path="res://graphics/backgrounds/reddatabasebg.png" id="6_tl1kg"]
+
+[node name="ThreatDatabaseUi" type="CanvasLayer" unique_id=721924264]
+script = ExtResource("1_tshpw")
+
+[node name="Bluebg" type="Sprite2D" parent="." unique_id=1645925897]
+position = Vector2(960, 540)
+texture = ExtResource("2_p0omb")
+
+[node name="ScrollBarContainer" type="Control" parent="." unique_id=1538472846]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 239.0
+offset_top = 163.0
+offset_right = 276.0
+offset_bottom = 960.0
+
+[node name="Bar" type="TextureButton" parent="ScrollBarContainer" unique_id=1567796347]
+clip_contents = true
+layout_mode = 0
+offset_right = 37.0
+offset_bottom = 797.0
+texture_normal = ExtResource("3_bxw4m")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Scroll" type="TextureButton" parent="ScrollBarContainer/Bar" unique_id=1113059193]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 12.0
+offset_right = 29.0
+offset_bottom = 98.0
+texture_normal = ExtResource("4_tl1kg")
+
+[node name="ThreatContainer" type="Control" parent="." unique_id=49551088]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 330.0
+offset_top = 152.0
+offset_right = 799.0
+offset_bottom = 960.0
+
+[node name="CardContainer" type="Control" parent="ThreatContainer" unique_id=961428850]
+anchors_preset = 0
+offset_top = 11.0
+offset_right = 468.0
+offset_bottom = 1414.0
+
+[node name="Threat1" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=767183370]
+layout_mode = 0
+offset_right = 207.0
+offset_bottom = 242.0
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+
+[node name="Threat2" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1042776947]
+layout_mode = 0
+offset_left = 259.0
+offset_right = 466.0
+offset_bottom = 242.0
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+
+[node name="Threat3" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1590320813]
+layout_mode = 0
+offset_top = 278.0
+offset_right = 207.0
+offset_bottom = 520.0
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+
+[node name="Threat4" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1220467017]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 278.0
+offset_right = 466.0
+offset_bottom = 520.0
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+
+[node name="Threat5" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=205190236]
+layout_mode = 0
+offset_top = 563.0
+offset_right = 207.0
+offset_bottom = 805.0
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+
+[node name="Threat6" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1305954709]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 563.0
+offset_right = 466.0
+offset_bottom = 805.0
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+
+[node name="Threat7" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1132838910]
+layout_mode = 0
+offset_top = 854.0
+offset_right = 207.0
+offset_bottom = 1096.0
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+
+[node name="Threat8" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=588500916]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 854.0
+offset_right = 466.0
+offset_bottom = 1096.0
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+
+[node name="Threat9" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=464604319]
+layout_mode = 0
+offset_top = 1148.0
+offset_right = 207.0
+offset_bottom = 1390.0
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+
+[node name="Threat10" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=308210947]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 1148.0
+offset_right = 466.0
+offset_bottom = 1390.0
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+
+[node name="Reddatabasebg" type="Sprite2D" parent="." unique_id=1333573009]
+position = Vector2(1401, 518)
+texture = ExtResource("6_tl1kg")
+
+[connection signal="gui_input" from="ScrollBarContainer/Bar/Scroll" to="." method="_on_scroll_gui_input"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer" to="." method="_on_card_container_gui_input"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat1" to="." method="_on_threat_1_gui_input"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat2" to="." method="_on_threat_2_gui_input"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat3" to="." method="_on_threat_3_gui_input"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat4" to="." method="_on_threat_4_gui_input"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat5" to="." method="_on_threat_5_gui_input"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat6" to="." method="_on_threat_6_gui_input"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat7" to="." method="_on_threat_7_gui_input"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat8" to="." method="_on_threat_8_gui_input"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat9" to="." method="_on_threat_9_gui_input"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat10" to="." method="_on_threat_10_gui_input"]
