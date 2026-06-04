@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var main_ui = preload("res://scenes/ui/main_story_ui.tscn")
 
