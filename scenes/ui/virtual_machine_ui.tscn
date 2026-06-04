@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c2ka012ylc4b3" path="res://graphics/buttons/buttonbg.png" id="6_wbmct"]
 [ext_resource type="Texture2D" uid="uid://bmgpyq7aikwk0" path="res://graphics/currency/experience.png" id="7_6qbrb"]
 [ext_resource type="Texture2D" uid="uid://m2v4co1jqaap" path="res://graphics/buttons/right.png" id="9_q5btu"]
-[ext_resource type="Texture2D" uid="uid://63o46sfygycm" path="res://graphics/vm_maps/worldmap.png" id="10_hpveb"]
+[ext_resource type="Texture2D" uid="uid://bmnsxinqiocg5" path="res://graphics/vm_maps/worldmap2.png" id="11_4vhxa"]
 [ext_resource type="Texture2D" uid="uid://css1nofmamha6" path="res://graphics/vm_maps/base.png" id="12_4vhxa"]
 
 [node name="VirtualMachineUI" type="CanvasLayer" unique_id=446436674]
@@ -28,13 +28,14 @@ offset_bottom = 40.0
 
 [node name="vmName" type="Label" parent="Text" unique_id=1022964517]
 layout_mode = 0
-offset_left = 1016.0
-offset_top = 377.0
-offset_right = 1682.0
-offset_bottom = 555.0
+anchor_left = 25.4
+anchor_top = 9.425
+anchor_right = 42.05
+anchor_bottom = 13.875
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 130
 text = "VIRAL CITY"
+metadata/_edit_use_anchors_ = true
 
 [node name="DifficultyLevel" type="Label" parent="Text" unique_id=829644449]
 layout_mode = 0
@@ -142,13 +143,14 @@ offset_bottom = 40.0
 
 [node name="SelectedMap" type="TextureRect" parent="Image" unique_id=317186128]
 layout_mode = 0
-offset_left = 299.0
-offset_top = 305.0
-offset_right = 809.0
-offset_bottom = 799.0
+anchor_left = 7.475
+anchor_top = 7.625
+anchor_right = 20.225
+anchor_bottom = 19.975
 texture = ExtResource("4_3akup")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="Gold" type="TextureRect" parent="Image" unique_id=1070007890]
 layout_mode = 0
@@ -188,25 +190,27 @@ offset_bottom = 40.0
 
 [node name="MapBtn" type="TextureButton" parent="ButtonManager" unique_id=955201350]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 919.0
-offset_right = 635.7241
-offset_bottom = 975.0
+anchor_left = 10.8
+anchor_top = 22.975
+anchor_right = 15.893103
+anchor_bottom = 24.375
 texture_normal = ExtResource("6_wbmct")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="ToggleLabel" type="Label" parent="ButtonManager/MapBtn" unique_id=536671535]
 layout_mode = 0
-offset_left = 70.0
-offset_top = 11.0
-offset_right = 134.0
-offset_bottom = 46.0
+anchor_left = 0.3436019
+anchor_top = 0.19642857
+anchor_right = 0.6577523
+anchor_bottom = 0.8214286
 theme_override_font_sizes/font_size = 30
 text = "MAP"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="RightBtn" type="TextureButton" parent="ButtonManager" unique_id=1752650449]
 layout_mode = 0
@@ -230,29 +234,28 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="StartGame" type="TextureButton" parent="." unique_id=470087992]
-offset_left = 1325.0
-offset_top = 878.0
-offset_right = 1845.0
-offset_bottom = 1028.0
+anchors_preset = -1
+anchor_left = 0.6901042
+anchor_top = 0.81296295
+anchor_right = 0.9609375
+anchor_bottom = 0.95185184
 texture_normal = ExtResource("6_wbmct")
 ignore_texture_size = true
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="Start" type="Label" parent="StartGame" unique_id=1771143049]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.7960001
-anchor_top = 3.009
-anchor_right = 1.7960001
-anchor_bottom = 3.009
-offset_left = -746.92004
-offset_top = -410.35
-offset_right = -595.92004
-offset_bottom = -340.35
+anchor_left = 0.3596154
+anchor_top = 0.27333334
+anchor_right = 0.65
+anchor_bottom = 0.74
 theme_override_font_sizes/font_size = 50
 text = "START"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="MapContainer" type="Control" parent="." unique_id=1227266268]
 visible = false
@@ -270,7 +273,7 @@ offset_left = 39.0
 offset_top = -302.0
 offset_right = 458.0
 offset_bottom = 575.33716
-texture_normal = ExtResource("10_hpveb")
+texture_normal = ExtResource("11_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
 
