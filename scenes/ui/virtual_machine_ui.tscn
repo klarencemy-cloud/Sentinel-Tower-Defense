@@ -13,177 +13,228 @@
 [ext_resource type="Texture2D" uid="uid://bmnsxinqiocg5" path="res://graphics/vm_maps/worldmap2.png" id="11_4vhxa"]
 [ext_resource type="Texture2D" uid="uid://css1nofmamha6" path="res://graphics/vm_maps/base.png" id="12_4vhxa"]
 
-[node name="VirtualMachineUI" type="CanvasLayer" unique_id=446436674]
+[node name="VirtualMachineUI" type="Control" unique_id=785887472]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_hwj1t")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1913294768]
-position = Vector2(960, 539)
+[node name="Sprite2D" type="TextureRect" parent="." unique_id=1606986439]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_kp6ki")
+metadata/_edit_use_anchors_ = true
 
-[node name="Text" type="Control" parent="." unique_id=972504179]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MapDetails" type="Control" parent="." unique_id=972504179]
+layout_mode = 1
+anchor_left = 0.5026042
+anchor_top = 0.2824074
+anchor_right = 0.94739586
+anchor_bottom = 0.67314816
+metadata/_edit_use_anchors_ = true
 
-[node name="vmName" type="Label" parent="Text" unique_id=1022964517]
-layout_mode = 0
-anchor_left = 25.4
-anchor_top = 9.425
-anchor_right = 42.05
-anchor_bottom = 13.875
+[node name="vmName" type="Label" parent="MapDetails" unique_id=1022964517]
+layout_mode = 1
+offset_right = 658.0
+offset_bottom = 149.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 130
 text = "VIRAL CITY"
-metadata/_edit_use_anchors_ = true
 
-[node name="DifficultyLevel" type="Label" parent="Text" unique_id=829644449]
-layout_mode = 0
-offset_left = 1036.0
-offset_top = 525.0
-offset_right = 1339.0
-offset_bottom = 595.0
+[node name="DifficultyLevel" type="Label" parent="MapDetails" unique_id=829644449]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 22.999939
+offset_top = -49.0
+offset_right = 298.99994
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.53333336, 0.60784316, 0.654902, 1)
 theme_override_fonts/font = ExtResource("1_g5kkh")
 theme_override_font_sizes/font_size = 40
 text = "Difficulty Level:"
 
-[node name="Difficulty" type="Label" parent="Text" unique_id=1572276724]
-layout_mode = 0
-offset_left = 1352.0
-offset_top = 525.0
-offset_right = 1559.0
-offset_bottom = 588.0
+[node name="Difficulty" type="Label" parent="MapDetails" unique_id=1572276724]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 314.99988
+offset_top = -48.5
+offset_right = 480.99988
+offset_bottom = -2.5
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0, 0.015686275, 1)
 theme_override_font_sizes/font_size = 40
 text = "EXTREME"
 
-[node name="SuggestedLevel" type="Label" parent="Text" unique_id=1470301378]
-layout_mode = 0
-offset_left = 1647.0
-offset_top = 526.0
-offset_right = 1696.0
-offset_bottom = 589.0
+[node name="SuggestedLevel" type="Label" parent="MapDetails" unique_id=1470301378]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.448
+anchor_bottom = 0.448
+offset_left = 594.0
+offset_top = -26.056
+offset_right = 637.9974
+offset_bottom = 22.944
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.3137255, 0.654902, 0.87058824, 1)
 theme_override_fonts/font = ExtResource("1_g5kkh")
 theme_override_font_sizes/font_size = 40
 text = "lvl"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Suggested" type="Label" parent="Text" unique_id=2062969500]
-layout_mode = 0
-offset_left = 1706.0
-offset_top = 526.0
-offset_right = 1755.0
-offset_bottom = 589.0
+[node name="Suggested" type="Label" parent="MapDetails" unique_id=2062969500]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.448
+anchor_bottom = 0.448
+offset_left = 637.9999
+offset_top = -26.056015
+offset_right = 689.9999
+offset_bottom = 22.943985
+grow_horizontal = 0
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.3137255, 0.654902, 0.87058824, 1)
 theme_override_fonts/font = ExtResource("1_g5kkh")
 theme_override_font_sizes/font_size = 40
 text = "30"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Description" type="Label" parent="Text" unique_id=657947781]
-layout_mode = 0
-offset_left = 1037.0
-offset_top = 586.0
-offset_right = 1518.0
-offset_bottom = 625.0
+[node name="Description" type="Label" parent="MapDetails" unique_id=657947781]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 22.999939
+offset_top = 15.0
+offset_right = 503.99997
+offset_bottom = 54.0
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_kp6ki")
 theme_override_font_sizes/font_size = 21
 text = "Defeat 1000 viruses without taking any damage"
 
-[node name="Gold" type="Label" parent="Text" unique_id=788093660]
+[node name="Gold" type="Label" parent="MapDetails" unique_id=788093660]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -6.518
-anchor_top = 5.3760004
-anchor_right = -6.518
-anchor_bottom = 5.3760004
-offset_left = 1352.72
-offset_top = 427.96
-offset_right = 1400.72
-offset_bottom = 466.96
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 65.99994
+offset_top = 87.0
+offset_right = 112.99994
+offset_bottom = 120.0
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.8392157, 0.8509804, 0.85490197, 1)
 theme_override_font_sizes/font_size = 28
 text = "230"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="XP" type="Label" parent="Text" unique_id=1033305044]
+[node name="XP" type="Label" parent="MapDetails" unique_id=1033305044]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -6.518
-anchor_top = 5.3760004
-anchor_right = -6.518
-anchor_bottom = 5.3760004
-offset_left = 1511.72
-offset_top = 427.96
-offset_right = 1527.72
-offset_bottom = 466.96
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 185.99994
+offset_top = 87.0
+offset_right = 200.99994
+offset_bottom = 120.0
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.8352941, 0.5686275, 0.19607843, 1)
 theme_override_font_sizes/font_size = 28
 text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Serverpt" type="Label" parent="Text" unique_id=156563275]
+[node name="Serverpt" type="Label" parent="MapDetails" unique_id=156563275]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -6.518
-anchor_top = 5.3760004
-anchor_right = -6.518
-anchor_bottom = 5.3760004
-offset_left = 1648.72
-offset_top = 427.96
-offset_right = 1668.72
-offset_bottom = 460.96
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 268.99994
+offset_top = 87.0
+offset_right = 279.99994
+offset_bottom = 120.0
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_font_sizes/font_size = 28
 text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Image" type="Control" parent="." unique_id=16854379]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SelectedMap" type="TextureRect" parent="Image" unique_id=317186128]
-layout_mode = 0
-anchor_left = 7.475
-anchor_top = 7.625
-anchor_right = 20.225
-anchor_bottom = 19.975
-texture = ExtResource("4_3akup")
-expand_mode = 1
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
-
-[node name="Gold" type="TextureRect" parent="Image" unique_id=1070007890]
-layout_mode = 0
-offset_left = 1035.0
-offset_top = 637.0
-offset_right = 1087.0
-offset_bottom = 683.0
+[node name="Gold2" type="TextureRect" parent="MapDetails" unique_id=1070007890]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 22.999939
+offset_top = 84.0
+offset_right = 53.395554
+offset_bottom = 124.357544
+grow_vertical = 2
 texture = ExtResource("5_wbmct")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="XP" type="TextureRect" parent="Image" unique_id=856008150]
-layout_mode = 0
-offset_left = 1331.0
-offset_top = 638.0
-offset_right = 1383.0
-offset_bottom = 684.0
+[node name="XP2" type="TextureRect" parent="MapDetails" unique_id=856008150]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 236.99994
+offset_top = 87.0
+offset_right = 261.99994
+offset_bottom = 116.54544
+grow_vertical = 2
 texture = ExtResource("6_6qbrb")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ServerPts" type="TextureRect" parent="Image" unique_id=1029772809]
-layout_mode = 0
-offset_left = 1194.0
-offset_top = 637.0
-offset_right = 1246.0
-offset_bottom = 683.0
+[node name="ServerPts" type="TextureRect" parent="MapDetails" unique_id=1029772809]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 147.99994
+offset_top = 84.0
+offset_right = 177.99994
+offset_bottom = 118.6875
+grow_vertical = 2
 texture = ExtResource("7_6qbrb")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Image" type="Control" parent="." unique_id=16854379]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 399.0
+offset_bottom = 494.0
+
+[node name="SelectedMap" type="TextureRect" parent="Image" unique_id=317186128]
+layout_mode = 1
+offset_left = 355.0
+offset_top = 305.0
+offset_right = 754.0
+offset_bottom = 799.0
+texture = ExtResource("4_3akup")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="ButtonManager" type="Control" parent="." unique_id=652685244]
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -200,17 +251,23 @@ stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="ToggleLabel" type="Label" parent="ButtonManager/MapBtn" unique_id=536671535]
-layout_mode = 0
-anchor_left = 0.3436019
-anchor_top = 0.19642857
-anchor_right = 0.6577523
-anchor_bottom = 0.8214286
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5089286
+anchor_right = 0.5
+anchor_bottom = 0.5089286
+offset_left = -31.86206
+offset_top = -17.5
+offset_right = 34.77588
+offset_bottom = 17.499998
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "MAP"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="RightBtn" type="TextureButton" parent="ButtonManager" unique_id=1752650449]
 layout_mode = 0
@@ -234,6 +291,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="StartGame" type="TextureButton" parent="." unique_id=470087992]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.6901042
 anchor_top = 0.81296295
@@ -246,11 +304,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Start" type="Label" parent="StartGame" unique_id=1771143049]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3596154
-anchor_top = 0.27333334
-anchor_right = 0.65
-anchor_bottom = 0.74
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -35.0
+offset_right = 80.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "START"
 horizontal_alignment = 1
@@ -260,7 +324,6 @@ metadata/_edit_use_anchors_ = true
 [node name="MapContainer" type="Control" parent="." unique_id=1227266268]
 visible = false
 clip_contents = true
-layout_mode = 3
 anchors_preset = 0
 offset_left = 299.0
 offset_top = 210.0
@@ -269,13 +332,15 @@ offset_bottom = 813.0
 
 [node name="Map" type="TextureButton" parent="MapContainer" unique_id=1204325682]
 layout_mode = 0
-offset_left = 39.0
-offset_top = -302.0
-offset_right = 458.0
-offset_bottom = 575.33716
+anchor_left = 0.07647059
+anchor_top = -0.50082916
+anchor_right = 0.8980392
+anchor_bottom = 0.9541246
+offset_top = -3.0517578e-05
 texture_normal = ExtResource("11_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Final" type="TextureButton" parent="MapContainer/Map" unique_id=2077303727]
 layout_mode = 0

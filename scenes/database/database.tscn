@@ -21,6 +21,7 @@ mouse_filter = 2
 script = ExtResource("1_x2ibx")
 
 [node name="ButtonManager" type="Control" parent="." unique_id=685590312]
+top_level = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Sentinels" type="TextureButton" parent="ButtonManager" unique_id=1041793442]
 layout_mode = 1
@@ -36,9 +38,9 @@ anchor_left = 0.77789366
 anchor_top = 0.8928901
 anchor_right = 1.0008668
 anchor_bottom = 0.99707603
-offset_left = -1.5557861
+offset_left = 0.44421387
 offset_top = 3.678711
-offset_right = -1.5559082
+offset_right = 0.4440918
 offset_bottom = 3.678711
 grow_horizontal = 0
 grow_vertical = 0
@@ -66,6 +68,10 @@ anchor_left = 0.43489584
 anchor_top = 0.89537036
 anchor_right = 0.657869
 anchor_bottom = 0.9995565
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("2_3vw0r")
@@ -92,6 +98,10 @@ anchor_left = 0.60625
 anchor_top = 0.89537036
 anchor_right = 0.8292231
 anchor_bottom = 0.9995565
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("3_58pi7")
@@ -139,13 +149,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TowerDatabaseUi" parent="." unique_id=1088580883 instance=ExtResource("5_58pi7")]
-layer = -1
+layout_mode = 1
 
 [node name="ThreatDatabaseUi" parent="." unique_id=721924264 instance=ExtResource("9_avy77")]
-layer = -2
+layout_mode = 1
 
 [node name="SentinelDatabaseUi" parent="." unique_id=933853222 instance=ExtResource("4_avy77")]
-layer = -3
+layout_mode = 1
 
 [connection signal="pressed" from="ButtonManager/Sentinels" to="." method="_on_sentinels_pressed"]
 [connection signal="pressed" from="ButtonManager/Towers" to="." method="_on_towers_pressed"]
