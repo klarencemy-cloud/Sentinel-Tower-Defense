@@ -23,6 +23,7 @@ func _ready() -> void:
 		tower_card.setup(tower_enum)
 		$TowerCards/TowerCardsContainer.add_child(tower_card)
 		tower_card.connect('press', tower_select)
+	update_stats(Data.money, Data.health)
 	update_wave_label()
 
 

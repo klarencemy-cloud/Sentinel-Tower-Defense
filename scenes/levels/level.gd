@@ -1,5 +1,6 @@
 extends Node2D
 
+
 var enemy_scene = preload("res://scenes/enemies/enemy.tscn")
 var bullet_scene = preload("res://scenes/bullets/bullet.tscn")
 var explosion_scene = preload("res://scenes/bullets/explosion.tscn")
@@ -17,6 +18,8 @@ var tower_scenes = {
 var used_cells: Array[Vector2i]
 var wave_active: bool = false
 var spawning_wave: bool = false
+var health = Data.health
+
 
 func _ready() -> void:
 	randomize()
@@ -106,6 +109,8 @@ func _on_ui_start_wave() -> void:
 	var data = _random_wave_size()
 	get_tree().get_first_node_in_group('UI').update_wave_label()
 	Data.current_wave += 1
+	if Data.current_wave % 5 == 0:
+		Data.checkpoint_wave = Data.current_wave
 	wave_active = true
 	spawning_wave = true
 	for enemy_enum in data:

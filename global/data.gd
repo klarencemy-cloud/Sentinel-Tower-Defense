@@ -48,13 +48,18 @@ const ENEMY_DATA = {
 var money := 200:
 	set(value):
 		money = value
-		get_tree().get_first_node_in_group('UI').update_stats(money, health)
+		var ui = get_tree().get_first_node_in_group('UI')
+		if ui:
+			ui.update_stats(money, health)
 		for tower_card in get_tree().get_nodes_in_group('TowerCard'):
 			tower_card.toggle_active(money)
 var health := 100:
 	set(value):
 		health = value
-		get_tree().get_first_node_in_group('UI').update_stats(money, health)
-		if health <= 0:
-			get_tree().quit()
+		var ui = get_tree().get_first_node_in_group('UI')
+		if ui:
+			ui.update_stats(money, health)
+		if health <= 99:
+			get_tree().change_scene_to_file("res://scenes/ui/game_over.tscn")
+var checkpoint_wave: int = 0
 var current_wave: int
