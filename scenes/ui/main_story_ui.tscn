@@ -6,89 +6,142 @@
 [ext_resource type="Texture2D" uid="uid://s8xhvy48k726" path="res://graphics/bosses/virus.png" id="3_ni1gf"]
 [ext_resource type="Texture2D" uid="uid://c2ka012ylc4b3" path="res://graphics/buttons/buttonbg.png" id="4_88i85"]
 
-[node name="MainStoryUI" type="CanvasLayer" unique_id=86464915]
+[node name="MainStoryUI" type="Control" unique_id=348794572]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_llfrq")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2055092162]
-position = Vector2(960, 540)
+[node name="Sprite2D" type="TextureRect" parent="." unique_id=2038020328]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_ni1gf")
+expand_mode = 1
 
 [node name="Text" type="Control" parent="." unique_id=749517713]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchor_left = 0.4515625
+anchor_top = 0.33888888
+anchor_right = 0.79583335
+anchor_bottom = 0.6175926
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="DifficultyLevel" type="Label" parent="Text" unique_id=1499104398]
-layout_mode = 0
-offset_left = 862.0
-offset_top = 534.0
-offset_right = 1165.0
-offset_bottom = 604.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25340393
+anchor_top = 0.68770766
+anchor_right = 0.25340393
+anchor_bottom = 0.68770766
+offset_left = -110.5
+offset_top = -17.0
+offset_right = 165.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.53333336, 0.60784316, 0.654902, 1)
 theme_override_fonts/font = ExtResource("2_88i85")
 theme_override_font_sizes/font_size = 40
 text = "Difficulty Level:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Wave" type="Label" parent="Text" unique_id=373776111]
-layout_mode = 0
-offset_left = 850.0
-offset_top = 377.0
-offset_right = 1394.0
-offset_bottom = 555.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45763993
+anchor_top = 0.4501661
+anchor_right = 0.45763993
+anchor_bottom = 0.4501661
+offset_left = -262.5
+offset_top = -74.5
+offset_right = 262.5
+offset_bottom = 74.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 130
 text = "WAVE 30"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Difficulty" type="Label" parent="Text" unique_id=620605534]
-layout_mode = 0
-offset_left = 1178.0
-offset_top = 535.0
-offset_right = 1351.0
-offset_bottom = 587.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.64826024
+anchor_top = 0.717608
+anchor_right = 0.64826024
+anchor_bottom = 0.717608
+offset_left = -86.5
+offset_top = -26.0
+offset_right = 86.5
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0, 0.015686275, 1)
 theme_override_font_sizes/font_size = 40
 text = "EXTREME"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Image" type="Control" parent="." unique_id=1597252218]
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Boss" type="TextureRect" parent="Image" unique_id=2130297845]
-layout_mode = 0
-offset_left = 325.0
-offset_top = 308.0
-offset_right = 835.0
-offset_bottom = 802.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.125
+anchor_top = 7.7
+anchor_right = 20.875
+anchor_bottom = 20.05
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_ni1gf")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="StartGame" type="TextureButton" parent="." unique_id=853356986]
-offset_left = 1325.0
-offset_top = 878.0
-offset_right = 1845.0
-offset_bottom = 1028.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6901042
+anchor_top = 0.81296295
+anchor_right = 0.9609375
+anchor_bottom = 0.95185184
 texture_normal = ExtResource("4_88i85")
 ignore_texture_size = true
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="Start" type="Label" parent="StartGame" unique_id=174734030]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.7960001
-anchor_top = 3.009
-anchor_right = 1.7960001
-anchor_bottom = 3.009
-offset_left = -746.92004
-offset_top = -410.35
-offset_right = -595.92004
-offset_bottom = -340.35
+anchor_left = 0.5086538
+anchor_top = 0.5
+anchor_right = 0.5086538
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -35.0
+offset_right = 75.5
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "START"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
