@@ -60,6 +60,7 @@ var health := 100:
 		if ui:
 			ui.update_stats(money, health)
 		if health <= 99:
-			get_tree().change_scene_to_file("res://scenes/ui/game_over.tscn")
+			ui.get_node("GameOver").visible = true
+			get_tree().paused = true
 var checkpoint_wave: int = 0
 var current_wave: int

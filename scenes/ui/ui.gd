@@ -65,3 +65,10 @@ func hide_cards():
 	current_state = MenuState.CLOSED
 	change_button_texture(current_state)
 	$TowerCards/TowerCardsContainer.visible = current_state == MenuState.OPEN
+
+
+
+
+func _on_pause_button_pressed() -> void:
+	$PauseMenu.visible = true
+	get_tree().paused = true

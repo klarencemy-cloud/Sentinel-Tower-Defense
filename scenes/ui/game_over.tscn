@@ -2,58 +2,52 @@
 
 [ext_resource type="Script" uid="uid://cl4l1mtdr1kea" path="res://scenes/ui/game_over.gd" id="1_60xr3"]
 
-[node name="GameOver" type="Control" unique_id=1654031992]
-layout_mode = 3
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -960.0
-offset_top = -1080.0
-offset_right = -960.0
-offset_bottom = -1080.0
+[node name="GameOver" type="CanvasLayer" unique_id=1095421198]
+process_mode = 3
+layer = 2
 script = ExtResource("1_60xr3")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2036255279]
-layout_mode = 0
+[node name="ColorRect" type="ColorRect" parent="." unique_id=575431980]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=839559423]
 offset_left = 703.0
 offset_top = 241.0
 offset_right = 1245.0
 offset_bottom = 805.0
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=839559423]
-layout_mode = 2
 theme_override_constants/margin_left = 90
 theme_override_constants/margin_top = 120
 theme_override_constants/margin_right = 90
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1873698557]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1873698557]
 layout_mode = 2
 
-[node name="txtGameover" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1885012672]
+[node name="txtGameover" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1885012672]
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "Game Over!"
 horizontal_alignment = 1
 
-[node name="txtScore" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1631352021]
+[node name="txtScore" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1631352021]
 unique_name_in_owner = true
 layout_mode = 2
 text = "aa"
 
-[node name="btnRetry" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1636741509]
+[node name="btnRetry" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1636741509]
 layout_mode = 2
 text = "Restart"
 
-[node name="btnCheckpoint" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=45703695]
+[node name="btnCheckpoint" type="Button" parent="MarginContainer/VBoxContainer" unique_id=45703695]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Go to last Checkpoint"
 
-[node name="btnQuit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=639825538]
+[node name="btnQuit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=639825538]
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/btnRetry" to="." method="_on_btn_retry_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/btnCheckpoint" to="." method="_on_btn_checkpoint_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/btnQuit" to="." method="_on_btn_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/btnRetry" to="." method="_on_btn_retry_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/btnCheckpoint" to="." method="_on_btn_checkpoint_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/btnQuit" to="." method="_on_btn_quit_pressed"]

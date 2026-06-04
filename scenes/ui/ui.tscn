@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://3hcup8i3nmiv" path="res://scenes/ui/ui.gd" id="1_pfayw"]
 [ext_resource type="FontFile" uid="uid://bqm53gushpubk" path="res://graphics/ui/Digitalt.otf" id="1_u7n8c"]
 [ext_resource type="Texture2D" uid="uid://5fcgjf624a6x" path="res://graphics/ui/frame.png" id="2_g5kmx"]
+[ext_resource type="PackedScene" uid="uid://c6fdlvl2po04d" path="res://scenes/ui/game_over.tscn" id="2_jcn1r"]
 [ext_resource type="Texture2D" uid="uid://dtx2b4ht28ccs" path="res://graphics/ui/suit_hearts.png" id="3_0dwhk"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="4_pfayw"]
 [ext_resource type="Texture2D" uid="uid://l6jm6r7wbg1m" path="res://graphics/ui/menu.png" id="7_7vp6q"]
+[ext_resource type="PackedScene" uid="uid://n0x1dg8naleh" path="res://scenes/ui/pause_menu.tscn" id="7_jcn1r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vv7ut"]
 bg_color = Color(0.15294118, 0.15294118, 0.15294118, 1)
@@ -43,6 +45,10 @@ texture_margin_bottom = 6.0
 
 [node name="UI" type="CanvasLayer" unique_id=1846012905 groups=["UI"]]
 script = ExtResource("1_pfayw")
+
+[node name="GameOver" parent="." unique_id=1095421198 instance=ExtResource("2_jcn1r")]
+
+[node name="PauseMenu" parent="." unique_id=982589463 instance=ExtResource("7_jcn1r")]
 
 [node name="Control" type="Control" parent="." unique_id=818495937]
 layout_mode = 3
@@ -165,6 +171,17 @@ offset_bottom = 866.16003
 theme_override_font_sizes/font_size = 26
 text = "Wave 1"
 
+[node name="PauseButton" type="Button" parent="Control" unique_id=326212633]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.033
+anchor_bottom = 0.033
+offset_left = 47.0
+offset_top = -19.64
+offset_right = 87.0
+offset_bottom = 19.36
+text = "PAUSE"
+
 [node name="TowerCards" type="Control" parent="." unique_id=1637863101]
 layout_mode = 3
 anchors_preset = 2
@@ -198,4 +215,5 @@ texture_normal = ExtResource("7_7vp6q")
 stretch_mode = 4
 
 [connection signal="pressed" from="Control/WaveButton" to="." method="_on_wave_button_pressed"]
+[connection signal="pressed" from="Control/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="TowerCards/MenuToggleButton" to="." method="_on_menu_toggle_button_pressed"]
