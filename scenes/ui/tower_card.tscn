@@ -23,27 +23,28 @@ script = ExtResource("2_ra2tf")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=795388518]
 layout_mode = 0
-offset_right = 165.0
+offset_right = 179.0
 offset_bottom = 242.0
 texture = ExtResource("3_4rgsa")
 
 [node name="Label" type="Label" parent="TextureRect" unique_id=233343226]
 layout_mode = 0
-offset_left = 43.0
-offset_top = 199.0
-offset_right = 167.0
-offset_bottom = 224.0
+offset_left = 48.0
+offset_top = 196.0
+offset_right = 172.0
+offset_bottom = 221.0
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("3_yp74u")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 19
 text = "Tower name"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="TextureRect" unique_id=358945297]
 layout_mode = 0
-offset_left = -5.0
+offset_left = 6.0
 offset_top = 8.0
-offset_right = 168.0
+offset_right = 179.0
 offset_bottom = 33.0
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("3_yp74u")
