@@ -6,9 +6,9 @@ signal press(tower_enum: Data.Tower)
 
 func setup(new_id: Data.Tower):
 	id = new_id
-	$VBoxContainer/Control/VBoxContainer/Label.text = Data.TOWER_DATA[id]['name']
-	$VBoxContainer/Control/VBoxContainer/Label2.text = str(Data.TOWER_DATA[id]['cost'])
-	$VBoxContainer/TowerPreview/TextureRect.texture = load(Data.TOWER_DATA[id]['thumbnail'])
+	$TextureRect/Label.text = Data.TOWER_DATA[id]['name']
+	$TextureRect/Label2.text = str(Data.TOWER_DATA[id]['cost'])
+	$TextureRect/TextureRect.texture = load(Data.TOWER_DATA[id]['thumbnail'])
 
 
 func _ready() -> void:

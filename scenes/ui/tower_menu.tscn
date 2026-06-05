@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs7mlpxrwhrat"]
+[gd_scene format=3 uid="uid://bs7mlpxrwhrat"]
 
 [ext_resource type="Script" uid="uid://x4eww8u2ks8" path="res://scenes/ui/tower_menu.gd" id="1_atwrq"]
 [ext_resource type="FontFile" uid="uid://bqm53gushpubk" path="res://graphics/ui/Digitalt.otf" id="2_2nd6s"]
@@ -32,7 +32,7 @@ corner_radius_bottom_left = 6
 shadow_color = Color(0, 0, 0, 0.19607843)
 shadow_size = 3
 
-[node name="TowerMenu" type="Control" groups=["TowerCard"]]
+[node name="TowerMenu" type="Control" unique_id=872359436 groups=["TowerCard"]]
 visible = false
 layout_mode = 3
 anchors_preset = 8
@@ -44,7 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_atwrq")
 
-[node name="UpgradeButton" type="Button" parent="."]
+[node name="UpgradeButton" type="Button" parent="." unique_id=1450364808]
 custom_minimum_size = Vector2(120, 30)
 layout_mode = 1
 anchors_preset = -1
@@ -59,7 +59,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_t40u1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_77868")
 text = "Upgrade (30)"
 
-[node name="DeleteButton" type="TextureButton" parent="."]
+[node name="DeleteButton" type="TextureButton" parent="." unique_id=443349351]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

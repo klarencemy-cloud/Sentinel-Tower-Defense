@@ -4,37 +4,13 @@
 [ext_resource type="FontFile" uid="uid://bqm53gushpubk" path="res://graphics/ui/Digitalt.otf" id="1_u7n8c"]
 [ext_resource type="Texture2D" uid="uid://5fcgjf624a6x" path="res://graphics/ui/frame.png" id="2_g5kmx"]
 [ext_resource type="PackedScene" uid="uid://c6fdlvl2po04d" path="res://scenes/ui/game_over.tscn" id="2_jcn1r"]
-[ext_resource type="Texture2D" uid="uid://dtx2b4ht28ccs" path="res://graphics/ui/suit_hearts.png" id="3_0dwhk"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="4_pfayw"]
-[ext_resource type="Texture2D" uid="uid://l6jm6r7wbg1m" path="res://graphics/ui/menu.png" id="7_7vp6q"]
+[ext_resource type="Texture2D" uid="uid://c06sbymdntwef" path="res://graphics/ui/StartWaveButton.png" id="4_y220t"]
+[ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="7_hl07w"]
 [ext_resource type="PackedScene" uid="uid://n0x1dg8naleh" path="res://scenes/ui/pause_menu.tscn" id="7_jcn1r"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vv7ut"]
-bg_color = Color(0.15294118, 0.15294118, 0.15294118, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0, 0, 0, 0.19607843)
-shadow_size = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5cxw"]
-bg_color = Color(0.26584637, 0.26584637, 0.26584637, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0, 0, 0, 0.19607843)
-shadow_size = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7n8c"]
-bg_color = Color(0.21176471, 0.21176471, 0.21176471, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0, 0, 0, 0.19607843)
-shadow_size = 3
+[ext_resource type="Texture2D" uid="uid://b4lb0nrlipf4j" path="res://graphics/ui/TowersRectangle.png" id="9_4kltc"]
+[ext_resource type="Texture2D" uid="uid://dh1ehslhpji6n" path="res://graphics/ui/pause.png" id="10_4kltc"]
+[ext_resource type="Texture2D" uid="uid://cp25rrr2snh2l" path="res://graphics/ui/UpgradeButton.png" id="11_swkix"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vp6q"]
 texture = ExtResource("2_g5kmx")
@@ -47,8 +23,10 @@ texture_margin_bottom = 6.0
 script = ExtResource("1_pfayw")
 
 [node name="GameOver" parent="." unique_id=1095421198 instance=ExtResource("2_jcn1r")]
+visible = false
 
 [node name="PauseMenu" parent="." unique_id=982589463 instance=ExtResource("7_jcn1r")]
+visible = false
 
 [node name="Control" type="Control" parent="." unique_id=818495937]
 layout_mode = 3
@@ -56,31 +34,96 @@ anchor_left = 0.38900003
 anchor_top = 0.065000005
 anchor_right = 0.4
 anchor_bottom = 0.109000005
-offset_left = -746.88007
-offset_top = -70.200005
-offset_right = 1152.0
-offset_bottom = 962.27997
+offset_left = -745.88007
+offset_top = -74.200005
+offset_right = 1153.0
+offset_bottom = 958.27997
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="WaveButton" type="Button" parent="Control" unique_id=1492432400]
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1803522441]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.50100005
+anchor_top = 1.0
+anchor_right = 0.50100005
+anchor_bottom = 1.0
+offset_left = -962.9201
+offset_top = -167.0
+offset_right = 957.0799
+offset_bottom = 4.0
+mouse_filter = 2
+texture = ExtResource("9_4kltc")
+
+[node name="WaveButton" type="TextureButton" parent="Control/TextureRect" unique_id=1517084409]
+visibility_layer = 3
+z_index = 1
 custom_minimum_size = Vector2(240, 50)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 687.0
-offset_top = 1003.0
-offset_right = 927.0
-offset_bottom = 1053.0
+offset_left = 717.0
+offset_top = -26.0
+offset_right = 957.0
+offset_bottom = 44.0
 grow_horizontal = 2
+texture_normal = ExtResource("4_y220t")
+
+[node name="WaveNum" type="Label" parent="Control/TextureRect" unique_id=890659221]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.20400001
+anchor_bottom = 0.123
+offset_left = 1671.0
+offset_top = 72.0
+offset_right = 1476.32
+offset_bottom = 98.966995
+theme_override_font_sizes/font_size = 41
+text = "Wave 1/50"
+
+[node name="LabelHP" type="Label" parent="Control/TextureRect" unique_id=2140871254]
+layout_mode = 0
+offset_left = 1239.0
+offset_top = 80.0
+offset_right = 1293.0
+offset_bottom = 120.0
 theme_override_fonts/font = ExtResource("1_u7n8c")
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_vv7ut")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_f5cxw")
-theme_override_styles/hover = SubResource("StyleBoxFlat_u7n8c")
-text = "Start wave"
+text = "100"
+
+[node name="ServerHealth" type="Label" parent="Control/TextureRect" unique_id=1597613385]
+layout_mode = 0
+offset_left = 1199.0
+offset_top = 48.0
+offset_right = 1431.0
+offset_bottom = 94.0
+theme_override_fonts/font = ExtResource("7_hl07w")
+theme_override_font_sizes/font_size = 23
+text = "Server Health"
+
+[node name="ServerHealth2" type="Label" parent="Control/TextureRect" unique_id=1767574153]
+layout_mode = 0
+offset_left = 1411.0
+offset_top = 48.0
+offset_right = 1643.0
+offset_bottom = 94.0
+theme_override_fonts/font = ExtResource("7_hl07w")
+theme_override_font_sizes/font_size = 23
+text = "Player Level"
+
+[node name="TowerCardsContainer" type="HBoxContainer" parent="Control/TextureRect" unique_id=1909906848]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -267.0
+offset_right = 205.0
+offset_bottom = -25.0
+grow_vertical = 0
 
 [node name="StatsContainer" type="VBoxContainer" parent="Control" unique_id=1023310108]
 custom_minimum_size = Vector2(150, 0)
@@ -90,33 +133,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -191.0
-offset_top = -1057.0
-offset_right = -25.0
-offset_bottom = -883.0
+offset_left = -1731.0
+offset_top = -1052.0
+offset_right = -1565.0
+offset_bottom = -957.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 10
-
-[node name="PanelContainer" type="PanelContainer" parent="Control/StatsContainer" unique_id=625609761]
-self_modulate = Color(0.15294118, 0.15294118, 0.15294118, 1)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_7vp6q")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/StatsContainer/PanelContainer" unique_id=299066597]
-layout_mode = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Control/StatsContainer/PanelContainer/HBoxContainer" unique_id=331916768]
-modulate = Color(1, 0.22352941, 0.13333334, 1)
-layout_mode = 2
-texture = ExtResource("3_0dwhk")
-
-[node name="Label" type="Label" parent="Control/StatsContainer/PanelContainer/HBoxContainer" unique_id=2140871254]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_u7n8c")
-theme_override_font_sizes/font_size = 40
-text = "100"
 
 [node name="PanelContainer2" type="PanelContainer" parent="Control/StatsContainer" unique_id=1002781053]
 self_modulate = Color(0.15294118, 0.15294118, 0.15294118, 1)
@@ -140,11 +163,11 @@ text = "50"
 
 [node name="AutoLabel" type="Label" parent="Control" unique_id=320005110]
 layout_mode = 0
-offset_left = 1551.0
-offset_top = 1012.0
-offset_right = 1610.0
-offset_bottom = 1041.0
-theme_override_font_sizes/font_size = 24
+offset_left = 1718.0
+offset_top = 842.0
+offset_right = 1782.0
+offset_bottom = 878.0
+theme_override_font_sizes/font_size = 31
 text = "Auto"
 
 [node name="AutoButton" type="CheckButton" parent="Control/AutoLabel" unique_id=1872802199]
@@ -154,66 +177,29 @@ anchor_left = 0.056
 anchor_top = 0.021000002
 anchor_right = 0.093
 anchor_bottom = 0.074
-offset_left = 41.69603
-offset_top = 4.3910007
-offset_right = 83.51303
-offset_bottom = 26.854
+offset_left = 60.416
+offset_top = 9.244028
+offset_right = 102.233
+offset_bottom = 31.707026
 
-[node name="WaveNum" type="Label" parent="Control" unique_id=890659221]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.20400001
-anchor_bottom = 0.123
-offset_left = 1717.0
-offset_top = 969.0
-offset_right = 1404.32
-offset_bottom = 866.16003
-theme_override_font_sizes/font_size = 26
-text = "Wave 1"
-
-[node name="PauseButton" type="Button" parent="Control" unique_id=326212633]
+[node name="PauseButton" type="TextureButton" parent="Control" unique_id=561125645]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.033
 anchor_bottom = 0.033
-offset_left = 47.0
-offset_top = -19.64
-offset_right = 87.0
-offset_bottom = 19.36
-text = "PAUSE"
+offset_left = 49.0
+offset_top = -3.6399994
+offset_right = 106.0
+offset_bottom = 53.36
+texture_normal = ExtResource("10_4kltc")
 
-[node name="TowerCards" type="Control" parent="." unique_id=1637863101]
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
+[node name="TextureButton" type="TextureButton" parent="Control" unique_id=1470226152]
+layout_mode = 0
+offset_left = 1059.0
+offset_top = 913.0
+offset_right = 1177.0
+offset_bottom = 1004.0
+texture_normal = ExtResource("11_swkix")
 
-[node name="TowerCardsContainer" type="HBoxContainer" parent="TowerCards" unique_id=1909906848]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 60.0
-offset_top = -180.0
-offset_right = 140.0
-offset_bottom = -10.0
-grow_vertical = 0
-
-[node name="MenuToggleButton" type="TextureButton" parent="TowerCards" unique_id=1641019703]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_bottom = -10.0
-grow_vertical = 0
-texture_normal = ExtResource("7_7vp6q")
-stretch_mode = 4
-
-[connection signal="pressed" from="Control/WaveButton" to="." method="_on_wave_button_pressed"]
+[connection signal="pressed" from="Control/TextureRect/WaveButton" to="." method="_on_wave_button_pressed"]
 [connection signal="pressed" from="Control/PauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="pressed" from="TowerCards/MenuToggleButton" to="." method="_on_menu_toggle_button_pressed"]
