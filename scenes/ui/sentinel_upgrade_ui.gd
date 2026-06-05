@@ -9,12 +9,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
-func _on_towers_pressed() -> void:
-	$TowerUpgradeUi.visible = true;
-	$SentinelUpgradeUi.visible = false;
-
-func _on_sentinel_pressed() -> void:
-	$TowerUpgradeUi.visible = false;
-	$SentinelUpgradeUi.visible = true;

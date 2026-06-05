@@ -1,11 +1,75 @@
 extends Camera2D
 
-var drag: bool
 @export var acceleration: float = 0.4
+@export var target: Node2D
+@export var start_zoom := Vector2(3.0, 3.0)
+@export var min_zoom := Vector2(1.0, 1.0)
+@export var max_zoom := Vector2(4.0, 4.0)
+
+const WHEEL_ZOOM_STEP = 0.15
+const PINCH_ZOOM_SPEED = 0.004
+
+var drag := false
+var touch_points := {}
+var last_pinch_distance := 0.0
+
+func _ready() -> void:
+	zoom = start_zoom.clamp(min_zoom, max_zoom)
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == 1:
-		drag = event.pressed
+	if event is InputEventScreenTouch:
+		_handle_screen_touch(event)
+		return
+
+	if event is InputEventScreenDrag:
+		_handle_screen_drag(event)
+		return
+
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			drag = event.pressed
+		elif event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			_apply_zoom(WHEEL_ZOOM_STEP)
+			get_viewport().set_input_as_handled()
+		elif event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			_apply_zoom(-WHEEL_ZOOM_STEP)
+			get_viewport().set_input_as_handled()
+
 	if event is InputEventMouseMotion:
 		if drag:
 			position -= event.relative * acceleration
+
+func _process(_delta: float) -> void:
+	if target:
+		position = target.position
+
+func _apply_zoom(amount: float) -> void:
+	zoom = (zoom + Vector2.ONE * amount).clamp(min_zoom, max_zoom)
+
+func _handle_screen_touch(event: InputEventScreenTouch) -> void:
+	if event.pressed:
+		touch_points[event.index] = event.position
+	else:
+		touch_points.erase(event.index)
+
+	last_pinch_distance = _get_pinch_distance()
+
+func _handle_screen_drag(event: InputEventScreenDrag) -> void:
+	if not touch_points.has(event.index):
+		return
+
+	touch_points[event.index] = event.position
+
+	if touch_points.size() == 2:
+		var pinch_distance := _get_pinch_distance()
+		if last_pinch_distance > 0.0:
+			_apply_zoom((pinch_distance - last_pinch_distance) * PINCH_ZOOM_SPEED)
+			get_viewport().set_input_as_handled()
+		last_pinch_distance = pinch_distance
+
+func _get_pinch_distance() -> float:
+	if touch_points.size() != 2:
+		return 0.0
+
+	var points := touch_points.values()
+	return points[0].distance_to(points[1])

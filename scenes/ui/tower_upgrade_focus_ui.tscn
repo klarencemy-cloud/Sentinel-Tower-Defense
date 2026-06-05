@@ -1,0 +1,260 @@
+[gd_scene format=3 uid="uid://fqoly7fqcmiq"]
+
+[ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="1_brlsv"]
+[ext_resource type="Texture2D" uid="uid://ml3kegt85f83" path="res://graphics/towers/placeholdertowers/tower1.png" id="2_x4355"]
+[ext_resource type="Texture2D" uid="uid://ckyujiobcsdhd" path="res://graphics/container/smallcontainer.png" id="3_sp321"]
+[ext_resource type="FontFile" uid="uid://cknd3duokrnos" path="res://font/Libre_Franklin/static/LibreFranklin-Bold.ttf" id="4_0vygg"]
+[ext_resource type="Texture2D" uid="uid://d1hvfptbu3kv4" path="res://graphics/upgrade/plus.png" id="5_brlsv"]
+[ext_resource type="Texture2D" uid="uid://d1i067dvf125n" path="res://graphics/container/mediumcontainer.png" id="6_x4355"]
+[ext_resource type="Texture2D" uid="uid://bmgpyq7aikwk0" path="res://graphics/currency/experience.png" id="7_sp321"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1sfii"]
+
+[node name="TowerUpgradeFocusUi" type="Control" unique_id=1123637133]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backgroundbg" type="TextureRect" parent="." unique_id=559899046]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_brlsv")
+expand_mode = 1
+
+[node name="Tower" type="TextureButton" parent="." unique_id=1288147104]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -168.0
+offset_right = 218.5354
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_x4355")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="StatsContainer" type="TextureRect" parent="." unique_id=1719779656]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.68125
+anchor_top = 0.6657407
+anchor_right = 0.81458336
+anchor_bottom = 0.8000001
+offset_left = -4.0
+offset_top = -28.0
+offset_right = -4.0
+offset_bottom = -28.0
+texture = ExtResource("3_sp321")
+metadata/_edit_use_anchors_ = true
+
+[node name="StatUpgrade" type="Label" parent="StatsContainer" unique_id=324224227]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 10.0
+offset_right = 256.0
+offset_bottom = 58.0
+theme_override_fonts/font = ExtResource("4_0vygg")
+theme_override_font_sizes/font_size = 39
+text = "Damage"
+vertical_alignment = 1
+
+[node name="StatIncrement" type="Label" parent="StatsContainer" unique_id=451457148]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 68.0
+offset_right = 90.0
+offset_bottom = 98.0
+theme_override_fonts/font = ExtResource("4_0vygg")
+theme_override_font_sizes/font_size = 24
+text = "300"
+vertical_alignment = 1
+
+[node name="UpgradeCost" type="Label" parent="StatsContainer" unique_id=1459672715]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 105.0
+offset_right = 234.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.8352941, 0.5686275, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("4_0vygg")
+theme_override_font_sizes/font_size = 18
+text = "-5pts"
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="StatsContainer" unique_id=1010960010]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 45.0
+offset_right = 323.0
+offset_bottom = 103.0
+texture_normal = ExtResource("5_brlsv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="StatsContainer2" type="TextureRect" parent="." unique_id=1407495189]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.68125
+anchor_top = 0.4648148
+anchor_right = 0.81458336
+anchor_bottom = 0.59907407
+offset_left = -4.0
+offset_right = -4.0
+texture = ExtResource("3_sp321")
+
+[node name="StatUpgrade2" type="Label" parent="StatsContainer2" unique_id=1561280569]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 10.0
+offset_right = 256.0
+offset_bottom = 58.0
+theme_override_fonts/font = ExtResource("4_0vygg")
+theme_override_font_sizes/font_size = 39
+text = "Atk Speed"
+vertical_alignment = 1
+
+[node name="StatIncrement2" type="Label" parent="StatsContainer2" unique_id=1565401893]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 68.0
+offset_right = 90.0
+offset_bottom = 98.0
+theme_override_fonts/font = ExtResource("4_0vygg")
+theme_override_font_sizes/font_size = 24
+text = ".15"
+vertical_alignment = 1
+
+[node name="UpgradeCost2" type="Label" parent="StatsContainer2" unique_id=1445280151]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 105.0
+offset_right = 234.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.8352941, 0.5686275, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("4_0vygg")
+theme_override_font_sizes/font_size = 18
+text = "-5pts"
+vertical_alignment = 1
+
+[node name="UpgradeBtn2" type="TextureButton" parent="StatsContainer2" unique_id=1735148116]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 45.0
+offset_right = 323.0
+offset_bottom = 103.0
+texture_normal = ExtResource("5_brlsv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TowerMenu" type="Control" parent="." unique_id=1064329320]
+clip_contents = true
+layout_mode = 1
+anchor_left = 0.109375
+anchor_top = 0.22870371
+anchor_right = 0.3046875
+anchor_bottom = 0.712037
+metadata/_edit_use_anchors_ = true
+
+[node name="TowerContainer" type="CenterContainer" parent="TowerMenu" unique_id=124018455]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerMenu/TowerContainer" unique_id=1548635377]
+layout_mode = 2
+
+[node name="Tier5" type="Button" parent="TowerMenu/TowerContainer/VBoxContainer" unique_id=1320617723]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4390491, 0.43904912, 0.43904912, 1)
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1sfii")
+text = "Ultimate
+"
+
+[node name="Tier4" type="Button" parent="TowerMenu/TowerContainer/VBoxContainer" unique_id=1953342741]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4390491, 0.43904912, 0.43904912, 1)
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1sfii")
+text = "4th Tier"
+
+[node name="Tier3" type="Button" parent="TowerMenu/TowerContainer/VBoxContainer" unique_id=133928207]
+layout_mode = 2
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1sfii")
+text = "3rd Tier
+"
+
+[node name="Tier2" type="Button" parent="TowerMenu/TowerContainer/VBoxContainer" unique_id=1891790213]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4390491, 0.43904912, 0.43904912, 1)
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1sfii")
+text = "2nd Tier
+"
+
+[node name="Tier1" type="Button" parent="TowerMenu/TowerContainer/VBoxContainer" unique_id=1257154336]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4390491, 0.43904912, 0.43904912, 1)
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1sfii")
+text = "1st Tier
+"
+
+[node name="ResourceContainer" type="TextureRect" parent="." unique_id=775104301]
+layout_mode = 0
+offset_left = 1304.0
+offset_top = 168.0
+offset_right = 1775.0
+offset_bottom = 448.0
+texture = ExtResource("6_x4355")
+expand_mode = 1
+
+[node name="Xp" type="Label" parent="ResourceContainer" unique_id=209456044]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 52.0
+offset_right = 287.0
+offset_bottom = 164.0
+theme_override_colors/font_color = Color(0.8352941, 0.5686275, 0.19607843, 1)
+theme_override_font_sizes/font_size = 85
+text = "300"
+
+[node name="pts" type="Label" parent="ResourceContainer/Xp" unique_id=54677120]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.2060001
+anchor_top = 0.509
+anchor_right = 1.2060001
+anchor_bottom = 0.509
+offset_left = -53.05002
+offset_top = -57.008
+offset_right = 121.94998
+offset_bottom = 54.992
+theme_override_colors/font_color = Color(0.8352941, 0.5686275, 0.19607843, 1)
+theme_override_font_sizes/font_size = 85
+text = "pts"
+
+[node name="TextureRect" type="TextureRect" parent="ResourceContainer" unique_id=1926515927]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 64.0
+offset_right = 101.0
+offset_bottom = 132.0
+texture = ExtResource("7_sp321")
+expand_mode = 1
