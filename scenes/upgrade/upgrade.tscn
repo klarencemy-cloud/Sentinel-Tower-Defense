@@ -1,55 +1,41 @@
 [gd_scene format=3 uid="uid://23krmoa5rhnu"]
 
 [ext_resource type="Script" uid="uid://c22u6o3nqy1ux" path="res://scenes/upgrade/upgrade.gd" id="1_6bmsu"]
-[ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="2_34x4o"]
 [ext_resource type="Texture2D" uid="uid://dn30hv2mjhygn" path="res://graphics/buttons/upgradebg.png" id="2_jp15f"]
 [ext_resource type="Texture2D" uid="uid://ml3kegt85f83" path="res://graphics/towers/placeholdertowers/tower1.png" id="4_fdoxp"]
 [ext_resource type="Texture2D" uid="uid://dxmkoip2h3t7j" path="res://graphics/sentinels/placeholdersentinels/sentinel.png" id="5_fdoxp"]
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="5_gvuwm"]
+[ext_resource type="PackedScene" uid="uid://dqksfnfgip1xd" path="res://scenes/ui/tower_upgrade_ui.tscn" id="6_fdoxp"]
+[ext_resource type="PackedScene" uid="uid://fqoly7fqcmiq" path="res://scenes/ui/tower_upgrade_focus_ui.tscn" id="6_gukx4"]
+[ext_resource type="PackedScene" uid="uid://ckfmuok61kjst" path="res://scenes/ui/sentinel_upgrade_ui.tscn" id="7_01d24"]
 
 [node name="Upgrade" type="Control" unique_id=1628463082]
 layout_mode = 3
-anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 1.0018518
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_6bmsu")
-metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1755867658]
+[node name="ButtonManager" type="Control" parent="." unique_id=1010848041]
+top_level = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(950, 63.5)
-texture = ExtResource("2_34x4o")
-expand_mode = 1
-
-[node name="ButtonManager" type="Control" parent="." unique_id=232306793]
-layout_mode = 1
-anchor_left = 0.003666667
-anchor_top = 0.8935926
-anchor_right = 0.9953334
-anchor_bottom = 0.99622226
-offset_left = -7.040001
-offset_top = -9.080017
-offset_right = 8.959961
-offset_bottom = 4.079956
-grow_horizontal = 2
-grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Buttonbg" type="TextureRect" parent="ButtonManager" unique_id=1968410145]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -0.028053733
+anchor_top = 0.87777776
 anchor_right = 1.0
-anchor_bottom = 0.97194624
-offset_top = 3.4786377
-offset_bottom = 3.4786377
+anchor_bottom = 1.0
+offset_top = -1.7555542
+offset_bottom = -1.7554932
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(950, 63.5)
@@ -59,60 +45,49 @@ expand_mode = 1
 [node name="Towers" type="TextureButton" parent="ButtonManager" unique_id=1809533739]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.29225004
-anchor_top = -1.354484
-anchor_right = 0.4137104
-anchor_bottom = 0.07562871
-offset_left = 0.87994385
-offset_top = -0.04396057
-offset_right = 0.6760864
-offset_bottom = 2.6220708
+anchor_left = 0.33020833
+anchor_top = 0.8133087
+anchor_right = 0.41229013
+anchor_bottom = 0.92191607
 texture_normal = ExtResource("4_fdoxp")
 ignore_texture_size = true
+stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ButtonManager/Towers" unique_id=2045408822]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.060085867
-anchor_top = 1.0720654
-anchor_right = 0.9147715
-anchor_bottom = 1.4627916
-offset_top = 0.028259277
-offset_right = 0.065826416
-offset_bottom = -0.51789856
+anchor_left = 0.057107635
+anchor_top = 0.99563295
+anchor_right = 0.92792505
+anchor_bottom = 1.6307164
+offset_right = -1.2382507
+offset_bottom = -14.630676
 theme_override_font_sizes/font_size = 52
 text = "Tower"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Towers2" type="TextureButton" parent="ButtonManager" unique_id=1925880090]
+[node name="Sentinel" type="TextureButton" parent="ButtonManager" unique_id=1925880090]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5848333
-anchor_top = -1.354484
-anchor_right = 0.680207
-anchor_bottom = 0.07529006
-offset_left = -0.8800049
-offset_top = -0.04396057
-offset_right = 0.8360596
-offset_bottom = 2.6220708
+anchor_left = 0.6140625
+anchor_top = 0.8133087
+anchor_right = 0.67913705
+anchor_bottom = 0.9216374
 texture_normal = ExtResource("5_fdoxp")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="ButtonManager/Towers2" unique_id=369207274]
+[node name="Label" type="Label" parent="ButtonManager/Sentinel" unique_id=369207274]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.0014996288
-anchor_top = 1.0724725
-anchor_right = 1.1135005
-anchor_bottom = 1.436317
-offset_left = -0.045612335
-offset_right = -0.06414795
-offset_bottom = 0.06994629
+anchor_left = -0.20809445
+anchor_top = 0.998194
+anchor_right = 1.2565736
+anchor_bottom = 1.5110135
 theme_override_font_sizes/font_size = 52
 text = "Sentinel"
 horizontal_alignment = 1
@@ -122,26 +97,42 @@ metadata/_edit_use_anchors_ = true
 [node name="Back" type="TextureButton" parent="ButtonManager" unique_id=1184410961]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.040000003
-anchor_top = -6.8900003
-anchor_right = 0.147
-anchor_bottom = -6.339
-offset_left = 25.199997
-offset_top = 0.030029297
-offset_right = 26.76001
-offset_bottom = 1.0530396
+anchor_left = 0.06956733
+anchor_top = 0.07352639
+anchor_right = 0.17737983
+anchor_bottom = 0.13278565
 texture_normal = ExtResource("5_gvuwm")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Back" type="Label" parent="ButtonManager/Back" unique_id=234631944]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.31400967
+anchor_top = 0.15625
+anchor_right = 0.65217394
+anchor_bottom = 0.78125
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 34
 text = "Back"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TowerUpgradeFocusUi" parent="." unique_id=1123637133 instance=ExtResource("6_gukx4")]
+layout_mode = 1
+
+[node name="TowerUpgradeUi" parent="." unique_id=223184111 instance=ExtResource("6_fdoxp")]
+visible = false
+layout_mode = 1
+offset_bottom = -2.0
+
+[node name="SentinelUpgradeUi" parent="." unique_id=1015195867 instance=ExtResource("7_01d24")]
+visible = false
+layout_mode = 1
+offset_bottom = -2.0
+
+[connection signal="pressed" from="ButtonManager/Towers" to="." method="_on_towers_pressed"]
+[connection signal="pressed" from="ButtonManager/Sentinel" to="." method="_on_sentinel_pressed"]
