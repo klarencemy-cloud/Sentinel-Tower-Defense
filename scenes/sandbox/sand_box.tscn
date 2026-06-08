@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dqlh5nregfh7i"]
+
+[ext_resource type="Script" uid="uid://bamdku6x718v" path="res://scenes/sandbox/sand_box.gd" id="1_r2mpb"]
+[ext_resource type="PackedScene" uid="uid://cnj438cs45i3f" path="res://scenes/levels/level.tscn" id="2_mpcbx"]
+
+[node name="SandBox" type="Node2D" unique_id=1570976144]
+script = ExtResource("1_r2mpb")
+
+[node name="Level" parent="." unique_id=334341019 instance=ExtResource("2_mpcbx")]

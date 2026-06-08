@@ -4,6 +4,8 @@ var path_follow: PathFollow2D
 var health: int
 var speed: int
 
+func _ready() -> void:
+	add_to_group('Enemies')
 
 func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	path_follow = new_path_follow
