@@ -1,5 +1,7 @@
 extends Node
 
+var is_sandbox: bool = false
+
 enum Tower {BASIC, BLAST, MORTAR}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
 enum Enemy {DEFAULT, FAST, STRONG, BIG}
@@ -45,9 +47,15 @@ const ENEMY_DATA = {
 	Enemy.STRONG: {'health': 6, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 25},
 	Enemy.BIG: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 15}}
 
+
+
 var money := 200:
 	set(value):
-		money = value
+		if is_sandbox:
+			money = 999999
+		else:
+			money = value
+
 		var ui = get_tree().get_first_node_in_group('UI')
 		if ui:
 			ui.update_stats(money, health)
@@ -55,7 +63,11 @@ var money := 200:
 			tower_card.toggle_active(money)
 var health := 100:
 	set(value):
-		health = value
+		if is_sandbox:
+			health = 999999
+		else:
+			health = value
+			
 		var ui = get_tree().get_first_node_in_group('UI')
 		if ui:
 			ui.update_stats(money, health)

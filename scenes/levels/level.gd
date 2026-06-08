@@ -25,6 +25,11 @@ func _ready() -> void:
 	randomize()
 	RenderingServer.set_default_clear_color('dff6f5')
 
+	var ui = get_tree().get_first_node_in_group('UI')
+	if ui:
+		ui.spawn_enemy.connect(_on_ui_spawn_sandbox_enemy)
+	
+
 func _process(delta: float) -> void:
 	var enemies = get_tree().get_nodes_in_group('Enemies')
 	if wave_active and not spawning_wave and enemies.size() == 0:
@@ -150,3 +155,14 @@ func _choose_random_enemy_type(difficulty: int) -> Data.Enemy:
 	elif roll < default_chance + fast_chance + strong_chance:
 		return Data.Enemy.STRONG
 	return Data.Enemy.BIG
+
+func _on_ui_spawn_sandbox_enemy(enemy_enum: Data.Enemy) -> void:
+	wave_active = true
+	
+	var path_follow = PathFollow2D.new()
+	var enemy = enemy_scene.instantiate()
+	
+	
+	enemy.setup(path_follow, enemy_enum)
+	path_follow.add_child(enemy)
+	$Path2D.add_child(path_follow)

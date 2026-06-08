@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c6fdlvl2po04d" path="res://scenes/ui/game_over.tscn" id="2_jcn1r"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="4_pfayw"]
 [ext_resource type="Texture2D" uid="uid://c06sbymdntwef" path="res://graphics/ui/StartWaveButton.png" id="4_y220t"]
+[ext_resource type="Texture2D" uid="uid://bb6cvffm5145y" path="res://graphics/ui/sandbox_setting_button.png" id="5_0i47d"]
+[ext_resource type="Texture2D" uid="uid://d0tvbvnfugwl5" path="res://graphics/ui/enemy_card_button.png" id="6_mgwkc"]
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="7_hl07w"]
 [ext_resource type="PackedScene" uid="uid://n0x1dg8naleh" path="res://scenes/ui/pause_menu.tscn" id="7_jcn1r"]
 [ext_resource type="Texture2D" uid="uid://d2awxm58vn2xo" path="res://graphics/ui/healthbarUnder.png" id="8_hc5d0"]
@@ -59,64 +61,6 @@ offset_bottom = 4.0
 mouse_filter = 2
 texture = ExtResource("9_4kltc")
 
-[node name="WaveButton" type="TextureButton" parent="Control/TextureRect" unique_id=1517084409]
-visibility_layer = 3
-z_index = 1
-custom_minimum_size = Vector2(240, 50)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 717.0
-offset_top = -26.0
-offset_right = 957.0
-offset_bottom = 44.0
-grow_horizontal = 2
-texture_normal = ExtResource("4_y220t")
-
-[node name="WaveNum" type="Label" parent="Control/TextureRect" unique_id=890659221]
-z_index = 2
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.20400001
-anchor_bottom = 0.123
-offset_left = 1671.0
-offset_top = 72.0
-offset_right = 1476.32
-offset_bottom = 98.966995
-theme_override_font_sizes/font_size = 41
-text = "Wave 1/50"
-
-[node name="LabelHP" type="Label" parent="Control/TextureRect" unique_id=2140871254]
-layout_mode = 0
-offset_left = 1280.0
-offset_top = 115.0
-offset_right = 1334.0
-offset_bottom = 155.0
-theme_override_fonts/font = ExtResource("1_u7n8c")
-theme_override_font_sizes/font_size = 40
-text = "100"
-
-[node name="ServerHealth" type="Label" parent="Control/TextureRect" unique_id=1597613385]
-layout_mode = 0
-offset_left = 1239.0
-offset_top = 48.0
-offset_right = 1372.0
-offset_bottom = 76.0
-theme_override_fonts/font = ExtResource("7_hl07w")
-theme_override_font_sizes/font_size = 23
-text = "Server Health"
-
-[node name="ServerHealth2" type="Label" parent="Control/TextureRect" unique_id=1767574153]
-layout_mode = 0
-offset_left = 1415.0
-offset_top = 48.0
-offset_right = 1534.0
-offset_bottom = 76.0
-theme_override_fonts/font = ExtResource("7_hl07w")
-theme_override_font_sizes/font_size = 23
-text = "Player Level"
-
 [node name="TowerCardsContainer" type="HBoxContainer" parent="Control/TextureRect" unique_id=1909906848]
 layout_mode = 1
 anchors_preset = -1
@@ -129,21 +73,52 @@ offset_bottom = -25.0
 grow_vertical = 0
 theme_override_constants/separation = 14
 
-[node name="HPBar" type="TextureProgressBar" parent="Control/TextureRect" unique_id=2044464610]
+[node name="EnemyCardsContainer" type="HBoxContainer" parent="Control/TextureRect" unique_id=102221009]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.66300005
 anchor_top = 1.0
-anchor_right = 0.66300005
 anchor_bottom = 1.0
-offset_left = -57.960083
-offset_top = -85.0
-offset_right = 22.039917
-offset_bottom = -59.0
-scale = Vector2(2.94, 2.94)
-value = 100.0
-texture_under = ExtResource("8_hc5d0")
-texture_progress = ExtResource("9_n3vwu")
+offset_left = 40.0
+offset_top = -267.0
+offset_right = 205.0
+offset_bottom = -25.0
+grow_vertical = 0
+theme_override_constants/separation = 14
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TextureRect" unique_id=1492936520]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -694.0
+offset_top = -112.5
+offset_right = -49.0
+offset_bottom = -42.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SandboxSetting" type="TextureButton" parent="Control/TextureRect/HBoxContainer" unique_id=853708045]
+visibility_layer = 3
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 2
+texture_normal = ExtResource("5_0i47d")
+
+[node name="TowerEnemiesButton" type="TextureButton" parent="Control/TextureRect/HBoxContainer" unique_id=1920265275]
+visibility_layer = 3
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("6_mgwkc")
+
+[node name="WaveButton" type="TextureButton" parent="Control/TextureRect/HBoxContainer" unique_id=1517084409]
+visibility_layer = 3
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("4_y220t")
 
 [node name="UpgradeButton" type="TextureButton" parent="Control/TextureRect" unique_id=1470226152]
 layout_mode = 0
@@ -152,6 +127,106 @@ offset_right = 1178.0
 offset_bottom = 91.0
 texture_normal = ExtResource("11_swkix")
 script = ExtResource("11_hc5d0")
+
+[node name="PlayerCurrentStats" type="Control" parent="Control/TextureRect" unique_id=1291522238]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WaveNum" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=890659221]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.20400001
+anchor_bottom = 0.123
+offset_left = 1671.0
+offset_top = 72.0
+offset_right = 1859.84
+offset_bottom = 115.08
+theme_override_font_sizes/font_size = 41
+text = "Wave 1/50"
+
+[node name="LabelHP" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=2140871254]
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 115.0
+offset_right = 1334.0
+offset_bottom = 155.0
+theme_override_fonts/font = ExtResource("1_u7n8c")
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="ServerHealth" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=1597613385]
+layout_mode = 0
+offset_left = 1239.0
+offset_top = 48.0
+offset_right = 1372.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("7_hl07w")
+theme_override_font_sizes/font_size = 23
+text = "Server Health"
+
+[node name="ServerHealth2" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=1767574153]
+layout_mode = 0
+offset_left = 1415.0
+offset_top = 48.0
+offset_right = 1534.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("7_hl07w")
+theme_override_font_sizes/font_size = 23
+text = "Player Level"
+
+[node name="HPBar" type="TextureProgressBar" parent="Control/TextureRect/PlayerCurrentStats" unique_id=2044464610]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66300005
+anchor_top = 1.0
+anchor_right = 0.66300005
+anchor_bottom = 1.0
+offset_left = 1188.48
+offset_top = 46.0
+offset_right = 1268.48
+offset_bottom = 72.0
+scale = Vector2(2.94, 2.94)
+value = 100.0
+texture_under = ExtResource("8_hc5d0")
+texture_progress = ExtResource("9_n3vwu")
+
+[node name="SandboxMenuContainer" type="GridContainer" parent="Control/TextureRect" unique_id=1078425248]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -658.0
+offset_top = -111.0
+offset_right = -61.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+columns = 2
+
+[node name="MaxedLVL" type="CheckBox" parent="Control/TextureRect/SandboxMenuContainer" unique_id=109566129]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Maxed Player Level"
+
+[node name="UnliMoney" type="CheckBox" parent="Control/TextureRect/SandboxMenuContainer" unique_id=899948441]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Unlimited Money"
+
+[node name="UnliHealth" type="CheckBox" parent="Control/TextureRect/SandboxMenuContainer" unique_id=2065866052]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Unlimited Health"
+
+[node name="UnliSentiCap" type="CheckBox" parent="Control/TextureRect/SandboxMenuContainer" unique_id=137734319]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Unlimited Sentinel Capacity"
 
 [node name="StatsContainer" type="VBoxContainer" parent="Control" unique_id=1023310108]
 custom_minimum_size = Vector2(150, 0)
@@ -221,6 +296,8 @@ offset_right = 106.0
 offset_bottom = 53.36
 texture_normal = ExtResource("10_4kltc")
 
-[connection signal="pressed" from="Control/TextureRect/WaveButton" to="." method="_on_wave_button_pressed"]
+[connection signal="pressed" from="Control/TextureRect/HBoxContainer/SandboxSetting" to="." method="_on_sandbox_setting_pressed"]
+[connection signal="pressed" from="Control/TextureRect/HBoxContainer/TowerEnemiesButton" to="." method="_on_tower_enemies_button_pressed"]
+[connection signal="pressed" from="Control/TextureRect/HBoxContainer/WaveButton" to="." method="_on_wave_button_pressed"]
 [connection signal="pressed" from="Control/TextureRect/UpgradeButton" to="Control/TextureRect/UpgradeButton" method="_on_pressed"]
 [connection signal="pressed" from="Control/PauseButton" to="." method="_on_pause_button_pressed"]

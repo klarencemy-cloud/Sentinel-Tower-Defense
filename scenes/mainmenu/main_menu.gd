@@ -16,7 +16,7 @@ func _on_start_game_pressed() -> void:
 
 
 func _on_sandbox_pressed() -> void:
-	pass
+	get_tree().change_scene_to_file("res://scenes/sandbox/sand_box.tscn")
 
 
 func _on_database_pressed() -> void:
