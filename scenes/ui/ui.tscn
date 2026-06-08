@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://c06sbymdntwef" path="res://graphics/ui/StartWaveButton.png" id="4_y220t"]
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="7_hl07w"]
 [ext_resource type="PackedScene" uid="uid://n0x1dg8naleh" path="res://scenes/ui/pause_menu.tscn" id="7_jcn1r"]
+[ext_resource type="Texture2D" uid="uid://d2awxm58vn2xo" path="res://graphics/ui/healthbarUnder.png" id="8_hc5d0"]
 [ext_resource type="Texture2D" uid="uid://b4lb0nrlipf4j" path="res://graphics/ui/TowersRectangle.png" id="9_4kltc"]
+[ext_resource type="Texture2D" uid="uid://dy1yarvyrbynt" path="res://graphics/ui/healthbarProgress.png" id="9_n3vwu"]
 [ext_resource type="Texture2D" uid="uid://dh1ehslhpji6n" path="res://graphics/ui/pause.png" id="10_4kltc"]
 [ext_resource type="Texture2D" uid="uid://cp25rrr2snh2l" path="res://graphics/ui/UpgradeButton.png" id="11_swkix"]
 
@@ -86,10 +88,10 @@ text = "Wave 1/50"
 
 [node name="LabelHP" type="Label" parent="Control/TextureRect" unique_id=2140871254]
 layout_mode = 0
-offset_left = 1239.0
-offset_top = 80.0
-offset_right = 1293.0
-offset_bottom = 120.0
+offset_left = 1280.0
+offset_top = 115.0
+offset_right = 1334.0
+offset_bottom = 155.0
 theme_override_fonts/font = ExtResource("1_u7n8c")
 theme_override_font_sizes/font_size = 40
 text = "100"
@@ -125,6 +127,22 @@ offset_right = 205.0
 offset_bottom = -25.0
 grow_vertical = 0
 theme_override_constants/separation = 14
+
+[node name="HPBar" type="TextureProgressBar" parent="Control/TextureRect" unique_id=2044464610]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66300005
+anchor_top = 1.0
+anchor_right = 0.66300005
+anchor_bottom = 1.0
+offset_left = -57.960083
+offset_top = -85.0
+offset_right = 22.039917
+offset_bottom = -59.0
+scale = Vector2(2.94, 2.94)
+value = 100.0
+texture_under = ExtResource("8_hc5d0")
+texture_progress = ExtResource("9_n3vwu")
 
 [node name="StatsContainer" type="VBoxContainer" parent="Control" unique_id=1023310108]
 custom_minimum_size = Vector2(150, 0)

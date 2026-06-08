@@ -4,7 +4,6 @@ signal start_wave
 
 var tower_card_scene = preload("res://scenes/ui/tower_card.tscn")
 
-
 func _ready() -> void:
 	$Control/TextureRect/TowerCardsContainer.visible = true
 
@@ -24,6 +23,7 @@ func tower_select(tower_enum: Data.Tower):
 func update_stats(money: int, health: int):
 	$Control/StatsContainer/PanelContainer2/HBoxContainer/Label.text = str(money)
 	$Control/TextureRect/LabelHP.text = str(health)
+	$Control/TextureRect/HPBar.value = Data.health * 100 / 100
 
 
 func update_wave_label() -> void:

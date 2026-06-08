@@ -59,7 +59,7 @@ var health := 100:
 		var ui = get_tree().get_first_node_in_group('UI')
 		if ui:
 			ui.update_stats(money, health)
-		if health <= 99:
+		if health <= 0:
 			ui.get_node("GameOver").visible = true
 			get_tree().paused = true
 var checkpoint_wave: int = 0

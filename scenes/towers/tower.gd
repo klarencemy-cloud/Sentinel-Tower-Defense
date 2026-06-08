@@ -82,6 +82,7 @@ func _on_tower_menu_upgrade_press() -> void:
 	tower_upgrade()
 	$TowerMenu.hide()
 	upgraded = true
+	hide_range()
 
 
 func tower_upgrade():

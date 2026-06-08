@@ -106,6 +106,8 @@ func _on_ui_place_tower(tower_type: Data.Tower) -> void:
 
 
 func _on_ui_start_wave() -> void:
+	if wave_active or spawning_wave == true:
+		return
 	var data = _random_wave_size()
 	get_tree().get_first_node_in_group('UI').update_wave_label()
 	Data.current_wave += 1
