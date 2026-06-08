@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://h7qi8y7uyyai"]
+
+[ext_resource type="Script" uid="uid://chjeytc0ds717" path="res://scenes/loading/loading.gd" id="1_23b5w"]
+[ext_resource type="Texture2D" uid="uid://q3n4v731ij2" path="res://temp graphics/knight.png" id="2_vqqgw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddh15"]
+atlas = ExtResource("2_vqqgw")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2asxc"]
+atlas = ExtResource("2_vqqgw")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8njb0"]
+atlas = ExtResource("2_vqqgw")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df5nx"]
+atlas = ExtResource("2_vqqgw")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0cve"]
+atlas = ExtResource("2_vqqgw")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xph5p"]
+atlas = ExtResource("2_vqqgw")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te2i1"]
+atlas = ExtResource("2_vqqgw")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hjs3"]
+atlas = ExtResource("2_vqqgw")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d201m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddh15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2asxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8njb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df5nx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0cve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xph5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te2i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hjs3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Loading" type="Node2D" unique_id=1520300234]
+script = ExtResource("1_23b5w")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=779728317]
+offset_left = 1171.0
+offset_top = 977.0
+offset_right = 1871.0
+offset_bottom = 1027.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=418035815]
+position = Vector2(1520, 910.00006)
+scale = Vector2(4.4531274, 3.9999998)
+sprite_frames = SubResource("SpriteFrames_d201m")
+autoplay = "default"
+flip_h = true
