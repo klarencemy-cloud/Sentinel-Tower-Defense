@@ -99,10 +99,12 @@ func _on_tower_enemies_button_pressed() -> void:
 	if tower_cards_showing:
 		$Control/TextureRect/TowerCardsContainer.visible = false
 		$Control/TextureRect/EnemyCardsContainer.visible = true
+		$Control/TextureRect/HBoxContainer/TowerEnemiesButton.texture_normal = load("res://graphics/ui/tower_card_button.png")
 		tower_cards_showing = false
 	else:
 		$Control/TextureRect/TowerCardsContainer.visible = true
 		$Control/TextureRect/EnemyCardsContainer.visible = false
+		$Control/TextureRect/HBoxContainer/TowerEnemiesButton.texture_normal = load("res://graphics/ui/enemy_card_button.png")
 		tower_cards_showing = true
 
 
