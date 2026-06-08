@@ -1,11 +1,20 @@
 extends Node2D
 
 @onready var progress_bar: ProgressBar = $ProgressBar
-@export var next_scene_path: String = "res://scenes/levels/level.tscn"
+@export var next_scene_path1: String = "res://scenes/levels/level.tscn"
+@export var next_scene_path2: String = "res://scenes/sandbox/sand_box.tscn"
+var next_scene_path: String
 var progress: Array[float] = []
 
 
+
 func _ready() -> void:
+	if Data.is_sandbox:
+		next_scene_path = next_scene_path2
+		print("Sandbox mode enabled, loading sandbox scene...")
+	else:
+		next_scene_path = next_scene_path1
+
 	ResourceLoader.load_threaded_request(next_scene_path)
 
 

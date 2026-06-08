@@ -1,6 +1,13 @@
 extends Node
 
 var is_sandbox: bool = false
+var is_unli_money: bool = false
+var is_unli_health: bool = false
+var is_unli_senti_cap: bool = false
+var is_maxed_lvl: bool = false
+
+var before_total_money: int
+var before_total_health: int
 
 enum Tower {BASIC, BLAST, MORTAR}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
@@ -51,10 +58,7 @@ const ENEMY_DATA = {
 
 var money := 200:
 	set(value):
-		if is_sandbox:
-			money = 999999
-		else:
-			money = value
+		money = value
 
 		var ui = get_tree().get_first_node_in_group('UI')
 		if ui:
@@ -63,10 +67,7 @@ var money := 200:
 			tower_card.toggle_active(money)
 var health := 100:
 	set(value):
-		if is_sandbox:
-			health = 999999
-		else:
-			health = value
+		health = value
 			
 		var ui = get_tree().get_first_node_in_group('UI')
 		if ui:

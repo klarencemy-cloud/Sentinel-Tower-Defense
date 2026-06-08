@@ -100,6 +100,7 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="SandboxSetting" type="TextureButton" parent="Control/TextureRect/HBoxContainer" unique_id=853708045]
+visible = false
 visibility_layer = 3
 z_index = 1
 layout_mode = 2
@@ -107,6 +108,7 @@ size_flags_horizontal = 2
 texture_normal = ExtResource("5_0i47d")
 
 [node name="TowerEnemiesButton" type="TextureButton" parent="Control/TextureRect/HBoxContainer" unique_id=1920265275]
+visible = false
 visibility_layer = 3
 z_index = 1
 layout_mode = 2
@@ -300,4 +302,8 @@ texture_normal = ExtResource("10_4kltc")
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/TowerEnemiesButton" to="." method="_on_tower_enemies_button_pressed"]
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/WaveButton" to="." method="_on_wave_button_pressed"]
 [connection signal="pressed" from="Control/TextureRect/UpgradeButton" to="Control/TextureRect/UpgradeButton" method="_on_pressed"]
+[connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/MaxedLVL" to="." method="_on_maxed_lvl_toggled"]
+[connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliMoney" to="." method="_on_unli_money_toggled"]
+[connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliHealth" to="." method="_on_unli_health_toggled"]
+[connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliSentiCap" to="." method="_on_unli_senti_cap_toggled"]
 [connection signal="pressed" from="Control/PauseButton" to="." method="_on_pause_button_pressed"]

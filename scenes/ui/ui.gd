@@ -6,7 +6,6 @@ signal start_wave
 var tower_card_scene = preload("res://scenes/ui/tower_card.tscn")
 var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
 
-var tower_menu: bool #toggles tower card menu
 var sandbox_setting : bool #sandbox menu toggle
 var tower_cards_showing: bool = true #toggles between tower and enemy cards in sandbox menu
 
@@ -14,6 +13,14 @@ var tower_cards_showing: bool = true #toggles between tower and enemy cards in s
 func _ready() -> void:
 	$Control/TextureRect/TowerCardsContainer.visible = true
 	$Control/TextureRect/EnemyCardsContainer.visible = false
+
+	if Data.is_sandbox:
+		$Control/TextureRect/HBoxContainer/SandboxSetting.visible = true
+		$Control/TextureRect/HBoxContainer/TowerEnemiesButton.visible = true
+		print(Data.is_sandbox)
+	
+	print(Data.is_sandbox)
+
 	
 
 	
@@ -33,22 +40,27 @@ func _ready() -> void:
 	update_stats(Data.money, Data.health)
 	update_wave_label()
 
-
 func tower_select(tower_enum: Data.Tower):
 	place_tower.emit(tower_enum)
 
+#sandbox
 func sandbox_spawn_enemy(enemy_enum: Data.Enemy):
 	spawn_enemy.emit(enemy_enum)
 
 func update_stats(money: int, health: int):
-	if Data.is_sandbox:
+	if Data.is_unli_money:
 		$Control/StatsContainer/PanelContainer2/HBoxContainer/Label.text = "∞"
-		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = "∞"
-		$Control/TextureRect/PlayerCurrentStats/HPBar.value = 100 
 	else:
 		$Control/StatsContainer/PanelContainer2/HBoxContainer/Label.text = str(money)
+	
+	if Data.is_unli_health:
+		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = "∞"
+		$Control/TextureRect/PlayerCurrentStats/HPBar.value = 100
+	else:
 		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = str(health)
 		$Control/TextureRect/PlayerCurrentStats/HPBar.value = health * 100 / 100
+	
+	print("Stats Updated: Money - " + str(money) + ", Health - " + str(health))
 
 
 
@@ -92,3 +104,40 @@ func _on_tower_enemies_button_pressed() -> void:
 		$Control/TextureRect/TowerCardsContainer.visible = true
 		$Control/TextureRect/EnemyCardsContainer.visible = false
 		tower_cards_showing = true
+
+
+func _on_maxed_lvl_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		Data.is_maxed_lvl = true
+	else:
+		Data.is_maxed_lvl = false
+
+
+func _on_unli_money_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		Data.is_unli_money = true
+		Data.before_total_money = Data.money
+		Data.money = 999999
+
+	else:
+		Data.is_unli_money = false
+		Data.money = Data.before_total_money
+
+
+func _on_unli_health_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		Data.is_unli_health = true
+		Data.before_total_health = Data.health
+		
+		Data.health = 999999
+
+	else:
+		Data.is_unli_health = false
+		Data.health = Data.before_total_health
+
+
+func _on_unli_senti_cap_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		Data.is_unli_senti_cap = true
+	else:
+		Data.is_unli_senti_cap = false
