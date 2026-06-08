@@ -1,29 +1,40 @@
 [gd_scene format=3 uid="uid://23krmoa5rhnu"]
 
 [ext_resource type="Script" uid="uid://c22u6o3nqy1ux" path="res://scenes/upgrade/upgrade.gd" id="1_6bmsu"]
+[ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="2_gukx4"]
 [ext_resource type="Texture2D" uid="uid://dn30hv2mjhygn" path="res://graphics/buttons/upgradebg.png" id="2_jp15f"]
 [ext_resource type="Texture2D" uid="uid://ml3kegt85f83" path="res://graphics/towers/placeholdertowers/tower1.png" id="4_fdoxp"]
 [ext_resource type="Texture2D" uid="uid://dxmkoip2h3t7j" path="res://graphics/sentinels/placeholdersentinels/sentinel.png" id="5_fdoxp"]
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="5_gvuwm"]
 [ext_resource type="PackedScene" uid="uid://dqksfnfgip1xd" path="res://scenes/ui/tower_upgrade_ui.tscn" id="6_fdoxp"]
-[ext_resource type="PackedScene" uid="uid://fqoly7fqcmiq" path="res://scenes/ui/tower_upgrade_focus_ui.tscn" id="6_gukx4"]
 [ext_resource type="PackedScene" uid="uid://ckfmuok61kjst" path="res://scenes/ui/sentinel_upgrade_ui.tscn" id="7_01d24"]
 
-[node name="Upgrade" type="Control" unique_id=1628463082]
-layout_mode = 3
-anchor_right = 1.0
-anchor_bottom = 1.0018518
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="Upgrade" type="CanvasLayer" unique_id=416366569]
+process_mode = 3
+layer = 4
 script = ExtResource("1_6bmsu")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1917108759]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_gukx4")
+
+[node name="TowerUpgradeUi" parent="." unique_id=223184111 instance=ExtResource("6_fdoxp")]
+visible = false
+offset_bottom = -2.0
+
+[node name="SentinelUpgradeUi" parent="." unique_id=1015195867 instance=ExtResource("7_01d24")]
+visible = false
+offset_bottom = -2.0
 
 [node name="ButtonManager" type="Control" parent="." unique_id=1010848041]
 top_level = true
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -121,18 +132,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TowerUpgradeFocusUi" parent="." unique_id=1123637133 instance=ExtResource("6_gukx4")]
-layout_mode = 1
+[node name="VScrollBar" type="VScrollBar" parent="." unique_id=1095791943]
+offset_left = 51.0
+offset_top = 331.0
+offset_right = 118.0
+offset_bottom = 667.0
 
-[node name="TowerUpgradeUi" parent="." unique_id=223184111 instance=ExtResource("6_fdoxp")]
-visible = false
-layout_mode = 1
-offset_bottom = -2.0
-
-[node name="SentinelUpgradeUi" parent="." unique_id=1015195867 instance=ExtResource("7_01d24")]
-visible = false
-layout_mode = 1
-offset_bottom = -2.0
+[node name="SentinelsContainer" type="HBoxContainer" parent="." unique_id=694102848]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.133
+anchor_right = 0.133
+offset_left = -103.36
+offset_top = 197.0
+offset_right = 319.64
+offset_bottom = 445.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [connection signal="pressed" from="ButtonManager/Towers" to="." method="_on_towers_pressed"]
 [connection signal="pressed" from="ButtonManager/Sentinel" to="." method="_on_sentinel_pressed"]
+[connection signal="pressed" from="ButtonManager/Back" to="." method="_on_back_pressed"]

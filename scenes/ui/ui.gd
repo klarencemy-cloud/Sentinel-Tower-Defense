@@ -41,4 +41,4 @@ func _on_wave_button_pressed() -> void:
 
 func _on_pause_button_pressed() -> void:
 	$PauseMenu.visible = true
-	get_tree().paused = true
+	

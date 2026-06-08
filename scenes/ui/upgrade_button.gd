@@ -12,4 +12,6 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/upgrade/upgrade.tscn") # Replace with function body.
+ # Replace with function body.
+	get_tree().paused = true
+	%Upgrade.visible = true
