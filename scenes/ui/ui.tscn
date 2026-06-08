@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b4lb0nrlipf4j" path="res://graphics/ui/TowersRectangle.png" id="9_4kltc"]
 [ext_resource type="Texture2D" uid="uid://dy1yarvyrbynt" path="res://graphics/ui/healthbarProgress.png" id="9_n3vwu"]
 [ext_resource type="Texture2D" uid="uid://dh1ehslhpji6n" path="res://graphics/ui/pause.png" id="10_4kltc"]
+[ext_resource type="Script" uid="uid://cbx4dxix5gl2o" path="res://scenes/ui/upgrade_button.gd" id="11_hc5d0"]
 [ext_resource type="Texture2D" uid="uid://cp25rrr2snh2l" path="res://graphics/ui/UpgradeButton.png" id="11_swkix"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vp6q"]
@@ -144,6 +145,14 @@ value = 100.0
 texture_under = ExtResource("8_hc5d0")
 texture_progress = ExtResource("9_n3vwu")
 
+[node name="UpgradeButton" type="TextureButton" parent="Control/TextureRect" unique_id=1470226152]
+layout_mode = 0
+offset_left = 1060.0
+offset_right = 1178.0
+offset_bottom = 91.0
+texture_normal = ExtResource("11_swkix")
+script = ExtResource("11_hc5d0")
+
 [node name="StatsContainer" type="VBoxContainer" parent="Control" unique_id=1023310108]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 1
@@ -212,13 +221,6 @@ offset_right = 106.0
 offset_bottom = 53.36
 texture_normal = ExtResource("10_4kltc")
 
-[node name="TextureButton" type="TextureButton" parent="Control" unique_id=1470226152]
-layout_mode = 0
-offset_left = 1059.0
-offset_top = 913.0
-offset_right = 1177.0
-offset_bottom = 1004.0
-texture_normal = ExtResource("11_swkix")
-
 [connection signal="pressed" from="Control/TextureRect/WaveButton" to="." method="_on_wave_button_pressed"]
+[connection signal="pressed" from="Control/TextureRect/UpgradeButton" to="Control/TextureRect/UpgradeButton" method="_on_pressed"]
 [connection signal="pressed" from="Control/PauseButton" to="." method="_on_pause_button_pressed"]
