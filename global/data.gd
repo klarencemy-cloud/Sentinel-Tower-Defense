@@ -13,7 +13,7 @@ enum Tower {BASIC, BLAST, MORTAR}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
 enum Enemy {DEFAULT, FAST, STRONG, BIG}
 
-const TOWER_DATA = {
+var TOWER_DATA = {
 	Tower.BASIC: {
 		'name': 'Basic',
 		'cost': 20,
@@ -21,7 +21,14 @@ const TOWER_DATA = {
 		'reload_time': 1.0,
 		'bullet': Bullet.SINGLE,
 		'thumbnail': "res://graphics/ui/tower thumbnails/basic.png",
-		'scene': "res://scenes/towers/single_tower.tscn"},
+		'scene': "res://scenes/towers/single_tower.tscn",
+		'upgrade1' : "Damage",
+		'upgrade2' : "Attack Speed",
+		'upgrade3' : "Damage",
+		'upgrade4' : "Crit Rate",
+		'upgrade5' : "Crit Damage",
+		'upgrade6' : "Range"},
+
 	Tower.BLAST: {
 		'name': 'Blaster',
 		'cost': 30,
@@ -29,7 +36,14 @@ const TOWER_DATA = {
 		'reload_time': 1.5,
 		'bullet': Bullet.FIRE,
 		'thumbnail': "res://graphics/ui/tower thumbnails/blaster.png",
-		'scene': "res://scenes/towers/blaster_tower.tscn"},
+		'scene': "res://scenes/towers/blaster_tower.tscn",
+		'upgrade1' : "Damage",
+		'upgrade2' : "Attack Speed",
+		'upgrade3' : "Damage",
+		'upgrade4' : "Crit Rate",
+		'upgrade5' : "Crit Damage",
+		'upgrade6' : "Range"},
+		
 	Tower.MORTAR: {
 		'name': 'Mortar',
 		'cost': 30,
@@ -37,8 +51,15 @@ const TOWER_DATA = {
 		'reload_time': 2.0,
 		'bullet': Bullet.MORTAR_EXPLOSION,
 		'thumbnail': "res://graphics/ui/tower thumbnails/mortar.png",
-		'scene': "res://scenes/towers/mortar_tower.tscn"}}
-const UPGRADE_DATA = {
+		'scene': "res://scenes/towers/mortar_tower.tscn",
+		'upgrade1' : "Damage",
+		'upgrade2' : "Attack Speed",
+		'upgrade3' : "Damage",
+		'upgrade4' : "Crit Rate",
+		'upgrade5' : "Crit Damage",
+		'upgrade6' : "Range"}
+		}
+var UPGRADE_DATA = {
 	Tower.BASIC: {
 		'reload_time': 0.6,
 		'bullet': Bullet.SINGLE},
@@ -48,7 +69,7 @@ const UPGRADE_DATA = {
 	Tower.MORTAR: {
 		'reload_time': 1.5,
 		'bullet': Bullet.MORTAR_EXPLOSION}}
-const ENEMY_DATA = {
+var ENEMY_DATA = {
 	Enemy.DEFAULT: {'health': 3, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 20},
 	Enemy.FAST: {'health': 3, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 50},
 	Enemy.STRONG: {'health': 6, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 25},
