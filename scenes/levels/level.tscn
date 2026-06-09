@@ -521,6 +521,7 @@ acceleration = 0.25
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=752247016]
 stream = ExtResource("6_mbbpy")
 autoplay = true
+parameters/looping = true
 
 [connection signal="place_tower" from="UI" to="." method="_on_ui_place_tower"]
 [connection signal="start_wave" from="UI" to="." method="_on_ui_start_wave"]
