@@ -18,10 +18,6 @@ func _ready() -> void:
 		$Control/TextureRect/HBoxContainer/SandboxSetting.visible = true
 		$Control/TextureRect/HBoxContainer/TowerEnemiesButton.visible = true
 		print(Data.is_sandbox)
-	
-	print(Data.is_sandbox)
-
-	
 
 	
 	for tower_enum in Data.Tower.values():
