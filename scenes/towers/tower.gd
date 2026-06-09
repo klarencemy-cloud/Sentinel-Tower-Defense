@@ -6,9 +6,11 @@ var upgraded: bool
 var bullet_type: Data.Bullet
 var cost: int
 var upgrade_cost: int
+var cell_pos: Vector2i = Vector2i.ZERO
 @warning_ignore("unused_signal")
 signal shoot(pos: Vector2, direction: float, bullet_enum: Data.Bullet)
 signal select(tower: Tower)
+signal removed(cell_pos: Vector2i)
 
 var range_indicator: Line2D
 
@@ -92,6 +94,7 @@ func tower_upgrade():
 func _on_tower_menu_delete_press() -> void:
 	var return_money = cost if not upgraded else cost + upgrade_cost
 	Data.money += return_money
+	emit_signal('removed', cell_pos)
 	queue_free()
 
 

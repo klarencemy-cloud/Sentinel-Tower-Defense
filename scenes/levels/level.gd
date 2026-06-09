@@ -15,7 +15,7 @@ var tower_scenes = {
 	Data.Tower.BASIC: "res://scenes/towers/tower_basic.tscn",
 	Data.Tower.BLAST: "res://scenes/towers/tower_blaster.tscn",
 	Data.Tower.MORTAR: "res://scenes/towers/tower_mortar.tscn",}
-var used_cells: Array[Vector2i]
+var used_cells: Array[Vector2i] = []
 var wave_active: bool = false
 var spawning_wave: bool = false
 var health = Data.health
@@ -52,8 +52,10 @@ func _input(event: InputEvent) -> void:
 			var tower = load(tower_scenes[selected_tower]).instantiate()
 			tower.position = pos * 16 + Vector2i(8,8)
 			tower.setup(selected_tower)
+			tower.cell_pos = pos
 			tower.connect('shoot', create_bullet)
 			tower.connect('select', tower_selection)
+			tower.connect('removed', Callable(self, '_on_tower_removed'))
 			$Towers.add_child(tower)
 			place_tower = false
 			Data.money -= Data.TOWER_DATA[selected_tower]['cost']
@@ -102,6 +104,13 @@ func tower_selection(tower: Tower):
 	if tower.type == Data.Tower.MORTAR:
 		tower.show_crosshair()
 	tower.show_range()
+
+
+func _on_tower_removed(cell_pos: Vector2i) -> void:
+	if cell_pos in used_cells:
+		used_cells.erase(cell_pos)
+	if current_tower and current_tower.cell_pos == cell_pos:
+		current_tower = null
 
 
 func _on_ui_place_tower(tower_type: Data.Tower) -> void:
