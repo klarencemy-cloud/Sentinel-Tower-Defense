@@ -7,3 +7,6 @@
 script = ExtResource("1_r2mpb")
 
 [node name="Level" parent="." unique_id=334341019 instance=ExtResource("2_mpcbx")]
+
+[editable path="Level"]
+[editable path="Level/UI"]

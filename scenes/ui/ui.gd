@@ -9,7 +9,6 @@ var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
 var sandbox_setting : bool #sandbox menu toggle
 var tower_cards_showing: bool = true #toggles between tower and enemy cards in sandbox menu
 
-
 func _ready() -> void:
 	$Control/TextureRect/TowerCardsContainer.visible = true
 	$Control/TextureRect/EnemyCardsContainer.visible = false
@@ -17,7 +16,6 @@ func _ready() -> void:
 	if Data.is_sandbox:
 		$Control/TextureRect/HBoxContainer/SandboxSetting.visible = true
 		$Control/TextureRect/HBoxContainer/TowerEnemiesButton.visible = true
-		print(Data.is_sandbox)
 
 	
 	for tower_enum in Data.Tower.values():
@@ -44,20 +42,19 @@ func sandbox_spawn_enemy(enemy_enum: Data.Enemy):
 	spawn_enemy.emit(enemy_enum)
 
 func update_stats(money: int, health: int):
+
 	if Data.is_unli_money:
 		$Control/StatsContainer/PanelContainer2/HBoxContainer/Label.text = "∞"
 	else:
 		$Control/StatsContainer/PanelContainer2/HBoxContainer/Label.text = str(money)
-	
+		
 	if Data.is_unli_health:
 		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = "∞"
 		$Control/TextureRect/PlayerCurrentStats/HPBar.value = 100
 	else:
 		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = str(health)
 		$Control/TextureRect/PlayerCurrentStats/HPBar.value = health * 100 / 100
-	
 	print("Stats Updated: Money - " + str(money) + ", Health - " + str(health))
-
 
 
 
