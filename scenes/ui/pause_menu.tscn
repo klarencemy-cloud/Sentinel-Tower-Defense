@@ -1142,8 +1142,14 @@ layer = 2
 script = ExtResource("1_6tw0m")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=134141999]
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -1080.0
+offset_right = 960.0
 color = Color(0.09803922, 0.15294118, 0.20784314, 0.60784316)
 
 [node name="resume" type="TextureButton" parent="." unique_id=1360586211]

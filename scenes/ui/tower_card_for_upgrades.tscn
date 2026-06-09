@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://8spxlkg8smpj"]
+
+[ext_resource type="Texture2D" uid="uid://p7inutxnnhfa" path="res://graphics/database/tower_container.png" id="1_1lmum"]
+[ext_resource type="Texture2D" uid="uid://5fcgjf624a6x" path="res://graphics/ui/frame.png" id="1_fndv8"]
+[ext_resource type="Script" uid="uid://bvl5xpumcxg4t" path="res://scenes/ui/tower_card_for_upgrades.gd" id="1_ogj4p"]
+[ext_resource type="FontFile" uid="uid://bqm53gushpubk" path="res://graphics/ui/Digitalt.otf" id="2_ogj4p"]
+[ext_resource type="Texture2D" uid="uid://ftkgg8wg17u" path="res://graphics/ui/tower thumbnails/basic.png" id="3_fndv8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fndv8"]
+texture = ExtResource("1_fndv8")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[node name="tower_card_forUpgrades" type="Button" unique_id=879644266]
+clip_children = 1
+custom_minimum_size = Vector2(173, 199)
+offset_right = 173.0
+offset_bottom = 242.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_fndv8")
+script = ExtResource("1_ogj4p")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=427498042]
+layout_mode = 0
+offset_right = 174.0
+offset_bottom = 242.0
+texture = ExtResource("1_1lmum")
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=1294312716]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 196.0
+offset_right = 172.0
+offset_bottom = 221.0
+theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
+theme_override_fonts/font = ExtResource("2_ogj4p")
+theme_override_font_sizes/font_size = 19
+text = "Tower name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TextureRect" unique_id=1622100548]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 179.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
+theme_override_fonts/font = ExtResource("2_ogj4p")
+theme_override_font_sizes/font_size = 24
+text = "Tower cost"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=1850851391]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = 72.0
+offset_right = 37.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fndv8")
+expand_mode = 2
+stretch_mode = 5
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://c78ec16wdsuvr"]
 
 [ext_resource type="Texture2D" uid="uid://5fcgjf624a6x" path="res://graphics/ui/frame.png" id="1_d5ir0"]
-[ext_resource type="Script" uid="uid://bgume5aolyxmi" path="res://scenes/ui/tower_card.gd" id="2_ra2tf"]
 [ext_resource type="Texture2D" uid="uid://ftkgg8wg17u" path="res://graphics/ui/tower thumbnails/basic.png" id="2_yp74u"]
 [ext_resource type="Texture2D" uid="uid://p7inutxnnhfa" path="res://graphics/database/tower_container.png" id="3_4rgsa"]
 [ext_resource type="FontFile" uid="uid://bqm53gushpubk" path="res://graphics/ui/Digitalt.otf" id="3_yp74u"]
+[ext_resource type="Script" uid="uid://tower_card_script" path="res://scenes/ui/tower_card.gd" id="4_script"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ra2tf"]
 texture = ExtResource("1_d5ir0")
@@ -13,13 +13,32 @@ texture_margin_top = 6.0
 texture_margin_right = 6.0
 texture_margin_bottom = 6.0
 
+[sub_resource type="GDScript" id="GDScript_ra2tf"]
+script/source = "extends Button
+
+var id: Data.Tower = Data.Tower.BASIC
+var cost: int
+signal press(tower_enum: Data.Tower)
+	
+func setup(new_id: Data.Tower):
+	id = new_id
+	$TextureRect/Label.text = Data.TOWER_DATA[id]['name']
+	$TextureRect/Label2.text = str(Data.TOWER_DATA[id]['cost'])
+	$TextureRect/TextureRect.texture = load(Data.TOWER_DATA[id]['thumbnail'])
+
+
+
+func _on_pressed() -> void:
+	pass # Replace with function body.
+"
+
 [node name="TowerCard" type="Button" unique_id=1837765590 groups=["TowerCard"]]
 clip_children = 1
 custom_minimum_size = Vector2(173, 199)
 offset_right = 173.0
 offset_bottom = 242.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_ra2tf")
-script = ExtResource("2_ra2tf")
+script = ExtResource("4_script")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=795388518]
 layout_mode = 0

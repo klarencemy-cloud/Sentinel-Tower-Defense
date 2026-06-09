@@ -1,5 +1,5 @@
 extends CanvasLayer
-var tower_card_scene = preload("res://scenes/ui/tower_card.tscn")
+var tower_card_scene = preload("res://scenes/ui/tower_card_for_upgrades.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
