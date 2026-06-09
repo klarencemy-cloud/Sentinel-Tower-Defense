@@ -8,5 +8,8 @@ script = ExtResource("1_r2mpb")
 
 [node name="Level" parent="." unique_id=334341019 instance=ExtResource("2_mpcbx")]
 
+[connection signal="pressed" from="Level/UI/Control/TextureRect/HBoxContainer/SandboxSetting" to="." method="_on_sandbox_setting_pressed"]
+[connection signal="pressed" from="Level/UI/Control/TextureRect/HBoxContainer/TowerEnemiesButton" to="." method="_on_tower_enemies_button_pressed"]
+
 [editable path="Level"]
 [editable path="Level/UI"]

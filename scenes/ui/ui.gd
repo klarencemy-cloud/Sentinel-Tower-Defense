@@ -6,8 +6,7 @@ signal start_wave
 var tower_card_scene = preload("res://scenes/ui/tower_card.tscn")
 var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
 
-var sandbox_setting : bool #sandbox menu toggle
-var tower_cards_showing: bool = true #toggles between tower and enemy cards in sandbox menu
+
 
 func _ready() -> void:
 	$Control/TextureRect/TowerCardsContainer.visible = true
@@ -75,30 +74,6 @@ func _on_pause_button_pressed() -> void:
 	$PauseMenu.visible = true
 	get_tree().paused = true
 
-
-func _on_sandbox_setting_pressed() -> void:
-	if sandbox_setting:
-		sandbox_setting = false
-		$Control/TextureRect/PlayerCurrentStats.visible = true
-		$Control/TextureRect/SandboxMenuContainer.visible = false
-	else:
-		sandbox_setting = true
-		$Control/TextureRect/PlayerCurrentStats.visible = false
-		$Control/TextureRect/SandboxMenuContainer.visible = true
-	
-
-
-func _on_tower_enemies_button_pressed() -> void:
-	if tower_cards_showing:
-		$Control/TextureRect/TowerCardsContainer.visible = false
-		$Control/TextureRect/EnemyCardsContainer.visible = true
-		$Control/TextureRect/HBoxContainer/TowerEnemiesButton.texture_normal = load("res://graphics/ui/tower_card_button.png")
-		tower_cards_showing = false
-	else:
-		$Control/TextureRect/TowerCardsContainer.visible = true
-		$Control/TextureRect/EnemyCardsContainer.visible = false
-		$Control/TextureRect/HBoxContainer/TowerEnemiesButton.texture_normal = load("res://graphics/ui/enemy_card_button.png")
-		tower_cards_showing = true
 
 
 func _on_maxed_lvl_toggled(toggled_on: bool) -> void:
