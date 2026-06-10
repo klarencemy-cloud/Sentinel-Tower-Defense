@@ -17,9 +17,5 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	var ui = get_parent().get_parent()
-	var upgradebtn = get_parent().get_parent()
-	var towername = get_parent().get_parent()
-	towername.get_node("BigTowerName").text = Data.TOWER_DATA[id]['name']
-	upgradebtn.get_node("UpgradeButton").visible = true
-	ui.get_node("BigPic").texture = load(Data.TOWER_DATA[id]['thumbnail'])
+	var upgrade_ui = get_parent().get_parent()
+	upgrade_ui.set_selected_tower(id)

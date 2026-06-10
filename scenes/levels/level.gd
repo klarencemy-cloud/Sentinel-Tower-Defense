@@ -75,7 +75,7 @@ func _input(event: InputEvent) -> void:
 		place_tower = false
 		tower_menu = false
 		current_tower = null
-		$UI.hide_cards()
+		
 		for tower in get_tree().get_nodes_in_group('Towers'):
 			tower.hide_ui()
 

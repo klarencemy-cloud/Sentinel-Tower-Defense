@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://ce5mem8yu8bow"]
+
+[ext_resource type="Texture2D" uid="uid://dn30hv2mjhygn" path="res://graphics/buttons/upgradebg.png" id="1_4qwfg"]
+[ext_resource type="PackedScene" uid="uid://23krmoa5rhnu" path="res://scenes/upgrade/upgrade.tscn" id="1_v2o6a"]
+[ext_resource type="Texture2D" uid="uid://ml3kegt85f83" path="res://graphics/towers/placeholdertowers/tower1.png" id="2_v2o6a"]
+[ext_resource type="Texture2D" uid="uid://dxmkoip2h3t7j" path="res://graphics/sentinels/placeholdersentinels/sentinel.png" id="3_qfn2n"]
+
+[node name="UpgradeUi" type="CanvasLayer" unique_id=699043116]
+layer = 6
+
+[node name="Buttonbg" type="TextureRect" parent="." unique_id=1600126116]
+anchors_preset = -1
+anchor_top = 0.87777776
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.7555542
+offset_bottom = -1.7554932
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(950, 63.5)
+texture = ExtResource("1_4qwfg")
+expand_mode = 1
+
+[node name="TowerBtn" type="TextureButton" parent="Buttonbg" unique_id=405500903]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.354
+anchor_top = 1.0
+anchor_right = 0.354
+anchor_bottom = 1.0
+offset_left = -87.67999
+offset_top = -199.2445
+offset_right = 69.82001
+offset_bottom = -82.04451
+texture_normal = ExtResource("2_v2o6a")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Buttonbg/TowerBtn" unique_id=278036889]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 115.0
+offset_right = 144.0
+offset_bottom = 175.0
+theme_override_font_sizes/font_size = 52
+text = "Tower"
+
+[node name="SentinelBtn" type="TextureButton" parent="Buttonbg" unique_id=547511523]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = -66.244446
+offset_right = 1244.9
+offset_bottom = 50.65558
+texture_normal = ExtResource("3_qfn2n")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Buttonbg/SentinelBtn" unique_id=1222552924]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.54
+anchor_top = 1.6420001
+anchor_right = 0.54
+anchor_bottom = 1.6420001
+offset_left = -91.446014
+offset_top = -76.85985
+offset_right = 91.553986
+offset_bottom = -16.859543
+theme_override_font_sizes/font_size = 52
+text = "Sentinel"
+
+[node name="Upgrade" parent="." unique_id=416366569 instance=ExtResource("1_v2o6a")]
