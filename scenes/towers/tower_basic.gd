@@ -10,7 +10,8 @@ func _process(_delta: float) -> void:
 func _on_reload_timer_timeout() -> void:
 	if enemies:
 		var dir = Vector2.DOWN.rotated($Turret.rotation).normalized()
-		shoot.emit(position + dir * 16, $Turret.rotation, bullet_type)
+		var damage = Data.TOWER_DATA[type]["damage"]
+		shoot.emit(position + dir * 16, $Turret.rotation, bullet_type, damage)
 		$ShootSound.play()
 
 func tower_upgrade():

@@ -24,13 +24,14 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(bullet: Area2D) -> void:
 	bullet.queue_free()
-	hit()
+	hit(bullet.damage)
 
 
-func hit():
+func hit(damage: int = 1):
+	health -= damage
 	$AudioStreamPlayer2D.play()
-	health -= 1
 	flash()
+
 	if health <= 0:
 		Data.money += 10
 		queue_free()
