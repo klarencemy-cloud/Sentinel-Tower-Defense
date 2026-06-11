@@ -23,7 +23,7 @@ var health = Data.health
 
 func _ready() -> void:
 	randomize()
-	RenderingServer.set_default_clear_color('dff6f5')
+	RenderingServer.set_default_clear_color('242a2f')
 
 	var ui = get_tree().get_first_node_in_group('UI')
 	if ui:
