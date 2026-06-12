@@ -34,6 +34,9 @@ func start_wave() -> void:
 		ui.update_wave_label()
 
 	Data.current_wave += 1
+
+	level_manager._change_current_map()
+
 	if Data.current_wave % 5 == 0:
 		Data.checkpoint_wave = Data.current_wave
 

@@ -7,6 +7,18 @@ extends Node
 var level_root: Node2D
 var current_map: Node
 
+func _change_current_map():
+
+	match Data.current_wave:
+		11:
+			load_map("res://scenes/levels/level2.scn")
+		21:
+			load_map("res://scenes/levels/level3.scn")
+		31:
+			load_map("res://scenes/levels/level4.scn")
+		41:
+			load_map("res://scenes/levels/level5.scn")
+
 
 func setup(root: Node2D) -> void:
 	level_root = root
