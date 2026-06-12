@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s8xhvy48k726"
-path="res://.godot/imported/virus.png-cee666ee976b93eaf03dbdc750517113.ctex"
+uid="uid://72r4iymbw0py"
+path="res://.godot/imported/lamp.png-35174e4a6b39987611fb481d65eb5fed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/bosses/virus.png"
-dest_files=["res://.godot/imported/virus.png-cee666ee976b93eaf03dbdc750517113.ctex"]
+source_file="res://graphics/map/lamp.png"
+dest_files=["res://.godot/imported/lamp.png-35174e4a6b39987611fb481d65eb5fed.ctex"]
 
 [params]
 
