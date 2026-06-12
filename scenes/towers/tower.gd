@@ -57,6 +57,12 @@ func setup(tower_type: Data.Tower):
 	cost = Data.TOWER_DATA[tower_type]['cost']
 	upgrade_cost = Data.TOWER_DATA[tower_type]['upgrade_cost']
 	type = tower_type
+
+	var range_value = Data.TOWER_DATA[tower_type]['range']
+	var shape = $EnemyDetectionArea/CollisionShape2D.shape
+	if shape is CircleShape2D:
+		shape.radius = range_value
+
 	create_range_indicator()
 	_update_range_indicator()
 
