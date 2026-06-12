@@ -1,6 +1,7 @@
 extends Node2D
 
 
+
 var enemy_scene = preload("res://scenes/enemies/enemy.tscn")
 var bullet_scene = preload("res://scenes/bullets/bullet.tscn")
 var explosion_scene = preload("res://scenes/bullets/explosion.tscn")
@@ -20,12 +21,16 @@ var wave_active: bool = false
 var spawning_wave: bool = false
 var health = Data.health
 
+@onready var layer: TileMapLayer = $Level1/Pavement
+
 
 func _ready() -> void:
+	
 	randomize()
 	RenderingServer.set_default_clear_color('242a2f')
 
 	var ui = get_tree().get_first_node_in_group('UI')
+
 	if ui:
 		ui.spawn_enemy.connect(_on_ui_spawn_sandbox_enemy)
 	
@@ -42,11 +47,16 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	#var raw_pos = get_local_mouse_position()
+	#var pos = Vector2i(raw_pos.x / 16, raw_pos.y / 16)
+	
 	var raw_pos = get_local_mouse_position()
-	var pos = Vector2i(raw_pos.x / 16, raw_pos.y / 16)
+	var pos = layer.local_to_map(raw_pos)
+
 	
 	if event is InputEventMouseButton and event.button_mask == 1 and place_tower:
-		var tile_data = $BG/TileMapLayer.get_cell_tile_data(pos) as TileData
+		var tile_data = layer.get_cell_tile_data(pos) as TileData
+		print(tile_data)
 		if event.button_index == 1 and pos not in used_cells and tile_data is TileData and tile_data.get_custom_data('Usable'):
 			used_cells.append(pos)
 			var tower = load(tower_scenes[selected_tower]).instantiate()

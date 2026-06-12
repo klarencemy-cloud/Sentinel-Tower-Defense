@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://k2uh63vandnx" path="res://scenes/ui/player_camera.tscn" id="5_urvlt"]
 [ext_resource type="PackedScene" uid="uid://4e4dveqj5cpq" path="res://scenes/ui/ui.tscn" id="6_d4w6o"]
 [ext_resource type="AudioStream" uid="uid://b7xwf0s7rktfd" path="res://audio/sound_placeholder.mp3" id="6_mbbpy"]
-[ext_resource type="PackedScene" uid="uid://bc8wrl7i1ribh" path="res://scenes/levels/level1.scn" id="7_mbbpy"]
+[ext_resource type="PackedScene" uid="uid://c0fa8wi2q1sc7" path="res://scenes/levels/level1.scn" id="8_ouxo3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xb4v1"]
 texture = ExtResource("2_b2cq8")
@@ -17,13 +17,6 @@ texture = ExtResource("2_b2cq8")
 0:0/0/terrains_peering_bit/bottom_right_corner = 0
 0:0/0/terrains_peering_bit/bottom_side = 0
 1:0/0 = 0
-1:0/0/terrain_set = 0
-1:0/0/terrain = 0
-1:0/0/terrains_peering_bit/right_side = 0
-1:0/0/terrains_peering_bit/bottom_right_corner = 0
-1:0/0/terrains_peering_bit/bottom_side = 0
-1:0/0/terrains_peering_bit/bottom_left_corner = 0
-1:0/0/terrains_peering_bit/left_side = 0
 2:0/0 = 0
 2:0/0/terrain_set = 0
 2:0/0/terrain = 0
@@ -497,10 +490,10 @@ point_count = 10
 [node name="Level" type="Node2D" unique_id=334341019]
 script = ExtResource("1_377w7")
 
-[node name="Level1" parent="." unique_id=1434872291 instance=ExtResource("7_mbbpy")]
+[node name="Level1" parent="." unique_id=1876019163 instance=ExtResource("8_ouxo3")]
+z_index = -1
 
 [node name="BG" type="Node2D" parent="." unique_id=834286070]
-visible = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="BG" unique_id=1555211169]
 visible = false
@@ -511,8 +504,8 @@ tile_set = SubResource("TileSet_urvlt")
 modulate = Color(1, 1, 1, 0.6862745)
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1113770715]
-position = Vector2(-123.33789, -518.134)
-scale = Vector2(2.0725033, 3.84689)
+position = Vector2(-117.27525, -475.60492)
+scale = Vector2(2.0547898, 3.613188)
 curve = SubResource("Curve2D_d4w6o")
 
 [node name="Towers" type="Node2D" parent="." unique_id=59664562]
@@ -520,13 +513,14 @@ curve = SubResource("Curve2D_d4w6o")
 [node name="Bullets" type="Node2D" parent="." unique_id=1114794130]
 
 [node name="PlayerCamera" parent="." unique_id=2052181342 instance=ExtResource("5_urvlt")]
-position = Vector2(326, 201)
-acceleration = 0.25
+position = Vector2(2851, 1564)
+acceleration = 0.7
 
 [node name="UI" parent="." unique_id=1090151980 instance=ExtResource("6_d4w6o")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=752247016]
 stream = ExtResource("6_mbbpy")
+volume_db = -80.0
 autoplay = true
 parameters/looping = true
 
