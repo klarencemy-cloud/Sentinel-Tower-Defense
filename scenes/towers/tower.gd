@@ -8,7 +8,7 @@ var cost: int
 var upgrade_cost: int
 var cell_pos: Vector2i = Vector2i.ZERO
 @warning_ignore("unused_signal")
-signal shoot(pos: Vector2, direction: float, bullet_enum: Data.Bullet)
+signal shoot(pos: Vector2, direction: float, bullet_enum: Data.Bullet, damage: int)
 signal select(tower: Tower)
 signal removed(cell_pos: Vector2i)
 

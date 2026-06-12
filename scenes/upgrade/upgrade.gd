@@ -21,9 +21,11 @@ func set_selected_tower(tower_enum: Data.Tower) -> void:
 	$BigTowerName.text = Data.TOWER_DATA[tower_enum]['name']
 	$BigPic.texture = load(Data.TOWER_DATA[tower_enum]['thumbnail'])
 	$UpgradeButton.visible = true
-	update_speed_label()
+	update_stat_label()
 
-func update_speed_label() -> void:
+func update_stat_label() -> void:
+	var damage = Data.TOWER_DATA[selected_tower]['damage']
+	$StatPanel/StatsContainer/DamagePic/DamageText.text = str(damage)
 	var reload_time = Data.TOWER_DATA[selected_tower]['reload_time']
 	$StatPanel/StatsContainer/TextureRect/SpeedText.text = str(reload_time)
 	

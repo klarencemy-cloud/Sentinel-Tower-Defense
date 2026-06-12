@@ -2,11 +2,12 @@ extends Area2D
 
 var direction: Vector2
 var speed := 200
-
-func setup(pos, angle, _bullet_enum):
+var damage := 1
+func setup(pos, angle, _bullet_enum, _damage):
 	position = pos
 	direction = Vector2.DOWN.rotated(angle)
 	rotation = angle
+	damage = _damage
 
 func _process(delta: float) -> void:
 	position += direction * speed * delta

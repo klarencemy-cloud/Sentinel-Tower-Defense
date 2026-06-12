@@ -90,18 +90,18 @@ func _input(event: InputEvent) -> void:
 			tower.hide_ui()
 
 
-func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet):
+func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage: int):
 	if bullet_enum == Data.Bullet.SINGLE:
 		var bullet = bullet_scene.instantiate()
-		bullet.setup(pos, angle, bullet_enum)
+		bullet.setup(pos, angle, bullet_enum, damage)
 		$Bullets.add_child(bullet)
 	if bullet_enum == Data.Bullet.FIRE:
-		for enemy in get_tree().get_nodes_in_group('Enemies'):
+		for enemy in get_tree().get_nodes_in_group("Enemies"):
 			if pos.distance_to(enemy.global_position) < 100:
-				enemy.hit()
+				enemy.hit(damage)
 	if bullet_enum == Data.Bullet.MORTAR_EXPLOSION:
 		var explosion = explosion_scene.instantiate()
-		explosion.setup(pos)
+		explosion.setup(pos, damage)
 		$Bullets.add_child(explosion)
 
 
