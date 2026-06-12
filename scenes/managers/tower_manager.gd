@@ -1,0 +1,150 @@
+extends Node
+
+var tower_scenes = {
+	Data.Tower.BASIC: "res://scenes/towers/tower_basic.tscn",
+	Data.Tower.BLAST: "res://scenes/towers/tower_blaster.tscn",
+	Data.Tower.MORTAR: "res://scenes/towers/tower_mortar.tscn",
+}
+
+var bullet_scene = preload("res://scenes/bullets/bullet.tscn")
+var explosion_scene = preload("res://scenes/bullets/explosion.tscn")
+
+var level_root: Node2D
+var level_manager: Node
+var selected_tower: Data.Tower
+var current_tower: Tower
+var tower_menu := false
+var used_cells: Array[Vector2i] = []
+
+var place_tower := false:
+	set(value):
+		place_tower = value
+		if is_inside_tree():
+			var preview = _get_tower_preview()
+			if preview:
+				preview.visible = value
+
+
+func setup(root: Node2D, map_manager: Node) -> void:
+	level_root = root
+	level_manager = map_manager
+
+
+func handle_input(event: InputEvent) -> void:
+	var cell_pos = level_manager.mouse_to_map_position()
+	var world_pos = level_manager.map_to_world(cell_pos)
+
+	if event is InputEventMouseButton and event.button_mask == 1 and place_tower:
+		_try_place_tower(cell_pos, world_pos)
+
+	if event is InputEventMouseButton and event.button_mask == 1 and current_tower:
+		if current_tower.type == Data.Tower.MORTAR:
+			current_tower.finish_placing()
+			current_tower = null
+
+	if event is InputEventMouseMotion and tower_menu:
+		if current_tower and current_tower.type == Data.Tower.MORTAR:
+			current_tower.crosshair_pos_update(world_pos)
+
+	if event is InputEventMouseMotion and place_tower:
+		var preview = _get_tower_preview()
+		if preview:
+			preview.position = world_pos
+
+	if Input.is_action_just_pressed("exit"):
+		cancel_selection()
+
+
+func start_tower_placement(tower_type: Data.Tower) -> void:
+	place_tower = true
+	selected_tower = tower_type
+
+	var preview = _get_tower_preview()
+	if preview:
+		preview.texture = load(Data.TOWER_DATA[tower_type]["thumbnail"])
+
+
+func cancel_selection() -> void:
+	place_tower = false
+	tower_menu = false
+	current_tower = null
+
+	for tower in get_tree().get_nodes_in_group("Towers"):
+		tower.hide_ui()
+
+
+func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage: int) -> void:
+	if bullet_enum == Data.Bullet.SINGLE:
+		var bullet = bullet_scene.instantiate()
+		bullet.setup(pos, angle, bullet_enum, damage)
+		_get_bullet_parent().add_child(bullet)
+
+	if bullet_enum == Data.Bullet.FIRE:
+		for enemy in get_tree().get_nodes_in_group("Enemies"):
+			if pos.distance_to(enemy.global_position) < 100:
+				enemy.hit(damage)
+
+	if bullet_enum == Data.Bullet.MORTAR_EXPLOSION:
+		var explosion = explosion_scene.instantiate()
+		explosion.setup(pos, damage)
+		_get_bullet_parent().add_child(explosion)
+
+
+func tower_selection(tower: Tower) -> void:
+	if current_tower and current_tower != tower:
+		current_tower.hide_ui()
+
+	current_tower = tower
+	tower_menu = true
+
+	if tower.type == Data.Tower.MORTAR:
+		tower.show_crosshair()
+
+	tower.show_range()
+
+
+func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
+	var layer = level_manager.get_build_layer()
+	if layer == null:
+		return
+
+	var tile_data = layer.get_cell_tile_data(cell_pos) as TileData
+	if cell_pos in used_cells:
+		return
+	if tile_data == null or not tile_data.get_custom_data("Usable"):
+		return
+
+	used_cells.append(cell_pos)
+
+	var tower = load(tower_scenes[selected_tower]).instantiate()
+	tower.position = world_pos
+	tower.setup(selected_tower)
+	tower.cell_pos = cell_pos
+	tower.connect("shoot", create_bullet)
+	tower.connect("select", tower_selection)
+	tower.connect("removed", _on_tower_removed)
+	_get_tower_parent().add_child(tower)
+
+	place_tower = false
+	Data.money -= Data.TOWER_DATA[selected_tower]["cost"]
+
+
+func _on_tower_removed(cell_pos: Vector2i) -> void:
+	if cell_pos in used_cells:
+		used_cells.erase(cell_pos)
+
+	if current_tower and current_tower.cell_pos == cell_pos:
+		current_tower = null
+
+
+func _get_tower_parent() -> Node:
+	return level_root.get_node("Towers")
+
+
+func _get_bullet_parent() -> Node:
+	return level_root.get_node("Bullets")
+
+
+func _get_tower_preview() -> Sprite2D:
+	var preview = level_root.get_node_or_null("BG/TowerPreview")
+	return preview as Sprite2D

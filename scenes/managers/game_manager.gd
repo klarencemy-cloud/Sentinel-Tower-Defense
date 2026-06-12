@@ -1,0 +1,38 @@
+extends Node2D
+
+@onready var level_manager = $LevelManager
+@onready var tower_manager = $TowerManager
+@onready var wave_manager = $WaveManager
+
+
+func _ready() -> void:
+	randomize()
+	RenderingServer.set_default_clear_color("242a2f")
+
+	level_manager.setup(self)
+	tower_manager.setup(self, level_manager)
+	wave_manager.setup(self, level_manager)
+
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.spawn_enemy.connect(_on_ui_spawn_sandbox_enemy)
+
+
+func _process(_delta: float) -> void:
+	wave_manager.update_wave_state()
+
+
+func _input(event: InputEvent) -> void:
+	tower_manager.handle_input(event)
+
+
+func _on_ui_place_tower(tower_type: Data.Tower) -> void:
+	tower_manager.start_tower_placement(tower_type)
+
+
+func _on_ui_start_wave() -> void:
+	wave_manager.start_wave()
+
+
+func _on_ui_spawn_sandbox_enemy(enemy_enum: Data.Enemy) -> void:
+	wave_manager.spawn_sandbox_enemy(enemy_enum)
