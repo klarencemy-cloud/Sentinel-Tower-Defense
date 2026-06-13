@@ -7,10 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cggt1tpsrlcv3" path="res://scenes/levels/level2.scn" id="6_7pb6i"]
 [ext_resource type="PackedScene" uid="uid://4e4dveqj5cpq" path="res://scenes/ui/ui.tscn" id="6_d4w6o"]
 [ext_resource type="AudioStream" uid="uid://b7xwf0s7rktfd" path="res://audio/sound_placeholder.mp3" id="6_mbbpy"]
+[ext_resource type="PackedScene" uid="uid://64w006qvfdwh" path="res://scenes/levels/level3.scn" id="7_8iyoh"]
 [ext_resource type="PackedScene" uid="uid://c0fa8wi2q1sc7" path="res://scenes/levels/level1.scn" id="8_ouxo3"]
 [ext_resource type="Script" uid="uid://1biiqhqmsago" path="res://scenes/managers/level_manager.gd" id="9_1phd1"]
 [ext_resource type="Script" uid="uid://dpqclxypode5g" path="res://scenes/managers/tower_manager.gd" id="10_g7lvq"]
 [ext_resource type="Script" uid="uid://dy1mk1bohkjnf" path="res://scenes/managers/wave_manager.gd" id="11_y8dwe"]
+[ext_resource type="Texture2D" uid="uid://vwau2jy3q805" path="res://graphics/map/dust.png" id="12_xfk5q"]
+[ext_resource type="Script" uid="uid://djmtfsuaukiga" path="res://scenes/levels/lightning_effects.gd" id="13_qogh7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xb4v1"]
 texture = ExtResource("2_b2cq8")
@@ -491,6 +494,98 @@ _data = {
 }
 point_count = 10
 
+[sub_resource type="Gradient" id="Gradient_qogh7"]
+offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bva0v"]
+gradient = SubResource("Gradient_qogh7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8iyoh"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1920, 1080, 1)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 49.99998
+gravity = Vector3(0, 60, 0)
+color_ramp = SubResource("GradientTexture1D_bva0v")
+
+[sub_resource type="Gradient" id="Gradient_o72i1"]
+offsets = PackedFloat32Array(0, 0.47777778, 1)
+colors = PackedColorArray(0.32941177, 0.61960787, 0.827451, 0, 0.4862745, 0.7529412, 0.7411765, 0.30588236, 0, 0.8, 0.74509805, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mq31s"]
+gradient = SubResource("Gradient_o72i1")
+width = 1
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_5mi6g"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_druw8"]
+gradient = SubResource("Gradient_5mi6g")
+
+[sub_resource type="Gradient" id="Gradient_b8j7q"]
+offsets = PackedFloat32Array(0.092920355, 0.5176991, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4molt"]
+gradient = SubResource("Gradient_b8j7q")
+
+[sub_resource type="Curve" id="Curve_qhnmj"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.119047634, 25.210114), 0.0, 0.0, 0, 0, Vector2(0.2777778, 3.3613586), 200.21407, 200.21407, 0, 0, Vector2(0.4325397, 29.579865), 0.0, 0.0, 0, 0, Vector2(0.5634921, 3.3613586), 0.0, 0.0, 0, 0, Vector2(0.71428573, 33.949615), 0.0, 0.0, 0, 0, Vector2(0.8373016, -9.747864), 0.0, 0.0, 0, 0, Vector2(1, 25.210114), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="CurveTexture" id="CurveTexture_48xyk"]
+curve = SubResource("Curve_qhnmj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jyre1"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1920, 1080, 1)
+gravity = Vector3(100, 20, 0)
+tangential_accel_min = -1.9700022
+tangential_accel_max = 5.9999976
+tangential_accel_curve = SubResource("CurveTexture_48xyk")
+damping_max = 100.00001
+scale_min = 1.5
+scale_max = 1.8
+color_ramp = SubResource("GradientTexture1D_4molt")
+color_initial_ramp = SubResource("GradientTexture1D_druw8")
+
+[sub_resource type="Curve" id="Curve_lp2ca"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_4ab0e"]
+_limits = [0.0, 30.0, 0.0, 1.0]
+_data = [Vector2(0, 13.285715), 0.0, 0.0, 0, 0, Vector2(0.22222222, 30), 0.0, 0.0, 0, 0, Vector2(1, 30), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_p62il"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_2honx"]
+curve_x = SubResource("Curve_lp2ca")
+curve_y = SubResource("Curve_4ab0e")
+curve_z = SubResource("Curve_p62il")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c3o0d"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -600, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1920, 1080, 1)
+gravity = Vector3(0, 1000, 0)
+scale_over_velocity_curve = SubResource("CurveXYZTexture_2honx")
+
 [node name="Level" type="Node2D" unique_id=334341019]
 script = ExtResource("1_377w7")
 
@@ -504,10 +599,13 @@ script = ExtResource("10_g7lvq")
 script = ExtResource("11_y8dwe")
 
 [node name="Level1" parent="." unique_id=1876019163 instance=ExtResource("8_ouxo3")]
+visible = false
 z_index = -1
 
 [node name="Level2" parent="." unique_id=1059961310 instance=ExtResource("6_7pb6i")]
 visible = false
+
+[node name="Level3" parent="." unique_id=983153605 instance=ExtResource("7_8iyoh")]
 
 [node name="BG" type="Node2D" parent="." unique_id=834286070]
 
@@ -539,6 +637,48 @@ stream = ExtResource("6_mbbpy")
 volume_db = -80.0
 autoplay = true
 parameters/looping = true
+
+[node name="WeatherEffects" type="Node2D" parent="." unique_id=2129595724]
+
+[node name="DustParticles" type="GPUParticles2D" parent="WeatherEffects" unique_id=1637259662]
+light_mask = 7
+z_index = 1
+position = Vector2(1926, 1001)
+amount = 100
+texture = ExtResource("12_xfk5q")
+visibility_rect = Rect2(-1920, -1080, 3840, 2160)
+process_material = SubResource("ParticleProcessMaterial_8iyoh")
+
+[node name="WindParticles" type="GPUParticles2D" parent="WeatherEffects" unique_id=608632575]
+z_index = 2
+position = Vector2(1920, 1085)
+amount = 500
+texture = SubResource("GradientTexture2D_mq31s")
+lifetime = 5.0
+preprocess = 2.0
+randomness = 1.0
+visibility_rect = Rect2(-1920, -1080, 3840, 2180)
+trail_enabled = true
+trail_lifetime = 0.6
+process_material = SubResource("ParticleProcessMaterial_jyre1")
+
+[node name="RainParticles" type="GPUParticles2D" parent="WeatherEffects" unique_id=1895260683]
+visible = false
+light_mask = 7
+z_index = 1
+position = Vector2(1922, 1063)
+amount = 1000
+visibility_rect = Rect2(-1920, -1080, 3840, 2160)
+process_material = SubResource("ParticleProcessMaterial_c3o0d")
+
+[node name="LightningEffects" type="DirectionalLight2D" parent="WeatherEffects" unique_id=596992054]
+visible = false
+energy = 0.0
+script = ExtResource("13_qogh7")
+min_energy = 0.1
+max_energy = 0.2
+min_interval = 0.5
+max_interval = 4.0
 
 [connection signal="place_tower" from="UI" to="." method="_on_ui_place_tower"]
 [connection signal="start_wave" from="UI" to="." method="_on_ui_start_wave"]

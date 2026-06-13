@@ -68,3 +68,27 @@ func mouse_to_map_position() -> Vector2i:
 		return Vector2i.ZERO
 
 	return layer.local_to_map(level_root.get_local_mouse_position())
+
+
+@onready var light_node = $"../WeatherEffects/LightningEffects"
+
+@onready var min_energy: float = light_node.min_energy
+@onready var max_energy: float = light_node.max_energy
+@onready var min_interval: float = light_node.min_interval
+@onready var max_interval: float = light_node.max_interval
+
+
+func _ready() -> void:
+	randomize()
+	lightning()
+
+func lightning() -> void:
+	while true:
+		var light: float = randf_range(min_energy, max_energy)
+		var delay: float = randf_range(min_interval, max_interval)
+		await get_tree().create_timer(delay).timeout
+
+		light_node.energy = light
+
+		await get_tree().create_timer(randf_range(.1, .3)).timeout
+		light_node.energy = 0.0

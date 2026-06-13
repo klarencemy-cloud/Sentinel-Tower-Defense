@@ -9,9 +9,9 @@ func _ready() -> void:
 	randomize()
 	RenderingServer.set_default_clear_color("242a2f")
 
-	level_manager.setup(self)
-	tower_manager.setup(self, level_manager)
-	wave_manager.setup(self, level_manager)
+	level_manager.setup(self )
+	tower_manager.setup(self , level_manager)
+	wave_manager.setup(self , level_manager)
 
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
