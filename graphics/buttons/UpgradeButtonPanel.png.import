@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s8xhvy48k726"
-path="res://.godot/imported/Virus.png-ba5fa8571474308ea9139e5fe3c933b9.ctex"
+uid="uid://dwu3dv78jklkp"
+path="res://.godot/imported/UpgradeButtonPanel.png-461ca9d73cbc9d4d7d6517e2755fb3a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/bosses/Virus.png"
-dest_files=["res://.godot/imported/Virus.png-ba5fa8571474308ea9139e5fe3c933b9.ctex"]
+source_file="res://graphics/buttons/UpgradeButtonPanel.png"
+dest_files=["res://.godot/imported/UpgradeButtonPanel.png-461ca9d73cbc9d4d7d6517e2755fb3a3.ctex"]
 
 [params]
 

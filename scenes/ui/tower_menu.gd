@@ -9,9 +9,6 @@ func _ready() -> void:
 	toggle_active(Data.money)
 	$UpgradeButton.text = 'Upgrade (' + str(cost) + ')'
 
-func _on_upgrade_button_pressed() -> void:
-	upgrade_press.emit()
-
 
 func reveal(upgraded: bool):
 	show()
@@ -31,4 +28,3 @@ func _input(event: InputEvent) -> void:
 		var tap_pos = get_global_mouse_position()
 		if not $UpgradeButton.get_global_rect().has_point(tap_pos) and not $DeleteButton.get_global_rect().has_point(tap_pos):
 			get_parent().hide_ui()
-

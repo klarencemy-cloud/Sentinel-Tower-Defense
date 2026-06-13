@@ -17,7 +17,6 @@ var TOWER_DATA = {
 	Tower.BASIC: {
 		'name': 'Basic',
 		'cost': 20,
-		'upgrade_cost': 30,
 		'damage' : 2,
 		'reload_time': 1.0,
 		'range': 100,
@@ -34,7 +33,6 @@ var TOWER_DATA = {
 	Tower.BLAST: {
 		'name': 'Blaster',
 		'cost': 30,
-		'upgrade_cost': 50,
 		'damage' : 3,
 		'reload_time': 1.5,
 		'range': 50,
@@ -44,14 +42,13 @@ var TOWER_DATA = {
 		'upgrade1' : "Damage",
 		'upgrade2' : "Attack Speed",
 		'upgrade3' : "Damage",
-		'upgrade4' : "Crit Rate",
-		'upgrade5' : "Crit Damage",
+		'upgrade4' : "Attack Speed",
+		'upgrade5' : "Attack Speed",
 		'upgrade6' : "Range"},
 		
 	Tower.MORTAR: {
 		'name': 'Mortar',
 		'cost': 30,
-		'upgrade_cost': 60,
 		'reload_time': 2.0,
 		'damage' : 5,
 		'range': 200,
@@ -63,18 +60,9 @@ var TOWER_DATA = {
 		'upgrade3' : "Damage",
 		'upgrade4' : "Crit Rate",
 		'upgrade5' : "Crit Damage",
-		'upgrade6' : "Range"}
+		'upgrade6' : "Attack Speed"}
 		}
-var UPGRADE_DATA = {
-	Tower.BASIC: {
-		'reload_time': 0.6,
-		'bullet': Bullet.SINGLE},
-	Tower.BLAST: {
-		'reload_time': 1.2,
-		'bullet': Bullet.FIRE},
-	Tower.MORTAR: {
-		'reload_time': 1.5,
-		'bullet': Bullet.MORTAR_EXPLOSION}}
+		
 var ENEMY_DATA = {
 	Enemy.DEFAULT: {'health': 3, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 20},
 	Enemy.FAST: {'health': 3, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 50},
