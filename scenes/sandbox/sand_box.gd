@@ -11,8 +11,6 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	Data.is_sandbox = false
-	Data.money = 200
-	Data.health = 100
 
 	$Level/UI/Control/TextureRect/SandboxMenuContainer/MaxedLVL.button_pressed = false
 	$Level/UI/Control/TextureRect/SandboxMenuContainer/UnliMoney.button_pressed = false
