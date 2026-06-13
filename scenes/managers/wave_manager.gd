@@ -45,9 +45,6 @@ func start_wave() -> void:
 	Data.current_wave += 1
 
 
-
-	# level_manager._change_current_map()
-
 	if Data.current_wave % 5 == 0:
 		Data.checkpoint_wave = Data.current_wave
 
@@ -106,7 +103,3 @@ func _choose_random_enemy_type(difficulty: int) -> Data.Enemy:
 
 func _get_path() -> Path2D:
 	return level_root.get_node("Path2D")
-
-
-func _call_level_cleared() -> void:
-	level_completed.emit()
