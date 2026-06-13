@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bqfivxdrlociq"]
+
+[ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="1_a28le"]
+[ext_resource type="Script" uid="uid://cxjx8pbo8137d" path="res://scenes/victoryscreen/victory_screen.gd" id="1_t1hsp"]
+
+[node name="VictoryScreen" type="Control" unique_id=705516078]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t1hsp")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1122296378]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_a28le")
+
+[node name="Label" type="Label" parent="." unique_id=1724441907]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.33
+anchor_right = 0.5
+anchor_bottom = 0.33
+offset_left = -20.0
+offset_top = -9.5
+offset_right = 20.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 88
+text = "Congrats on Passing Level 1"
+
+[node name="NextLevel" type="Button" parent="." unique_id=1493945778]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -348.0
+offset_top = -138.0
+offset_right = -68.0
+offset_bottom = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 61
+text = "Next Level"
+
+[node name="MainMenu" type="Button" parent="." unique_id=1323261123]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 83.0
+offset_top = -138.0
+offset_right = 391.0
+offset_bottom = -59.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 61
+text = "Main Menu"
+
+[connection signal="pressed" from="NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]

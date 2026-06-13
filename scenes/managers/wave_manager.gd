@@ -1,5 +1,8 @@
 extends Node
 
+signal level_completed
+signal next_map
+
 var enemy_scene = preload("res://scenes/enemies/enemy.tscn")
 
 var level_root: Node2D
@@ -14,12 +17,18 @@ func setup(root: Node2D, map_manager: Node) -> void:
 
 
 func update_wave_state() -> void:
+	var ui = get_tree().get_first_node_in_group("UI")
+
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	if wave_active and not spawning_wave and enemies.size() == 0:
 		wave_active = false
-
+		if not wave_active and Data.current_wave % 10 == 0:
+			if ui:
+				ui.disable_auto()
+			level_completed.emit()
+			next_map.emit()
+	
 	if not wave_active and not spawning_wave and enemies.size() == 0:
-		var ui = get_tree().get_first_node_in_group("UI")
 		if ui and ui.is_auto_enabled():
 			start_wave()
 
@@ -35,7 +44,6 @@ func start_wave() -> void:
 
 	Data.current_wave += 1
 
-	# level_manager._change_current_map()
 
 	if Data.current_wave % 5 == 0:
 		Data.checkpoint_wave = Data.current_wave
