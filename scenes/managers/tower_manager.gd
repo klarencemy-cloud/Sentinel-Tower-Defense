@@ -114,6 +114,12 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if tile_data == null or not tile_data.get_custom_data("Usable"):
 		return
 
+	var cost = Data.TOWER_DATA[selected_tower]["cost"]
+
+	if not Data.is_unli_money and Data.money < cost:
+		place_tower = false
+		return
+
 	used_cells.append(cell_pos)
 
 	var tower = load(tower_scenes[selected_tower]).instantiate()
@@ -126,7 +132,8 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	_get_tower_parent().add_child(tower)
 
 	place_tower = false
-	Data.money -= Data.TOWER_DATA[selected_tower]["cost"]
+	if not Data.is_unli_money:
+		Data.money -= cost
 
 
 func _on_tower_removed(cell_pos: Vector2i) -> void:

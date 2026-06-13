@@ -7,12 +7,18 @@ signal press(tower_enum: Data.Tower)
 func setup(new_id: Data.Tower):
 	id = new_id
 	$TextureRect/Label.text = Data.TOWER_DATA[id]['name']
-	$TextureRect/Label2.text = str(Data.TOWER_DATA[id]['cost'])
+	cost = Data.TOWER_DATA[id]['cost']
+	$TextureRect/Label2.text = str(cost)
 	$TextureRect/TextureRect.texture = load(Data.TOWER_DATA[id]['thumbnail'])
 
 
 func _ready() -> void:
-	cost = Data.TOWER_DATA[Data.Tower.BASIC]['cost']
+	if not is_in_group("TowerCard"):
+		add_to_group("TowerCard")
+
+	# ensure cost is set even if setup wasn't called before ready
+	cost = Data.TOWER_DATA[id]['cost']
+	$TextureRect/Label2.text = str(cost)
 	toggle_active(Data.money)
 
 

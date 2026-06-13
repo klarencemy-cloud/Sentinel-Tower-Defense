@@ -25,10 +25,11 @@ func set_selected_tower(tower_enum: Data.Tower) -> void:
 
 func update_stat_label() -> void:
 	var damage = Data.TOWER_DATA[selected_tower]['damage']
-	$StatPanel/StatsContainer/DamagePic/DamageText.text = str(damage)
+	$StatPanel/VBoxContainer/DamageContainer/DamagePic/DamageText.text = str(damage)
 	var reload_time = Data.TOWER_DATA[selected_tower]['reload_time']
-	$StatPanel/StatsContainer/TextureRect/SpeedText.text = str(reload_time)
-	
+	$StatPanel/VBoxContainer/SpeedContainer/SpeedPic/SpeedText.text = str(reload_time)
+	var range = Data.TOWER_DATA[selected_tower]['range']
+	$StatPanel/VBoxContainer/RangeContainer/RangePic/RangeText.text = str(range)
 func _on_towers_pressed() -> void:
 	$TowerUpgradeUi.visible = true;
 	$SentinelUpgradeUi.visible = false;
@@ -59,3 +60,17 @@ func _on_back_btn_pressed() -> void:
 	else:
 		get_tree().paused = false
 		visible = false
+
+
+func _on_stat_panel_left_pressed() -> void:
+	$StatPanel/StatPanelLeft/StatPanelLeftLabel.add_theme_color_override("font_color", Color("#060606"))
+	$StatPanel/StatPanelLeft.texture_normal = load("res://graphics/buttons/StatPanelLeftClicked.png")
+	$StatPanel/StatPanelRight/StatPanelRightLabel.add_theme_color_override("font_color", Color("#FFFFFF"))
+	$StatPanel/StatPanelRight.texture_normal = load("res://graphics/buttons/StatPanelRightUnclicked.png")
+
+
+func _on_stat_panel_right_pressed() -> void:
+	$StatPanel/StatPanelLeft/StatPanelLeftLabel.add_theme_color_override("font_color", Color("#FFFFFF"))
+	$StatPanel/StatPanelLeft.texture_normal = load("res://graphics/buttons/StatPanelLeftUnclicked.png")
+	$StatPanel/StatPanelRight/StatPanelRightLabel.add_theme_color_override("font_color", Color("#060606"))
+	$StatPanel/StatPanelRight.texture_normal = load("res://graphics/buttons/StatPanelRightClicked.png")

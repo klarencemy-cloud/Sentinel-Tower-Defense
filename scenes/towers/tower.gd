@@ -86,7 +86,13 @@ func _on_click_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: 
 
 
 func _on_tower_menu_upgrade_press() -> void:
-	Data.money -= Data.TOWER_DATA[type]['upgrade_cost']
+	var u_cost = Data.TOWER_DATA[type]['upgrade_cost']
+	if not Data.is_unli_money and Data.money < u_cost:
+		return
+
+	if not Data.is_unli_money:
+		Data.money -= u_cost
+
 	tower_upgrade()
 	$TowerMenu.hide()
 	upgraded = true
