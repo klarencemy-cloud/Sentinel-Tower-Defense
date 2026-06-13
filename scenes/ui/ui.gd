@@ -65,6 +65,9 @@ func is_auto_enabled() -> bool:
 	var auto_button = $Control/AutoLabel/AutoButton
 	return auto_button.is_pressed()
 
+func disable_auto():
+	var auto_button = $Control/AutoLabel/AutoButton
+	auto_button.button_pressed = false
 
 func _on_wave_button_pressed() -> void:
 	start_wave.emit()

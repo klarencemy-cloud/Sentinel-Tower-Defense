@@ -1,24 +1,36 @@
 extends Node
 
-@export var default_map_path := "res://scenes/levels/level1.scn"
-@export var current_map_name := "Level1"
+
+#@export var default_map_path := "res://scenes/levels/level1.scn"
+#@export var current_map_name := "Level1"
+#@export var build_layer_path := NodePath("Pavement")
+
+@export var default_map_path: String
+@export var current_map_name: String
 @export var build_layer_path := NodePath("Pavement")
+
+@onready var victory_overlay = $UI/VictoryOverlay
 
 var level_root: Node2D
 var current_map: Node
 
-#func _change_current_map():
 
-	#match Data.current_wave:
-	#	11:
-	#		default_map_path = "res://scenes/levels/level2.scn"
-	#	21:
-	#		default_map_path = "res://scenes/levels/level3.scn"
-	#	31:
-	#		default_map_path = "res://scenes/levels/level4.scn"
-	#	41:
-	#		default_map_path = "res://scenes/levels/level5.scn"
+var levels := [
+	"res://scenes/levels/level1.scn",
+	"res://scenes/levels/level2.scn",
+	"res://scenes/levels/level3.scn"
+]
 
+func _ready() -> void:
+	randomize()
+	lightning()
+	take_map_level()
+
+
+func take_map_level() -> void:
+	print("this is " + str(Data.current_level_index))
+	default_map_path = levels[Data.current_level_index]
+	current_map_name = ("Level" + str(Data.current_level_index + 1))
 
 func setup(root: Node2D) -> void:
 	level_root = root
@@ -78,10 +90,6 @@ func mouse_to_map_position() -> Vector2i:
 @onready var max_interval: float = light_node.max_interval
 
 
-func _ready() -> void:
-	randomize()
-	lightning()
-
 func lightning() -> void:
 	while true:
 		var light: float = randf_range(min_energy, max_energy)
@@ -92,3 +100,5 @@ func lightning() -> void:
 
 		await get_tree().create_timer(randf_range(.1, .3)).timeout
 		light_node.energy = 0.0
+
+

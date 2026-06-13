@@ -9,6 +9,8 @@ var is_maxed_lvl: bool = false
 var before_total_money: int
 var before_total_health: int
 
+var current_level_index := 0
+
 enum Tower {BASIC, BLAST, MORTAR}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
 enum Enemy {DEFAULT, FAST, STRONG, BIG}
@@ -103,4 +105,4 @@ var health := 100:
 			ui.get_node("GameOver").visible = true
 			get_tree().paused = true
 var checkpoint_wave: int = 0
-var current_wave: int
+var current_wave: int = 0

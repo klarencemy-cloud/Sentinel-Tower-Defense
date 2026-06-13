@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://b4xw080momfhv"]
+
+[ext_resource type="Script" uid="uid://iawvvwn2k7v5" path="res://scenes/ui/victory_overlay.gd" id="1_a7xdo"]
+
+[node name="VictoryOverlay" type="CanvasLayer" unique_id=1881744022]
+script = ExtResource("1_a7xdo")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1604714828]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.011764706, 0.011764706, 0.011764706, 0.5411765)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=976583644]
+show_behind_parent = true
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Victory" type="Label" parent="CenterContainer" unique_id=502704691]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 181
+text = "Victory"
+
+[node name="Click" type="Label" parent="." unique_id=905658]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -432.0
+offset_top = -75.0
+offset_right = -76.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 21
+text = "Click anywhere in the screen to continue"
+
+[node name="ContinueButton" type="Button" parent="." unique_id=1746919885]
+visible = false
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
