@@ -6,11 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://ml3kegt85f83" path="res://graphics/towers/placeholdertowers/tower1.png" id="5_gukx4"]
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="5_gvuwm"]
 [ext_resource type="Texture2D" uid="uid://dxmkoip2h3t7j" path="res://graphics/sentinels/placeholdersentinels/sentinel.png" id="6_x71o2"]
-[ext_resource type="Texture2D" uid="uid://cs2ga3fniyauo" path="res://graphics/ui/StatsPanel.png" id="8_x71o2"]
+[ext_resource type="Texture2D" uid="uid://cbl5d2bdrdjmn" path="res://graphics/container/stats.png" id="8_x71o2"]
 [ext_resource type="Texture2D" uid="uid://bglyuypj0sahq" path="res://graphics/ui/sword.png" id="9_cfr7g"]
 [ext_resource type="Texture2D" uid="uid://b82cq14jn2r1" path="res://graphics/buttons/UpgradeBtn.png" id="9_x71o2"]
-[ext_resource type="Texture2D" uid="uid://c006fe58nsewn" path="res://graphics/buttons/StatPanelLeftClicked.png" id="10_d6eds"]
-[ext_resource type="Texture2D" uid="uid://dxbja1e3w25w7" path="res://graphics/buttons/StatPanelRightUnclicked.png" id="11_mj3yr"]
 
 [node name="Upgrade" type="CanvasLayer" unique_id=1877158934]
 process_mode = 3
@@ -18,21 +16,10 @@ layer = 4
 script = ExtResource("1_6bmsu")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1917108759]
-offset_right = 1920.0
+offset_left = -2.0
+offset_right = 1918.0
 offset_bottom = 1080.0
 texture = ExtResource("2_gukx4")
-
-[node name="ButtonManager" type="Control" parent="." unique_id=1010848041]
-top_level = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="VScrollBar" type="VScrollBar" parent="." unique_id=1095791943]
 offset_left = 127.0
@@ -83,6 +70,7 @@ offset_left = 14.0
 offset_top = 205.0
 offset_right = 591.0
 offset_bottom = 717.0
+grow_horizontal = 2
 
 [node name="BigTowerName" type="Label" parent="." unique_id=1988465839]
 anchors_preset = -1
@@ -160,27 +148,28 @@ theme_override_font_sizes/font_size = 34
 text = "Back"
 
 [node name="StatPanel" type="TextureRect" parent="." unique_id=1164040288]
-offset_left = 134.0
-offset_top = 222.0
-offset_right = 605.0
-offset_bottom = 694.0
+offset_left = 230.0
+offset_top = 241.0
+offset_right = 737.0
+offset_bottom = 748.7263
 texture = ExtResource("8_x71o2")
+expand_mode = 1
 
 [node name="CurrentStat" type="Label" parent="StatPanel" unique_id=1095132444]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 49.0
-offset_right = 423.0
-offset_bottom = 124.0
+offset_left = 42.0
+offset_top = 53.0
+offset_right = 443.0
+offset_bottom = 128.0
 theme_override_font_sizes/font_size = 64
 text = "Current Status"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StatPanel" unique_id=1608570701]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 200.0
-offset_right = 431.0
-offset_bottom = 282.0
+offset_left = 45.0
+offset_top = 232.0
+offset_right = 459.0
+offset_bottom = 486.0
 
 [node name="DamageContainer" type="HBoxContainer" parent="StatPanel/VBoxContainer" unique_id=2142359704]
 layout_mode = 2
@@ -268,44 +257,45 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.18200001
 anchor_bottom = 0.291
-offset_left = 2.0
-offset_top = 138.0
-offset_right = 134.27798
-offset_bottom = 48.647995
-texture_normal = ExtResource("10_d6eds")
+offset_left = 3.0
+offset_top = 169.0
+offset_right = 183.726
+offset_bottom = 65.25163
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="StatPanelLeftLabel" type="Label" parent="StatPanel/StatPanelLeft" unique_id=1275386042]
 layout_mode = 0
-offset_left = 73.0
+offset_left = 61.0
 offset_top = 7.0
-offset_right = 145.0
-offset_bottom = 45.0
+offset_right = 133.0
+offset_bottom = 40.0
 theme_override_font_sizes/font_size = 28
 text = "Stats"
+horizontal_alignment = 1
 
 [node name="StatPanelRight" type="TextureButton" parent="StatPanel" unique_id=906872219]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.18200001
 anchor_bottom = 0.291
-offset_left = 189.0
-offset_top = 138.0
-offset_right = 380.27798
-offset_bottom = 46.647995
-texture_normal = ExtResource("11_mj3yr")
+offset_left = 276.0
+offset_top = 169.0
+offset_right = 410.726
+offset_bottom = 65.647995
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="StatPanelRightLabel" type="Label" parent="StatPanel/StatPanelRight" unique_id=2124134457]
 layout_mode = 0
-offset_left = 114.0
+offset_left = 38.0
 offset_top = 8.0
-offset_right = 207.0
-offset_bottom = 46.0
+offset_right = 131.0
+offset_bottom = 41.0
 theme_override_font_sizes/font_size = 28
 text = "Ability"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]

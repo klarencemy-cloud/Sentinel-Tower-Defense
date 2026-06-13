@@ -3,7 +3,6 @@ var tower_card_scene = preload("res://scenes/ui/tower_card_for_upgrades.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
 	for tower_enum in Data.Tower.values():
 		var tower_card = tower_card_scene.instantiate()
 		tower_card.setup(tower_enum)
@@ -39,7 +38,6 @@ func _on_sentinel_pressed() -> void:
 	$SentinelUpgradeUi.visible = true;
 	
 	
-
 func _on_upgrade_button_pressed() -> void:
 	$StatPanel/CurrentStat.text = $BigTowerName.text
 	$VScrollBar.visible = false
@@ -64,10 +62,8 @@ func _on_back_btn_pressed() -> void:
 
 
 func _on_stat_panel_left_pressed() -> void:
-	$StatPanel/StatPanelLeft.texture_normal = load("res://graphics/buttons/StatPanelLeftClicked.png")
-	$StatPanel/StatPanelRight.texture_normal = load("res://graphics/buttons/StatPanelRightUnclicked.png")
+	$StatPanel.texture = load("res://graphics/container/stats.png")
 
 
 func _on_stat_panel_right_pressed() -> void:
-	$StatPanel/StatPanelLeft.texture_normal = load("res://graphics/buttons/StatPanelLeftUnclicked.png")
-	$StatPanel/StatPanelRight.texture_normal = load("res://graphics/buttons/StatPanelRightClicked.png")
+	$StatPanel.texture = load("res://graphics/container/ability.png")
