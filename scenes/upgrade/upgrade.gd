@@ -41,13 +41,14 @@ func _on_sentinel_pressed() -> void:
 	
 
 func _on_upgrade_button_pressed() -> void:
-
+	$StatPanel/CurrentStat.text = $BigTowerName.text
 	$VScrollBar.visible = false
 	%SentinelsContainer.visible = false
 	%BigPic.position.x -= 297
-	$BigTowerName.position.x -= 297
+	$BigTowerName.visible = false
 	$UpgradeButton.visible = false
 	$StatPanel.visible = true
+
 
 func _on_back_btn_pressed() -> void:
 	if %SentinelsContainer.visible == false:
@@ -63,14 +64,10 @@ func _on_back_btn_pressed() -> void:
 
 
 func _on_stat_panel_left_pressed() -> void:
-	$StatPanel/StatPanelLeft/StatPanelLeftLabel.add_theme_color_override("font_color", Color("#060606"))
 	$StatPanel/StatPanelLeft.texture_normal = load("res://graphics/buttons/StatPanelLeftClicked.png")
-	$StatPanel/StatPanelRight/StatPanelRightLabel.add_theme_color_override("font_color", Color("#FFFFFF"))
 	$StatPanel/StatPanelRight.texture_normal = load("res://graphics/buttons/StatPanelRightUnclicked.png")
 
 
 func _on_stat_panel_right_pressed() -> void:
-	$StatPanel/StatPanelLeft/StatPanelLeftLabel.add_theme_color_override("font_color", Color("#FFFFFF"))
 	$StatPanel/StatPanelLeft.texture_normal = load("res://graphics/buttons/StatPanelLeftUnclicked.png")
-	$StatPanel/StatPanelRight/StatPanelRightLabel.add_theme_color_override("font_color", Color("#060606"))
 	$StatPanel/StatPanelRight.texture_normal = load("res://graphics/buttons/StatPanelRightClicked.png")
