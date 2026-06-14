@@ -7,8 +7,8 @@ var enemy_scene = preload("res://scenes/enemies/enemy.tscn")
 
 var level_root: Node2D
 var level_manager: Node
-var wave_active := false
-var spawning_wave := false
+var wave_active: bool = false
+var spawning_wave: bool = false
 
 
 func setup(root: Node2D, map_manager: Node) -> void:

@@ -9,7 +9,7 @@ var is_maxed_lvl: bool = false
 var before_total_money: int
 var before_total_health: int
 
-var current_level_index := 0
+var current_level_index: int = 0
 
 enum Tower {BASIC, BLAST, MORTAR}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}

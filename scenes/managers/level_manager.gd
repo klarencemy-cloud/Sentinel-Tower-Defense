@@ -1,10 +1,5 @@
 extends Node
 
-
-#@export var default_map_path := "res://scenes/levels/level1.scn"
-#@export var current_map_name := "Level1"
-#@export var build_layer_path := NodePath("Pavement")
-
 @export var default_map_path: String
 @export var current_map_name: String
 @export var build_layer_path: NodePath = ("Pavement")

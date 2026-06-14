@@ -2,16 +2,16 @@ extends Camera2D
 
 @export var acceleration: float = 1
 @export var target: Node2D
-@export var start_zoom := Vector2(1.0, 1.0)
-@export var min_zoom := Vector2(1.0, 1.0)
-@export var max_zoom := Vector2(2.0, 2.0)
+@export var start_zoom : Vector2 = Vector2(1.0, 1.0)
+@export var min_zoom: Vector2 = Vector2(1.0, 1.0)
+@export var max_zoom: Vector2 = Vector2(2.0, 2.0)
 
 const WHEEL_ZOOM_STEP = 0.15
 const PINCH_ZOOM_SPEED = 0.004
 
-var drag := false
-var touch_points := {}
-var last_pinch_distance := 0.0
+var drag: bool = false
+var touch_points: Dictionary = {}
+var last_pinch_distance: float = 0.0
 
 func _ready() -> void:
 	zoom = start_zoom.clamp(min_zoom, max_zoom)
@@ -61,7 +61,7 @@ func _handle_screen_drag(event: InputEventScreenDrag) -> void:
 	touch_points[event.index] = event.position
 
 	if touch_points.size() == 2:
-		var pinch_distance := _get_pinch_distance()
+		var pinch_distance: float = _get_pinch_distance()
 		if last_pinch_distance > 0.0:
 			_apply_zoom((pinch_distance - last_pinch_distance) * PINCH_ZOOM_SPEED)
 			get_viewport().set_input_as_handled()
@@ -71,5 +71,5 @@ func _get_pinch_distance() -> float:
 	if touch_points.size() != 2:
 		return 0.0
 
-	var points := touch_points.values()
+	var points: Array = touch_points.values()
 	return points[0].distance_to(points[1])
