@@ -154,6 +154,7 @@ theme_override_font_sizes/font_size = 34
 text = "Back"
 
 [node name="StatPanel" type="TextureRect" parent="." unique_id=1164040288]
+visible = false
 offset_left = 199.0
 offset_top = 241.0
 offset_right = 706.0
