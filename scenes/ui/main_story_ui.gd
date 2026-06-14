@@ -2,23 +2,47 @@ extends Node
 
 @onready var wave: Label = $Text/Wave
 @onready var difficulty: Label = $Text/Difficulty
+@onready var boss: TextureRect = $Image/Boss
+
+var wave_num: int = Data.current_wave
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	wave.text = ("Wave " + str(Data.current_wave))
+	wave.text = "Wave " + str(max(1, wave_num))
 
-	if Data.current_wave > 0 and Data.current_wave < 20:
-		difficulty.text = ("Easy")
+	if wave_num < 20:
+		difficulty.text = "EASY"
 		difficulty.add_theme_color_override("font_color", Color.GREEN)
-	elif Data.current_wave > 19 and Data.current_wave < 30:
-		difficulty.text = ("MEDIUM")
+
+		if wave_num < 11:
+			boss.texture = load("res://graphics/bosses/Virus.png")
+		else:
+			boss.texture = load("res://graphics/currency/gold.png")
+	
+	elif wave_num < 30:
+		difficulty.text = "MEDIUM"
 		difficulty.add_theme_color_override("font_color", Color.ORANGE)
-	elif Data.current_wave > 29 and Data.current_wave < 50:
-		difficulty.text = ("HARD")
+
+		boss.texture = load("res://graphics/bullets/big.png")
+
+	elif wave_num < 50:
+		difficulty.text = "HARD"
 		difficulty.add_theme_color_override("font_color", Color.RED)
+
+		if wave_num < 40:
+			boss.texture = load("res://graphics/bullets/bomb.png")
+		else:
+			boss.texture = load("res://graphics/bullets/default.png")
+	
 	else:
-		difficulty.text = ("EXTREME")
+		difficulty.text = "EXTREME"
 		difficulty.add_theme_color_override("font_color", Color(0.5, 0, 0))
+
+		match wave_num:
+			50:
+				boss.texture = load("res://graphics/currency/experience.png")
+			51:
+				boss.texture = load("res://graphics/currency/sentinel_core.png")
 
 
 func _on_start_game_pressed() -> void:

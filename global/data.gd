@@ -120,4 +120,4 @@ var health := 100:
 			ui.get_node("GameOver").visible = true
 			get_tree().paused = true
 var checkpoint_wave: int = 0
-var current_wave: int = 0
+var current_wave: int = 51
