@@ -3,7 +3,7 @@ extends Node
 @export var default_map_path: String
 @export var current_map_name: String
 @export var build_layer_path: NodePath = ("Pavement")
-\
+
 
 var level_root: Node2D
 var current_map: Node

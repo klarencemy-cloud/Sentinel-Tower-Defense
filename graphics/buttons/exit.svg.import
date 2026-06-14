@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s8xhvy48k726"
-path="res://.godot/imported/virus.png-cee666ee976b93eaf03dbdc750517113.ctex"
+uid="uid://5nwlyarf5y3v"
+path="res://.godot/imported/exit.svg-7d4d1e08600d707efe8694cf68cbef26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/bosses/virus.png"
-dest_files=["res://.godot/imported/virus.png-cee666ee976b93eaf03dbdc750517113.ctex"]
+source_file="res://graphics/buttons/exit.svg"
+dest_files=["res://.godot/imported/exit.svg-7d4d1e08600d707efe8694cf68cbef26.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

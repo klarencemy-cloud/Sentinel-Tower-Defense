@@ -14,7 +14,6 @@ func _ready() -> void:
 	tower_manager.setup(self , level_manager)
 	wave_manager.setup(level_manager.current_map, level_manager)
 
-	
 	wave_manager.level_completed.connect(level_completed)
 	wave_manager.next_map.connect(next_map)
 

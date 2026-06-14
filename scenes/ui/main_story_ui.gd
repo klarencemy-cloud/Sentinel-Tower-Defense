@@ -15,7 +15,7 @@ func _ready() -> void:
 		difficulty.add_theme_color_override("font_color", Color.GREEN)
 
 		if wave_num < 11:
-			boss.texture = load("res://graphics/bosses/Virus.png")
+			boss.texture = load("res://graphics/bosses/virus.png")
 		else:
 			boss.texture = load("res://graphics/currency/gold.png")
 	

@@ -17,5 +17,13 @@ func _on_exit_pressed() -> void:
 	get_tree().quit()
 
 
+var state: bool = false
 func _on_settings_pressed() -> void:
-	pass
+	if !state:
+		$ButtonManager/Exit.visible = true
+		$ButtonManager/Config.visible = true
+		state = true
+	else:
+		$ButtonManager/Exit.visible = false
+		$ButtonManager/Config.visible = false
+		state = false
