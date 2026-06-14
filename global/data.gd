@@ -46,6 +46,8 @@ var TOWER_DATA = {
 		'damage' : 3,
 		'reload_time': 1.5,
 		'range': 50,
+		'crit rate': 0,
+		'crit damage': 50,
 		'bullet': Bullet.FIRE,
 		'thumbnail': "res://graphics/ui/tower thumbnails/blaster.png",
 		'scene': "res://scenes/towers/blaster_tower.tscn",
