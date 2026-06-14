@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var continue_button: Button = $ContinueButton
 @onready var click: Label = $Click
 
-var can_click := false
+var can_click: bool = false
 
 
 func _fade(target_alpha: float, duration: float = 1.0):

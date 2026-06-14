@@ -1,8 +1,8 @@
 extends Area2D
 
 var direction: Vector2
-var speed := 200
-var damage := 1
+var speed: int = 200
+var damage: int = 1
 func setup(pos, angle, _bullet_enum, _damage):
 	position = pos
 	direction = Vector2.DOWN.rotated(angle)

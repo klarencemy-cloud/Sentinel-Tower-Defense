@@ -13,10 +13,10 @@ var level_root: Node2D
 var level_manager: Node
 var selected_tower: Data.Tower
 var current_tower: Tower
-var tower_menu := false
+var tower_menu: bool = false
 var used_cells: Array[Vector2i] = []
 
-var place_tower := false:
+var place_tower: bool = false:
 	set(value):
 		place_tower = value
 		if is_inside_tree():

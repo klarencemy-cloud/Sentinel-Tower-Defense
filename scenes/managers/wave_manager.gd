@@ -7,8 +7,8 @@ var enemy_scene = preload("res://scenes/enemies/enemy.tscn")
 
 var level_root: Node2D
 var level_manager: Node
-var wave_active := false
-var spawning_wave := false
+var wave_active: bool = false
+var spawning_wave: bool = false
 
 
 func setup(root: Node2D, map_manager: Node) -> void:
@@ -70,7 +70,9 @@ func _spawn_enemy(enemy_enum: Data.Enemy) -> void:
 
 	enemy.setup(path_follow, enemy_enum)
 	path_follow.add_child(enemy)
-	_get_path().add_child(path_follow)
+	var path: Path2D = _choose_path_for_spawn()
+	if path:
+		path.add_child(path_follow)
 
 
 func _random_wave_size() -> Dictionary:
@@ -101,5 +103,14 @@ func _choose_random_enemy_type(difficulty: int) -> Data.Enemy:
 	return Data.Enemy.BIG
 
 
-func _get_path() -> Path2D:
-	return level_root.get_node("Path2D")
+func _get_paths() -> Array[Path2D]:
+	var paths: Array[Path2D] = []
+	
+	for child in level_root.get_children():
+		if child is Path2D:
+			paths.append(child)
+	return paths
+
+func _choose_path_for_spawn() -> Path2D:
+	var paths: Array = _get_paths()
+	return paths[randi() % paths.size()]
