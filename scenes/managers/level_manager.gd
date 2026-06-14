@@ -7,18 +7,19 @@ extends Node
 
 @export var default_map_path: String
 @export var current_map_name: String
-@export var build_layer_path := NodePath("Pavement")
-
-@onready var victory_overlay = $UI/VictoryOverlay
+@export var build_layer_path: NodePath = ("Pavement")
+\
 
 var level_root: Node2D
 var current_map: Node
 
 
-var levels := [
+var levels: Array = [
 	"res://scenes/levels/level1.scn",
 	"res://scenes/levels/level2.scn",
-	"res://scenes/levels/level3.scn"
+	"res://scenes/levels/level3.scn",
+	"res://scenes/levels/level4.scn",
+	"res://scenes/levels/level5.scn"
 ]
 
 func _ready() -> void:

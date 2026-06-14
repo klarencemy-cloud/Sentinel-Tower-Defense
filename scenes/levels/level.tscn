@@ -485,12 +485,6 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_xb4v1")
 sources/1 = SubResource("TileSetAtlasSource_urvlt")
 
-[sub_resource type="Curve2D" id="Curve2D_d4w6o"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 116.447525, 173.42165, 0, 0, 0, 0, 522.23694, 173.42165, 0, 0, 0, 0, 1125.3723, 173.94154, 0, 0, 0, 0, 1122.9597, 366.5647, 0, 0, 0, 0, 477.36368, 367.0846, 0, 0, 0, 0, 480.25873, 554.2488, 0, 0, 0, 0, 868.1954, 554.2488, 0, 0, 0, 0, 1208.3638, 554.2488, 0, 0, 0, 0, 1238.2792, 554.2488, 0, 0, 0, 0, 1414.8772, 554.2488)
-}
-point_count = 10
-
 [sub_resource type="Gradient" id="Gradient_qogh7"]
 offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
@@ -604,11 +598,6 @@ tile_set = SubResource("TileSet_urvlt")
 
 [node name="TowerPreview" type="Sprite2D" parent="BG" unique_id=613422467]
 modulate = Color(1, 1, 1, 0.6862745)
-
-[node name="Path2D" type="Path2D" parent="." unique_id=1113770715]
-position = Vector2(-117.27525, -475.60492)
-scale = Vector2(2.0547898, 3.613188)
-curve = SubResource("Curve2D_d4w6o")
 
 [node name="Towers" type="Node2D" parent="." unique_id=59664562]
 
