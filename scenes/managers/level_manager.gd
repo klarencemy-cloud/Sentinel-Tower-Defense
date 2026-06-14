@@ -100,5 +100,3 @@ func lightning() -> void:
 
 		await get_tree().create_timer(randf_range(.1, .3)).timeout
 		light_node.energy = 0.0
-
-

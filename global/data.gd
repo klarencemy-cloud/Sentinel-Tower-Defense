@@ -22,15 +22,23 @@ var TOWER_DATA = {
 		'damage' : 2,
 		'reload_time': 1.0,
 		'range': 100,
+		'crit rate' : 0,
+		'crit damage': 50,
 		'bullet': Bullet.SINGLE,
 		'thumbnail': "res://graphics/ui/tower thumbnails/basic.png",
 		'scene': "res://scenes/towers/single_tower.tscn",
 		'upgrade1' : "Damage",
+		'upgrade1level' : 0,
 		'upgrade2' : "Attack Speed",
+		'upgrade2level' : 0,
 		'upgrade3' : "Damage",
+		'upgrade3level' : 0,
 		'upgrade4' : "Crit Rate",
+		'upgrade4level' : 0,
 		'upgrade5' : "Crit Damage",
-		'upgrade6' : "Range"},
+		'upgrade5level' : 0,
+		'upgrade6' : "Range",
+		'upgrade6level' : 0,},
 
 	Tower.BLAST: {
 		'name': 'Blaster',
@@ -42,11 +50,17 @@ var TOWER_DATA = {
 		'thumbnail': "res://graphics/ui/tower thumbnails/blaster.png",
 		'scene': "res://scenes/towers/blaster_tower.tscn",
 		'upgrade1' : "Damage",
+		'upgrade1level' : 0,
 		'upgrade2' : "Attack Speed",
+		'upgrade2level' : 0,
 		'upgrade3' : "Damage",
+		'upgrade3level' : 0,
 		'upgrade4' : "Attack Speed",
+		'upgrade4level' : 0,
 		'upgrade5' : "Attack Speed",
-		'upgrade6' : "Range"},
+		'upgrade5level' : 0,
+		'upgrade6' : "Range",
+		'upgrade6level' : 0,},
 		
 	Tower.MORTAR: {
 		'name': 'Mortar',
@@ -54,15 +68,23 @@ var TOWER_DATA = {
 		'reload_time': 2.0,
 		'damage' : 5,
 		'range': 200,
+		'crit rate' : 0,
+		'crit damage': 50,
 		'bullet': Bullet.MORTAR_EXPLOSION,
 		'thumbnail': "res://graphics/ui/tower thumbnails/mortar.png",
 		'scene': "res://scenes/towers/mortar_tower.tscn",
 		'upgrade1' : "Damage",
+		'upgrade1level' : 0,
 		'upgrade2' : "Attack Speed",
+		'upgrade2level' : 0,
 		'upgrade3' : "Damage",
+		'upgrade3level' : 0,
 		'upgrade4' : "Crit Rate",
+		'upgrade4level' : 0,
 		'upgrade5' : "Crit Damage",
-		'upgrade6' : "Attack Speed"}
+		'upgrade5level' : 0,
+		'upgrade6' : "Attack Speed",
+		'upgrade6level' : 0,}
 		}
 		
 var ENEMY_DATA = {
@@ -71,6 +93,13 @@ var ENEMY_DATA = {
 	Enemy.STRONG: {'health': 6, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 25},
 	Enemy.BIG: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 15}}
 
+var UPGRADE_DATA = {
+	"Damage": 1,
+	"Attack Speed": 0.2,
+	"Range" : 25,
+	"Crit Rate": 15,
+	"Crit Damage": 25
+}
 
 
 var money := 200:
@@ -80,8 +109,6 @@ var money := 200:
 		var ui = get_tree().get_first_node_in_group('UI')
 		if ui:
 			ui.update_stats(money, health)
-		for tower_card in get_tree().get_nodes_in_group('TowerCard'):
-			tower_card.toggle_active(money)
 var health := 100:
 	set(value):
 		health = value
