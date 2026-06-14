@@ -17,6 +17,7 @@ func _ready() -> void:
 		var tower_card = tower_card_scene.instantiate()
 		tower_card.setup(tower_enum)
 		$SentinelsContainer.add_child(tower_card)
+	update_tier_buttons()
 
 
 func set_selected_tower(tower_enum: Data.Tower) -> void:
@@ -34,9 +35,11 @@ func set_selected_tower(tower_enum: Data.Tower) -> void:
 func update_stat_label() -> void:
 	var data = Data.TOWER_DATA[selected_tower]
 
-	$StatPanel/VBoxContainer/DamageContainer/DamagePic/DamageText.text = str(data['damage'])
-	$StatPanel/VBoxContainer/SpeedContainer/SpeedPic/SpeedText.text = str(data['reload_time'])
-	$StatPanel/VBoxContainer/RangeContainer/RangePic/RangeText.text = str(data['range'])
+	$StatPanel/ScrollContainer/VBoxContainer/DamageContainer/DamagePic/DamageText.text = str(data['damage'])
+	$StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic/SpeedText.text = str(data['reload_time'])
+	$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = str(data['range'])
+	$StatPanel/ScrollContainer/VBoxContainer/CritRContainer/CritRPic/CritRText.text = str(data['crit rate']) + "%"
+	$StatPanel/ScrollContainer/VBoxContainer/CritDContainer/CritDPic/CritDText.text = str(data['crit damage']) + "%"
 
 	$UpgradePanel/Upgrade1/Upgrade1Label.text = data['upgrade1']
 	$UpgradePanel/Upgrade2/Upgrade2Label.text = data['upgrade2']
@@ -79,7 +82,7 @@ func update_upgrade_ui() -> void:
 
 
 func _set_upgrade_visual(node: Node, level: int) -> void:
-	var node_name_prefix = node.name  # "Upgrade1", "Upgrade2", etc.
+	var node_name_prefix = node.name
 
 	var slots = ["a", "b", "c"]
 
@@ -88,8 +91,7 @@ func _set_upgrade_visual(node: Node, level: int) -> void:
 		if i < level:
 			tex = "Upgraded.png"
 
-		var child_name = node_name_prefix + slots[i]  # Upgrade1 + a = Upgrade1a
-
+		var child_name = node_name_prefix + slots[i] 
 		var child = node.get_node(child_name)
 		if child:
 			child.texture = load("res://graphics/upgrade/" + tex)
@@ -146,39 +148,154 @@ func _on_upgrade_1_pressed() -> void:
 	if upgrade1_level < 3:
 		upgrade1_level += 1
 		Data.TOWER_DATA[selected_tower]['upgrade1level'] = upgrade1_level
+		apply_upgrade(
+			Data.TOWER_DATA[selected_tower]["upgrade1"]
+		)
+
 		_set_upgrade_visual($UpgradePanel/Upgrade1, upgrade1_level)
+		update_tier_buttons()
 
 
 func _on_upgrade_2_pressed() -> void:
 	if upgrade2_level < 3:
 		upgrade2_level += 1
 		Data.TOWER_DATA[selected_tower]['upgrade2level'] = upgrade2_level
+		apply_upgrade(
+			Data.TOWER_DATA[selected_tower]["upgrade2"]
+		)
+
 		_set_upgrade_visual($UpgradePanel/Upgrade2, upgrade2_level)
+		update_tier_buttons()
 
 
 func _on_upgrade_3_pressed() -> void:
 	if upgrade3_level < 3:
 		upgrade3_level += 1
 		Data.TOWER_DATA[selected_tower]['upgrade3level'] = upgrade3_level
-		_set_upgrade_visual($UpgradePanel/Upgrade3, upgrade3_level)
+		apply_upgrade(
+			Data.TOWER_DATA[selected_tower]["upgrade3"]
+		)
 
+		_set_upgrade_visual($UpgradePanel/Upgrade3, upgrade3_level)
+		update_tier_buttons()
 
 func _on_upgrade_4_pressed() -> void:
 	if upgrade4_level < 3:
 		upgrade4_level += 1
 		Data.TOWER_DATA[selected_tower]['upgrade4level'] = upgrade4_level
+		apply_upgrade(
+			Data.TOWER_DATA[selected_tower]["upgrade4"]
+		)
+
 		_set_upgrade_visual($UpgradePanel/Upgrade4, upgrade4_level)
+		update_tier_buttons()
 
 
 func _on_upgrade_5_pressed() -> void:
 	if upgrade5_level < 3:
 		upgrade5_level += 1
 		Data.TOWER_DATA[selected_tower]['upgrade5level'] = upgrade5_level
+		apply_upgrade(
+			Data.TOWER_DATA[selected_tower]["upgrade5"]
+		)
+
 		_set_upgrade_visual($UpgradePanel/Upgrade5, upgrade5_level)
+		update_tier_buttons()
 
 
 func _on_upgrade_6_pressed() -> void:
 	if upgrade6_level < 3:
 		upgrade6_level += 1
 		Data.TOWER_DATA[selected_tower]['upgrade6level'] = upgrade6_level
+		apply_upgrade(
+			Data.TOWER_DATA[selected_tower]["upgrade6"]
+		)
+
 		_set_upgrade_visual($UpgradePanel/Upgrade6, upgrade6_level)
+		update_tier_buttons()
+
+
+func apply_upgrade(upgrade_name: String) -> void:
+	var amount = Data.UPGRADE_DATA[upgrade_name]
+
+	match upgrade_name:
+		"Damage":
+			Data.TOWER_DATA[selected_tower]["damage"] += amount
+
+		"Attack Speed":
+			Data.TOWER_DATA[selected_tower]["reload_time"] -= amount
+
+			# Prevent negative reload time
+			if Data.TOWER_DATA[selected_tower]["reload_time"] < 0.1:
+				Data.TOWER_DATA[selected_tower]["reload_time"] = 0.1
+
+		"Range":
+			Data.TOWER_DATA[selected_tower]["range"] += amount
+
+		"Crit Rate":
+			Data.TOWER_DATA[selected_tower]["crit rate"] += amount
+
+		"Crit Damage":
+			Data.TOWER_DATA[selected_tower]["crit damage"] += amount
+
+	for tower in get_tree().get_nodes_in_group("towers"):
+		tower.refresh_stats()
+	update_stat_label()
+
+
+func _on_tier_1_btn_pressed() -> void:
+	$UpgradePanel/Upgrade1.visible = true
+	$UpgradePanel/Upgrade2.visible = true
+	$UpgradePanel/Upgrade3.visible = false
+	$UpgradePanel/Upgrade4.visible = false
+	$UpgradePanel/Upgrade5.visible = false
+	$UpgradePanel/Upgrade6.visible = false
+	$UpgradePanel/Tier1Btn.texture_normal = load("res://graphics/buttons/1stTierClicked.png")
+	$UpgradePanel/Tier2Btn.texture_normal = load("res://graphics/buttons/2ndTierUnclicked.png")
+	$UpgradePanel/Tier3Btn.texture_normal = load("res://graphics/buttons/3rdTierUnclicked.png")
+
+
+
+func _on_tier_2_btn_pressed() -> void:
+	if $UpgradePanel/Tier2Btn.disabled:
+		return
+
+	$UpgradePanel/Upgrade1.visible = false
+	$UpgradePanel/Upgrade2.visible = false
+	$UpgradePanel/Upgrade3.visible = true
+	$UpgradePanel/Upgrade4.visible = true
+	$UpgradePanel/Upgrade5.visible = false
+	$UpgradePanel/Upgrade6.visible = false
+	$UpgradePanel/Tier1Btn.texture_normal = load("res://graphics/buttons/1stTierUnclicked.png")
+	$UpgradePanel/Tier2Btn.texture_normal = load("res://graphics/buttons/2ndTierClicked.png")
+	$UpgradePanel/Tier3Btn.texture_normal = load("res://graphics/buttons/3rdTierUnclicked.png")
+
+func _on_tier_3_btn_pressed() -> void:
+	if $UpgradePanel/Tier3Btn.disabled:
+		return
+
+	$UpgradePanel/Upgrade1.visible = false
+	$UpgradePanel/Upgrade2.visible = false
+	$UpgradePanel/Upgrade3.visible = false
+	$UpgradePanel/Upgrade4.visible = false
+	$UpgradePanel/Upgrade5.visible = true
+	$UpgradePanel/Upgrade6.visible = true
+	$UpgradePanel/Tier1Btn.texture_normal = load("res://graphics/buttons/1stTierUnclicked.png")
+	$UpgradePanel/Tier2Btn.texture_normal = load("res://graphics/buttons/2ndTierUnclicked.png")
+	$UpgradePanel/Tier3Btn.texture_normal = load("res://graphics/buttons/3rdTierClicked.png")
+
+func update_tier_buttons():
+	# Tier 1 always available
+	$UpgradePanel/Tier1Btn.disabled = false
+
+	# Unlock Tier 2
+	$UpgradePanel/Tier2Btn.disabled = !(
+		upgrade1_level == 3 and
+		upgrade2_level == 3
+	)
+
+	# Unlock Tier 3
+	$UpgradePanel/Tier3Btn.disabled = !(
+		upgrade3_level == 3 and
+		upgrade4_level == 3
+	)

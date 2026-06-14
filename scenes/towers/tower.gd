@@ -5,6 +5,10 @@ var type: Data.Tower
 var bullet_type: Data.Bullet
 var cost: int
 var cell_pos: Vector2i = Vector2i.ZERO
+var damage := 0
+var reload_time := 0.0
+var range := 0.0
+
 
 @warning_ignore("unused_signal")
 signal shoot(pos: Vector2, direction: float, bullet_enum: Data.Bullet, damage: int)
@@ -15,6 +19,7 @@ var range_indicator: Line2D
 
 
 func _ready() -> void:
+	add_to_group("towers")
 	create_range_indicator()
 
 
@@ -31,6 +36,8 @@ func create_range_indicator() -> void:
 
 
 func _update_range_indicator() -> void:
+	if not range_indicator:
+		return
 	var shape = $EnemyDetectionArea/CollisionShape2D.shape
 	var radius = 0.0
 
@@ -58,20 +65,12 @@ func hide_range() -> void:
 
 
 func setup(tower_type: Data.Tower):
-	$ReloadTimer.wait_time = Data.TOWER_DATA[tower_type]['reload_time']
-	
-	bullet_type = Data.TOWER_DATA[tower_type]['bullet']
-	cost = Data.TOWER_DATA[tower_type]['cost']
 	type = tower_type
 
-	var range_value = Data.TOWER_DATA[tower_type]['range']
-	var shape = $EnemyDetectionArea/CollisionShape2D.shape
-	
-	if shape is CircleShape2D:
-		shape.radius = range_value
+	bullet_type = Data.TOWER_DATA[tower_type]["bullet"]
+	cost = Data.TOWER_DATA[tower_type]["cost"]
 
-	create_range_indicator()
-	_update_range_indicator()
+	refresh_stats()
 
 
 func _on_enemy_detection_area_area_entered(area: Area2D) -> void:
@@ -101,3 +100,24 @@ func _on_tower_menu_delete_press() -> void:
 func hide_ui():
 	$TowerMenu.hide()
 	hide_range()
+
+func refresh_stats():
+	var data = Data.TOWER_DATA[type]
+
+	damage = data["damage"]
+	reload_time = data["reload_time"]
+	range = data["range"]
+
+	# reload timer update
+	$ReloadTimer.wait_time = reload_time
+
+	# range collision update
+	var shape = $EnemyDetectionArea/CollisionShape2D.shape
+	if shape is CircleShape2D:
+		shape.radius = range
+
+	# visual update
+	_update_range_indicator()
+
+	if range_indicator and range_indicator.visible:
+		show_range()
