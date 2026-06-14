@@ -5,9 +5,9 @@ var type: Data.Tower
 var bullet_type: Data.Bullet
 var cost: int
 var cell_pos: Vector2i = Vector2i.ZERO
-var damage := 0
-var reload_time := 0.0
-var range := 0.0
+var damage: int = 0
+var reload_time: float = 0.0
+var range: float = 0.0
 
 
 @warning_ignore("unused_signal")
