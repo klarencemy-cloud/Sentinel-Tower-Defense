@@ -6,7 +6,29 @@
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="3_ukhca"]
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="5_yn0lx"]
 [ext_resource type="Texture2D" uid="uid://dvfuyhj16jpip" path="res://graphics/buttons/exitbg.png" id="6_a3yut"]
-[ext_resource type="Texture2D" uid="uid://decdw7l8aj21x" path="res://graphics/buttons/settingsbg.png" id="7_l3hwl"]
+[ext_resource type="Texture2D" uid="uid://3uyksps1bjop" path="res://graphics/buttons/settings.svg" id="6_l3hwl"]
+
+[sub_resource type="Gradient" id="Gradient_otieh"]
+offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bva0v"]
+gradient = SubResource("Gradient_otieh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n3o3g"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1920, 1080, 1)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 49.99998
+gravity = Vector3(0, 60, 0)
+scale_min = 0.0
+scale_max = 10.0
+color = Color(0.3273128, 0.61982703, 0.88803005, 0.8901961)
+color_ramp = SubResource("GradientTexture1D_bva0v")
 
 [node name="MainMenu" type="Control" unique_id=610381814]
 layout_mode = 3
@@ -30,6 +52,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonManager" type="Control" parent="." unique_id=641525363]
+z_index = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -122,11 +145,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Exit" type="TextureButton" parent="ButtonManager" unique_id=1936843108]
-layout_mode = 0
-anchor_left = 0.871875
-anchor_top = 0.20092593
-anchor_right = 0.9765625
-anchor_bottom = 0.28796297
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8530592
+anchor_top = 0.20667519
+anchor_right = 0.9577467
+anchor_bottom = 0.29371223
 texture_normal = ExtResource("6_a3yut")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
@@ -142,25 +167,15 @@ text = "EXIT"
 metadata/_edit_use_anchors_ = true
 
 [node name="Settings" type="TextureButton" parent="ButtonManager" unique_id=1508697269]
-layout_mode = 0
-anchor_left = 0.8463542
-anchor_top = 0.062037036
-anchor_right = 0.9828125
-anchor_bottom = 0.16388889
-texture_normal = ExtResource("7_l3hwl")
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="Settings" type="Label" parent="ButtonManager/Settings" unique_id=2070110009]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.18429746
-anchor_right = 0.96183205
-anchor_bottom = 0.82066107
-theme_override_font_sizes/font_size = 50
-text = "SETTINGS"
-horizontal_alignment = 1
-vertical_alignment = 1
+anchor_left = 0.89635414
+anchor_top = 0.071340136
+anchor_right = 0.9322259
+anchor_bottom = 0.13511205
+texture_normal = ExtResource("6_l3hwl")
+ignore_texture_size = true
+stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="ButtonManager" unique_id=369088243]
@@ -175,6 +190,13 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_ukhca")
 theme_override_font_sizes/font_size = 150
 text = "SENTINELS"
+
+[node name="DustParticles" type="GPUParticles2D" parent="." unique_id=2028780263]
+light_mask = 2
+position = Vector2(961.0802, 536.93976)
+amount = 100
+visibility_rect = Rect2(-960, -540, 1920, 1080)
+process_material = SubResource("ParticleProcessMaterial_n3o3g")
 
 [connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ButtonManager/Sandbox" to="." method="_on_sandbox_pressed"]
