@@ -31,7 +31,6 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_vfpy0")
 
 [node name="TowerMenu" parent="." unique_id=489153716 instance=ExtResource("3_vfpy0")]
-visible = true
 
 [node name="DelayTimer" type="Timer" parent="." unique_id=689476159]
 wait_time = 0.5
@@ -44,4 +43,3 @@ autostart = true
 [connection signal="area_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_area_exited"]
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="delete_press" from="TowerMenu" to="." method="_on_tower_menu_delete_press"]
-[connection signal="upgrade_press" from="TowerMenu" to="." method="_on_tower_menu_upgrade_press"]
