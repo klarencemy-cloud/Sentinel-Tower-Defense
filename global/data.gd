@@ -108,9 +108,13 @@ var money := 200:
 	set(value):
 		money = value
 
-		var ui = get_tree().get_first_node_in_group('UI')
+		var ui = get_tree().get_first_node_in_group("UI")
 		if ui:
 			ui.update_stats(money, health)
+
+		for node in get_tree().get_nodes_in_group("TowerCard"):
+			if node.has_method("toggle_active"):
+				node.toggle_active(money)
 var health := 100:
 	set(value):
 		health = value
