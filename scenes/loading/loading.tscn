@@ -118,36 +118,53 @@ process_material = SubResource("ParticleProcessMaterial_l0cve")
 
 [node name="ProgressBar" type="ProgressBar" parent="Anchor" unique_id=779728317]
 z_index = 1
-layout_mode = 0
-offset_left = 796.0
-offset_top = 470.0
-offset_right = 1708.0
-offset_bottom = 520.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083000004
+anchor_top = 0.27400002
+anchor_right = 0.083000004
+anchor_bottom = 0.27400002
+offset_left = 636.64
+offset_top = 174.07999
+offset_right = 1548.64
+offset_bottom = 224.07999
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/background = SubResource("StyleBoxFlat_l0cve")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xph5p")
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Anchor" unique_id=585149729]
-layout_mode = 0
-offset_left = 791.0
-offset_top = 288.0
-offset_right = 1310.0
-offset_bottom = 478.0
+[node name="Loading" type="Label" parent="Anchor" unique_id=585149729]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09
+anchor_top = 0.26700002
+anchor_right = 0.09
+anchor_bottom = 0.26700002
+offset_left = 618.2
+offset_top = -0.36001587
+offset_right = 1137.2
+offset_bottom = 189.63998
 theme_override_fonts/font = ExtResource("4_2asxc")
 theme_override_font_sizes/font_size = 150
 text = "Loading"
+metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="Anchor" unique_id=81825721]
-layout_mode = 0
-offset_left = 795.0
-offset_top = 563.0
-offset_right = 1146.0
-offset_bottom = 632.0
+[node name="Facts" type="Label" parent="Anchor" unique_id=81825721]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083000004
+anchor_top = 0.294
+anchor_right = 0.083000004
+anchor_bottom = 0.294
+offset_left = 635.64
+offset_top = 245.48001
+offset_right = 986.64
+offset_bottom = 314.48
 theme_override_fonts/font = ExtResource("5_l0cve")
 theme_override_font_sizes/font_size = 40
 text = "Cyber Facts!"
 
-[node name="Label2" type="Label" parent="Anchor/Label2" unique_id=852833026]
+[node name="Details" type="Label" parent="Anchor/Facts" unique_id=852833026]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 64.0
@@ -160,27 +177,47 @@ text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
 horizontal_alignment = 3
 autowrap_mode = 2
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Anchor" unique_id=1622320455]
-position = Vector2(1410.75, 388.25)
+[node name="Databasebg" type="TextureRect" parent="Anchor" unique_id=838234388]
+layout_mode = 0
+anchor_left = 0.08229167
+anchor_top = 0.27962965
+anchor_right = 0.3947275
+anchor_bottom = 0.71481484
+offset_right = 333.12323
+offset_bottom = 261.0
+scale = Vector2(0.6429547, 0.64295477)
+texture = ExtResource("7_l0cve")
+metadata/_edit_use_anchors_ = true
+
+[node name="Animation" type="Control" parent="Anchor" unique_id=1901643478]
+layout_mode = 1
+anchor_left = 0.09200001
+anchor_top = 0.30600002
+anchor_right = 0.09200001
+anchor_bottom = 0.30600002
+offset_left = 1126.36
+offset_top = -0.480011
+offset_right = 1524.36
+offset_bottom = 114.51999
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Anchor/Animation" unique_id=1622320455]
+position = Vector2(67.75, 53.25)
 scale = Vector2(4.06818, 4.113637)
 sprite_frames = SubResource("SpriteFrames_8njb0")
 autoplay = "default"
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Anchor" unique_id=1343061686]
-position = Vector2(1504.5, 388.5)
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Anchor/Animation" unique_id=1343061686]
+position = Vector2(161.5, 53.5)
 scale = Vector2(4.06818, 4.113637)
 sprite_frames = SubResource("SpriteFrames_8njb0")
 autoplay = "default"
 frame = 1
 
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Anchor" unique_id=204396013]
-position = Vector2(1597.75, 388.25)
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Anchor/Animation" unique_id=204396013]
+position = Vector2(254.75, 53.25)
 scale = Vector2(4.06818, 4.113637)
 sprite_frames = SubResource("SpriteFrames_8njb0")
 autoplay = "default"
 frame = 2
-
-[node name="Databasebg" type="Sprite2D" parent="." unique_id=184240527]
-position = Vector2(467.18457, 547)
-scale = Vector2(0.6429547, 0.64295477)
-texture = ExtResource("7_l0cve")
