@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var progress_bar: ProgressBar = $Anchor/ProgressBar
 @export var next_scene_path1: String = "res://scenes/levels/level.tscn"
 @export var next_scene_path2: String = "res://scenes/sandbox/sand_box.tscn"
 var next_scene_path: String

@@ -649,6 +649,7 @@ visibility_rect = Rect2(-1920, -1080, 3840, 2160)
 process_material = SubResource("ParticleProcessMaterial_c3o0d")
 
 [node name="LightningEffects" type="DirectionalLight2D" parent="WeatherEffects" unique_id=596992054]
+visible = false
 energy = 0.0
 script = ExtResource("13_qogh7")
 min_energy = 0.1

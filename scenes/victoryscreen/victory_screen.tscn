@@ -2,6 +2,29 @@
 
 [ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="1_a28le"]
 [ext_resource type="Script" uid="uid://cxjx8pbo8137d" path="res://scenes/victoryscreen/victory_screen.gd" id="1_t1hsp"]
+[ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="3_r3k0k"]
+
+[sub_resource type="Gradient" id="Gradient_t1hsp"]
+offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r3k0k"]
+gradient = SubResource("Gradient_t1hsp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_45f7s"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1920, 1080, 1)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 49.99998
+gravity = Vector3(0, 60, 0)
+scale_min = 0.0
+scale_max = 10.0
+color = Color(0.3273128, 0.61982703, 0.88803005, 0.8901961)
+color_ramp = SubResource("GradientTexture1D_r3k0k")
 
 [node name="VictoryScreen" type="Control" unique_id=705516078]
 layout_mode = 3
@@ -34,6 +57,7 @@ offset_right = 20.0
 offset_bottom = 9.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_r3k0k")
 theme_override_font_sizes/font_size = 88
 text = "Congrats on Passing Level 1"
 
@@ -65,6 +89,13 @@ offset_bottom = -59.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 61
 text = "Main Menu"
+
+[node name="DustParticles" type="GPUParticles2D" parent="." unique_id=1727027060]
+light_mask = 2
+position = Vector2(961.0802, 536.93976)
+amount = 100
+visibility_rect = Rect2(-960, -540, 1920, 1080)
+process_material = SubResource("ParticleProcessMaterial_45f7s")
 
 [connection signal="pressed" from="NextLevel" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
