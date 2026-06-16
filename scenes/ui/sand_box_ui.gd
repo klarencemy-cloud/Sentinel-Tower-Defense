@@ -22,7 +22,7 @@ func _on_left_btn_pressed() -> void:
 func _on_start_game_pressed() -> void:
 	var selected_carousel_node = $CarouselContainer.position_offset_node.get_child($CarouselContainer.selected_index)
 
-	selected_map =  selected_carousel_node.name
+	selected_map = selected_carousel_node.name
 	var temp_level_index = Data.current_level_index
 	match selected_map:
 		"Map1":

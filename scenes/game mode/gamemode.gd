@@ -41,4 +41,3 @@ func _on_sand_box_mode_pressed() -> void:
 	$ButtonManager/MainStory.texture_normal = preload("res://graphics/buttons/parallelogram.png")
 	$ButtonManager/VmMode.texture_normal = preload("res://graphics/buttons/parallelogram.png")
 	$ButtonManager/SandBoxMode.texture_normal = preload("res://graphics/buttons/active_parallelogram.png")
-

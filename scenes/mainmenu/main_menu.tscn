@@ -63,11 +63,12 @@ grow_vertical = 2
 pivot_offset = Vector2(0.54, 0)
 
 [node name="StartGame" type="TextureButton" parent="ButtonManager" unique_id=2003042709]
-layout_mode = 0
-anchor_left = 0.3625
-anchor_top = 0.43703705
-anchor_right = 0.6333333
-anchor_bottom = 0.537963
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36543998
+anchor_top = 0.43755966
+anchor_right = 0.6362733
+anchor_bottom = 0.5384856
 texture_normal = ExtResource("3_jl081")
 ignore_texture_size = true
 stretch_mode = 0
@@ -75,53 +76,29 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Start" type="Label" parent="ButtonManager/StartGame" unique_id=1348868350]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -67.17706
-offset_top = -26.12442
-offset_right = 70.82294
-offset_bottom = 31.87558
+offset_left = -69.0
+offset_top = -29.0
+offset_right = 69.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "START"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sandbox" type="TextureButton" parent="ButtonManager" unique_id=1387129630]
-layout_mode = 0
-anchor_left = 0.37916666
-anchor_top = 0.5703704
-anchor_right = 0.61875
-anchor_bottom = 0.6712963
-texture_normal = ExtResource("5_yn0lx")
-ignore_texture_size = true
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="Sandbox" type="Label" parent="ButtonManager/Sandbox" unique_id=1259746007]
+[node name="Database" type="TextureButton" parent="ButtonManager" unique_id=103459929]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -112.894775
-offset_top = -27.71051
-offset_right = 108.105225
-offset_bottom = 30.28949
-theme_override_font_sizes/font_size = 50
-text = "SANDBOX"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Database" type="TextureButton" parent="ButtonManager" unique_id=103459929]
-layout_mode = 0
-anchor_left = 0.37916666
-anchor_top = 0.68796295
-anchor_right = 0.61875
-anchor_bottom = 0.7888889
+anchor_left = 0.38163006
+anchor_top = 0.56373507
+anchor_right = 0.6212134
+anchor_bottom = 0.664661
 texture_normal = ExtResource("5_yn0lx")
 ignore_texture_size = true
 stretch_mode = 0
@@ -211,7 +188,6 @@ visibility_rect = Rect2(-960, -540, 1920, 1080)
 process_material = SubResource("ParticleProcessMaterial_n3o3g")
 
 [connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
-[connection signal="pressed" from="ButtonManager/Sandbox" to="." method="_on_sandbox_pressed"]
 [connection signal="pressed" from="ButtonManager/Database" to="." method="_on_database_pressed"]
 [connection signal="pressed" from="ButtonManager/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="ButtonManager/Exit" to="." method="_on_exit_pressed"]

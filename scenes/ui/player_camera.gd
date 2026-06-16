@@ -2,8 +2,8 @@ extends Camera2D
 
 @export var acceleration: float = 1
 @export var target: Node2D
-@export var start_zoom : Vector2 = Vector2(1.0, 1.0)
-@export var min_zoom: Vector2 = Vector2(1.0, 1.0)
+@export var start_zoom: Vector2 = Vector2(1.0, 1.0)
+@export var min_zoom: Vector2 = Vector2(0.7, 0.7)
 @export var max_zoom: Vector2 = Vector2(2.0, 2.0)
 
 const WHEEL_ZOOM_STEP = 0.15

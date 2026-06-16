@@ -18,55 +18,82 @@ class_name CarouselContainer
 
 @export var position_offset_node: Control = null
 
+@onready var title: Label = $"../MapDetails/sbName"
+@onready var path: Label = $"../MapDetails/Difficulty"
+
+var title_array = ["Treatment Area", "Courtyard", "Konbini", "Hellbent", "The Maze", "Requiem"]
+var path_num = ["1", "1", "2", "4", "3", "3"]
+var count: int = 0
+
+
+func _ready() -> void:
+	title.text = title_array[0]
+
 func _process(delta: float) -> void:
 	if !position_offset_node or position_offset_node.get_child_count() == 0:
 		return
 
-	selected_index = clamp(selected_index, 0, position_offset_node.get_child_count()-1)
+	selected_index = clamp(selected_index, 0, position_offset_node.get_child_count() - 1)
 	
 	for i in position_offset_node.get_children():
 		if wraparound_enabled:
-			var max_index_range = max(1, (position_offset_node.get_child_count() -1) / 2.0)
-			var angle = clamp((i.get_index() - selected_index) / max_index_range, -1.0, 1.0) * PI 
-			var x  = sin(angle) * wraparound_radius
-			var y =  cos(angle) * wraparound_height
-			var target_pos = Vector2(x, y-wraparound_height) - i.size/2.0
+			var max_index_range = max(1, (position_offset_node.get_child_count() - 1) / 2.0)
+			var angle = clamp((i.get_index() - selected_index) / max_index_range, -1.0, 1.0) * PI
+			var x = sin(angle) * wraparound_radius
+			var y = cos(angle) * wraparound_height
+			var target_pos = Vector2(x, y - wraparound_height) - i.size / 2.0
 			i.position = lerp(i.position, target_pos, smoothing_speed * delta)
 		else:
 			var position_x = 0
 			if i.get_index() > 0:
-				position_x = position_offset_node.get_child(i.get_index()-1).position.x + position_offset_node.get_child(i.get_index()-1).size.x + spacing
+				position_x = position_offset_node.get_child(i.get_index() - 1).position.x + position_offset_node.get_child(i.get_index() - 1).size.x + spacing
 			i.position = Vector2(position_x, -i.size.y / 2.0)
 	
-		i.pivot_offset = i.size/2.0
-		var target_scale = 1.0 - (scale_strength * abs(i.get_index()-selected_index))
+		i.pivot_offset = i.size / 2.0
+		var target_scale = 1.0 - (scale_strength * abs(i.get_index() - selected_index))
 		target_scale = clamp(target_scale, scale_min, 1.0)
-		i.scale = lerp(i.scale, Vector2.ONE * target_scale, smoothing_speed*delta)
+		i.scale = lerp(i.scale, Vector2.ONE * target_scale, smoothing_speed * delta)
 
-		var target_opacity = 1.0 - (opacity_strength *abs(i.get_index()-selected_index))
+		var target_opacity = 1.0 - (opacity_strength * abs(i.get_index() - selected_index))
 		target_opacity = clamp(target_opacity, 0.0, 1.0)
-		i.modulate.a = lerp(i.modulate.a, target_opacity, smoothing_speed*delta)
+		i.modulate.a = lerp(i.modulate.a, target_opacity, smoothing_speed * delta)
 
 		if i.get_index() == selected_index:
 			i.z_index = 1
 		else:
-			i.z_index = -abs(i.get_index()-selected_index)
+			i.z_index = - abs(i.get_index() - selected_index)
 		
 		if follow_button_focus and i.has_focus():
 			selected_index = i.get_index()
 
 	if wraparound_enabled:
-		position_offset_node.position.x = lerp(position_offset_node.position.x, 0.0, smoothing_speed*delta)
+		position_offset_node.position.x = lerp(position_offset_node.position.x, 0.0, smoothing_speed * delta)
 	else:
-		position_offset_node.position.x = lerp(position_offset_node.position.x, -(position_offset_node.get_child(selected_index).position.x + position_offset_node.get_child(selected_index).size.x/2.0), smoothing_speed*delta)
+		position_offset_node.position.x = lerp(position_offset_node.position.x, - (position_offset_node.get_child(selected_index).position.x + position_offset_node.get_child(selected_index).size.x / 2.0), smoothing_speed * delta)
 
 func _left():
 	selected_index -= 1
 	if selected_index < 0:
 		selected_index += 1
 
+	count -= 1
+	if count == -1:
+		count = 1
+		return
+
+	title.text = title_array[count]
+	path.text = path_num[count]
+
 
 func _right():
 	selected_index += 1
-	if selected_index > position_offset_node.get_child_count()-1:
+	if selected_index > position_offset_node.get_child_count() - 1:
 		selected_index -= 1
+
+	count += 1
+	if count == 6:
+		count = 5
+		return
+
+	title.text = title_array[count]
+	path.text = path_num[count]
