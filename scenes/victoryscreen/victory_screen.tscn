@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="1_a28le"]
 [ext_resource type="Script" uid="uid://cxjx8pbo8137d" path="res://scenes/victoryscreen/victory_screen.gd" id="1_t1hsp"]
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="3_r3k0k"]
+[ext_resource type="FontFile" uid="uid://cuu8uxwlh6c8t" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraLightItalic.ttf" id="4_5lopo"]
+[ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="5_68wtw"]
 
 [sub_resource type="Gradient" id="Gradient_t1hsp"]
 offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
@@ -47,48 +49,106 @@ texture = ExtResource("1_a28le")
 [node name="Label" type="Label" parent="." unique_id=1724441907]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.50104165
+anchor_top = 0.2962963
+anchor_right = 0.50104165
+anchor_bottom = 0.2962963
+offset_left = -506.0
+offset_top = -86.0
+offset_right = 506.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_r3k0k")
+theme_override_font_sizes/font_size = 150
+text = "Congratulations!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="." unique_id=260130564]
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.33
 anchor_right = 0.5
 anchor_bottom = 0.33
-offset_left = -20.0
-offset_top = -9.5
-offset_right = 20.0
-offset_bottom = 9.5
+offset_left = -270.0
+offset_top = 69.599976
+offset_right = 250.0
+offset_bottom = 127.599976
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_r3k0k")
-theme_override_font_sizes/font_size = 88
-text = "Congrats on Passing Level 1"
+theme_override_fonts/font = ExtResource("4_5lopo")
+theme_override_font_sizes/font_size = 40
+text = "You've completed level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="NextLevel" type="Button" parent="." unique_id=1493945778]
+[node name="NextLevel" type="TextureButton" parent="." unique_id=41859749]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -348.0
-offset_top = -138.0
-offset_right = -68.0
-offset_bottom = -59.0
+offset_left = -1160.0
+offset_top = -479.0
+offset_right = -754.0
+offset_bottom = -364.0
 grow_horizontal = 0
 grow_vertical = 0
+texture_normal = ExtResource("5_68wtw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NextLevel" unique_id=1553822806]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -35.5
+offset_right = 136.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 61
 text = "Next Level"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MainMenu" type="Button" parent="." unique_id=1323261123]
+[node name="MainMenu" type="TextureButton" parent="." unique_id=531623446]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 83.0
-offset_top = -138.0
-offset_right = 391.0
-offset_bottom = -59.0
+offset_left = 760.0
+offset_top = -330.0
+offset_right = 1166.0
+offset_bottom = -215.0
 grow_vertical = 0
+texture_normal = ExtResource("5_68wtw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MainMenu" unique_id=1077262079]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -35.5
+offset_right = 150.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 61
 text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DustParticles" type="GPUParticles2D" parent="." unique_id=1727027060]
 light_mask = 2

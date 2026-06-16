@@ -1,18 +1,40 @@
 [gd_scene format=3 uid="uid://c6fdlvl2po04d"]
 
 [ext_resource type="Script" uid="uid://cl4l1mtdr1kea" path="res://scenes/ui/game_over.gd" id="1_60xr3"]
-[ext_resource type="Texture2D" uid="uid://do4xs25phwxus" path="res://graphics/ui/GameOver.png" id="2_fu4wh"]
-[ext_resource type="Texture2D" uid="uid://dpygav7shco8x" path="res://graphics/ui/InGameButton.png" id="3_x6o8e"]
+[ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="2_vfrx6"]
+[ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="3_x6o8e"]
+
+[sub_resource type="Gradient" id="Gradient_x6o8e"]
+offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bva0v"]
+gradient = SubResource("Gradient_x6o8e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vfrx6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1920, 1080, 1)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 49.99998
+gravity = Vector3(0, 60, 0)
+scale_min = 0.0
+scale_max = 10.0
+color = Color(1, 0.15088919, 0.77001214, 0.8901961)
+color_ramp = SubResource("GradientTexture1D_bva0v")
 
 [node name="GameOver" type="CanvasLayer" unique_id=1095421198]
 process_mode = 3
 layer = 2
 script = ExtResource("1_60xr3")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=575431980]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=494994658]
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0.09803922, 0.15294118, 0.20784314, 0.60784316)
+texture = ExtResource("2_vfrx6")
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=249557703]
 layout_mode = 1
@@ -25,77 +47,102 @@ offset_left = -449.0
 offset_top = -891.0
 offset_right = 455.0
 offset_bottom = -191.0
-texture = ExtResource("2_fu4wh")
 
 [node name="txtScore" type="Label" parent="ColorRect/TextureRect" unique_id=1631352021]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 70.0
-offset_top = 257.0
-offset_right = 432.0
-offset_bottom = 311.0
+offset_left = 41.0
+offset_top = 195.0
+offset_right = 403.0
+offset_bottom = 249.0
 theme_override_font_sizes/font_size = 46
 text = "You got"
 
 [node name="btnCheckpoint" type="TextureButton" parent="ColorRect/TextureRect" unique_id=853079290]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 324.0
-offset_top = 399.0
-offset_right = 564.0
-offset_bottom = 501.0
+offset_left = 329.0
+offset_top = 387.0
+offset_right = 569.0
+offset_bottom = 489.0
 texture_normal = ExtResource("3_x6o8e")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="ColorRect/TextureRect/btnCheckpoint" unique_id=2147341891]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 16.0
-offset_right = 219.0
-offset_bottom = 114.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.5
+offset_top = -49.0
+offset_right = 95.5
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 22
 text = "Go Back to Last Checkpoint"
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="btnRetry" type="TextureButton" parent="ColorRect/TextureRect" unique_id=878281515]
 layout_mode = 0
-offset_left = 61.0
-offset_top = 398.0
-offset_right = 301.0
-offset_bottom = 500.0
+offset_left = 41.0
+offset_top = 387.0
+offset_right = 283.0
+offset_bottom = 489.0
 texture_normal = ExtResource("3_x6o8e")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="ColorRect/TextureRect/btnRetry" unique_id=621845840]
-layout_mode = 0
-offset_left = 82.0
-offset_top = 23.0
-offset_right = 172.0
-offset_bottom = 68.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -22.5
+offset_right = 45.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 38
 text = "Retry"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="btnQuit" type="TextureButton" parent="ColorRect/TextureRect" unique_id=482517847]
 layout_mode = 0
-offset_left = 587.0
-offset_top = 400.0
-offset_right = 827.0
-offset_bottom = 502.0
+offset_left = 617.0
+offset_top = 387.0
+offset_right = 857.0
+offset_bottom = 489.0
 texture_normal = ExtResource("3_x6o8e")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="ColorRect/TextureRect/btnQuit" unique_id=1540660989]
-layout_mode = 0
-offset_left = 94.0
-offset_top = 24.0
-offset_right = 158.0
-offset_bottom = 69.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -22.5
+offset_right = 32.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 38
 text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect/TextureRect" unique_id=1598329038]
 layout_mode = 0
@@ -103,8 +150,16 @@ offset_left = 36.0
 offset_top = 85.0
 offset_right = 460.0
 offset_bottom = 183.0
+theme_override_colors/font_color = Color(1, 0.3254902, 0.3019608, 1)
 theme_override_font_sizes/font_size = 85
 text = "Game Over!"
+
+[node name="DustParticles" type="GPUParticles2D" parent="ColorRect" unique_id=1397857743]
+light_mask = 2
+position = Vector2(961.0802, 536.93976)
+amount = 100
+visibility_rect = Rect2(-960, -540, 1920, 1080)
+process_material = SubResource("ParticleProcessMaterial_vfrx6")
 
 [connection signal="pressed" from="ColorRect/TextureRect/btnCheckpoint" to="." method="_on_btn_checkpoint_pressed"]
 [connection signal="pressed" from="ColorRect/TextureRect/btnRetry" to="." method="_on_btn_retry_pressed"]
