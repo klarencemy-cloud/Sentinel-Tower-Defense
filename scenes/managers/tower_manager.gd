@@ -115,7 +115,12 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		return
 
 	var cost = Data.TOWER_DATA[selected_tower]["cost"]
-
+	var systemload = Data.TOWER_DATA[selected_tower]["server_load"]
+	
+	if Data.currentserverload >= Data.maxserverload:
+		place_tower = false
+		return
+		
 	if not Data.is_unli_money and Data.money < cost:
 		place_tower = false
 		return
@@ -134,6 +139,12 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	place_tower = false
 	if not Data.is_unli_money:
 		Data.money -= cost
+	
+	Data.currentserverload += systemload
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.refresh_tower_cards()
+
 
 
 func _on_tower_removed(cell_pos: Vector2i) -> void:

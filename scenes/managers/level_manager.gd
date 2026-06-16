@@ -8,7 +8,6 @@ extends Node
 var level_root: Node2D
 var current_map: Node
 
-
 var levels: Array = [
 	"res://scenes/levels/level1.scn",
 	"res://scenes/levels/level2.scn",
@@ -21,7 +20,6 @@ func _ready() -> void:
 	randomize()
 	lightning()
 	take_map_level()
-
 
 func take_map_level() -> void:
 	print("this is " + str(Data.current_level_index))

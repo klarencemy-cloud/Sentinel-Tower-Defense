@@ -5,6 +5,7 @@ var is_unli_money: bool = false
 var is_unli_health: bool = false
 var is_unli_senti_cap: bool = false
 var is_maxed_lvl: bool = false
+signal server_load_changed
 
 var before_total_money: int
 var before_total_health: int
@@ -19,6 +20,7 @@ var TOWER_DATA = {
 	Tower.BASIC: {
 		'name': 'Basic',
 		'cost': 20,
+		'server_load' : 15,
 		'damage' : 2,
 		'reload_time': 1.0,
 		'range': 100,
@@ -45,6 +47,7 @@ var TOWER_DATA = {
 		'cost': 30,
 		'damage' : 3,
 		'reload_time': 1.5,
+		'server_load' : 25,
 		'range': 50,
 		'crit rate': 0,
 		'crit damage': 50,
@@ -68,6 +71,7 @@ var TOWER_DATA = {
 		'name': 'Mortar',
 		'cost': 30,
 		'reload_time': 2.0,
+		'server_load' : 50,
 		'damage' : 5,
 		'range': 200,
 		'crit rate' : 0,
@@ -103,7 +107,11 @@ var UPGRADE_DATA = {
 	"Crit Damage": 25
 }
 
-
+var currentserverload: int = 0:
+	set(value):
+		currentserverload = value
+		server_load_changed.emit()
+var maxserverload := 200
 var money := 200:
 	set(value):
 		money = value

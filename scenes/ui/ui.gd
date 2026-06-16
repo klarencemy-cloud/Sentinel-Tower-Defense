@@ -9,6 +9,7 @@ var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
 
 
 func _ready() -> void:
+	Data.server_load_changed.connect(update_server_load)
 	$Control/TextureRect/TowerCardsContainer.visible = true
 	$Control/TextureRect/EnemyCardsContainer.visible = false
 
@@ -53,6 +54,7 @@ func update_stats(money: int, health: int):
 	else:
 		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = str(health)
 		$Control/TextureRect/PlayerCurrentStats/HPBar.value = health * 100 / 100
+	$Control/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + str(Data.maxserverload)
 	print("Stats Updated: Money - " + str(money) + ", Health - " + str(health))
 
 
@@ -114,3 +116,10 @@ func _on_unli_senti_cap_toggled(toggled_on: bool) -> void:
 		Data.is_unli_senti_cap = true
 	else:
 		Data.is_unli_senti_cap = false
+		
+func update_server_load():
+	$Control/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + str(Data.maxserverload)
+
+func refresh_tower_cards():
+	for card in get_tree().get_nodes_in_group("TowerCard"):
+		card.toggle_active(Data.money)

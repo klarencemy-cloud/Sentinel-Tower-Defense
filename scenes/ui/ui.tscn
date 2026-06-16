@@ -308,6 +308,24 @@ offset_right = 106.0
 offset_bottom = 53.36
 texture_normal = ExtResource("10_4kltc")
 
+[node name="ServerLoadText" type="Label" parent="Control" unique_id=310426915]
+layout_mode = 0
+offset_left = 1519.0
+offset_top = 35.0
+offset_right = 1802.0
+offset_bottom = 216.0
+theme_override_font_sizes/font_size = 50
+text = "Server Load:"
+
+[node name="SystemLoadData" type="Label" parent="Control/ServerLoadText" unique_id=1969950523]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 58.0
+offset_right = 187.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 33
+text = "hatdog"
+
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/SandboxSetting" to="." method="_on_sandbox_setting_pressed"]
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/TowerEnemiesButton" to="." method="_on_tower_enemies_button_pressed"]
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/WaveButton" to="." method="_on_wave_button_pressed"]
