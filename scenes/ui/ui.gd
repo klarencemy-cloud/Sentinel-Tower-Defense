@@ -1,4 +1,12 @@
 extends CanvasLayer
+
+@onready var auto_label: Label = $Control/AutoLabel
+@onready var tower_enemies_button: TextureButton = $Control/TextureRect/HBoxContainer/TowerEnemiesButton
+@onready var wave_button: TextureButton = $Control/TextureRect/HBoxContainer/WaveButton
+@onready var sandbox_setting: TextureButton = $Control/TextureRect/HBoxContainer/SandboxSetting
+@onready var tower_cards_container: HBoxContainer = $Control/TextureRect/TowerCardsContainer
+@onready var enemy_cards_container: HBoxContainer = $Control/TextureRect/EnemyCardsContainer
+
 signal place_tower(tower_type: Data.Tower)
 signal spawn_enemy(enemy_type: Data.Enemy)
 signal start_wave
@@ -9,13 +17,17 @@ var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
 
 
 func _ready() -> void:
+	tower_cards_container.visible = true
+	enemy_cards_container.visible = false
 	Data.server_load_changed.connect(update_server_load)
 	$Control/TextureRect/TowerCardsContainer.visible = true
 	$Control/TextureRect/EnemyCardsContainer.visible = false
 
 	if Data.is_sandbox:
-		$Control/TextureRect/HBoxContainer/SandboxSetting.visible = true
-		$Control/TextureRect/HBoxContainer/TowerEnemiesButton.visible = true
+		sandbox_setting.visible = true
+		tower_enemies_button.visible = true
+		auto_label.visible = false #alis visible ng auto button
+		wave_button.disabled = true #disable start wave button
 
 	
 	for tower_enum in Data.Tower.values():

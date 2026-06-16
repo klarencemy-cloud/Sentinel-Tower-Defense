@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://87fv6xu2jrp3" path="res://graphics/buttons/active_parallelogram.png" id="3_bg0p3"]
 [ext_resource type="Texture2D" uid="uid://csrbid1q0uu35" path="res://graphics/buttons/parallelogram.png" id="5_spdbb"]
 [ext_resource type="PackedScene" uid="uid://n6jec2cv0g36" path="res://scenes/ui/virtual_machine_ui.tscn" id="6_8kmsr"]
+[ext_resource type="PackedScene" uid="uid://bcld3rpyfh6ho" path="res://scenes/ui/sand_box_ui.tscn" id="8_1pu8h"]
 
 [sub_resource type="Gradient" id="Gradient_bg0p3"]
 offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
@@ -148,12 +149,50 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="SandBoxMode" type="TextureButton" parent="ButtonManager" unique_id=139234397]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.47646445
+anchor_top = 0.0027283228
+anchor_right = 0.7234644
+anchor_bottom = 0.10472833
+offset_left = 179.18823
+offset_top = -1.9465888
+offset_right = 180.39197
+offset_bottom = -0.2086029
+texture_normal = ExtResource("5_spdbb")
+texture_click_mask = ExtResource("3_1pu8h")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ButtonManager/SandBoxMode" unique_id=268080973]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26900002
+anchor_top = 0.009000001
+anchor_right = 0.76100004
+anchor_bottom = 0.99100006
+offset_left = 0.10562897
+offset_top = -1.008
+offset_right = 4.187317
+offset_bottom = 1.0079956
+theme_override_font_sizes/font_size = 39
+text = "Sandbox"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="MainStoryUI" parent="." unique_id=86464915 instance=ExtResource("2_i73ug")]
 layout_mode = 1
 
 [node name="VirtualMachineUI" parent="." unique_id=446436674 instance=ExtResource("6_8kmsr")]
 visible = false
 visibility_layer = 5
+layout_mode = 1
+
+[node name="SandBoxUI" parent="." unique_id=785887472 instance=ExtResource("8_1pu8h")]
+visible = false
 layout_mode = 1
 
 [node name="DustParticles" type="GPUParticles2D" parent="." unique_id=1542683946]
@@ -165,3 +204,4 @@ process_material = SubResource("ParticleProcessMaterial_k8ve6")
 [connection signal="pressed" from="ButtonManager/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="ButtonManager/MainStory" to="." method="_on_main_story_pressed"]
 [connection signal="pressed" from="ButtonManager/VmMode" to="." method="_on_vm_mode_pressed"]
+[connection signal="pressed" from="ButtonManager/SandBoxMode" to="." method="_on_sand_box_mode_pressed"]

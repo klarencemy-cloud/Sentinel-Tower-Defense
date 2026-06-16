@@ -18,13 +18,27 @@ func _on_main_menu_pressed() -> void:
 func _on_main_story_pressed() -> void:
 	$MainStoryUI.visible = true;
 	$VirtualMachineUI.visible = false;
+	$SandBoxUI.visible = false
 	
 	$ButtonManager/MainStory.texture_normal = preload("res://graphics/buttons/active_parallelogram.png")
 	$ButtonManager/VmMode.texture_normal = preload("res://graphics/buttons/parallelogram.png")
+	$ButtonManager/SandBoxMode.texture_normal = preload("res://graphics/buttons/parallelogram.png")
 
 func _on_vm_mode_pressed() -> void:
 	$MainStoryUI.visible = false;
 	$VirtualMachineUI.visible = true;
+	$SandBoxUI.visible = false
 
 	$ButtonManager/MainStory.texture_normal = preload("res://graphics/buttons/parallelogram.png")
 	$ButtonManager/VmMode.texture_normal = preload("res://graphics/buttons/active_parallelogram.png")
+	$ButtonManager/SandBoxMode.texture_normal = preload("res://graphics/buttons/parallelogram.png")
+
+func _on_sand_box_mode_pressed() -> void:
+	$MainStoryUI.visible = false;
+	$VirtualMachineUI.visible = false;
+	$SandBoxUI.visible = true
+
+	$ButtonManager/MainStory.texture_normal = preload("res://graphics/buttons/parallelogram.png")
+	$ButtonManager/VmMode.texture_normal = preload("res://graphics/buttons/parallelogram.png")
+	$ButtonManager/SandBoxMode.texture_normal = preload("res://graphics/buttons/active_parallelogram.png")
+

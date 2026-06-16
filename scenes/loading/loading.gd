@@ -11,7 +11,6 @@ var progress: Array[float] = []
 func _ready() -> void:
 	if Data.is_sandbox:
 		next_scene_path = next_scene_path2
-		print("Sandbox mode enabled, loading sandbox scene...")
 	else:
 		next_scene_path = next_scene_path1
 

@@ -16,6 +16,8 @@ func _exit_tree() -> void:
 	$Level/UI/Control/TextureRect/SandboxMenuContainer/UnliHealth.button_pressed = false
 	$Level/UI/Control/TextureRect/SandboxMenuContainer/UnliSentiCap.button_pressed = false
 
+	Data.current_level_index = Data.before_level_index
+
 #func _process(delta: float) -> void:
 	#pass
 

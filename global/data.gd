@@ -7,10 +7,12 @@ var is_unli_senti_cap: bool = false
 var is_maxed_lvl: bool = false
 signal server_load_changed
 
-var before_total_money: int
-var before_total_health: int
+var before_total_money: int #sandbox save total money para hindi ma overwrite yung sa main story
+var before_total_health: int #sandbox save total health para hindi ma overwrite yung sa main story
+#var selected_map: String #sandbox select map
 
-var current_level_index: int = 0
+var before_level_index: int
+var current_level_index: int = 0 #map count 0 = level 1
 
 enum Tower {BASIC, BLAST, MORTAR}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
@@ -133,5 +135,5 @@ var health := 100:
 		if health <= 0:
 			ui.get_node("GameOver").visible = true
 			get_tree().paused = true
-var checkpoint_wave: int = 0
-var current_wave: int = 0
+var checkpoint_wave: int = 0 #checkpoint count
+var current_wave: int = 0 #wave count

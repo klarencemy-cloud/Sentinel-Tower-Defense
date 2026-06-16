@@ -13,7 +13,8 @@ var levels: Array = [
 	"res://scenes/levels/level2.scn",
 	"res://scenes/levels/level3.scn",
 	"res://scenes/levels/level4.scn",
-	"res://scenes/levels/level5.scn"
+	"res://scenes/levels/level5.scn",
+	"res://scenes/levels/level6.scn"
 ]
 
 func _ready() -> void:
@@ -22,7 +23,6 @@ func _ready() -> void:
 	take_map_level()
 
 func take_map_level() -> void:
-	print("this is " + str(Data.current_level_index))
 	default_map_path = levels[Data.current_level_index]
 	current_map_name = ("Level" + str(Data.current_level_index + 1))
 
