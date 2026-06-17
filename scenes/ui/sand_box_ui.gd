@@ -11,14 +11,6 @@ extends Control
 	#print(selected_carousel_node.position)
 var selected_map: String
 
-func _on_right_btn_pressed() -> void:
-	$CarouselContainer._right()
-
-
-func _on_left_btn_pressed() -> void:
-	$CarouselContainer._left()
-
-
 func _on_start_game_pressed() -> void:
 	var selected_carousel_node = $CarouselContainer.position_offset_node.get_child($CarouselContainer.selected_index)
 
@@ -47,3 +39,11 @@ func _on_start_game_pressed() -> void:
 
 	Data.is_sandbox = true
 	get_tree().change_scene_to_file("res://scenes/loading/loading.tscn")
+
+
+func _on_button_pressed() -> void:
+	$CarouselContainer._left()
+
+
+func _on_button_2_pressed() -> void:
+	$CarouselContainer._right()
