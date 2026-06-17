@@ -140,7 +140,7 @@ func _on_unli_senti_cap_toggled(toggled_on: bool) -> void:
 		
 func update_server_load():
 	if Data.is_unli_senti_cap:
-		$Control/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + "∞"
+		$Control/TextureProgressBar/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + "∞"
 	else:
 		$Control/TextureProgressBar/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + str(Data.maxserverload)
 
