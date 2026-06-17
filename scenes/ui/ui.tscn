@@ -241,7 +241,7 @@ text = "Unlimited Health"
 [node name="UnliSentiCap" type="CheckBox" parent="Control/TextureRect/SandboxMenuContainer" unique_id=137734319]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Unlimited Sentinel Capacity"
+text = "Unlimited Server Load"
 
 [node name="StatsContainer" type="VBoxContainer" parent="Control" unique_id=1023310108]
 custom_minimum_size = Vector2(150, 0)

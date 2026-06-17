@@ -1,5 +1,9 @@
 extends Node
 
+var default_health: int = 100
+var default_money: int = 200
+var default_system_load: int = 200
+
 var is_sandbox: bool = false
 var is_unli_money: bool = false
 var is_unli_health: bool = false
@@ -9,7 +13,7 @@ signal server_load_changed
 
 var before_total_money: int #sandbox save total money para hindi ma overwrite yung sa main story
 var before_total_health: int #sandbox save total health para hindi ma overwrite yung sa main story
-#var selected_map: String #sandbox select map
+var before_max_server_load: int #sandbox save total server load capaccity para hindi ma overwrite yung sa main story
 
 var before_level_index: int
 var current_level_index: int = 0 #map count 0 = level 1
@@ -113,8 +117,8 @@ var currentserverload: int = 0:
 	set(value):
 		currentserverload = value
 		server_load_changed.emit()
-var maxserverload := 200
-var money := 200:
+var maxserverload := default_system_load
+var money := default_money:
 	set(value):
 		money = value
 
@@ -125,7 +129,7 @@ var money := 200:
 		for node in get_tree().get_nodes_in_group("TowerCard"):
 			if node.has_method("toggle_active"):
 				node.toggle_active(money)
-var health := 100:
+var health := default_health:
 	set(value):
 		health = value
 			

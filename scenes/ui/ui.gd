@@ -64,8 +64,14 @@ func update_stats(money: int, health: int):
 	else:
 		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = str(health)
 		$Control/TextureRect/PlayerCurrentStats/HPBar.value = health * 100 / 100
-	$Control/TextureProgressBar/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + str(Data.maxserverload)
-	print("Stats Updated: Money - " + str(money) + ", Health - " + str(health))
+
+	if Data.is_unli_senti_cap:
+		$Control/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + "∞"
+	else:
+		$Control/TextureProgressBar/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + str(Data.maxserverload)
+
+	
+	print("Stats Updated: Money - " + str(money) + ", Health - " + str(health) + ", " + "Max Load - " + str(Data.currentserverload) + " / " + str(Data.maxserverload))
 
 
 func update_wave_label() -> void:
@@ -122,11 +128,21 @@ func _on_unli_health_toggled(toggled_on: bool) -> void:
 func _on_unli_senti_cap_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		Data.is_unli_senti_cap = true
+		Data.before_max_server_load = Data.maxserverload
+
+		Data.maxserverload = 999999
+
 	else:
 		Data.is_unli_senti_cap = false
+		Data.maxserverload = Data.before_max_server_load
+	
+	update_server_load()
 		
 func update_server_load():
-	$Control/TextureProgressBar/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + str(Data.maxserverload)
+	if Data.is_unli_senti_cap:
+		$Control/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + "∞"
+	else:
+		$Control/TextureProgressBar/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + str(Data.maxserverload)
 
 func refresh_tower_cards():
 	for card in get_tree().get_nodes_in_group("TowerCard"):
