@@ -65,10 +65,7 @@ func update_stats(money: int, health: int):
 		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = str(health)
 		$Control/TextureRect/PlayerCurrentStats/HPBar.value = health * 100 / 100
 
-	if Data.is_unli_senti_cap:
-		$Control/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + "∞"
-	else:
-		$Control/TextureProgressBar/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + str(Data.maxserverload)
+	update_server_load()
 
 	
 	print("Stats Updated: Money - " + str(money) + ", Health - " + str(health) + ", " + "Max Load - " + str(Data.currentserverload) + " / " + str(Data.maxserverload))
@@ -139,10 +136,20 @@ func _on_unli_senti_cap_toggled(toggled_on: bool) -> void:
 	update_server_load()
 		
 func update_server_load():
+	var progress_bar = $Control/TextureProgressBar
+	
 	if Data.is_unli_senti_cap:
 		$Control/TextureProgressBar/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + "∞"
+		progress_bar.value = 0 
 	else:
 		$Control/TextureProgressBar/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + str(Data.maxserverload)
+		
+		if Data.maxserverload > 0:
+			var load_pct = (float(Data.currentserverload) / float(Data.maxserverload)) * 100.0
+			progress_bar.value = load_pct
+		else:
+			progress_bar.value = 0
+
 
 func refresh_tower_cards():
 	for card in get_tree().get_nodes_in_group("TowerCard"):
