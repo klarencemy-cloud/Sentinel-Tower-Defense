@@ -15,7 +15,6 @@ var tower_card_scene = preload("res://scenes/ui/tower_card.tscn")
 var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
 
 
-
 func _ready() -> void:
 	tower_cards_container.visible = true
 	enemy_cards_container.visible = false
@@ -26,8 +25,8 @@ func _ready() -> void:
 	if Data.is_sandbox:
 		sandbox_setting.visible = true
 		tower_enemies_button.visible = true
-		auto_label.visible = false #alis visible ng auto button
-		wave_button.disabled = true #disable start wave button
+		auto_label.visible = false # alis visible ng auto button
+		wave_button.disabled = true # disable start wave button
 
 	
 	for tower_enum in Data.Tower.values():
@@ -54,7 +53,6 @@ func sandbox_spawn_enemy(enemy_enum: Data.Enemy):
 	spawn_enemy.emit(enemy_enum)
 
 func update_stats(money: int, health: int):
-
 	if Data.is_unli_money:
 		$Control/StatsContainer/PanelContainer2/HBoxContainer/Label.text = "∞"
 	else:
@@ -66,9 +64,8 @@ func update_stats(money: int, health: int):
 	else:
 		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = str(health)
 		$Control/TextureRect/PlayerCurrentStats/HPBar.value = health * 100 / 100
-	$Control/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + str(Data.maxserverload)
+	$Control/TextureProgressBar/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + str(Data.maxserverload)
 	print("Stats Updated: Money - " + str(money) + ", Health - " + str(health))
-
 
 
 func update_wave_label() -> void:
@@ -90,7 +87,6 @@ func _on_wave_button_pressed() -> void:
 func _on_pause_button_pressed() -> void:
 	$PauseMenu.visible = true
 	get_tree().paused = true
-
 
 
 func _on_maxed_lvl_toggled(toggled_on: bool) -> void:
@@ -130,7 +126,7 @@ func _on_unli_senti_cap_toggled(toggled_on: bool) -> void:
 		Data.is_unli_senti_cap = false
 		
 func update_server_load():
-	$Control/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + str(Data.maxserverload)
+	$Control/TextureProgressBar/ServerLoadText/SystemLoadData.text = str(Data.currentserverload) + " / " + str(Data.maxserverload)
 
 func refresh_tower_cards():
 	for card in get_tree().get_nodes_in_group("TowerCard"):

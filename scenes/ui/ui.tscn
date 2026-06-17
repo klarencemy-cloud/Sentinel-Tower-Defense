@@ -18,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://dh1ehslhpji6n" path="res://graphics/ui/pause.png" id="10_4kltc"]
 [ext_resource type="Script" uid="uid://cbx4dxix5gl2o" path="res://scenes/ui/upgrade_button.gd" id="11_hc5d0"]
 [ext_resource type="Texture2D" uid="uid://cp25rrr2snh2l" path="res://graphics/ui/UpgradeButton.png" id="11_swkix"]
+[ext_resource type="Texture2D" uid="uid://b2ivf813gi1aa" path="res://graphics/ui/progress-circle.png" id="19_svq4k"]
+[ext_resource type="Texture2D" uid="uid://bubyrkehmuahc" path="res://graphics/ui/progress-bg.png" id="19_ygedu"]
+[ext_resource type="FontFile" uid="uid://cqus3kybakmf8" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraBold.ttf" id="21_oopc8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vp6q"]
 texture = ExtResource("2_g5kmx")
@@ -308,23 +311,75 @@ offset_right = 106.0
 offset_bottom = 53.36
 texture_normal = ExtResource("10_4kltc")
 
-[node name="ServerLoadText" type="Label" parent="Control" unique_id=310426915]
+[node name="ProgressBg" type="TextureRect" parent="Control" unique_id=606032711]
 layout_mode = 0
-offset_left = 1519.0
-offset_top = 35.0
-offset_right = 1802.0
-offset_bottom = 216.0
-theme_override_font_sizes/font_size = 50
-text = "Server Load:"
+anchor_left = 0.86510414
+anchor_top = 0.023148147
+anchor_right = 0.98229164
+anchor_bottom = 0.23148148
+offset_right = 25.0
+offset_bottom = 25.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("19_ygedu")
+metadata/_edit_use_anchors_ = true
 
-[node name="SystemLoadData" type="Label" parent="Control/ServerLoadText" unique_id=1969950523]
-layout_mode = 0
-offset_left = 87.0
-offset_top = 58.0
-offset_right = 187.0
-offset_bottom = 97.0
-theme_override_font_sizes/font_size = 33
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control" unique_id=1034551329]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 713.30005
+offset_top = -502.7
+offset_right = 913.30005
+offset_bottom = -302.7
+grow_horizontal = 2
+grow_vertical = 2
+value = 10.0
+fill_mode = 4
+texture_under = ExtResource("19_svq4k")
+texture_progress = ExtResource("19_svq4k")
+tint_under = Color(0.12941177, 0.23137255, 0.29411766, 1)
+tint_progress = Color(0.18039216, 0.39215687, 0.52156866, 1)
+
+[node name="ServerLoadText" type="Label" parent="Control/TextureProgressBar" unique_id=310426915]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.30005
+offset_top = -28.299988
+offset_right = 92.69995
+offset_bottom = 57.700012
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9019608, 0.92156863, 1)
+theme_override_fonts/font = ExtResource("7_hl07w")
+theme_override_font_sizes/font_size = 20
+text = "Server Load"
+horizontal_alignment = 1
+
+[node name="SystemLoadData" type="Label" parent="Control/TextureProgressBar/ServerLoadText" unique_id=1969950523]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -19.5
+offset_right = 50.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("21_oopc8")
+theme_override_font_sizes/font_size = 20
 text = "hatdog"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/SandboxSetting" to="." method="_on_sandbox_setting_pressed"]
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/TowerEnemiesButton" to="." method="_on_tower_enemies_button_pressed"]
