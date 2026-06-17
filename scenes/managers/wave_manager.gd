@@ -23,10 +23,11 @@ func update_wave_state() -> void:
 	if wave_active and not spawning_wave and enemies.size() == 0:
 		wave_active = false
 		if not wave_active and Data.current_wave % 10 == 0:
-			if ui:
-				ui.disable_auto()
-			level_completed.emit()
-			next_map.emit()
+			if !Data.is_sandbox:
+				if ui:
+					ui.disable_auto()
+				level_completed.emit()
+				next_map.emit()
 	
 	if not wave_active and not spawning_wave and enemies.size() == 0:
 		if ui and ui.is_auto_enabled():
