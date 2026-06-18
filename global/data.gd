@@ -141,14 +141,10 @@ var health := default_health:
 		if health <= 0:
 			ui.get_node("GameOver").visible = true
 			get_tree().paused = true
-<<<<<<< Updated upstream
-var checkpoint_wave: int = 0 #checkpoint count
-var current_wave: int = 0 #wave count
+
+var checkpoint_wave: int = 0 # checkpoint count
+var current_wave: int = 0 # wave count
 
 func reset_game():
 	money = 200
 	currentserverload = 0
-=======
-var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 0 # wave count
->>>>>>> Stashed changes
