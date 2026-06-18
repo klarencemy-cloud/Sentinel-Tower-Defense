@@ -90,6 +90,7 @@ func _random_wave_size() -> Dictionary:
 
 func _choose_random_enemy_type(difficulty: int) -> Data.Enemy:
 	var default_chance = clamp(70 - difficulty * 4, 15, 70)
+	var worm_chance = clamp(70 - difficulty * 4, 15, 70)
 	var fast_chance = clamp(20 + difficulty * 3, 15, 40)
 	var strong_chance = clamp(8 + difficulty * 2, 10, 30)
 

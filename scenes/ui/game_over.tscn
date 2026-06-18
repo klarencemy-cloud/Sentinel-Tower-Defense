@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cl4l1mtdr1kea" path="res://scenes/ui/game_over.gd" id="1_60xr3"]
 [ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="2_vfrx6"]
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="3_x6o8e"]
-[ext_resource type="Texture2D" uid="uid://b6m5vqejx8sj0" path="res://graphics/enemies/enemies.png" id="4_vfrx6"]
+[ext_resource type="Texture2D" uid="uid://bf28qlmwt3tdr" path="res://graphics/enemies/enemies.png" id="4_vfrx6"]
 
 [sub_resource type="Gradient" id="Gradient_x6o8e"]
 offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
@@ -29,31 +29,23 @@ color_ramp = SubResource("GradientTexture1D_bva0v")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfrx6"]
 atlas = ExtResource("4_vfrx6")
-region = Rect2(0, 0, 128, 256)
+region = Rect2(0, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o6b8n"]
 atlas = ExtResource("4_vfrx6")
-region = Rect2(128, 0, 128, 256)
+region = Rect2(192, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4583b"]
 atlas = ExtResource("4_vfrx6")
-region = Rect2(256, 0, 128, 256)
+region = Rect2(384, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6337"]
 atlas = ExtResource("4_vfrx6")
-region = Rect2(384, 0, 128, 256)
+region = Rect2(576, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6ix2"]
 atlas = ExtResource("4_vfrx6")
-region = Rect2(512, 0, 128, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_trpi5"]
-atlas = ExtResource("4_vfrx6")
-region = Rect2(640, 0, 128, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0mouq"]
-atlas = ExtResource("4_vfrx6")
-region = Rect2(768, 0, 128, 256)
+region = Rect2(768, 192, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r6ix2"]
 animations = [{
@@ -72,12 +64,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r6ix2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_trpi5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0mouq")
 }],
 "loop": true,
 "name": &"default",

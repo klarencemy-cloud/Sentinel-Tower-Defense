@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cq511gmyldyia"]
+
+[ext_resource type="Texture2D" uid="uid://djdfdic3cd0hv" path="res://graphics/enemies/wormhead1.png" id="2_8t68s"]
+
+[sub_resource type="GDScript" id="GDScript_t4dbd"]
+script/source = "extends Area2D
+
+@export var path_follow: PathFollow2D
+@export var speed := 0.1
+@export var spacing := 5
+
+
+var history: Array[Vector2] = []
+var segments: Array[Node2D] = []
+
+func _ready():
+	for child in get_children():
+		if child != path_follow:
+			segments.append(child)
+
+func _process(delta):
+	path_follow.progress_ratio += speed * delta
+
+	var head_pos = path_follow.global_position
+
+	history.push_front(head_pos)
+
+	var max_history = segments.size() * spacing
+	if history.size() > max_history:
+		history.resize(max_history)
+
+	for i in range(segments.size()):
+		var index = i * spacing
+
+		if index < history.size():
+			segments[i].global_position = history[index]
+
+			if index + 1 < history.size():
+				var dir = history[index] - history[index + 1]
+				segments[i].rotation = dir.angle()
+"
+
+[sub_resource type="Curve2D" id="Curve2D_8t68s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t4dbd"]
+
+[node name="Worm" type="Area2D" unique_id=1600703247]
+script = SubResource("GDScript_t4dbd")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=162921941]
+curve = SubResource("Curve2D_8t68s")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1578132372]
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=1957942613]
+texture = ExtResource("2_8t68s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1518512840]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2108658865]
+shape = SubResource("CircleShape2D_t4dbd")

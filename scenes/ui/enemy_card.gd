@@ -14,6 +14,3 @@ func setup(new_id: Data.Enemy) -> void:
 
 func _on_pressed() -> void:
 	press.emit(id)
-
-
-
