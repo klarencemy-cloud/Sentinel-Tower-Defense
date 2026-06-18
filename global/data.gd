@@ -141,3 +141,7 @@ var health := default_health:
 			get_tree().paused = true
 var checkpoint_wave: int = 0 #checkpoint count
 var current_wave: int = 0 #wave count
+
+func reset_game():
+	money = 200
+	currentserverload = 0

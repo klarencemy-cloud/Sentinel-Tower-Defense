@@ -4,12 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="2_albjg"]
 [ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="3_46vmp"]
 [ext_resource type="FontFile" uid="uid://tujnohddqv1k" path="res://font/Libre_Franklin/LibreFranklin-Italic-VariableFont_wght.ttf" id="4_p24p8"]
-[ext_resource type="Texture2D" uid="uid://m2v4co1jqaap" path="res://graphics/buttons/right.png" id="8_4thya"]
+[ext_resource type="Texture2D" uid="uid://dg5cpb8q8ckwj" path="res://graphics/buttons/right3.png" id="5_03fy7"]
 [ext_resource type="Texture2D" uid="uid://c2ka012ylc4b3" path="res://graphics/buttons/buttonbg.png" id="9_jj0la"]
 [ext_resource type="Script" uid="uid://cyrxvelj6b5co" path="res://scenes/ui/carousel_container.gd" id="10_fa42h"]
 [ext_resource type="Texture2D" uid="uid://gu6kknerpdee" path="res://graphics/vm_maps/vm1.png" id="11_k140q"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56eex"]
 
 [node name="SandBoxUI" type="Control" unique_id=785887472]
 layout_mode = 3
@@ -94,55 +92,33 @@ offset_right = 399.0
 offset_bottom = 494.0
 
 [node name="ButtonManager" type="Control" parent="." unique_id=652685244]
+z_index = 10
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="RightBtn" type="TextureButton" parent="ButtonManager" unique_id=1752650449]
+z_index = 6
 layout_mode = 0
-offset_left = 836.0
-offset_top = 526.0
-offset_right = 851.0
-offset_bottom = 561.5263
-texture_normal = ExtResource("8_4thya")
+offset_left = 792.0
+offset_top = 464.0
+offset_right = 908.0
+offset_bottom = 614.0
+texture_normal = ExtResource("5_03fy7")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="LeftBtn" type="TextureButton" parent="ButtonManager" unique_id=1293332622]
+z_index = 7
 layout_mode = 0
-offset_left = 272.0
-offset_top = 562.0
-offset_right = 287.0
-offset_bottom = 597.52637
+offset_left = 328.0
+offset_top = 616.0
+offset_right = 444.0
+offset_bottom = 766.0
 rotation = 3.1415927
-texture_normal = ExtResource("8_4thya")
+texture_normal = ExtResource("5_03fy7")
 ignore_texture_size = true
 stretch_mode = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="ButtonManager" unique_id=1177991182]
-layout_mode = 0
-offset_left = 218.0
-offset_top = 486.0
-offset_right = 318.0
-offset_bottom = 586.0
-
-[node name="Button" type="Button" parent="ButtonManager" unique_id=25606308]
-layout_mode = 0
-offset_left = 214.0
-offset_top = 496.0
-offset_right = 314.0
-offset_bottom = 596.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_56eex")
-flat = true
-
-[node name="Button2" type="Button" parent="ButtonManager" unique_id=1980801398]
-layout_mode = 0
-offset_left = 792.0
-offset_top = 494.0
-offset_right = 892.0
-offset_bottom = 594.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_56eex")
-flat = true
 
 [node name="StartGame" type="TextureButton" parent="." unique_id=470087992]
 layout_mode = 1
@@ -260,6 +236,6 @@ scale = Vector2(0.1, 0.1)
 pivot_offset = Vector2(221.50024, 196.95087)
 texture = ExtResource("11_k140q")
 
-[connection signal="pressed" from="ButtonManager/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="ButtonManager/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="ButtonManager/RightBtn" to="." method="_on_right_btn_pressed"]
+[connection signal="pressed" from="ButtonManager/LeftBtn" to="." method="_on_left_btn_pressed"]
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]

@@ -19,6 +19,7 @@ func _on_resume_pressed() -> void:
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
 	visible = false
+	Data.reset_game()
 	get_tree().change_scene_to_file("res://scenes/mainmenu/main_menu.tscn")
 	
 	

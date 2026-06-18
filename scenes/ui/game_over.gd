@@ -19,6 +19,8 @@ func _on_btn_quit_pressed() -> void:
 	visible = false
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/mainmenu/main_menu.tscn")
+	Data.reset_game()
+	
 
 func _on_btn_retry_pressed() -> void:
 	get_tree().paused = false
@@ -26,4 +28,5 @@ func _on_btn_retry_pressed() -> void:
 	Data.checkpoint_wave = 0
 	Data.health = 100
 	Data.money = 200
+	Data.currentserverload= 0
 	get_tree().change_scene_to_file("res://scenes/levels/level.tscn")

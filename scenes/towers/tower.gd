@@ -4,6 +4,7 @@ var enemies: Array
 var type: Data.Tower
 var bullet_type: Data.Bullet
 var cost: int
+var currentserverload
 var cell_pos: Vector2i = Vector2i.ZERO
 var damage: int = 0
 var reload_time: float = 0.0
@@ -69,7 +70,7 @@ func setup(tower_type: Data.Tower):
 
 	bullet_type = Data.TOWER_DATA[tower_type]["bullet"]
 	cost = Data.TOWER_DATA[tower_type]["cost"]
-
+	currentserverload = Data.TOWER_DATA[tower_type]["server_load"]
 	refresh_stats()
 
 
@@ -93,8 +94,12 @@ func _on_click_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: 
 
 func _on_tower_menu_delete_press() -> void:
 	Data.money += cost
+	Data.currentserverload -= currentserverload
 	emit_signal("removed", cell_pos)
 	queue_free()
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.refresh_tower_cards()
 
 
 func hide_ui():
