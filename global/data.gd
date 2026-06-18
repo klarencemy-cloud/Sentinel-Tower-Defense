@@ -11,12 +11,12 @@ var is_unli_senti_cap: bool = false
 var is_maxed_lvl: bool = false
 signal server_load_changed
 
-var before_total_money: int #sandbox save total money para hindi ma overwrite yung sa main story
-var before_total_health: int #sandbox save total health para hindi ma overwrite yung sa main story
-var before_max_server_load: int #sandbox save total server load capaccity para hindi ma overwrite yung sa main story
+var before_total_money: int # sandbox save total money para hindi ma overwrite yung sa main story
+var before_total_health: int # sandbox save total health para hindi ma overwrite yung sa main story
+var before_max_server_load: int # sandbox save total server load capaccity para hindi ma overwrite yung sa main story
 
 var before_level_index: int
-var current_level_index: int = 0 #map count 0 = level 1
+var current_level_index: int = 0 # map count 0 = level 1
 
 enum Tower {BASIC, BLAST, MORTAR}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
@@ -26,8 +26,8 @@ var TOWER_DATA = {
 	Tower.BASIC: {
 		'name': 'Basic',
 		'cost': 20,
-		'server_load' : 15,
-		'damage' : 2,
+		'server_load': 15,
+		'damage': 2,
 		'reload_time': 1.0,
 		'range': 100,
 		'crit rate': 0,
@@ -53,7 +53,7 @@ var TOWER_DATA = {
 		'cost': 30,
 		'damage': 3,
 		'reload_time': 1.5,
-		'server_load' : 25,
+		'server_load': 25,
 		'range': 50,
 		'crit rate': 0,
 		'crit damage': 50,
@@ -77,8 +77,8 @@ var TOWER_DATA = {
 		'name': 'Mortar',
 		'cost': 30,
 		'reload_time': 2.0,
-		'server_load' : 50,
-		'damage' : 5,
+		'server_load': 50,
+		'damage': 5,
 		'range': 200,
 		'crit rate': 0,
 		'crit damage': 50,
@@ -100,10 +100,12 @@ var TOWER_DATA = {
 		}
 		
 var ENEMY_DATA = {
-	Enemy.DEFAULT: {'health': 3, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 20},
-	Enemy.FAST: {'health': 3, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 50},
-	Enemy.STRONG: {'health': 6, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 25},
-	Enemy.BIG: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 15}}
+	Enemy.DEFAULT: {'health': 3, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 20, 'name': "spam"},
+	Enemy.FAST: {'health': 3, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 50, 'name': "adware"},
+	Enemy.STRONG: {'health': 6, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 25, 'name': "spyware"},
+	Enemy.BIG: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 15, 'name': "worm"}
+
+}
 
 var UPGRADE_DATA = {
 	"Damage": 1,
@@ -139,9 +141,14 @@ var health := default_health:
 		if health <= 0:
 			ui.get_node("GameOver").visible = true
 			get_tree().paused = true
+<<<<<<< Updated upstream
 var checkpoint_wave: int = 0 #checkpoint count
 var current_wave: int = 0 #wave count
 
 func reset_game():
 	money = 200
 	currentserverload = 0
+=======
+var checkpoint_wave: int = 0 # checkpoint count
+var current_wave: int = 0 # wave count
+>>>>>>> Stashed changes
