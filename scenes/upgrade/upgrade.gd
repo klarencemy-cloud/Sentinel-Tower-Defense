@@ -119,7 +119,7 @@ func _on_upgrade_button_pressed() -> void:
 	$StatPanel.visible = true
 	$UpgradePanel.visible = true
 	
-	$StatPanel/AbilityPanel/VBoxContainer/Passive.text = Data.TOWER_DATA[selected_tower]['passive'] + "(Passive): " + Data.TOWER_DATA[selected_tower]['passive description']
+	$StatPanel/AbilityPanel/VBoxContainer/Passive.text = Data.TOWER_DATA[selected_tower]["passive"] + "(Passive): " + Data.TOWER_DATA[selected_tower]['passive description']
 	update_ability_panel()
 
 func _on_stat_panel_left_pressed() -> void:
