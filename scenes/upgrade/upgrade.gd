@@ -119,32 +119,18 @@ func _on_upgrade_button_pressed() -> void:
 	$StatPanel.visible = true
 	$UpgradePanel.visible = true
 	
-	$StatPanel/AbilityPanel/Passive.text = Data.TOWER_DATA[selected_tower]['passive'] + ": " + Data.TOWER_DATA[selected_tower]['passive description'] 
-
-
-func _on_back_btn_pressed() -> void:
-	if %SentinelsContainer.visible == false:
-		%SentinelsContainer.visible = true
-		$VScrollBar.visible = true
-
-		%BigPic.position.x += 297
-		$BigTowerName.position.x += 297
-
-		$UpgradeButton.visible = true
-		$StatPanel.visible = false
-		$UpgradePanel.visible = false
-	else:
-		get_tree().paused = false
-		visible = false
-
+	$StatPanel/AbilityPanel/VBoxContainer/Passive.text = Data.TOWER_DATA[selected_tower]["passive"] + "(Passive): " + Data.TOWER_DATA[selected_tower]['passive description']
+	update_ability_panel()
 
 func _on_stat_panel_left_pressed() -> void:
 	$StatPanel.texture = load("res://graphics/container/stats.png")
-
+	$StatPanel/AbilityPanel.visible = false
+	$StatPanel/ScrollContainer/VBoxContainer.visible = true
 
 func _on_stat_panel_right_pressed() -> void:
 	$StatPanel.texture = load("res://graphics/container/ability.png")
-
+	$StatPanel/AbilityPanel.visible = true
+	$StatPanel/ScrollContainer/VBoxContainer.visible = false
 
 func _on_upgrade_1_pressed() -> void:
 	if upgrade1_level < 3:
@@ -156,6 +142,7 @@ func _on_upgrade_1_pressed() -> void:
 
 		_set_upgrade_visual($UpgradePanel/Upgrade1, upgrade1_level)
 		update_tier_buttons()
+		update_ability_panel()
 
 
 func _on_upgrade_2_pressed() -> void:
@@ -168,6 +155,7 @@ func _on_upgrade_2_pressed() -> void:
 
 		_set_upgrade_visual($UpgradePanel/Upgrade2, upgrade2_level)
 		update_tier_buttons()
+		update_ability_panel()
 
 
 func _on_upgrade_3_pressed() -> void:
@@ -180,6 +168,7 @@ func _on_upgrade_3_pressed() -> void:
 
 		_set_upgrade_visual($UpgradePanel/Upgrade3, upgrade3_level)
 		update_tier_buttons()
+		update_ability_panel()
 
 func _on_upgrade_4_pressed() -> void:
 	if upgrade4_level < 3:
@@ -191,6 +180,7 @@ func _on_upgrade_4_pressed() -> void:
 
 		_set_upgrade_visual($UpgradePanel/Upgrade4, upgrade4_level)
 		update_tier_buttons()
+		update_ability_panel()
 
 
 func _on_upgrade_5_pressed() -> void:
@@ -203,6 +193,7 @@ func _on_upgrade_5_pressed() -> void:
 
 		_set_upgrade_visual($UpgradePanel/Upgrade5, upgrade5_level)
 		update_tier_buttons()
+		update_ability_panel()
 
 
 func _on_upgrade_6_pressed() -> void:
@@ -215,6 +206,7 @@ func _on_upgrade_6_pressed() -> void:
 
 		_set_upgrade_visual($UpgradePanel/Upgrade6, upgrade6_level)
 		update_tier_buttons()
+		update_ability_panel()
 
 
 func apply_upgrade(upgrade_name: String) -> void:
@@ -301,3 +293,31 @@ func update_tier_buttons():
 		upgrade3_level == 3 and
 		upgrade4_level == 3
 	)
+	
+func update_ability_panel() -> void:
+	var tower_data = Data.TOWER_DATA[selected_tower]
+
+	for i in range(3):
+		var tier = i + 1
+		var ability = tower_data["tier%dability" % tier]
+		var desc = tower_data["tier%dabilitydesc" % tier]
+		var label = get_node("StatPanel/AbilityPanel/VBoxContainer/Tier%dAbility" % tier)
+
+		var unlocked := false
+		var unlock_text := ""
+
+		match tier:
+			1:
+				unlocked = tower_data["upgrade1level"] == 3 and tower_data["upgrade2level"] == 3
+				unlock_text = "Purchase all tier 1 upgrades to unlock this ability."
+			2:
+				unlocked = tower_data["upgrade3level"] == 3 and tower_data["upgrade4level"] == 3
+				unlock_text = "Purchase all tier 2 upgrades to unlock this ability."
+			3:
+				unlocked = tower_data["upgrade5level"] == 3 and tower_data["upgrade6level"] == 3
+				unlock_text = "Purchase all tier 3 upgrades to unlock this ability."
+
+		if unlocked:
+			label.text = "%s: %s" % [ability, desc]
+		else:
+			label.text = unlock_text

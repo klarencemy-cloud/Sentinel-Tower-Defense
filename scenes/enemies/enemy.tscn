@@ -291,10 +291,10 @@ offset_left = -40.0
 offset_top = -91.0
 offset_right = 40.0
 offset_bottom = -70.0
-fill_mode = 1
+value = 100.0
 nine_patch_stretch = true
-texture_under = ExtResource("8_qch6t")
-texture_progress = ExtResource("7_n7575")
+texture_under = ExtResource("7_n7575")
+texture_progress = ExtResource("8_qch6t")
 
 [node name="DamageLabel" type="Label" parent="." unique_id=595779535]
 offset_left = -18.0

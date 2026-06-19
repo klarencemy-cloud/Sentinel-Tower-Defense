@@ -4,6 +4,7 @@ var tower_scenes = {
 	Data.Tower.BASIC: "res://scenes/towers/tower_basic.tscn",
 	Data.Tower.BLAST: "res://scenes/towers/tower_blaster.tscn",
 	Data.Tower.MORTAR: "res://scenes/towers/tower_mortar.tscn",
+	Data.Tower.SPAM_FILTER: "res://scenes/towers/tower_spamfilter.tscn"
 }
 
 var bullet_scene = preload("res://scenes/bullets/bullet.tscn")
@@ -73,10 +74,10 @@ func cancel_selection() -> void:
 		tower.hide_ui()
 
 
-func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage: int) -> void:
+func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage: int, tower_type) -> void:
 	if bullet_enum == Data.Bullet.SINGLE:
 		var bullet = bullet_scene.instantiate()
-		bullet.setup(pos, angle, bullet_enum, damage)
+		bullet.setup(pos, angle, bullet_enum, damage, tower_type)
 		_get_bullet_parent().add_child(bullet)
 
 	if bullet_enum == Data.Bullet.FIRE:

@@ -18,7 +18,7 @@ var before_max_server_load: int # sandbox save total server load capaccity para 
 var before_level_index: int
 var current_level_index: int = 0 # map count 0 = level 1
 
-enum Tower {BASIC, BLAST, MORTAR}
+enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
 enum Enemy {DEFAULT, ADWARE, SPYWARE, CREDS, WORM, BOTNET}
 
@@ -96,8 +96,40 @@ var TOWER_DATA = {
 		'upgrade5': "Crit Damage",
 		'upgrade5level': 0,
 		'upgrade6': "Attack Speed",
-		'upgrade6level': 0, }
-		}
+		'upgrade6level': 0, },
+	Tower.SPAM_FILTER: {
+		'name': 'Spam Filter',
+		'cost': 45,
+		'server_load': 15,
+		'damage':2,
+		'reload_time': 1,
+		'range': 1000,
+		'crit rate': 0,
+		'crit damage': 50,
+		'bullet': Bullet.SINGLE,
+		'thumbnail': "res://graphics/ui/tower thumbnails/basic.png",
+		'scene': "res://scenes/towers/single_tower.tscn",
+		'passive': "Ricochet",
+		'passive description': "Bullet bounces to the nearby enemy that deals 50% of the original damage.",
+		'upgrade1': "Damage",
+		'upgrade1level': 0,
+		'upgrade2': "Attack Speed",
+		'upgrade2level': 0,
+		'tier1ability': "+1 Bounce",
+		'tier1abilitydesc': "Bullets bounce an additional time.",
+		'upgrade3': "Damage",
+		'upgrade3level': 0,
+		'upgrade4': "Crit Rate",
+		'upgrade4level': 0,
+		'tier2ability': "Bounce Damage+",
+		'tier2abilitydesc': "Ricocheted bullets' damage increased from 50% to 75%.",
+		'upgrade5': "Crit Damage",
+		'upgrade5level': 0,
+		'upgrade6': "Range",
+		'upgrade6level': 0,
+		'tier3ability': "Infinite Recursion",
+		'tier3abilitydesc': "Bullets has 50% chance to ricochet on kill.", }
+	}
 		
 var ENEMY_DATA = {
 	Enemy.DEFAULT: {'health': 3, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 20, 'name': "spam"},
