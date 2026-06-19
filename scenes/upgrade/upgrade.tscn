@@ -147,7 +147,6 @@ theme_override_font_sizes/font_size = 34
 text = "Back"
 
 [node name="StatPanel" type="TextureRect" parent="." unique_id=1164040288]
-visible = false
 offset_left = 199.0
 offset_top = 241.0
 offset_right = 706.0
@@ -173,6 +172,7 @@ offset_bottom = 480.0
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StatPanel/ScrollContainer" unique_id=1608570701]
+visible = false
 clip_contents = true
 layout_mode = 2
 
@@ -367,6 +367,8 @@ offset_bottom = 480.0
 
 [node name="Passive" type="Label" parent="StatPanel/AbilityPanel" unique_id=1837062741]
 layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "a"
 
 [node name="UpgradePanel" type="TextureRect" parent="." unique_id=6382960]
 visible = false

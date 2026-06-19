@@ -118,7 +118,7 @@ func _on_upgrade_button_pressed() -> void:
 	$StatPanel.visible = true
 	$UpgradePanel.visible = true
 	
-	$StatPanel/AbilityPanel/Passive.text = Data.TOWER_DATA[selected_tower]['passive']
+	$StatPanel/AbilityPanel/Passive.text = Data.TOWER_DATA[selected_tower]['passive'] + ": " + Data.TOWER_DATA[selected_tower]['passive description'] 
 
 
 func _on_back_btn_pressed() -> void:
