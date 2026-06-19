@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bb6cvffm5145y" path="res://graphics/ui/sandbox_setting_button.png" id="5_0i47d"]
 [ext_resource type="PackedScene" uid="uid://b4xw080momfhv" path="res://scenes/ui/victory_overlay.tscn" id="5_4w2x3"]
 [ext_resource type="Texture2D" uid="uid://d0tvbvnfugwl5" path="res://graphics/ui/enemy_card_button.png" id="6_mgwkc"]
+[ext_resource type="PackedScene" uid="uid://bjuh3ncqnotqe" path="res://scenes/ui/dialogue_ui.tscn" id="7_26a3v"]
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="7_hl07w"]
 [ext_resource type="PackedScene" uid="uid://n0x1dg8naleh" path="res://scenes/ui/pause_menu.tscn" id="7_jcn1r"]
 [ext_resource type="Texture2D" uid="uid://d2awxm58vn2xo" path="res://graphics/ui/healthbarUnder.png" id="8_hc5d0"]
@@ -48,6 +49,9 @@ visible = false
 
 [node name="VictoryOverlay" parent="." unique_id=1881744022 instance=ExtResource("5_4w2x3")]
 layer = 10
+visible = false
+
+[node name="DialogueUi" parent="." unique_id=934514018 instance=ExtResource("7_26a3v")]
 visible = false
 
 [node name="Control" type="Control" parent="." unique_id=818495937]
