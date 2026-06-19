@@ -243,6 +243,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nb6gf"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mrpkq"]
 atlas = ExtResource("3_fcftc")
 region = Rect2(1280, 320, 64, 64)
@@ -279,6 +283,10 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jt03m"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ob2q"]
 atlas = ExtResource("3_fcftc")
 region = Rect2(1280, 320, 64, 64)
@@ -314,6 +322,10 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4gvh"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4v2h"]
 atlas = ExtResource("3_fcftc")
@@ -436,16 +448,19 @@ sprite_frames = SubResource("SpriteFrames_8ma66")
 position = Vector2(26, 0)
 
 [node name="Body1" type="AnimatedSprite2D" parent="WormSegments" unique_id=136238213]
+material = SubResource("ShaderMaterial_nb6gf")
 position = Vector2(3, 0)
 sprite_frames = SubResource("SpriteFrames_7ob2q")
 autoplay = "default"
 
 [node name="Body2" type="AnimatedSprite2D" parent="WormSegments" unique_id=1705064147]
+material = SubResource("ShaderMaterial_jt03m")
 position = Vector2(-40, 0)
 sprite_frames = SubResource("SpriteFrames_lirnq")
 autoplay = "default"
 
 [node name="Tail" type="AnimatedSprite2D" parent="WormSegments" unique_id=1360655166]
+material = SubResource("ShaderMaterial_k4gvh")
 position = Vector2(-84, 0)
 sprite_frames = SubResource("SpriteFrames_crryk")
 autoplay = "default"

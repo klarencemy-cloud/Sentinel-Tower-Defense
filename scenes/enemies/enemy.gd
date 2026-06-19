@@ -9,9 +9,6 @@ var is_worm: bool = false
 var dmg_tween: Tween
 var enemy_tween: Tween
 
-var history: Array[Vector2] = []
-var segments: Array[Node2D] = []
-
 var enemy_type: Node
 
 @export var spacing := 32
@@ -36,9 +33,6 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$Worm.visible = false
 	$WormSegments.visible = false
 
-	history.clear()
-	segments.clear()
-	
 	match Data.ENEMY_DATA[type]['name']:
 		"spam":
 			$Spam.visible = true
@@ -67,26 +61,15 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Worm.material = $Worm.material.duplicate()
 			$WormSegments.visible = true
 			
-
 			for child in $WormSegments.get_children():
-				if child is Node2D:
-					segments.append(child)
+					child.material = child.material.duplicate()
+
 			
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
 	
 
 func _process(delta: float):
 	path_follow.progress += speed * delta
-
-	if is_worm:
-		global_position = path_follow.global_position
-
-		history.push_front(global_position)
-
-		var max_history = segments.size() * spacing
-		if history.size() > max_history:
-			history.resize(max_history)
-
 
 	if path_follow.progress_ratio >= 0.99:
 		Data.health -= 20
@@ -143,6 +126,13 @@ func flash():
 
 	enemy_tween = create_tween()
 	enemy_tween.tween_property(enemy_type.material, 'shader_parameter/Progress', 1.0, 0.2)
+	if is_worm:
+		enemy_tween.parallel().tween_property($WormSegments/Body1.material, 'shader_parameter/Progress', 1.0, 0.2)
+		enemy_tween.parallel().tween_property($WormSegments/Body2.material, 'shader_parameter/Progress', 1.0, 0.2)
+		enemy_tween.parallel().tween_property($WormSegments/Tail.material, 'shader_parameter/Progress', 1.0, 0.2)
+		enemy_tween.tween_property($WormSegments/Body1.material, 'shader_parameter/Progress', 0.0, 0.2)
+		enemy_tween.parallel().tween_property($WormSegments/Body2.material, 'shader_parameter/Progress', 0.0, 0.2)
+		enemy_tween.parallel().tween_property($WormSegments/Tail.material, 'shader_parameter/Progress', 0.0, 0.2)
 	enemy_tween.tween_property(enemy_type.material, 'shader_parameter/Progress', 0.0, 0.2)
 	
 	
@@ -155,7 +145,7 @@ func update_hp_bar_position():
 			)
 			var sprite_height = tex.get_height() * child.scale.y
 			$hpbar.position.y = - sprite_height / 2 - 10
-
+	
 func show_damage(damage: int):
 	$DamageLabel.text = str(damage)
 	$DamageLabel.visible = true
