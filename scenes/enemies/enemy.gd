@@ -10,7 +10,7 @@ var dmg_tween: Tween
 
 var history: Array[Vector2] = []
 var segments: Array[Node2D] = []
-@export var spacing := 64
+@export var spacing := 32
 
 func _ready() -> void:
 	add_to_group('Enemies')
@@ -23,13 +23,17 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	health = Data.ENEMY_DATA[type]['health']
 	speed = Data.ENEMY_DATA[type]['speed']
 	is_worm = false
+
 	$Spyware.visible = false
 	$Adware.visible = false
 	$Spam.visible = false
 	$Creds.visible = false
 	$Botnet.visible = false
 	$Worm.visible = false
-	$WormSegments.visible = false
+	$Worm/WormSegments.visible = false
+
+	history.clear()
+	segments.clear()
 	
 	match Data.ENEMY_DATA[type]['name']:
 		"spam":
@@ -44,35 +48,37 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Botnet.visible = true
 		"worm":
 			is_worm = true
-			for child in $WormSegments.get_children():
-				if child != path_follow:
-					segments.append(child)
 			$Worm.visible = true
+			$Worm/WormSegments.visible = true
 
-		
+			for child in $Worm/WormSegments.get_children():
+				if child is Node2D:
+					segments.append(child)
+			
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
 	
 
 func _process(delta: float):
 	path_follow.progress += speed * delta
-	var head_pos = path_follow.global_position
 
-	history.push_front(head_pos)
+	if is_worm:
+		var head_pos = path_follow.global_position
 
-	var max_history = segments.size() * spacing
-	if history.size() > max_history:
-		history.resize(max_history)
+		history.push_front(head_pos)
 
-	for i in range(segments.size()):
-		var index = i * spacing
+		var max_history = (segments.size() + 1) * spacing
+		if history.size() > max_history:
+			history.resize(max_history)
 
-		if index < history.size():
-			$WormSegments.visible = true
-			segments[i].global_position = history[index]
+		for i in range(segments.size()):
+			var index = (i + 1) * spacing
 
-			if index + 1 < history.size():
-				var dir = history[index] - history[index + 1]
-				segments[i].rotation = dir.angle()
+			if index < history.size():
+				segments[i].global_position = history[index]
+
+				if index + 1 < history.size():
+					var dir = history[index] - history[index + 1]
+					segments[i].rotation = dir.angle()
 
 		
 	if path_follow.progress_ratio >= 0.99:

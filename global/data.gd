@@ -20,7 +20,7 @@ var current_level_index: int = 0 # map count 0 = level 1
 
 enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
-enum Enemy {SPAM, ADWARE, SPYWARE, WORM}
+enum Enemy {DEFAULT, ADWARE, SPYWARE, CREDS, WORM, BOTNET}
 
 var TOWER_DATA = {
 	Tower.BASIC: {
@@ -132,10 +132,12 @@ var TOWER_DATA = {
 	}
 		
 var ENEMY_DATA = {
-	Enemy.SPAM: {'health': 20, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 20, 'name': "spam"},
-	Enemy.ADWARE: {'health': 80, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 50, 'name': "adware"},
-	Enemy.SPYWARE: {'health': 100, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 25, 'name': "spyware"},
-	Enemy.WORM: {'health': 30, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 15, 'name': "worm"}
+	Enemy.DEFAULT: {'health': 3, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 20, 'name': "spam"},
+	Enemy.ADWARE: {'health': 3, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 50, 'name': "adware"},
+	Enemy.SPYWARE: {'health': 6, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 25, 'name': "spyware"},
+	Enemy.CREDS: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 15, 'name': "creds"},
+	Enemy.BOTNET: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 15, 'name': "botnet"},
+	Enemy.WORM: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 40, 'name': "worm"}
 
 }
 
