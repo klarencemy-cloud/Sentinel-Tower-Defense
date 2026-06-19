@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s8xhvy48k726"
-path="res://.godot/imported/Virus.png-ba5fa8571474308ea9139e5fe3c933b9.ctex"
+uid="uid://bihllc5d7x1nr"
+path="res://.godot/imported/progress_bar.png-e8e1deef1c02c9b325982976d0056674.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/bosses/Virus.png"
-dest_files=["res://.godot/imported/Virus.png-ba5fa8571474308ea9139e5fe3c933b9.ctex"]
+source_file="res://graphics/ui/progress_bar.png"
+dest_files=["res://.godot/imported/progress_bar.png-e8e1deef1c02c9b325982976d0056674.ctex"]
 
 [params]
 

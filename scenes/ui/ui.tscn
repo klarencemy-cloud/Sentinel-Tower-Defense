@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://5fcgjf624a6x" path="res://graphics/ui/frame.png" id="2_g5kmx"]
 [ext_resource type="PackedScene" uid="uid://c6fdlvl2po04d" path="res://scenes/ui/game_over.tscn" id="2_jcn1r"]
 [ext_resource type="PackedScene" uid="uid://23krmoa5rhnu" path="res://scenes/upgrade/upgrade.tscn" id="2_mgwkc"]
+[ext_resource type="PackedScene" uid="uid://dbh1b6sq05wrw" path="res://scenes/ui/enemy_tower_stats_counter.tscn" id="2_qmss2"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="4_pfayw"]
 [ext_resource type="Texture2D" uid="uid://c06sbymdntwef" path="res://graphics/ui/StartWaveButton.png" id="4_y220t"]
 [ext_resource type="Texture2D" uid="uid://bb6cvffm5145y" path="res://graphics/ui/sandbox_setting_button.png" id="5_0i47d"]
@@ -31,6 +32,9 @@ texture_margin_bottom = 6.0
 
 [node name="UI" type="CanvasLayer" unique_id=1846012905 groups=["UI"]]
 script = ExtResource("1_pfayw")
+
+[node name="EnemyTowerStatsCounter" parent="." unique_id=1729359607 instance=ExtResource("2_qmss2")]
+layer = 0
 
 [node name="Upgrade" parent="." unique_id=1877158934 instance=ExtResource("2_mgwkc")]
 unique_name_in_owner = true

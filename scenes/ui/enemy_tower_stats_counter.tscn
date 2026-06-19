@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://dbh1b6sq05wrw"]
+
+[ext_resource type="Script" uid="uid://bdfs0iq6g5frc" path="res://scenes/ui/enemy_tower_stats_counter.gd" id="1_go7qu"]
+[ext_resource type="Texture2D" uid="uid://b7jvpkw81poso" path="res://graphics/ui/top_counter_design.png" id="1_rmd3k"]
+[ext_resource type="Texture2D" uid="uid://oggr7cdpgvy4" path="res://graphics/ui/tbottom_counter_design.png" id="2_go7qu"]
+[ext_resource type="Texture2D" uid="uid://cw3cdy003wqxn" path="res://graphics/towers/basic/basic tower upgrade mockup.png" id="3_h6p2n"]
+[ext_resource type="Texture2D" uid="uid://bihllc5d7x1nr" path="res://graphics/ui/progress_bar.png" id="4_q31yk"]
+[ext_resource type="Texture2D" uid="uid://5dpdthshs1du" path="res://graphics/ui/tmid_counter_button.png" id="5_7327g"]
+[ext_resource type="Texture2D" uid="uid://c7ibhetyuy10j" path="res://graphics/ui/tmid_counter_button_tower.png" id="6_jobn7"]
+
+[node name="EnemyTowerStatsCounter" type="CanvasLayer" unique_id=1729359607]
+script = ExtResource("1_go7qu")
+
+[node name="Container" type="Control" parent="." unique_id=1556578126]
+show_behind_parent = true
+z_index = -3
+layout_mode = 3
+anchor_left = 0.80300003
+anchor_top = 0.080000006
+anchor_right = 1.0
+anchor_bottom = 0.78900003
+offset_left = -74.76001
+offset_top = -41.40001
+offset_bottom = -14.120056
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="Control" parent="Container" unique_id=261222032]
+layout_mode = 1
+anchor_left = 0.192
+anchor_top = 0.14600001
+anchor_right = 0.91800004
+anchor_bottom = 1.0
+offset_left = 0.02406311
+offset_right = 37.146027
+offset_bottom = 2.000061
+grow_horizontal = 2
+
+[node name="DmgCounterTop" type="TextureRect" parent="Container/Content" unique_id=1965771647]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.002
+anchor_top = 0.003
+anchor_right = 0.8880001
+anchor_bottom = 0.147
+offset_left = 0.039942205
+offset_top = -0.31284308
+offset_right = -0.033203125
+offset_bottom = -0.2548294
+grow_horizontal = 2
+texture = ExtResource("1_rmd3k")
+
+[node name="DmgCounterBg" type="TextureRect" parent="Container/Content" unique_id=182512758]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.001
+anchor_top = 0.26000002
+anchor_right = 0.8880001
+anchor_bottom = 0.763
+offset_left = 1.1648489
+offset_top = -35.776
+offset_right = -0.00793457
+offset_bottom = 155.41522
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_go7qu")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Container/Content/DmgCounterBg" unique_id=1692975741]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.897
+offset_bottom = -0.117492676
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+draw_focus_border = true
+
+[node name="TowerEntry" type="Panel" parent="Container/Content/DmgCounterBg/ScrollContainer" unique_id=1266439271]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="BgCtn" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer/TowerEntry" unique_id=2020936442]
+layout_mode = 0
+offset_right = 311.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MCtn" type="MarginContainer" parent="Container/Content/DmgCounterBg/ScrollContainer/TowerEntry/BgCtn" unique_id=1093163969]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ContentCtn" type="HBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer/TowerEntry/BgCtn/MCtn" unique_id=833583451]
+layout_mode = 2
+
+[node name="TowerImage" type="TextureRect" parent="Container/Content/DmgCounterBg/ScrollContainer/TowerEntry/BgCtn/MCtn/ContentCtn" unique_id=930256828]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("3_h6p2n")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MCtn" type="MarginContainer" parent="Container/Content/DmgCounterBg/ScrollContainer/TowerEntry/BgCtn/MCtn/ContentCtn" unique_id=1492034395]
+layout_mode = 2
+theme_override_constants/margin_top = 22
+
+[node name="StatsCtn" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer/TowerEntry/BgCtn/MCtn/ContentCtn/MCtn" unique_id=2002251339]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/separation = 6
+
+[node name="TowerDamageLbl" type="Label" parent="Container/Content/DmgCounterBg/ScrollContainer/TowerEntry/BgCtn/MCtn/ContentCtn/MCtn/StatsCtn" unique_id=2030017673]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Kill Count"
+
+[node name="TextureProgressBarDmg" type="TextureProgressBar" parent="Container/Content/DmgCounterBg/ScrollContainer/TowerEntry/BgCtn/MCtn/ContentCtn/MCtn/StatsCtn" unique_id=411186101]
+layout_mode = 2
+value = 10.0
+texture_under = ExtResource("4_q31yk")
+texture_progress = ExtResource("4_q31yk")
+tint_progress = Color(0.17923622, 0.39151636, 0.51584375, 1)
+
+[node name="KillButton" type="TextureButton" parent="Container/Content" unique_id=1967456331]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.0
+offset_top = 97.222
+offset_right = -200.99994
+offset_bottom = 147.222
+grow_horizontal = 2
+texture_normal = ExtResource("5_7327g")
+
+[node name="EnemiesStatsLabel" type="Label" parent="Container/Content/KillButton" unique_id=610115021]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -9.5
+offset_right = 0.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemy Kill"
+
+[node name="TowerButton" type="TextureButton" parent="Container/Content" unique_id=58515581]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.44200003
+anchor_top = 0.141
+anchor_right = 0.8880001
+anchor_bottom = 0.215
+offset_left = 0.1007843
+offset_top = -0.21797943
+offset_right = -0.033203125
+offset_bottom = -0.028182983
+texture_normal = ExtResource("6_jobn7")
+flip_h = true
+
+[node name="TowersStatsLabel" type="Label" parent="Container/Content/TowerButton" unique_id=440602623]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -9.5
+offset_right = 20.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tower Damage"

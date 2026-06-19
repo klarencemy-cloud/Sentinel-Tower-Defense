@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Data="*res://global/data.gd"
+EnemyTower="*uid://mpoy2nivk3lo"
 
 [display]
 
