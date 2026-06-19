@@ -87,9 +87,6 @@ func _process(delta: float):
 		if history.size() > max_history:
 			history.resize(max_history)
 
-		for i in range(segments.size()):
-			var index = (i) * spacing
-
 
 	if path_follow.progress_ratio >= 0.99:
 		Data.health -= 20
