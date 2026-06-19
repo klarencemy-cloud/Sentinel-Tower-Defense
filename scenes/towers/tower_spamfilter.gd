@@ -1,17 +1,15 @@
 extends Tower
 
-
 func _process(_delta: float) -> void:
 	if enemies.size() > 0:
 		$Turret.look_at(enemies[0].global_position)
-		$Turret.rotation -= PI/2
-
+		$Turret.rotation -= PI / 2
 
 func _on_reload_timer_timeout() -> void:
-	if enemies:
+	if enemies.size() > 0:
 		var dir = Vector2.DOWN.rotated($Turret.rotation).normalized()
 
-		var base_damage = damage
+		var base_damage = Data.TOWER_DATA[type]["damage"]
 		var final_damage = base_damage
 
 		var crit_chance = Data.TOWER_DATA[type]["crit rate"] / 100.0
@@ -31,7 +29,3 @@ func _on_reload_timer_timeout() -> void:
 		)
 
 		$ShootSound.play()
-
-func tower_upgrade():
-	$Base.texture = load("res://graphics/towers/basic/basic tower upgrade bottom.png")
-	$Turret.texture = load("res://graphics/towers/basic/basic tower upgrade top.png")
