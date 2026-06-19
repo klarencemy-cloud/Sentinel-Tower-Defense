@@ -8,15 +8,15 @@ var bounce_count: int = 0
 var max_bounce: int = 1
 var owner_tower_type
 var bullet_enum: Data.Bullet
+var ricochet_range: int = 0
+var hit_enemies: Array = []  # Track which enemies have been hit by this ricochet chain
 
 func _ready():
 	add_to_group("bullet")
-	print("bullet spawned")
+	monitoring = true
+	monitorable = true
 
 	area_entered.connect(_on_area_entered)
-
-	print("monitoring:", monitoring)
-	print("monitorable:", monitorable)
 
 
 func setup(pos, angle, _bullet_enum, _damage, _tower_type):
@@ -27,6 +27,10 @@ func setup(pos, angle, _bullet_enum, _damage, _tower_type):
 	damage = _damage
 	bullet_enum = _bullet_enum
 	owner_tower_type = _tower_type
+
+	var tower_data = Data.TOWER_DATA.get(owner_tower_type, {})
+	if tower_data.has("range"):
+		ricochet_range = max(ricochet_range, int(tower_data["range"]))
 
 
 func _process(delta: float) -> void:
@@ -40,6 +44,7 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 
 	area.hit(damage)
+	hit_enemies.append(area)  # Track this enemy as hit
 
 	if _can_ricochet():
 		ricochet(area)
@@ -64,13 +69,16 @@ func ricochet(from_enemy: Node) -> void:
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	var nearest = null
 	var nearest_dist = INF
-	var ricochet_range = 150
 
 	for e in enemies:
 		if e == from_enemy:
 			continue
+		
+		# Skip enemies already hit by this ricochet chain
+		if e in hit_enemies:
+			continue
 
-		var dist = global_position.distance_to(e.global_position)
+		var dist = from_enemy.global_position.distance_to(e.global_position)
 
 		if dist > ricochet_range:
 			continue
@@ -87,9 +95,9 @@ func ricochet(from_enemy: Node) -> void:
 
 	var new_bullet = preload("res://scenes/bullets/bullet.tscn").instantiate()
 
-	var dir = (nearest.global_position - global_position).normalized()
+	var dir = (nearest.global_position - from_enemy.global_position).normalized()
 
-	new_bullet.global_position = global_position + dir * 10
+	new_bullet.global_position = from_enemy.global_position + dir * 10
 	new_bullet.direction = dir
 	new_bullet.rotation = dir.angle()
 	new_bullet.damage = int(damage * 0.5)
@@ -98,6 +106,8 @@ func ricochet(from_enemy: Node) -> void:
 	new_bullet.owner_tower_type = owner_tower_type
 	new_bullet.bounce_count = bounce_count + 1
 	new_bullet.max_bounce = max_bounce
+	new_bullet.ricochet_range = ricochet_range
+	new_bullet.hit_enemies = hit_enemies.duplicate()  # Pass the hit list to the new bullet
 
 	get_parent().add_child(new_bullet)
 	queue_free()
