@@ -5,18 +5,32 @@ var health: int
 var speed: int
 var dead := false
 var is_worm: bool = false
+
 var dmg_tween: Tween
+
+var history: Array[Vector2] = []
+var segments: Array[Node2D] = []
+@export var spacing := 64
+
 func _ready() -> void:
 	add_to_group('Enemies')
 	call_deferred("update_hp_bar_position")
 	
+
 func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$hpbar.max_value = Data.ENEMY_DATA[type]['health']
 	path_follow = new_path_follow
 	health = Data.ENEMY_DATA[type]['health']
 	speed = Data.ENEMY_DATA[type]['speed']
-	# $Sprite2D.texture = load(Data.ENEMY_DATA[type]['texture'])
-
+	is_worm = false
+	$Spyware.visible = false
+	$Adware.visible = false
+	$Spam.visible = false
+	$Creds.visible = false
+	$Botnet.visible = false
+	$Worm.visible = false
+	$WormSegments.visible = false
+	
 	match Data.ENEMY_DATA[type]['name']:
 		"spam":
 			$Spam.visible = true
@@ -24,12 +38,43 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Adware.visible = true
 		"spyware":
 			$Spyware.visible = true
+		"creds":
+			$Creds.visible = true
+		"botnet":
+			$Botnet.visible = true
+		"worm":
+			is_worm = true
+			for child in $WormSegments.get_children():
+				if child != path_follow:
+					segments.append(child)
+			$Worm.visible = true
+
+		
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
 	
 
-
-func _process(delta: float) -> void:
+func _process(delta: float):
 	path_follow.progress += speed * delta
+	var head_pos = path_follow.global_position
+
+	history.push_front(head_pos)
+
+	var max_history = segments.size() * spacing
+	if history.size() > max_history:
+		history.resize(max_history)
+
+	for i in range(segments.size()):
+		var index = i * spacing
+
+		if index < history.size():
+			$WormSegments.visible = true
+			segments[i].global_position = history[index]
+
+			if index + 1 < history.size():
+				var dir = history[index] - history[index + 1]
+				segments[i].rotation = dir.angle()
+
+		
 	if path_follow.progress_ratio >= 0.99:
 		Data.health -= 20
 		queue_free()
@@ -86,7 +131,6 @@ func flash():
 	tween.tween_property($Adware.material, 'shader_parameter/Progress', 0.0, 0.2)
 	
 	
-
 func update_hp_bar_position():
 	for child in get_children():
 		if child is AnimatedSprite2D and child.visible:
@@ -95,7 +139,7 @@ func update_hp_bar_position():
 				child.frame
 			)
 			var sprite_height = tex.get_height() * child.scale.y
-			$hpbar.position.y = -sprite_height / 2 - 10
+			$hpbar.position.y = - sprite_height / 2 - 10
 
 func show_damage(damage: int):
 	$DamageLabel.text = str(damage)
