@@ -101,7 +101,7 @@ var TOWER_DATA = {
 		'name': 'Spam Filter',
 		'cost': 45,
 		'server_load': 15,
-		'damage':2,
+		'damage': 2,
 		'reload_time': 1,
 		'range': 1000,
 		'crit rate': 0,
@@ -137,7 +137,7 @@ var ENEMY_DATA = {
 	Enemy.SPYWARE: {'health': 6, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 25, 'name': "spyware"},
 	Enemy.CREDS: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 15, 'name': "creds"},
 	Enemy.BOTNET: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 15, 'name': "botnet"},
-	Enemy.WORM: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 40, 'name': "worm"}
+	Enemy.WORM: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "worm"}
 
 }
 

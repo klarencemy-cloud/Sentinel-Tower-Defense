@@ -4,124 +4,8 @@
 [ext_resource type="Shader" uid="uid://di3htj8j0ym2c" path="res://scenes/enemies/enemy.tres" id="2_38ino"]
 [ext_resource type="Texture2D" uid="uid://ds225f3jg8tik" path="res://graphics/enemies/enemies.png" id="3_fcftc"]
 [ext_resource type="AudioStream" uid="uid://jdma8tm1e3e2" path="res://audio/impact.1.ogg" id="4_fcftc"]
-[ext_resource type="Texture2D" uid="uid://djdfdic3cd0hv" path="res://graphics/enemies/wormhead1.png" id="4_lu5c6"]
-[ext_resource type="Texture2D" uid="uid://b086r1hom25ob" path="res://graphics/enemies/wormhead.png" id="5_nb6gf"]
 [ext_resource type="Texture2D" uid="uid://1qgvsuhf841g" path="res://graphics/ui/enemyhpbar1.png" id="7_n7575"]
 [ext_resource type="Texture2D" uid="uid://ba1dyadxb3f65" path="res://graphics/ui/enemyhpbar2.png" id="8_qch6t"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3klb"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(0, 576, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_smbsv"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(128, 576, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_maese"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(256, 576, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4f0mh"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(384, 576, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gc4hx"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(512, 576, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f6y8w"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(640, 576, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y2gxb"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(768, 576, 128, 192)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3xxyr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x3klb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_smbsv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_maese")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4f0mh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gc4hx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f6y8w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y2gxb")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tihwb"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(0, 384, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p7w77"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(128, 384, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k4gvh"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(256, 384, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_twn6s"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(384, 384, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sb86v"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(512, 384, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pe3k2"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(640, 384, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kugq1"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(768, 384, 128, 192)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_x3klb"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tihwb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p7w77")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k4gvh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_twn6s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sb86v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pe3k2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kugq1")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fcftc"]
 resource_local_to_scene = true
@@ -185,6 +69,132 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7575"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3klb"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(0, 576, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smbsv"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(128, 576, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maese"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(256, 576, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f0mh"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(384, 576, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc4hx"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(512, 576, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6y8w"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(640, 576, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2gxb"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(768, 576, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3xxyr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3klb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smbsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maese")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f0mh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc4hx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6y8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2gxb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qch6t"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tihwb"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(0, 384, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7w77"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(128, 384, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4gvh"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(256, 384, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twn6s"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(384, 384, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb86v"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(512, 384, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pe3k2"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(640, 384, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kugq1"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(768, 384, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3klb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tihwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7w77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4gvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twn6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb86v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pe3k2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kugq1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5th1"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3xxyr"]
 atlas = ExtResource("3_fcftc")
 region = Rect2(896, 576, 128, 192)
@@ -206,6 +216,10 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tihwb"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e4ejd"]
 atlas = ExtResource("3_fcftc")
@@ -229,6 +243,154 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrpkq"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1280, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rme1b"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1472, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72k7o"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1408, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jbd4"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1344, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ob2q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrpkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rme1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72k7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jbd4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ob2q"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1280, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcnli"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1344, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgkoq"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1408, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tee16"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1472, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lirnq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ob2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcnli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgkoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tee16")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4v2h"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1280, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lirnq"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1472, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ly7j"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1408, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33cra"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1344, 256, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crryk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4v2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lirnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ly7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33cra")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7w77"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ma66"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1280, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emj2s"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1344, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhg24"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1408, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xteqa"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1472, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rme1b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ma66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emj2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhg24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xteqa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_fcftc"]
 radius = 43.046486
 
@@ -237,18 +399,6 @@ z_index = 1
 collision_mask = 2
 script = ExtResource("1_8e3ao")
 
-[node name="Spyware" type="AnimatedSprite2D" parent="." unique_id=1983232872]
-position = Vector2(-9.999999, -14.999994)
-scale = Vector2(0.84375, 0.84375006)
-sprite_frames = SubResource("SpriteFrames_3xxyr")
-
-[node name="Adware" type="AnimatedSprite2D" parent="." unique_id=443890855]
-visible = false
-position = Vector2(-12, -3.0000002)
-scale = Vector2(0.7109375, 0.7109375)
-sprite_frames = SubResource("SpriteFrames_x3klb")
-autoplay = "default"
-
 [node name="Spam" type="AnimatedSprite2D" parent="." unique_id=522781916]
 visible = false
 material = SubResource("ShaderMaterial_fcftc")
@@ -256,28 +406,56 @@ position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_tihwb")
 autoplay = "default"
 
+[node name="Spyware" type="AnimatedSprite2D" parent="." unique_id=1983232872]
+visible = false
+material = SubResource("ShaderMaterial_n7575")
+position = Vector2(-9.999999, -14.999994)
+scale = Vector2(0.84375, 0.84375006)
+sprite_frames = SubResource("SpriteFrames_3xxyr")
+
+[node name="Adware" type="AnimatedSprite2D" parent="." unique_id=443890855]
+visible = false
+material = SubResource("ShaderMaterial_qch6t")
+position = Vector2(-12, -3.0000002)
+scale = Vector2(0.7109375, 0.7109375)
+sprite_frames = SubResource("SpriteFrames_x3klb")
+autoplay = "default"
+
 [node name="Creds" type="AnimatedSprite2D" parent="." unique_id=976868947]
 visible = false
+material = SubResource("ShaderMaterial_y5th1")
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_e4ejd")
 
 [node name="Botnet" type="AnimatedSprite2D" parent="." unique_id=701035183]
 visible = false
+material = SubResource("ShaderMaterial_tihwb")
 sprite_frames = SubResource("SpriteFrames_8ma66")
 
-[node name="Worm" type="Sprite2D" parent="." unique_id=726524441]
-position = Vector2(38, 0)
-texture = ExtResource("4_lu5c6")
+[node name="WormSegments" type="Sprite2D" parent="." unique_id=481074252]
+position = Vector2(26, 0)
 
-[node name="WormSegments" type="Sprite2D" parent="Worm" unique_id=481074252]
-position = Vector2(-33, 0)
+[node name="Body1" type="AnimatedSprite2D" parent="WormSegments" unique_id=136238213]
+position = Vector2(3, 0)
+sprite_frames = SubResource("SpriteFrames_7ob2q")
+autoplay = "default"
 
-[node name="Sprite2D" type="Sprite2D" parent="Worm/WormSegments" unique_id=1534639933]
-position = Vector2(-29, 0)
-texture = ExtResource("5_nb6gf")
+[node name="Body2" type="AnimatedSprite2D" parent="WormSegments" unique_id=1705064147]
+position = Vector2(-40, 0)
+sprite_frames = SubResource("SpriteFrames_lirnq")
+autoplay = "default"
 
-[node name="Sprite2D2" type="Sprite2D" parent="Worm/WormSegments" unique_id=1755132001]
-texture = ExtResource("5_nb6gf")
+[node name="Tail" type="AnimatedSprite2D" parent="WormSegments" unique_id=1360655166]
+position = Vector2(-84, 0)
+sprite_frames = SubResource("SpriteFrames_crryk")
+autoplay = "default"
+
+[node name="Worm" type="AnimatedSprite2D" parent="." unique_id=458799407]
+material = SubResource("ShaderMaterial_p7w77")
+position = Vector2(72, 1)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_rme1b")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1419893999]
 position = Vector2(-1, 1)

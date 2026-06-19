@@ -7,9 +7,13 @@ var dead := false
 var is_worm: bool = false
 
 var dmg_tween: Tween
+var enemy_tween: Tween
 
 var history: Array[Vector2] = []
 var segments: Array[Node2D] = []
+
+var enemy_type: Node
+
 @export var spacing := 32
 
 func _ready() -> void:
@@ -30,7 +34,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$Creds.visible = false
 	$Botnet.visible = false
 	$Worm.visible = false
-	$Worm/WormSegments.visible = false
+	$WormSegments.visible = false
 
 	history.clear()
 	segments.clear()
@@ -38,20 +42,33 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	match Data.ENEMY_DATA[type]['name']:
 		"spam":
 			$Spam.visible = true
+			enemy_type = $Spam
+			$Spam.material = $Spam.material.duplicate()
 		"adware":
 			$Adware.visible = true
+			enemy_type = $Adware
+			$Adware.material = $Adware.material.duplicate()
 		"spyware":
 			$Spyware.visible = true
+			enemy_type = $Spyware
+			$Spyware.material = $Spyware.material.duplicate()
 		"creds":
 			$Creds.visible = true
+			enemy_type = $Creds
+			$Creds.material = $Creds.material.duplicate()
 		"botnet":
 			$Botnet.visible = true
+			enemy_type = $Botnet
+			$Botnet.material = $Botnet.material.duplicate()
 		"worm":
 			is_worm = true
 			$Worm.visible = true
-			$Worm/WormSegments.visible = true
+			enemy_type = $Worm
+			$Worm.material = $Worm.material.duplicate()
+			$WormSegments.visible = true
+			
 
-			for child in $Worm/WormSegments.get_children():
+			for child in $WormSegments.get_children():
 				if child is Node2D:
 					segments.append(child)
 			
@@ -62,25 +79,18 @@ func _process(delta: float):
 	path_follow.progress += speed * delta
 
 	if is_worm:
-		var head_pos = path_follow.global_position
+		global_position = path_follow.global_position
 
-		history.push_front(head_pos)
+		history.push_front(global_position)
 
-		var max_history = (segments.size() + 1) * spacing
+		var max_history = segments.size() * spacing
 		if history.size() > max_history:
 			history.resize(max_history)
 
 		for i in range(segments.size()):
-			var index = (i + 1) * spacing
+			var index = (i) * spacing
 
-			if index < history.size():
-				segments[i].global_position = history[index]
 
-				if index + 1 < history.size():
-					var dir = history[index] - history[index + 1]
-					segments[i].rotation = dir.angle()
-
-		
 	if path_follow.progress_ratio >= 0.99:
 		Data.health -= 20
 		queue_free()
@@ -131,10 +141,12 @@ func hit(damage: int = 1):
 	queue_free()
 	
 func flash():
-	var tween = create_tween()
+	if enemy_tween:
+		enemy_tween.kill()
 
-	tween.tween_property($Adware.material, 'shader_parameter/Progress', 1.0, 0.2)
-	tween.tween_property($Adware.material, 'shader_parameter/Progress', 0.0, 0.2)
+	enemy_tween = create_tween()
+	enemy_tween.tween_property(enemy_type.material, 'shader_parameter/Progress', 1.0, 0.2)
+	enemy_tween.tween_property(enemy_type.material, 'shader_parameter/Progress', 0.0, 0.2)
 	
 	
 func update_hp_bar_position():

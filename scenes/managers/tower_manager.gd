@@ -147,7 +147,6 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		ui.refresh_tower_cards()
 
 
-
 func _on_tower_removed(cell_pos: Vector2i) -> void:
 	if cell_pos in used_cells:
 		used_cells.erase(cell_pos)
