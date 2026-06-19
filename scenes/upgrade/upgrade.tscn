@@ -27,6 +27,13 @@ offset_right = 1918.0
 offset_bottom = 1080.0
 texture = ExtResource("2_gukx4")
 
+[node name="VScrollBar" type="VScrollBar" parent="." unique_id=1095791943]
+offset_left = 127.0
+offset_top = 331.0
+offset_right = 194.0
+offset_bottom = 667.0
+value = 20.0
+
 [node name="SentinelsContainer" type="HBoxContainer" parent="." unique_id=694102848]
 unique_name_in_owner = true
 anchors_preset = -1

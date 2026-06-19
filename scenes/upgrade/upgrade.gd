@@ -109,6 +109,7 @@ func _on_sentinel_pressed() -> void:
 
 func _on_upgrade_button_pressed() -> void:
 	$StatPanel/CurrentStat.text = $BigTowerName.text
+	$VScrollBar.visible = false
 	%SentinelsContainer.visible = false
 
 	%BigPic.position.x -= 297
@@ -124,6 +125,7 @@ func _on_upgrade_button_pressed() -> void:
 func _on_back_btn_pressed() -> void:
 	if %SentinelsContainer.visible == false:
 		%SentinelsContainer.visible = true
+		$VScrollBar.visible = true
 
 		%BigPic.position.x += 297
 		$BigTowerName.position.x += 297
@@ -138,13 +140,10 @@ func _on_back_btn_pressed() -> void:
 
 func _on_stat_panel_left_pressed() -> void:
 	$StatPanel.texture = load("res://graphics/container/stats.png")
-	$StatPanel/ScrollContainer/VBoxContainer.visible = true
-	$StatPanel/AbilityPanel.visible = false
+
 
 func _on_stat_panel_right_pressed() -> void:
 	$StatPanel.texture = load("res://graphics/container/ability.png")
-	$StatPanel/ScrollContainer/VBoxContainer.visible = false
-	$StatPanel/AbilityPanel.visible = true
 
 
 func _on_upgrade_1_pressed() -> void:

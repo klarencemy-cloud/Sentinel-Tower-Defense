@@ -91,18 +91,22 @@ func _random_wave_size() -> Dictionary:
 func _choose_random_enemy_type(difficulty: int) -> Data.Enemy:
 	var default_chance = clamp(70 - difficulty * 4, 15, 70)
 	var worm_chance = clamp(70 - difficulty * 4, 15, 70)
-	var fast_chance = clamp(20 + difficulty * 3, 15, 40)
-	var strong_chance = clamp(8 + difficulty * 2, 10, 30)
+	var fast_chance = clamp(60 + difficulty * 3, 15, 60)
+	var strong_chance = clamp(50 + difficulty * 2, 10, 50)
+	var extreme_chance = clamp(40 + difficulty * 2, 10, 40)
 
 	var roll = randi() % 100
 	if roll < default_chance:
 		return Data.Enemy.DEFAULT
 	elif roll < default_chance + fast_chance:
-		return Data.Enemy.FAST
+		return Data.Enemy.WORM
 	elif roll < default_chance + fast_chance + strong_chance:
 		return Data.Enemy.STRONG
-
-	return Data.Enemy.BIG
+	elif roll < default_chance + fast_chance + strong_chance + worm_chance:
+		return Data.Enemy.BIG
+	elif roll < default_chance + fast_chance + strong_chance + extreme_chance + worm_chance:
+		return Data.Enemy.EXT
+	return Data.Enemy.EXT
 
 
 func _get_paths() -> Array[Path2D]:
