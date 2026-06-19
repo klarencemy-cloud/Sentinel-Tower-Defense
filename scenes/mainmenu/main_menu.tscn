@@ -63,6 +63,7 @@ grow_vertical = 2
 pivot_offset = Vector2(0.54, 0)
 
 [node name="StartGame" type="TextureButton" parent="ButtonManager" unique_id=2003042709]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.36543998
@@ -93,6 +94,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Database" type="TextureButton" parent="ButtonManager" unique_id=103459929]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.38163006
@@ -123,6 +125,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Settings" type="TextureButton" parent="ButtonManager" unique_id=1508697269]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.89635414
@@ -139,6 +142,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Config" type="TextureButton" parent="ButtonManager" unique_id=641195140]
 visible = false
+texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.8070496
@@ -156,6 +160,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Exit" type="TextureButton" parent="ButtonManager" unique_id=600896854]
 visible = false
+texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.89635414

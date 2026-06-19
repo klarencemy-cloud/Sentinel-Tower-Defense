@@ -191,6 +191,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="XP2" type="TextureRect" parent="MapDetails" unique_id=856008150]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -205,6 +206,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ServerPts" type="TextureRect" parent="MapDetails" unique_id=1029772809]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -240,6 +242,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="MapBtn" type="TextureButton" parent="ButtonManager" unique_id=955201350]
+texture_filter = 2
 layout_mode = 0
 anchor_left = 10.8
 anchor_top = 22.975
@@ -291,6 +294,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="StartGame" type="TextureButton" parent="." unique_id=470087992]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.6901042

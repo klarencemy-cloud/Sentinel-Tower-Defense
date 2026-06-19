@@ -99,6 +99,7 @@ offset_bottom = 40.0
 
 [node name="RightBtn" type="TextureButton" parent="ButtonManager" unique_id=1752650449]
 z_index = 6
+texture_filter = 2
 layout_mode = 0
 offset_left = 792.0
 offset_top = 464.0
@@ -110,6 +111,7 @@ stretch_mode = 0
 
 [node name="LeftBtn" type="TextureButton" parent="ButtonManager" unique_id=1293332622]
 z_index = 7
+texture_filter = 2
 layout_mode = 0
 offset_left = 328.0
 offset_top = 616.0
@@ -121,6 +123,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="StartGame" type="TextureButton" parent="." unique_id=470087992]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.6901042
