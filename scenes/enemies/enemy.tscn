@@ -502,6 +502,7 @@ material = SubResource("ShaderMaterial_n7575")
 position = Vector2(-9.999999, -14.999994)
 scale = Vector2(0.84375, 0.84375006)
 sprite_frames = SubResource("SpriteFrames_3xxyr")
+autoplay = "default"
 
 [node name="Adware" type="AnimatedSprite2D" parent="." unique_id=443890855]
 visible = false
@@ -518,12 +519,14 @@ texture_filter = 2
 material = SubResource("ShaderMaterial_y5th1")
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_e4ejd")
+autoplay = "default"
 
 [node name="Botnet" type="AnimatedSprite2D" parent="." unique_id=701035183]
 visible = false
 texture_filter = 2
 material = SubResource("ShaderMaterial_tihwb")
 sprite_frames = SubResource("SpriteFrames_8ma66")
+autoplay = "default"
 
 [node name="WormSegments" type="Sprite2D" parent="." unique_id=481074252]
 visible = false
@@ -560,12 +563,13 @@ sprite_frames = SubResource("SpriteFrames_rme1b")
 autoplay = "default"
 
 [node name="InsiderThreat" type="AnimatedSprite2D" parent="." unique_id=914461198]
+visible = false
 texture_filter = 2
 material = SubResource("ShaderMaterial_twn6s")
 sprite_frames = SubResource("SpriteFrames_nb6gf")
 animation = &"Right"
 autoplay = "Right"
-frame_progress = 0.0003502835
+frame_progress = 0.3214369
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1419893999]
 position = Vector2(-1, 1)
