@@ -53,6 +53,7 @@ visible = false
 
 [node name="DialogueUi" parent="." unique_id=934514018 instance=ExtResource("7_26a3v")]
 layer = 3
+visible = false
 
 [node name="Control" type="Control" parent="." unique_id=818495937]
 layout_mode = 3
@@ -202,6 +203,7 @@ theme_override_font_sizes/font_size = 23
 text = "Player Level"
 
 [node name="HPBar" type="TextureProgressBar" parent="Control/TextureRect/PlayerCurrentStats" unique_id=2044464610]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.66300005
@@ -210,8 +212,8 @@ anchor_right = 0.66300005
 anchor_bottom = 1.0
 offset_left = 1188.48
 offset_top = 46.0
-offset_right = 1268.48
-offset_bottom = 72.0
+offset_right = 1252.48
+offset_bottom = 56.0
 scale = Vector2(2.94, 2.94)
 value = 100.0
 texture_under = ExtResource("8_hc5d0")
@@ -356,6 +358,7 @@ tint_under = Color(0.12941177, 0.23137255, 0.29411766, 1)
 tint_progress = Color(0.18039216, 0.39215687, 0.52156866, 1)
 
 [node name="ServerLoadText" type="Label" parent="Control/TextureProgressBar" unique_id=310426915]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

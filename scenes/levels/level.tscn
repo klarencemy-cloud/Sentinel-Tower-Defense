@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://1biiqhqmsago" path="res://scenes/managers/level_manager.gd" id="9_1phd1"]
 [ext_resource type="Script" uid="uid://dpqclxypode5g" path="res://scenes/managers/tower_manager.gd" id="10_g7lvq"]
 [ext_resource type="Script" uid="uid://dy1mk1bohkjnf" path="res://scenes/managers/wave_manager.gd" id="11_y8dwe"]
+[ext_resource type="Texture2D" uid="uid://c11wvcxprgq04" path="res://graphics/particles/glow.png" id="12_qogh7"]
 [ext_resource type="Texture2D" uid="uid://vwau2jy3q805" path="res://graphics/map/dust.png" id="12_xfk5q"]
 [ext_resource type="Script" uid="uid://djmtfsuaukiga" path="res://scenes/levels/lightning_effects.gd" id="13_qogh7"]
 
@@ -577,6 +578,27 @@ emission_box_extents = Vector3(1920, 1080, 1)
 gravity = Vector3(0, 1000, 0)
 scale_over_velocity_curve = SubResource("CurveXYZTexture_2honx")
 
+[sub_resource type="Gradient" id="Gradient_xfk5q"]
+offsets = PackedFloat32Array(0, 0.5207878, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.19215687, 1, 0.7058824, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qogh7"]
+gradient = SubResource("Gradient_xfk5q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7pb6i"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1920, 1080, 1)
+gravity = Vector3(0, 10, 0)
+scale_min = 0.01
+scale_max = 0.5
+color = Color(0.19215687, 1, 0.7058824, 1)
+color_ramp = SubResource("GradientTexture1D_qogh7")
+hue_variation_min = -1.0
+hue_variation_max = 0.99999994
+turbulence_enabled = true
+turbulence_noise_strength = 5.88
+
 [node name="Level" type="Node2D" unique_id=334341019]
 script = ExtResource("1_377w7")
 
@@ -618,6 +640,7 @@ parameters/looping = true
 [node name="WeatherEffects" type="Node2D" parent="." unique_id=2129595724]
 
 [node name="DustParticles" type="GPUParticles2D" parent="WeatherEffects" unique_id=1637259662]
+visible = false
 light_mask = 7
 z_index = 1
 position = Vector2(1926, 1001)
@@ -627,6 +650,7 @@ visibility_rect = Rect2(-1920, -1080, 3840, 2160)
 process_material = SubResource("ParticleProcessMaterial_8iyoh")
 
 [node name="WindParticles" type="GPUParticles2D" parent="WeatherEffects" unique_id=608632575]
+visible = false
 z_index = 2
 position = Vector2(1920, 1085)
 amount = 500
@@ -656,6 +680,14 @@ min_energy = 0.1
 max_energy = 0.2
 min_interval = 0.5
 max_interval = 4.0
+
+[node name="BloomParticles" type="GPUParticles2D" parent="WeatherEffects" unique_id=565471396]
+visible = false
+position = Vector2(1922, 1063)
+amount = 300
+texture = ExtResource("12_qogh7")
+visibility_rect = Rect2(-1920, -1080, 3840, 2160)
+process_material = SubResource("ParticleProcessMaterial_7pb6i")
 
 [connection signal="place_tower" from="UI" to="." method="_on_ui_place_tower"]
 [connection signal="start_wave" from="UI" to="." method="_on_ui_start_wave"]

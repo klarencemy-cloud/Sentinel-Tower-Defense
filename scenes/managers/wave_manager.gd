@@ -49,6 +49,46 @@ func start_wave() -> void:
 	if Data.current_wave % 5 == 0:
 		Data.checkpoint_wave = Data.current_wave
 
+	match Data.current_wave:
+		6:
+			$'../WeatherEffects/DustParticles'.visible = false
+			$'../WeatherEffects/WindParticles'.visible = false
+			$'../WeatherEffects/RainParticles'.visible = false
+			$'../WeatherEffects/LightningEffects'.visible = false
+			$'../WeatherEffects/BloomParticles'.visible = true
+		11:
+			$'../WeatherEffects/DustParticles'.visible = true
+			$'../WeatherEffects/WindParticles'.visible = false
+			$'../WeatherEffects/RainParticles'.visible = false
+			$'../WeatherEffects/LightningEffects'.visible = false
+			$'../WeatherEffects/BloomParticles'.visible = false
+		21:
+			$'../WeatherEffects/DustParticles'.visible = true
+			$'../WeatherEffects/WindParticles'.visible = true
+			$'../WeatherEffects/RainParticles'.visible = false
+			$'../WeatherEffects/LightningEffects'.visible = false
+			$'../WeatherEffects/BloomParticles'.visible = false
+		31:
+			$'../WeatherEffects/DustParticles'.visible = true
+			$'../WeatherEffects/WindParticles'.visible = true
+			$'../WeatherEffects/RainParticles'.visible = false
+			$'../WeatherEffects/LightningEffects'.visible = true
+			$'../WeatherEffects/BloomParticles'.visible = false
+
+		41:
+			$'../WeatherEffects/DustParticles'.visible = true
+			$'../WeatherEffects/WindParticles'.visible = true
+			$'../WeatherEffects/RainParticles'.visible = true
+			$'../WeatherEffects/LightningEffects'.visible = true
+			$'../WeatherEffects/BloomParticles'.visible = false
+		51:
+			$'../WeatherEffects/DustParticles'.visible = true
+			$'../WeatherEffects/WindParticles'.visible = true
+			$'../WeatherEffects/RainParticles'.visible = true
+			$'../WeatherEffects/LightningEffects'.visible = true
+			$'../WeatherEffects/BloomParticles'.visible = false
+
+
 	wave_active = true
 	spawning_wave = true
 

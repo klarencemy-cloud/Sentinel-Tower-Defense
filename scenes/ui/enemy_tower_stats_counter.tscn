@@ -36,6 +36,7 @@ offset_bottom = 2.000061
 grow_horizontal = 2
 
 [node name="DmgCounterTop" type="TextureRect" parent="Container/Content" unique_id=1965771647]
+light_mask = 8
 z_index = -1
 texture_filter = 2
 layout_mode = 1
@@ -52,6 +53,7 @@ grow_horizontal = 2
 texture = ExtResource("2_rmd3k")
 
 [node name="DmgCounterBg" type="TextureRect" parent="Container/Content" unique_id=182512758]
+light_mask = 8
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
@@ -100,6 +102,7 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 
 [node name="TowerImage" type="TextureRect" parent="Container/Content/DmgCounterBg/ScrollContainer/TowerEntry/BgCtn/MCtn/ContentCtn" unique_id=930256828]
+light_mask = 8
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("3_h6p2n")
@@ -121,6 +124,7 @@ theme_override_font_sizes/font_size = 20
 text = "Kill Count"
 
 [node name="TextureProgressBarDmg" type="TextureProgressBar" parent="Container/Content/DmgCounterBg/ScrollContainer/TowerEntry/BgCtn/MCtn/ContentCtn/MCtn/StatsCtn" unique_id=411186101]
+light_mask = 8
 layout_mode = 2
 value = 10.0
 texture_under = ExtResource("4_q31yk")
@@ -128,6 +132,7 @@ texture_progress = ExtResource("4_q31yk")
 tint_progress = Color(0.17923622, 0.39151636, 0.51584375, 1)
 
 [node name="KillButton" type="TextureButton" parent="Container/Content" unique_id=1967456331]
+light_mask = 8
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -139,6 +144,7 @@ grow_horizontal = 2
 texture_normal = ExtResource("6_go7qu")
 
 [node name="EnemiesStatsLabel" type="Label" parent="Container/Content/KillButton" unique_id=610115021]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -154,6 +160,7 @@ grow_vertical = 2
 text = "Enemy Kill"
 
 [node name="TowerButton" type="TextureButton" parent="Container/Content" unique_id=58515581]
+light_mask = 8
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.44200003
@@ -168,6 +175,7 @@ texture_normal = ExtResource("6_go7qu")
 flip_h = true
 
 [node name="TowersStatsLabel" type="Label" parent="Container/Content/TowerButton" unique_id=440602623]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
