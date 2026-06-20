@@ -5,7 +5,7 @@ func _on_reload_timer_timeout() -> void:
 	if enemies.size() > 0:
 		fire_animation()
 		var damage = Data.TOWER_DATA[type]["damage"]
-		shoot.emit(position, 0, bullet_type, damage)
+		shoot.emit(position, 0, bullet_type, damage, type, tower_id)
 		$ShootSound.play()
 
 func fire_animation():

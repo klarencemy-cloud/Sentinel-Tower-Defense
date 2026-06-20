@@ -15,6 +15,7 @@ var level_manager: Node
 var selected_tower: Data.Tower
 var current_tower: Tower
 var tower_menu: bool = false
+var next_tower_id: int = 1
 var used_cells: Array[Vector2i] = []
 
 var place_tower: bool = false:
@@ -74,10 +75,10 @@ func cancel_selection() -> void:
 		tower.hide_ui()
 
 
-func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage: int, tower_type) -> void:
+func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage: int, tower_type, tower_id: int = -1) -> void:
 	if bullet_enum == Data.Bullet.SINGLE:
 		var bullet = bullet_scene.instantiate()
-		bullet.setup(pos, angle, bullet_enum, damage, tower_type)
+		bullet.setup(pos, angle, bullet_enum, damage, tower_type, tower_id)
 		_get_bullet_parent().add_child(bullet)
 
 	if bullet_enum == Data.Bullet.FIRE:
@@ -129,6 +130,8 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	used_cells.append(cell_pos)
 
 	var tower = load(tower_scenes[selected_tower]).instantiate()
+	tower.tower_id = next_tower_id
+	next_tower_id += 1
 	tower.position = world_pos
 	tower.setup(selected_tower)
 	tower.cell_pos = cell_pos
@@ -136,6 +139,7 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	tower.connect("select", tower_selection)
 	tower.connect("removed", _on_tower_removed)
 	_get_tower_parent().add_child(tower)
+	EnemyTower.register_tower(tower.tower_id, selected_tower)
 
 	place_tower = false
 	if not Data.is_unli_money:
@@ -146,6 +150,7 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if ui:
 		ui.refresh_tower_cards()
 
+	print("Placed tower ID: ", tower.tower_id)
 
 func _on_tower_removed(cell_pos: Vector2i) -> void:
 	if cell_pos in used_cells:

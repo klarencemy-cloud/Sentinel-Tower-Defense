@@ -34,7 +34,9 @@ func _on_reload_timer_timeout() -> void:
 		$CrosshairSprite.global_position,
 		0,
 		bullet_type,
-		int(final_damage)
+		int(final_damage),
+		type,
+		tower_id
 	)
 
 func tower_upgrade():

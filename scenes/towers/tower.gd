@@ -8,11 +8,12 @@ var currentserverload
 var cell_pos: Vector2i = Vector2i.ZERO
 var damage: int = 0
 var reload_time: float = 0.0
+var tower_id
 var range: float = 0.0
 
 
 @warning_ignore("unused_signal")
-signal shoot(pos: Vector2, direction: float, bullet_enum: Data.Bullet, damage: int)
+signal shoot(pos: Vector2, direction: float, bullet_enum: Data.Bullet, damage: int, tower_type: Data.Tower, tower_id: int)
 signal select(tower: Tower)
 signal removed(cell_pos: Vector2i)
 

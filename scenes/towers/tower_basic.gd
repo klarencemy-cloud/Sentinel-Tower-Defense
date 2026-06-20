@@ -27,7 +27,8 @@ func _on_reload_timer_timeout() -> void:
 			$Turret.rotation,
 			bullet_type,
 			int(final_damage),
-			type
+			type,
+			tower_id
 		)
 
 		$ShootSound.play()

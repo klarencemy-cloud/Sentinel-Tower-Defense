@@ -3,6 +3,7 @@ extends Area2D
 var direction: Vector2
 var speed: int = 200
 var damage: int = 1
+var tower_id: int = -1
 
 var bounce_count: int = 0
 var max_bounce: int = 1
@@ -19,7 +20,7 @@ func _ready():
 	area_entered.connect(_on_area_entered)
 
 
-func setup(pos, angle, _bullet_enum, _damage, _tower_type):
+func setup(pos, angle, _bullet_enum, _damage, _tower_type, _tower_id):
 	position = pos
 	direction = Vector2.DOWN.rotated(angle)
 	rotation = angle
@@ -27,8 +28,9 @@ func setup(pos, angle, _bullet_enum, _damage, _tower_type):
 	damage = _damage
 	bullet_enum = _bullet_enum
 	owner_tower_type = _tower_type
+	tower_id = _tower_id
 
-	var tower_data = Data.TOWER_DATA.get(owner_tower_type, {})
+	var tower_data = Data.TOWER_DATA.get(bullet_enum, {})
 	if tower_data.has("range"):
 		ricochet_range = max(ricochet_range, int(tower_data["range"]))
 
@@ -43,7 +45,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if !area.is_in_group("Enemies"):
 		return
 
-	area.hit(damage)
+	area.hit(damage, tower_id)
 	hit_enemies.append(area)  # Track this enemy as hit
 
 	if _can_ricochet():
@@ -108,6 +110,9 @@ func ricochet(from_enemy: Node) -> void:
 	new_bullet.max_bounce = max_bounce
 	new_bullet.ricochet_range = ricochet_range
 	new_bullet.hit_enemies = hit_enemies.duplicate()  # Pass the hit list to the new bullet
+
+	new_bullet.tower_id = tower_id
+
 
 	get_parent().add_child(new_bullet)
 	queue_free()

@@ -81,7 +81,7 @@ func _on_area_entered(bullet: Area2D) -> void:
 	hit(bullet.damage)
 
 
-func hit(damage: int = 1):
+func hit(damage: int = 1, tower_id: int = -1):
 	if dead:
 		return
 
@@ -93,6 +93,10 @@ func hit(damage: int = 1):
 		$AudioStreamPlayer2D.stream = preload("res://audio/impact.1.ogg")
 
 	show_damage(damage)
+
+	#Give damage in damage global data
+	if tower_id != -1:
+		EnemyTower.add_damage(tower_id, damage)
 
 	# Non-lethal hit: play locally on the enemy
 	if health > 0:
