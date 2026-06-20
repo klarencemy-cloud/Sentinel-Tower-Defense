@@ -403,6 +403,82 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_twn6s"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uequj"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1170, 768, 130, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whns1"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(910, 768, 130, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsvp5"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(0, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv2ah"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(192, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crryk"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(384, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nai4k"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(640, 768, 64, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il2t1"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(768, 768, 64, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nb6gf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uequj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whns1")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 6.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsvp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv2ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crryk")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nai4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_il2t1")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 6.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_fcftc"]
 radius = 43.046486
 
@@ -482,6 +558,14 @@ position = Vector2(72, 1)
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_rme1b")
 autoplay = "default"
+
+[node name="InsiderThreat" type="AnimatedSprite2D" parent="." unique_id=914461198]
+texture_filter = 2
+material = SubResource("ShaderMaterial_twn6s")
+sprite_frames = SubResource("SpriteFrames_nb6gf")
+animation = &"Right"
+autoplay = "Right"
+frame_progress = 0.0003502835
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1419893999]
 position = Vector2(-1, 1)

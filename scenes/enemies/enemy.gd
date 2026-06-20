@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 
 func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
-	enemy_type_stats = type #save enemy type
+	enemy_type_stats = type # save enemy type
 
 	$hpbar.max_value = Data.ENEMY_DATA[type]['health']
 	path_follow = new_path_follow
@@ -36,6 +36,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$Botnet.visible = false
 	$Worm.visible = false
 	$WormSegments.visible = false
+	$InsiderThreat.visible = false
 
 	match Data.ENEMY_DATA[type]['name']:
 		"spam":
@@ -67,7 +68,10 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			
 			for child in $WormSegments.get_children():
 					child.material = child.material.duplicate()
-
+		"insiderthreat":
+			$InsiderThreat.visible = true
+			enemy_type = $InsiderThreat
+			$InsiderThreat.material = $InsiderThreat.material.duplicate()
 			
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
 	

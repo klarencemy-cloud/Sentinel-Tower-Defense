@@ -20,7 +20,7 @@ var current_level_index: int = 0 # map count 0 = level 1
 
 enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
-enum Enemy {DEFAULT, ADWARE, SPYWARE, CREDS, WORM, BOTNET}
+enum Enemy {DEFAULT, ADWARE, SPYWARE, CREDS, WORM, BOTNET, INSIDERTHREAT}
 
 var TOWER_DATA = {
 	Tower.BASIC: {
@@ -137,7 +137,8 @@ var ENEMY_DATA = {
 	Enemy.SPYWARE: {'health': 6, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 100, 'name': "spyware"},
 	Enemy.CREDS: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "creds"},
 	Enemy.BOTNET: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "botnet"},
-	Enemy.WORM: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "worm"}
+	Enemy.WORM: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "worm"},
+	Enemy.INSIDERTHREAT: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "insiderthreat"}
 
 }
 

@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://crwxntvw5vui7" path="res://scenes/ui/sand_box_ui.gd" id="1_ilkqn"]
 [ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="2_albjg"]
 [ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="3_46vmp"]
-[ext_resource type="FontFile" uid="uid://tujnohddqv1k" path="res://font/Libre_Franklin/LibreFranklin-Italic-VariableFont_wght.ttf" id="4_p24p8"]
+[ext_resource type="FontFile" uid="uid://dqeo785ggi365" path="res://font/Libre_Franklin/static/LibreFranklin-MediumItalic.ttf" id="4_03fy7"]
 [ext_resource type="Texture2D" uid="uid://dg5cpb8q8ckwj" path="res://graphics/buttons/right3.png" id="5_03fy7"]
+[ext_resource type="FontFile" uid="uid://cuu8uxwlh6c8t" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraLightItalic.ttf" id="5_q7ead"]
 [ext_resource type="Texture2D" uid="uid://c2ka012ylc4b3" path="res://graphics/buttons/buttonbg.png" id="9_jj0la"]
 [ext_resource type="Script" uid="uid://cyrxvelj6b5co" path="res://scenes/ui/carousel_container.gd" id="10_fa42h"]
 [ext_resource type="Texture2D" uid="uid://gu6kknerpdee" path="res://graphics/vm_maps/vm1.png" id="11_k140q"]
@@ -67,7 +68,7 @@ offset_left = 359.99988
 offset_top = -46.0
 offset_right = 525.9999
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0, 0.015686275, 1)
+theme_override_colors/font_color = Color(0.12941177, 0.59607846, 0.6784314, 1)
 theme_override_font_sizes/font_size = 40
 text = "1"
 
@@ -81,9 +82,20 @@ offset_top = 15.0
 offset_right = 503.99997
 offset_bottom = 54.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_p24p8")
+theme_override_fonts/font = ExtResource("4_03fy7")
 theme_override_font_sizes/font_size = 21
-text = "Defeat 1000 viruses without taking any damage"
+text = "The recovery from the devastating catastrophe."
+
+[node name="Paragraph" type="Label" parent="MapDetails/Description" unique_id=1751240900]
+layout_mode = 0
+offset_top = 39.0
+offset_right = 787.0
+offset_bottom = 220.0
+theme_override_fonts/font = ExtResource("5_q7ead")
+theme_override_font_sizes/font_size = 13
+text = "After the collapse of Earth’s Core, several facilities were converted into rehabilitation centers. The Treatment Area became a refuge for the survivors, where the remaining humans continue to support the artificial magnetic field. However, its direct connection to the S.E.R.V.E.R., or the Secret Enigmatic Regent Vanguard of Earth's Remnant, eventually attracted the attention of cyber threats, as they see it as the next source of immense power after Earth's Core was destroyed. What is now once built to heal becomes a battlefield against cyber threats. 
+"
+autowrap_mode = 2
 
 [node name="Image" type="Control" parent="." unique_id=16854379]
 layout_mode = 1

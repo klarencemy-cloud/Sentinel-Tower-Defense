@@ -135,6 +135,7 @@ func _choose_random_enemy_type(difficulty: int) -> Data.Enemy:
 	var strong_chance = clamp(50 + difficulty * 2, 10, 50)
 	var extreme_chance = clamp(40 + difficulty * 2, 10, 40)
 	var worm_chance = clamp(40 + difficulty * 2, 10, 40)
+	var insider_chance = clamp(40 + difficulty * 2, 10, 40)
 
 	var roll = randi() % 100
 	if roll < default_chance:

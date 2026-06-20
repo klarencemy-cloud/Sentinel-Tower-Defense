@@ -20,9 +20,28 @@ class_name CarouselContainer
 
 @onready var title: Label = $"../MapDetails/sbName"
 @onready var path: Label = $"../MapDetails/Difficulty"
+@onready var description: Label = $"../MapDetails/Description"
+@onready var paragraph: Label = $"../MapDetails/Description/Paragraph"
 
-var title_array = ["Treatment Area", "Courtyard", "Konbini", "Hellbent", "The Maze", "Requiem"]
-var path_num = ["1", "1", "2", "4", "3", "3"]
+var title_array: Array = ["Treatment Area", "Courtyard", "Konbini", "Hellbent", "The Maze", "Requiem"]
+var path_num: Array = ["1", "1", "2", "4", "3", "3"]
+var sb_map_desc_paragraph: Array = [
+	"After the collapse of Earth’s Core, several facilities were converted into rehabilitation centers. The Treatment Area became a refuge for the survivors, where the remaining humans continue to support the artificial magnetic field. However, its direct connection to the S.E.R.V.E.R., or the Secret Enigmatic Regent Vanguard of Earth's Remnant, eventually attracted the attention of cyber threats, as they see it as the next source of immense power after Earth's Core was destroyed. What is now once built to heal becomes a battlefield against cyber threats.",
+	"Built around the haven, The Courtyard was a place for gathering, once full of people’s laughter, and a place that continues to support life despite the world’s devastation. The happy memories remain, but the peace has long vanished. Now, a route for hostile enemies that targets the power of S.E.R.V.E.R echoes. ",
+	"The Konbini was originally a place to provide food, medicine, and daily necessities to humanity. However, due to its continued service, multiple paths, and the flow of data and power from S.E.R.V.E.R., it has attracted cyber threats. A perfect way to exploit the artificial rotating heart of humanity’s last hope. What once filled the convenience and hunger has become another battlefield for humanity’s struggle for the future.",
+	"An abandoned community facility that studied the advancement of artificial intelligence. A place where humanity once hoped for convenience through AI is now being destroyed by what was once created by them. The environment was once full of innovation now a place for exploited paths, corrupted machines, and traces of vulnerabilities. It has attracted the attention of cyber threats because of its united path leading to the S.E.R.V.E.R., a perfect path for their objective.",
+	"As cyber threats continue to evolve, the founder of S.E.R.V.E.R constructed a massive security network design to delay the inevitable, the ruin brought by the hostile AI. The Maze was designed to have a complicated pathway for intruders to be confused and conceal secrets. However, enemies learned, adapted, and forcefully attacked the Maze to exploit the S.E.R.V.E.R.’s power that holds humanity’s only hope. Now, the Maze serves not only to conceal critical assets but also as a defense.",
+	"Placed within its ground, the S.E.R.V.E.R., a facility that keeps the Earth alive through an artificial magnetic field. This place holds humanity’s last hope and last line of defense. Within its hall, it contains the past and the truth. The event that led to the ruins. The answer to who we are. Here, the final battlefield awaits, which determines the future of humanity.  "
+]
+var sb_map_desc: Array = [
+	"The recovery from the devastating catastrophe.",
+	"A memory of happy echoes.",
+	"A light that stays even during the darkest.",
+	"The perfect place for corruption.",
+	"The place that once held critical assets.",
+	"The place that remembers the past."
+]
+
 var count: int = 0
 
 
@@ -83,7 +102,18 @@ func _left():
 
 	title.text = title_array[count]
 	path.text = path_num[count]
-
+	description.text = sb_map_desc[count]
+	paragraph.text = sb_map_desc_paragraph[count]
+	match path_num[count]:
+		"1":
+			path.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
+		"2":
+			path.add_theme_color_override("font_color", Color(0.277, 0.622, 0.287))
+		"3":
+			path.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
+		"4":
+				path.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
+ 	
 
 func _right():
 	selected_index += 1
@@ -97,3 +127,15 @@ func _right():
 
 	title.text = title_array[count]
 	path.text = path_num[count]
+	description.text = sb_map_desc[count]
+	paragraph.text = sb_map_desc_paragraph[count]
+
+	match path_num[count]:
+		"1":
+			path.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
+		"2":
+			path.add_theme_color_override("font_color", Color(0.277, 0.622, 0.287))
+		"3":
+			path.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
+		"4":
+			path.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))

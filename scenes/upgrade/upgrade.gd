@@ -91,7 +91,7 @@ func _set_upgrade_visual(node: Node, level: int) -> void:
 		if i < level:
 			tex = "Upgraded.png"
 
-		var child_name = node_name_prefix + slots[i] 
+		var child_name = node_name_prefix + slots[i]
 		var child = node.get_node(child_name)
 		if child:
 			child.texture = load("res://graphics/upgrade/" + tex)
@@ -108,7 +108,6 @@ func _on_sentinel_pressed() -> void:
 
 
 func _on_upgrade_button_pressed() -> void:
-	
 	$StatPanel/CurrentStat.text = $BigTowerName.text
 	$VScrollBar.visible = false
 	%SentinelsContainer.visible = false
@@ -251,7 +250,6 @@ func _on_tier_1_btn_pressed() -> void:
 	$UpgradePanel/Tier1Btn.texture_normal = load("res://graphics/buttons/1stTierClicked.png")
 	$UpgradePanel/Tier2Btn.texture_normal = load("res://graphics/buttons/2ndTierUnclicked.png")
 	$UpgradePanel/Tier3Btn.texture_normal = load("res://graphics/buttons/3rdTierUnclicked.png")
-
 
 
 func _on_tier_2_btn_pressed() -> void:
