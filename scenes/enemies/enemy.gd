@@ -10,6 +10,8 @@ var dmg_tween: Tween
 var enemy_tween: Tween
 
 var enemy_type: Node
+var enemy_type_stats: Data.Enemy
+
 
 @export var spacing := 32
 
@@ -19,6 +21,8 @@ func _ready() -> void:
 	
 
 func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
+	enemy_type_stats = type #save enemy type
+
 	$hpbar.max_value = Data.ENEMY_DATA[type]['health']
 	path_follow = new_path_follow
 	health = Data.ENEMY_DATA[type]['health']
@@ -104,6 +108,7 @@ func hit(damage: int = 1, tower_id: int = -1):
 		$AudioStreamPlayer2D.play(0.0)
 		return
 
+	EnemyStats.add_kill(enemy_type_stats)
 	# Lethal hit: detach the audio player so it keeps playing after this node is freed
 	var audio = $AudioStreamPlayer2D
 	# make sure stream exists on the node

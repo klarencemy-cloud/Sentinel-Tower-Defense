@@ -71,6 +71,7 @@ grow_vertical = 2
 texture = ExtResource("3_rmd3k")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Container/Content/DmgCounterBg" unique_id=1692975741]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -139,7 +140,6 @@ texture_progress = ExtResource("4_q31yk")
 tint_progress = Color(0.17923622, 0.39151636, 0.51584375, 1)
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="Container/Content/DmgCounterBg" unique_id=682034770]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -153,30 +153,30 @@ draw_focus_border = true
 [node name="VBoxContainer" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2" unique_id=1716134405]
 layout_mode = 2
 
-[node name="TowerEntry" type="Panel" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer" unique_id=1834477436]
-self_modulate = Color(1, 1, 1, 0.80784315)
+[node name="EnemyEntry" type="Panel" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer" unique_id=1834477436]
+self_modulate = Color(1, 0, 0, 0.7529412)
 custom_minimum_size = Vector2(315.205, 107.61)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="BgCtn" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry" unique_id=2142196951]
+[node name="BgCtn" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/EnemyEntry" unique_id=2142196951]
 layout_mode = 0
 offset_left = 0.20117188
 offset_right = 316.20117
 offset_bottom = 110.0
 
-[node name="MCtn" type="MarginContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn" unique_id=1909197252]
+[node name="MCtn" type="MarginContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/EnemyEntry/BgCtn" unique_id=1909197252]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="ContentCtn" type="HBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn/MCtn" unique_id=936380186]
+[node name="ContentCtn" type="HBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/EnemyEntry/BgCtn/MCtn" unique_id=936380186]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="TowerImage" type="TextureRect" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn" unique_id=1817859347]
+[node name="EnemyImage" type="TextureRect" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/EnemyEntry/BgCtn/MCtn/ContentCtn" unique_id=1817859347]
 light_mask = 8
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -184,20 +184,25 @@ texture = ExtResource("6_h6p2n")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="MCtn" type="MarginContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn" unique_id=1924128113]
+[node name="MCtn" type="MarginContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/EnemyEntry/BgCtn/MCtn/ContentCtn" unique_id=1924128113]
 layout_mode = 2
 
-[node name="StatsCtn" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn/MCtn" unique_id=1754526821]
+[node name="StatsCtn" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/EnemyEntry/BgCtn/MCtn/ContentCtn/MCtn" unique_id=1754526821]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_constants/separation = 6
 
-[node name="TowerDamageLbl" type="Label" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn/MCtn/StatsCtn" unique_id=1688767018]
+[node name="EnemyNameLbl" type="Label" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/EnemyEntry/BgCtn/MCtn/ContentCtn/MCtn/StatsCtn" unique_id=1681970987]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Name"
+
+[node name="KillCountLbl" type="Label" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/EnemyEntry/BgCtn/MCtn/ContentCtn/MCtn/StatsCtn" unique_id=1688767018]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Kill Count"
 
-[node name="TextureProgressBarDmg" type="TextureProgressBar" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn/MCtn/StatsCtn" unique_id=758070489]
+[node name="TextureProgressBarDmg" type="TextureProgressBar" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/EnemyEntry/BgCtn/MCtn/ContentCtn/MCtn/StatsCtn" unique_id=758070489]
 light_mask = 8
 layout_mode = 2
 value = 10.0
