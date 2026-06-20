@@ -413,6 +413,7 @@ script = ExtResource("1_8e3ao")
 
 [node name="Spam" type="AnimatedSprite2D" parent="." unique_id=522781916]
 visible = false
+texture_filter = 2
 material = SubResource("ShaderMaterial_fcftc")
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_tihwb")
@@ -420,6 +421,7 @@ autoplay = "default"
 
 [node name="Spyware" type="AnimatedSprite2D" parent="." unique_id=1983232872]
 visible = false
+texture_filter = 2
 material = SubResource("ShaderMaterial_n7575")
 position = Vector2(-9.999999, -14.999994)
 scale = Vector2(0.84375, 0.84375006)
@@ -427,6 +429,7 @@ sprite_frames = SubResource("SpriteFrames_3xxyr")
 
 [node name="Adware" type="AnimatedSprite2D" parent="." unique_id=443890855]
 visible = false
+texture_filter = 2
 material = SubResource("ShaderMaterial_qch6t")
 position = Vector2(-12, -3.0000002)
 scale = Vector2(0.7109375, 0.7109375)
@@ -435,37 +438,45 @@ autoplay = "default"
 
 [node name="Creds" type="AnimatedSprite2D" parent="." unique_id=976868947]
 visible = false
+texture_filter = 2
 material = SubResource("ShaderMaterial_y5th1")
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_e4ejd")
 
 [node name="Botnet" type="AnimatedSprite2D" parent="." unique_id=701035183]
 visible = false
+texture_filter = 2
 material = SubResource("ShaderMaterial_tihwb")
 sprite_frames = SubResource("SpriteFrames_8ma66")
 
 [node name="WormSegments" type="Sprite2D" parent="." unique_id=481074252]
+visible = false
 position = Vector2(26, 0)
 
 [node name="Body1" type="AnimatedSprite2D" parent="WormSegments" unique_id=136238213]
+texture_filter = 2
 material = SubResource("ShaderMaterial_nb6gf")
 position = Vector2(3, 0)
 sprite_frames = SubResource("SpriteFrames_7ob2q")
 autoplay = "default"
 
 [node name="Body2" type="AnimatedSprite2D" parent="WormSegments" unique_id=1705064147]
+texture_filter = 2
 material = SubResource("ShaderMaterial_jt03m")
 position = Vector2(-40, 0)
 sprite_frames = SubResource("SpriteFrames_lirnq")
 autoplay = "default"
 
 [node name="Tail" type="AnimatedSprite2D" parent="WormSegments" unique_id=1360655166]
+texture_filter = 2
 material = SubResource("ShaderMaterial_k4gvh")
 position = Vector2(-84, 0)
 sprite_frames = SubResource("SpriteFrames_crryk")
 autoplay = "default"
 
 [node name="Worm" type="AnimatedSprite2D" parent="." unique_id=458799407]
+visible = false
+texture_filter = 2
 material = SubResource("ShaderMaterial_p7w77")
 position = Vector2(72, 1)
 rotation = 1.5707964

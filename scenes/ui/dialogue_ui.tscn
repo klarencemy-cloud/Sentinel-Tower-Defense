@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bjuh3ncqnotqe"]
 
-[ext_resource type="Texture2D" uid="uid://cp2k41lstmq5p" path="res://graphics/container/dialoguecontainer.png" id="1_y3syv"]
+[ext_resource type="Texture2D" uid="uid://2g8nmivkcpbb" path="res://graphics/container/dialoguecontainer2.png" id="1_sd0pw"]
 [ext_resource type="FontFile" uid="uid://26svlmw1apk8" path="res://font/Libre_Franklin/static/LibreFranklin-Light.ttf" id="2_sd0pw"]
+[ext_resource type="Texture2D" uid="uid://c6job3pqnpp4i" path="res://graphics/container/showcontainer.png" id="3_ysedr"]
 
 [sub_resource type="Gradient" id="Gradient_y3syv"]
 colors = PackedColorArray(0.13725491, 0.22352941, 0.2784314, 0.6784314, 0.13725491, 0.22352941, 0.2784314, 0.47058824)
@@ -32,16 +33,16 @@ texture = SubResource("GradientTexture2D_sd0pw")
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.22800002
-anchor_top = 0.5740741
-anchor_right = 0.87100005
-anchor_bottom = 0.5740741
+anchor_left = 0.15925002
+anchor_top = 0.525
+anchor_right = 0.80225
+anchor_bottom = 0.525
 offset_left = 183.23996
 offset_right = -0.15515137
 offset_bottom = 326.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("1_y3syv")
+texture = ExtResource("1_sd0pw")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -73,3 +74,20 @@ text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmo
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Show" type="TextureRect" parent="Control" unique_id=169861409]
+texture_filter = 2
+layout_mode = 0
+offset_left = 489.0
+offset_top = 183.0
+offset_right = 863.0
+offset_bottom = 525.0
+texture = ExtResource("3_ysedr")
+
+[node name="Label" type="Label" parent="." unique_id=1475343051]
+offset_left = 1429.0
+offset_top = 639.0
+offset_right = 1505.0
+offset_bottom = 658.0
+text = "tap to skip"
+metadata/_edit_use_anchors_ = true

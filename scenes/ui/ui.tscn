@@ -52,7 +52,7 @@ layer = 10
 visible = false
 
 [node name="DialogueUi" parent="." unique_id=934514018 instance=ExtResource("7_26a3v")]
-visible = false
+layer = 3
 
 [node name="Control" type="Control" parent="." unique_id=818495937]
 layout_mode = 3
