@@ -39,6 +39,8 @@ func _ready() -> void:
 	for enemy_type in EnemyStats.enemy_kills.keys():
 		_add_or_update_enemy_entry(enemy_type)
 
+
+
 #TOWER DAMAGE SECTION
 
 func _on_tower_registered(tower_id: int) -> void:
