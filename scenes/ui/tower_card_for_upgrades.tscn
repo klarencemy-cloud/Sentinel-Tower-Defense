@@ -15,7 +15,7 @@ texture_margin_bottom = 6.0
 
 [node name="tower_card_forUpgrades" type="Button" unique_id=879644266]
 clip_children = 1
-custom_minimum_size = Vector2(173, 199)
+custom_minimum_size = Vector2(173, 242)
 offset_right = 173.0
 offset_bottom = 242.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_fndv8")

@@ -16,7 +16,7 @@ func _ready() -> void:
 	for tower_enum in Data.Tower.values():
 		var tower_card = tower_card_scene.instantiate()
 		tower_card.setup(tower_enum)
-		$SentinelsContainer.add_child(tower_card)
+		%SentinelsContainer.add_child(tower_card)
 	update_tier_buttons()
 
 
@@ -108,6 +108,7 @@ func _on_sentinel_pressed() -> void:
 
 
 func _on_upgrade_button_pressed() -> void:
+	
 	$StatPanel/CurrentStat.text = $BigTowerName.text
 	$VScrollBar.visible = false
 	%SentinelsContainer.visible = false
@@ -119,7 +120,10 @@ func _on_upgrade_button_pressed() -> void:
 	$StatPanel.visible = true
 	$UpgradePanel.visible = true
 	
-	$StatPanel/AbilityPanel/VBoxContainer/Passive.text = Data.TOWER_DATA[selected_tower]["passive"] + "(Passive): " + Data.TOWER_DATA[selected_tower]['passive description']
+	if Data.TOWER_DATA[selected_tower].has("passive"):
+		$StatPanel/AbilityPanel/VBoxContainer/Passive.text = Data.TOWER_DATA[selected_tower]["passive"] + "(Passive): " + Data.TOWER_DATA[selected_tower]['passive description']
+	else:
+		$StatPanel/AbilityPanel/VBoxContainer/Passive.text = "This tower has no passive skill!"
 	update_ability_panel()
 
 func _on_stat_panel_left_pressed() -> void:
@@ -299,25 +303,56 @@ func update_ability_panel() -> void:
 
 	for i in range(3):
 		var tier = i + 1
-		var ability = tower_data["tier%dability" % tier]
-		var desc = tower_data["tier%dabilitydesc" % tier]
 		var label = get_node("StatPanel/AbilityPanel/VBoxContainer/Tier%dAbility" % tier)
 
 		var unlocked := false
 		var unlock_text := ""
+		var ability := ""
+		var desc := ""
+
+		if tower_data.has("tier%dability" % tier):
+			ability = tower_data["tier%dability" % tier]
+			desc = tower_data["tier%dabilitydesc" % tier]
 
 		match tier:
 			1:
-				unlocked = tower_data["upgrade1level"] == 3 and tower_data["upgrade2level"] == 3
-				unlock_text = "Purchase all tier 1 upgrades to unlock this ability."
+				if tower_data.has("tier1ability"):
+					unlocked = tower_data["upgrade1level"] == 3 and tower_data["upgrade2level"] == 3
+					unlock_text = "Purchase all tier 1 upgrades to unlock this ability."
+				else:
+					unlock_text = "No Tier 1 Ability!"
+
 			2:
-				unlocked = tower_data["upgrade3level"] == 3 and tower_data["upgrade4level"] == 3
-				unlock_text = "Purchase all tier 2 upgrades to unlock this ability."
+				if tower_data.has("tier2ability"):
+					unlocked = tower_data["upgrade3level"] == 3 and tower_data["upgrade4level"] == 3
+					unlock_text = "Purchase all tier 2 upgrades to unlock this ability."
+				else:
+					unlock_text = "No Tier 2 Ability!"
+
 			3:
-				unlocked = tower_data["upgrade5level"] == 3 and tower_data["upgrade6level"] == 3
-				unlock_text = "Purchase all tier 3 upgrades to unlock this ability."
+				if tower_data.has("tier3ability"):
+					unlocked = tower_data["upgrade5level"] == 3 and tower_data["upgrade6level"] == 3
+					unlock_text = "Purchase all tier 3 upgrades to unlock this ability."
+				else:
+					unlock_text = "No Tier 3 Ability!"
 
 		if unlocked:
 			label.text = "%s: %s" % [ability, desc]
 		else:
 			label.text = unlock_text
+
+
+func _on_back_btn_pressed() -> void:
+	if %SentinelsContainer.visible == true:
+		get_tree().paused = false
+		visible = false
+	else:
+		$VScrollBar.visible = true
+		%SentinelsContainer.visible = true
+
+		%BigPic.position.x += 297
+		$BigTowerName.visible = true
+		$UpgradeButton.visible = true
+
+		$StatPanel.visible = false
+		$UpgradePanel.visible = false

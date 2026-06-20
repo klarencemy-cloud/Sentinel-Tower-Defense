@@ -27,26 +27,22 @@ offset_right = 1918.0
 offset_bottom = 1080.0
 texture = ExtResource("2_gukx4")
 
-[node name="VScrollBar" type="VScrollBar" parent="." unique_id=1095791943]
-offset_left = 127.0
-offset_top = 331.0
-offset_right = 194.0
-offset_bottom = 667.0
-value = 20.0
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2062673488]
+offset_left = 106.0
+offset_top = 188.0
+offset_right = 601.0
+offset_bottom = 771.0
+horizontal_scroll_mode = 0
 
-[node name="SentinelsContainer" type="HBoxContainer" parent="." unique_id=694102848]
+[node name="SentinelsContainer" type="GridContainer" parent="ScrollContainer" unique_id=390548765]
 unique_name_in_owner = true
-anchors_preset = -1
-anchor_left = 0.133
-anchor_right = 0.133
-offset_left = 62.335007
-offset_top = 190.0
-offset_right = 485.33484
-offset_bottom = 438.0
+layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 4
+columns = 3
 
 [node name="UpgradeButton" type="TextureButton" parent="." unique_id=333239655]
+visible = false
 anchors_preset = -1
 anchor_left = 0.753
 anchor_top = 0.71300006
