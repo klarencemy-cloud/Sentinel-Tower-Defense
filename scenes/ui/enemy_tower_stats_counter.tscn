@@ -84,17 +84,16 @@ draw_focus_border = true
 layout_mode = 2
 
 [node name="TowerEntry" type="Panel" parent="Container/Content/DmgCounterBg/ScrollContainer/VBoxContainer" unique_id=1266439271]
-self_modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0.80784315)
 custom_minimum_size = Vector2(315.205, 107.61)
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="BgCtn" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer/VBoxContainer/TowerEntry" unique_id=2020936442]
 layout_mode = 0
-offset_right = 311.0
+offset_left = 0.20117188
+offset_right = 316.20117
 offset_bottom = 110.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="MCtn" type="MarginContainer" parent="Container/Content/DmgCounterBg/ScrollContainer/VBoxContainer/TowerEntry/BgCtn" unique_id=1093163969]
 layout_mode = 2

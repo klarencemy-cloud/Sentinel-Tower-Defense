@@ -84,11 +84,11 @@ func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage:
 	if bullet_enum == Data.Bullet.FIRE:
 		for enemy in get_tree().get_nodes_in_group("Enemies"):
 			if pos.distance_to(enemy.global_position) < 100:
-				enemy.hit(damage)
+				enemy.hit(damage, tower_id)
 
 	if bullet_enum == Data.Bullet.MORTAR_EXPLOSION:
 		var explosion = explosion_scene.instantiate()
-		explosion.setup(pos, damage)
+		explosion.setup(pos, damage, tower_id)
 		_get_bullet_parent().add_child(explosion)
 
 

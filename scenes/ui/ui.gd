@@ -154,3 +154,10 @@ func update_server_load():
 func refresh_tower_cards():
 	for card in get_tree().get_nodes_in_group("TowerCard"):
 		card.toggle_active(Data.money)
+
+
+func _on_stats_counter_button_pressed() -> void:
+	if $EnemyTowerStatsCounter.visible == false:
+		$EnemyTowerStatsCounter.visible = true
+	else:
+		$EnemyTowerStatsCounter.visible = false

@@ -36,6 +36,7 @@ script = ExtResource("1_pfayw")
 
 [node name="EnemyTowerStatsCounter" parent="." unique_id=1729359607 instance=ExtResource("2_qmss2")]
 layer = 0
+visible = false
 
 [node name="Upgrade" parent="." unique_id=1877158934 instance=ExtResource("2_mgwkc")]
 unique_name_in_owner = true
@@ -396,6 +397,17 @@ text = "hatdog"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="StatsCounterButton" type="Button" parent="." unique_id=88214555]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -229.0
+offset_top = 53.0
+offset_right = -61.0
+offset_bottom = 221.0
+grow_horizontal = 0
+flat = true
+
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/SandboxSetting" to="." method="_on_sandbox_setting_pressed"]
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/TowerEnemiesButton" to="." method="_on_tower_enemies_button_pressed"]
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/WaveButton" to="." method="_on_wave_button_pressed"]
@@ -405,3 +417,4 @@ vertical_alignment = 1
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliHealth" to="." method="_on_unli_health_toggled"]
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliSentiCap" to="." method="_on_unli_senti_cap_toggled"]
 [connection signal="pressed" from="Control/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="StatsCounterButton" to="." method="_on_stats_counter_button_pressed"]
