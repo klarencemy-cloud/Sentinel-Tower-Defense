@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d3umplddt2630" path="res://graphics/container/bottom_counter.png" id="3_rmd3k"]
 [ext_resource type="Texture2D" uid="uid://bihllc5d7x1nr" path="res://graphics/ui/progress_bar.png" id="4_q31yk"]
 [ext_resource type="Texture2D" uid="uid://cpxjgsotcj2t6" path="res://graphics/container/counter_button.png" id="6_go7qu"]
+[ext_resource type="Texture2D" uid="uid://s8xhvy48k726" path="res://graphics/bosses/virus.png" id="6_h6p2n"]
 
 [node name="EnemyTowerStatsCounter" type="CanvasLayer" unique_id=1729359607]
 script = ExtResource("1_go7qu")
@@ -104,6 +105,8 @@ theme_override_constants/margin_bottom = 15
 
 [node name="ContentCtn" type="HBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer/VBoxContainer/TowerEntry/BgCtn/MCtn" unique_id=833583451]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
 
 [node name="TowerImage" type="TextureRect" parent="Container/Content/DmgCounterBg/ScrollContainer/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn" unique_id=930256828]
 light_mask = 8
@@ -115,19 +118,86 @@ stretch_mode = 4
 
 [node name="MCtn" type="MarginContainer" parent="Container/Content/DmgCounterBg/ScrollContainer/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn" unique_id=1492034395]
 layout_mode = 2
-theme_override_constants/margin_top = 22
 
 [node name="StatsCtn" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn/MCtn" unique_id=2002251339]
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
 theme_override_constants/separation = 6
 
 [node name="TowerDamageLbl" type="Label" parent="Container/Content/DmgCounterBg/ScrollContainer/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn/MCtn/StatsCtn" unique_id=2030017673]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Kill Count"
+text = "Damage Count"
 
 [node name="TextureProgressBarDmg" type="TextureProgressBar" parent="Container/Content/DmgCounterBg/ScrollContainer/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn/MCtn/StatsCtn" unique_id=411186101]
+light_mask = 8
+layout_mode = 2
+value = 10.0
+texture_under = ExtResource("4_q31yk")
+texture_progress = ExtResource("4_q31yk")
+tint_progress = Color(0.17923622, 0.39151636, 0.51584375, 1)
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Container/Content/DmgCounterBg" unique_id=682034770]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.897
+offset_bottom = -15.557098
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+draw_focus_border = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2" unique_id=1716134405]
+layout_mode = 2
+
+[node name="TowerEntry" type="Panel" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer" unique_id=1834477436]
+self_modulate = Color(1, 1, 1, 0.80784315)
+custom_minimum_size = Vector2(315.205, 107.61)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="BgCtn" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry" unique_id=2142196951]
+layout_mode = 0
+offset_left = 0.20117188
+offset_right = 316.20117
+offset_bottom = 110.0
+
+[node name="MCtn" type="MarginContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn" unique_id=1909197252]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ContentCtn" type="HBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn/MCtn" unique_id=936380186]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TowerImage" type="TextureRect" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn" unique_id=1817859347]
+light_mask = 8
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("6_h6p2n")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MCtn" type="MarginContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn" unique_id=1924128113]
+layout_mode = 2
+
+[node name="StatsCtn" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn/MCtn" unique_id=1754526821]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/separation = 6
+
+[node name="TowerDamageLbl" type="Label" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn/MCtn/StatsCtn" unique_id=1688767018]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Kill Count"
+
+[node name="TextureProgressBarDmg" type="TextureProgressBar" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/TowerEntry/BgCtn/MCtn/ContentCtn/MCtn/StatsCtn" unique_id=758070489]
 light_mask = 8
 layout_mode = 2
 value = 10.0
@@ -193,3 +263,6 @@ offset_bottom = 9.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Tower Damage"
+
+[connection signal="pressed" from="Container/Content/KillButton" to="." method="_on_kill_button_pressed"]
+[connection signal="pressed" from="Container/Content/TowerButton" to="." method="_on_tower_button_pressed"]

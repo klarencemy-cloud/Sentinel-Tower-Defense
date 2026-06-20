@@ -1,8 +1,11 @@
 extends CanvasLayer
 
 @onready var scroll_container: ScrollContainer = $Container/Content/DmgCounterBg/ScrollContainer
+@onready var scroll_container_2: ScrollContainer = $Container/Content/DmgCounterBg/ScrollContainer2
 @onready var vbox_container: VBoxContainer = $Container/Content/DmgCounterBg/ScrollContainer/VBoxContainer
 @onready var tower_entry_template: Panel = $Container/Content/DmgCounterBg/ScrollContainer/VBoxContainer/TowerEntry
+
+
 
 var tower_entries: Dictionary = {}
 
@@ -76,3 +79,13 @@ func _refresh_all_entries() -> void:
 		if progress_bar:
 			progress_bar.max_value = 100
 			progress_bar.value = float(damage) / max_damage * 100.0
+
+
+func _on_kill_button_pressed() -> void:
+	scroll_container.visible = false
+	scroll_container_2.visible = true
+
+
+func _on_tower_button_pressed() -> void:
+	scroll_container.visible = true
+	scroll_container_2.visible = false
