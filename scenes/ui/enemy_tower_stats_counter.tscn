@@ -154,7 +154,7 @@ draw_focus_border = true
 layout_mode = 2
 
 [node name="EnemyEntry" type="Panel" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer" unique_id=1834477436]
-self_modulate = Color(1, 0, 0, 0.7529412)
+self_modulate = Color(1, 1, 1, 0.7529412)
 custom_minimum_size = Vector2(315.205, 107.61)
 layout_mode = 2
 size_flags_vertical = 4
