@@ -56,13 +56,14 @@ horizontal_alignment = 1
 
 [node name="ServerLoad" type="Label" parent="TextureRect" unique_id=930280644]
 layout_mode = 0
-offset_left = 23.0
+offset_left = 24.0
 offset_top = 199.0
-offset_right = 38.0
+offset_right = 39.0
 offset_bottom = 218.0
 text = "15"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=237770441]
 texture_filter = 2

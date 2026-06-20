@@ -132,12 +132,12 @@ var TOWER_DATA = {
 	}
 		
 var ENEMY_DATA = {
-	Enemy.DEFAULT: {'health': 3, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 20, 'name': "spam"},
-	Enemy.ADWARE: {'health': 3, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 50, 'name': "adware"},
-	Enemy.SPYWARE: {'health': 6, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 25, 'name': "spyware"},
-	Enemy.CREDS: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 15, 'name': "creds"},
-	Enemy.BOTNET: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 15, 'name': "botnet"},
-	Enemy.WORM: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "worm"}
+	Enemy.DEFAULT: {'health': 3, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 100, 'name': "spam"},
+	Enemy.ADWARE: {'health': 3, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 100, 'name': "adware"},
+	Enemy.SPYWARE: {'health': 6, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 100, 'name': "spyware"},
+	Enemy.CREDS: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "creds"},
+	Enemy.BOTNET: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "botnet"},
+	Enemy.WORM: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "worm"}
 
 }
 
