@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://dbewnqmp20xvj"]
+
+[ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="1_kef2g"]
+[ext_resource type="Texture2D" uid="uid://87fv6xu2jrp3" path="res://graphics/buttons/active_parallelogram.png" id="1_us3et"]
+[ext_resource type="BitMap" uid="uid://bw1qq000amyyn" path="res://graphics/buttons/active_parallelogramBit.png" id="2_kef2g"]
+[ext_resource type="Texture2D" uid="uid://csrbid1q0uu35" path="res://graphics/buttons/parallelogram.png" id="3_5jnih"]
+[ext_resource type="Texture2D" uid="uid://c87t77gf72bpr" path="res://graphics/buttons/trapezoid_right.png" id="4_4fyk6"]
+[ext_resource type="Texture2D" uid="uid://bnv36ld0sh8ka" path="res://graphics/container/server.png" id="6_5jnih"]
+[ext_resource type="Texture2D" uid="uid://chcqohmh42w05" path="res://graphics/scrollbar/scrollcontainer.png" id="7_q2xy1"]
+[ext_resource type="Texture2D" uid="uid://c81w57xp22b8b" path="res://graphics/scrollbar/bar.png" id="8_37gse"]
+
+[node name="Server" type="CanvasLayer" unique_id=296302834]
+
+[node name="UIContainer" type="Control" parent="." unique_id=1720987075]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="UIContainer" unique_id=1113984697]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kef2g")
+metadata/_edit_use_anchors_ = true
+
+[node name="Offense" type="TextureButton" parent="UIContainer" unique_id=1642068823]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.372375
+anchor_top = 0.8972972
+anchor_right = 0.62037504
+anchor_bottom = 0.9992972
+offset_left = 1.039978
+offset_top = -1.0809937
+offset_right = 0.32373047
+offset_bottom = 0.6569824
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("1_us3et")
+texture_click_mask = ExtResource("2_kef2g")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UIContainer/Offense" unique_id=2069758965]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24100001
+anchor_top = -0.009000001
+anchor_right = 0.73800004
+anchor_bottom = 0.99100006
+offset_left = -1.5819397
+offset_top = 1.008
+offset_right = 0.122528076
+offset_bottom = 1.0079956
+theme_override_font_sizes/font_size = 39
+text = "Offense"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Defense" type="TextureButton" parent="UIContainer" unique_id=580857480]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.562375
+anchor_top = 0.8972972
+anchor_right = 0.809375
+anchor_bottom = 0.9992972
+offset_left = 0.23999023
+offset_top = -1.0809937
+offset_right = 1.4437256
+offset_bottom = 0.6569824
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("3_5jnih")
+texture_click_mask = ExtResource("2_kef2g")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UIContainer/Defense" unique_id=1668628234]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26900002
+anchor_top = 0.009000001
+anchor_right = 0.76100004
+anchor_bottom = 0.99100006
+offset_left = 0.10562897
+offset_top = -1.008
+offset_right = 4.187317
+offset_bottom = 1.0079956
+theme_override_font_sizes/font_size = 39
+text = "Defense"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Economy" type="TextureButton" parent="UIContainer" unique_id=1279424765]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7526042
+anchor_top = 0.8962981
+anchor_right = 1.0002311
+anchor_bottom = 0.9999073
+offset_right = -0.00012207031
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("4_4fyk6")
+texture_click_mask = ExtResource("2_kef2g")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="UIContainer/Economy" unique_id=726071188]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26900002
+anchor_top = 0.009000001
+anchor_right = 0.76100004
+anchor_bottom = 0.99100006
+offset_left = 0.10562897
+offset_top = -1.008
+offset_right = 4.187317
+offset_bottom = 1.0079956
+theme_override_font_sizes/font_size = 39
+text = "Economy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CircleBg" type="TextureRect" parent="UIContainer" unique_id=55373066]
+texture_filter = 2
+layout_mode = 0
+offset_left = 696.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("6_5jnih")
+
+[node name="Label" type="Label" parent="UIContainer" unique_id=381813046]
+layout_mode = 0
+offset_left = 1068.0
+offset_top = 307.0
+offset_right = 1487.0
+offset_bottom = 377.0
+theme_override_font_sizes/font_size = 60
+text = "SERVER UPDATE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bar" type="TextureButton" parent="." unique_id=1434285440]
+clip_contents = true
+anchors_preset = -1
+anchor_right = 0.019791666
+anchor_bottom = 0.62314814
+offset_left = 88.0
+offset_top = 214.0
+offset_right = 88.0
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("7_q2xy1")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Scroll" type="TextureButton" parent="Bar" unique_id=725840771]
+layout_mode = 0
+anchor_left = 0.24324325
+anchor_top = 0.015056462
+anchor_right = 0.7837838
+anchor_bottom = 0.122961104
+texture_normal = ExtResource("8_37gse")
+metadata/_edit_use_anchors_ = true

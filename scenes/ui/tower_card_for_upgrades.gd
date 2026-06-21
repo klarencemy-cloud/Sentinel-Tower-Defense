@@ -17,5 +17,5 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	var upgrade_ui = get_parent().get_parent()
+	var upgrade_ui = get_parent().get_parent().get_parent()
 	upgrade_ui.set_selected_tower(id)
