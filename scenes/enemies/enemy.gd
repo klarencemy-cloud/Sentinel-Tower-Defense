@@ -37,6 +37,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$Worm.visible = false
 	$WormSegments.visible = false
 	$InsiderThreat.visible = false
+	$Ransomware.visible = false
 
 	match Data.ENEMY_DATA[type]['name']:
 		"spam":
@@ -72,6 +73,10 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$InsiderThreat.visible = true
 			enemy_type = $InsiderThreat
 			$InsiderThreat.material = $InsiderThreat.material.duplicate()
+		"ransomware":
+			$Ransomware.visible = true
+			enemy_type = $Ransomware
+			$Ransomware.material = $Ransomware.material.duplicate()
 			
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
 	
