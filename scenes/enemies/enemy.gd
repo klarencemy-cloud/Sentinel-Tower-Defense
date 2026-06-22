@@ -85,7 +85,7 @@ func _process(delta: float):
 	path_follow.progress += speed * delta
 
 	if path_follow.progress_ratio >= 0.99:
-		Data.health -= 20
+		Data.health -= Data.ENEMY_DATA[enemy_type_stats]["damage"]
 		queue_free()
 
 

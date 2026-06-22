@@ -95,6 +95,7 @@ offset_top = -267.0
 offset_right = 1041.0
 offset_bottom = -25.0
 mouse_filter = 0
+vertical_scroll_mode = 0
 
 [node name="TowerCardsContainer" type="HBoxContainer" parent="Control/TextureRect/ScrollContainer2" unique_id=1909906848]
 layout_mode = 2

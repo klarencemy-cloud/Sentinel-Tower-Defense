@@ -132,14 +132,14 @@ var TOWER_DATA = {
 	}
 		
 var ENEMY_DATA = {
-	Enemy.DEFAULT: {'health': 3, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 100, 'name': "spam"},
-	Enemy.ADWARE: {'health': 3, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 100, 'name': "adware"},
-	Enemy.SPYWARE: {'health': 6, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 100, 'name': "spyware"},
-	Enemy.CREDS: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "creds"},
-	Enemy.BOTNET: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "botnet"},
-	Enemy.WORM: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "worm"},
-	Enemy.INSIDERTHREAT: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "insiderthreat"},
-	Enemy.RANSOMWARE: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "ransomware"}
+	Enemy.DEFAULT: {'health': 20, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 100, 'name': "spam", 'damage': 5},
+	Enemy.ADWARE: {'health': 80, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 100, 'name': "adware", 'damage': 12},
+	Enemy.SPYWARE: {'health': 100, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 100, 'name': "spyware", 'damage': 35},
+	Enemy.CREDS: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "creds", 'damage': 5},
+	Enemy.BOTNET: {'health': 200, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "botnet", 'damage': 55},
+	Enemy.WORM: {'health': 30, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "worm", 'damage': 5},
+	Enemy.INSIDERTHREAT: {'health': 120, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "insiderthreat", 'damage': 80},
+	Enemy.RANSOMWARE: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "ransomware", 'damage': 250}
 
 }
 
