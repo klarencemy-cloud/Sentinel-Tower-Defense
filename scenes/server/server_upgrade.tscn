@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://cyglh5x7ci5ra"]
+
+[ext_resource type="Script" uid="uid://bnnst2imt2gjq" path="res://scenes/server/server_upgrade.gd" id="1_8o058"]
+[ext_resource type="PackedScene" uid="uid://dbewnqmp20xvj" path="res://scenes/ui/server_update_ui.tscn" id="1_18qbc"]
+[ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="2_082ul"]
+[ext_resource type="PackedScene" uid="uid://byted1aqvcmus" path="res://scenes/ui/cyberthreat_update_ui.tscn" id="3_qt0nk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8o058"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qt0nk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0xs07"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85l61"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mqyk3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pydqt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_57avo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0aqx7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1glr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o627u"]
+
+[node name="ServerUpgrade" type="Control" unique_id=1240357074]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_8o058")
+
+[node name="Server" parent="." unique_id=296302834 instance=ExtResource("1_18qbc")]
+layer = -1
+
+[node name="CyberthreatUpdateUi" parent="." unique_id=1354406615 instance=ExtResource("3_qt0nk")]
+layer = -1
+visible = false
+
+[node name="BackBtn" type="TextureButton" parent="." unique_id=90043205]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 72.0
+offset_right = 353.0
+offset_bottom = 136.0
+texture_normal = ExtResource("2_082ul")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="BackBtn" unique_id=938297584]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -20.0
+offset_right = 35.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 34
+text = "Back"
+
+[node name="ServerBtn" type="Button" parent="." unique_id=1276066462]
+layout_mode = 0
+offset_left = 1760.0
+offset_top = 74.0
+offset_right = 1874.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0.3137255, 0.654902, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(0.3137255, 0.654902, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(0.3137255, 0.654902, 0.87058824, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8o058")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qt0nk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0xs07")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_85l61")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mqyk3")
+text = "Server"
+alignment = 2
+
+[node name="CyberBtn" type="Button" parent="." unique_id=1686453675]
+layout_mode = 0
+offset_left = 1630.0
+offset_top = 128.0
+offset_right = 1872.0
+offset_bottom = 175.0
+theme_override_colors/font_color = Color(0.36078432, 0.16078432, 0.19215687, 1)
+theme_override_colors/font_pressed_color = Color(0.827451, 0.2, 0.2, 1)
+theme_override_colors/font_hover_color = Color(0.827451, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pydqt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_57avo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0aqx7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_d1glr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o627u")
+text = "Cyber Threats"
+alignment = 2
+
+[connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="ServerBtn" to="." method="_on_server_btn_pressed"]
+[connection signal="pressed" from="CyberBtn" to="." method="_on_cyber_btn_pressed"]
