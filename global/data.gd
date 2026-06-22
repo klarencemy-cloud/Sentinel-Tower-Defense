@@ -11,6 +11,10 @@ var is_unli_senti_cap: bool = false
 var is_maxed_lvl: bool = false
 signal server_load_changed
 
+
+signal toggle_server_scene # to toggle server upgrade visibility
+
+
 var before_total_money: int # sandbox save total money para hindi ma overwrite yung sa main story
 var before_total_health: int # sandbox save total health para hindi ma overwrite yung sa main story
 var before_max_server_load: int # sandbox save total server load capaccity para hindi ma overwrite yung sa main story

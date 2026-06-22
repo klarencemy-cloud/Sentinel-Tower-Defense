@@ -128,6 +128,7 @@ animations = [{
 }]
 
 [node name="Server" type="Button" unique_id=580628515]
+process_mode = 3
 offset_left = -160.0
 offset_top = -160.0
 offset_right = 154.0
@@ -145,13 +146,13 @@ texture_filter = 2
 position = Vector2(160, 87)
 sprite_frames = SubResource("SpriteFrames_q1xj5")
 autoplay = "default"
-frame_progress = 0.13459529
+frame_progress = 0.62910223
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1798290929]
 texture_filter = 2
 position = Vector2(160, 87)
 sprite_frames = SubResource("SpriteFrames_dgx73")
 autoplay = "default"
-frame_progress = 0.57746696
+frame_progress = 0.19420569
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

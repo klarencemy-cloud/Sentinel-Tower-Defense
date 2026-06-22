@@ -12,4 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/server/server_upgrade.tscn")
+	get_tree().paused = true
+	Data.toggle_server_scene.emit()

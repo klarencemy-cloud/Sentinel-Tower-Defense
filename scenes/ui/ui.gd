@@ -23,6 +23,8 @@ func _ready() -> void:
 	$Control/TextureRect/ScrollContainer/EnemyCardsContainer.visible = false
 	
 
+	Data.toggle_server_scene.connect(_show_server_upgrade)
+
 	if Data.is_sandbox:
 		sandbox_setting.visible = true
 		tower_enemies_button.visible = true
@@ -162,3 +164,15 @@ func _on_stats_counter_button_pressed() -> void:
 		$EnemyTowerStatsCounter.visible = true
 	else:
 		$EnemyTowerStatsCounter.visible = false
+
+var is_shown: bool
+
+func _show_server_upgrade() -> void:
+	if !is_shown:
+		$ServerUpgrade.visible = true
+		$Control.visible = false
+		is_shown = true
+	else:
+		$ServerUpgrade.visible = false
+		$Control.visible = true
+		is_shown = false

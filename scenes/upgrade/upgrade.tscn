@@ -132,9 +132,9 @@ theme_override_font_sizes/font_size = 52
 text = "Sentinels"
 
 [node name="BackBtn" type="TextureButton" parent="." unique_id=482983186]
-offset_left = 248.0
+offset_left = 146.0
 offset_top = 72.0
-offset_right = 455.0
+offset_right = 353.0
 offset_bottom = 136.0
 texture_normal = ExtResource("5_gvuwm")
 ignore_texture_size = true

@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bjuh3ncqnotqe" path="res://scenes/ui/dialogue_ui.tscn" id="7_26a3v"]
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="7_hl07w"]
 [ext_resource type="PackedScene" uid="uid://n0x1dg8naleh" path="res://scenes/ui/pause_menu.tscn" id="7_jcn1r"]
+[ext_resource type="PackedScene" uid="uid://cyglh5x7ci5ra" path="res://scenes/server/server_upgrade.tscn" id="8_fv78h"]
 [ext_resource type="Texture2D" uid="uid://d2awxm58vn2xo" path="res://graphics/ui/healthbarUnder.png" id="8_hc5d0"]
 [ext_resource type="Texture2D" uid="uid://b4lb0nrlipf4j" path="res://graphics/ui/TowersRectangle.png" id="9_4kltc"]
 [ext_resource type="Texture2D" uid="uid://dy1yarvyrbynt" path="res://graphics/ui/healthbarProgress.png" id="9_n3vwu"]
@@ -54,6 +55,10 @@ visible = false
 
 [node name="DialogueUi" parent="." unique_id=934514018 instance=ExtResource("7_26a3v")]
 layer = 3
+visible = false
+
+[node name="ServerUpgrade" parent="." unique_id=986532546 instance=ExtResource("8_fv78h")]
+layer = 2
 visible = false
 
 [node name="Control" type="Control" parent="." unique_id=818495937]
@@ -335,7 +340,8 @@ texture_normal = ExtResource("10_4kltc")
 
 [node name="ProgressBg" type="TextureRect" parent="Control" unique_id=606032711]
 texture_filter = 2
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.86510414
 anchor_top = 0.023148147
 anchor_right = 0.98229164
