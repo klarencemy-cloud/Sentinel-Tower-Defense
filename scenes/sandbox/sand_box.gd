@@ -35,12 +35,12 @@ func _on_sandbox_setting_pressed() -> void:
 
 func _on_tower_enemies_button_pressed() -> void:
 	if tower_cards_showing:
-		$Level/UI/Control/TextureRect/TowerCardsContainer.visible = false
-		$Level/UI/Control/TextureRect/EnemyCardsContainer.visible = true
+		$Level/UI/Control/TextureRect/ScrollContainer2/TowerCardsContainer.visible = false
+		$Level/UI/Control/TextureRect/ScrollContainer/EnemyCardsContainer.visible = true
 		$Level/UI/Control/TextureRect/HBoxContainer/TowerEnemiesButton.texture_normal = load("res://graphics/ui/tower_card_button.png")
 		tower_cards_showing = false
 	else:
-		$Level/UI/Control/TextureRect/TowerCardsContainer.visible = true
-		$Level/UI/Control/TextureRect/EnemyCardsContainer.visible = false
+		$Level/UI/Control/TextureRect/ScrollContainer2/TowerCardsContainer.visible = true
+		$Level/UI/Control/TextureRect/ScrollContainer/EnemyCardsContainer.visible = false
 		$Level/UI/Control/TextureRect/HBoxContainer/TowerEnemiesButton.texture_normal = load("res://graphics/ui/enemy_card_button.png")
 		tower_cards_showing = true

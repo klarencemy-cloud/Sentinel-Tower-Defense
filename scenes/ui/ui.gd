@@ -4,8 +4,8 @@ extends CanvasLayer
 @onready var tower_enemies_button: TextureButton = $Control/TextureRect/HBoxContainer/TowerEnemiesButton
 @onready var wave_button: TextureButton = $Control/TextureRect/HBoxContainer/WaveButton
 @onready var sandbox_setting: TextureButton = $Control/TextureRect/HBoxContainer/SandboxSetting
-@onready var tower_cards_container: HBoxContainer = $Control/TextureRect/TowerCardsContainer
-@onready var enemy_cards_container: HBoxContainer = $Control/TextureRect/EnemyCardsContainer
+@onready var tower_cards_container: HBoxContainer = $Control/TextureRect/ScrollContainer2/TowerCardsContainer
+@onready var enemy_cards_container: HBoxContainer = $Control/TextureRect/ScrollContainer/EnemyCardsContainer
 
 signal place_tower(tower_type: Data.Tower)
 signal spawn_enemy(enemy_type: Data.Enemy)
@@ -19,8 +19,9 @@ func _ready() -> void:
 	tower_cards_container.visible = true
 	enemy_cards_container.visible = false
 	Data.server_load_changed.connect(update_server_load)
-	$Control/TextureRect/TowerCardsContainer.visible = true
-	$Control/TextureRect/EnemyCardsContainer.visible = false
+	$Control/TextureRect/ScrollContainer2/TowerCardsContainer.visible = true
+	$Control/TextureRect/ScrollContainer/EnemyCardsContainer.visible = false
+	
 
 	if Data.is_sandbox:
 		sandbox_setting.visible = true
@@ -32,14 +33,14 @@ func _ready() -> void:
 	for tower_enum in Data.Tower.values():
 		var tower_card = tower_card_scene.instantiate()
 		tower_card.setup(tower_enum)
-		$Control/TextureRect/TowerCardsContainer.add_child(tower_card)
+		$Control/TextureRect/ScrollContainer2/TowerCardsContainer.add_child(tower_card)
 		tower_card.connect('press', tower_select)
 
 
 	for enemy_enum in Data.Enemy.values():
 		var enemy_card = enemy_card_scene.instantiate()
 		enemy_card.setup(enemy_enum)
-		$Control/TextureRect/EnemyCardsContainer.add_child(enemy_card)
+		$Control/TextureRect/ScrollContainer/EnemyCardsContainer.add_child(enemy_card)
 		enemy_card.connect('press', sandbox_spawn_enemy)
 
 	update_stats(Data.money, Data.health)

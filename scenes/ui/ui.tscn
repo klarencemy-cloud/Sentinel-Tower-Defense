@@ -85,28 +85,36 @@ offset_bottom = -0.32006836
 mouse_filter = 2
 texture = ExtResource("9_4kltc")
 
-[node name="TowerCardsContainer" type="HBoxContainer" parent="Control/TextureRect" unique_id=1909906848]
+[node name="ScrollContainer2" type="ScrollContainer" parent="Control/TextureRect" unique_id=1008718229]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
 offset_top = -267.0
-offset_right = 219.0
+offset_right = 1041.0
 offset_bottom = -25.0
-grow_vertical = 0
+mouse_filter = 0
+
+[node name="TowerCardsContainer" type="HBoxContainer" parent="Control/TextureRect/ScrollContainer2" unique_id=1909906848]
+layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="EnemyCardsContainer" type="HBoxContainer" parent="Control/TextureRect" unique_id=102221009]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TextureRect" unique_id=1317179898]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
 offset_top = -267.0
-offset_right = 205.0
+offset_right = 1041.0
 offset_bottom = -25.0
 grow_vertical = 0
+mouse_filter = 0
+vertical_scroll_mode = 0
+
+[node name="EnemyCardsContainer" type="HBoxContainer" parent="Control/TextureRect/ScrollContainer" unique_id=102221009]
+layout_mode = 2
 theme_override_constants/separation = 14
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/TextureRect" unique_id=1492936520]
