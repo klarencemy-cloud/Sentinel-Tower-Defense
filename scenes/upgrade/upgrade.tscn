@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://23krmoa5rhnu"]
 
-[ext_resource type="Script" uid="uid://c22u6o3nqy1ux" path="res://scenes/upgrade/upgrade.gd" id="1_6bmsu"]
+[ext_resource type="Script" uid="uid://di6r580otnkle" path="res://scenes/upgrade/upgrade.gd" id="1_6bmsu"]
 [ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="2_gukx4"]
 [ext_resource type="Texture2D" uid="uid://dn30hv2mjhygn" path="res://graphics/buttons/upgradebg.png" id="4_01d24"]
 [ext_resource type="Texture2D" uid="uid://ml3kegt85f83" path="res://graphics/towers/placeholdertowers/tower1.png" id="5_gukx4"]
@@ -132,9 +132,9 @@ theme_override_font_sizes/font_size = 52
 text = "Sentinels"
 
 [node name="BackBtn" type="TextureButton" parent="." unique_id=482983186]
-offset_left = 248.0
+offset_left = 146.0
 offset_top = 72.0
-offset_right = 455.0
+offset_right = 353.0
 offset_bottom = 136.0
 texture_normal = ExtResource("5_gvuwm")
 ignore_texture_size = true

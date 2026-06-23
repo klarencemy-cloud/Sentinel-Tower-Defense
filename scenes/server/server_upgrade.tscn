@@ -1,0 +1,1763 @@
+[gd_scene format=3 uid="uid://cyglh5x7ci5ra"]
+
+[ext_resource type="Script" uid="uid://bnnst2imt2gjq" path="res://scenes/server/server_upgrade.gd" id="1_8o058"]
+[ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="2_082ul"]
+[ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="3_8o058"]
+[ext_resource type="Texture2D" uid="uid://bnv36ld0sh8ka" path="res://graphics/container/server.png" id="4_kvgtw"]
+[ext_resource type="Texture2D" uid="uid://87fv6xu2jrp3" path="res://graphics/buttons/active_parallelogram.png" id="5_os83h"]
+[ext_resource type="BitMap" uid="uid://bw1qq000amyyn" path="res://graphics/buttons/active_parallelogramBit.png" id="6_baa7k"]
+[ext_resource type="Texture2D" uid="uid://csrbid1q0uu35" path="res://graphics/buttons/parallelogram.png" id="7_fnw83"]
+[ext_resource type="Texture2D" uid="uid://c87t77gf72bpr" path="res://graphics/buttons/trapezoid_right.png" id="8_2ytxl"]
+[ext_resource type="Texture2D" uid="uid://dwu3dv78jklkp" path="res://graphics/buttons/UpgradeButtonPanel.png" id="9_1xtuu"]
+[ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="10_po80p"]
+[ext_resource type="FontFile" uid="uid://dlbo1pbx3mq5t" path="res://font/Libre_Franklin/static/LibreFranklin-Medium.ttf" id="11_e7k8m"]
+[ext_resource type="Texture2D" uid="uid://dmtujmh840v6" path="res://graphics/upgrade/NotUpgraded.png" id="12_8gxmg"]
+[ext_resource type="Texture2D" uid="uid://d1hvfptbu3kv4" path="res://graphics/upgrade/plus.png" id="13_jrx1v"]
+[ext_resource type="PackedScene" uid="uid://bmxm8ljnmdjs5" path="res://scenes/server/server.tscn" id="14_7grxi"]
+[ext_resource type="Texture2D" uid="uid://xus4quqafg26" path="res://graphics/container/server_points.png" id="15_womid"]
+[ext_resource type="Texture2D" uid="uid://ddd7xwdcjl3kj" path="res://graphics/container/threat.png" id="16_os83h"]
+[ext_resource type="Texture2D" uid="uid://ba2uc2d500ugn" path="res://graphics/container/top.png" id="19_e7k8m"]
+[ext_resource type="Texture2D" uid="uid://bt2rniu1b4s48" path="res://graphics/icons/warning.png" id="20_1xtuu"]
+[ext_resource type="Texture2D" uid="uid://bjc3vsugkb5mo" path="res://graphics/container/mid.png" id="20_8gxmg"]
+[ext_resource type="Texture2D" uid="uid://bbttm34xh0eft" path="res://graphics/container/bottom.png" id="21_jrx1v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pydqt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_57avo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0aqx7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1glr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o627u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8o058"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qt0nk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0xs07"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85l61"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mqyk3"]
+
+[node name="ServerUpgrade" type="CanvasLayer" unique_id=986532546]
+process_mode = 3
+layer = 0
+script = ExtResource("1_8o058")
+
+[node name="UIContainer" type="Control" parent="." unique_id=1644304582]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="UIContainer" unique_id=154842715]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8o058")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ServerUpdate" type="Control" parent="UIContainer" unique_id=1503647131]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CircleBg" type="TextureRect" parent="UIContainer/ServerUpdate" unique_id=846342243]
+texture_filter = 2
+layout_mode = 0
+offset_left = 696.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_kvgtw")
+
+[node name="Offense" type="TextureButton" parent="UIContainer/ServerUpdate" unique_id=1131071020]
+process_mode = 3
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.372375
+anchor_top = 0.8972972
+anchor_right = 0.62037504
+anchor_bottom = 0.9992972
+offset_left = 1.039978
+offset_top = -1.0809937
+offset_right = 0.32373047
+offset_bottom = 0.6571045
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("5_os83h")
+texture_click_mask = ExtResource("6_baa7k")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UIContainer/ServerUpdate/Offense" unique_id=575329994]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24100001
+anchor_top = -0.009000001
+anchor_right = 0.73800004
+anchor_bottom = 0.99100006
+offset_left = -1.5819397
+offset_top = 1.008
+offset_right = 0.122528076
+offset_bottom = 1.0079956
+theme_override_font_sizes/font_size = 39
+text = "Offense"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Defense" type="TextureButton" parent="UIContainer/ServerUpdate" unique_id=136458018]
+process_mode = 3
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.562375
+anchor_top = 0.8972972
+anchor_right = 0.809375
+anchor_bottom = 0.9992972
+offset_left = 0.23999023
+offset_top = -1.0809937
+offset_right = 1.4433594
+offset_bottom = 0.6571045
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("7_fnw83")
+texture_click_mask = ExtResource("6_baa7k")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UIContainer/ServerUpdate/Defense" unique_id=1906393359]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26900002
+anchor_top = 0.009000001
+anchor_right = 0.76100004
+anchor_bottom = 0.99100006
+offset_left = 0.10562897
+offset_top = -1.008
+offset_right = 4.187317
+offset_bottom = 1.0079956
+theme_override_font_sizes/font_size = 39
+text = "Defense"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Economy" type="TextureButton" parent="UIContainer/ServerUpdate" unique_id=500150923]
+process_mode = 3
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7526042
+anchor_top = 0.8962981
+anchor_right = 1.0002311
+anchor_bottom = 0.9999073
+offset_right = -0.0007324219
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("8_2ytxl")
+texture_click_mask = ExtResource("6_baa7k")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="UIContainer/ServerUpdate/Economy" unique_id=1909776662]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26900002
+anchor_top = 0.009000001
+anchor_right = 0.76100004
+anchor_bottom = 0.99100006
+offset_left = 0.10562897
+offset_top = -1.008
+offset_right = 4.187317
+offset_bottom = 1.0079956
+theme_override_font_sizes/font_size = 39
+text = "Economy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UIContainer/ServerUpdate" unique_id=1636088480]
+layout_mode = 0
+offset_left = 1068.0
+offset_top = 208.0
+offset_right = 1487.0
+offset_bottom = 278.0
+theme_override_font_sizes/font_size = 60
+text = "SERVER UPDATE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OffenseContainer" type="Control" parent="UIContainer/ServerUpdate" unique_id=545357456]
+clip_contents = true
+layout_mode = 1
+anchor_left = 0.0875
+anchor_top = 0.092592604
+anchor_right = 0.39635417
+anchor_bottom = 0.85833335
+offset_top = 32.0
+offset_bottom = 31.999939
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Offense1" type="TextureButton" parent="UIContainer/ServerUpdate/OffenseContainer" unique_id=1910364983]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16020235
+anchor_top = 0.15719467
+anchor_right = 0.7217538
+anchor_bottom = 0.3458283
+texture_normal = ExtResource("9_1xtuu")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="OffenseName1" type="Label" parent="UIContainer/ServerUpdate/OffenseContainer/Offense1" unique_id=358140563]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16546768
+anchor_top = 0.09219861
+anchor_right = 0.8258258
+anchor_bottom = 0.4165229
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_po80p")
+theme_override_font_sizes/font_size = 31
+text = "Tower Damage"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="OffenseName1_Desc" type="Label" parent="UIContainer/ServerUpdate/OffenseContainer/Offense1" unique_id=633767489]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17117117
+anchor_top = 0.42948717
+anchor_right = 0.7807808
+anchor_bottom = 0.55128205
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_e7k8m")
+theme_override_font_sizes/font_size = 15
+text = "Grants Tower  +2% Damage"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 1
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Upgrade1a" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense1" unique_id=1995250515]
+layout_mode = 0
+offset_left = 55.101
+offset_top = 137.0
+offset_right = 75.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1b" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense1" unique_id=1218058893]
+layout_mode = 0
+offset_left = 80.101
+offset_top = 137.0
+offset_right = 100.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1c" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense1" unique_id=1536298912]
+layout_mode = 0
+offset_left = 105.101
+offset_top = 137.0
+offset_right = 125.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1d" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense1" unique_id=1486752236]
+layout_mode = 0
+offset_left = 130.101
+offset_top = 137.0
+offset_right = 150.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1e" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense1" unique_id=782679882]
+layout_mode = 0
+offset_left = 155.1
+offset_top = 137.0
+offset_right = 175.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1f" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense1" unique_id=1469789811]
+layout_mode = 0
+offset_left = 180.1
+offset_top = 137.0
+offset_right = 200.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1g" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense1" unique_id=1347311518]
+layout_mode = 0
+offset_left = 205.1
+offset_top = 137.0
+offset_right = 225.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1h" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense1" unique_id=1697341830]
+layout_mode = 0
+offset_left = 230.1
+offset_top = 137.0
+offset_right = 250.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="OffenseUpgrade1" type="TextureButton" parent="UIContainer/ServerUpdate/OffenseContainer/Offense1" unique_id=1932633493]
+process_mode = 3
+layout_mode = 0
+offset_left = 337.0
+offset_top = 39.0
+offset_right = 400.0
+offset_bottom = 102.0
+texture_normal = ExtResource("13_jrx1v")
+
+[node name="Offense2" type="TextureButton" parent="UIContainer/ServerUpdate/OffenseContainer" unique_id=455819882]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0033726813
+anchor_top = 0.39903265
+anchor_right = 0.5581787
+anchor_bottom = 0.5574365
+offset_right = 3.0517578e-05
+offset_bottom = 25.0
+grow_vertical = 2
+texture_normal = ExtResource("9_1xtuu")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="OffenseName2_Desc" type="Label" parent="UIContainer/ServerUpdate/OffenseContainer/Offense2" unique_id=979697576]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17117117
+anchor_top = 0.42948717
+anchor_right = 0.7807808
+anchor_bottom = 0.55128205
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_e7k8m")
+theme_override_font_sizes/font_size = 15
+text = "Grants +.5% Attack Speed"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 1
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="OffenseName2" type="Label" parent="UIContainer/ServerUpdate/OffenseContainer/Offense2" unique_id=727673909]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16546768
+anchor_top = 0.09219861
+anchor_right = 0.6936937
+anchor_bottom = 0.4165229
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_po80p")
+theme_override_font_sizes/font_size = 31
+text = "Tower Speed"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Upgrade2a" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense2" unique_id=1862298512]
+layout_mode = 0
+offset_left = 55.101
+offset_top = 137.0
+offset_right = 75.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2b" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense2" unique_id=1640814762]
+layout_mode = 0
+offset_left = 80.101
+offset_top = 137.0
+offset_right = 100.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2c" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense2" unique_id=147631394]
+layout_mode = 0
+offset_left = 105.101
+offset_top = 137.0
+offset_right = 125.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2d" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense2" unique_id=389921069]
+layout_mode = 0
+offset_left = 130.101
+offset_top = 137.0
+offset_right = 150.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2e" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense2" unique_id=1798561829]
+layout_mode = 0
+offset_left = 155.1
+offset_top = 137.0
+offset_right = 175.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2f" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense2" unique_id=1582031310]
+layout_mode = 0
+offset_left = 180.1
+offset_top = 137.0
+offset_right = 200.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2g" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense2" unique_id=1865008304]
+layout_mode = 0
+offset_left = 205.1
+offset_top = 137.0
+offset_right = 225.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2h" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense2" unique_id=1968602383]
+layout_mode = 0
+offset_left = 230.1
+offset_top = 137.0
+offset_right = 250.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="OffenseUpgrade2" type="TextureButton" parent="UIContainer/ServerUpdate/OffenseContainer/Offense2" unique_id=709918143]
+process_mode = 3
+layout_mode = 0
+offset_left = 337.0
+offset_top = 39.0
+offset_right = 400.0
+offset_bottom = 102.0
+texture_normal = ExtResource("13_jrx1v")
+
+[node name="Offense3" type="TextureButton" parent="UIContainer/ServerUpdate/OffenseContainer" unique_id=385642416]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16020234
+anchor_top = 0.5961306
+anchor_right = 0.7217538
+anchor_bottom = 0.7545345
+offset_left = 1.5258789e-05
+offset_top = 37.0
+offset_bottom = 62.0
+texture_normal = ExtResource("9_1xtuu")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="OffenseName3" type="Label" parent="UIContainer/ServerUpdate/OffenseContainer/Offense3" unique_id=895777757]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16546768
+anchor_top = 0.09219861
+anchor_right = 0.7897898
+anchor_bottom = 0.4165229
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_po80p")
+theme_override_font_sizes/font_size = 31
+text = "Critical Chance"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Upgrade3a" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense3" unique_id=1552867881]
+layout_mode = 0
+offset_left = 55.101
+offset_top = 137.0
+offset_right = 75.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3b" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense3" unique_id=1791013985]
+layout_mode = 0
+offset_left = 80.101
+offset_top = 137.0
+offset_right = 100.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3c" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense3" unique_id=792856517]
+layout_mode = 0
+offset_left = 105.101
+offset_top = 137.0
+offset_right = 125.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3d" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense3" unique_id=1489742990]
+layout_mode = 0
+offset_left = 130.101
+offset_top = 137.0
+offset_right = 150.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3e" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense3" unique_id=233539626]
+layout_mode = 0
+offset_left = 155.1
+offset_top = 137.0
+offset_right = 175.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3f" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense3" unique_id=1472871815]
+layout_mode = 0
+offset_left = 180.1
+offset_top = 137.0
+offset_right = 200.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3g" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense3" unique_id=1705238505]
+layout_mode = 0
+offset_left = 205.1
+offset_top = 137.0
+offset_right = 225.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3h" type="TextureRect" parent="UIContainer/ServerUpdate/OffenseContainer/Offense3" unique_id=268659233]
+layout_mode = 0
+offset_left = 230.1
+offset_top = 137.0
+offset_right = 250.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="OffenseUpgrade3" type="TextureButton" parent="UIContainer/ServerUpdate/OffenseContainer/Offense3" unique_id=427514572]
+process_mode = 3
+layout_mode = 0
+offset_left = 337.0
+offset_top = 39.0
+offset_right = 400.0
+offset_bottom = 102.0
+texture_normal = ExtResource("13_jrx1v")
+
+[node name="OffenseName3_Desc" type="Label" parent="UIContainer/ServerUpdate/OffenseContainer/Offense3" unique_id=144832850]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17117117
+anchor_top = 0.42948717
+anchor_right = 0.7807808
+anchor_bottom = 0.55128205
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_e7k8m")
+theme_override_font_sizes/font_size = 15
+text = "Grants +5% Crit Rate"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 1
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="DefenseContainer" type="Control" parent="UIContainer/ServerUpdate" unique_id=2137889451]
+visible = false
+clip_contents = true
+layout_mode = 1
+anchor_left = 0.0875
+anchor_top = 0.092592604
+anchor_right = 0.39635417
+anchor_bottom = 0.85833335
+offset_top = 32.0
+offset_bottom = 31.999939
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Defense1" type="TextureButton" parent="UIContainer/ServerUpdate/DefenseContainer" unique_id=1039746173]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16020235
+anchor_top = 0.06287787
+anchor_right = 0.7217538
+anchor_bottom = 0.25151145
+texture_normal = ExtResource("9_1xtuu")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="DefenseName1" type="Label" parent="UIContainer/ServerUpdate/DefenseContainer/Defense1" unique_id=322111125]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16546768
+anchor_top = 0.09219861
+anchor_right = 0.8258258
+anchor_bottom = 0.4165229
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_po80p")
+theme_override_font_sizes/font_size = 31
+text = "Armor"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Upgrade1a" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense1" unique_id=1722759699]
+layout_mode = 0
+offset_left = 55.101
+offset_top = 137.0
+offset_right = 75.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1b" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense1" unique_id=393025427]
+layout_mode = 0
+offset_left = 80.101
+offset_top = 137.0
+offset_right = 100.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1c" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense1" unique_id=1726376743]
+layout_mode = 0
+offset_left = 105.101
+offset_top = 137.0
+offset_right = 125.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1d" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense1" unique_id=943330490]
+layout_mode = 0
+offset_left = 130.101
+offset_top = 137.0
+offset_right = 150.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1e" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense1" unique_id=972621786]
+layout_mode = 0
+offset_left = 155.1
+offset_top = 137.0
+offset_right = 175.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1f" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense1" unique_id=527701438]
+layout_mode = 0
+offset_left = 180.1
+offset_top = 137.0
+offset_right = 200.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1g" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense1" unique_id=1387902101]
+layout_mode = 0
+offset_left = 205.1
+offset_top = 137.0
+offset_right = 225.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1h" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense1" unique_id=1515262136]
+layout_mode = 0
+offset_left = 230.1
+offset_top = 137.0
+offset_right = 250.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="DefenseUpgrade1" type="TextureButton" parent="UIContainer/ServerUpdate/DefenseContainer/Defense1" unique_id=1617318169]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 39.0
+offset_right = 400.0
+offset_bottom = 102.0
+texture_normal = ExtResource("13_jrx1v")
+
+[node name="DefenseName1_Desc" type="Label" parent="UIContainer/ServerUpdate/DefenseContainer/Defense1" unique_id=727409871]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17117117
+anchor_top = 0.42948717
+anchor_right = 0.7807808
+anchor_bottom = 0.55128205
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_e7k8m")
+theme_override_font_sizes/font_size = 15
+text = "Grants Server +3% Damage Reduction"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 1
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Defense2" type="TextureButton" parent="UIContainer/ServerUpdate/DefenseContainer" unique_id=1462497458]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0033726813
+anchor_top = 0.30471584
+anchor_right = 0.5581787
+anchor_bottom = 0.46311972
+offset_right = 3.0517578e-05
+offset_bottom = 25.0
+grow_vertical = 2
+texture_normal = ExtResource("9_1xtuu")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="DefenseName2" type="Label" parent="UIContainer/ServerUpdate/DefenseContainer/Defense2" unique_id=1778334309]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16546768
+anchor_top = 0.09219861
+anchor_right = 0.6936937
+anchor_bottom = 0.4165229
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_po80p")
+theme_override_font_sizes/font_size = 31
+text = "Skill Slot"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Upgrade2a" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense2" unique_id=995715368]
+layout_mode = 0
+offset_left = 55.101
+offset_top = 137.0
+offset_right = 75.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2b" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense2" unique_id=937597411]
+layout_mode = 0
+offset_left = 80.101
+offset_top = 137.0
+offset_right = 100.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2c" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense2" unique_id=1742192774]
+layout_mode = 0
+offset_left = 105.101
+offset_top = 137.0
+offset_right = 125.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="DefenseUpgrade2" type="TextureButton" parent="UIContainer/ServerUpdate/DefenseContainer/Defense2" unique_id=549992159]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 39.0
+offset_right = 400.0
+offset_bottom = 102.0
+texture_normal = ExtResource("13_jrx1v")
+
+[node name="DefenseName2_Desc" type="Label" parent="UIContainer/ServerUpdate/DefenseContainer/Defense2" unique_id=1860327767]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17117117
+anchor_top = 0.42948717
+anchor_right = 0.7807808
+anchor_bottom = 0.55128205
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_e7k8m")
+theme_override_font_sizes/font_size = 15
+text = "Grants Player  +1 Skill Slot"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 1
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Defense3" type="TextureButton" parent="UIContainer/ServerUpdate/DefenseContainer" unique_id=2003836777]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16020234
+anchor_top = 0.5018132
+anchor_right = 0.7217538
+anchor_bottom = 0.66021764
+offset_left = 1.5258789e-05
+offset_top = 37.0
+offset_bottom = 62.0
+texture_normal = ExtResource("9_1xtuu")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="DefenseName3" type="Label" parent="UIContainer/ServerUpdate/DefenseContainer/Defense3" unique_id=287614592]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16546768
+anchor_top = 0.09219861
+anchor_right = 0.7897898
+anchor_bottom = 0.4165229
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_po80p")
+theme_override_font_sizes/font_size = 31
+text = "Skill Cooldown"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Upgrade3a" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense3" unique_id=1457156229]
+layout_mode = 0
+offset_left = 55.101
+offset_top = 137.0
+offset_right = 75.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3b" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense3" unique_id=1339307482]
+layout_mode = 0
+offset_left = 80.101
+offset_top = 137.0
+offset_right = 100.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3c" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense3" unique_id=803440937]
+layout_mode = 0
+offset_left = 105.101
+offset_top = 137.0
+offset_right = 125.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3d" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense3" unique_id=1000471677]
+layout_mode = 0
+offset_left = 130.101
+offset_top = 137.0
+offset_right = 150.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3e" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense3" unique_id=1996958758]
+layout_mode = 0
+offset_left = 155.1
+offset_top = 137.0
+offset_right = 175.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3f" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense3" unique_id=403848643]
+layout_mode = 0
+offset_left = 180.1
+offset_top = 137.0
+offset_right = 200.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3g" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense3" unique_id=739227360]
+layout_mode = 0
+offset_left = 205.1
+offset_top = 137.0
+offset_right = 225.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3h" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense3" unique_id=2004575418]
+layout_mode = 0
+offset_left = 230.1
+offset_top = 137.0
+offset_right = 250.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="DefenseUpgrade3" type="TextureButton" parent="UIContainer/ServerUpdate/DefenseContainer/Defense3" unique_id=393174454]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 39.0
+offset_right = 400.0
+offset_bottom = 102.0
+texture_normal = ExtResource("13_jrx1v")
+
+[node name="DefenseName3_Desc" type="Label" parent="UIContainer/ServerUpdate/DefenseContainer/Defense3" unique_id=1974383594]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17117117
+anchor_top = 0.42948717
+anchor_right = 0.8618619
+anchor_bottom = 0.83333194
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_e7k8m")
+theme_override_font_sizes/font_size = 15
+text = "Grants 5% Cooldown Reduction to Skills
+"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Defense4" type="TextureButton" parent="UIContainer/ServerUpdate/DefenseContainer" unique_id=1702809776]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3001686
+anchor_top = 0.7521161
+anchor_right = 0.8617201
+anchor_bottom = 0.91052
+offset_left = 10.000015
+offset_top = 30.0
+offset_right = 10.0
+offset_bottom = 55.0
+texture_normal = ExtResource("9_1xtuu")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="DefenseName4" type="Label" parent="UIContainer/ServerUpdate/DefenseContainer/Defense4" unique_id=891682885]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16546768
+anchor_top = 0.09219861
+anchor_right = 0.9309309
+anchor_bottom = 0.41652292
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_po80p")
+theme_override_font_sizes/font_size = 31
+text = "Sentinel Deployed"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Upgrade4a" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense4" unique_id=1761711324]
+layout_mode = 0
+offset_left = 55.101
+offset_top = 137.0
+offset_right = 75.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade4b" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense4" unique_id=1544994207]
+layout_mode = 0
+offset_left = 80.101
+offset_top = 137.0
+offset_right = 100.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade4c" type="TextureRect" parent="UIContainer/ServerUpdate/DefenseContainer/Defense4" unique_id=419718336]
+layout_mode = 0
+offset_left = 105.101
+offset_top = 137.0
+offset_right = 125.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="DefenseUpgrade4" type="TextureButton" parent="UIContainer/ServerUpdate/DefenseContainer/Defense4" unique_id=1766572351]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 39.0
+offset_right = 400.0
+offset_bottom = 102.0
+texture_normal = ExtResource("13_jrx1v")
+
+[node name="DefenseName4_Desc" type="Label" parent="UIContainer/ServerUpdate/DefenseContainer/Defense4" unique_id=57292691]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17117117
+anchor_top = 0.42948717
+anchor_right = 0.8708709
+anchor_bottom = 0.6923076
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_e7k8m")
+theme_override_font_sizes/font_size = 15
+text = "Grants Player Additional Sentinel Slot"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 1
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="EconomyContainer" type="Control" parent="UIContainer/ServerUpdate" unique_id=1888223053]
+visible = false
+clip_contents = true
+layout_mode = 1
+anchor_left = 0.0875
+anchor_top = 0.092592604
+anchor_right = 0.39635417
+anchor_bottom = 0.85833335
+offset_top = 32.0
+offset_bottom = 31.999939
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Economy1" type="TextureButton" parent="UIContainer/ServerUpdate/EconomyContainer" unique_id=235181663]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16020235
+anchor_top = 0.15719467
+anchor_right = 0.7217538
+anchor_bottom = 0.3458283
+texture_normal = ExtResource("9_1xtuu")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="EconomyName1" type="Label" parent="UIContainer/ServerUpdate/EconomyContainer/Economy1" unique_id=217156349]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16546768
+anchor_top = 0.09219861
+anchor_right = 0.8258258
+anchor_bottom = 0.4165229
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_po80p")
+theme_override_font_sizes/font_size = 31
+text = "Gold Drop"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Upgrade1a" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy1" unique_id=807153556]
+layout_mode = 0
+offset_left = 55.101
+offset_top = 137.0
+offset_right = 75.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1b" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy1" unique_id=1372263144]
+layout_mode = 0
+offset_left = 80.101
+offset_top = 137.0
+offset_right = 100.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1c" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy1" unique_id=1552533000]
+layout_mode = 0
+offset_left = 105.101
+offset_top = 137.0
+offset_right = 125.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1d" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy1" unique_id=471368813]
+layout_mode = 0
+offset_left = 130.101
+offset_top = 137.0
+offset_right = 150.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1e" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy1" unique_id=1066755347]
+layout_mode = 0
+offset_left = 155.1
+offset_top = 137.0
+offset_right = 175.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1f" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy1" unique_id=1178118491]
+layout_mode = 0
+offset_left = 180.1
+offset_top = 137.0
+offset_right = 200.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1g" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy1" unique_id=2000519442]
+layout_mode = 0
+offset_left = 205.1
+offset_top = 137.0
+offset_right = 225.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade1h" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy1" unique_id=63199098]
+layout_mode = 0
+offset_left = 230.1
+offset_top = 137.0
+offset_right = 250.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="EconomyUpgrade1" type="TextureButton" parent="UIContainer/ServerUpdate/EconomyContainer/Economy1" unique_id=1034152896]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 39.0
+offset_right = 400.0
+offset_bottom = 102.0
+texture_normal = ExtResource("13_jrx1v")
+
+[node name="EconomyName1_Desc" type="Label" parent="UIContainer/ServerUpdate/EconomyContainer/Economy1" unique_id=1336061438]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17117117
+anchor_top = 0.42948717
+anchor_right = 0.7807808
+anchor_bottom = 0.55128205
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_e7k8m")
+theme_override_font_sizes/font_size = 15
+text = "Enemies Drop 5% More Gold"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 1
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Economy2" type="TextureButton" parent="UIContainer/ServerUpdate/EconomyContainer" unique_id=1174140868]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0033726813
+anchor_top = 0.39903265
+anchor_right = 0.5581787
+anchor_bottom = 0.5574365
+offset_right = 3.0517578e-05
+offset_bottom = 25.0
+grow_vertical = 2
+texture_normal = ExtResource("9_1xtuu")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="EconomyName2" type="Label" parent="UIContainer/ServerUpdate/EconomyContainer/Economy2" unique_id=720345826]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16546768
+anchor_top = 0.09219861
+anchor_right = 0.6936937
+anchor_bottom = 0.4165229
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_po80p")
+theme_override_font_sizes/font_size = 31
+text = "Exp Rate"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Upgrade2a" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy2" unique_id=886985863]
+layout_mode = 0
+offset_left = 55.101
+offset_top = 137.0
+offset_right = 75.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2b" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy2" unique_id=1586664751]
+layout_mode = 0
+offset_left = 80.101
+offset_top = 137.0
+offset_right = 100.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2c" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy2" unique_id=184820610]
+layout_mode = 0
+offset_left = 105.101
+offset_top = 137.0
+offset_right = 125.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2d" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy2" unique_id=636072489]
+layout_mode = 0
+offset_left = 130.101
+offset_top = 137.0
+offset_right = 150.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2e" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy2" unique_id=1661683585]
+layout_mode = 0
+offset_left = 155.1
+offset_top = 137.0
+offset_right = 175.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2f" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy2" unique_id=1367891170]
+layout_mode = 0
+offset_left = 180.1
+offset_top = 137.0
+offset_right = 200.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2g" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy2" unique_id=1433487313]
+layout_mode = 0
+offset_left = 205.1
+offset_top = 137.0
+offset_right = 225.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade2h" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy2" unique_id=245302217]
+layout_mode = 0
+offset_left = 230.1
+offset_top = 137.0
+offset_right = 250.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="EconomyUpgrade2" type="TextureButton" parent="UIContainer/ServerUpdate/EconomyContainer/Economy2" unique_id=1123480792]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 39.0
+offset_right = 400.0
+offset_bottom = 102.0
+texture_normal = ExtResource("13_jrx1v")
+
+[node name="EconomyName2_Desc" type="Label" parent="UIContainer/ServerUpdate/EconomyContainer/Economy2" unique_id=375113622]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17117117
+anchor_top = 0.42948717
+anchor_right = 0.7807808
+anchor_bottom = 0.55128205
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_e7k8m")
+theme_override_font_sizes/font_size = 15
+text = "Increase EXP Gain by 5%"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 1
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Economy3" type="TextureButton" parent="UIContainer/ServerUpdate/EconomyContainer" unique_id=339962750]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16020234
+anchor_top = 0.5961306
+anchor_right = 0.7217538
+anchor_bottom = 0.7545345
+offset_left = 1.5258789e-05
+offset_top = 37.0
+offset_bottom = 62.0
+texture_normal = ExtResource("9_1xtuu")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="EconomyName3" type="Label" parent="UIContainer/ServerUpdate/EconomyContainer/Economy3" unique_id=254079319]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16546768
+anchor_top = 0.09219861
+anchor_right = 0.7897898
+anchor_bottom = 0.4165229
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_po80p")
+theme_override_font_sizes/font_size = 31
+text = "Server Load"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Upgrade3a" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy3" unique_id=223388591]
+layout_mode = 0
+offset_left = 55.101
+offset_top = 137.0
+offset_right = 75.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3b" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy3" unique_id=632391621]
+layout_mode = 0
+offset_left = 80.101
+offset_top = 137.0
+offset_right = 100.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3c" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy3" unique_id=1657572159]
+layout_mode = 0
+offset_left = 105.101
+offset_top = 137.0
+offset_right = 125.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3d" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy3" unique_id=1160422474]
+layout_mode = 0
+offset_left = 130.101
+offset_top = 137.0
+offset_right = 150.101
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3e" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy3" unique_id=1591379172]
+layout_mode = 0
+offset_left = 155.1
+offset_top = 137.0
+offset_right = 175.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3f" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy3" unique_id=1479796059]
+layout_mode = 0
+offset_left = 180.1
+offset_top = 137.0
+offset_right = 200.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3g" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy3" unique_id=833574512]
+layout_mode = 0
+offset_left = 205.1
+offset_top = 137.0
+offset_right = 225.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="Upgrade3h" type="TextureRect" parent="UIContainer/ServerUpdate/EconomyContainer/Economy3" unique_id=1742530802]
+layout_mode = 0
+offset_left = 230.1
+offset_top = 137.0
+offset_right = 250.1
+offset_bottom = 142.0
+texture = ExtResource("12_8gxmg")
+expand_mode = 1
+
+[node name="EconomyUpgrade3" type="TextureButton" parent="UIContainer/ServerUpdate/EconomyContainer/Economy3" unique_id=1740411744]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 39.0
+offset_right = 400.0
+offset_bottom = 102.0
+texture_normal = ExtResource("13_jrx1v")
+
+[node name="EconomyName3_Desc" type="Label" parent="UIContainer/ServerUpdate/EconomyContainer/Economy3" unique_id=1352986819]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17117117
+anchor_top = 0.42948717
+anchor_right = 0.7267267
+anchor_bottom = 0.6923077
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_e7k8m")
+theme_override_font_sizes/font_size = 15
+text = "Grants Player +50 Server Load"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 1
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Server" parent="UIContainer/ServerUpdate" unique_id=580628515 instance=ExtResource("14_7grxi")]
+layout_mode = 0
+offset_left = 1139.0
+offset_top = 474.0
+offset_right = 1453.0
+offset_bottom = 786.0
+disabled = true
+
+[node name="ServerPoints" type="TextureRect" parent="UIContainer/ServerUpdate" unique_id=1548057016]
+texture_filter = 2
+layout_mode = 0
+offset_left = 1468.0
+offset_top = 364.0
+offset_right = 1541.0
+offset_bottom = 437.0
+texture = ExtResource("15_womid")
+
+[node name="Label" type="Label" parent="UIContainer/ServerUpdate/ServerPoints" unique_id=2026628267]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26027396
+anchor_top = 0.1780822
+anchor_right = 0.73972595
+anchor_bottom = 0.8082192
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.414591, 0.5322314, 0.83410037, 1)
+theme_override_font_sizes/font_size = 40
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CyberthreatUpdate" type="Control" parent="UIContainer" unique_id=1378910310]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UIContainer/CyberthreatUpdate" unique_id=1812724349]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.208
+anchor_right = 0.143
+anchor_bottom = 0.208
+offset_left = 533.44
+offset_top = -25.64
+offset_right = 1243.1216
+offset_bottom = 682.36
+texture = ExtResource("16_os83h")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ThreatContainer" type="Control" parent="UIContainer/CyberthreatUpdate" unique_id=324974440]
+layout_mode = 1
+anchor_left = 0.121875
+anchor_top = 0.12249658
+anchor_right = 0.39557293
+anchor_bottom = 0.8882373
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Stats1" type="TextureRect" parent="UIContainer/CyberthreatUpdate/ThreatContainer" unique_id=532860116]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.074215055
+anchor_top = 0.10725961
+anchor_right = 0.074215055
+anchor_bottom = 0.10725961
+offset_left = 6.9999886
+offset_top = 0.00031280518
+offset_right = 881.0
+offset_bottom = 325.0003
+texture = ExtResource("19_e7k8m")
+metadata/_edit_use_anchors_ = true
+
+[node name="ThreatStat1" type="Label" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats1" unique_id=789625440]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025976704
+anchor_top = 0.09230769
+anchor_right = 0.36911282
+anchor_bottom = 0.20307693
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_po80p")
+theme_override_font_sizes/font_size = 31
+text = "Health"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Stat_Desc1" type="Label" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats1" unique_id=1074549443]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02826504
+anchor_top = 0.24000002
+anchor_right = 0.3044079
+anchor_bottom = 0.29846156
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_e7k8m")
+theme_override_font_sizes/font_size = 15
+text = "Grants Tower  +2% Damage"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 1
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Warning" type="Sprite2D" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats1" unique_id=1535048563]
+texture_filter = 2
+position = Vector2(352, 108.999695)
+scale = Vector2(0.79220784, 0.7922078)
+texture = ExtResource("20_1xtuu")
+
+[node name="Stats2" type="TextureRect" parent="UIContainer/CyberthreatUpdate/ThreatContainer" unique_id=1955625492]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09900001
+anchor_top = 0.113000005
+anchor_right = 0.09900001
+anchor_bottom = 0.113000005
+offset_left = -52.024506
+offset_top = 259.25272
+offset_right = 777.9755
+offset_bottom = 423.25275
+grow_vertical = 2
+texture = ExtResource("20_8gxmg")
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ThreatStat2" type="Label" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats2" unique_id=1003705573]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025976704
+anchor_top = 0.09230769
+anchor_right = 0.36911282
+anchor_bottom = 0.20307693
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_po80p")
+theme_override_font_sizes/font_size = 31
+text = "Armor"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Stat_Desc2" type="Label" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats2" unique_id=140597218]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028641364
+anchor_top = 0.35185197
+anchor_right = 0.30478424
+anchor_bottom = 0.4677056
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_e7k8m")
+theme_override_font_sizes/font_size = 15
+text = "Grants Tower  +2% Damage"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 1
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Warning" type="Sprite2D" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats2" unique_id=1689512628]
+texture_filter = 2
+position = Vector2(354.99997, 112)
+scale = Vector2(0.79220784, 0.7922078)
+texture = ExtResource("20_1xtuu")
+
+[node name="Stats3" type="TextureRect" parent="UIContainer/CyberthreatUpdate/ThreatContainer" unique_id=772997725]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08800001
+anchor_top = 0.11100001
+anchor_right = 0.08800001
+anchor_bottom = 0.11100001
+offset_left = -0.24399567
+offset_top = 376.90668
+offset_right = 873.756
+offset_bottom = 701.9067
+texture = ExtResource("21_jrx1v")
+metadata/_edit_use_anchors_ = true
+
+[node name="ThreatStat3" type="Label" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats3" unique_id=1912795901]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.018730631
+anchor_top = 0.5476923
+anchor_right = 0.36186674
+anchor_bottom = 0.6584615
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_po80p")
+theme_override_font_sizes/font_size = 31
+text = "Movespeed"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Stat_Desc3" type="Label" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats3" unique_id=394122505]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021018967
+anchor_top = 0.6953846
+anchor_right = 0.29716182
+anchor_bottom = 0.75384617
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_e7k8m")
+theme_override_font_sizes/font_size = 15
+text = "Grants Tower  +2% Damage"
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 1
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Warning" type="Sprite2D" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats3" unique_id=1998721760]
+texture_filter = 2
+position = Vector2(351.99997, 275)
+scale = Vector2(0.79220784, 0.7922078)
+texture = ExtResource("20_1xtuu")
+
+[node name="BackBtn" type="TextureButton" parent="UIContainer" unique_id=2132492385]
+process_mode = 3
+top_level = true
+z_index = 2
+layout_mode = 0
+offset_left = 146.0
+offset_top = 72.0
+offset_right = 353.0
+offset_bottom = 136.0
+texture_normal = ExtResource("2_082ul")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UIContainer/BackBtn" unique_id=980595140]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -20.0
+offset_right = 35.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 34
+text = "Back"
+
+[node name="CyberBtn" type="Button" parent="UIContainer" unique_id=596722035]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.975
+anchor_top = 0.11851852
+anchor_right = 0.975
+anchor_bottom = 0.11851852
+offset_left = -242.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.36078432, 0.16078432, 0.19215687, 1)
+theme_override_colors/font_pressed_color = Color(0.827451, 0.2, 0.2, 1)
+theme_override_colors/font_hover_color = Color(0.827451, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pydqt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_57avo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0aqx7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_d1glr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o627u")
+text = "Cyber Threats"
+alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ServerBtn" type="Button" parent="UIContainer" unique_id=1509086175]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9760417
+anchor_top = 0.06851852
+anchor_right = 0.9760417
+anchor_bottom = 0.069000006
+offset_left = -114.0
+offset_bottom = 45.479996
+theme_override_colors/font_color = Color(0.3137255, 0.654902, 0.87058824, 1)
+theme_override_colors/font_pressed_color = Color(0.3137255, 0.654902, 0.87058824, 1)
+theme_override_colors/font_hover_color = Color(0.3137255, 0.654902, 0.87058824, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8o058")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qt0nk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0xs07")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_85l61")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mqyk3")
+text = "Server"
+alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="UIContainer/ServerUpdate/Offense" to="." method="_on_offense_pressed"]
+[connection signal="pressed" from="UIContainer/ServerUpdate/Defense" to="." method="_on_defense_pressed"]
+[connection signal="pressed" from="UIContainer/ServerUpdate/Economy" to="." method="_on_economy_pressed"]
+[connection signal="pressed" from="UIContainer/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="UIContainer/CyberBtn" to="." method="_on_cyber_btn_pressed"]
+[connection signal="pressed" from="UIContainer/ServerBtn" to="." method="_on_server_btn_pressed"]

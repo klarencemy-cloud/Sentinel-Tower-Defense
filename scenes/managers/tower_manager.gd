@@ -4,7 +4,8 @@ var tower_scenes = {
 	Data.Tower.BASIC: "res://scenes/towers/tower_basic.tscn",
 	Data.Tower.BLAST: "res://scenes/towers/tower_blaster.tscn",
 	Data.Tower.MORTAR: "res://scenes/towers/tower_mortar.tscn",
-	Data.Tower.SPAM_FILTER: "res://scenes/towers/tower_spamfilter.tscn"
+	Data.Tower.SPAM_FILTER: "res://scenes/towers/tower_spamfilter.tscn",
+	Data.Tower.QUARANTINE_CANNON: "res://scenes/towers/tower_quarantinecannon.tscn"
 }
 
 var bullet_scene = preload("res://scenes/bullets/bullet.tscn")
@@ -40,12 +41,12 @@ func handle_input(event: InputEvent) -> void:
 		_try_place_tower(cell_pos, world_pos)
 
 	if event is InputEventMouseButton and event.button_mask == 1 and current_tower:
-		if current_tower.type == Data.Tower.MORTAR:
+		if current_tower.type == Data.Tower.MORTAR or current_tower.type == Data.Tower.QUARANTINE_CANNON:
 			current_tower.finish_placing()
 			current_tower = null
 
 	if event is InputEventMouseMotion and tower_menu:
-		if current_tower and current_tower.type == Data.Tower.MORTAR:
+		if current_tower and (current_tower.type == Data.Tower.MORTAR or current_tower.type == Data.Tower.QUARANTINE_CANNON):
 			current_tower.crosshair_pos_update(world_pos)
 
 	if event is InputEventMouseMotion and place_tower:
@@ -99,7 +100,7 @@ func tower_selection(tower: Tower) -> void:
 	current_tower = tower
 	tower_menu = true
 
-	if tower.type == Data.Tower.MORTAR:
+	if tower.type == Data.Tower.MORTAR or tower.type == Data.Tower.QUARANTINE_CANNON:
 		tower.show_crosshair()
 
 	tower.show_range()

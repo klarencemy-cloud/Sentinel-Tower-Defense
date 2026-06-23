@@ -11,6 +11,10 @@ var is_unli_senti_cap: bool = false
 var is_maxed_lvl: bool = false
 signal server_load_changed
 
+
+signal toggle_server_scene # to toggle server upgrade visibility
+
+
 var before_total_money: int # sandbox save total money para hindi ma overwrite yung sa main story
 var before_total_health: int # sandbox save total health para hindi ma overwrite yung sa main story
 var before_max_server_load: int # sandbox save total server load capaccity para hindi ma overwrite yung sa main story
@@ -18,9 +22,9 @@ var before_max_server_load: int # sandbox save total server load capaccity para 
 var before_level_index: int
 var current_level_index: int = 0 # map count 0 = level 1
 
-enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER}
+enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, QUARANTINE_CANNON}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
-enum Enemy {DEFAULT, ADWARE, SPYWARE, CREDS, WORM, BOTNET, INSIDERTHREAT}
+enum Enemy {DEFAULT, ADWARE, SPYWARE, CREDS, WORM, BOTNET, INSIDERTHREAT, RANSOMWARE}
 
 var TOWER_DATA = {
 	Tower.BASIC: {
@@ -108,7 +112,7 @@ var TOWER_DATA = {
 		'crit damage': 50,
 		'bullet': Bullet.SINGLE,
 		'thumbnail': "res://graphics/ui/tower thumbnails/basic.png",
-		'scene': "res://scenes/towers/single_tower.tscn",
+		'scene':"res://scenes/towers/tower_spamfilter.tscn",
 		'passive': "Ricochet",
 		'passive description': "Bullet bounces to the nearby enemy that deals 50% of the original damage.",
 		'upgrade1': "Damage",
@@ -128,17 +132,50 @@ var TOWER_DATA = {
 		'upgrade6': "Range",
 		'upgrade6level': 0,
 		'tier3ability': "Infinite Recursion",
-		'tier3abilitydesc': "Bullets has 50% chance to ricochet on kill.", }
+		'tier3abilitydesc': "Bullets has 50% chance to ricochet on kill.", },
+	Tower.QUARANTINE_CANNON: {
+		'name': 'Quarantine Cannon',
+		'cost': 60,
+		'server_load': 30,
+		'damage': 1,
+		'reload_time': 3,
+		'range': 200,
+		'crit rate': 0,
+		'crit damage': 50,
+		'bullet': Bullet.MORTAR_EXPLOSION,
+		'thumbnail': "res://graphics/ui/tower thumbnails/mortar.png",
+		'scene': "res://scenes/towers/tower_quarantinecannon.tscn",
+		'passive': "Freeze",
+		'passive description': "Freeze enemies on hit for 0.5s.",
+		'upgrade1': "Damage",
+		'upgrade1level': 0,
+		'upgrade2': "Attack Speed",
+		'upgrade2level': 0,
+		'tier1ability': "Freeze+",
+		'tier1abilitydesc': "Increase Frozen duration to 0.75s.",
+		'upgrade3': "Crit Rate",
+		'upgrade3level': 0,
+		'upgrade4': "Crit Damage",
+		'upgrade4level': 0,
+		'tier2ability': "Thermal Lag",
+		'tier2abilitydesc': "Enemies are slowed for 2s after being unfrozen.",
+		'upgrade5': "Damage",
+		'upgrade5level': 0,
+		'upgrade6': "Attack Speed",
+		'upgrade6level': 0,
+		'tier3ability': "Frozen Vulnerability",
+		'tier3abilitydesc': "Frozen enemies take 15% more damage when frozen.", },
 	}
 		
 var ENEMY_DATA = {
-	Enemy.DEFAULT: {'health': 3, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 100, 'name': "spam"},
-	Enemy.ADWARE: {'health': 3, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 100, 'name': "adware"},
-	Enemy.SPYWARE: {'health': 6, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 100, 'name': "spyware"},
-	Enemy.CREDS: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "creds"},
-	Enemy.BOTNET: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "botnet"},
-	Enemy.WORM: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "worm"},
-	Enemy.INSIDERTHREAT: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "insiderthreat"}
+	Enemy.DEFAULT: {'health': 20, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 100, 'name': "spam", 'damage': 5},
+	Enemy.ADWARE: {'health': 80, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 100, 'name': "adware", 'damage': 12},
+	Enemy.SPYWARE: {'health': 100, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 100, 'name': "spyware", 'damage': 35},
+	Enemy.CREDS: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "creds", 'damage': 5},
+	Enemy.BOTNET: {'health': 200, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "botnet", 'damage': 55},
+	Enemy.WORM: {'health': 30, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "worm", 'damage': 5},
+	Enemy.INSIDERTHREAT: {'health': 120, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "insiderthreat", 'damage': 80},
+	Enemy.RANSOMWARE: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "ransomware", 'damage': 250}
 
 }
 

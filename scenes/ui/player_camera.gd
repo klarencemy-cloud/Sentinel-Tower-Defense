@@ -16,7 +16,7 @@ var last_pinch_distance: float = 0.0
 func _ready() -> void:
 	zoom = start_zoom.clamp(min_zoom, max_zoom)
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		_handle_screen_touch(event)
 		return

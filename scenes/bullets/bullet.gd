@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction: Vector2
-var speed: int = 200
+var speed: int = 600
 var damage: int = 1
 var tower_id: int = -1
 

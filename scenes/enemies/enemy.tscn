@@ -479,6 +479,46 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sb86v"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjlvt"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(896, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlcki"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1024, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mj1o"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1152, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvkh2"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1280, 0, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b0hgk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjlvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlcki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mj1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvkh2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_fcftc"]
 radius = 43.046486
 
@@ -569,7 +609,14 @@ material = SubResource("ShaderMaterial_twn6s")
 sprite_frames = SubResource("SpriteFrames_nb6gf")
 animation = &"Right"
 autoplay = "Right"
-frame_progress = 0.3214369
+frame_progress = 0.45112237
+
+[node name="Ransomware" type="AnimatedSprite2D" parent="." unique_id=1748488769]
+texture_filter = 2
+material = SubResource("ShaderMaterial_sb86v")
+sprite_frames = SubResource("SpriteFrames_b0hgk")
+autoplay = "default"
+frame_progress = 0.00098352
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1419893999]
 position = Vector2(-1, 1)
