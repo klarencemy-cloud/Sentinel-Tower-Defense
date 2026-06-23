@@ -18,10 +18,17 @@ class_name CarouselContainer
 
 @export var position_offset_node: Control = null
 
+
+#varibles for sandbox mode
 @onready var title: Label = $"../MapDetails/sbName"
 @onready var path: Label = $"../MapDetails/Difficulty"
 @onready var description: Label = $"../MapDetails/Description"
 @onready var paragraph: Label = $"../MapDetails/Description/Paragraph"
+
+#variables for vmmode
+@onready var vm_title: Label = $"../MapDetails/vmName"
+@onready var level_recommendation: Label = $"../MapDetails/Suggested"
+@onready var vm_description: Label = $"../MapDetails/Description"
 
 var title_array: Array = ["Treatment Area", "Courtyard", "Konbini", "Hellbent", "The Maze", "Requiem"]
 var path_num: Array = ["1", "1", "2", "4", "3", "3"]
@@ -42,12 +49,25 @@ var sb_map_desc: Array = [
 	"The place that remembers the past."
 ]
 
+#virual mode
+var vm_title_array: Array = ["Ticking Bomb", "Swarm Overload", "Malware Interruption", "Random Defense", "DDoS Stress Test", "Ransomware in Action"]
+var recommended: Array = ["5", "10", "16", "25", "34", "37"]
+var vm_map_desc_paragraph: Array = [
+	"The S.E.R.V.E.R. malfunctions; it loses health every 5 seconds. Defeat 300 virus enemies before the S.E.R.V.E.R. health reaches 0.",
+	"A massive outbreak of Worms and Spam floods the paths. Defeat 1,000 enemies without taking any damage.",
+	"The S.E.R.V.E.R. has only 1 HP left. Win the game without taking any damage from malware enemies for 7 waves. A single damage will cost the player everything. The player must defend the S.E.R.V.E.R. at any cost.",
+	"Random towers randomly appear. The player must place them correctly and strategically. Win 7 waves to win the challenge.",
+	"Only Distributed Denial-of-Service (DDoS) attacks the S.E.R.V.E.R. to test how it handles floods of internet traffic. The player must defeat 300 enemies before the timer runs out.",
+	"Random numbers (40%) of blocks are locked. You cannot put towers in them. Win 7 waves to win the challenges. Additionally, every 3 waves, the randomly locked blocks shift position, forcing the player to adapt quickly to win the challenge.
+"
+]
+
+
 var count: int = 0
 
 
 func _ready() -> void:
-	title.text = title_array[0]
-
+	pass
 func _process(delta: float) -> void:
 	if !position_offset_node or position_offset_node.get_child_count() == 0:
 		return
@@ -100,20 +120,26 @@ func _left():
 		count = 1
 		return
 
-	title.text = title_array[count]
-	path.text = path_num[count]
-	description.text = sb_map_desc[count]
-	paragraph.text = sb_map_desc_paragraph[count]
-	match path_num[count]:
-		"1":
-			path.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
-		"2":
-			path.add_theme_color_override("font_color", Color(0.277, 0.622, 0.287))
-		"3":
-			path.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
-		"4":
-				path.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
- 	
+	if Data.is_vmmode:
+		vm_title.text = vm_title_array[count]
+		vm_description.text = vm_map_desc_paragraph[count]
+		level_recommendation.text = recommended[count]
+
+	if !Data.is_vmmode:
+		title.text = title_array[count]
+		path.text = path_num[count]
+		description.text = sb_map_desc[count]
+		paragraph.text = sb_map_desc_paragraph[count]
+		match path_num[count]:
+			"1":
+				path.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
+			"2":
+				path.add_theme_color_override("font_color", Color(0.277, 0.622, 0.287))
+			"3":
+				path.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
+			"4":
+					path.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
+		
 
 func _right():
 	selected_index += 1
@@ -125,17 +151,24 @@ func _right():
 		count = 5
 		return
 
-	title.text = title_array[count]
-	path.text = path_num[count]
-	description.text = sb_map_desc[count]
-	paragraph.text = sb_map_desc_paragraph[count]
 
-	match path_num[count]:
-		"1":
-			path.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
-		"2":
-			path.add_theme_color_override("font_color", Color(0.277, 0.622, 0.287))
-		"3":
-			path.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
-		"4":
-			path.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
+	if Data.is_vmmode:
+		vm_title.text = vm_title_array[count]
+		vm_description.text = vm_map_desc_paragraph[count]
+		level_recommendation.text = recommended[count]
+
+	if !Data.is_vmmode:
+		title.text = title_array[count]
+		path.text = path_num[count]
+		description.text = sb_map_desc[count]
+		paragraph.text = sb_map_desc_paragraph[count]
+
+		match path_num[count]:
+			"1":
+				path.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
+			"2":
+				path.add_theme_color_override("font_color", Color(0.277, 0.622, 0.287))
+			"3":
+				path.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
+			"4":
+				path.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))

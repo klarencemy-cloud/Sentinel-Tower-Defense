@@ -3,8 +3,8 @@ extends Node
 var default_health: int = 100
 var default_money: int = 200
 var default_system_load: int = 200
-
 var is_sandbox: bool = false
+var is_vmmode: bool = false
 var is_unli_money: bool = false
 var is_unli_health: bool = false
 var is_unli_senti_cap: bool = false
@@ -122,7 +122,7 @@ var TOWER_DATA = {
 		'crit damage': 50,
 		'bullet': Bullet.SINGLE,
 		'thumbnail': "res://graphics/ui/tower thumbnails/basic.png",
-		'scene':"res://scenes/towers/tower_spamfilter.tscn",
+		'scene': "res://scenes/towers/tower_spamfilter.tscn",
 		'passive': "Ricochet",
 		'passive description': "Bullet bounces to the nearby enemy that deals 50% of the original damage.",
 		'upgrade1': "Damage",

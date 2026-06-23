@@ -3,7 +3,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$MapDetails/Description.set_v_grow_direction(Control.GROW_DIRECTION_END)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	$MapContainer/Map.position.y = clamp(
 		$MapContainer/Map.position.y,
 		(parent_size.y - map_size.y) - 50,
-		0 
+		0
 	)
 	
 var dragging = false
@@ -39,7 +39,6 @@ func _on_map_gui_input(event: InputEvent) -> void:
 				child.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			
 
-
 var toggleMap = false;
 func _on_map_btn_pressed() -> void:
 	if !toggleMap:
@@ -53,7 +52,6 @@ func _on_map_btn_pressed() -> void:
 		$ButtonManager/MapBtn/ToggleLabel.text = "MAP"
 		toggleMap = false
 		
-
 
 func _on_final_pressed() -> void:
 	pass
@@ -169,3 +167,12 @@ func _on_final_7_gui_input(event: InputEvent) -> void:
 		for child in $MapContainer/Map.get_children():
 			if child is TextureButton:
 				child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+func _on_left_btn_pressed() -> void:
+	$CarouselContainer._left()
+	print("fefewafaew")
+
+func _on_right_btn_pressed() -> void:
+	$CarouselContainer._right()
+	print("fefewafaew")
