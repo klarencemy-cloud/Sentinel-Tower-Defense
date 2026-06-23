@@ -8,12 +8,15 @@
 [ext_resource type="BitMap" uid="uid://bw1qq000amyyn" path="res://graphics/buttons/active_parallelogramBit.png" id="6_baa7k"]
 [ext_resource type="Texture2D" uid="uid://csrbid1q0uu35" path="res://graphics/buttons/parallelogram.png" id="7_fnw83"]
 [ext_resource type="Texture2D" uid="uid://c87t77gf72bpr" path="res://graphics/buttons/trapezoid_right.png" id="8_2ytxl"]
+[ext_resource type="Script" uid="uid://toiqcc1aaj6t" path="res://scenes/server/offense_container.gd" id="8_e7k8m"]
 [ext_resource type="Texture2D" uid="uid://dwu3dv78jklkp" path="res://graphics/buttons/UpgradeButtonPanel.png" id="9_1xtuu"]
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="10_po80p"]
 [ext_resource type="FontFile" uid="uid://dlbo1pbx3mq5t" path="res://font/Libre_Franklin/static/LibreFranklin-Medium.ttf" id="11_e7k8m"]
 [ext_resource type="Texture2D" uid="uid://dmtujmh840v6" path="res://graphics/upgrade/NotUpgraded.png" id="12_8gxmg"]
 [ext_resource type="Texture2D" uid="uid://d1hvfptbu3kv4" path="res://graphics/upgrade/plus.png" id="13_jrx1v"]
+[ext_resource type="Script" uid="uid://bel21pmgwq65c" path="res://scenes/server/defense_container.gd" id="13_po80p"]
 [ext_resource type="PackedScene" uid="uid://bmxm8ljnmdjs5" path="res://scenes/server/server.tscn" id="14_7grxi"]
+[ext_resource type="Script" uid="uid://c0cs7t0gesr6p" path="res://scenes/server/economy_container.gd" id="15_8gxmg"]
 [ext_resource type="Texture2D" uid="uid://xus4quqafg26" path="res://graphics/container/server_points.png" id="15_womid"]
 [ext_resource type="Texture2D" uid="uid://ddd7xwdcjl3kj" path="res://graphics/container/threat.png" id="16_os83h"]
 [ext_resource type="Texture2D" uid="uid://ba2uc2d500ugn" path="res://graphics/container/top.png" id="19_e7k8m"]
@@ -211,6 +214,7 @@ offset_top = 32.0
 offset_bottom = 31.999939
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("8_e7k8m")
 
 [node name="Offense1" type="TextureButton" parent="UIContainer/ServerUpdate/OffenseContainer" unique_id=1910364983]
 texture_filter = 2
@@ -614,6 +618,7 @@ offset_top = 32.0
 offset_bottom = 31.999939
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("13_po80p")
 
 [node name="Defense1" type="TextureButton" parent="UIContainer/ServerUpdate/DefenseContainer" unique_id=1039746173]
 texture_filter = 2
@@ -1056,6 +1061,7 @@ offset_top = 32.0
 offset_bottom = 31.999939
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("15_8gxmg")
 
 [node name="Economy1" type="TextureButton" parent="UIContainer/ServerUpdate/EconomyContainer" unique_id=235181663]
 texture_filter = 2
@@ -1758,6 +1764,16 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="UIContainer/ServerUpdate/Offense" to="." method="_on_offense_pressed"]
 [connection signal="pressed" from="UIContainer/ServerUpdate/Defense" to="." method="_on_defense_pressed"]
 [connection signal="pressed" from="UIContainer/ServerUpdate/Economy" to="." method="_on_economy_pressed"]
+[connection signal="pressed" from="UIContainer/ServerUpdate/OffenseContainer/Offense1/OffenseUpgrade1" to="UIContainer/ServerUpdate/OffenseContainer" method="_on_offense_upgrade_1_pressed"]
+[connection signal="pressed" from="UIContainer/ServerUpdate/OffenseContainer/Offense2/OffenseUpgrade2" to="UIContainer/ServerUpdate/OffenseContainer" method="_on_offense_upgrade_2_pressed"]
+[connection signal="pressed" from="UIContainer/ServerUpdate/OffenseContainer/Offense3/OffenseUpgrade3" to="UIContainer/ServerUpdate/OffenseContainer" method="_on_offense_upgrade_3_pressed"]
+[connection signal="pressed" from="UIContainer/ServerUpdate/DefenseContainer/Defense1/DefenseUpgrade1" to="UIContainer/ServerUpdate/DefenseContainer" method="_on_defense_upgrade_1_pressed"]
+[connection signal="pressed" from="UIContainer/ServerUpdate/DefenseContainer/Defense2/DefenseUpgrade2" to="UIContainer/ServerUpdate/DefenseContainer" method="_on_defense_upgrade_2_pressed"]
+[connection signal="pressed" from="UIContainer/ServerUpdate/DefenseContainer/Defense3/DefenseUpgrade3" to="UIContainer/ServerUpdate/DefenseContainer" method="_on_defense_upgrade_3_pressed"]
+[connection signal="pressed" from="UIContainer/ServerUpdate/DefenseContainer/Defense4/DefenseUpgrade4" to="UIContainer/ServerUpdate/DefenseContainer" method="_on_defense_upgrade_4_pressed"]
+[connection signal="pressed" from="UIContainer/ServerUpdate/EconomyContainer/Economy1/EconomyUpgrade1" to="UIContainer/ServerUpdate/EconomyContainer" method="_on_economy_upgrade_1_pressed"]
+[connection signal="pressed" from="UIContainer/ServerUpdate/EconomyContainer/Economy2/EconomyUpgrade2" to="UIContainer/ServerUpdate/EconomyContainer" method="_on_economy_upgrade_2_pressed"]
+[connection signal="pressed" from="UIContainer/ServerUpdate/EconomyContainer/Economy3/EconomyUpgrade3" to="UIContainer/ServerUpdate/EconomyContainer" method="_on_economy_upgrade_3_pressed"]
 [connection signal="pressed" from="UIContainer/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="UIContainer/CyberBtn" to="." method="_on_cyber_btn_pressed"]
 [connection signal="pressed" from="UIContainer/ServerBtn" to="." method="_on_server_btn_pressed"]
