@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+
+@onready var kill_button: TextureButton = $Container/Content/KillButton
+@onready var tower_button: TextureButton = $Container/Content/TowerButton
 @onready var scroll_container: ScrollContainer = $Container/Content/DmgCounterBg/ScrollContainer
 @onready var scroll_container_2: ScrollContainer = $Container/Content/DmgCounterBg/ScrollContainer2
 
@@ -38,6 +41,10 @@ func _ready() -> void:
 	# Init existing enemies 
 	for enemy_type in EnemyStats.enemy_kills.keys():
 		_add_or_update_enemy_entry(enemy_type)
+
+	# Preaload active buttons
+	kill_button.texture_normal = preload("res://graphics/ui/tmid_counter_enemy.png")
+	tower_button.texture_normal = preload("res://graphics/ui/tmid_counter_button_tower.png")
 
 
 
@@ -175,7 +182,11 @@ func _refresh_enemy_entries() -> void:
 func _on_kill_button_pressed() -> void:
 	scroll_container.visible = false
 	scroll_container_2.visible = true
+	kill_button.texture_normal = preload("res://graphics/ui/tmid_counter_enemy.png")
+	tower_button.texture_normal = preload("res://graphics/ui/tmid_counter_button_tower.png")
 
 func _on_tower_button_pressed() -> void:
 	scroll_container.visible = true
 	scroll_container_2.visible = false
+	kill_button.texture_normal = preload("res://graphics/ui/tmid_counter_button.png")
+	tower_button.texture_normal = preload("res://graphics/ui/tmid_counter_tower_active.png")
