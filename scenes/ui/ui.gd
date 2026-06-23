@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var tower_enemies_button: TextureButton = $Control/TextureRect/HBoxContainer/TowerEnemiesButton
 @onready var wave_button: TextureButton = $Control/TextureRect/HBoxContainer/WaveButton
 @onready var sandbox_setting: TextureButton = $Control/TextureRect/HBoxContainer/SandboxSetting
-@onready var tower_cards_container: HBoxContainer = $Control/TextureRect/ScrollContainer2/TowerCardsContainer
+@onready var tower_cards_container: HBoxContainer = $Control/TextureRect/ScrollContainer/TowerCardsContainer
 @onready var enemy_cards_container: HBoxContainer = $Control/TextureRect/ScrollContainer/EnemyCardsContainer
 
 signal place_tower(tower_type: Data.Tower)
@@ -19,7 +19,7 @@ func _ready() -> void:
 	tower_cards_container.visible = true
 	enemy_cards_container.visible = false
 	Data.server_load_changed.connect(update_server_load)
-	$Control/TextureRect/ScrollContainer2/TowerCardsContainer.visible = true
+	$Control/TextureRect/ScrollContainer/TowerCardsContainer.visible = true
 	$Control/TextureRect/ScrollContainer/EnemyCardsContainer.visible = false
 	
 
@@ -35,7 +35,7 @@ func _ready() -> void:
 	for tower_enum in Data.Tower.values():
 		var tower_card = tower_card_scene.instantiate()
 		tower_card.setup(tower_enum)
-		$Control/TextureRect/ScrollContainer2/TowerCardsContainer.add_child(tower_card)
+		$Control/TextureRect/ScrollContainer/TowerCardsContainer.add_child(tower_card)
 		tower_card.connect('press', tower_select)
 
 
