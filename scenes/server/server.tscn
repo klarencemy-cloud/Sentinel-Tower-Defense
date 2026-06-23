@@ -402,7 +402,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kr8px")
 script = ExtResource("1_375b0")
 
 [node name="ServerLevel1" type="AnimatedSprite2D" parent="." unique_id=1895705512]
-visible = false
 texture_filter = 2
 position = Vector2(174, 45)
 sprite_frames = SubResource("SpriteFrames_q1xj5")
@@ -442,6 +441,7 @@ autoplay = "default"
 frame_progress = 0.77639115
 
 [node name="ServerlLevel6" type="AnimatedSprite2D" parent="." unique_id=450285722]
+visible = false
 texture_filter = 2
 position = Vector2(158, 56)
 sprite_frames = SubResource("SpriteFrames_375b0")

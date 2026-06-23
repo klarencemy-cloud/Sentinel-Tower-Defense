@@ -15,6 +15,7 @@ func _on_back_btn_pressed() -> void:
 	get_tree().paused = false
 	Data.toggle_server_scene.emit()
 
+# Uprade category toglles
 func _on_cyber_btn_pressed() -> void:
 	$UIContainer/ServerBtn.add_theme_color_override("font_color", Color(0.176, 0.337, 0.451))
 	$UIContainer/CyberBtn.add_theme_color_override("font_color", Color(0.827, 0.2, 0.2))
