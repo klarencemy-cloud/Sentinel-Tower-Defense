@@ -89,7 +89,7 @@ func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage:
 
 	if bullet_enum == Data.Bullet.MORTAR_EXPLOSION:
 		var explosion = explosion_scene.instantiate()
-		explosion.setup(pos, damage, tower_id)
+		explosion.setup(pos, damage, tower_type, tower_id)
 		_get_bullet_parent().add_child(explosion)
 
 

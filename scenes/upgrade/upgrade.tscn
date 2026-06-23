@@ -233,7 +233,7 @@ offset_top = 27.0
 offset_right = 206.0
 offset_bottom = 53.0
 theme_override_font_sizes/font_size = 22
-text = "Attack Speed"
+text = "Reload Speed"
 
 [node name="RangeContainer" type="HBoxContainer" parent="StatPanel/ScrollContainer/VBoxContainer" unique_id=1383838392]
 layout_mode = 2
@@ -253,7 +253,7 @@ theme_override_font_sizes/font_size = 32
 text = "D"
 horizontal_alignment = 2
 
-[node name="Damage" type="Label" parent="StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic" unique_id=1666378236]
+[node name="Range" type="Label" parent="StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic" unique_id=1666378236]
 layout_mode = 0
 offset_left = 84.0
 offset_top = 26.0

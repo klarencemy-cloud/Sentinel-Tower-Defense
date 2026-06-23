@@ -36,8 +36,13 @@ func update_stat_label() -> void:
 	var data = Data.TOWER_DATA[selected_tower]
 
 	$StatPanel/ScrollContainer/VBoxContainer/DamageContainer/DamagePic/DamageText.text = str(data['damage'])
-	$StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic/SpeedText.text = str(data['reload_time'])
-	$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = str(data['range'])
+	$StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic/SpeedText.text = str(data['reload_time']) + "s"
+	if selected_tower == Data.Tower.MORTAR or selected_tower == Data.Tower.QUARANTINE_CANNON:
+		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = str(data['explosion_radius'])
+		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/Range.text = "Explosion Radius"
+	else:
+		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = str(data['range'])
+		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/Range.text = "Range"
 	$StatPanel/ScrollContainer/VBoxContainer/CritRContainer/CritRPic/CritRText.text = str(data['crit rate']) + "%"
 	$StatPanel/ScrollContainer/VBoxContainer/CritDContainer/CritDPic/CritDText.text = str(data['crit damage']) + "%"
 
@@ -227,6 +232,9 @@ func apply_upgrade(upgrade_name: String) -> void:
 
 		"Range":
 			Data.TOWER_DATA[selected_tower]["range"] += amount
+		
+		"Explosion Radius":
+			Data.TOWER_DATA[selected_tower]["explosion_radius"]+= amount
 
 		"Crit Rate":
 			Data.TOWER_DATA[selected_tower]["crit rate"] += amount
@@ -282,6 +290,16 @@ func _on_tier_3_btn_pressed() -> void:
 func update_tier_buttons():
 	# Tier 1 always available
 	$UpgradePanel/Tier1Btn.disabled = false
+
+	# Update tier ability unlocked flags in tower data (persist unlocks)
+	if Data.TOWER_DATA.has(selected_tower):
+		var d = Data.TOWER_DATA[selected_tower]
+		if d.has("tier1abilityunlocked"):
+			d['tier1abilityunlocked'] = (d['upgrade1level'] == 3 and d['upgrade2level'] == 3)
+		if d.has("tier2abilityunlocked"):
+			d['tier2abilityunlocked'] = (d['upgrade3level'] == 3 and d['upgrade4level'] == 3)
+		if d.has("tier3abilityunlocked"):
+			d['tier3abilityunlocked'] = (d['upgrade5level'] == 3 and d['upgrade6level'] == 3)
 
 	# Unlock Tier 2
 	$UpgradePanel/Tier2Btn.disabled = !(
