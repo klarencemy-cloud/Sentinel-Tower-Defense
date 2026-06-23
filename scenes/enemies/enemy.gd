@@ -24,6 +24,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	enemy_type_stats = type # save enemy type
 
 	$hpbar.max_value = Data.ENEMY_DATA[type]['health']
+	$hpbar.value = Data.ENEMY_DATA[type]['health']
 	path_follow = new_path_follow
 	health = Data.ENEMY_DATA[type]['health']
 	speed = Data.ENEMY_DATA[type]['speed']
