@@ -192,9 +192,9 @@ vertical_alignment = 1
 [node name="Label" type="Label" parent="UIContainer/ServerUpdate" unique_id=1636088480]
 layout_mode = 0
 offset_left = 1068.0
-offset_top = 287.0
+offset_top = 208.0
 offset_right = 1487.0
-offset_bottom = 357.0
+offset_bottom = 278.0
 theme_override_font_sizes/font_size = 60
 text = "SERVER UPDATE"
 horizontal_alignment = 1
@@ -1446,9 +1446,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Server" parent="UIContainer/ServerUpdate" unique_id=580628515 instance=ExtResource("14_7grxi")]
 layout_mode = 0
-offset_left = 1142.0
+offset_left = 1139.0
 offset_top = 474.0
-offset_right = 1456.0
+offset_right = 1453.0
 offset_bottom = 786.0
 disabled = true
 

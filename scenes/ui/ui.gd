@@ -30,6 +30,7 @@ func _ready() -> void:
 		tower_enemies_button.visible = true
 		auto_label.visible = false # alis visible ng auto button
 		wave_button.disabled = true # disable start wave button
+		$Control/HBoxContainer.position.y = 780
 
 	
 	for tower_enum in Data.Tower.values():
