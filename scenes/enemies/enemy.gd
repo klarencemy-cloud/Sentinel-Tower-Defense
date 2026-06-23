@@ -12,13 +12,20 @@ var enemy_tween: Tween
 var enemy_type: Node
 var enemy_type_stats: Data.Enemy
 
+var is_stunned := false
+var stun_timer: Timer
+
 
 @export var spacing := 32
 
 func _ready() -> void:
 	add_to_group('Enemies')
 	call_deferred("update_hp_bar_position")
-	
+	stun_timer = Timer.new()
+	stun_timer.one_shot = true
+	stun_timer.wait_time = 0.5
+	stun_timer.timeout.connect(_on_stun_end)
+	add_child(stun_timer)
 
 func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	enemy_type_stats = type # save enemy type
@@ -83,6 +90,8 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	
 
 func _process(delta: float):
+	if is_stunned:
+		return
 	path_follow.progress += speed * delta
 
 	if path_follow.progress_ratio >= 0.99:
@@ -178,3 +187,11 @@ func show_damage(damage: int):
 	dmg_tween = create_tween()
 	dmg_tween.tween_property($DamageLabel, "position:y", -90, 0.5)
 	dmg_tween.parallel().tween_property($DamageLabel, "modulate:a", 0.0, 0.5)
+
+func stun(duration: float = 0.5):
+	is_stunned = true
+	stun_timer.wait_time = duration
+	stun_timer.start()
+
+func _on_stun_end():
+	is_stunned = false

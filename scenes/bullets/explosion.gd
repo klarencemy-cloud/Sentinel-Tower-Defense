@@ -12,5 +12,6 @@ func setup(pos: Vector2, new_damage: int, _tower_id: int = -1):
 
 func hit_enemies():
 	for enemy in get_tree().get_nodes_in_group("Enemies"):
-		if position.distance_to(enemy.global_position) < 30:
+		if position.distance_to(enemy.global_position) < 100:
+			enemy.stun(0.5)
 			enemy.hit(damage, tower_id)
