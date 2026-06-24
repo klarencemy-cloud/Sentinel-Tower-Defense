@@ -20,6 +20,10 @@ var is_slowed := false
 var original_speed: int
 var pending_slow_duration: float = 0.0
 
+const NORMAL_TINT: Color = Color(1, 1, 1, 1)
+const SLOWED_TINT: Color = Color(0.6, 0.8, 1.0, 1.0)
+const FROZEN_TINT: Color = Color(0.1, 0.2, 0.6, 1.0)
+
 
 @export var spacing := 32
 
@@ -95,6 +99,8 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	
 
 func _process(delta: float):
+	update_tint()
+
 	if is_stunned:
 		return
 	
@@ -107,6 +113,19 @@ func _process(delta: float):
 	if path_follow.progress_ratio >= 0.99:
 		Data.health -= Data.ENEMY_DATA[enemy_type_stats]["damage"]
 		queue_free()
+
+func update_tint() -> void:
+	var tint = NORMAL_TINT
+	if is_frozen:
+		tint = FROZEN_TINT
+	elif is_slowed:
+		tint = SLOWED_TINT
+
+	if enemy_type:
+		enemy_type.modulate = tint
+		if is_worm:
+			for child in $WormSegments.get_children():
+				child.modulate = tint
 
 
 func _on_area_entered(bullet: Area2D) -> void:

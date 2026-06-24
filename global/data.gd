@@ -182,7 +182,7 @@ var TOWER_DATA = {
 		'upgrade6level': 0,
 		'tier3ability': "Frozen Vulnerability",
 		'tier3abilitydesc': "Frozen enemies take 15% more damage when frozen.",
-		'tier3abilityunlocked': true, },
+		'tier3abilityunlocked': false, },
 	}
 		
 var ENEMY_DATA = {
