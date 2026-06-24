@@ -77,9 +77,10 @@ offset_top = -48.5
 offset_right = 480.99988
 offset_bottom = -2.5
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0, 0.015686275, 1)
+theme_override_colors/font_color = Color(0.129, 0.596, 0.678, 1)
 theme_override_font_sizes/font_size = 40
-text = "EXTREME"
+text = "Easy "
+uppercase = true
 
 [node name="SuggestedLevel" type="Label" parent="MapDetails" unique_id=1470301378]
 layout_mode = 1
@@ -407,10 +408,10 @@ offset_bottom = 813.0
 [node name="Map" type="TextureButton" parent="MapContainer" unique_id=1204325682]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.060784314
-anchor_top = -1.8059702
-anchor_right = 0.88235295
-anchor_bottom = 0.98065865
+anchor_left = 0.064705886
+anchor_top = -1.9054726
+anchor_right = 0.8862745
+anchor_bottom = 0.88115615
 offset_top = -3.0517578e-05
 texture_normal = ExtResource("11_yyxhe")
 ignore_texture_size = true

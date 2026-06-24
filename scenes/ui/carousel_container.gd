@@ -21,6 +21,7 @@ class_name CarouselContainer
 @export var position_offset_node: Control = null
 
 
+signal toggle_tween()
 #varibles for sandbox mode
 @onready var title: Label = $"../MapDetails/sbName"
 @onready var path: Label = $"../MapDetails/Difficulty"
@@ -31,6 +32,7 @@ class_name CarouselContainer
 @onready var vm_title: Label = $"../MapDetails/vmName"
 @onready var level_recommendation: Label = $"../MapDetails/Suggested"
 @onready var vm_description: Label = $"../MapDetails/Description"
+@onready var vm_difficulty_label := $"../MapDetails/Difficulty"
 
 var title_array: Array = ["Treatment Area", "Courtyard", "Konbini", "Hellbent", "The Maze", "Requiem"]
 var path_num: Array = ["1", "1", "2", "4", "3", "3"]
@@ -52,15 +54,16 @@ var sb_map_desc: Array = [
 ]
 
 #virual mode
-var vm_title_array: Array = ["Ticking Bomb", "Swarm Overload", "Malware Interruption", "Random Defense", "DDoS Stress Test", "Ransomware in Action", "Switched Positions", "Automatic Defense", "Endless Onslaught"]
+var vm_title_array: Array = ["Ticking Bomb", "Swarm Overload", "Malware Interruption", "Mirai Botnet", "DDoS Stress Test", "Random Defense", "Switched Positions", "Automatic Defense", "Endless Onslaught"]
 var recommended: Array = ["5", "10", "16", "25", "34", "37", "45", "50", "51"]
+var vm_difficulty: Array = ["Easy", "Moderate", "Hard", "Hard", "Hard", "Extreme", "Hard", "Hard", "Survival"]
 var vm_map_desc_paragraph: Array = [
 	"The S.E.R.V.E.R. malfunctions; it loses health every 5 seconds. Defeat 300 virus enemies before the S.E.R.V.E.R. health reaches 0.",
 	"A massive outbreak of Worms and Spam floods the paths. Defeat 1,000 enemies without taking any damage.",
 	"The S.E.R.V.E.R. has only 1 HP left. Win the game without taking any damage from malware enemies for 7 waves. A single damage will cost the player everything. The player must defend the S.E.R.V.E.R. at any cost.",
-	"Random towers randomly appear. The player must place them correctly and strategically. Win 7 waves to win the challenge.",
+	"Inspired by a real-world exploit, a large number of Botnet drone that mainly compromise low-power devices swarms fast to attack the S.E.R.V.E.R., but are fragile as individuals. Win 7 waves to win the challenge.",
 	"Only Distributed Denial-of-Service (DDoS) attacks the S.E.R.V.E.R. to test how it handles floods of internet traffic. The player must defeat 300 enemies before the timer runs out.",
-	"Random numbers (40%) of blocks are locked. You cannot put towers in them. Win 7 waves to win the challenges. Additionally, every 3 waves, the randomly locked blocks shift position, forcing the player to adapt quickly to win the challenge.",
+	"Random towers randomly appear. The player must place them correctly and strategically. Win 7 waves to win the challenge.",
 	"The battlefield is already filled with defense towers. The player must breach the S.E.R.V.E.R. Defeat the S.E.R.V.E.R. ( 0 HP) by placing enemies.",
 	"All sentinels are disabled during the challenge. Win 7 waves to win the challenge.",
 	"Survive as long as you can!                                                       "
@@ -130,6 +133,20 @@ func _left():
 		vm_title.text = vm_title_array[count]
 		vm_description.text = vm_map_desc_paragraph[count]
 		level_recommendation.text = recommended[count]
+		vm_difficulty_label.text = vm_difficulty[count]
+		toggle_tween.emit(count + 1)
+
+		match vm_difficulty[count]:
+			"Easy":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
+			"Moderate":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(0.277, 0.622, 0.287))
+			"Hard":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
+			"Extreme":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
+			"Survival":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(0.8, 0.004, 0.788))
 
 	if !Data.is_vmmode:
 		title.text = title_array[count]
@@ -162,7 +179,20 @@ func _right():
 		vm_title.text = vm_title_array[count]
 		vm_description.text = vm_map_desc_paragraph[count]
 		level_recommendation.text = recommended[count]
-	
+		vm_difficulty_label.text = vm_difficulty[count]
+		toggle_tween.emit(count + 1)
+
+		match vm_difficulty[count]:
+			"Easy":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
+			"Moderate":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(0.277, 0.622, 0.287))
+			"Hard":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
+			"Extreme":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
+			"Survival":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(0.8, 0.004, 0.788))
 
 	if !Data.is_vmmode:
 		if count == 6:
@@ -186,11 +216,25 @@ func _right():
 
 func _change_challenge(index: int) -> void:
 	if is_vm:
-		print("yea")
 		selected_index = index
 		count = index
 		vm_title.text = vm_title_array[count]
 		vm_description.text = vm_map_desc_paragraph[count]
 		level_recommendation.text = recommended[count]
+		vm_difficulty_label.text = vm_difficulty[count]
+	
+
+		match vm_difficulty[count]:
+			"Easy":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
+			"Moderate":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(0.277, 0.622, 0.287))
+			"Hard":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
+			"Extreme":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
+			"Survival":
+				vm_difficulty_label.add_theme_color_override("font_color", Color(0.8, 0.004, 0.788))
+
 	if is_vm == null:
 		return
