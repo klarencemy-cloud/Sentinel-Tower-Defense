@@ -19,7 +19,11 @@ var stun_timer: Timer
 var is_slowed := false
 var original_speed: int
 var pending_slow_duration: float = 0.0
-@export var damage_text_scene: PackedScene
+var invisible: bool = false
+var idps_slow_aura := false  # For IDPS tier2 passive
+var idps_vulnerability_aura := false  # For IDPS tier3 passive
+var vulnerability_multiplier := 1.0  # Damage multiplier for vulnerabilities
+
 
 const NORMAL_TINT: Color = Color(1, 1, 1, 1)
 const SLOWED_TINT: Color = Color(0.6, 0.8, 1.0, 1.0)
@@ -91,6 +95,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$InsiderThreat.visible = true
 			enemy_type = $InsiderThreat
 			$InsiderThreat.material = $InsiderThreat.material.duplicate()
+			set_invisible(true)
 		"ransomware":
 			$Ransomware.visible = true
 			enemy_type = $Ransomware
@@ -104,7 +109,12 @@ func _process(delta: float):
 		return
 	
 	var current_speed = speed
-	if is_slowed:
+	
+	# Apply IDPS tier2 slow aura (15% slower = 85% speed)
+	if idps_slow_aura:
+		current_speed = int(speed * 0.85)
+	# Apply regular slow effect
+	elif is_slowed:
 		current_speed = int(speed * 0.5)  # 50% speed when slowed
 	
 	path_follow.progress += current_speed * delta
@@ -126,6 +136,9 @@ func hit(damage: int = 1, tower_id: int = -1):
 	var actual_damage = damage
 	if is_frozen and is_frozen_vulnerable:
 		actual_damage = int(ceil(damage * 10))
+	
+	# Apply vulnerability multiplier (e.g., IDPS tier3)
+	actual_damage = int(actual_damage * vulnerability_multiplier)
 
 	flash()
 	health -= actual_damage
@@ -192,7 +205,13 @@ func update_hp_bar_position():
 			)
 			var sprite_height = tex.get_height() * child.scale.y
 			$hpbar.position.y = - sprite_height / 2 - 10
-	
+
+func set_invisible(value: bool) -> void:
+	invisible = value
+	if enemy_type_stats == Data.Enemy.INSIDERTHREAT and enemy_type:
+		enemy_type.modulate.a = 0.5 if invisible else 1.0
+		$CollisionShape2D.disabled = invisible
+
 func show_damage(damage: int):
 	var label = $DamageLabel.duplicate()
 	print("SHOW DAMAGE:", damage)
@@ -217,6 +236,8 @@ func stun(duration: float = 0.5, vulnerable: bool = false):
 	is_stunned = true
 	is_frozen = true
 	is_frozen_vulnerable = vulnerable
+	if enemy_type:
+		enemy_type.modulate = FROZEN_TINT
 	stun_timer.wait_time = duration
 	stun_timer.start()
 
@@ -226,13 +247,22 @@ func stun_then_slow(stun_duration: float = 0.5, slow_duration: float = 2.0, vuln
 
 func slow(duration: float = 2.0):
 	is_slowed = true
+	if enemy_type and not is_frozen:
+		enemy_type.modulate = SLOWED_TINT
 	await get_tree().create_timer(duration).timeout
 	is_slowed = false
+	if enemy_type and not is_frozen:
+		enemy_type.modulate = NORMAL_TINT
 
 func _on_stun_end():
 	is_stunned = false
 	is_frozen = false
 	is_frozen_vulnerable = false
+	if enemy_type:
+		if pending_slow_duration > 0.0:
+			enemy_type.modulate = SLOWED_TINT
+		else:
+			enemy_type.modulate = NORMAL_TINT
 	if pending_slow_duration > 0.0:
 		slow(pending_slow_duration)
 		pending_slow_duration = 0.0

@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if already_hit:
 		return
-		
+
 	if !area.is_in_group("Enemies"):
 		return
 

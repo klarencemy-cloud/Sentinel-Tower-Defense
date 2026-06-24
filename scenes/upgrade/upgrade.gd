@@ -217,7 +217,16 @@ func _on_upgrade_6_pressed() -> void:
 
 
 func apply_upgrade(upgrade_name: String) -> void:
-	var amount = Data.UPGRADE_DATA[upgrade_name]
+	var tower_data = Data.TOWER_DATA[selected_tower]
+	var amount = 0
+
+	# Find which upgrade slot matches this upgrade_name for the selected tower
+	for i in range(1, 7):
+		var key = "upgrade%d" % i
+		var amt_key = "upgrade%damount" % i
+		if tower_data.has(key) and tower_data[key] == upgrade_name:
+			amount = tower_data.get(amt_key, 0)
+			break
 
 	match upgrade_name:
 		"Damage":
@@ -232,9 +241,9 @@ func apply_upgrade(upgrade_name: String) -> void:
 
 		"Range":
 			Data.TOWER_DATA[selected_tower]["range"] += amount
-		
+
 		"Explosion Radius":
-			Data.TOWER_DATA[selected_tower]["explosion_radius"]+= amount
+			Data.TOWER_DATA[selected_tower]["explosion_radius"] += amount
 
 		"Crit Rate":
 			Data.TOWER_DATA[selected_tower]["crit rate"] += amount

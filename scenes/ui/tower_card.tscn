@@ -18,6 +18,7 @@ clip_children = 1
 custom_minimum_size = Vector2(179, 244)
 offset_right = 179.0
 offset_bottom = 244.0
+mouse_filter = 1
 theme_override_styles/normal = SubResource("StyleBoxTexture_ra2tf")
 script = ExtResource("4_script")
 

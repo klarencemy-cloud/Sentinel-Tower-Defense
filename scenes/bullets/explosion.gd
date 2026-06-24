@@ -32,6 +32,10 @@ func hit_enemies():
 	
 	for enemy in get_tree().get_nodes_in_group("Enemies"):
 		if global_position.distance_to(enemy.global_position) < explosionrange:
+			# Skip invisible insider threat - should not be affected by explosions when invisible
+			if enemy.enemy_type_stats == Data.Enemy.INSIDERTHREAT and enemy.invisible:
+				continue
+			
 			if tower_type == Data.Tower.QUARANTINE_CANNON:
 				var vulnerable = tower_data.get('tier3abilityunlocked', false)
 				if tower_data.get('tier2abilityunlocked', false):

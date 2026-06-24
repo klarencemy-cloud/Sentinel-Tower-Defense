@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://cndrwmbyv3r4g"]
+[gd_scene format=3 uid="uid://dljb1nloy14j7"]
 
-[ext_resource type="PackedScene" uid="uid://to6d1j5dni6t" path="res://scenes/towers/tower.tscn" id="1_sc5qg"]
-[ext_resource type="Script" uid="uid://dnsynb64smf00" path="res://scenes/towers/tower_blaster.gd" id="2_n8gjn"]
-[ext_resource type="Texture2D" uid="uid://ctglvdto0scv8" path="res://graphics/towers/blaster/blaster.png" id="2_ujad2"]
-[ext_resource type="Texture2D" uid="uid://hqsncaw7fucr" path="res://graphics/explosion animations/fire explosion.png" id="4_6lo63"]
-[ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="5_itnc1"]
+[ext_resource type="PackedScene" uid="uid://to6d1j5dni6t" path="res://scenes/towers/tower.tscn" id="1_b2ii2"]
+[ext_resource type="Script" uid="uid://dmxcy8dtcajua" path="res://scenes/towers/tower_idps.gd" id="2_b2ii2"]
+[ext_resource type="Texture2D" uid="uid://ctglvdto0scv8" path="res://graphics/towers/blaster/blaster.png" id="3_56y0f"]
+[ext_resource type="Texture2D" uid="uid://hqsncaw7fucr" path="res://graphics/explosion animations/fire explosion.png" id="4_5ge8c"]
+[ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="5_hginv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ujad2"]
 radius = 30.0
@@ -50,11 +50,11 @@ gravity = Vector3(0, 0, 0)
 anim_speed_min = 0.5
 anim_speed_max = 1.0
 
-[node name="TowerBlaster" unique_id=2090364682 instance=ExtResource("1_sc5qg")]
-script = ExtResource("2_n8gjn")
+[node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_b2ii2")]
+script = ExtResource("2_b2ii2")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
-texture = ExtResource("2_ujad2")
+texture = ExtResource("3_56y0f")
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
 visible = false
@@ -62,45 +62,45 @@ visible = false
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
 shape = SubResource("CircleShape2D_ujad2")
 
-[node name="Particles" type="Node2D" parent="." index="4" unique_id=1341496723]
+[node name="Particles" type="Node2D" parent="." index="4" unique_id=1139715742]
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Particles" index="0" unique_id=1069760530]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Particles" index="0" unique_id=740687947]
 material = SubResource("CanvasItemMaterial_itnc1")
 position = Vector2(10, 0)
 emitting = false
-texture = ExtResource("4_6lo63")
+texture = ExtResource("4_5ge8c")
 lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_c5o44")
 
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="Particles" index="1" unique_id=1989571590]
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Particles" index="1" unique_id=1055276676]
 material = SubResource("CanvasItemMaterial_itnc1")
 position = Vector2(-10, 0)
 emitting = false
-texture = ExtResource("4_6lo63")
+texture = ExtResource("4_5ge8c")
 lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_6lo63")
 
-[node name="GPUParticles2D3" type="GPUParticles2D" parent="Particles" index="2" unique_id=703365606]
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="Particles" index="2" unique_id=1172452887]
 material = SubResource("CanvasItemMaterial_itnc1")
 position = Vector2(0, -10)
 emitting = false
-texture = ExtResource("4_6lo63")
+texture = ExtResource("4_5ge8c")
 lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_itnc1")
 
-[node name="GPUParticles2D4" type="GPUParticles2D" parent="Particles" index="3" unique_id=163661975]
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="Particles" index="3" unique_id=560501590]
 material = SubResource("CanvasItemMaterial_itnc1")
 position = Vector2(0, 10)
 emitting = false
-texture = ExtResource("4_6lo63")
+texture = ExtResource("4_5ge8c")
 lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_t8p0d")
 
 [node name="ShootSound" parent="." index="8" unique_id=1474961134]
-stream = ExtResource("5_itnc1")
+stream = ExtResource("5_hginv")
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

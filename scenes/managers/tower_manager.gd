@@ -5,7 +5,8 @@ var tower_scenes = {
 	Data.Tower.BLAST: "res://scenes/towers/tower_blaster.tscn",
 	Data.Tower.MORTAR: "res://scenes/towers/tower_mortar.tscn",
 	Data.Tower.SPAM_FILTER: "res://scenes/towers/tower_spamfilter.tscn",
-	Data.Tower.QUARANTINE_CANNON: "res://scenes/towers/tower_quarantinecannon.tscn"
+	Data.Tower.QUARANTINE_CANNON: "res://scenes/towers/tower_quarantinecannon.tscn",
+	Data.Tower.IDPS: "res://scenes/towers/tower_idps.tscn"
 }
 
 var bullet_scene = preload("res://scenes/bullets/bullet.tscn")
@@ -83,8 +84,18 @@ func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage:
 		_get_bullet_parent().add_child(bullet)
 
 	if bullet_enum == Data.Bullet.FIRE:
+		# Get the tower's range from data
+		var tower_range = 100  # default fallback
+		if tower_type != null:
+			var tower_data = Data.TOWER_DATA.get(tower_type, null)
+			if tower_data:
+				tower_range = tower_data.get("range", 100)
+		
 		for enemy in get_tree().get_nodes_in_group("Enemies"):
-			if pos.distance_to(enemy.global_position) < 100:
+			if pos.distance_to(enemy.global_position) < tower_range:
+				# IDPS can hit invisible enemies and disables their invisibility
+				if tower_type == Data.Tower.IDPS and enemy.invisible:
+					enemy.set_invisible(false)
 				enemy.hit(damage, tower_id)
 
 	if bullet_enum == Data.Bullet.MORTAR_EXPLOSION:
