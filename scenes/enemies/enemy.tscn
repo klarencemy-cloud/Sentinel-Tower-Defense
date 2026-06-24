@@ -636,6 +636,7 @@ texture_under = ExtResource("7_n7575")
 texture_progress = ExtResource("8_qch6t")
 
 [node name="DamageLabel" type="Label" parent="." unique_id=595779535]
+visible = false
 offset_left = -18.0
 offset_top = -114.0
 offset_right = 22.0

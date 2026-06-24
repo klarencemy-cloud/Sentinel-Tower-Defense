@@ -116,7 +116,7 @@ var TOWER_DATA = {
 		'name': 'Spam Filter',
 		'cost': 45,
 		'server_load': 15,
-		'damage': 2,
+		'damage': 10,
 		'reload_time': 1,
 		'range': 1000,
 		'crit rate': 0,
@@ -132,7 +132,7 @@ var TOWER_DATA = {
 		'upgrade2level': 0,
 		'tier1ability': "+1 Bounce",
 		'tier1abilitydesc': "Bullets bounce an additional time.",
-		'tier1abilityunlocked': false,
+		'tier1abilityunlocked':false,
 		'upgrade3': "Damage",
 		'upgrade3level': 0,
 		'upgrade4': "Crit Rate",
@@ -146,7 +146,7 @@ var TOWER_DATA = {
 		'upgrade6level': 0,
 		'tier3ability': "Infinite Recursion",
 		'tier3abilitydesc': "Bullets has 50% chance to ricochet on kill.",
-		'tier3abilityunlocked': false, },
+		'tier3abilityunlocked': true, },
 	Tower.QUARANTINE_CANNON: {
 		'name': 'Quarantine Cannon',
 		'cost': 60,
@@ -182,7 +182,7 @@ var TOWER_DATA = {
 		'upgrade6level': 0,
 		'tier3ability': "Frozen Vulnerability",
 		'tier3abilitydesc': "Frozen enemies take 15% more damage when frozen.",
-		'tier3abilityunlocked': true, },
+		'tier3abilityunlocked': false, },
 	}
 		
 var ENEMY_DATA = {
