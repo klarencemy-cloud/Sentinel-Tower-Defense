@@ -42,20 +42,20 @@ func _on_map_gui_input(event: InputEvent) -> void:
 var toggleMap = false;
 func _on_map_btn_pressed() -> void:
 	if !toggleMap:
-		$Image/SelectedMap.visible = false
 		$MapContainer.visible = true
 		$ButtonManager/MapBtn/ToggleLabel.text = "ZOOM"
+		$CarouselContainer.visible = false
 		toggleMap = true
+		$ButtonManager/RightBtn.visible = false
+		$ButtonManager/LeftBtn.visible = false
 	elif toggleMap:
-		$Image/SelectedMap.visible = true
 		$MapContainer.visible = false
 		$ButtonManager/MapBtn/ToggleLabel.text = "MAP"
+		$CarouselContainer.visible = true
 		toggleMap = false
+		$ButtonManager/RightBtn.visible = true
+		$ButtonManager/LeftBtn.visible = true
 		
-
-func _on_final_pressed() -> void:
-	pass
-
 
 func _on_final_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -171,8 +171,38 @@ func _on_final_7_gui_input(event: InputEvent) -> void:
 
 func _on_left_btn_pressed() -> void:
 	$CarouselContainer._left()
-	print("fefewafaew")
+
 
 func _on_right_btn_pressed() -> void:
 	$CarouselContainer._right()
-	print("fefewafaew")
+
+
+func _on_challenge_9_pressed() -> void:
+	Data.change_challenge.emit(8)
+
+
+func _on_challenge_8_pressed() -> void:
+	Data.change_challenge.emit(7)
+
+
+func _on_challenge_7_pressed() -> void:
+	Data.change_challenge.emit(6)
+
+
+func _on_challenge_6_pressed() -> void:
+	Data.change_challenge.emit(5)
+
+func _on_challenge_5_pressed() -> void:
+	Data.change_challenge.emit(4)
+
+func _on_challenge_4_pressed() -> void:
+	Data.change_challenge.emit(3)
+
+func _on_challenge_3_pressed() -> void:
+	Data.change_challenge.emit(2)
+	
+func _on_challenge_2_pressed() -> void:
+	Data.change_challenge.emit(1)
+
+func _on_challenge_1_pressed() -> void:
+	Data.change_challenge.emit(0)

@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bmgpyq7aikwk0" path="res://graphics/currency/experience.png" id="7_6qbrb"]
 [ext_resource type="Texture2D" uid="uid://m2v4co1jqaap" path="res://graphics/buttons/right.png" id="9_q5btu"]
 [ext_resource type="Script" uid="uid://cyrxvelj6b5co" path="res://scenes/ui/carousel_container.gd" id="10_yyxhe"]
-[ext_resource type="Texture2D" uid="uid://bmnsxinqiocg5" path="res://graphics/vm_maps/worldmap2.png" id="11_4vhxa"]
+[ext_resource type="Texture2D" uid="uid://c4yj0vnwdv1ej" path="res://graphics/vm_maps/worldmap.png" id="11_yyxhe"]
 [ext_resource type="Texture2D" uid="uid://css1nofmamha6" path="res://graphics/vm_maps/base.png" id="12_4vhxa"]
 
 [node name="VirtualMachineUI" type="Control" unique_id=785887472]
@@ -231,12 +231,6 @@ texture = ExtResource("7_6qbrb")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Image" type="Control" parent="." unique_id=16854379]
-layout_mode = 1
-anchors_preset = 0
-offset_right = 399.0
-offset_bottom = 494.0
-
 [node name="StartGame" type="TextureButton" parent="." unique_id=470087992]
 texture_filter = 2
 layout_mode = 1
@@ -269,9 +263,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="CarouselContainer" type="Node2D" parent="." unique_id=531596293 node_paths=PackedStringArray("position_offset_node")]
+[node name="CarouselContainer" type="Node2D" parent="." unique_id=531596293 node_paths=PackedStringArray("is_vm", "position_offset_node")]
 position = Vector2(551, 538)
 script = ExtResource("10_yyxhe")
+is_vm = NodePath("..")
 opacity_strength = 1.0
 smoothing_speed = 4.0
 follow_button_focus = true
@@ -361,6 +356,45 @@ pivot_offset = Vector2(221.50024, 196.95087)
 texture = ExtResource("4_3akup")
 metadata/_edit_use_anchors_ = true
 
+[node name="Map7" type="TextureRect" parent="CarouselContainer/Control" unique_id=345180947]
+modulate = Color(1, 1, 1, 0)
+z_index = -6
+layout_mode = 0
+offset_left = 2780.129
+offset_top = -196.95087
+offset_right = 3223.1294
+offset_bottom = 196.95087
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(221.50024, 196.95087)
+texture = ExtResource("4_3akup")
+metadata/_edit_use_anchors_ = true
+
+[node name="Map8" type="TextureRect" parent="CarouselContainer/Control" unique_id=897064476]
+modulate = Color(1, 1, 1, 0)
+z_index = -7
+layout_mode = 0
+offset_left = 3243.1294
+offset_top = -196.95087
+offset_right = 3686.13
+offset_bottom = 196.95087
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(221.50024, 196.95087)
+texture = ExtResource("4_3akup")
+metadata/_edit_use_anchors_ = true
+
+[node name="Map9" type="TextureRect" parent="CarouselContainer/Control" unique_id=1301674518]
+modulate = Color(1, 1, 1, 0)
+z_index = -8
+layout_mode = 0
+offset_left = 3706.13
+offset_top = -196.95087
+offset_right = 4149.1304
+offset_bottom = 196.95087
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(221.50024, 196.95087)
+texture = ExtResource("4_3akup")
+metadata/_edit_use_anchors_ = true
+
 [node name="MapContainer" type="Control" parent="." unique_id=1227266268]
 visible = false
 clip_contents = true
@@ -371,85 +405,214 @@ offset_right = 809.0
 offset_bottom = 813.0
 
 [node name="Map" type="TextureButton" parent="MapContainer" unique_id=1204325682]
-layout_mode = 0
-anchor_left = 0.07647059
-anchor_top = -0.50082916
-anchor_right = 0.8980392
-anchor_bottom = 0.9541246
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.060784314
+anchor_top = -1.8059702
+anchor_right = 0.88235295
+anchor_bottom = 0.98065865
 offset_top = -3.0517578e-05
-texture_normal = ExtResource("11_4vhxa")
+texture_normal = ExtResource("11_yyxhe")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Final" type="TextureButton" parent="MapContainer/Map" unique_id=2077303727]
+[node name="Challenge9" type="TextureButton" parent="MapContainer/Map" unique_id=2077303727]
 layout_mode = 0
-offset_left = 179.0
-offset_right = 297.0
+offset_left = 63.0
+offset_right = 181.0
 offset_bottom = 118.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Final2" type="TextureButton" parent="MapContainer/Map" unique_id=1971704751]
+[node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge9" unique_id=1327498048]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.050847456
+anchor_right = 1.0254238
+anchor_bottom = 1.0762712
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3akup")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Challenge8" type="TextureButton" parent="MapContainer/Map" unique_id=1971704751]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 142.0
-offset_right = 135.0
-offset_bottom = 260.0
+offset_left = 7.0
+offset_top = 278.0
+offset_right = 125.0
+offset_bottom = 396.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Final3" type="TextureButton" parent="MapContainer/Map" unique_id=1432426411]
+[node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge8" unique_id=1392581132]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.050847456
+anchor_right = 1.0254238
+anchor_bottom = 1.0762712
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3akup")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Challenge7" type="TextureButton" parent="MapContainer/Map" unique_id=1432426411]
 layout_mode = 0
-offset_left = 194.0
-offset_top = 213.0
-offset_right = 312.0
-offset_bottom = 331.0
+offset_left = 186.0
+offset_top = 316.0
+offset_right = 304.0
+offset_bottom = 434.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Final4" type="TextureButton" parent="MapContainer/Map" unique_id=2100657951]
+[node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge7" unique_id=1892552580]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.050847456
+anchor_right = 1.0254238
+anchor_bottom = 1.0762712
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3akup")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Challenge6" type="TextureButton" parent="MapContainer/Map" unique_id=2100657951]
 layout_mode = 0
-offset_left = 76.0
-offset_top = 353.0
-offset_right = 194.0
-offset_bottom = 471.0
+offset_left = 154.0
+offset_top = 683.0
+offset_right = 272.0
+offset_bottom = 801.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Final5" type="TextureButton" parent="MapContainer/Map" unique_id=1883669251]
+[node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge6" unique_id=363751627]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.050847456
+anchor_right = 1.0254238
+anchor_bottom = 1.0762712
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3akup")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Challenge5" type="TextureButton" parent="MapContainer/Map" unique_id=1883669251]
 layout_mode = 0
-offset_left = 315.0
-offset_top = 511.0
-offset_right = 433.0
-offset_bottom = 629.0
+offset_left = -30.0
+offset_top = 881.0
+offset_right = 88.0
+offset_bottom = 999.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Final6" type="TextureButton" parent="MapContainer/Map" unique_id=1428982173]
+[node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge5" unique_id=505073945]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.050847456
+anchor_right = 1.0254238
+anchor_bottom = 1.0762712
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3akup")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Challenge4" type="TextureButton" parent="MapContainer/Map" unique_id=1428982173]
 layout_mode = 0
-offset_left = -9.0
-offset_top = 559.0
-offset_right = 109.0
-offset_bottom = 677.0
+offset_left = 186.0
+offset_top = 1056.0
+offset_right = 304.0
+offset_bottom = 1174.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Final7" type="TextureButton" parent="MapContainer/Map" unique_id=1279870115]
+[node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge4" unique_id=1830858800]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.050847456
+anchor_right = 1.0254238
+anchor_bottom = 1.0762712
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3akup")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Challenge3" type="TextureButton" parent="MapContainer/Map" unique_id=1279870115]
 layout_mode = 0
-offset_left = 194.0
-offset_top = 760.0
-offset_right = 312.0
-offset_bottom = 878.0
+offset_left = 305.0
+offset_top = 1305.0
+offset_right = 423.0
+offset_bottom = 1423.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge3" unique_id=1659103459]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.050847456
+anchor_right = 1.0254238
+anchor_bottom = 1.0762712
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3akup")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Challenge2" type="TextureButton" parent="MapContainer/Map" unique_id=1341596729]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 1362.0
+offset_right = 125.0
+offset_bottom = 1480.0
+texture_normal = ExtResource("12_4vhxa")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge2" unique_id=816288224]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.050847456
+anchor_right = 1.0254238
+anchor_bottom = 1.0762712
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3akup")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Challenge1" type="TextureButton" parent="MapContainer/Map" unique_id=1426471759]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 1562.0
+offset_right = 252.0
+offset_bottom = 1680.0
+texture_normal = ExtResource("12_4vhxa")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge1" unique_id=1181963134]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.050847456
+anchor_right = 1.0254238
+anchor_bottom = 1.0762712
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3akup")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonManager" type="Control" parent="." unique_id=652685244]
 anchors_preset = 0
@@ -509,14 +672,24 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [connection signal="gui_input" from="MapContainer/Map" to="." method="_on_map_gui_input"]
-[connection signal="gui_input" from="MapContainer/Map/Final" to="." method="_on_final_gui_input"]
-[connection signal="pressed" from="MapContainer/Map/Final" to="." method="_on_final_pressed"]
-[connection signal="gui_input" from="MapContainer/Map/Final2" to="." method="_on_final_2_gui_input"]
-[connection signal="gui_input" from="MapContainer/Map/Final3" to="." method="_on_final_3_gui_input"]
-[connection signal="gui_input" from="MapContainer/Map/Final4" to="." method="_on_final_4_gui_input"]
-[connection signal="gui_input" from="MapContainer/Map/Final5" to="." method="_on_final_5_gui_input"]
-[connection signal="gui_input" from="MapContainer/Map/Final6" to="." method="_on_final_6_gui_input"]
-[connection signal="gui_input" from="MapContainer/Map/Final7" to="." method="_on_final_7_gui_input"]
+[connection signal="gui_input" from="MapContainer/Map/Challenge9" to="." method="_on_final_gui_input"]
+[connection signal="pressed" from="MapContainer/Map/Challenge9" to="." method="_on_challenge_9_pressed"]
+[connection signal="gui_input" from="MapContainer/Map/Challenge8" to="." method="_on_final_2_gui_input"]
+[connection signal="pressed" from="MapContainer/Map/Challenge8" to="." method="_on_challenge_8_pressed"]
+[connection signal="gui_input" from="MapContainer/Map/Challenge7" to="." method="_on_final_3_gui_input"]
+[connection signal="pressed" from="MapContainer/Map/Challenge7" to="." method="_on_challenge_7_pressed"]
+[connection signal="gui_input" from="MapContainer/Map/Challenge6" to="." method="_on_final_4_gui_input"]
+[connection signal="pressed" from="MapContainer/Map/Challenge6" to="." method="_on_challenge_6_pressed"]
+[connection signal="gui_input" from="MapContainer/Map/Challenge5" to="." method="_on_final_5_gui_input"]
+[connection signal="pressed" from="MapContainer/Map/Challenge5" to="." method="_on_challenge_5_pressed"]
+[connection signal="gui_input" from="MapContainer/Map/Challenge4" to="." method="_on_final_6_gui_input"]
+[connection signal="pressed" from="MapContainer/Map/Challenge4" to="." method="_on_challenge_4_pressed"]
+[connection signal="gui_input" from="MapContainer/Map/Challenge3" to="." method="_on_final_7_gui_input"]
+[connection signal="pressed" from="MapContainer/Map/Challenge3" to="." method="_on_challenge_3_pressed"]
+[connection signal="gui_input" from="MapContainer/Map/Challenge2" to="." method="_on_final_7_gui_input"]
+[connection signal="pressed" from="MapContainer/Map/Challenge2" to="." method="_on_challenge_2_pressed"]
+[connection signal="gui_input" from="MapContainer/Map/Challenge1" to="." method="_on_final_7_gui_input"]
+[connection signal="pressed" from="MapContainer/Map/Challenge1" to="." method="_on_challenge_1_pressed"]
 [connection signal="pressed" from="ButtonManager/MapBtn" to="." method="_on_map_btn_pressed"]
 [connection signal="pressed" from="ButtonManager/RightBtn" to="." method="_on_right_btn_pressed"]
 [connection signal="pressed" from="ButtonManager/LeftBtn" to="." method="_on_left_btn_pressed"]

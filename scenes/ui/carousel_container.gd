@@ -2,6 +2,8 @@
 extends Node2D
 class_name CarouselContainer
 
+
+@export var is_vm: Control = null
 @export var spacing: float = 20.0
 
 @export var wraparound_enabled: bool = false
@@ -50,16 +52,19 @@ var sb_map_desc: Array = [
 ]
 
 #virual mode
-var vm_title_array: Array = ["Ticking Bomb", "Swarm Overload", "Malware Interruption", "Random Defense", "DDoS Stress Test", "Ransomware in Action"]
-var recommended: Array = ["5", "10", "16", "25", "34", "37"]
+var vm_title_array: Array = ["Ticking Bomb", "Swarm Overload", "Malware Interruption", "Random Defense", "DDoS Stress Test", "Ransomware in Action", "Switched Positions", "Automatic Defense", "Endless Onslaught"]
+var recommended: Array = ["5", "10", "16", "25", "34", "37", "45", "50", "51"]
 var vm_map_desc_paragraph: Array = [
 	"The S.E.R.V.E.R. malfunctions; it loses health every 5 seconds. Defeat 300 virus enemies before the S.E.R.V.E.R. health reaches 0.",
 	"A massive outbreak of Worms and Spam floods the paths. Defeat 1,000 enemies without taking any damage.",
 	"The S.E.R.V.E.R. has only 1 HP left. Win the game without taking any damage from malware enemies for 7 waves. A single damage will cost the player everything. The player must defend the S.E.R.V.E.R. at any cost.",
 	"Random towers randomly appear. The player must place them correctly and strategically. Win 7 waves to win the challenge.",
 	"Only Distributed Denial-of-Service (DDoS) attacks the S.E.R.V.E.R. to test how it handles floods of internet traffic. The player must defeat 300 enemies before the timer runs out.",
-	"Random numbers (40%) of blocks are locked. You cannot put towers in them. Win 7 waves to win the challenges. Additionally, every 3 waves, the randomly locked blocks shift position, forcing the player to adapt quickly to win the challenge.
-"
+	"Random numbers (40%) of blocks are locked. You cannot put towers in them. Win 7 waves to win the challenges. Additionally, every 3 waves, the randomly locked blocks shift position, forcing the player to adapt quickly to win the challenge.",
+	"The battlefield is already filled with defense towers. The player must breach the S.E.R.V.E.R. Defeat the S.E.R.V.E.R. ( 0 HP) by placing enemies.",
+	"All sentinels are disabled during the challenge. Win 7 waves to win the challenge.",
+	"Survive as long as you can!                                                       "
+
 ]
 
 
@@ -67,7 +72,8 @@ var count: int = 0
 
 
 func _ready() -> void:
-	pass
+	Data.change_challenge.connect(_change_challenge)
+
 func _process(delta: float) -> void:
 	if !position_offset_node or position_offset_node.get_child_count() == 0:
 		return
@@ -147,17 +153,22 @@ func _right():
 		selected_index -= 1
 
 	count += 1
-	if count == 6:
-		count = 5
-		return
 
 
 	if Data.is_vmmode:
+		if count == 9:
+			count = 8
+			return
 		vm_title.text = vm_title_array[count]
 		vm_description.text = vm_map_desc_paragraph[count]
 		level_recommendation.text = recommended[count]
+	
 
 	if !Data.is_vmmode:
+		if count == 6:
+			count = 5
+			return
+		
 		title.text = title_array[count]
 		path.text = path_num[count]
 		description.text = sb_map_desc[count]
@@ -172,3 +183,14 @@ func _right():
 				path.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
 			"4":
 				path.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
+
+func _change_challenge(index: int) -> void:
+	if is_vm:
+		print("yea")
+		selected_index = index
+		count = index
+		vm_title.text = vm_title_array[count]
+		vm_description.text = vm_map_desc_paragraph[count]
+		level_recommendation.text = recommended[count]
+	if is_vm == null:
+		return

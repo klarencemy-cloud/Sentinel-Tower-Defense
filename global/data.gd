@@ -14,6 +14,7 @@ signal server_load_changed
 
 signal toggle_server_scene # to toggle server upgrade visibility
 
+signal change_challenge() # for vm
 
 var before_total_money: int # sandbox save total money para hindi ma overwrite yung sa main story
 var before_total_health: int # sandbox save total health para hindi ma overwrite yung sa main story
@@ -144,8 +145,8 @@ var TOWER_DATA = {
 		'upgrade6': "Range",
 		'upgrade6level': 0,
 		'tier3ability': "Infinite Recursion",
-		'tier3abilitydesc': "Bullets has 50% chance to ricochet on kill.", 
-		'tier3abilityunlocked': false,},
+		'tier3abilitydesc': "Bullets has 50% chance to ricochet on kill.",
+		'tier3abilityunlocked': false, },
 	Tower.QUARANTINE_CANNON: {
 		'name': 'Quarantine Cannon',
 		'cost': 60,
