@@ -19,6 +19,7 @@ var stun_timer: Timer
 var is_slowed := false
 var original_speed: int
 var pending_slow_duration: float = 0.0
+@export var damage_text_scene: PackedScene
 
 const NORMAL_TINT: Color = Color(1, 1, 1, 1)
 const SLOWED_TINT: Color = Color(0.6, 0.8, 1.0, 1.0)
@@ -99,8 +100,6 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	
 
 func _process(delta: float):
-	update_tint()
-
 	if is_stunned:
 		return
 	
@@ -113,19 +112,6 @@ func _process(delta: float):
 	if path_follow.progress_ratio >= 0.99:
 		Data.health -= Data.ENEMY_DATA[enemy_type_stats]["damage"]
 		queue_free()
-
-func update_tint() -> void:
-	var tint = NORMAL_TINT
-	if is_frozen:
-		tint = FROZEN_TINT
-	elif is_slowed:
-		tint = SLOWED_TINT
-
-	if enemy_type:
-		enemy_type.modulate = tint
-		if is_worm:
-			for child in $WormSegments.get_children():
-				child.modulate = tint
 
 
 func _on_area_entered(bullet: Area2D) -> void:
@@ -148,7 +134,7 @@ func hit(damage: int = 1, tower_id: int = -1):
 	if not $AudioStreamPlayer2D.stream:
 		$AudioStreamPlayer2D.stream = preload("res://audio/impact.1.ogg")
 
-	show_damage(damage)
+	show_damage(actual_damage)
 
 	#Give damage in damage global data
 	if tower_id != -1:
@@ -208,19 +194,25 @@ func update_hp_bar_position():
 			$hpbar.position.y = - sprite_height / 2 - 10
 	
 func show_damage(damage: int):
-	$DamageLabel.text = str(damage)
-	$DamageLabel.visible = true
-	$DamageLabel.modulate.a = 1
-	$DamageLabel.position = Vector2(0, -60)
+	var label = $DamageLabel.duplicate()
+	print("SHOW DAMAGE:", damage)
+	label.text = str(damage)
+	label.visible = true
+	label.modulate.a = 1.0
+	label.position = Vector2(
+	randi_range(-10, 10),
+	-60 + randi_range(-5, 5)
+)
 
-	# IMPORTANT: kill previous tween
-	if dmg_tween:
-		dmg_tween.kill()
+	add_child(label)
 
-	dmg_tween = create_tween()
-	dmg_tween.tween_property($DamageLabel, "position:y", -90, 0.5)
-	dmg_tween.parallel().tween_property($DamageLabel, "modulate:a", 0.0, 0.5)
+	var tween = create_tween()
+	tween.tween_property(label, "position:y", label.position.y - 30, 0.5)
+	tween.parallel().tween_property(label, "modulate:a", 0.0, 0.5)
 
+	await tween.finished
+	label.queue_free()
+	
 func stun(duration: float = 0.5, vulnerable: bool = false):
 	is_stunned = true
 	is_frozen = true

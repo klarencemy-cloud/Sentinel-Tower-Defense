@@ -11,7 +11,7 @@ var owner_tower_type
 var bullet_enum: Data.Bullet
 var ricochet_range: int = 0
 var hit_enemies: Array = []  # Track which enemies have been hit by this ricochet chain
-
+var already_hit := false
 func _ready():
 	add_to_group("bullet")
 	monitoring = true
@@ -30,9 +30,12 @@ func setup(pos, angle, _bullet_enum, _damage, _tower_type, _tower_id):
 	owner_tower_type = _tower_type
 	tower_id = _tower_id
 
-	var tower_data = Data.TOWER_DATA.get(bullet_enum, {})
+	var tower_data = Data.TOWER_DATA.get(owner_tower_type, {})
 	if tower_data.has("range"):
-		ricochet_range = max(ricochet_range, int(tower_data["range"]))
+		ricochet_range = int(tower_data["range"])
+
+	if owner_tower_type == Data.Tower.SPAM_FILTER and tower_data.get("tier1abilityunlocked", false):
+		max_bounce = 2
 
 
 func _process(delta: float) -> void:
@@ -40,11 +43,13 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	print("HIT SOMETHING:", area.name)
-
+	if already_hit:
+		return
+		
 	if !area.is_in_group("Enemies"):
 		return
 
+	already_hit = true
 	area.hit(damage, tower_id)
 	hit_enemies.append(area)  # Track this enemy as hit
 
@@ -57,14 +62,16 @@ func _on_area_entered(area: Area2D) -> void:
 func _can_ricochet() -> bool:
 	var data = Data.TOWER_DATA.get(owner_tower_type, {})
 
-	print("checking ricochet passive:", data.get("passive", ""))
-
 	if data.get("passive", "") != "Ricochet":
 		return false
 
-	print("bounce:", bounce_count, "/", max_bounce)
+	if bounce_count < max_bounce:
+		return true
 
-	return bounce_count < max_bounce
+	if owner_tower_type == Data.Tower.SPAM_FILTER and data.get("tier3abilityunlocked", false) and bounce_count >= 2:
+		return randf() < 0.5
+
+	return false
 
 
 func ricochet(from_enemy: Node) -> void:
@@ -102,7 +109,13 @@ func ricochet(from_enemy: Node) -> void:
 	new_bullet.global_position = from_enemy.global_position + dir * 10
 	new_bullet.direction = dir
 	new_bullet.rotation = dir.angle()
-	new_bullet.damage = int(damage * 0.5)
+
+	var ricochet_damage_factor = 0.5
+	var tower_data = Data.TOWER_DATA.get(owner_tower_type, {})
+	if owner_tower_type == Data.Tower.SPAM_FILTER and tower_data.get("tier2abilityunlocked", false):
+		ricochet_damage_factor = 0.75
+
+	new_bullet.damage = int(damage * ricochet_damage_factor)
 
 	new_bullet.bullet_enum = bullet_enum
 	new_bullet.owner_tower_type = owner_tower_type
