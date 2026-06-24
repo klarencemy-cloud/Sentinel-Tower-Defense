@@ -625,11 +625,11 @@ modulate = Color(1, 1, 1, 0.6862745)
 
 [node name="Bullets" type="Node2D" parent="." unique_id=1114794130]
 
+[node name="UI" parent="." unique_id=1090151980 instance=ExtResource("6_d4w6o")]
+
 [node name="PlayerCamera" parent="." unique_id=2052181342 instance=ExtResource("5_urvlt")]
 position = Vector2(2851, 1564)
 acceleration = 0.7
-
-[node name="UI" parent="." unique_id=1090151980 instance=ExtResource("6_d4w6o")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=752247016]
 stream = ExtResource("6_mbbpy")
