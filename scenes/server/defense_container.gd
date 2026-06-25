@@ -78,6 +78,7 @@ func _upgrade(index: int) -> void:
 		for child in children[index]:
 			if child.name == target_names[index]:
 				child.texture = load("res://graphics/upgrade/Upgraded.png")
+				
 				counters[index] += 1
 				letters[index] = char(letters[index].unicode_at(0) + 1)
 				target_names[index] = base_names[index] + letters[index]
