@@ -163,7 +163,10 @@ func _process(delta: float):
 	
 
 	if path_follow.progress_ratio >= 0.99:
-		Data.health -= Data.ENEMY_DATA[enemy_type_stats]["damage"]
+		var processed_enemy_damage: float = 0.0
+		var raw_dmg = Data.ENEMY_DATA[enemy_type_stats]["damage"]
+		processed_enemy_damage = Defense._dmg_reduc_armor(raw_dmg) # sends dmg to defense_data.gd to reduc dmg based on armor
+		Data.health -= processed_enemy_damage
 		queue_free()
 
 
@@ -175,8 +178,9 @@ func _on_area_entered(bullet: Area2D) -> void:
 func hit(damage: int = 1, tower_id: int = -1):
 	if dead:
 		return
-
-	var actual_damage = damage
+	
+	print("Eto damage", + damage)
+	var actual_damage: int = damage
 	if is_frozen and is_frozen_vulnerable:
 		actual_damage = int(ceil(damage * 10))
 	

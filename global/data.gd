@@ -1,6 +1,6 @@
 extends Node
 
-var default_health: int = 100
+var default_health: float = 100.0
 var default_money: int = 200
 var default_system_load: int = 200
 var is_sandbox: bool = false
@@ -17,7 +17,7 @@ signal toggle_server_scene # to toggle server upgrade visibility
 signal change_challenge() # for vm
 
 var before_total_money: int # sandbox save total money para hindi ma overwrite yung sa main story
-var before_total_health: int # sandbox save total health para hindi ma overwrite yung sa main story
+var before_total_health: float # sandbox save total health para hindi ma overwrite yung sa main story
 var before_max_server_load: int # sandbox save total server load capaccity para hindi ma overwrite yung sa main story
 
 var before_level_index: int
@@ -284,7 +284,7 @@ var money := default_money:
 		for node in get_tree().get_nodes_in_group("TowerCard"):
 			if node.has_method("toggle_active"):
 				node.toggle_active(money)
-var health := default_health:
+var health: float = default_health:
 	set(value):
 		health = value
 			

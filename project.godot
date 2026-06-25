@@ -25,6 +25,7 @@ Data="*res://global/data.gd"
 EnemyTower="*uid://mpoy2nivk3lo"
 EnemyStats="*uid://c0kaghc034tq0"
 Defense="*uid://bsaw3m0wic5sd"
+Offense="*uid://w0ak4rdsrh6"
 
 [display]
 

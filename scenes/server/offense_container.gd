@@ -67,12 +67,20 @@ func _upgrade(index: int) -> void:
 		for child in children[index]:
 			if child.name == target_names[index]:
 				child.texture = load("res://graphics/upgrade/Upgraded.png")
+
+				match index:
+					0:
+						Offense._inc_dmg()
+					#1:
+						#Defense._skill_slot_add()
+					#2:
+						#Defense._skill_cooldown_reduction()
+					#3:
+						#Defense._skill_cooldown_reduction()
+
 				counters[index] += 1
 				letters[index] = char(letters[index].unicode_at(0) + 1) # Increment letter a to b and so on
 				target_names[index] = base_names[index] + letters[index] # Combine base name and incremented letter "Upgrade1a" to "Upgrade1b"
 				break
 	else:
 		print("Max Level")
-
-
-
