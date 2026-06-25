@@ -65,7 +65,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_y5th1")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Right",
 "speed": 5.0
 }]
 
@@ -126,7 +126,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_y2gxb")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Right",
 "speed": 5.0
 }]
 
@@ -187,7 +187,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_kugq1")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Right",
 "speed": 5.0
 }]
 
@@ -213,7 +213,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xiois")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Right",
 "speed": 5.0
 }]
 
@@ -239,7 +239,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_7v5dn")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Right",
 "speed": 5.0
 }]
 
@@ -448,11 +448,6 @@ animations = [{
 "name": &"Down",
 "speed": 6.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"Left",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dsvp5")
@@ -515,7 +510,104 @@ animations = [{
 "texture": SubResource("AtlasTexture_rvkh2")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Right",
+"speed": 4.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pe3k2"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu5de"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1344, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnxos"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1728, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hevyg"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1koe2"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2rgm"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0hgk"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx18g"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13gim"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6aog"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1536, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_432g3"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1728, 576, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lu5de"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lu5de")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnxos")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hevyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1koe2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2rgm")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0hgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx18g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13gim")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6aog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_432g3")
+}],
+"loop": true,
+"name": &"Up",
 "speed": 4.0
 }]
 
@@ -533,7 +625,8 @@ texture_filter = 2
 material = SubResource("ShaderMaterial_fcftc")
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_tihwb")
-autoplay = "default"
+animation = &"Right"
+autoplay = "Right"
 
 [node name="Spyware" type="AnimatedSprite2D" parent="." unique_id=1983232872]
 visible = false
@@ -542,7 +635,8 @@ material = SubResource("ShaderMaterial_n7575")
 position = Vector2(-9.999999, -14.999994)
 scale = Vector2(0.84375, 0.84375006)
 sprite_frames = SubResource("SpriteFrames_3xxyr")
-autoplay = "default"
+animation = &"Right"
+autoplay = "Right"
 
 [node name="Adware" type="AnimatedSprite2D" parent="." unique_id=443890855]
 visible = false
@@ -551,7 +645,8 @@ material = SubResource("ShaderMaterial_qch6t")
 position = Vector2(-12, -3.0000002)
 scale = Vector2(0.7109375, 0.7109375)
 sprite_frames = SubResource("SpriteFrames_x3klb")
-autoplay = "default"
+animation = &"Right"
+autoplay = "Right"
 
 [node name="Creds" type="AnimatedSprite2D" parent="." unique_id=976868947]
 visible = false
@@ -559,14 +654,16 @@ texture_filter = 2
 material = SubResource("ShaderMaterial_y5th1")
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_e4ejd")
-autoplay = "default"
+animation = &"Right"
+autoplay = "Right"
 
 [node name="Botnet" type="AnimatedSprite2D" parent="." unique_id=701035183]
 visible = false
 texture_filter = 2
 material = SubResource("ShaderMaterial_tihwb")
 sprite_frames = SubResource("SpriteFrames_8ma66")
-autoplay = "default"
+animation = &"Right"
+autoplay = "Right"
 
 [node name="WormSegments" type="Sprite2D" parent="." unique_id=481074252]
 visible = false
@@ -609,14 +706,23 @@ material = SubResource("ShaderMaterial_twn6s")
 sprite_frames = SubResource("SpriteFrames_nb6gf")
 animation = &"Right"
 autoplay = "Right"
-frame_progress = 0.45112237
 
 [node name="Ransomware" type="AnimatedSprite2D" parent="." unique_id=1748488769]
+visible = false
 texture_filter = 2
 material = SubResource("ShaderMaterial_sb86v")
 sprite_frames = SubResource("SpriteFrames_b0hgk")
-autoplay = "default"
-frame_progress = 0.00098352
+animation = &"Right"
+autoplay = "Right"
+frame = 3
+frame_progress = 0.5118822
+
+[node name="SQL" type="AnimatedSprite2D" parent="." unique_id=1932437665]
+material = SubResource("ShaderMaterial_pe3k2")
+sprite_frames = SubResource("SpriteFrames_lu5de")
+animation = &"Down"
+autoplay = "Right"
+frame_progress = 0.9832871
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1419893999]
 position = Vector2(-1, 1)
