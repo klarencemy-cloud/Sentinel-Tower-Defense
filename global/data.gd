@@ -25,7 +25,7 @@ var current_level_index: int = 0 # map count 0 = level 1
 
 enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, QUARANTINE_CANNON, IDPS}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
-enum Enemy {DEFAULT, ADWARE, SPYWARE, CREDS, WORM, BOTNET, INSIDERTHREAT, RANSOMWARE}
+enum Enemy {DEFAULT, ADWARE, SPYWARE, CREDS, WORM, BOTNET, INSIDERTHREAT, RANSOMWARE, SQL}
 
 var TOWER_DATA = {
 	Tower.BASIC: {
@@ -152,7 +152,7 @@ var TOWER_DATA = {
 		'upgrade2amount': 0.2,
 		'tier1ability': "+1 Bounce",
 		'tier1abilitydesc': "Bullets bounce an additional time.",
-		'tier1abilityunlocked':false,
+		'tier1abilityunlocked': false,
 		'upgrade3': "Damage",
 		'upgrade3level': 0,
 		'upgrade3amount': 1,
@@ -224,9 +224,9 @@ var TOWER_DATA = {
 		'crit damage': 50,
 		'bullet': Bullet.FIRE,
 		'thumbnail': "res://graphics/ui/tower thumbnails/blaster.png",
-		'scene':"res://scenes/towers/tower_idps.tscn",
+		'scene': "res://scenes/towers/tower_idps.tscn",
 		'passive': "Scan Pulse",
-		'passive description' : "Reveals invisible enemies.",
+		'passive description': "Reveals invisible enemies.",
 		'tier2ability': "Slow Pulse",
 		'tier2abilitydesc': "Slows enemies in its radius.",
 		'tier3ability': "Vulnerability Pulse",
@@ -262,10 +262,10 @@ var ENEMY_DATA = {
 	Enemy.BOTNET: {'health': 200, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "botnet", 'damage': 55},
 	Enemy.WORM: {'health': 30, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "worm", 'damage': 5},
 	Enemy.INSIDERTHREAT: {'health': 120, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "insiderthreat", 'damage': 80},
-	Enemy.RANSOMWARE: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "ransomware", 'damage': 250}
+	Enemy.RANSOMWARE: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "ransomware", 'damage': 250},
+	Enemy.SQL: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "sql", 'damage': 250}
 
 }
-
 
 
 var currentserverload: int = 0:

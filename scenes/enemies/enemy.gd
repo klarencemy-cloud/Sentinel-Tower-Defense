@@ -20,10 +20,12 @@ var is_slowed := false
 var original_speed: int
 var pending_slow_duration: float = 0.0
 var invisible: bool = false
-var idps_slow_aura := false  # For IDPS tier2 passive
-var idps_vulnerability_aura := false  # For IDPS tier3 passive
-var vulnerability_multiplier := 1.0  # Damage multiplier for vulnerabilities
+var idps_slow_aura := false # For IDPS tier2 passive
+var idps_vulnerability_aura := false # For IDPS tier3 passive
+var vulnerability_multiplier := 1.0 # Damage multiplier for vulnerabilities
 
+
+var previous_pos: Vector2
 
 const NORMAL_TINT: Color = Color(1, 1, 1, 1)
 const SLOWED_TINT: Color = Color(0.6, 0.8, 1.0, 1.0)
@@ -47,6 +49,9 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$hpbar.max_value = Data.ENEMY_DATA[type]['health']
 	$hpbar.value = Data.ENEMY_DATA[type]['health']
 	path_follow = new_path_follow
+	previous_pos = path_follow.global_position
+	
+
 	health = Data.ENEMY_DATA[type]['health']
 	speed = Data.ENEMY_DATA[type]['speed']
 	is_worm = false
@@ -100,9 +105,16 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Ransomware.visible = true
 			enemy_type = $Ransomware
 			$Ransomware.material = $Ransomware.material.duplicate()
+		"sql":
+			$SQL.visible = true
+			enemy_type = $SQL
+			$SQL.material = $SQL.material.duplicate()
+
 			
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
-	
+
+	if enemy_type != $Worm:
+		path_follow.rotates = false
 
 func _process(delta: float):
 	if is_stunned:
@@ -115,9 +127,40 @@ func _process(delta: float):
 		current_speed = int(speed * 0.85)
 	# Apply regular slow effect
 	elif is_slowed:
-		current_speed = int(speed * 0.5)  # 50% speed when slowed
+		current_speed = int(speed * 0.5) # 50% speed when slowed
 	
 	path_follow.progress += current_speed * delta
+
+	
+	if enemy_type != $Worm:
+		var current_pos = path_follow.global_position
+		var dir = current_pos - previous_pos
+		var margin = 1
+	
+		if abs(dir.x) > abs(dir.y):
+			if dir.x > 1:
+				enemy_type.flip_h = false
+				enemy_type.play("Right")
+			elif dir.x < -1:
+				if enemy_type.sprite_frames.has_animation("Left"):
+					enemy_type.play("Left")
+				else:
+					enemy_type.play("Right")
+					enemy_type.flip_h = true
+		elif abs(dir.x) < abs(dir.y):
+			if dir.y > 1:
+				if enemy_type.sprite_frames.has_animation("Down"):
+					enemy_type.play("Down")
+				else:
+					enemy_type.play("Right")
+			elif dir.y < -1:
+				if enemy_type.sprite_frames.has_animation("Up"):
+					enemy_type.play("Up")
+				else:
+					enemy_type.play("Right")
+
+		previous_pos = current_pos
+	
 
 	if path_follow.progress_ratio >= 0.99:
 		Data.health -= Data.ENEMY_DATA[enemy_type_stats]["damage"]

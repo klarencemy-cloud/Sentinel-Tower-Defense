@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bmgpyq7aikwk0" path="res://graphics/currency/experience.png" id="7_6qbrb"]
 [ext_resource type="Texture2D" uid="uid://m2v4co1jqaap" path="res://graphics/buttons/right.png" id="9_q5btu"]
 [ext_resource type="Script" uid="uid://cyrxvelj6b5co" path="res://scenes/ui/carousel_container.gd" id="10_yyxhe"]
-[ext_resource type="Texture2D" uid="uid://c4yj0vnwdv1ej" path="res://graphics/vm_maps/worldmap.png" id="11_yyxhe"]
+[ext_resource type="Texture2D" uid="uid://i82l68ekl10p" path="res://graphics/vm_maps/worldmap.png" id="11_yyxhe"]
 [ext_resource type="Texture2D" uid="uid://css1nofmamha6" path="res://graphics/vm_maps/base.png" id="12_4vhxa"]
 
 [node name="VirtualMachineUI" type="Control" unique_id=785887472]
@@ -408,10 +408,10 @@ offset_bottom = 813.0
 [node name="Map" type="TextureButton" parent="MapContainer" unique_id=1204325682]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.064705886
-anchor_top = -1.9054726
-anchor_right = 0.8862745
-anchor_bottom = 0.88115615
+anchor_left = 0.09607843
+anchor_top = -1.9485904
+anchor_right = 0.91764706
+anchor_bottom = 0.8380384
 offset_top = -3.0517578e-05
 texture_normal = ExtResource("11_yyxhe")
 ignore_texture_size = true
@@ -420,8 +420,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Challenge9" type="TextureButton" parent="MapContainer/Map" unique_id=2077303727]
 layout_mode = 0
-offset_left = 63.0
-offset_right = 181.0
+offset_left = 40.0
+offset_right = 158.0
 offset_bottom = 118.0
 texture_normal = ExtResource("12_4vhxa")
 ignore_texture_size = true
@@ -430,8 +430,8 @@ stretch_mode = 0
 [node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge9" unique_id=1327498048]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.050847456
-anchor_right = 1.0254238
+anchor_left = -0.06779661
+anchor_right = 1.0084746
 anchor_bottom = 1.0762712
 grow_horizontal = 2
 grow_vertical = 2
