@@ -45,3 +45,4 @@ func _process(delta: float) -> void:
 		ResourceLoader.THREAD_LOAD_LOADED:
 			var scene = ResourceLoader.load_threaded_get(next_scene_path)
 			get_tree().change_scene_to_packed(scene)
+			DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "start")

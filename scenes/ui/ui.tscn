@@ -108,11 +108,11 @@ vertical_scroll_mode = 0
 
 [node name="TowerCardsContainer" type="HBoxContainer" parent="Control/TextureRect/ScrollContainer" unique_id=1909906848]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 22
 
 [node name="EnemyCardsContainer" type="HBoxContainer" parent="Control/TextureRect/ScrollContainer" unique_id=102221009]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 22
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/TextureRect" unique_id=1492936520]
 layout_mode = 1

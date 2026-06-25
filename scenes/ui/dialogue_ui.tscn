@@ -4,11 +4,11 @@
 [ext_resource type="FontFile" uid="uid://26svlmw1apk8" path="res://font/Libre_Franklin/static/LibreFranklin-Light.ttf" id="2_sd0pw"]
 [ext_resource type="Texture2D" uid="uid://c6job3pqnpp4i" path="res://graphics/container/showcontainer.png" id="3_ysedr"]
 
-[sub_resource type="Gradient" id="Gradient_y3syv"]
+[sub_resource type="Gradient" id="Gradient_ysedr"]
 colors = PackedColorArray(0.13725491, 0.22352941, 0.2784314, 0.6784314, 0.13725491, 0.22352941, 0.2784314, 0.47058824)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_sd0pw"]
-gradient = SubResource("Gradient_y3syv")
+gradient = SubResource("Gradient_ysedr")
 
 [node name="DialogueUi" type="CanvasLayer" unique_id=934514018]
 

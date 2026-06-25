@@ -1,0 +1,11 @@
+~ start
+Guide: Goodness! You're here! Time to stop these vermin from reaching the server!
+Player: Wait, who are you? Where are we?
+Guide: Save the chatter for later! See those? Ohh, Spams! Those are unsolicited, unwelcome digital communications that are transmitted in large quantities, mostly via email or social media. Kill them by placing the appropriate towers near their path.
+
+- Kill Them
+	Player: Let's get this over with!
+- Come Again? => start
+- End the conversation => END
+
+=> END
