@@ -34,7 +34,7 @@ var TOWER_DATA = {
 		'server_load': 15,
 		'damage': 2,
 		'reload_time': 1.0,
-		'range': 100,
+		'range': 1000,
 		'crit rate': 0,
 		'crit damage': 50,
 		'explosion_radius': 100,
@@ -253,7 +253,15 @@ var TOWER_DATA = {
 		'tier2abilityunlocked': false,
 		'tier3abilityunlocked': false, }
 	}
-		
+
+func calculate_crit_damage(tower_type: int, base_damage: int) -> int:
+	var tower_data = TOWER_DATA.get(tower_type, {})
+	var crit_chance = tower_data.get("crit rate", 0) / 100.0
+	var crit_multiplier = tower_data.get("crit damage", 0) / 100.0
+	if randf() < crit_chance:
+		return int(base_damage * (1.0 + crit_multiplier))
+	return base_damage
+
 var ENEMY_DATA = {
 	Enemy.DEFAULT: {'health': 20, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 100, 'name': "spam", 'damage': 5},
 	Enemy.ADWARE: {'health': 80, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 100, 'name': "adware", 'damage': 12},

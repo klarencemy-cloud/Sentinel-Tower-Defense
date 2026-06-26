@@ -23,7 +23,7 @@ var invisible: bool = false
 var idps_slow_aura := false # For IDPS tier2 passive
 var idps_vulnerability_aura := false # For IDPS tier3 passive
 var vulnerability_multiplier := 1.0 # Damage multiplier for vulnerabilities
-
+var damage_label_template: Label
 
 var previous_pos: Vector2
 
@@ -36,6 +36,9 @@ const FROZEN_TINT: Color = Color(0.1, 0.2, 0.6, 1.0)
 
 func _ready() -> void:
 	add_to_group('Enemies')
+	damage_label_template = $DamageLabel.duplicate() as Label
+	damage_label_template.visible = false
+	$DamageLabel.queue_free()
 	call_deferred("update_hp_bar_position")
 	stun_timer = Timer.new()
 	stun_timer.one_shot = true
@@ -170,16 +173,16 @@ func _process(delta: float):
 		queue_free()
 
 
-func _on_area_entered(bullet: Area2D) -> void:
-	bullet.queue_free()
-	hit(bullet.damage)
-
+##func _on_area_entered(bullet: Area2D) -> void:
+##	bullet.queue_free()
+##	hit(bullet.damage)
+## RESPONSIBLE FOR DOUBLE DAMAGE BUG (I THINK)
 
 func hit(damage: int = 1, tower_id: int = -1):
 	if dead:
 		return
-	
-	print("Eto damage", + damage)
+		
+	print("HIT", damage, " frame:", Engine.get_process_frames())
 	var actual_damage: int = damage
 	if is_frozen and is_frozen_vulnerable:
 		actual_damage = int(ceil(damage * 10))
@@ -260,15 +263,16 @@ func set_invisible(value: bool) -> void:
 		$CollisionShape2D.disabled = invisible
 
 func show_damage(damage: int):
-	var label = $DamageLabel.duplicate()
+	var label = damage_label_template.duplicate() as Label
+	label.name = "DamageLabelPopup"
 	print("SHOW DAMAGE:", damage)
 	label.text = str(damage)
 	label.visible = true
 	label.modulate.a = 1.0
 	label.position = Vector2(
-	randi_range(-10, 10),
-	-60 + randi_range(-5, 5)
-)
+		randi_range(-10, 10),
+		-60 + randi_range(-5, 5)
+	)
 
 	add_child(label)
 
