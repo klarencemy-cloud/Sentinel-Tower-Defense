@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://hpxjyr6s3d57"]
 
 [ext_resource type="Texture2D" uid="uid://de5el4bygu34i" path="res://graphics/buttons/ad1.png" id="1_5lw6y"]
-[ext_resource type="Texture2D" uid="uid://1km0kifxbnbb" path="res://graphics/buttons/ad2.png" id="2_np6jo"]
-[ext_resource type="Texture2D" uid="uid://cf0n3yaufbxiw" path="res://graphics/buttons/ad3.png" id="3_wjkjd"]
-[ext_resource type="Texture2D" uid="uid://b7iouxs74kr7q" path="res://graphics/buttons/ad4.png" id="4_phshh"]
-[ext_resource type="Texture2D" uid="uid://dnnffqpnrypb8" path="res://graphics/buttons/ad5.png" id="5_no4jy"]
+[ext_resource type="Script" uid="uid://cgn8m6nc32dke" path="res://scenes/ads.gd" id="1_55yn2"]
 
 [node name="Control" type="Control" unique_id=666634944]
 layout_mode = 3
@@ -13,69 +10,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_55yn2")
 
-[node name="ad1" type="TextureRect" parent="." unique_id=655144371]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=655144371]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_5lw6y")
 
-[node name="Button" type="Button" parent="ad1" unique_id=1965315284]
-layout_mode = 0
-offset_left = 491.0
-offset_top = 4.0
-offset_right = 549.0
-offset_bottom = 60.0
-
-[node name="ad2" type="TextureRect" parent="." unique_id=2104430364]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_np6jo")
-
-[node name="Button" type="Button" parent="ad2" unique_id=626324485]
-layout_mode = 0
-offset_left = 571.0
-offset_top = 2.0
-offset_right = 614.0
-offset_bottom = 44.0
-
-[node name="ad3" type="TextureRect" parent="." unique_id=643988668]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("3_wjkjd")
-
-[node name="Button" type="Button" parent="ad3" unique_id=759639083]
+[node name="Button" type="Button" parent="TextureRect" unique_id=1965315284]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 581.0
-offset_top = 2.0
-offset_right = 615.0
-offset_bottom = 36.0
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.007
+offset_left = -59.0
+offset_top = 4.0
+offset_right = -1.0
+offset_bottom = 55.835
 
-[node name="ad4" type="TextureRect" parent="." unique_id=1191465200]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("4_phshh")
-
-[node name="Button" type="Button" parent="ad4" unique_id=1448299859]
-layout_mode = 0
-offset_left = 505.0
-offset_top = -1.0
-offset_right = 549.0
-offset_bottom = 42.0
-
-[node name="ad5" type="TextureRect" parent="." unique_id=895257947]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("5_no4jy")
-
-[node name="Button" type="Button" parent="ad5" unique_id=1187100272]
-layout_mode = 0
-offset_left = 519.0
-offset_top = 1.0
-offset_right = 549.0
-offset_bottom = 32.0
+[connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]

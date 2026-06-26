@@ -1,5 +1,5 @@
 extends Node
-
+signal active_adware_changed
 var default_health: float = 100.0
 var default_money: int = 200
 var default_system_load: int = 200
@@ -10,7 +10,7 @@ var is_unli_health: bool = false
 var is_unli_senti_cap: bool = false
 var is_maxed_lvl: bool = false
 signal server_load_changed
-
+signal ads_visible_changed
 
 signal toggle_server_scene # to toggle server upgrade visibility
 
@@ -275,7 +275,16 @@ var ENEMY_DATA = {
 
 }
 
-
+var ads_visible := false:
+	set(value):
+		if ads_visible == value:
+			return
+		ads_visible = value
+		ads_visible_changed.emit()
+var active_adware := 0:
+	set(value):
+		active_adware = value
+		active_adware_changed.emit()
 var currentserverload: int = 0:
 	set(value):
 		currentserverload = value

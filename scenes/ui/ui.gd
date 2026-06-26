@@ -13,9 +13,23 @@ signal start_wave
 
 var tower_card_scene = preload("res://scenes/ui/tower_card.tscn")
 var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
+var ad_popup_scene = preload("res://scenes/ads.tscn")
 
-
+var ad_timer := Timer.new()
+@onready var ad_textures := [
+	preload("res://graphics/buttons/ad1.png"),
+	preload("res://graphics/buttons/ad2.png"),
+	preload("res://graphics/buttons/ad3.png"),
+	preload("res://graphics/buttons/ad4.png"),
+	preload("res://graphics/buttons/ad5.png")
+]
 func _ready() -> void:
+	Data.active_adware_changed.connect(_schedule_next_ad)
+	add_child(ad_timer)
+	ad_timer.one_shot = true
+	ad_timer.timeout.connect(_spawn_random_ad)
+
+	_schedule_next_ad()
 	tower_cards_container.visible = true
 	enemy_cards_container.visible = false
 	Data.server_load_changed.connect(update_server_load)
@@ -177,3 +191,35 @@ func _show_server_upgrade() -> void:
 		$ServerUpgrade.visible = false
 		$Control.visible = true
 		is_shown = false
+
+func _schedule_next_ad():
+	print("Active adware:", Data.active_adware)
+	if Data.active_adware <= 0:
+		print("No adware, not starting timer.")
+		ad_timer.stop()
+		return
+
+	# More adware = shorter delay
+	var delay = randf_range(5.0,8.0) / Data.active_adware
+	print("Starting timer for", delay, "seconds")
+	ad_timer.start(delay)
+
+func _spawn_random_ad():
+	print("Spawning ad")
+	if Data.active_adware <= 0:
+		return
+
+	var popup = ad_popup_scene.instantiate()
+	add_child(popup)
+
+	popup.setup(ad_textures.pick_random())
+	Data.ads_visible = true
+
+	await get_tree().process_frame
+
+	var size = popup.size
+
+	popup.position = Vector2(
+	randf_range(0, get_viewport().size.x - size.x),
+	randf_range(0, get_viewport().size.y - size.y))
+	_schedule_next_ad()
