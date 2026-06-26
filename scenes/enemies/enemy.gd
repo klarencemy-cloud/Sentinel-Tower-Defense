@@ -118,6 +118,10 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$SQL.visible = true
 			enemy_type = $SQL
 			$SQL.material = $SQL.material.duplicate()
+		"rootkit":
+			$Rootkit.visible = true
+			enemy_type = $Rootkit
+			$Rootkit.material = $Rootkit.material.duplicate()
 
 			
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
