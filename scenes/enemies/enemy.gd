@@ -74,6 +74,11 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Spam.visible = true
 			enemy_type = $Spam
 			$Spam.material = $Spam.material.duplicate()
+		"virus":
+			$Virus.visible = true
+			enemy_type = $Virus
+			$Virus.material = $Virus.material.duplicate()
+			Data.active_adware += 1
 		"adware":
 			$Adware.visible = true
 			enemy_type = $Adware
@@ -229,7 +234,7 @@ func hit(damage: int = 1, tower_id: int = -1):
 	get_tree().create_timer(2.0).connect("timeout", Callable(audio, "queue_free"))
 
 	if enemy_type_stats == Data.Enemy.ADWARE:
-		Data.active_adware = max (0, Data.active_adware - 1)
+		Data.active_adware = max(0, Data.active_adware - 1)
 	dead = true
 	Data.money += 10
 	await get_tree().create_timer(0.1).timeout

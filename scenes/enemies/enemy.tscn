@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://di3htj8j0ym2c" path="res://scenes/enemies/enemy.tres" id="2_38ino"]
 [ext_resource type="Texture2D" uid="uid://ds225f3jg8tik" path="res://graphics/enemies/enemies.png" id="3_fcftc"]
 [ext_resource type="AudioStream" uid="uid://jdma8tm1e3e2" path="res://audio/impact.1.ogg" id="4_fcftc"]
+[ext_resource type="Texture2D" uid="uid://d3isx7xodcwuf" path="res://graphics/enemies/enemies2.png" id="4_jt03m"]
 [ext_resource type="Texture2D" uid="uid://1qgvsuhf841g" path="res://graphics/ui/enemyhpbar1.png" id="7_n7575"]
 [ext_resource type="Texture2D" uid="uid://ba1dyadxb3f65" path="res://graphics/ui/enemyhpbar2.png" id="8_qch6t"]
 
@@ -66,6 +67,112 @@ animations = [{
 }],
 "loop": true,
 "name": &"Right",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kugq1"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv7dn"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5rcm"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnmga"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar7pn"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1bjw"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_desjx"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol1g0"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7pus"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q87pd"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_420iy"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsnj8"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq2il"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iv7dn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv7dn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5rcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnmga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar7pn")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1bjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_desjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol1g0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7pus")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q87pd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_420iy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsnj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yq2il")
+}],
+"loop": true,
+"name": &"Up",
 "speed": 5.0
 }]
 
@@ -627,6 +734,17 @@ position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_tihwb")
 animation = &"Right"
 autoplay = "Right"
+
+[node name="Virus" type="AnimatedSprite2D" parent="." unique_id=1623913965]
+visible = false
+texture_filter = 2
+material = SubResource("ShaderMaterial_kugq1")
+position = Vector2(-3, -1)
+scale = Vector2(0.7604167, 0.7604167)
+sprite_frames = SubResource("SpriteFrames_iv7dn")
+animation = &"Right"
+autoplay = "Right"
+offset = Vector2(2.630137, -34.19178)
 
 [node name="Spyware" type="AnimatedSprite2D" parent="." unique_id=1983232872]
 visible = false
