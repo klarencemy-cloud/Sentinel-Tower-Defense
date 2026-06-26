@@ -718,6 +718,7 @@ frame = 3
 frame_progress = 0.5118822
 
 [node name="SQL" type="AnimatedSprite2D" parent="." unique_id=1932437665]
+visible = false
 material = SubResource("ShaderMaterial_pe3k2")
 sprite_frames = SubResource("SpriteFrames_lu5de")
 animation = &"Down"

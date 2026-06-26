@@ -28,7 +28,7 @@ func hit_enemies():
 			stun_duration = 1.5
 			print("tier1 unlocked")
 		else:
-			print("tier1 not unlocked")
+			print("tier1 not unlocked")  
 	
 	for enemy in get_tree().get_nodes_in_group("Enemies"):
 		if global_position.distance_to(enemy.global_position) < explosionrange:
