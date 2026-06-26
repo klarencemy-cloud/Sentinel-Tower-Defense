@@ -24,6 +24,8 @@ var ad_timer := Timer.new()
 	preload("res://graphics/buttons/ad5.png")
 ]
 func _ready() -> void:
+	Data.ads_visible = false
+	Data.active_adware = 0
 	Data.active_adware_changed.connect(_schedule_next_ad)
 	add_child(ad_timer)
 	ad_timer.one_shot = true
