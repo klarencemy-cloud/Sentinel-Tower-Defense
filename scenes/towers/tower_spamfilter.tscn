@@ -25,9 +25,10 @@ shape = SubResource("CircleShape2D_6ku0u")
 stream = ExtResource("5_81w6i")
 
 [node name="AdButton" type="TextureButton" parent="." index="8" unique_id=654513809]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 ignore_texture_size = true
 stretch_mode = 5
 

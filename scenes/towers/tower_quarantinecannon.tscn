@@ -76,9 +76,10 @@ frame_progress = 0.60802555
 stream = ExtResource("6_hfdvg")
 
 [node name="AdButton" type="TextureButton" parent="." index="10" unique_id=393847519]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -19.0
+offset_top = -20.0
+offset_right = 21.0
+offset_bottom = 20.0
 ignore_texture_size = true
 stretch_mode = 5
 

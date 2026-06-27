@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://v0c36vf4hyy5" path="res://scenes/towers/tower_basic.gd" id="2_6ku0u"]
 [ext_resource type="Texture2D" uid="uid://drqd7mybdere0" path="res://graphics/towers/basic/basic tower top.png" id="3_6ku0u"]
 [ext_resource type="AudioStream" uid="uid://sicd08w0ce6c" path="res://audio/bullet.wav" id="5_iqfda"]
-[ext_resource type="Texture2D" uid="uid://0a7rudd1rbhc" path="res://graphics/buttons/ad1.png" id="6_4dajt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ku0u"]
 radius = 100.0
@@ -26,9 +25,11 @@ shape = SubResource("CircleShape2D_6ku0u")
 stream = ExtResource("5_iqfda")
 
 [node name="AdButton" type="TextureButton" parent="." index="8" unique_id=1970184477]
-offset_right = 40.0
-offset_bottom = 40.0
-texture_normal = ExtResource("6_4dajt")
+visible = false
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 ignore_texture_size = true
 stretch_mode = 5
 

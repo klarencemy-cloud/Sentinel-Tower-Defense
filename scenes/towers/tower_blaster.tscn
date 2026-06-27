@@ -105,8 +105,10 @@ stream = ExtResource("5_itnc1")
 
 [node name="AdButton" type="TextureButton" parent="." index="9" unique_id=644171817]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -20.0
+offset_top = -21.0
+offset_right = 20.0
+offset_bottom = 19.0
 ignore_texture_size = true
 stretch_mode = 5
 
