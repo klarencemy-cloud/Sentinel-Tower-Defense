@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://2g8nmivkcpbb" path="res://graphics/container/dialoguecontainer2.png" id="2_ithk8"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
 [ext_resource type="FontFile" uid="uid://26svlmw1apk8" path="res://font/Libre_Franklin/static/LibreFranklin-Light.ttf" id="4_t5syq"]
+[ext_resource type="Texture2D" uid="uid://dsia4nbchfsjw" path="res://graphics/container/choices.png" id="6_2ww5d"]
 [ext_resource type="Texture2D" uid="uid://c6job3pqnpp4i" path="res://graphics/container/showcontainer.png" id="6_onvhc"]
+[ext_resource type="Texture2D" uid="uid://cnaho0dsi12qr" path="res://graphics/container/choice_active.png" id="7_f8dtn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -107,6 +109,26 @@ _data = {
 &"RESET": SubResource("Animation_nlsx6"),
 &"progress": SubResource("Animation_qkmqt")
 }
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f8dtn"]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+texture = ExtResource("6_2ww5d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0hms4"]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+texture = ExtResource("7_f8dtn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h2u8y"]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+texture = ExtResource("7_f8dtn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_skbq4"]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+texture = ExtResource("7_f8dtn")
 
 [node name="ExampleBalloon" type="CanvasLayer" unique_id=1434168376]
 layer = 100
@@ -215,7 +237,7 @@ offset_bottom = 34.799988
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
-theme_override_constants/separation = 2
+theme_override_constants/separation = 4
 alignment = 1
 script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
@@ -223,6 +245,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu" unique_id=914537232]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_f8dtn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0hms4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h2u8y")
+theme_override_styles/focus = SubResource("StyleBoxTexture_skbq4")
 text = "Response example"
 
 [node name="Show" type="TextureRect" parent="Balloon" unique_id=1467588304]
@@ -233,6 +259,13 @@ offset_top = 212.0
 offset_right = 869.0
 offset_bottom = 554.0
 texture = ExtResource("6_onvhc")
+
+[node name="Character" type="TextureRect" parent="Balloon/Show" unique_id=1142477465]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 35.0
+offset_right = 335.0
+offset_bottom = 299.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1116280512]
 unique_name_in_owner = true
