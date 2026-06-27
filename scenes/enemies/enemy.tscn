@@ -782,6 +782,51 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_smbsv"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pe5cd"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orvc1"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(192, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6phno"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(384, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uajiy"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(576, 384, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6phno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pe5cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orvc1")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6phno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uajiy")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_fcftc"]
 radius = 43.046486
 
@@ -908,8 +953,18 @@ autoplay = "Right"
 frame_progress = 0.9832871
 
 [node name="Rootkit" type="AnimatedSprite2D" parent="." unique_id=1755953387]
+visible = false
 material = SubResource("ShaderMaterial_x3klb")
 sprite_frames = SubResource("SpriteFrames_i5650")
+animation = &"Up"
+autoplay = "Right"
+
+[node name="Zero" type="AnimatedSprite2D" parent="." unique_id=8942222]
+visible = false
+texture_filter = 2
+material = SubResource("ShaderMaterial_smbsv")
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_6phno")
 animation = &"Right"
 autoplay = "Right"
 

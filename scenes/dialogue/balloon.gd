@@ -133,6 +133,11 @@ func apply_dialogue_line() -> void:
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
 
+	print(character_label.text)
+	if character_label.text == "Player":
+		$Balloon/Show/Character.texture = load("res://graphics/character/Main_character_icon.png")
+
+
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
 

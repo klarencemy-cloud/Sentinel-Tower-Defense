@@ -78,7 +78,6 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Virus.visible = true
 			enemy_type = $Virus
 			$Virus.material = $Virus.material.duplicate()
-			Data.active_adware += 1
 		"adware":
 			$Adware.visible = true
 			enemy_type = $Adware
@@ -123,6 +122,10 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Rootkit.visible = true
 			enemy_type = $Rootkit
 			$Rootkit.material = $Rootkit.material.duplicate()
+		"zero":
+			$Zero.visible = true
+			enemy_type = $Zero
+			$Zero.material = $Zero.material.duplicate()
 
 			
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
