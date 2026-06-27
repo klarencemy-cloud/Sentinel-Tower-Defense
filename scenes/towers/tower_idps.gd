@@ -1,6 +1,5 @@
 extends Tower
 
-
 func _process(_delta: float) -> void:
 	# Apply passive auras to enemies in range
 	var tower_data = Data.TOWER_DATA.get(type, null)
@@ -31,6 +30,8 @@ func _process(_delta: float) -> void:
 
 
 func _on_reload_timer_timeout() -> void:
+	if disabled_by_ad:
+		return
 	# Get all visible enemies in range
 	var valid_enemies = enemies.size()
 	

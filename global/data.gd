@@ -106,6 +106,7 @@ var TOWER_DATA = {
 		'explosion_radius': 100,
 		'crit rate': 0,
 		'crit damage': 50,
+		'range': 200,
 		'bullet': Bullet.MORTAR_EXPLOSION,
 		'thumbnail': "res://graphics/ui/tower thumbnails/mortar.png",
 		'scene': "res://scenes/towers/mortar_tower.tscn",

@@ -84,6 +84,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			enemy_type = $Adware
 			$Adware.material = $Adware.material.duplicate()
 			Data.active_adware += 1
+			Data.active_adware_changed.emit()
 		"spyware":
 			$Spyware.visible = true
 			enemy_type = $Spyware
@@ -142,8 +143,6 @@ func _process(delta: float):
 	elif is_slowed:
 		current_speed = int(speed * 0.5) # 50% speed when slowed
 		
-	if Data.ads_visible:
-		current_speed = int(current_speed * 1.5)
 	path_follow.progress += current_speed * delta
 
 	
@@ -239,6 +238,7 @@ func hit(damage: int = 1, tower_id: int = -1):
 
 	if enemy_type_stats == Data.Enemy.ADWARE:
 		Data.active_adware = max(0, Data.active_adware - 1)
+		Data.active_adware_changed.emit()
 	dead = true
 	Data.money += 10
 	await get_tree().create_timer(0.1).timeout

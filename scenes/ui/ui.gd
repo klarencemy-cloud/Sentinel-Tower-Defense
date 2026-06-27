@@ -13,15 +13,12 @@ signal start_wave
 
 var tower_card_scene = preload("res://scenes/ui/tower_card.tscn")
 var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
-var ad_popup_scene = preload("res://scenes/ads.tscn")
+
 
 var ad_timer := Timer.new()
 @onready var ad_textures := [
 	preload("res://graphics/buttons/ad1.png"),
-	preload("res://graphics/buttons/ad2.png"),
-	preload("res://graphics/buttons/ad3.png"),
-	preload("res://graphics/buttons/ad4.png"),
-	preload("res://graphics/buttons/ad5.png")
+	preload("res://graphics/buttons/ad2.png")
 ]
 func _ready() -> void:
 	Data.ads_visible = false
@@ -195,33 +192,38 @@ func _show_server_upgrade() -> void:
 		is_shown = false
 
 func _schedule_next_ad():
-	print("Active adware:", Data.active_adware)
 	if Data.active_adware <= 0:
-		print("No adware, not starting timer.")
 		ad_timer.stop()
 		return
 
-	# More adware = shorter delay
-	var delay = randf_range(5.0,8.0) / Data.active_adware
-	print("Starting timer for", delay, "seconds")
+	# Count towers that are not infected
+	var available := 0
+	for tower in get_tree().get_nodes_in_group("Towers"):
+		if !tower.ad_active:
+			available += 1
+
+	# Every tower already has an ad
+	if available == 0:
+		ad_timer.stop()
+		return
+
+	var delay = randf_range(6.0, 10.0) / Data.active_adware
 	ad_timer.start(delay)
 
 func _spawn_random_ad():
-	print("Spawning ad")
 	if Data.active_adware <= 0:
 		return
 
-	var popup = ad_popup_scene.instantiate()
-	add_child(popup)
+	var candidates := []
 
-	popup.setup(ad_textures.pick_random())
-	Data.ads_visible = true
+	for tower in get_tree().get_nodes_in_group("Towers"):
+		if !tower.ad_active:
+			candidates.append(tower)
 
-	await get_tree().process_frame
+	if candidates.is_empty():
+		_schedule_next_ad()
+		return
 
-	var size = popup.size
+	candidates.pick_random().show_ad()
 
-	popup.position = Vector2(
-	randf_range(0, get_viewport().size.x - size.x),
-	randf_range(0, get_viewport().size.y - size.y))
 	_schedule_next_ad()

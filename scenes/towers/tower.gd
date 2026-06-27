@@ -10,7 +10,15 @@ var damage: int = 0
 var reload_time: float = 0.0
 var tower_id
 var range: float = 0.0
+var ad_active := false
+var disabled_by_ad := false
 
+@onready var ad_button = $AdButton
+
+@onready var ads = [
+	preload("res://graphics/buttons/ad1.png"),
+	preload("res://graphics/buttons/ad2.png")
+]
 
 @warning_ignore("unused_signal")
 signal shoot(pos: Vector2, direction: float, bullet_enum: Data.Bullet, damage: int, tower_type: Data.Tower, tower_id: int)
@@ -135,3 +143,24 @@ func apply_crit_to_damage(base_damage: int) -> int:
 	if randf() < crit_chance:
 		return int(base_damage * (1.0 + crit_multiplier))
 	return base_damage
+
+func show_ad():
+	if ad_active:
+		return
+
+	ad_button.texture_normal = ads.pick_random()
+	ad_button.visible = true
+	ad_active = true
+	disabled_by_ad = true
+
+func remove_ad():
+	ad_active = false
+	disabled_by_ad = false
+	ad_button.visible = false
+
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui._schedule_next_ad()
+
+func _on_ad_button_pressed():
+	remove_ad()

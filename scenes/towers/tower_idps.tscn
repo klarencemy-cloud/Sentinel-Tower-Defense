@@ -103,4 +103,12 @@ process_material = SubResource("ParticleProcessMaterial_t8p0d")
 [node name="ShootSound" parent="." index="8" unique_id=1474961134]
 stream = ExtResource("5_hginv")
 
+[node name="AdButton" type="TextureButton" parent="." index="9" unique_id=298330297]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+ignore_texture_size = true
+stretch_mode = 5
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]

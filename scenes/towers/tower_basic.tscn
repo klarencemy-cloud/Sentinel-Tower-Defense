@@ -1,27 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://eobdxp7uhvsb"]
+[gd_scene format=3 uid="uid://eobdxp7uhvsb"]
 
 [ext_resource type="PackedScene" uid="uid://to6d1j5dni6t" path="res://scenes/towers/tower.tscn" id="1_kruwa"]
 [ext_resource type="Texture2D" uid="uid://dcus2mnf1agk7" path="res://graphics/towers/basic/basic tower bottom.png" id="2_4fgg7"]
 [ext_resource type="Script" uid="uid://v0c36vf4hyy5" path="res://scenes/towers/tower_basic.gd" id="2_6ku0u"]
 [ext_resource type="Texture2D" uid="uid://drqd7mybdere0" path="res://graphics/towers/basic/basic tower top.png" id="3_6ku0u"]
 [ext_resource type="AudioStream" uid="uid://sicd08w0ce6c" path="res://audio/bullet.wav" id="5_iqfda"]
+[ext_resource type="Texture2D" uid="uid://0a7rudd1rbhc" path="res://graphics/buttons/ad1.png" id="6_4dajt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ku0u"]
 radius = 100.0
 
-[node name="TowerBasic" instance=ExtResource("1_kruwa")]
+[node name="TowerBasic" unique_id=2039509527 instance=ExtResource("1_kruwa")]
 script = ExtResource("2_6ku0u")
 
-[node name="Base" parent="." index="0"]
+[node name="Base" parent="." index="0" unique_id=230566731]
 texture = ExtResource("2_4fgg7")
 
-[node name="Turret" parent="." index="1"]
+[node name="Turret" parent="." index="1" unique_id=280637358]
 texture = ExtResource("3_6ku0u")
 
-[node name="CollisionShape2D" parent="EnemyDetectionArea" index="0"]
+[node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
 shape = SubResource("CircleShape2D_6ku0u")
 
-[node name="ShootSound" parent="." index="7"]
+[node name="ShootSound" parent="." index="7" unique_id=1474961134]
 stream = ExtResource("5_iqfda")
 
+[node name="AdButton" type="TextureButton" parent="." index="8" unique_id=1970184477]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("6_4dajt")
+ignore_texture_size = true
+stretch_mode = 5
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]

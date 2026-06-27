@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://4q7nxm2ekhm"]
+[gd_scene format=3 uid="uid://4q7nxm2ekhm"]
 
 [ext_resource type="PackedScene" uid="uid://to6d1j5dni6t" path="res://scenes/towers/tower.tscn" id="1_uawef"]
 [ext_resource type="Texture2D" uid="uid://1t08v8xyx2kj" path="res://graphics/towers/mortar/mortar tower down.png" id="2_3wrqq"]
@@ -49,30 +49,38 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TowerMortar" instance=ExtResource("1_uawef")]
+[node name="TowerMortar" unique_id=508108037 instance=ExtResource("1_uawef")]
 script = ExtResource("2_oqusg")
 
-[node name="Base" parent="." index="0"]
+[node name="Base" parent="." index="0" unique_id=230566731]
 texture = ExtResource("2_3wrqq")
 
-[node name="Turret" parent="." index="1"]
+[node name="Turret" parent="." index="1" unique_id=280637358]
 visible = false
 
-[node name="ReloadTimer" parent="." index="3"]
+[node name="ReloadTimer" parent="." index="3" unique_id=18505784]
 wait_time = 3.0
 
-[node name="CrosshairSprite" type="Sprite2D" parent="." index="4"]
+[node name="CrosshairSprite" type="Sprite2D" parent="." index="4" unique_id=473784871]
 visible = false
 texture = ExtResource("3_kgixf")
 
-[node name="ShootAnimation" type="AnimatedSprite2D" parent="." index="8"]
+[node name="ShootAnimation" type="AnimatedSprite2D" parent="." index="8" unique_id=272981294]
 visible = false
 position = Vector2(0, 6)
 sprite_frames = SubResource("SpriteFrames_61v7j")
 frame = 1
 frame_progress = 0.60802555
 
-[node name="ShootSound" parent="." index="9"]
+[node name="ShootSound" parent="." index="9" unique_id=1474961134]
 stream = ExtResource("6_872qs")
 
+[node name="AdButton" type="TextureButton" parent="." index="10" unique_id=926872014]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+ignore_texture_size = true
+stretch_mode = 5
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]

@@ -1,6 +1,5 @@
 extends Tower
 
-
 func show_crosshair():
 	$CrosshairSprite.show()
 
@@ -13,6 +12,8 @@ func finish_placing():
 
 
 func _on_reload_timer_timeout() -> void:
+	if disabled_by_ad:
+		return
 	$ShootAnimation.show()
 	$ShootAnimation.play()
 	$ShootSound.play()

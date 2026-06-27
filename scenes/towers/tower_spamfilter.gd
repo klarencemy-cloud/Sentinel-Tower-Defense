@@ -6,6 +6,8 @@ func _process(_delta: float) -> void:
 		$Turret.rotation -= PI / 2
 
 func _on_reload_timer_timeout() -> void:
+	if disabled_by_ad:
+		return
 	if enemies.size() > 0:
 		var dir = Vector2.DOWN.rotated($Turret.rotation).normalized()
 

@@ -1,7 +1,8 @@
 extends Tower
 
-
 func _on_reload_timer_timeout() -> void:
+	if disabled_by_ad:
+		return
 	if enemies.size() > 0:
 		fire_animation()
 		var base_damage = Data.TOWER_DATA[type]["damage"]

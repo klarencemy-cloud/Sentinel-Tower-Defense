@@ -1,6 +1,5 @@
 extends Tower
 
-
 func show_crosshair():
 	$CrosshairSprite.show()
 
@@ -13,6 +12,8 @@ func finish_placing():
 
 
 func _on_reload_timer_timeout() -> void:
+	if disabled_by_ad:
+		return
 	$ShootAnimation.show()
 	$ShootAnimation.play()
 	$ShootSound.play()
@@ -30,6 +31,3 @@ func _on_reload_timer_timeout() -> void:
 		type,
 		tower_id
 	)
-
-func tower_upgrade():
-	$Base.texture = load("res://graphics/towers/mortar/mortar tower upgrade down.png")

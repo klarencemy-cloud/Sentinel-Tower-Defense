@@ -75,4 +75,12 @@ frame_progress = 0.60802555
 [node name="ShootSound" parent="." index="9" unique_id=1474961134]
 stream = ExtResource("6_hfdvg")
 
+[node name="AdButton" type="TextureButton" parent="." index="10" unique_id=393847519]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+ignore_texture_size = true
+stretch_mode = 5
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]
