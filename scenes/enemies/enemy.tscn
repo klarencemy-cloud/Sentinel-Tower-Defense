@@ -148,7 +148,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_desjx")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_ol1g0")
 }, {
 "duration": 1.0,
@@ -581,44 +581,68 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sb86v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x3klb"]
 shader = ExtResource("2_38ino")
 shader_parameter/Progress = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gjlvt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5650"]
 atlas = ExtResource("3_fcftc")
-region = Rect2(896, 0, 128, 192)
+region = Rect2(1664, 192, 128, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hlcki"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ksyb"]
 atlas = ExtResource("3_fcftc")
-region = Rect2(1024, 0, 128, 192)
+region = Rect2(1792, 192, 128, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0mj1o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3j44"]
 atlas = ExtResource("3_fcftc")
-region = Rect2(1152, 0, 128, 192)
+region = Rect2(1408, 0, 128, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rvkh2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljms8"]
 atlas = ExtResource("3_fcftc")
-region = Rect2(1280, 0, 128, 192)
+region = Rect2(1536, 0, 128, 192)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_b0hgk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gd854"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1664, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrgb2"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1792, 0, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i5650"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gjlvt")
+"texture": SubResource("AtlasTexture_i5650")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hlcki")
+"texture": SubResource("AtlasTexture_7ksyb")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3j44")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0mj1o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rvkh2")
+"texture": SubResource("AtlasTexture_ljms8")
 }],
 "loop": true,
 "name": &"Right",
-"speed": 4.0
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gd854")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrgb2")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pe3k2"]
@@ -718,68 +742,89 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x3klb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_maese"]
 shader = ExtResource("2_38ino")
 shader_parameter/Progress = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i5650"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(1664, 192, 128, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j5xp"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(0, 576, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ksyb"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(1792, 192, 128, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f7v1"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(192, 576, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p3j44"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(1408, 0, 128, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnu57"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(384, 576, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ljms8"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(1536, 0, 128, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvyol"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(576, 576, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gd854"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(1664, 0, 128, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xrgb2"]
-atlas = ExtResource("3_fcftc")
-region = Rect2(1792, 0, 128, 192)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_i5650"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2juqf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i5650")
+"texture": SubResource("AtlasTexture_0j5xp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7ksyb")
-}],
-"loop": true,
-"name": &"Down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p3j44")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ljms8")
+"texture": SubResource("AtlasTexture_8f7v1")
 }],
 "loop": true,
 "name": &"Right",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gd854")
+"texture": SubResource("AtlasTexture_fnu57")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xrgb2")
+"texture": SubResource("AtlasTexture_cvyol")
 }],
 "loop": true,
 "name": &"Up",
-"speed": 5.0
+"speed": 3.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sb86v"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjlvt"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(896, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlcki"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1024, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mj1o"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1152, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvkh2"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1280, 0, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b0hgk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjlvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlcki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mj1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvkh2")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 4.0
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_smbsv"]
@@ -853,6 +898,7 @@ scale = Vector2(0.7604167, 0.7604167)
 sprite_frames = SubResource("SpriteFrames_iv7dn")
 animation = &"Right"
 autoplay = "Right"
+frame_progress = 0.5342863
 offset = Vector2(2.630137, -34.19178)
 
 [node name="Spyware" type="AnimatedSprite2D" parent="." unique_id=1983232872]
@@ -934,6 +980,32 @@ sprite_frames = SubResource("SpriteFrames_nb6gf")
 animation = &"Right"
 autoplay = "Right"
 
+[node name="Rootkit" type="AnimatedSprite2D" parent="." unique_id=1755953387]
+visible = false
+texture_filter = 2
+material = SubResource("ShaderMaterial_x3klb")
+sprite_frames = SubResource("SpriteFrames_i5650")
+animation = &"Up"
+autoplay = "Right"
+
+[node name="SQL" type="AnimatedSprite2D" parent="." unique_id=1932437665]
+visible = false
+texture_filter = 2
+material = SubResource("ShaderMaterial_pe3k2")
+sprite_frames = SubResource("SpriteFrames_lu5de")
+animation = &"Down"
+autoplay = "Right"
+frame_progress = 0.9832871
+
+[node name="DDOS" type="AnimatedSprite2D" parent="." unique_id=518582770]
+visible = false
+texture_filter = 2
+material = SubResource("ShaderMaterial_maese")
+sprite_frames = SubResource("SpriteFrames_2juqf")
+animation = &"Right"
+autoplay = "Right"
+frame_progress = 0.6811385
+
 [node name="Ransomware" type="AnimatedSprite2D" parent="." unique_id=1748488769]
 visible = false
 texture_filter = 2
@@ -943,21 +1015,6 @@ animation = &"Right"
 autoplay = "Right"
 frame = 3
 frame_progress = 0.5118822
-
-[node name="SQL" type="AnimatedSprite2D" parent="." unique_id=1932437665]
-visible = false
-material = SubResource("ShaderMaterial_pe3k2")
-sprite_frames = SubResource("SpriteFrames_lu5de")
-animation = &"Down"
-autoplay = "Right"
-frame_progress = 0.9832871
-
-[node name="Rootkit" type="AnimatedSprite2D" parent="." unique_id=1755953387]
-visible = false
-material = SubResource("ShaderMaterial_x3klb")
-sprite_frames = SubResource("SpriteFrames_i5650")
-animation = &"Up"
-autoplay = "Right"
 
 [node name="Zero" type="AnimatedSprite2D" parent="." unique_id=8942222]
 visible = false

@@ -25,7 +25,7 @@ var current_level_index: int = 0 # map count 0 = level 1
 
 enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, QUARANTINE_CANNON, IDPS}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
-enum Enemy {DEFAULT, VIRUS, ADWARE, SPYWARE, CREDS, WORM, BOTNET, INSIDERTHREAT, RANSOMWARE, SQL, ROOTKIT, ZERO}
+enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO}
 
 var TOWER_DATA = {
 	Tower.BASIC: {
@@ -264,19 +264,19 @@ func calculate_crit_damage(tower_type: int, base_damage: int) -> int:
 	return base_damage
 
 var ENEMY_DATA = {
-	Enemy.DEFAULT: {'health': 20, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 100, 'name': "spam", 'damage': 5},
-	Enemy.VIRUS: {'health': 80, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 100, 'name': "virus", 'damage': 12},
-	Enemy.ADWARE: {'health': 80, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 100, 'name': "adware", 'damage': 12},
-	Enemy.SPYWARE: {'health': 100, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 100, 'name': "spyware", 'damage': 35},
+	Enemy.DEFAULT: {'health': 20, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 105, 'name': "spam", 'damage': 5},
+	Enemy.VIRUS: {'health': 40, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 100, 'name': "virus", 'damage': 10},
+	Enemy.ADWARE: {'health': 80, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 105, 'name': "adware", 'damage': 12},
+	Enemy.WORM: {'health': 30, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "worm", 'damage': 15},
+	Enemy.SPYWARE: {'health': 100, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 115, 'name': "spyware", 'damage': 35},
+	Enemy.BOTNET: {'health': 200, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 105, 'name': "botnet", 'damage': 55},
 	Enemy.CREDS: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "creds", 'damage': 5},
-	Enemy.BOTNET: {'health': 200, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "botnet", 'damage': 55},
-	Enemy.WORM: {'health': 30, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "worm", 'damage': 5},
-	Enemy.INSIDERTHREAT: {'health': 120, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "insiderthreat", 'damage': 80},
-	Enemy.RANSOMWARE: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "ransomware", 'damage': 250},
-	Enemy.SQL: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "sql", 'damage': 250},
-	Enemy.ROOTKIT: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "rootkit", 'damage': 250},
-	Enemy.ZERO: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "zero", 'damage': 250}
-
+	Enemy.INSIDERTHREAT: {'health': 120, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 110, 'name': "insiderthreat", 'damage': 80},
+	Enemy.ROOTKIT: {'health': 200, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "rootkit", 'damage': 100},
+	Enemy.SQL: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 118, 'name': "sql", 'damage': 120},
+	Enemy.DDOS: {'health': 500, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 95, 'name': "ddos", 'damage': 150},
+	Enemy.RANSOMWARE: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 105, 'name': "ransomware", 'damage': 250},
+	Enemy.ZERO: {'health': 220, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 110, 'name': "zero", 'damage': 350}
 }
 
 var ads_visible := false:

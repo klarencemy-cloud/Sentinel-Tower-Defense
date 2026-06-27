@@ -110,18 +110,22 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			enemy_type = $InsiderThreat
 			$InsiderThreat.material = $InsiderThreat.material.duplicate()
 			set_invisible(true)
-		"ransomware":
-			$Ransomware.visible = true
-			enemy_type = $Ransomware
-			$Ransomware.material = $Ransomware.material.duplicate()
-		"sql":
-			$SQL.visible = true
-			enemy_type = $SQL
-			$SQL.material = $SQL.material.duplicate()
 		"rootkit":
 			$Rootkit.visible = true
 			enemy_type = $Rootkit
 			$Rootkit.material = $Rootkit.material.duplicate()
+		"sql":
+			$SQL.visible = true
+			enemy_type = $SQL
+			$SQL.material = $SQL.material.duplicate()
+		"ddos":
+			$DDOS.visible = true
+			enemy_type = $DDOS
+			$DDOS.material = $DDOS.material.duplicate()
+		"ransomware":
+			$Ransomware.visible = true
+			enemy_type = $Ransomware
+			$Ransomware.material = $Ransomware.material.duplicate()
 		"zero":
 			$Zero.visible = true
 			enemy_type = $Zero
