@@ -59,15 +59,21 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	speed = Data.ENEMY_DATA[type]['speed']
 	is_worm = false
 
+	$Spam.visible = false
+	$Virus.visible = false
 	$Spyware.visible = false
 	$Adware.visible = false
-	$Spam.visible = false
 	$Creds.visible = false
 	$Botnet.visible = false
 	$Worm.visible = false
 	$WormSegments.visible = false
 	$InsiderThreat.visible = false
+	$Rootkit.visible = false
+	$SQL.visible = false
+	$DDOS.visible = false
 	$Ransomware.visible = false
+	$Zero.visible = false
+	$Boss1.visible = false
 
 	match Data.ENEMY_DATA[type]['name']:
 		"spam":
@@ -130,7 +136,10 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Zero.visible = true
 			enemy_type = $Zero
 			$Zero.material = $Zero.material.duplicate()
-
+		"boss1":
+			$Boss1.visible = true
+			enemy_type = $Boss1
+			$Boss1.material = $Boss1.material.duplicate()
 			
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
 

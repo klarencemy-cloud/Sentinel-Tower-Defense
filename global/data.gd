@@ -25,7 +25,7 @@ var current_level_index: int = 0 # map count 0 = level 1
 
 enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, QUARANTINE_CANNON, IDPS}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
-enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO}
+enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1}
 
 var TOWER_DATA = {
 	Tower.BASIC: {
@@ -276,7 +276,8 @@ var ENEMY_DATA = {
 	Enemy.SQL: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 118, 'name': "sql", 'damage': 120},
 	Enemy.DDOS: {'health': 500, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 95, 'name': "ddos", 'damage': 150},
 	Enemy.RANSOMWARE: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 105, 'name': "ransomware", 'damage': 250},
-	Enemy.ZERO: {'health': 220, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 110, 'name': "zero", 'damage': 350}
+	Enemy.ZERO: {'health': 220, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 110, 'name': "zero", 'damage': 350},
+	Enemy.BOSS1: {'health': 220, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 110, 'name': "boss1", 'damage': 350}
 }
 
 var ads_visible := false:
