@@ -85,7 +85,7 @@ func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage:
 
 	if bullet_enum == Data.Bullet.FIRE:
 		# Get the tower's range from data
-		var tower_range = 100  # default fallback
+		var tower_range = 100 # default fallback
 		if tower_type != null:
 			var tower_data = Data.TOWER_DATA.get(tower_type, null)
 			if tower_data:
@@ -162,7 +162,11 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if ui:
 		ui.refresh_tower_cards()
 
+	if Data.TOWER_DATA[selected_tower]["name"] == "Spam Filter" and !GameDialogueManager.is_introduction_spam_filter:
+		GameDialogueManager.show_dialogue_spam_filter()
+
 	print("Placed tower ID: ", tower.tower_id)
+
 
 func _on_tower_removed(cell_pos: Vector2i) -> void:
 	if cell_pos in used_cells:

@@ -131,6 +131,7 @@ content_margin_bottom = 5.0
 texture = ExtResource("7_f8dtn")
 
 [node name="ExampleBalloon" type="CanvasLayer" unique_id=1434168376]
+process_mode = 3
 layer = 100
 script = ExtResource("1_36de5")
 
@@ -254,10 +255,10 @@ text = "Response example"
 [node name="Show" type="TextureRect" parent="Balloon" unique_id=1467588304]
 texture_filter = 2
 layout_mode = 0
-offset_left = 447.0
-offset_top = 272.0
-offset_right = 821.0
-offset_bottom = 614.0
+offset_left = 424.03506
+offset_top = 259.0
+offset_right = 835.2163
+offset_bottom = 635.0
 texture = ExtResource("6_onvhc")
 
 [node name="Character" type="TextureRect" parent="Balloon/Show" unique_id=1142477465]

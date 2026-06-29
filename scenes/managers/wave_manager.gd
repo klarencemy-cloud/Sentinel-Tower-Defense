@@ -30,6 +30,8 @@ func update_wave_state() -> void:
 				next_map.emit()
 	
 	if not wave_active and not spawning_wave and enemies.size() == 0:
+		if Data.current_wave == 1 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_defeat_spam:
+			GameDialogueManager.show_dialogue_spam_defeat()
 		if ui and ui.is_auto_enabled():
 			start_wave()
 
@@ -45,7 +47,7 @@ func start_wave() -> void:
 
 	Data.current_wave += 1
 
-
+	
 	if Data.current_wave % 5 == 0:
 		Data.checkpoint_wave = Data.current_wave
 

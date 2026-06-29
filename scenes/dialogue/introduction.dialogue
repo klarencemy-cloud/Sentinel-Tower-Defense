@@ -13,16 +13,17 @@ do GameDialogueManager.is_override=false
 Odysseus: I have been protecting the SERVER for so long. Thankfully, you are here now! 
 Player: What? Wait, where are we?
 Odysseus: Save the chatter for later! See those? Ohh, Spams! They come unwelcome, unsolicited, and in large quantities. So be ready!
-do get_tree().create_timer(3.0).timeout
-Odysseus: This is the server's health. It helps you visualize how many beatings it takes before the SERVER collapses. You don’t want to let it drop to 0! 
+do get_tree().create_timer(1.0).timeout
+Odysseus: Can you see the server's health? It helps you visualize how many beatings it takes before the SERVER collapses. You don’t want to let it drop to 0! 
 Player: These things are so annoying.
 Guide: Spam incoming, get ready.
 => END
 
-~ spam_filer
+~ spam_filter
 Odysseus: Good choice! That tower is called Spam Filter; this was specifically built for this cyber threat.  They have automated security tools that identify, block, redirect, or allow bulk, unwanted, or malicious emails.
 Player: Since when do cyberthreats turn into monsters? 
-Odysseus: I'll explain later. Now, each enemy drops money and exp points for you to upgrade your towers. Let's ramp up its damage before we get overtaken by them.
+Odysseus: I'll explain later. 
+Odysseus: Now, each enemy drops money and exp points for you to upgrade your towers. Let's ramp up its damage before we get overtaken by them.
 Odysseus: Each tower upgrade is important to make your offense stronger. By maxing the upgrades from the first tier, you can unlock upgrades of a stronger caliber.
 => END
 
