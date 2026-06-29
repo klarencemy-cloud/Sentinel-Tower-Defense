@@ -72,6 +72,7 @@ var mutation_cooldown: Timer = Timer.new()
 
 
 func _ready() -> void:
+	GameDialogueManager.show_char.connect(change_character)
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
@@ -92,6 +93,10 @@ func _process(delta: float) -> void:
 	if is_instance_valid(dialogue_line):
 		progress.visible = not dialogue_label.is_typing and dialogue_line.responses.size() == 0 and not dialogue_line.has_tag("voice")
 
+func change_character(name: String):
+			match name:
+				"Mysterious Person":
+					$Balloon/Show/Character.texture = load("res://graphics/sentinels/placeholdersentinels/sentinel.png")
 
 func _unhandled_input(_event: InputEvent) -> void:
 	# Only the balloon is allowed to handle input while it's showing
@@ -133,9 +138,13 @@ func apply_dialogue_line() -> void:
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
 
-	print(character_label.text)
-	if character_label.text == "Player":
-		$Balloon/Show/Character.texture = load("res://graphics/character/Main_character_icon.png")
+
+	if !GameDialogueManager.is_override:
+		match character_label.text:
+			"Player":
+				$Balloon/Show/Character.texture = load("res://graphics/character/Main_character_icon.png")
+			"Odysseus":
+				$Balloon/Show/Character.texture = load("res://graphics/currency/experience.png")
 
 
 	dialogue_label.hide()

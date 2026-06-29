@@ -277,7 +277,7 @@ var ENEMY_DATA = {
 	Enemy.DDOS: {'health': 500, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 95, 'name': "ddos", 'damage': 150},
 	Enemy.RANSOMWARE: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 105, 'name': "ransomware", 'damage': 250},
 	Enemy.ZERO: {'health': 220, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 110, 'name': "zero", 'damage': 350},
-	Enemy.BOSS1: {'health': 220, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 110, 'name': "boss1", 'damage': 350}
+	Enemy.BOSS1: {'health': 15000, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "boss1", 'damage': 100}
 }
 
 var ads_visible := false:

@@ -160,10 +160,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 448.0
-offset_top = -505.0
-offset_right = -277.0
-offset_bottom = -123.0
+offset_left = 400.0
+offset_top = -445.0
+offset_right = -325.0
+offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -179,7 +179,7 @@ modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 0
 offset_left = 63.0
 offset_top = 24.0
-offset_right = 253.0
+offset_right = 379.0
 offset_bottom = 68.0
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 37
@@ -230,10 +230,10 @@ anchor_left = 0.6428543
 anchor_top = 0.41500002
 anchor_right = 0.6428543
 anchor_bottom = 0.41500002
-offset_left = -290.28015
-offset_top = -35.200012
-offset_right = 290.71985
-offset_bottom = 34.799988
+offset_left = -338.28015
+offset_top = 24.799988
+offset_right = 242.71985
+offset_bottom = 94.79999
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
@@ -254,10 +254,10 @@ text = "Response example"
 [node name="Show" type="TextureRect" parent="Balloon" unique_id=1467588304]
 texture_filter = 2
 layout_mode = 0
-offset_left = 495.0
-offset_top = 212.0
-offset_right = 869.0
-offset_bottom = 554.0
+offset_left = 447.0
+offset_top = 272.0
+offset_right = 821.0
+offset_bottom = 614.0
 texture = ExtResource("6_onvhc")
 
 [node name="Character" type="TextureRect" parent="Balloon/Show" unique_id=1142477465]
@@ -266,6 +266,7 @@ offset_left = 46.0
 offset_top = 35.0
 offset_right = 335.0
 offset_bottom = 299.0
+expand_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1116280512]
 unique_name_in_owner = true

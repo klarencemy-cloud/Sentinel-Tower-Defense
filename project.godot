@@ -27,6 +27,7 @@ EnemyStats="*uid://c0kaghc034tq0"
 Defense="*uid://bsaw3m0wic5sd"
 Offense="*uid://w0ak4rdsrh6"
 DialogueManager="*uid://c3rodes2l3gxb"
+GameDialogueManager="*uid://cq0d4xcdugoxl"
 
 [dialogue_manager]
 
