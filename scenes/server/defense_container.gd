@@ -1,5 +1,7 @@
 extends Control
 
+signal refresh_pts
+
 @onready var defense_1: TextureButton = $Defense1
 @onready var defense_2: TextureButton = $Defense2
 @onready var defense_3: TextureButton = $Defense3
@@ -89,24 +91,36 @@ func _upgrade(index: int) -> void:
 	var count = counts[index]
 	
 	if counter < count:
+		match index:
+			0:
+				if Data.server_points < armor_real_cost:
+					return
+				Data.server_points -= armor_real_cost
+				Defense._armor_damage_reduction()
+				_armor_max_level()
+			1:
+				if Data.server_points < skill_slot_price:
+					return
+				Data.server_points -= skill_slot_price
+				Defense._skill_slot_add()
+				_skill_price_increment()
+			2:
+				if Data.server_points < skill_cd_real_cost:
+					return
+				Data.server_points -= skill_cd_real_cost
+				Defense._skill_cooldown_reduction()
+				_skill_cd_max_level()
+			3:
+				if Data.server_points < sentinel_slot_price:
+					return
+				Data.server_points -= sentinel_slot_price
+				Defense._skill_cooldown_reduction()
+				_sentinel_slot_increment()
+
+		refresh_pts.emit()
 		for child in children[index]:
 			if child.name == target_names[index]:
 				child.texture = load("res://graphics/upgrade/Upgraded.png")
-				
-				match index:
-					0:
-						Defense._armor_damage_reduction()
-						_armor_max_level()
-					1:
-						Defense._skill_slot_add()
-						_skill_price_increment()
-					2:
-						Defense._skill_cooldown_reduction()
-						_skill_cd_max_level()
-					3:
-						Defense._skill_cooldown_reduction()
-						_sentinel_slot_increment()
-
 				counters[index] += 1
 				letters[index] = char(letters[index].unicode_at(0) + 1)
 				target_names[index] = base_names[index] + letters[index]

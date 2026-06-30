@@ -204,7 +204,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OffenseContainer" type="Control" parent="UIContainer/ServerUpdate" unique_id=545357456]
-visible = false
 clip_contents = true
 layout_mode = 1
 anchor_left = 0.0875
@@ -1205,6 +1204,7 @@ autowrap_mode = 1
 justification_flags = 42
 
 [node name="EconomyContainer" type="Control" parent="UIContainer/ServerUpdate" unique_id=1888223053]
+visible = false
 clip_contents = true
 layout_mode = 1
 anchor_left = 0.0875

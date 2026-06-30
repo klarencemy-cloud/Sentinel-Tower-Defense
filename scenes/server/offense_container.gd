@@ -1,5 +1,7 @@
 extends Control
 
+signal refresh_pts
+
 @onready var offense_1: TextureButton = $Offense1
 @onready var offense_2: TextureButton = $Offense2
 @onready var offense_3: TextureButton = $Offense3
@@ -74,21 +76,30 @@ func _upgrade(index: int) -> void:
 	var count = counts[index]
 	
 	if counter < count: # checks if max level
+		match index:
+			0:
+				if Data.server_points < dmg_real_cost:
+					return 
+				Data.server_points -= dmg_real_cost
+				Offense._inc_dmg()
+				_damage_max_level()
+			1:
+				if Data.server_points < speed_real_cost:
+					return 
+				Data.server_points -= speed_real_cost
+				Offense._tower_speed()
+				_speed_max_level()
+			2:
+				if Data.server_points < crit_real_cost:
+					return 
+				Data.server_points -= crit_real_cost
+				Offense._crit_chance()
+				_crit_max_level()
+
+		refresh_pts.emit()
 		for child in children[index]:
 			if child.name == target_names[index]:
 				child.texture = load("res://graphics/upgrade/Upgraded.png")
-
-				match index:
-					0:
-						Offense._inc_dmg()
-						_damage_max_level()
-					1:
-						Offense._tower_speed()
-						_speed_max_level()
-					2:
-						Offense._crit_chance()
-						_crit_max_level()
-
 				counters[index] += 1
 				letters[index] = char(letters[index].unicode_at(0) + 1) # Increment letter a to b and so on
 				target_names[index] = base_names[index] + letters[index] # Combine base name and incremented letter "Upgrade1a" to "Upgrade1b"

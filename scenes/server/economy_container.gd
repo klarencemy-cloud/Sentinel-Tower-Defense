@@ -1,5 +1,6 @@
-@tool
 extends Control
+
+signal refresh_pts
 
 @onready var economy_1: TextureButton = $Economy1
 @onready var economy_2: TextureButton = $Economy2
@@ -75,20 +76,32 @@ func _upgrade(index: int) -> void:
 	var count = counts[index]
 	
 	if counter < count: # checks if max level
+		match index:
+			0:
+				if Data.server_points < gold_real_cost:
+					return
+				Data.server_points -= gold_real_cost
+				Economy._gold_drop()
+				_gold_max_level()
+			1:
+				if Data.server_points < exp_rate_real_cost:
+					return
+				Data.server_points -= exp_rate_real_cost
+				Economy._exp_rate()
+				_exp_rate_max_level()
+			2:
+				if Data.server_points < server_load_real_cost:
+					return
+				Data.server_points -= server_load_real_cost
+				Economy._server_load()
+				_server_load_max_level()
+
+		refresh_pts.emit()
 		for child in children[index]:
 			if child.name == target_names[index]:
 				child.texture = load("res://graphics/upgrade/Upgraded.png")
 
-				match index:
-					0:
-						Economy._gold_drop()
-						_gold_max_level()
-					1:
-						Economy._exp_rate()
-						_exp_rate_max_level()
-					2:
-						Economy._server_load()
-						_server_load_max_level()
+				
 
 				counters[index] += 1
 				letters[index] = char(letters[index].unicode_at(0) + 1) # Increment letter a to b and so on
