@@ -1,0 +1,156 @@
+~ start
+Player: Project Sentinel..
+Player: Project Sentinel..
+Player: Every Scripture mentions it.
+Player: And the threats keep on showing up every time it is mentioned.
+Odysseus: I don’t think they’re after it.
+Player: Then what are they after?
+Odysseus: I don’t know.
+Odysseus:  But I have a feeling we’re missing something.
+=> END
+
+~ rootkit
+#[The ground of the battlefield cracked suddenly]
+RootKit: B4CKd00r_EST4BLISH3D.
+#[RootKit digs a tunnel beneath the battlefield]
+Player: Where did it go?
+Odysseus: It created a path. Not just for itself. Others can enter and use that route.
+Player: Now they can attack underneath too?
+Odysseus: They are learning. *Smirk*
+#function to activate rootkit pop-up card
+=> END
+
+~ sql
+SQL Injection: PARSING_DATABASE.
+Player: Did that thing just skip half of the path!?
+Odysseus: SQL Injection.
+Odysseus: it is a cyberattack where malicious SQL code is inserted into vulnerable input fields.
+Odysseus: That thing exploits weaknesses and bypasses security checkpoints, instead of attacking defenses directly.
+Player: Too easy.
+#function to activate sql injection pop-up card
+=> END
+
+~ wrong_ans2
+Odysseus: Focus on the question. 
+Odysseus: What do you think makes an SQL injection a dangerous enemy? => quiz2 
+=> END
+
+~ quiz2
+Odysseus: I’m detecting multiple SQL Injections ahead. What should we do?
+- Place the towers near the SERVER to stop the threats.
+	=>< wrong_ans2
+- Add additional current used protections to handle incoming attacks.
+	=>< wrong_ans2
+- Strengthen the areas near vulnerable checkpoints and prioritize eliminating SQL Injections before they exploit a gap.
+	Odysseus: Excellent.
+	Odysseus: The threats are evolving.
+	Odysseus: And you must evolve faster. => END
+- Wait for the SQL Injection to get closer to the SERVER then place a tower.
+	=>< wrong_ans2
+=> END
+
+~ ddos
+DoS: INFECT..
+DoS: MERGING..
+#[Dos Merged]
+DDoS: OVERLOAD..
+Odysseus: That thing maliciously attempts to disrupt the normal traffic of a targeted network.
+Player: Did they just merge together?
+Odysseus: Yes. They are weak individually.
+Odysseus: So they group to be overwhelming.
+DDoS: We are one
+#function to activate DDOS pop-up card
+=> END
+
+~ strange_discovery
+#[After defeating the wave37]
+Odysseus: Scanning Anomaly.
+Player: What is that?
+Player: The system detects something.
+Odysseus: It’s a cassette tape and a hidden archive.
+#[Odysseus plays the tape]
+#Unknown Voice:
+#	".............................MY DOOM……………."
+#[STATIC]
+#	
+#	"......................IF IT AWAKENS…………"
+#[Record Corrupted]
+Player: MyDoom?
+Odysseus: … never heard of that name.
+Player: The hidden archive.
+Player: Can we access it?
+Odysseus: Yes, but the file appears corrupted.
+Player: Can it be recovered?
+Odysseus: Maybe, if we can find its missing fragments.
+=> END
+
+~ ransomware
+Ransomware: Files encrypted..
+Ransomware: Tick..Tock..
+#[A nearby tower malfuctioned]
+Player: What happened?
+#function to activate ransomware pop-up card
+Odysseus: Ransomware.
+Odysseus: It was a malware that blocks access to a computer system or encrypts its files.
+Odysseus: Now,  It locked one of your towers to conquer the battlefield.
+Ransomware: Payment=Restore Access.
+Player: What?! It is extorting us.
+Odysseus: Well, that is what it is designed to do.
+=> END
+
+~ boss4
+Unknown: *⚠️honk⚠️*
+Unknown: *⚠️honk⚠️*
+Unknown: *⚠️honk⚠️*
+System: Warning. High-Threat enemy detected.
+Player: Another calamity..
+Odysseus: This one concerns me.
+Player: More than Wannacry?
+Odysseus: Much more.
+System: Threat Identified. NOTPETYA.
+NOTPETYA: SEVERE DAMAGE DETECTED.
+NOTPETYA: R3C0V3RY_F0UND.
+Player: That sounds familiar.
+#[Boss Appears]
+NOTPETYA: Pay now to restore health.
+- Pay 3000 Gold
+	NOTPETYA: *Grin*
+	NOTPETYA: PROTOCOL DESTRUCTION INITIATED.
+	Odysseus: It’s a trap!
+#	[NOTPETYA gains speed & damage buff]
+- Ignore
+NOTPETYA: REQUEST DENIED.
+NOTPETYA: RECOVERY IS AN ILLUSION.
+Odysseus: Good choice, you didn’t fall into deception.
+Odysseus: NOTPETYA never cared about payment. Only destruction.
+=> END
+
+~ boss4_hp
+NOTPETYA: MYDOOM..
+NOTPETYA: IS.. COMING..
+Player: That name again..
+=> END
+
+~ boss4_defeated
+NOTPETYA: OPERATION..
+NOTPETYA: SUCCESSFUL..
+Player: Successful?
+Odysseus: Ignore it, don’t let it distract you.
+System: Boss Remnant recovered.
+System: Scripture IV obtained.
+#insert function to show scripture
+Player: So.. This wasn’t all caused by the machines?
+Odysseus: It seems that way.
+Player: Then who is this person? 
+Odysseus: We have no idea who this person might be.
+Player: And Notpetya.. It also mentioned MyDoom.
+Player: Do you think they are connected?
+#[Suspenful music beats starts to play]
+Odysseus: If this Mydoom truly exists..
+Odysseus: Then every High-Threat we’ve faced has only been preparing for it.
+Player: Then everything has been leading us to one final threat.
+Odysseus: Which means we don’t have much time left.
+Odysseus: Let’s recover the remaining fragments.
+Odysseus: That’s where we will find it.
+=> END
+

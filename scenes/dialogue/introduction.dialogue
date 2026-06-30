@@ -32,7 +32,7 @@ Odysseus: That was close!
 Player: Upgrading the canon saves us from that cliff. It really does keep these threats at bay!
 Odysseus: Now, don't be hasty; there are many cyber threats out there that you have not encountered yet. Each of them has ways to find weaknesses in your defense and evolve to find an exploit in your system. This does not mean that these threats will stay the same as you encounter them.
 Player: It's about time that you do the explaining on what on earth is happening!
-
+#insert function that starts cutscene
 => END
 
 ~ backstory
@@ -43,3 +43,118 @@ Odysseus: Yes, to mimic the natural magnetic field of Earth. Normally, a single 
 Spam: SNARL…
 Player: Speaking of the devil
 Odysseus: Brace for another wave!
+#insert function that starts cutscene
+=> END
+
+~ wave2_defeat
+Player: With the core gone, they turn to the closest replica of power they sought…
+Odysseus: Yes, the S.E.R.V.E.R
+
+Player: Wait, wait, wait! That would eventually lead to Earth's collapse. How would it benefit them if they did not have the environment to live in?
+Odysseus: They believe that with enough power, they would be able to conquer worlds and travel light-years to search for more power. 
+Player: What if they ate the sun?
+
+~ player_level
+Odysseus: This gauge gets filled up when you defeat enemies. When it gets full, it will give you a core to upgrade your server.
+=> END
+
+~ server_upgrade
+Odysseus: You’ve leveled up! You can now upgrade the server!
+Odysseus: The server upgrades are a game-changer. It can amplify the damage of your towers, improve your overall defenses, and manage your resource economy. Be wise about where to spend those upgrades!
+=> END
+
+~ wave3_defeat
+Player: Why cyberthreats?
+Odysseus: What?
+Player: I mean, why not a mechanical robot like Dungam?
+Odysseus: Preference perhaps? I mean, since they want to infiltrate a S.E.R.V.E.R, they want to resemble what a technology fears the most. 
+=> END
+
+~ preparation
+Player: Fighting non-stop really takes a toll on your energy.
+Odysseus: It really does. But it seems things have settled down for a bit. 
+Player: It might be the calm before the storm. Better get ready before threats swarm their way in!
+Odysseus: Now that’s the mindset of a strategist! Contingent planning and anticipating cyber attacks are important to minimize damage and to have room to formulate smart decisions on how to deal with the unforeseen. 
+=> END
+
+~ preparation_end
+Odysseus: The threats are already inside the perimeter. Press START to commence.
+#function to activate virus pop-up card
+=> END
+
+~ virus
+Player: Well, this is new.
+Odysseus: Those are Virus. They are malicious software that can infect our defenses, steal information, weaken our towers and damage and disrupt  the server.
+=> END
+
+~ firewall
+Player: What is this?
+Odysseus: You've unlocked a new skill, the Firewall. Let's START the wave for you to know how it actually works.
+Player: Woah! They became faster!
+Odysseus: Quick! Deploy the Firewall!
+=> END
+
+~ firewall_activated
+Odysseus: Firewall prevents unauthorized traffic from entering the system while maintaining a connection with authorized traffic. It slows down the enemies, giving our defenses more time to eliminate them before reaching the SERVER.
+=> END
+
+~ server_upgrade2
+Odysseus: There is a S.E.R.V.E.R. update now.
+#insert function that opens the server, on the threat page
+Player: Player: Now this is new.
+Odysseus: Even I didn't know about that. I guess the S.E.R.V.E.R can scan the threats of their current strength after being defeated. It does not show other threats yet.
+Player: This might come in handy! Once the threats have been detected and countered, data about them is now available.
+=> END
+
+~ adware
+Player: What’s that?
+#insert function to activate adware pop-up card
+Odysseus: That is an Adware. They may not look dangerous, but don’t get yourself too comfortable. They slow down operation by showing an ad and redirection. Their slowing capability can make it easier for the enemy to reach our server. 	
+=> END
+
+~ specialist
+Odysseus: I was wondering when it will be open. It looks like you have unlocked the Analysts' Room.
+Player: Analysts Room??
+Odysseus: Yes, it is a hidden Specialized Facility connected to the SERVER network. It contains only the best of the best Specialists to help our defenses.
+#function to enter analyst room
+Player: What are these silhouettes?
+Odysseus: AHA! Those are the Threat Hunters, Malware Analysts and many more Specialists waiting to be deployed.
+=> END
+
+~ specialist_2
+Odysseus: That’s a purple one. You are very lucky!
+#function to show ethical hacker
+Player: The Ethical Hacker!
+Odysseus: Ohhh that’s a good one! Ethical Hackers are cybersecurity experts who legally intrude on a computer or network to find weaknesses to provide a comprehensive way to further improve a system. 
+Odysseus: The ethical hacker opens the sandbox mode where you can simulate a battle with all the resources. Isn’t that a perk? What an overview you can get to achieve a better win!
+Odysseus: Specialists fight directly on the Battlefield. They can be dragged and dropped anywhere on the map, command their abilities, and can be resurrected again if defeated in a certain amount of time.
+=> END
+
+~ BOSS1
+Unknown: *⚠️honk⚠️*
+Unknown: *⚠️honk⚠️*
+Unknown: *⚠️honk⚠️*
+Player: What’s happening?
+System: Warning. High-Threat enemy detected.
+Odysseus: This Warning, I have not seen this in decades.
+Player: What is it?
+Odysseus: It’s one of the earliest cyberthreats to occur, yet crippled millions of computers, costing billions of global damages.
+#insert function to show effects
+System: Threat Identified: I Love You VIRUS
+Player: Well, that does not sound threatening at all.
+Odysseus: That is exactly why it is dangerous.
+#insert function to activate I Love You Virus pop-up card
+Player: So it is deceptive.
+Odysseus: Precisely. 
+=> END
+
+~ Boss1_defeated
+Player: Pheww. It’s finally over.
+Odysseus: only for now.
+System: Boss Remnant recovered.
+Odysseus: Looks like you got the remnant of the Virus.
+System: Scriptures of the Past unlocked.
+System: Scripture I obtained.
+#insert function to show scripture
+Player: It looks like we have recovered historical data.
+Odysseus: Yes, every High-Threat you defeat drops Remnants containing Scriptures. Some Scriptures can also be recovered as you progress.

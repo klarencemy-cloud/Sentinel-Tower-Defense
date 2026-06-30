@@ -1,0 +1,119 @@
+~ start
+Player: My mind kept recalling what the Conficker said before it died.
+Odysseus: What about it?
+Player: It said, “You never asked who sent me”.
+Odysseus: …
+Player: You heard it too, right?
+Odysseus: I did.
+Player: What do you think it meant?
+Odysseus: I honestly don't know for now.
+Player: You don’t?
+Odysseus: Conficker wasn’t an ordinary threat. 
+Odysseus: It’s a being that is intelligent enough to command an army of botnet nodes. 
+Odysseus: If it said those final words.
+Odysseus: Then they were probably the truth.
+Player: So-someone could have really sent them then?
+Odysseus: Yes, it’s possible.
+Player: Then we’ve been fighting somebody’s army this whole time.
+Odysseus: If that is true.. Then we’re dealing with a much bigger problem than we thought.
+Odysseus: What matters is that Conficker is gone.
+Player: How do we find out?
+Odysseus: There are records.
+Player: Records?
+Odysseus: Historical archive of previous high-threat encounters.
+Odysseus: One name appears frequently among them.
+Player: What name?
+Odysseus: It's the notorious high-threat, Wannacry.
+Odysseus: A threat infamous for spreading and holding entire systems hostage.
+Player: You think the conficker is serving it?
+Odysseus: I don’t know. But I guess that we will encounter it eventually.
+=> END
+
+~ credential_stuffing
+Credential Stuffing: Let’s see what works.
+#function to activate credential stuffing pop-up card
+Credential Stuffing: I'll take that.
+Player: What’s that thing doing?
+Odysseus: That’s the CS,  it copies the ability of a nearby threat and uses it to attack. They do that by using stolen credentials, to gain access, and execute criminal activity.
+Player: So it learns from others.
+Odysseus: Yeah, legend says it can also copy high-threat enemies.
+Player: Let’s hope that’s only a myth
+=> END
+
+~ trojan_horse
+Player: What is that? That doesn’t look hostile.
+Trojan Horse: I’m here to help you.
+#function to activate Trojan Horse pop-up card
+Odysseus: Be careful. Trojan horses are frauds, they may seem trustworthy and safe but they are only created to look like that, they are actually harmful software. Remember, they strike when it gets close to our defenses.
+=> END
+
+~ trojan_horse2
+#[Trojan Horse got close to the tower]
+Trojan Horse: Deception successful, Attack!
+=> END
+
+
+~ wrong_ans1
+	Odysseus: Think carefully..
+	Odysseus: How do you stop something that you can’t see?
+	Odysseus: Now, Try again. => quiz1
+=> END
+
+~ quiz1
+Odysseus: I’m detecting multiple Trojan Horses ahead, what should we do?
+- Let them reveal themselves first before placing a tower.
+	=>< wrong_ans1
+- Allocate resources toward the other enemies, they are the most vulnerable.
+	=>< wrong_ans1
+- Distribute our defenses evenly across the battlefield to avoid creating weak points. 
+	=>< wrong_ans1
+- Deploy detection towers to reveal the Insider Threats, then eliminate them before they infiltrate our defenses.
+	Odysseus: [[Good| Goodjob]].
+	Player: I’m getting better at this!
+	Odysseus: You are.
+=> END
+
+~ insider_threat
+#[An enemy suddenly appeared near the path]
+Insider Threat: I am authorized..
+Player: When did that get through there?
+Player: I didn’t even see it enter our area of resistance.
+#function to activate insider threat pop-up card
+Odysseus: Insider threats can conceal themselves.  These are the users who misuse their authorized access— whether intentionally or accidentally.
+Odysseus: They remain invisible until they get close enough to attack.
+Player: That’s infiltration!
+=> END
+
+~ boss3
+Unknown: *⚠️honk⚠️*
+Unknown: *⚠️honk⚠️*
+Unknown: *⚠️honk⚠️*
+System: Warning. High-Threat enemy detected.
+Player: WannaCry.
+Odysseus: Unfortunately, it really is the infamous high-threat WannaCry.
+System: Threat Identified. WANNACRY.
+WANNACRY: YOUR FILES HAVE BEEN ENCRYPTED.
+WANNACRY: PAYMENT REQUIRED.
+Odysseus: WannaCry’s attack methods is mainly on taking control of your files/towers and demanding payment for its return.
+Player: Alright. I’m not paying.
+WANNACRY: FAILURE TO COMPLY DETECTED.
+#function to activate wannacry pop-up card
+=> END
+~ boss3_hp
+WANNACRY: YOUR DATA BELONGS TO ME!
+Player: It infects more and more of our defenses, forcing them to malfunction.
+WANNACRY: NETWORK ACQUIRED.
+=> END
+
+~ boss3_defeated
+WANNACRY: Encryption Failedd..
+Player: Conficker.. WannaCry.. They both seem connected somehow.
+Odysseus: Maybe they are serving the same purpose.
+System: Boss Remnant recovered.
+System: Scripture III obtained.
+#insert function to show scripture
+Player: The Project Sentinel again.. Every scripture keeps pointing back to it.
+Odysseus: Perhaps, It’s more important than we thought.
+Player: Whatever it is, something tells me I’m getting closer to the answer.
+=> END
+

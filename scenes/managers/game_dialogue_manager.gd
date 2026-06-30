@@ -10,10 +10,10 @@ func show_character(name: String):
 	show_char.emit(name)
 
 
-func show_dialogue_spam_filter():
+func show_dialogue_spam_filter(): # used in tower manager
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "spam_filter")
 	is_introduction_spam_filter = true
 
-func show_dialogue_spam_defeat():
+func show_dialogue_spam_defeat(): # used in wave manager
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "spam_defeat")
 	is_defeat_spam = true

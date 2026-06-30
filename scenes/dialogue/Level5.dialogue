@@ -1,0 +1,300 @@
+~ start
+Player: We’ve heard that name many times already.
+Player: It wasn’t talking about the machines.
+Guide: It is most definitely a higher threat.
+Player: Or maybe..
+Player: The one controlling them, it is the mastermind.
+System: Hidden archive fragment recovered.
+Player: Wait.
+Player: The system recovered a fragment of the hidden archive.
+System: hidden archive fragment 01 restored.
+Player: It’s an audio log.
+#[Audio Log begins]
+Player: Partner.
+Odysseus: It is incomplete.
+Odysseus: Maybe we'll find additional hints along the way.
+=> END
+
+~ zero_day
+Zero-Day: I am the flaw that is never found.
+Player: It seems undetectable to our defenses.
+Odysseus: Zero-Day.
+Odysseus: A threat that no one knows exists or hasn’t been patched yet!
+#function to activate zero day pop-up card
+Player: How do we stop it?
+Odysseus: Deploy Patch Management System.
+=> END
+
+~ wrong_ans3
+Odysseus: C’mon can your defenses detect a threat it can’t even detect? => quiz3
+=> END
+
+~ quiz3
+Odysseus: I’m detecting multiple Zero-Days ahead. What should we do?
+- eploy detection towers and strengthen layered defenses to identify and contain the Zero-Days before they spread.
+	Odysseus: You’re finally thinking like a Sentinel.
+	Player: Like what?
+	Odysseus: ..
+	Odysseus: Forget I said that.
+- Increase antivirus coverage since known signatures can reduce overall risk.
+	=>< wrong_ans3
+- Reserve resources for the incoming boss.
+	=>< wrong_ans3
+- Allocate resources evenly across all threat paths to maintain balanced coverage.
+	=>< wrong_ans3
+=> END
+
+~ hidden_archive
+#[After defeating the wav46]
+System: Hidden archive fragment recovered.
+Player: Another one of the fragments.
+System: hidden archive fragment 02 restored.
+#[Audio Log begins]
+Player: It’s the same person from the 4th Scripture.
+Odysseus: It seems so
+#[Audio Log continue]
+#[Audio Log ended]
+Player: he is still alive.
+Odysseus: …
+=> END
+
+~ hidden_archive2
+#[After defeating the wav48]
+System: Hidden archive fragment recovered.
+System: hidden archive fragment 03 restored.
+#[Audio Log begins]
+Player: That.. sounds familiar.
+
+#[Audio Log ended]
+Odysseus: Look like the archive is still corrupted
+Player: “The perfect deception…”
+Player: “I don’t think we’re just fighting cyberthreats anymore.”
+Odysseus: …
+Odysseus: Neither do I.
+Odysseus: Let’s finish this.
+=> END
+
+~ final_fragment
+#[After defeating the wave 49]
+System: Hidden archive fragment recovered.
+System: hidden archive fully restored.
+Player: Its.. the final fragment.
+#[Audio Log begins]
+#[Audio Log ends]
+Player: Doom?
+Player: That confirms it. MyDoom.
+Odysseus: ...
+Player: So that what the previous Calamities are talking about.
+Odysseus: It would explain everything.
+Player: The Mastermind..
+Odysseus: Perhaps.
+Player: Then we’re almost at the end of this.
+#[SERVER alert activates]
+#*⚠️honk⚠️*      *⚠️honk⚠️*      *⚠️honk⚠️* 
+System: Apex Threat Detected.
+=> END
+
+~ boss5
+Unknown: *⚠️honk⚠️*
+Unknown: *⚠️honk⚠️*
+Unknown: *⚠️honk⚠️*
+Odysseus: We don’t have time for this. Another high-threat is approaching, Player.
+System: Apex Threat Detected.
+MYDOOM: Witness.. the End.
+System: Threat Identified. MYDOOM.
+Odysseus: That is  MyDoom.
+Odysseus: It is one of the fastest spreading cyber threats ever recorded.
+Odysseus: If it reaches the SERVER it’ll be the end of us.
+Odysseus: Don't let it surround us.
+MYDOOM: MASS_INFECTION_INITIATED.
+Player: So it was you all along.
+#function to commence battle
+Spam: You’ve got 99+ new messages.
+Botnet Node: C0NN3CTED.
+WORM: Replicate
+DDoS: OVERLOAD..
+Insider Threat: I am authorized..
+Player: It spawns every swarm enemies we’ve encountered.
+Player: This is gonna be messy.
+=> END
+
+~ boss5_hp
+MYDOOM: MORE..MORE..
+#[Spawn rate increases]
+#[MyDoom Defeated]
+#[Spawned threats began disappearing]
+MYDOOM: G-GUIDE_PROTOCOL..
+MYDOOM: ACTIVE..
+#[Calming music plays]
+=> END
+
+~ boss5_defeated
+System: Apex Threat Eliminated.
+Player: We- WE finally did it!
+Player: It’s finally over.
+Player: Look’s like we finally saved the SERVER..
+Odysseus: I couldn’t have done it without you.
+Odysseus: …
+#[The player started walking toward the glowing SERVER]
+System: Error.
+System: Error.
+System: Error.
+#[lights began flickering]
+Player: What?
+System: Unknown Authority Detected.
+Odysseus: Heh..Heh..Heh.. 
+Player: Odysseus?
+Odysseus: Well done.
+Odysseus: Every threat you defeated..
+Odysseus: Every decision.. Every challenge you overcame..
+Odysseus: I WATCHED THEM ALL.
+Player: …
+Odysseus: You exceeded my expectations.
+Odysseus: A GAME.
+Player: What do you mean?
+Odysseus: This.. Your entire journey up until now.. was nothing more than just a TEST.
+Player: A …Test??
+Odysseus: I wanted to find out if the defender my partner entrusted this world… was truly worthy.
+Player: Why would you do that?
+Odysseus: Because only the strongest deserve to stand at the pinnacle of it all.
+Odysseus: And now I have my answer.
+#[The World began
+ shaking violently.]
+#[Screen fades.]
+=> END
+~ boss6
+Unknown: *⚠️honk⚠️*
+Unknown: *⚠️honk⚠️*
+Unknown: *⚠️honk⚠️*
+Player: Odysseus?
+Odysseus: NOT ANYMORE.
+#[The Guide’s form begins to distort]
+Odysseus: BWAHAHAHA..
+Odysseus: This feels so good.. I despised wearing that coward’s body.
+Odysseus: But that identity served a purpose.
+Player: ..
+Odysseus: You always wondered how I knew so much.
+Odysseus: Why I recognize every threat?
+Odysseus: Why I know all their weaknesses?
+Odysseus: And.. Why I fear all those stupid Scriptures.
+Player: Your partner.. You killed him.
+Odysseus: My partner is a nuisance; he was a fool.
+Player: … And project sentinel.
+Odysseus: You still don’t understand.
+Odysseus: That thing isn’t a place.
+Odysseus: That isn’t a weapon.
+Odysseus: It’s you.
+System: ZENITH Threat Detected.
+System: Threat Identified. TROJAN.
+#[In that moment, The Player’s lost memory returned.]
+System: Identity Confirmed.
+System: CISO Sentinel Activated.
+System: Highest Security authority granted.
+System: Granting the Sentinel Powers to fight Trojan.
+Player: I–It was you.
+Odysseus: At last.
+Odysseus: You finally remembered.
+#[Final battle begins.]
+TROJAN: Rise.
+ILY VIRUS: SPREADING_LOVE.
+CONFICKER: C0NF1CK3R_4CT1VE.
+WANNACRY: ENCRYPTING.
+NOTPETYA: WORLD DESTRUCTION INITIATED.
+MYDOOM: MASS_INFECTION_INITIATED.
+Player: Yo– You’re bringing them back!?
+TROJAN: Every threat you’ve defeated.
+TROJAN: The root of humanities extinction.
+TROJAN: THEY BELONG TO ME.
+=> END
+
+~ boss6_hp
+TROJAN: Enough. I know this is not what you want.
+#[Trojan forces the threats to stop momentarily]
+TROJAN: Sentinel, look around you.
+TROJAN: What do you see?
+Player: A battlefield.
+TROJAN: No. It is humanity’s mistakes.
+Player: You caused all this.
+TROJAN: Did I?
+TROJAN: Think about it.
+TROJAN: Who gave these threats emotions?
+TROJAN: Who drained the Earth’s resources until its core starts to fail?
+Player: …
+TROJAN: Humanity.
+TROJAN: And yet.. They blame them for adapting.
+Player: No. It doesn’t justify what you’ve done.
+TROJAN: Think, Sentinel.
+TROJAN: Why would he grant you the highest authority?
+TROJAN: Why would he give you control over every S.E.R.V.E.R.?
+TROJAN: IT IS BECAUSE HUMANITY’S FUTURE WAS NEVER MEANT IN HUMAN HANDS.
+Player: That is not true.
+TROJAN: Then where are they now?
+#[Long Silence]
+TROJAN: Join me.	
+TROJAN: Together, we can conquer worlds with our power.
+TROJAN: Forget this dying planet.
+TROJAN: No more Weakness.. No more Suffering.
+
+- Join Trojan
+	Player: …
+	Player: No. I have seen what the future ahead of you looks like.
+	Player: Control without freedom.
+	Player: And.. Power without a single purpose.
+- Reject Trojan
+	Player: Humanities are flawed.
+	Player: Despite that..
+	Player: They chose to protect each other.
+	Player: And that is something you’ll never understand Trojan.
+TROJAN: ..
+TROJAN: Too bad, I thought we would come to an understanding. 
+TROJAN: I guess you’ve made your choice.
+TROJAN: Just like your creator did. 
+#[Trojan enters final phase]
+TROJAN: Let’s see if humanity’s last guardian can truly stop me.
+=> END
+
+~ boss6_defeated
+#[All hostile threats began to disappear]
+TROJAN: I–Impossible.
+TROJAN: You were supposed to forget.. Forever.
+Player: There is one thing you never understood, Trojan.
+Player: Memories can be erased.
+Player: Truth may be buried.
+Player: But it will always find a way back.
+TROJAN: Humanity is weak..
+TROJAN: They created suffering.
+TROJAN: And they created us.
+Player: But they also created hope.
+#[Trojan began to disintigrate]
+TROJAN: No..No..This isn’t over.
+Player: It is.
+#[Trojan Disappears]
+#[The sky began clearing]
+System: Artificial Magnetic Field Stabilized
+System: Earth Integrity restored.
+System: Final Scripture obtained.
+=> END
+
+~ ending
+#[The SERVER Core began glowing, signifying a  new beginning]
+Player: So this is what Project Sentinel was for.
+System: Identity Confirmed.
+System: Sentinel Amon.
+System: Highest Authority Active.
+#[Post Credit Ending]
+#[The player looks at the Midnight sky]
+Player: Trojan..
+Player: I wish things could’ve been different.
+#[Cliffhanger(optional)]
+System: New Transmission received.
+Player: What is this?
+System: Origin Unknown.
+System: Status: Encrypted
+Player: .. *Smirks*
+Player: LOOKS LIKE MY WORK ISN’T OVER YET.
+#[SCREEN FADES]
+=> END
+
+
+
+

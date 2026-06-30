@@ -1,0 +1,74 @@
+~ start
+Odysseus: We made it through the High-Threat enemy. Let’s hope there won’t be another.
+Player: So that’s the end of it?
+Odysseus: Stay alert. This may be over for now, but our next visitors are already coming.
+=> END
+
+~ worms
+Player: I was wondering for a while now. I receive these blue cores every time I level up – what are these for?
+Odysseus: That is for the Sentinels. They resemble cybersecurity roles that will help you fight the cyber threats outside. Quick, follow me.
+WORM: REPLICATE.
+WORM: ONE BECAME THREE.
+#function to activate worms pop-up card
+Player: Those things just multiplied!
+Odysseus: Yes, that’s their natural ability. Those are standalone systems that replicate themselves; they spread across networks, often leading to crashes and data theft.
+=> END
+
+~ spyware
+SPYWARE: D̶A̶T̶A̶... C̷O̷N̷S̷U̷M̷E̷... 
+#function to activate spyware pop-up card
+Player: Suddenly, I’m feeling uncomfortable.
+Odysseus: Those are the spyware; they infect towers to reduce their range. At the same time, it increases the enemy's speed and damage. They do that by secretly infiltrating devices to monitor activities, harvest personal information, and transmit it to a third party without consent.
+Odysseus: Eliminate them first to decrease the intensity of the battlefield.	
+=> END
+
+~ botnet
+Botnet Node: Syncing… C0NNECT3D..
+#function to activate botnet pop-up card
+Player: Are those devices?
+Odysseus: Precisely, those are compromised computers that are controlled by the attackers and they use them to perform various disruptions and cybercriminal activities. Now, they evolved to infect and control towers to malfunction, causing it to fire inaccurately.
+=> END
+
+~ Boss2
+Unknown: *⚠️honk⚠️*
+Unknown: *⚠️honk⚠️*
+Unknown: *⚠️honk⚠️*
+System: Warning. High-Threat enemy detected.
+Player: No way.. Not againn.
+Odysseus: This atmosphere.. It’s the Conficker.	Player: You know it?
+Odysseus: It’s one of the most tenacious worms ever created. It infected millions of computers, turning them into an army of botnets.
+Player: You really know your stuff, do you?
+Odysseus: Flattery will get us nowhere. We have more urgent concerns right now!
+#[Red alerts began appearing on the screen]
+Botnet Node: Syncing… C0NNECT3D..
+Botnet Node: await!ng C0mm4nd fr0M the Master..
+Player: What??
+Odysseus: It’s the Conficker. It controls them.
+System: Threat Identified. CONFICKER.
+#function to activate conficker pop-up card
+CONFICKER: Searching for the next host..
+CONFICKER: H0ST F0UND.
+#[Boss appears]
+#[Conficker spawns BotNets across the map]
+Player: This is not good. It’s creating more botnets.
+Odysseus: That is its innate ability.
+Odysseus: We can’t afford to let it live longer, its networks keep on expanding from time to time.
+=> END
+
+~ Boss2_hp
+CONFICKER: The propagation cannot be stopped!!
+Botnet Node(s): C0NNECT3D..C0NNECT3D..C0NNECT3D………………….
+Player: We’re getting surrounded!
+Odysseus: Those are mere distractions, destroy the source!
+=> END
+
+~ Boss2_defeated
+CONFICKER: You nev--r asked who se– me... 
+System: Boss Remnant recovered.
+System: Scripture II obtained.
+#insert function to show scripture
+Player: It seemed to say something.
+Odysseus: Whatever it said, threats can’t be trusted, especially from those high-threats. 
+Player: Anyways, looks like it’s another remnant.
+Odysseus: Then let’s see what untold stories history is willing to share.
+=> END
