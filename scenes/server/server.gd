@@ -14,3 +14,6 @@ func _process(delta: float) -> void:
 func _on_pressed() -> void:
 	get_tree().paused = true
 	Data.toggle_server_scene.emit()
+
+func toggle_particle(state: bool):
+	$GPUParticles2D.visible = state

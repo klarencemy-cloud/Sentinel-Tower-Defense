@@ -1,4 +1,4 @@
-~ start
+~ start 
 do GameDialogueManager.is_override=true
 do GameDialogueManager.show_character("Mysterious Person")
 Mysterious Person : Goodness! You're finally awake. Time to stop these vermin from reaching the server!
