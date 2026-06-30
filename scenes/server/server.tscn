@@ -388,7 +388,31 @@ fill = 1
 fill_from = Vector2(0.50427353, 0.48290598)
 fill_to = Vector2(0.525641, 0)
 
-[node name="Server" type="Button" unique_id=580628515]
+[sub_resource type="Gradient" id="Gradient_hkcox"]
+offsets = PackedFloat32Array(0, 0.3402367)
+colors = PackedColorArray(1, 1, 1, 0, 0.4862745, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kr8px"]
+gradient = SubResource("Gradient_hkcox")
+
+[sub_resource type="Gradient" id="Gradient_jqkn5"]
+colors = PackedColorArray(0.4862745, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hkcox"]
+gradient = SubResource("Gradient_jqkn5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_375b0"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(125, 125, 1)
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 71.67999
+radial_accel_max = 99.99999
+color = Color(0.4862745, 1, 1, 1)
+color_ramp = SubResource("GradientTexture1D_hkcox")
+color_initial_ramp = SubResource("GradientTexture1D_kr8px")
+
+[node name="Server" type="Button" unique_id=580628515 groups=["server"]]
 process_mode = 3
 offset_left = -156.0
 offset_top = -160.0
@@ -402,7 +426,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kr8px")
 script = ExtResource("1_375b0")
 
 [node name="ServerLevel1" type="AnimatedSprite2D" parent="." unique_id=1895705512]
-visible = false
 texture_filter = 2
 position = Vector2(174, 45)
 sprite_frames = SubResource("SpriteFrames_q1xj5")
@@ -418,6 +441,7 @@ autoplay = "default"
 frame_progress = 0.7114606
 
 [node name="ServerLevel3" type="AnimatedSprite2D" parent="." unique_id=1859583404]
+visible = false
 texture_filter = 2
 position = Vector2(174, 45)
 sprite_frames = SubResource("SpriteFrames_tc042")
@@ -459,5 +483,12 @@ scale = Vector2(9.3125, 8.875)
 color = Color(0.101960786, 1, 1, 1)
 range_item_cull_mask = 6
 texture = SubResource("GradientTexture2D_jqkn5")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1918746689]
+visible = false
+position = Vector2(151, 135)
+amount = 20
+visibility_rect = Rect2(-125, -125, 250, 250)
+process_material = SubResource("ParticleProcessMaterial_375b0")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
