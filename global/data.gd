@@ -1,5 +1,6 @@
 extends Node
 signal active_adware_changed
+signal active_ransomware_changed
 var default_health: float = 100.0
 var default_money: int = 200
 var default_system_load: int = 200
@@ -290,6 +291,10 @@ var active_adware := 0:
 	set(value):
 		active_adware = value
 		active_adware_changed.emit()
+var active_ransomware := 0:
+	set(value):
+		active_ransomware = value
+		active_ransomware_changed.emit()
 var currentserverload: int = 0:
 	set(value):
 		currentserverload = value

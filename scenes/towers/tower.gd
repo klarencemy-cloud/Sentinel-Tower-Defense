@@ -12,9 +12,11 @@ var tower_id
 var range: float = 0.0
 var ad_active := false
 var disabled_by_ad := false
+var ransomware_active := false
+var disabled_by_ransomware := false
 
 @onready var ad_button = $AdButton
-
+@onready var pay_button: TextureButton = $PayButton
 @onready var ads = [
 	preload("res://graphics/buttons/ad1.png"),
 	preload("res://graphics/buttons/ad2.png")
@@ -145,7 +147,7 @@ func apply_crit_to_damage(base_damage: int) -> int:
 	return base_damage
 
 func show_ad():
-	if ad_active:
+	if ad_active or ransomware_active:
 		return
 
 	ad_button.texture_normal = ads.pick_random()
@@ -164,3 +166,20 @@ func remove_ad():
 
 func _on_ad_button_pressed():
 	remove_ad()
+
+func ransomware_effect():
+	if ransomware_active or ad_active:
+		return
+
+	ransomware_active = true
+	disabled_by_ransomware = true
+	pay_button.visible = true
+
+func remove_ransomware():
+	ransomware_active = false
+	disabled_by_ransomware = false
+	pay_button.visible = false
+
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui._schedule_next_ransomware()

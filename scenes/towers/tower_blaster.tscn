@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ctglvdto0scv8" path="res://graphics/towers/blaster/blaster.png" id="2_ujad2"]
 [ext_resource type="Texture2D" uid="uid://hqsncaw7fucr" path="res://graphics/explosion animations/fire explosion.png" id="4_6lo63"]
 [ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="5_itnc1"]
+[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_c5o44"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ujad2"]
 radius = 30.0
@@ -112,5 +113,14 @@ offset_bottom = 19.0
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="PayButton" type="TextureButton" parent="." index="10" unique_id=1762815185]
+visible = false
+offset_left = -31.0
+offset_top = -32.0
+offset_right = 33.0
+offset_bottom = 32.0
+texture_normal = ExtResource("6_c5o44")
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]
+[connection signal="pressed" from="PayButton" to="." method="_on_pay_button_pressed"]

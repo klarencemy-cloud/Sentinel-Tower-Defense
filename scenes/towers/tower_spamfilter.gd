@@ -6,7 +6,7 @@ func _process(_delta: float) -> void:
 		$Turret.rotation -= PI / 2
 
 func _on_reload_timer_timeout() -> void:
-	if disabled_by_ad:
+	if disabled_by_ad or disabled_by_ransomware:
 		return
 	if enemies.size() > 0:
 		var dir = Vector2.DOWN.rotated($Turret.rotation).normalized()
@@ -24,3 +24,11 @@ func _on_reload_timer_timeout() -> void:
 		)
 
 		$ShootSound.play()
+
+
+func _on_pay_button_pressed() -> void:
+	if Data.money < 5:
+		return
+
+	Data.money -= 5
+	remove_ransomware()

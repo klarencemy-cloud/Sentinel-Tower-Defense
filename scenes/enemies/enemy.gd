@@ -132,6 +132,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Ransomware.visible = true
 			enemy_type = $Ransomware
 			$Ransomware.material = $Ransomware.material.duplicate()
+			Data.active_ransomware += 1
 		"zero":
 			$Zero.visible = true
 			enemy_type = $Zero
@@ -255,6 +256,9 @@ func hit(damage: int = 1, tower_id: int = -1):
 	if enemy_type_stats == Data.Enemy.ADWARE:
 		Data.active_adware = max(0, Data.active_adware - 1)
 		Data.active_adware_changed.emit()
+	if enemy_type_stats == Data.Enemy.RANSOMWARE:
+		Data.active_ransomware = max(0, Data.active_ransomware - 1)
+		Data.active_ransomware_changed.emit()
 	dead = true
 	Data.money += 10
 	await get_tree().create_timer(0.1).timeout

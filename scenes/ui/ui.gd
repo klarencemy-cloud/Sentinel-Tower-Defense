@@ -16,6 +16,7 @@ var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
 
 
 var ad_timer := Timer.new()
+var ransomware_timer := Timer.new()
 @onready var ad_textures := [
 	preload("res://graphics/buttons/ad1.png"),
 	preload("res://graphics/buttons/ad2.png")
@@ -27,8 +28,14 @@ func _ready() -> void:
 	add_child(ad_timer)
 	ad_timer.one_shot = true
 	ad_timer.timeout.connect(_spawn_random_ad)
-
 	_schedule_next_ad()
+	Data.active_adware = 0
+	
+	Data.active_ransomware_changed.connect(_schedule_next_ransomware)
+	add_child(ransomware_timer)
+	ransomware_timer.one_shot = true
+	ransomware_timer.timeout.connect(_spawn_random_ransomware)
+	
 	tower_cards_container.visible = true
 	enemy_cards_container.visible = false
 	Data.server_load_changed.connect(update_server_load)
@@ -199,7 +206,7 @@ func _schedule_next_ad():
 	# Count towers that are not infected
 	var available := 0
 	for tower in get_tree().get_nodes_in_group("Towers"):
-		if !tower.ad_active:
+		if !tower.ad_active and !tower.ransomware_active:
 			available += 1
 
 	# Every tower already has an ad
@@ -217,7 +224,7 @@ func _spawn_random_ad():
 	var candidates := []
 
 	for tower in get_tree().get_nodes_in_group("Towers"):
-		if !tower.ad_active:
+		if !tower.ad_active and !tower.ransomware_active:
 			candidates.append(tower)
 
 	if candidates.is_empty():
@@ -227,3 +234,37 @@ func _spawn_random_ad():
 	candidates.pick_random().show_ad()
 
 	_schedule_next_ad()
+
+func _schedule_next_ransomware():
+	if Data.active_ransomware <= 0:
+		ransomware_timer.stop()
+		return
+
+	var available := []
+
+	for tower in get_tree().get_nodes_in_group("Towers"):
+		if !tower.ransomware_active and !tower.ad_active:
+			available.append(tower)
+
+	if available.is_empty():
+		ransomware_timer.stop()
+		return
+
+	var delay = randf_range(6.0, 10.0) / Data.active_ransomware
+	ransomware_timer.start(delay)
+	
+func _spawn_random_ransomware():
+	if Data.active_ransomware <= 0:
+		return
+
+	var candidates := []
+
+	for tower in get_tree().get_nodes_in_group("Towers"):
+		if !tower.ransomware_active and !tower.ad_active:
+			candidates.append(tower)
+
+	if candidates.is_empty():
+		return
+
+	candidates.pick_random().ransomware_effect()
+	_schedule_next_ransomware()

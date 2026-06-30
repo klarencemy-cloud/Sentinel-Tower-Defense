@@ -12,7 +12,7 @@ func finish_placing():
 
 
 func _on_reload_timer_timeout() -> void:
-	if disabled_by_ad:
+	if disabled_by_ad or disabled_by_ransomware:
 		return
 	$ShootAnimation.show()
 	$ShootAnimation.play()
@@ -34,3 +34,11 @@ func _on_reload_timer_timeout() -> void:
 
 func tower_upgrade():
 	$Base.texture = load("res://graphics/towers/mortar/mortar tower upgrade down.png")
+
+
+func _on_pay_button_pressed() -> void:
+	if Data.money < 5:
+		return
+
+	Data.money -= 5
+	remove_ransomware()

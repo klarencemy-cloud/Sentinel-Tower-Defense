@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_reload_timer_timeout() -> void:
-	if disabled_by_ad:
+	if disabled_by_ad or disabled_by_ransomware:
 		return
 	# Get all visible enemies in range
 	var valid_enemies = enemies.size()
@@ -55,3 +55,11 @@ func fire_animation():
 
 func tower_upgrade():
 	$Base.texture = load("res://graphics/towers/blaster/blaster upgrade.png")
+
+
+func _on_pay_button_pressed() -> void:
+	if Data.money < 5:
+		return
+
+	Data.money -= 5
+	remove_ransomware()
