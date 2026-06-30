@@ -3,6 +3,9 @@ extends Control
 @onready var offense_1: TextureButton = $Offense1
 @onready var offense_2: TextureButton = $Offense2
 @onready var offense_3: TextureButton = $Offense3
+@onready var damage_cost: Label = $Offense1/Cost
+@onready var speed_cost: Label = $Offense2/Cost
+@onready var crit_cost: Label = $Offense3/Cost
 
 # Count of TextureRect which is total upgrade counts.
 var offense_1_count: int = 0
@@ -22,6 +25,13 @@ var target_names: Array = ["", "", ""]
 var offenses: Array = []
 var counts: Array = []
 var counters: Array = [0, 0, 0]
+
+var dmg_real_cost: int = 1 #price
+var speed_real_cost: int = 1 #price
+var crit_real_cost: int = 1 #price
+var dmg_max_level: int = 0
+var speed_max_level: int = 0
+var crit_max_level: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -71,12 +81,13 @@ func _upgrade(index: int) -> void:
 				match index:
 					0:
 						Offense._inc_dmg()
-					#1:
-						#Defense._skill_slot_add()
-					#2:
-						#Defense._skill_cooldown_reduction()
-					#3:
-						#Defense._skill_cooldown_reduction()
+						_damage_max_level()
+					1:
+						Offense._tower_speed()
+						_speed_max_level()
+					2:
+						Offense._crit_chance()
+						_crit_max_level()
 
 				counters[index] += 1
 				letters[index] = char(letters[index].unicode_at(0) + 1) # Increment letter a to b and so on
@@ -84,3 +95,21 @@ func _upgrade(index: int) -> void:
 				break
 	else:
 		print("Max Level")
+
+
+func _damage_max_level() -> void:
+	dmg_max_level += 1
+	if dmg_max_level == offense_1_count:
+		damage_cost.text = "Max"
+
+
+func _speed_max_level() -> void:
+	speed_max_level += 1
+	if speed_max_level == offense_2_count:
+		speed_cost.text = "Max"
+
+
+func _crit_max_level() -> void:
+	crit_max_level += 1
+	if crit_max_level == offense_3_count:
+		crit_cost.text = "Max"

@@ -4,7 +4,10 @@ extends Control
 @onready var defense_2: TextureButton = $Defense2
 @onready var defense_3: TextureButton = $Defense3
 @onready var defense_4: TextureButton = $Defense4
-
+@onready var skill_cost: Label = $Defense2/Cost
+@onready var sentinel_cost: Label = $Defense4/Cost
+@onready var armor_cost: Label = $Defense1/Cost
+@onready var skill_cd_cost: Label = $Defense3/Cost
 
 # Count of TextureRect which is total upgrade counts.
 var defense1_count: int = 0
@@ -26,6 +29,18 @@ var target_names: Array = ["", "", "", ""]
 var defenses: Array = []
 var counts: Array = []
 var counters: Array = [0, 0, 0, 0]
+
+var armor_real_cost: int = 1  #price
+var skill_cd_real_cost: int = 1 #price
+
+var armor_max_level: int = 0
+var skill_cd_max_level: int = 0 
+
+var skill_slot_price: int = 2 #price
+var price_increment1: int = 2
+
+var sentinel_slot_price: int = 2 #price
+var price_increment2: int = 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -52,21 +67,20 @@ func _ready() -> void:
 			defense4_count += 1
 	
 	counts = [defense1_count, defense2_count, defense3_count, defense4_count]
-
 	
-func _on_defense_upgrade_1_pressed() -> void:
+func _on_defense_upgrade_1_pressed() -> void: # Armor
 	_upgrade(0)
 
 
-func _on_defense_upgrade_2_pressed() -> void:
+func _on_defense_upgrade_2_pressed() -> void: # Skill Slot
 	_upgrade(1)
 
 
-func _on_defense_upgrade_3_pressed() -> void:
+func _on_defense_upgrade_3_pressed() -> void: # Skill CD
 	_upgrade(2)
 
 
-func _on_defense_upgrade_4_pressed() -> void:
+func _on_defense_upgrade_4_pressed() -> void: # Sentinel Deployed
 	_upgrade(3)
 
 
@@ -82,12 +96,16 @@ func _upgrade(index: int) -> void:
 				match index:
 					0:
 						Defense._armor_damage_reduction()
+						_armor_max_level()
 					1:
 						Defense._skill_slot_add()
+						_skill_price_increment()
 					2:
 						Defense._skill_cooldown_reduction()
+						_skill_cd_max_level()
 					3:
 						Defense._skill_cooldown_reduction()
+						_sentinel_slot_increment()
 
 				counters[index] += 1
 				letters[index] = char(letters[index].unicode_at(0) + 1)
@@ -95,3 +113,31 @@ func _upgrade(index: int) -> void:
 				break
 	else:
 		print("Max Level")
+
+
+func _armor_max_level() -> void:
+	armor_max_level += 1
+	if armor_max_level == defense1_count:
+		armor_cost.text = "Max"
+
+
+func _skill_cd_max_level() -> void:
+	skill_cd_max_level += 1
+	if skill_cd_max_level == defense3_count:
+		skill_cd_cost.text = "Max"
+
+
+func _skill_price_increment() -> void:
+	skill_slot_price += price_increment1
+	skill_cost.text = ("Cost: " + str(skill_slot_price))
+
+	if skill_slot_price == 8:
+		skill_cost.text = ("Max")
+
+
+func _sentinel_slot_increment() -> void:
+	sentinel_slot_price += price_increment2
+	sentinel_cost.text = ("Cost: " + str(sentinel_slot_price))
+
+	if sentinel_slot_price == 14:
+		sentinel_cost.text = ("Max")

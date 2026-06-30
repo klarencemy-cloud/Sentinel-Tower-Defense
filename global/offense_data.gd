@@ -9,6 +9,13 @@ const dmg_multiplier: float = 0.02
 func _inc_dmg() -> void:
 	total_dmg += dmg_multiplier
 
+
+func _tower_speed() -> void:
+	pass
+
+func _crit_chance() -> void:
+	pass
+
 func get_tower_stats(tower_enum: Data.Tower) -> Dictionary:
 	var base = Data.TOWER_DATA[tower_enum].duplicate(true)
 	
