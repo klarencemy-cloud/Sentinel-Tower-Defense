@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cyb74dd6rrx1g"]
+
+[ext_resource type="Script" uid="uid://dq3ljhqvjon8d" path="res://scenes/enemies/rootkit_skill.gd" id="1_7hvuw"]
+[ext_resource type="Texture2D" uid="uid://bx7sbu0ygqgv2" path="res://graphics/enemies/rootkitskill.png" id="1_pmicn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7hvuw"]
+radius = 23.0
+height = 118.0
+
+[node name="Area2D" type="Area2D" unique_id=464169998]
+script = ExtResource("1_7hvuw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1587540289]
+texture = ExtResource("1_pmicn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1241080046]
+shape = SubResource("CapsuleShape2D_7hvuw")

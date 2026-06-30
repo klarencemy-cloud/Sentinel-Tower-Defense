@@ -5,7 +5,6 @@ var health: int
 var speed: int
 var dead := false
 var is_worm: bool = false
-
 var dmg_tween: Tween
 var enemy_tween: Tween
 
@@ -30,6 +29,9 @@ var previous_pos: Vector2
 const NORMAL_TINT: Color = Color(1, 1, 1, 1)
 const SLOWED_TINT: Color = Color(0.6, 0.8, 1.0, 1.0)
 const FROZEN_TINT: Color = Color(0.1, 0.2, 0.6, 1.0)
+
+var rootkit_skill_used := false
+const ROOTKIT_PORTAL = preload("res://scenes/enemies/rootkit_skill.tscn")
 
 
 @export var spacing := 32
@@ -161,7 +163,11 @@ func _process(delta: float):
 		current_speed = int(speed * 0.5) # 50% speed when slowed
 		
 	path_follow.progress += current_speed * delta
-
+	
+	if enemy_type_stats == Data.Enemy.ROOTKIT and !rootkit_skill_used:
+		if path_follow.progress_ratio >= randf_range(0.2, 0.3):
+			rootkit_skill_used = true
+			spawn_rootkit_portal()
 	
 	if enemy_type != $Worm:
 		var current_pos = path_follow.global_position
@@ -351,3 +357,29 @@ func _on_stun_end():
 	if pending_slow_duration > 0.0:
 		slow(pending_slow_duration)
 		pending_slow_duration = 0.0
+
+func spawn_rootkit_portal():
+	var entrance = ROOTKIT_PORTAL.instantiate()
+	var exit = ROOTKIT_PORTAL.instantiate()
+
+	get_tree().current_scene.add_child(entrance)
+	get_tree().current_scene.add_child(exit)
+
+	# Entrance
+	entrance.global_position = path_follow.global_position
+	entrance.is_exit = false
+
+	# Exit (10% ahead)
+	var path := path_follow.get_parent()
+	var exit_progress = path_follow.progress + path.curve.get_baked_length() * 0.2
+
+	var temp := PathFollow2D.new()
+	path.add_child(temp)
+	temp.progress = exit_progress
+	exit.global_position = temp.global_position
+	temp.queue_free()
+
+	exit.is_exit = true
+
+	# Tell the entrance where to send enemies
+	entrance.exit_progress = exit_progress
