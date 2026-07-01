@@ -14,10 +14,9 @@ var offense_1_count: int = 0
 var offense_2_count: int = 0
 var offense_3_count: int = 0
 
-# var checks if upgrades are max level
-var offense_1_counter: int = 0
-var offense_2_counter: int = 0
-var offense_3_counter: int = 0
+# var offense_1_counter: int = 0
+# var offense_2_counter: int = 0
+# var offense_3_counter: int = 0
 
 var children: Array = []
 var base_names: Array = ["Upgrade1", "Upgrade2", "Upgrade3"]
@@ -26,14 +25,18 @@ var target_names: Array = ["", "", ""]
 
 var offenses: Array = []
 var counts: Array = []
-var counters: Array = [0, 0, 0]
+# var counters: Array = [0, 0, 0]
 
 var dmg_real_cost: int = 1 #price
 var speed_real_cost: int = 1 #price
 var crit_real_cost: int = 1 #price
-var dmg_max_level: int = 0
-var speed_max_level: int = 0
-var crit_max_level: int = 0
+
+# var dmg_max_level: int = 0
+# var speed_max_level: int = 0
+# var crit_max_level: int = 0
+
+var maxed: Array[bool] = [false, false, false]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,7 +46,7 @@ func _ready() -> void:
 		children.append(offenses[i].get_children())
 		target_names[i] = base_names[i] + letters[i] 
 
-	# Counts total texture rect
+	# Count total TextureRects (visual slots)
 	for child in offense_1.get_children():
 		if child is TextureRect:
 			offense_1_count += 1
@@ -58,7 +61,35 @@ func _ready() -> void:
 	
 	counts = [offense_1_count, offense_2_count, offense_3_count]
 
-	
+	_update_upgrades() # Initial update to reflect current levels and maxed states
+
+
+func _update_upgrades() -> void:
+	for i in range(3):
+		var level = Offense.offense_levels[i] 
+		var count = counts[i]               
+		
+		maxed[i] = Offense.maxed[i]
+		
+		if level >= count:
+			match i:
+				0: damage_cost.text = "Max"
+				1: speed_cost.text = "Max"
+				2: crit_cost.text = "Max"
+		
+		var current_letter = "a"
+		for j in range(level):
+			var target_name = base_names[i] + current_letter
+			for child in children[i]:
+				if child.name == target_name and child is TextureRect:
+					child.texture = load("res://graphics/upgrade/Upgraded.png")
+					break
+			current_letter = char(current_letter.unicode_at(0) + 1)
+		
+		letters[i] = current_letter
+		target_names[i] = base_names[i] + letters[i]
+
+
 func _on_offense_upgrade_1_pressed() -> void:
 	_upgrade(0) 
 
@@ -72,10 +103,10 @@ func _on_offense_upgrade_3_pressed() -> void:
 
 
 func _upgrade(index: int) -> void:
-	var counter = counters[index]
+	var level = Offense.offense_levels[index]
 	var count = counts[index]
 	
-	if counter < count: # checks if max level
+	if level < count: # checks if max level
 		match index:
 			0:
 				if Data.server_points < dmg_real_cost:
@@ -100,27 +131,33 @@ func _upgrade(index: int) -> void:
 		for child in children[index]:
 			if child.name == target_names[index]:
 				child.texture = load("res://graphics/upgrade/Upgraded.png")
-				counters[index] += 1
-				letters[index] = char(letters[index].unicode_at(0) + 1) # Increment letter a to b and so on
-				target_names[index] = base_names[index] + letters[index] # Combine base name and incremented letter "Upgrade1a" to "Upgrade1b"
+				
+				# CHANGED: Increment persistent level in Offense autoload
+				Offense.offense_levels[index] += 1
+				
+				letters[index] = char(letters[index].unicode_at(0) + 1)
+				target_names[index] = base_names[index] + letters[index]
 				break
 	else:
 		print("Max Level")
 
 
 func _damage_max_level() -> void:
-	dmg_max_level += 1
-	if dmg_max_level == offense_1_count:
+	if Offense.offense_levels[0] + 1 >= counts[0]:
 		damage_cost.text = "Max"
+		Offense.maxed[0] = true   
+		maxed[0] = true           
 
 
 func _speed_max_level() -> void:
-	speed_max_level += 1
-	if speed_max_level == offense_2_count:
+	if Offense.offense_levels[1] + 1 >= counts[1]:
 		speed_cost.text = "Max"
+		Offense.maxed[1] = true   
+		maxed[1] = true           
 
 
 func _crit_max_level() -> void:
-	crit_max_level += 1
-	if crit_max_level == offense_3_count:
+	if Offense.offense_levels[2] + 1 >= counts[2]:
 		crit_cost.text = "Max"
+		Offense.maxed[2] = true  
+		maxed[2] = true          

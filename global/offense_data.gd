@@ -6,6 +6,9 @@ var total_crit_chance: float = 0.0
 
 const dmg_multiplier: float = 0.02
 
+var offense_levels: Array[int] = [0, 0, 0]
+var maxed: Array[bool] = [false, false, false]
+
 func _inc_dmg() -> void:
 	total_dmg += dmg_multiplier
 

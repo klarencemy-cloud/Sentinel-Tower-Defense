@@ -17,12 +17,6 @@ var defense2_count: int = 0
 var defense3_count: int = 0
 var defense4_count: int = 0
 
-# var checks if upgrades are max level
-var defense1_counter: int = 0
-var defense2_counter: int = 0
-var defense3_counter: int = 0
-var defense4_counter: int = 0
-
 var children: Array = []
 var base_names: Array = ["Upgrade1", "Upgrade2", "Upgrade3", "Upgrade4"]
 var letters: Array = ["a", "a", "a", "a"]
@@ -30,19 +24,16 @@ var target_names: Array = ["", "", "", ""]
 
 var defenses: Array = []
 var counts: Array = []
-var counters: Array = [0, 0, 0, 0]
 
-var armor_real_cost: int = 1  #price
-var skill_cd_real_cost: int = 1 #price
+var armor_real_cost: int = 1
+var skill_cd_real_cost: int = 1
 
-var armor_max_level: int = 0
-var skill_cd_max_level: int = 0 
+var skill_slot_price: int = 2
+var sentinel_slot_price: int = 2
 
-var skill_slot_price: int = 2 #price
-var price_increment1: int = 2
+const price_increment1: int = 2
+const price_increment2: int = 4
 
-var sentinel_slot_price: int = 2 #price
-var price_increment2: int = 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -55,21 +46,63 @@ func _ready() -> void:
 	for child in defense_1.get_children():
 		if child is TextureRect:
 			defense1_count += 1
-	
 	for child in defense_2.get_children():
 		if child is TextureRect:
 			defense2_count += 1
-
 	for child in defense_3.get_children():
 		if child is TextureRect:
 			defense3_count += 1
-
 	for child in defense_4.get_children():
 		if child is TextureRect:
 			defense4_count += 1
 	
 	counts = [defense1_count, defense2_count, defense3_count, defense4_count]
+
+	skill_slot_price = Defense.skill_slot_price
+	sentinel_slot_price = Defense.sentinel_slot_price
+
+	_update_upgrades()
+
+func _update_upgrades() -> void:
+	for i in range(4):
+		var level = Defense.defense_levels[i]
+		var count = counts[i]
+		
+		_update_cost_label(i)
+		
+		var current_letter = "a"
+		for j in range(level):
+			var target_name = base_names[i] + current_letter
+			for child in children[i]:
+				if child.name == target_name and child is TextureRect:
+					child.texture = load("res://graphics/upgrade/Upgraded.png")
+					break
+			current_letter = char(current_letter.unicode_at(0) + 1)
+		
+		letters[i] = current_letter
+		target_names[i] = base_names[i] + letters[i]
+
+
+func _update_cost_label(index: int) -> void:
+	var level = Defense.defense_levels[index]
+	var count = counts[index]
 	
+	if Defense.maxed[index]:
+		match index:
+			0: armor_cost.text = "Max"
+			1: skill_cost.text = "Max"
+			2: skill_cd_cost.text = "Max"
+			3: sentinel_cost.text = "Max"
+		return
+	
+	# Not maxed — show current cost
+	match index:
+		0: armor_cost.text = "Cost: " + str(armor_real_cost)
+		1: skill_cost.text = "Cost: " + str(skill_slot_price)
+		2: skill_cd_cost.text = "Cost: " + str(skill_cd_real_cost)
+		3: sentinel_cost.text = "Cost: " + str(sentinel_slot_price)
+
+
 func _on_defense_upgrade_1_pressed() -> void: # Armor
 	_upgrade(0)
 
@@ -87,71 +120,88 @@ func _on_defense_upgrade_4_pressed() -> void: # Sentinel Deployed
 
 
 func _upgrade(index: int) -> void:
-	var counter = counters[index]
+	var level = Defense.defense_levels[index]
 	var count = counts[index]
 	
-	if counter < count:
-		match index:
-			0:
-				if Data.server_points < armor_real_cost:
-					return
-				Data.server_points -= armor_real_cost
-				Defense._armor_damage_reduction()
-				_armor_max_level()
-			1:
-				if Data.server_points < skill_slot_price:
-					return
-				Data.server_points -= skill_slot_price
-				Defense._skill_slot_add()
-				_skill_price_increment()
-			2:
-				if Data.server_points < skill_cd_real_cost:
-					return
-				Data.server_points -= skill_cd_real_cost
-				Defense._skill_cooldown_reduction()
-				_skill_cd_max_level()
-			3:
-				if Data.server_points < sentinel_slot_price:
-					return
-				Data.server_points -= sentinel_slot_price
-				Defense._skill_cooldown_reduction()
-				_sentinel_slot_increment()
-
-		refresh_pts.emit()
-		for child in children[index]:
-			if child.name == target_names[index]:
-				child.texture = load("res://graphics/upgrade/Upgraded.png")
-				counters[index] += 1
-				letters[index] = char(letters[index].unicode_at(0) + 1)
-				target_names[index] = base_names[index] + letters[index]
-				break
-	else:
+	if level >= count:
 		print("Max Level")
+		return
+	
+	match index:
+		0:
+			if Data.server_points < armor_real_cost:
+				return
+			Data.server_points -= armor_real_cost
+			Defense._armor_damage_reduction()
+			_armor_max_level()
+		1:
+			if Data.server_points < skill_slot_price:
+				return
+			Data.server_points -= skill_slot_price
+			Defense._skill_slot_add()
+			_skill_price_increment()
+		2:
+			if Data.server_points < skill_cd_real_cost:
+				return
+			Data.server_points -= skill_cd_real_cost
+			Defense._skill_cooldown_reduction()
+			_skill_cd_max_level()
+		3:
+			if Data.server_points < sentinel_slot_price:
+				return
+			Data.server_points -= sentinel_slot_price
+			Defense._sentinel_deployed_add()  
+			_sentinel_slot_increment()
+
+	refresh_pts.emit()
+	
+	# Update visual
+	for child in children[index]:
+		if child.name == target_names[index]:
+			child.texture = load("res://graphics/upgrade/Upgraded.png")
+			letters[index] = char(letters[index].unicode_at(0) + 1)
+			target_names[index] = base_names[index] + letters[index]
+			break
+	
+	# Check if max level after upgrade
+	if Defense.defense_levels[index] >= counts[index]:
+		Defense.maxed[index] = true
+		_update_cost_label(index)
 
 
 func _armor_max_level() -> void:
-	armor_max_level += 1
-	if armor_max_level == defense1_count:
+	if Defense.defense_levels[0] >= defense1_count:
 		armor_cost.text = "Max"
+		Defense.maxed[0] = true
 
 
 func _skill_cd_max_level() -> void:
-	skill_cd_max_level += 1
-	if skill_cd_max_level == defense3_count:
+	if Defense.defense_levels[2] >= defense3_count:
 		skill_cd_cost.text = "Max"
+		Defense.maxed[2] = true
 
 
 func _skill_price_increment() -> void:
-	skill_slot_price += price_increment1
-	skill_cost.text = ("Cost: " + str(skill_slot_price))
-
-	if skill_slot_price == 8:
-		skill_cost.text = ("Max")
+	var times_bought = Defense.defense_levels[1]
+	skill_slot_price = 2 + (times_bought * price_increment1)
+	Defense.skill_slot_price = skill_slot_price
+	
+	if skill_slot_price >= 8:
+		skill_cost.text = "Max"
+		Defense.maxed[1] = true
+		Defense.skill_slot_price = 8  # Cap it
+	else:
+		skill_cost.text = "Cost: " + str(skill_slot_price)
 
 
 func _sentinel_slot_increment() -> void:
-	sentinel_slot_price += price_increment2
-	sentinel_cost.text = ("Cost: " + str(sentinel_slot_price))
-
-	if sentinel_slot_price == 14:
-		sentinel_cost.text = ("Max")
+	var times_bought = Defense.defense_levels[3]
+	sentinel_slot_price = 2 + (times_bought * price_increment2)
+	Defense.sentinel_slot_price = sentinel_slot_price
+	
+	if sentinel_slot_price >= 14:
+		sentinel_cost.text = "Max"
+		Defense.maxed[3] = true
+		Defense.sentinel_slot_price = 14 
+	else:
+		sentinel_cost.text = "Cost: " + str(sentinel_slot_price)
