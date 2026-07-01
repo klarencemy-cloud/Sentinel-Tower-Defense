@@ -17,8 +17,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+
 func _refresh_server_pts() -> void:
 	server_pts.text = str(Data.server_points)
+
 
 func _on_back_btn_pressed() -> void:
 	get_tree().paused = false

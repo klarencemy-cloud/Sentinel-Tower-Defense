@@ -332,7 +332,7 @@ func reset_game():
 	currentserverload = 0
 
 var multiplier: int = 1
-var server_points: int = 0:
+var server_points: int = 30:
 	set(value):
 		server_points = value
 		var server = get_tree().get_first_node_in_group("server")

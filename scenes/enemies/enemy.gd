@@ -215,9 +215,12 @@ func _process(delta: float):
 func hit(damage: int = 1, tower_id: int = -1):
 	if dead:
 		return
-		
+	
+
 	print("HIT", damage, " frame:", Engine.get_process_frames())
+	damage += int(round(damage * Offense.multiplied_total_dmg))
 	var actual_damage: int = damage
+	print("MULTIPLIED DMG: " + str(actual_damage))
 	if is_frozen and is_frozen_vulnerable:
 		actual_damage = int(ceil(damage * 10))
 	
@@ -266,10 +269,9 @@ func hit(damage: int = 1, tower_id: int = -1):
 		Data.active_ransomware = max(0, Data.active_ransomware - 1)
 		Data.active_ransomware_changed.emit()
 	dead = true
-	Data.money += 10
+	Data.money += int(round(10 * Economy.gold_multiplier)) # update money
 
-
-	Data.experience += Data.ENEMY_DATA[enemy_type_stats]["exp"] # update exp points
+	Data.experience += Data.ENEMY_DATA[enemy_type_stats]["exp"] * Economy.exp_multiplier # update exp points
 	await get_tree().create_timer(0.1).timeout
 	queue_free()
 	

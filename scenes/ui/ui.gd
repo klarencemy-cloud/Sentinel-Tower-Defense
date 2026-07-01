@@ -66,6 +66,7 @@ func _ready() -> void:
 		$Control/TextureRect/ScrollContainer/EnemyCardsContainer.add_child(enemy_card)
 		enemy_card.connect('press', sandbox_spawn_enemy)
 
+	Economy.points_changed.connect(update_server_load)
 	update_stats(Data.money, Data.health)
 	update_experience(Data.experience, Data.player_level, Data.default_level_pool)
 	update_wave_label()

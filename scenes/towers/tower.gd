@@ -117,11 +117,11 @@ func hide_ui():
 	$TowerMenu.hide()
 	hide_range()
 
-func refresh_stats():
+func refresh_stats(): 
 	var data = Data.TOWER_DATA[type]
 
 	damage = data["damage"]
-	reload_time = data["reload_time"]
+	reload_time = data["reload_time"] - (data["reload_time"] * Offense.multiplied_atk_speed) # Applies server upgrade reload time or atk speed not sure if working din
 	range = data["range"]
 
 	# reload timer update
@@ -142,7 +142,8 @@ func apply_crit_to_damage(base_damage: int) -> int:
 	var tower_data = Data.TOWER_DATA.get(type, {})
 	var crit_chance = tower_data.get("crit rate", 0) / 100.0
 	var crit_multiplier = tower_data.get("crit damage", 0) / 100.0
-	if randf() < crit_chance:
+	var total_crit_chance = Offense.multiplied_crit_chance + crit_chance # Applies server upgrade crit
+	if randf() < total_crit_chance:
 		return int(base_damage * (1.0 + crit_multiplier))
 	return base_damage
 
