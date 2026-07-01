@@ -129,15 +129,17 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		return
 
 	var cost = Data.TOWER_DATA[selected_tower]["cost"]
+	var using_free: bool = Data.free_towers.get(selected_tower, 0) > 0
 	var systemload = Data.TOWER_DATA[selected_tower]["server_load"]
 	
 	if Data.currentserverload >= Data.maxserverload:
 		place_tower = false
 		return
 		
-	if not Data.is_unli_money and Data.money < cost:
-		place_tower = false
-		return
+	if !using_free:
+		if not Data.is_unli_money and Data.money < cost:
+			place_tower = false
+			return
 
 	used_cells.append(cell_pos)
 
@@ -154,9 +156,19 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	EnemyTower.register_tower(tower.tower_id, selected_tower)
 
 	place_tower = false
-	if not Data.is_unli_money:
-		Data.money -= cost
-	
+	if using_free:
+		var remaining: int = Data.free_towers.get(selected_tower, 0)
+
+		if remaining > 1:
+			Data.free_towers[selected_tower] = remaining - 1
+		else:
+			Data.free_towers.erase(selected_tower)
+	else:
+		if !Data.is_unli_money:
+			Data.money -= cost
+
+		# Only buying permanently increases ownership
+		Data.owned_towers[selected_tower] = Data.owned_towers.get(selected_tower, 0) + 1
 	Data.currentserverload += systemload
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:

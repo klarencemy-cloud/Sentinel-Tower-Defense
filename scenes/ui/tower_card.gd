@@ -3,15 +3,17 @@ extends Button
 var id: Data.Tower = Data.Tower.BASIC
 var cost: int
 signal press(tower_enum: Data.Tower)
-	
+@onready var free_label = $TextureRect/Free/FreeLabel
+@onready var free_badge = $TextureRect/Free
 func setup(new_id: Data.Tower):
 	id = new_id
-	$TextureRect/TowerName.text = Data.TOWER_DATA[id]['name']
-	$TextureRect/ServerLoad.text = str(Data.TOWER_DATA[id]['server_load'])
+	cost = Data.TOWER_DATA[id]["cost"]
+
+	$TextureRect/TowerName.text = Data.TOWER_DATA[id]["name"]
+	$TextureRect/ServerLoad.text = str(Data.TOWER_DATA[id]["server_load"])
 	$TextureRect/TowerCost.text = str(cost)
-	$TextureRect/TextureRect.texture = load(Data.TOWER_DATA[id]['thumbnail'])
-
-
+	$TextureRect/TextureRect.texture = load(Data.TOWER_DATA[id]["thumbnail"])
+	
 func _ready() -> void:
 	if not is_in_group("TowerCard"):
 		add_to_group("TowerCard")
@@ -20,15 +22,24 @@ func _ready() -> void:
 	cost = Data.TOWER_DATA[id]['cost']
 	$TextureRect/TowerCost.text = str(cost)
 	toggle_active(Data.money)
+	update_free_label()
 
 
-func toggle_active(_money: int = 0):
-	var tower_load = Data.TOWER_DATA[id]["server_load"]
+func toggle_active(_money := 0):
+	var load = Data.TOWER_DATA[id]["server_load"]
+	var has_free = Data.free_towers.get(id, 0) > 0
+	var can_buy = Data.is_unli_money or Data.money >= cost
+	var can_use = has_free or can_buy
+	var can_load = Data.currentserverload + load <= Data.maxserverload
+	disabled = !(can_use and can_load)
+	
+func update_free_label():
+	var amount = Data.free_towers.get(id, 0)
 
-	var can_afford_money = Data.is_unli_money or cost <= Data.money
-	var can_afford_load = Data.currentserverload + tower_load <= Data.maxserverload
+	free_badge.visible = amount > 0
 
-	disabled = not (can_afford_money and can_afford_load)
+	if amount > 0:
+		free_label.text = str(amount)
 
 func _on_pressed() -> void:
 	press.emit(id)

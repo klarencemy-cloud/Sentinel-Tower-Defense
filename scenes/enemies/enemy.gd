@@ -371,7 +371,7 @@ func spawn_rootkit_portal():
 
 	# Exit (10% ahead)
 	var path := path_follow.get_parent()
-	var exit_progress = path_follow.progress + path.curve.get_baked_length() * 0.2
+	var exit_progress = path_follow.progress + path.curve.get_baked_length() * 0.15
 
 	var temp := PathFollow2D.new()
 	path.add_child(temp)

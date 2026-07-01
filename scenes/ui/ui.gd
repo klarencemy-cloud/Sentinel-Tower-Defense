@@ -177,7 +177,8 @@ func update_server_load():
 
 func refresh_tower_cards():
 	for card in get_tree().get_nodes_in_group("TowerCard"):
-		card.toggle_active(Data.money)
+		card.toggle_active()
+		card.update_free_label()
 
 
 func _on_stats_counter_button_pressed() -> void:
@@ -214,8 +215,7 @@ func _schedule_next_ad():
 		ad_timer.stop()
 		return
 
-	var delay = randf_range(6.0, 10.0) / Data.active_adware
-	ad_timer.start(delay)
+	ad_timer.start(20.0)
 
 func _spawn_random_ad():
 	if Data.active_adware <= 0:
@@ -250,8 +250,7 @@ func _schedule_next_ransomware():
 		ransomware_timer.stop()
 		return
 
-	var delay = randf_range(6.0, 10.0) / Data.active_ransomware
-	ransomware_timer.start(delay)
+	ransomware_timer.start(20.0)
 	
 func _spawn_random_ransomware():
 	if Data.active_ransomware <= 0:

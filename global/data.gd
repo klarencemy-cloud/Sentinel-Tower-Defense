@@ -24,6 +24,8 @@ var before_max_server_load: int # sandbox save total server load capaccity para 
 var before_level_index: int
 var current_level_index: int = 0 # map count 0 = level 1
 
+var owned_towers: Dictionary = {}
+var free_towers: Dictionary = {}
 enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, QUARANTINE_CANNON, IDPS}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
 enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1}
