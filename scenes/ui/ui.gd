@@ -67,6 +67,7 @@ func _ready() -> void:
 		enemy_card.connect('press', sandbox_spawn_enemy)
 
 	update_stats(Data.money, Data.health)
+	update_experience(Data.experience, Data.player_level, Data.default_level_pool)
 	update_wave_label()
 
 func tower_select(tower_enum: Data.Tower):
@@ -75,6 +76,13 @@ func tower_select(tower_enum: Data.Tower):
 #sandbox
 func sandbox_spawn_enemy(enemy_enum: Data.Enemy):
 	spawn_enemy.emit(enemy_enum)
+
+
+func update_experience(experience: int, level: int, level_pool: float):
+	$Control/TextureRect/PlayerCurrentStats/ExperienceBar.value = experience
+	$Control/TextureRect/PlayerCurrentStats/ExperienceBar/LabelExp.text = str(level)
+	$Control/TextureRect/PlayerCurrentStats/ExperienceBar.max_value = level_pool
+
 
 func update_stats(money: int, health: int):
 	if Data.is_unli_money:

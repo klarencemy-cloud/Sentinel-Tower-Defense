@@ -10,6 +10,9 @@ func show_character(name: String):
 	show_char.emit(name)
 
 
+func show_dialogue_introduction(): # used in loading
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "start")
+
 func show_dialogue_spam_filter(): # used in tower manager
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "spam_filter")
 	is_introduction_spam_filter = true

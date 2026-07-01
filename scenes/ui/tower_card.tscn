@@ -33,16 +33,17 @@ expand_mode = 1
 
 [node name="TowerName" type="Label" parent="TextureRect" unique_id=233343226]
 layout_mode = 0
-offset_left = 45.0
-offset_top = 198.0
-offset_right = 169.0
-offset_bottom = 223.0
+offset_left = 57.0
+offset_top = 190.0
+offset_right = 163.0
+offset_bottom = 231.0
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("3_yp74u")
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 16
 text = "Tower name"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="TowerCost" type="Label" parent="TextureRect" unique_id=358945297]
 layout_mode = 0

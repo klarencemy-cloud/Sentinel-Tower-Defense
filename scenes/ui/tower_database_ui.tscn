@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="6_72m6s"]
 [ext_resource type="Texture2D" uid="uid://cdpfmjb5ui3he" path="res://graphics/backgrounds/databasebg.png" id="6_uhtcm"]
 [ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="7_07cd3"]
+[ext_resource type="Texture2D" uid="uid://bglyuypj0sahq" path="res://graphics/ui/sword.png" id="9_86ccd"]
 
 [node name="TowerDatabaseUi" type="Control" unique_id=1039645555]
 layout_mode = 3
@@ -63,7 +64,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TowerContainer" type="Control" parent="." unique_id=2077580062]
 clip_contents = true
-anchors_preset = 0
+layout_mode = 1
 anchor_left = 0.171875
 anchor_top = 0.14074074
 anchor_right = 0.41614583
@@ -71,107 +72,135 @@ anchor_bottom = 0.8888889
 metadata/_edit_use_anchors_ = true
 
 [node name="CardContainer" type="Control" parent="TowerContainer" unique_id=1261632526]
-anchors_preset = 0
-anchor_top = 0.013613861
+layout_mode = 1
+anchor_top = -1.0903466
 anchor_right = 0.9978678
-anchor_bottom = 1.75
-metadata/_edit_use_anchors_ = true
+anchor_bottom = 0.6460396
+offset_top = 892.00006
+offset_bottom = 1178.0
 
 [node name="Tower1" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=128861833]
+texture_filter = 2
 clip_contents = true
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 0.44230768
-anchor_bottom = 0.17248753
+anchor_bottom = 0.14328004
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("2_fj7kb")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower_Name_1" type="Label" parent="TowerContainer/CardContainer/Tower1" unique_id=1739098055]
-layout_mode = 0
-anchor_left = 0.47826087
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38164252
 anchor_top = 0.80991733
-anchor_right = 0.79710144
+anchor_right = 0.8937198
 anchor_bottom = 0.91735536
+offset_bottom = 216.0
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("6_72m6s")
 theme_override_font_sizes/font_size = 20
-text = "Tower"
-horizontal_alignment = 3
+text = "Spam Filter"
+horizontal_alignment = 1
 vertical_alignment = 3
 autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower2" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=473344375]
-layout_mode = 0
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.5534188
 anchor_right = 0.99572647
-anchor_bottom = 0.17248753
+anchor_bottom = 0.14328004
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("2_fj7kb")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower_Name_2" type="Label" parent="TowerContainer/CardContainer/Tower2" unique_id=2046828434]
-layout_mode = 0
-anchor_left = 0.49758455
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36714977
 anchor_top = 0.80991733
-anchor_right = 0.81642514
+anchor_right = 0.90821254
 anchor_bottom = 0.91735536
+offset_bottom = 216.0
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("6_72m6s")
 theme_override_font_sizes/font_size = 20
-text = "Tower"
-horizontal_alignment = 3
+text = "Antivirus"
+horizontal_alignment = 1
 vertical_alignment = 3
 autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower3" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=294768729]
-layout_mode = 0
-anchor_top = 0.19814683
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.16459444
 anchor_right = 0.44230768
-anchor_bottom = 0.37063435
+anchor_bottom = 0.30787447
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("2_fj7kb")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower_Name_3" type="Label" parent="TowerContainer/CardContainer/Tower3" unique_id=347732356]
-layout_mode = 0
-anchor_left = 0.49758455
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38164252
 anchor_top = 0.80991733
-anchor_right = 0.81642514
+anchor_right = 0.8937198
 anchor_bottom = 0.91735536
+offset_bottom = 215.99997
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("6_72m6s")
 theme_override_font_sizes/font_size = 20
-text = "Tower"
-horizontal_alignment = 3
+text = "Adblocker"
+horizontal_alignment = 1
 vertical_alignment = 3
 autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower4" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=1479714812]
-layout_mode = 0
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.5534188
-anchor_top = 0.19814683
+anchor_top = 0.16459444
 anchor_right = 0.99572647
-anchor_bottom = 0.37063435
+anchor_bottom = 0.30787447
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("2_fj7kb")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower_Name_4" type="Label" parent="TowerContainer/CardContainer/Tower4" unique_id=1166527562]
+texture_filter = 2
 layout_mode = 0
 anchor_left = 0.49758455
 anchor_top = 0.80991733
 anchor_right = 0.81642514
 anchor_bottom = 0.91735536
+offset_bottom = 215.99997
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("6_72m6s")
 theme_override_font_sizes/font_size = 20
-text = "Tower"
+text = "DLP"
 horizontal_alignment = 3
 vertical_alignment = 3
 autowrap_mode = 2
@@ -179,173 +208,237 @@ justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower5" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=413058293]
-layout_mode = 0
-anchor_top = 0.40128297
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.32918888
 anchor_right = 0.44230768
-anchor_bottom = 0.57377046
-offset_bottom = 6.1035156e-05
+anchor_bottom = 0.4724689
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("2_fj7kb")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower_Name_5" type="Label" parent="TowerContainer/CardContainer/Tower5" unique_id=259838159]
-layout_mode = 0
-anchor_left = 0.49758455
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38164252
 anchor_top = 0.80991733
-anchor_right = 0.81642514
+anchor_right = 0.85024154
 anchor_bottom = 0.91735536
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("6_72m6s")
 theme_override_font_sizes/font_size = 20
-text = "Tower"
-horizontal_alignment = 3
-vertical_alignment = 3
+text = "IDPS"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower6" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=1907321790]
-layout_mode = 0
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.5534188
-anchor_top = 0.40128297
+anchor_top = 0.32918888
 anchor_right = 0.99572647
-anchor_bottom = 0.57377046
-offset_bottom = 6.1035156e-05
+anchor_bottom = 0.4724689
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("2_fj7kb")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower_Name_6" type="Label" parent="TowerContainer/CardContainer/Tower6" unique_id=893341228]
-layout_mode = 0
-anchor_left = 0.49758455
-anchor_top = 0.80991733
-anchor_right = 0.81642514
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36714977
+anchor_top = 0.8140496
+anchor_right = 0.87439615
 anchor_bottom = 0.91735536
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("6_72m6s")
 theme_override_font_sizes/font_size = 20
-text = "Tower"
-horizontal_alignment = 3
-vertical_alignment = 3
+text = "Q Cannon"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower7" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=1204519957]
-layout_mode = 0
-anchor_top = 0.6086956
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4937833
 anchor_right = 0.44230768
-anchor_bottom = 0.7811832
-offset_top = 6.1035156e-05
+anchor_bottom = 0.6370633
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("2_fj7kb")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower_Name_7" type="Label" parent="TowerContainer/CardContainer/Tower7" unique_id=527497590]
-layout_mode = 0
-anchor_left = 0.49758455
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38164252
 anchor_top = 0.80991733
-anchor_right = 0.81642514
-anchor_bottom = 0.91735536
+anchor_right = 0.85024154
+anchor_bottom = 0.90909094
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("6_72m6s")
 theme_override_font_sizes/font_size = 20
-text = "Tower"
-horizontal_alignment = 3
-vertical_alignment = 3
+text = "ACS"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower8" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=347680842]
-layout_mode = 0
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.5534188
-anchor_top = 0.6086956
+anchor_top = 0.4937833
 anchor_right = 0.99572647
-anchor_bottom = 0.7811832
-offset_top = 6.1035156e-05
+anchor_bottom = 0.6370633
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("2_fj7kb")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower_Name_8" type="Label" parent="TowerContainer/CardContainer/Tower8" unique_id=143844302]
-layout_mode = 0
-anchor_left = 0.49758455
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36714977
 anchor_top = 0.80991733
-anchor_right = 0.81642514
-anchor_bottom = 0.91735536
+anchor_right = 0.87439615
+anchor_bottom = 0.90909094
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("6_72m6s")
 theme_override_font_sizes/font_size = 20
-text = "Tower"
-horizontal_alignment = 3
-vertical_alignment = 3
+text = "AI Sec"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower9" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=1649747624]
-layout_mode = 0
-anchor_top = 0.8182466
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.65837777
 anchor_right = 0.44230768
-anchor_bottom = 0.99073416
+anchor_bottom = 0.8016578
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("2_fj7kb")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower_Name_9" type="Label" parent="TowerContainer/CardContainer/Tower9" unique_id=1503887012]
-layout_mode = 0
-anchor_left = 0.49758455
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36231884
 anchor_top = 0.80991733
-anchor_right = 0.81642514
-anchor_bottom = 0.91735536
+anchor_right = 0.9178744
+anchor_bottom = 0.892562
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("6_72m6s")
-theme_override_font_sizes/font_size = 20
-text = "Tower"
-horizontal_alignment = 3
-vertical_alignment = 3
+theme_override_font_sizes/font_size = 17
+text = "Ep Protection"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower10" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=1877787450]
-layout_mode = 0
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.5534188
-anchor_top = 0.8182466
+anchor_top = 0.65837777
 anchor_right = 0.99572647
-anchor_bottom = 0.99073416
+anchor_bottom = 0.8016578
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("2_fj7kb")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower_Name_10" type="Label" parent="TowerContainer/CardContainer/Tower10" unique_id=1440194074]
-layout_mode = 0
-anchor_left = 0.49758455
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36714977
 anchor_top = 0.80991733
-anchor_right = 0.81642514
-anchor_bottom = 0.91735536
+anchor_right = 0.87439615
+anchor_bottom = 0.90909094
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("6_72m6s")
 theme_override_font_sizes/font_size = 20
-text = "Tower"
-horizontal_alignment = 3
-vertical_alignment = 3
+text = "Sb Analyzer"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Tower11" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=469410091]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8229722
+anchor_right = 0.44230768
+anchor_bottom = 0.9662522
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_fj7kb")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Tower_Name_10" type="Label" parent="TowerContainer/CardContainer/Tower11" unique_id=535806681]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36714977
+anchor_top = 0.80991733
+anchor_right = 0.87439615
+anchor_bottom = 0.90909094
+theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
+theme_override_fonts/font = ExtResource("6_72m6s")
+theme_override_font_sizes/font_size = 20
+text = "SOAR"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="Databasebg" type="TextureRect" parent="." unique_id=167259212]
 texture_filter = 2
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.47395834
 anchor_top = 0.16203703
-anchor_right = 0.95989585
-anchor_bottom = 0.8388889
+anchor_right = 0.47395834
+anchor_bottom = 0.16203703
 offset_left = 8.0
 offset_top = -24.999985
-offset_right = 8.0
-offset_bottom = -25.0
+offset_right = 941.0
+offset_bottom = 706.0
 texture = ExtResource("6_uhtcm")
 metadata/_edit_use_anchors_ = true
 
@@ -353,11 +446,13 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.11146838
-anchor_top = 0.19425444
-anchor_right = 0.5862808
+anchor_top = 0.10670315
+anchor_right = 0.926045
 anchor_bottom = 0.29001367
+theme_override_constants/line_spacing = -18
 theme_override_font_sizes/font_size = 60
 text = "Counter Measure"
+vertical_alignment = 2
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
@@ -365,16 +460,120 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.11146838
-anchor_top = 0.53351575
+anchor_top = 0.54445964
 anchor_right = 0.926045
-anchor_bottom = 0.75923395
+anchor_bottom = 0.77017784
 theme_override_fonts/font = ExtResource("7_07cd3")
 theme_override_font_sizes/font_size = 20
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 horizontal_alignment = 3
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Sword" type="TextureRect" parent="Databasebg" unique_id=1765417363]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11146838
+anchor_top = 0.29001367
+anchor_right = 0.11146838
+anchor_bottom = 0.29001367
+offset_right = 82.0
+offset_bottom = 82.0
+scale = Vector2(0.4512191, 0.45121938)
+texture = ExtResource("9_86ccd")
+metadata/_edit_use_anchors_ = true
+
+[node name="Damage" type="Label" parent="Databasebg" unique_id=1907092814]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15219721
+anchor_top = 0.30232558
+anchor_right = 0.15219721
+anchor_bottom = 0.30232558
+offset_right = 56.0
+offset_bottom = 19.0
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sword2" type="TextureRect" parent="Databasebg" unique_id=1073644303]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.19614148
+anchor_top = 0.29001367
+anchor_right = 0.19614148
+anchor_bottom = 0.29001367
+offset_right = 82.0
+offset_bottom = 82.0
+scale = Vector2(0.4512191, 0.45121938)
+texture = ExtResource("9_86ccd")
+metadata/_edit_use_anchors_ = true
+
+[node name="Speed" type="Label" parent="Databasebg" unique_id=888561717]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2357985
+anchor_top = 0.30232558
+anchor_right = 0.2357985
+anchor_bottom = 0.30232558
+offset_right = 70.0
+offset_bottom = 19.0
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sword3" type="TextureRect" parent="Databasebg" unique_id=123416035]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.27867097
+anchor_top = 0.29001367
+anchor_right = 0.27867097
+anchor_bottom = 0.29001367
+offset_right = 82.0
+offset_bottom = 82.0
+scale = Vector2(0.4512191, 0.45121938)
+texture = ExtResource("9_86ccd")
+metadata/_edit_use_anchors_ = true
+
+[node name="Type" type="Label" parent="Databasebg" unique_id=868935659]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.31618434
+anchor_top = 0.30232558
+anchor_right = 0.39121115
+anchor_bottom = 0.32831737
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Special" type="Label" parent="Databasebg" unique_id=1066469485]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11146838
+anchor_top = 0.36798906
+anchor_right = 0.926045
+anchor_bottom = 0.44049248
+theme_override_fonts/font = ExtResource("7_07cd3")
+theme_override_font_sizes/font_size = 20
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+horizontal_alignment = 3
 vertical_alignment = 3
 autowrap_mode = 3
 justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="RealLifeDesc" type="Label" parent="Databasebg" unique_id=306347648]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 2.9252295
+anchor_right = 0.5485327
+anchor_bottom = 2.9662693
+offset_left = 104.0
+offset_top = -1784.3428
+offset_right = 103.99997
+offset_bottom = -1784.3428
+theme_override_font_sizes/font_size = 26
+text = "Real Life Description"
+autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [connection signal="gui_input" from="ScrollBarContainer/Bar/Scroll" to="." method="_on_texture_button_gui_input"]
@@ -382,11 +581,22 @@ metadata/_edit_use_anchors_ = true
 [connection signal="gui_input" from="TowerContainer/CardContainer/Tower1" to="." method="_on_tower_1_gui_input"]
 [connection signal="pressed" from="TowerContainer/CardContainer/Tower1" to="." method="_on_tower_1_pressed"]
 [connection signal="gui_input" from="TowerContainer/CardContainer/Tower2" to="." method="_on_tower_2_gui_input"]
+[connection signal="pressed" from="TowerContainer/CardContainer/Tower2" to="." method="_on_tower_2_pressed"]
 [connection signal="gui_input" from="TowerContainer/CardContainer/Tower3" to="." method="_on_tower_3_gui_input"]
+[connection signal="pressed" from="TowerContainer/CardContainer/Tower3" to="." method="_on_tower_3_pressed"]
 [connection signal="gui_input" from="TowerContainer/CardContainer/Tower4" to="." method="_on_tower_4_gui_input"]
+[connection signal="pressed" from="TowerContainer/CardContainer/Tower4" to="." method="_on_tower_4_pressed"]
 [connection signal="gui_input" from="TowerContainer/CardContainer/Tower5" to="." method="_on_tower_5_gui_input"]
+[connection signal="pressed" from="TowerContainer/CardContainer/Tower5" to="." method="_on_tower_5_pressed"]
 [connection signal="gui_input" from="TowerContainer/CardContainer/Tower6" to="." method="_on_tower_6_gui_input"]
+[connection signal="pressed" from="TowerContainer/CardContainer/Tower6" to="." method="_on_tower_6_pressed"]
 [connection signal="gui_input" from="TowerContainer/CardContainer/Tower7" to="." method="_on_tower_7_gui_input"]
+[connection signal="pressed" from="TowerContainer/CardContainer/Tower7" to="." method="_on_tower_7_pressed"]
 [connection signal="gui_input" from="TowerContainer/CardContainer/Tower8" to="." method="_on_tower_8_gui_input"]
+[connection signal="pressed" from="TowerContainer/CardContainer/Tower8" to="." method="_on_tower_8_pressed"]
 [connection signal="gui_input" from="TowerContainer/CardContainer/Tower9" to="." method="_on_tower_9_gui_input"]
+[connection signal="pressed" from="TowerContainer/CardContainer/Tower9" to="." method="_on_tower_9_pressed"]
 [connection signal="gui_input" from="TowerContainer/CardContainer/Tower10" to="." method="_on_tower_10_gui_input"]
+[connection signal="pressed" from="TowerContainer/CardContainer/Tower10" to="." method="_on_tower_10_pressed"]
+[connection signal="gui_input" from="TowerContainer/CardContainer/Tower11" to="." method="_on_tower_10_gui_input"]
+[connection signal="pressed" from="TowerContainer/CardContainer/Tower11" to="." method="_on_tower_11_pressed"]

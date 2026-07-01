@@ -267,20 +267,20 @@ func calculate_crit_damage(tower_type: int, base_damage: int) -> int:
 	return base_damage
 
 var ENEMY_DATA = {
-	Enemy.DEFAULT: {'health': 20, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 105, 'name': "spam", 'damage': 5},
-	Enemy.VIRUS: {'health': 40, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 100, 'name': "virus", 'damage': 10},
-	Enemy.ADWARE: {'health': 80, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 105, 'name': "adware", 'damage': 12},
-	Enemy.WORM: {'health': 30, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "worm", 'damage': 15},
-	Enemy.SPYWARE: {'health': 100, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 115, 'name': "spyware", 'damage': 35},
-	Enemy.BOTNET: {'health': 200, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 105, 'name': "botnet", 'damage': 55},
-	Enemy.CREDS: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "creds", 'damage': 5},
-	Enemy.INSIDERTHREAT: {'health': 120, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 110, 'name': "insiderthreat", 'damage': 80},
-	Enemy.ROOTKIT: {'health': 200, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "rootkit", 'damage': 100},
-	Enemy.SQL: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 118, 'name': "sql", 'damage': 120},
-	Enemy.DDOS: {'health': 500, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 95, 'name': "ddos", 'damage': 150},
-	Enemy.RANSOMWARE: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 105, 'name': "ransomware", 'damage': 250},
-	Enemy.ZERO: {'health': 220, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 110, 'name': "zero", 'damage': 350},
-	Enemy.BOSS1: {'health': 15000, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "boss1", 'damage': 100}
+	Enemy.DEFAULT: {'health': 20, 'texture': "res://graphics/Ships/ship_0004.png", 'speed': 105, 'name': "spam", 'damage': 5, "exp": 5},
+	Enemy.VIRUS: {'health': 40, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 100, 'name': "virus", 'damage': 10, "exp": 5},
+	Enemy.ADWARE: {'health': 80, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 105, 'name': "adware", 'damage': 12, "exp": 5},
+	Enemy.WORM: {'health': 30, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "worm", 'damage': 15, "exp": 5},
+	Enemy.SPYWARE: {'health': 100, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 115, 'name': "spyware", 'damage': 35, "exp": 5},
+	Enemy.BOTNET: {'health': 200, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 105, 'name': "botnet", 'damage': 55, "exp": 5},
+	Enemy.CREDS: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "creds", 'damage': 5, "exp": 5},
+	Enemy.INSIDERTHREAT: {'health': 120, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 110, 'name': "insiderthreat", 'damage': 80, "exp": 5},
+	Enemy.ROOTKIT: {'health': 200, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "rootkit", 'damage': 100, "exp": 5},
+	Enemy.SQL: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 118, 'name': "sql", 'damage': 120, "exp": 5},
+	Enemy.DDOS: {'health': 500, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 95, 'name': "ddos", 'damage': 150, "exp": 5},
+	Enemy.RANSOMWARE: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 105, 'name': "ransomware", 'damage': 250}, "exp": 5,
+	Enemy.ZERO: {'health': 220, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 110, 'name': "zero", 'damage': 350, "exp": 5},
+	Enemy.BOSS1: {'health': 15000, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "boss1", 'damage': 100, "exp": 5}
 }
 
 var ads_visible := false:
@@ -330,3 +330,29 @@ var current_wave: int = 0 # wave count
 func reset_game():
 	money = 200
 	currentserverload = 0
+
+var multiplier: int = 1
+var server_points: int = 0:
+	set(value):
+		server_points = value
+		var server = get_tree().get_first_node_in_group("server")
+		if server_points > 0:
+			server.toggle_particle(true)
+		if server_points == 0:
+			server.toggle_particle(false)
+
+
+var default_level_pool: float = 100
+var player_level: int = 1
+var experience: int = 0:
+	set(value):
+		experience = value
+		while experience >= default_level_pool:
+			experience -= default_level_pool
+			player_level += 1
+			server_points += 1
+			default_level_pool += default_level_pool * .5
+			print("maxxxxxx", default_level_pool)
+		var ui = get_tree().get_first_node_in_group("UI")
+		if ui:
+			ui.update_experience(experience, player_level, default_level_pool)

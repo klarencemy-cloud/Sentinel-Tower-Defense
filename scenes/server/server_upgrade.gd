@@ -1,15 +1,24 @@
 extends CanvasLayer
 
+@onready var server_pts: Label = $UIContainer/ServerUpdate/ServerPoints/Label
+@onready var offense_container: Control = $UIContainer/ServerUpdate/OffenseContainer
+@onready var defense_container: Control = $UIContainer/ServerUpdate/DefenseContainer
+@onready var economy_container: Control = $UIContainer/ServerUpdate/EconomyContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	offense_container.refresh_pts.connect(_refresh_server_pts)
+	defense_container.refresh_pts.connect(_refresh_server_pts)
+	economy_container.refresh_pts.connect(_refresh_server_pts)
+	_refresh_server_pts()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
+func _refresh_server_pts() -> void:
+	server_pts.text = str(Data.server_points)
 
 func _on_back_btn_pressed() -> void:
 	get_tree().paused = false

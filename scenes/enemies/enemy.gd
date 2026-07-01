@@ -267,6 +267,9 @@ func hit(damage: int = 1, tower_id: int = -1):
 		Data.active_ransomware_changed.emit()
 	dead = true
 	Data.money += 10
+
+
+	Data.experience += Data.ENEMY_DATA[enemy_type_stats]["exp"] # update exp points
 	await get_tree().create_timer(0.1).timeout
 	queue_free()
 	
