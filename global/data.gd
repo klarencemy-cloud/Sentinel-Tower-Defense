@@ -330,8 +330,17 @@ func reset_game():
 	currentserverload = 0
 
 var multiplier: int = 1
-var server_points: int = 0;
-var default_level_pool: int = 100
+var server_points: int = 0:
+	set(value):
+		server_points = value
+		var server = get_tree().get_first_node_in_group("server")
+		if server_points > 0:
+			server.toggle_particle(true)
+		if server_points == 0:
+			server.toggle_particle(false)
+
+
+var default_level_pool: float = 100
 var player_level: int = 1
 var experience: int = 0:
 	set(value):
@@ -340,11 +349,8 @@ var experience: int = 0:
 			experience -= default_level_pool
 			player_level += 1
 			server_points += 1
+			default_level_pool += default_level_pool * .5
+			print("maxxxxxx", default_level_pool)
 		var ui = get_tree().get_first_node_in_group("UI")
-		var server = get_tree().get_first_node_in_group("server")
-		if server_points > 0:
-			server.toggle_particle(true)
-		else:
-			server.toggle_particle(false)
 		if ui:
-			ui.update_experience(experience, player_level)
+			ui.update_experience(experience, player_level, default_level_pool)
