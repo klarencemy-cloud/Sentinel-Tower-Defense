@@ -352,7 +352,6 @@ var experience: int = 0:
 			player_level += 1
 			server_points += 1
 			default_level_pool += default_level_pool * .5
-			print("maxxxxxx", default_level_pool)
 		var ui = get_tree().get_first_node_in_group("UI")
 		if ui:
 			ui.update_experience(experience, player_level, default_level_pool)

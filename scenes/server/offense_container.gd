@@ -27,9 +27,9 @@ var offenses: Array = []
 var counts: Array = []
 # var counters: Array = [0, 0, 0]
 
-var dmg_real_cost: int = 1 #price
-var speed_real_cost: int = 1 #price
-var crit_real_cost: int = 1 #price
+var dmg_real_cost: int = 1 # price
+var speed_real_cost: int = 1 # price
+var crit_real_cost: int = 1 # price
 
 # var dmg_max_level: int = 0
 # var speed_max_level: int = 0
@@ -44,7 +44,7 @@ func _ready() -> void:
 
 	for i in range(3):
 		children.append(offenses[i].get_children())
-		target_names[i] = base_names[i] + letters[i] 
+		target_names[i] = base_names[i] + letters[i]
 
 	# Count total TextureRects (visual slots)
 	for child in offense_1.get_children():
@@ -66,8 +66,8 @@ func _ready() -> void:
 
 func _update_upgrades() -> void:
 	for i in range(3):
-		var level = Offense.offense_levels[i] 
-		var count = counts[i]               
+		var level = Offense.offense_levels[i]
+		var count = counts[i]
 		
 		maxed[i] = Offense.maxed[i]
 		
@@ -91,7 +91,7 @@ func _update_upgrades() -> void:
 
 
 func _on_offense_upgrade_1_pressed() -> void:
-	_upgrade(0) 
+	_upgrade(0)
 
 
 func _on_offense_upgrade_2_pressed() -> void:
@@ -110,19 +110,19 @@ func _upgrade(index: int) -> void:
 		match index:
 			0:
 				if Data.server_points < dmg_real_cost:
-					return 
+					return
 				Data.server_points -= dmg_real_cost
 				Offense._inc_dmg()
 				_damage_max_level()
 			1:
 				if Data.server_points < speed_real_cost:
-					return 
+					return
 				Data.server_points -= speed_real_cost
 				Offense._tower_speed()
 				_speed_max_level()
 			2:
 				if Data.server_points < crit_real_cost:
-					return 
+					return
 				Data.server_points -= crit_real_cost
 				Offense._crit_chance()
 				_crit_max_level()
@@ -145,19 +145,19 @@ func _upgrade(index: int) -> void:
 func _damage_max_level() -> void:
 	if Offense.offense_levels[0] + 1 >= counts[0]:
 		damage_cost.text = "Max"
-		Offense.maxed[0] = true   
-		maxed[0] = true           
+		Offense.maxed[0] = true
+		maxed[0] = true
 
 
 func _speed_max_level() -> void:
 	if Offense.offense_levels[1] + 1 >= counts[1]:
 		speed_cost.text = "Max"
-		Offense.maxed[1] = true   
-		maxed[1] = true           
+		Offense.maxed[1] = true
+		maxed[1] = true
 
 
 func _crit_max_level() -> void:
 	if Offense.offense_levels[2] + 1 >= counts[2]:
 		crit_cost.text = "Max"
-		Offense.maxed[2] = true  
-		maxed[2] = true          
+		Offense.maxed[2] = true
+		maxed[2] = true

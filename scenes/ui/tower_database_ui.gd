@@ -310,7 +310,7 @@ var TOWER_DATA = {
 		'atk_speed': 1.25,
 		'type': "Area",
 		'special_ability': "Grants immunity to malware debuffs to two selected towers.",
-		'irl_desc': "Adblock technology makes use of straightforward lists, known as filter lists, to decide what should be hidden or blocked from appearing on the pages a user visits."
+		'irl_desc': "Endpoint protection involves monitoring and protecting endpoints against cyber threats. Protected endpoints include desktops, laptops, smartphones, tablet computers, and other devices. Various cybersecurity solutions can be installed on and monitor these devices to protect them against cyber threats, regardless of where they are located on or off the corporate network."
 	},
 	Tower.SANDBOX: {
 		'damage': 220,
@@ -323,7 +323,7 @@ var TOWER_DATA = {
 		'damage': 300,
 		'atk_speed': 1.50,
 		'type': "Area",
-		'special_ability': "Copies a selected tower's ability and boosts its effectiveness by 50%.",
+		'special_ability': "It copies the special ability of the selected tower and enhances it by 50% effectiveness",
 		'irl_desc': "Security orchestration, automation and response (SOAR) technology helps coordinate, execute and automate tasks between various people and tools all within a single platform. This allows organizations to not only quickly respond to cybersecurity attacks but also observe, understand and prevent future incidents, thus improving their overall security posture. "
 	},
 }
@@ -334,7 +334,7 @@ var TOWER_DATA = {
 @onready var desc_speed: Label = $Databasebg/Speed
 @onready var desc_type: Label = $Databasebg/Type
 @onready var desc_sp: Label = $Databasebg/Special
-@onready var desc_desc: Label = $Databasebg/Description
+@onready var desc_desc: Label = $Databasebg/Special/RealLifeDesc/Description
 
 func _on_tower_1_pressed() -> void:
 	desc_name.text = tower_name[0]

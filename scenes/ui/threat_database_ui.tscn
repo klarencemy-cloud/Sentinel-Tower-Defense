@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://5rw502kfg28j" path="res://graphics/database/threat_container.png" id="5_bxw4m"]
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="6_davr5"]
 [ext_resource type="Texture2D" uid="uid://cfb74qasoy8u0" path="res://graphics/backgrounds/reddatabasebg.png" id="6_tl1kg"]
+[ext_resource type="Texture2D" uid="uid://kio15s2kej5u" path="res://graphics/ui/enemy_card.png" id="7_c3tk8"]
 [ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="7_jjgt1"]
+[ext_resource type="Texture2D" uid="uid://bglyuypj0sahq" path="res://graphics/ui/sword.png" id="9_hpt5p"]
 
 [node name="ThreatDatabaseUi" type="Control" unique_id=1874293309]
 layout_mode = 3
@@ -54,12 +56,15 @@ stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Scroll" type="TextureButton" parent="ScrollBarContainer/Bar" unique_id=1113059193]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.24324325
 anchor_top = 0.015056462
 anchor_right = 0.7837838
-anchor_bottom = 0.122961104
+anchor_bottom = 0.06398996
 texture_normal = ExtResource("4_tl1kg")
+ignore_texture_size = true
+stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="ThreatContainer" type="Control" parent="." unique_id=49551088]
@@ -72,22 +77,25 @@ anchor_bottom = 0.8888889
 metadata/_edit_use_anchors_ = true
 
 [node name="CardContainer" type="Control" parent="ThreatContainer" unique_id=961428850]
-anchors_preset = 0
-anchor_top = 0.013613861
+layout_mode = 1
+anchor_top = -0.72153467
 anchor_right = 0.9978678
-anchor_bottom = 1.75
+anchor_bottom = 3.8180692
+offset_top = 594.0
+offset_bottom = 594.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat1" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=767183370]
 layout_mode = 0
 anchor_right = 0.44230768
-anchor_bottom = 0.17248753
+anchor_bottom = 0.06597601
 texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat_Name_1" type="Label" parent="ThreatContainer/CardContainer/Threat1" unique_id=308165581]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.46859902
 anchor_top = 0.8140496
 anchor_right = 0.8115942
@@ -95,7 +103,7 @@ anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "Threat"
+text = "Spam"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -106,13 +114,14 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 anchor_left = 0.5534188
 anchor_right = 0.99572647
-anchor_bottom = 0.17248753
+anchor_bottom = 0.06597601
 texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat_Name_2" type="Label" parent="ThreatContainer/CardContainer/Threat2" unique_id=163118747]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.46859902
 anchor_top = 0.8140496
 anchor_right = 0.8115942
@@ -120,7 +129,7 @@ anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "Threat"
+text = "Virus"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -129,15 +138,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Threat3" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1590320813]
 layout_mode = 0
-anchor_top = 0.19814683
+anchor_top = 0.07579062
 anchor_right = 0.44230768
-anchor_bottom = 0.37063435
+anchor_bottom = 0.14176664
 texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat_Name_3" type="Label" parent="ThreatContainer/CardContainer/Threat3" unique_id=1398868365]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.46859902
 anchor_top = 0.8140496
 anchor_right = 0.8115942
@@ -145,7 +155,7 @@ anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "Threat"
+text = "Adware"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -153,17 +163,19 @@ justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat4" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1220467017]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.5534188
-anchor_top = 0.19814683
+anchor_top = 0.07579062
 anchor_right = 0.99572647
-anchor_bottom = 0.37063435
+anchor_bottom = 0.14176664
 texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat_Name_4" type="Label" parent="ThreatContainer/CardContainer/Threat4" unique_id=2085381503]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.46859902
 anchor_top = 0.8140496
 anchor_right = 0.8115942
@@ -171,7 +183,7 @@ anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "Threat"
+text = "Worm"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -180,24 +192,24 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Threat5" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=205190236]
 layout_mode = 0
-anchor_top = 0.40128297
+anchor_top = 0.15158124
 anchor_right = 0.44230768
-anchor_bottom = 0.57377046
-offset_bottom = 6.1035156e-05
+anchor_bottom = 0.21755725
 texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat_Name_5" type="Label" parent="ThreatContainer/CardContainer/Threat5" unique_id=1961914965]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.46859902
 anchor_top = 0.8140496
-anchor_right = 0.8115942
+anchor_right = 0.8695652
 anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "Threat"
+text = "Spyware"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -207,24 +219,24 @@ metadata/_edit_use_anchors_ = true
 [node name="Threat6" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1305954709]
 layout_mode = 0
 anchor_left = 0.5534188
-anchor_top = 0.40128297
+anchor_top = 0.15158124
 anchor_right = 0.99572647
-anchor_bottom = 0.57377046
-offset_bottom = 6.1035156e-05
+anchor_bottom = 0.21755725
 texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat_Name_6" type="Label" parent="ThreatContainer/CardContainer/Threat6" unique_id=2023869708]
-layout_mode = 0
-anchor_left = 0.46859902
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.352657
 anchor_top = 0.8140496
-anchor_right = 0.8115942
+anchor_right = 0.9130435
 anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "Threat"
+text = "Trojan Horse"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -232,17 +244,18 @@ justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat7" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1132838910]
-layout_mode = 0
-anchor_top = 0.6086956
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.22737187
 anchor_right = 0.44230768
-anchor_bottom = 0.7811832
-offset_top = 6.1035156e-05
+anchor_bottom = 0.29334787
 texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat_Name_7" type="Label" parent="ThreatContainer/CardContainer/Threat7" unique_id=154367533]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.46859902
 anchor_top = 0.8140496
 anchor_right = 0.8115942
@@ -250,7 +263,7 @@ anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "Threat"
+text = "Creds"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -260,24 +273,24 @@ metadata/_edit_use_anchors_ = true
 [node name="Threat8" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=588500916]
 layout_mode = 0
 anchor_left = 0.5534188
-anchor_top = 0.6086956
+anchor_top = 0.22737187
 anchor_right = 0.99572647
-anchor_bottom = 0.7811832
-offset_top = 6.1035156e-05
+anchor_bottom = 0.29334787
 texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat_Name_8" type="Label" parent="ThreatContainer/CardContainer/Threat8" unique_id=348683764]
-layout_mode = 0
-anchor_left = 0.46859902
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.352657
 anchor_top = 0.8140496
-anchor_right = 0.8115942
+anchor_right = 0.9130435
 anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "Threat"
+text = "Botnet Node"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -286,41 +299,98 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Threat9" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=464604319]
 layout_mode = 0
-anchor_top = 0.8182466
+anchor_top = 0.3031625
 anchor_right = 0.44230768
-anchor_bottom = 0.99073416
+anchor_bottom = 0.3691385
 texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat_Name_9" type="Label" parent="ThreatContainer/CardContainer/Threat9" unique_id=1491265221]
-layout_mode = 0
-anchor_left = 0.46859902
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36231884
 anchor_top = 0.8140496
-anchor_right = 0.8115942
+anchor_right = 0.95652175
 anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "Threat"
+text = "Insider "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
-[node name="Threat10" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=308210947]
+[node name="Threat10" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=508480747]
 layout_mode = 0
-anchor_left = 0.5534188
-anchor_top = 0.8182466
-anchor_right = 0.99572647
-anchor_bottom = 0.99073416
+offset_left = 259.0
+offset_top = 1112.0
+offset_right = 466.0
+offset_bottom = 1354.0
+texture_normal = ExtResource("7_c3tk8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Threat_Name_10" type="Label" parent="ThreatContainer/CardContainer/Threat10" unique_id=1178169144]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.37198076
+anchor_top = 0.8140495
+anchor_right = 0.91304356
+anchor_bottom = 0.913223
+theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("6_davr5")
+theme_override_font_sizes/font_size = 20
+text = "Rootkit"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat11" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1290593256]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.3789531
+anchor_right = 0.44230768
+anchor_bottom = 0.44492912
 texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Threat_Name_10" type="Label" parent="ThreatContainer/CardContainer/Threat10" unique_id=782767087]
-layout_mode = 0
+[node name="Threat_Name_1" type="Label" parent="ThreatContainer/CardContainer/Threat11" unique_id=178204922]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46859902
+anchor_top = 0.81404936
+anchor_right = 0.8115942
+anchor_bottom = 0.91322315
+theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("6_davr5")
+theme_override_font_sizes/font_size = 20
+text = "SQL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat12" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=474310203]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5534188
+anchor_top = 0.3789531
+anchor_right = 0.99572647
+anchor_bottom = 0.44492912
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat_Name_2" type="Label" parent="ThreatContainer/CardContainer/Threat12" unique_id=274185125]
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.46859902
 anchor_top = 0.8140496
 anchor_right = 0.8115942
@@ -328,7 +398,231 @@ anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "Threat"
+text = "DDoS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat13" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=837565761]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.45474374
+anchor_right = 0.44230768
+anchor_bottom = 0.52071977
+offset_bottom = -0.00012207031
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat_Name_3" type="Label" parent="ThreatContainer/CardContainer/Threat13" unique_id=1269674247]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36231917
+anchor_top = 0.8140496
+anchor_right = 0.91304356
+anchor_bottom = 0.91322315
+theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("6_davr5")
+theme_override_font_sizes/font_size = 20
+text = "Ransomware"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat14" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=492480294]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5534188
+anchor_top = 0.45474374
+anchor_right = 0.99572647
+anchor_bottom = 0.52071977
+offset_bottom = -0.00012207031
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat_Name_4" type="Label" parent="ThreatContainer/CardContainer/Threat14" unique_id=1069607078]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4057971
+anchor_top = 0.8140496
+anchor_right = 0.8115942
+anchor_bottom = 0.91322315
+theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("6_davr5")
+theme_override_font_sizes/font_size = 20
+text = "Zero-Day"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat15" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=2046135447]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5305343
+anchor_right = 0.44230768
+anchor_bottom = 0.59651035
+offset_top = 0.00012207031
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat_Name_5" type="Label" parent="ThreatContainer/CardContainer/Threat15" unique_id=512975790]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4009665
+anchor_top = 0.8140496
+anchor_right = 0.8695653
+anchor_bottom = 0.91322315
+theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("6_davr5")
+theme_override_font_sizes/font_size = 20
+text = "ILOVEYOU"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat16" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1710625117]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5534188
+anchor_top = 0.5305343
+anchor_right = 0.99572647
+anchor_bottom = 0.59651035
+offset_top = 0.00012207031
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat_Name_6" type="Label" parent="ThreatContainer/CardContainer/Threat16" unique_id=330453350]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4057971
+anchor_top = 0.8140496
+anchor_right = 0.87439615
+anchor_bottom = 0.91322315
+theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("6_davr5")
+theme_override_font_sizes/font_size = 20
+text = "Conficker"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat17" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1011688321]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.606325
+anchor_right = 0.44230768
+anchor_bottom = 0.672301
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat_Name_7" type="Label" parent="ThreatContainer/CardContainer/Threat17" unique_id=1751566734]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4009665
+anchor_top = 0.8140496
+anchor_right = 0.8695653
+anchor_bottom = 0.91322315
+theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("6_davr5")
+theme_override_font_sizes/font_size = 20
+text = "WannaCry"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat18" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1875283157]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5534188
+anchor_top = 0.606325
+anchor_right = 0.99572647
+anchor_bottom = 0.672301
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat_Name_8" type="Label" parent="ThreatContainer/CardContainer/Threat18" unique_id=27104371]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4057971
+anchor_top = 0.8140496
+anchor_right = 0.87439615
+anchor_bottom = 0.91322315
+theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("6_davr5")
+theme_override_font_sizes/font_size = 20
+text = "NotPeyta"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat19" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=2137647245]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.6821156
+anchor_right = 0.44230768
+anchor_bottom = 0.7480916
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat_Name_9" type="Label" parent="ThreatContainer/CardContainer/Threat19" unique_id=1719401700]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4009665
+anchor_top = 0.8140496
+anchor_right = 0.8695653
+anchor_bottom = 0.91322315
+theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("6_davr5")
+theme_override_font_sizes/font_size = 20
+text = "MyDoom"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat20" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1791336679]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5534188
+anchor_top = 0.6821156
+anchor_right = 0.99572647
+anchor_bottom = 0.7480916
+texture_normal = ExtResource("5_bxw4m")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Threat_Name_10" type="Label" parent="ThreatContainer/CardContainer/Threat20" unique_id=1624727395]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4057971
+anchor_top = 0.8140496
+anchor_right = 0.87439615
+anchor_bottom = 0.91322315
+theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("6_davr5")
+theme_override_font_sizes/font_size = 20
+text = "TROJAN"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -350,25 +644,138 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.11146838
 anchor_top = 0.19425444
-anchor_right = 0.5862808
+anchor_right = 0.926045
 anchor_bottom = 0.2900137
 theme_override_font_sizes/font_size = 60
 text = "Cyber Threats"
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Description" type="Label" parent="Reddatabasebg" unique_id=1336852019]
+[node name="Sword" type="TextureRect" parent="Reddatabasebg" unique_id=1323114560]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10610926
+anchor_top = 0.29001367
+anchor_right = 0.12986313
+anchor_bottom = 0.32033154
+offset_right = 82.0
+offset_bottom = 82.0
+scale = Vector2(0.4512191, 0.45121938)
+texture = ExtResource("9_hpt5p")
+metadata/_edit_use_anchors_ = true
+
+[node name="Health" type="Label" parent="Reddatabasebg" unique_id=1639773328]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15219721
+anchor_top = 0.30232558
+anchor_right = 0.15219721
+anchor_bottom = 0.30232558
+offset_right = 56.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 25
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sword2" type="TextureRect" parent="Reddatabasebg" unique_id=830287709]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24973191
+anchor_top = 0.29001367
+anchor_right = 0.28061217
+anchor_bottom = 0.32033128
+offset_right = 82.0
+offset_bottom = 82.0
+scale = Vector2(0.4512191, 0.45121938)
+texture = ExtResource("9_hpt5p")
+metadata/_edit_use_anchors_ = true
+
+[node name="Damage" type="Label" parent="Reddatabasebg" unique_id=1074678625]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3033226
+anchor_top = 0.30232558
+anchor_right = 0.3033226
+anchor_bottom = 0.31737345
+offset_right = 70.0
+offset_bottom = 19.0
+theme_override_font_sizes/font_size = 25
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sword3" type="TextureRect" parent="Reddatabasebg" unique_id=1453557746]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36012867
+anchor_top = 0.29001367
+anchor_right = 0.3910084
+anchor_bottom = 0.32033128
+offset_right = 82.0
+offset_bottom = 82.0
+scale = Vector2(0.4512191, 0.45121938)
+texture = ExtResource("9_hpt5p")
+metadata/_edit_use_anchors_ = true
+
+[node name="MSpeed" type="Label" parent="Reddatabasebg" unique_id=1622366706]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40836012
+anchor_top = 0.30232558
+anchor_right = 0.48338693
+anchor_bottom = 0.34336525
+theme_override_font_sizes/font_size = 25
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Special" type="Label" parent="Reddatabasebg" unique_id=1790255648]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.11146838
-anchor_top = 0.53351575
+anchor_top = 0.37072504
 anchor_right = 0.926045
-anchor_bottom = 0.80300957
+anchor_bottom = 0.4008208
+theme_override_colors/font_color = Color(1, 0.4123333, 0.13999999, 1)
 theme_override_fonts/font = ExtResource("7_jjgt1")
-theme_override_font_sizes/font_size = 20
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+theme_override_font_sizes/font_size = 17
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut l"
 horizontal_alignment = 3
 vertical_alignment = 3
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="RealLifeDesc" type="Label" parent="Reddatabasebg/Special" unique_id=493632242]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.27400002
+anchor_top = 1.0
+anchor_right = 0.27400002
+anchor_bottom = 1.0
+offset_left = -208.24002
+offset_top = 31.0
+offset_right = 208.6448
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 26
+text = "Real Life Description"
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" type="Label" parent="Reddatabasebg/Special/RealLifeDesc" unique_id=1336852019]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.80164343
+anchor_top = 1.567
+anchor_right = 0.80164355
+anchor_bottom = 1.5670003
+offset_left = -334.19302
+offset_top = -0.010002136
+offset_right = 425.80698
+offset_bottom = 221.98999
+theme_override_fonts/font = ExtResource("7_jjgt1")
+theme_override_font_sizes/font_size = 17
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+horizontal_alignment = 3
 autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
@@ -376,12 +783,42 @@ metadata/_edit_use_anchors_ = true
 [connection signal="gui_input" from="ScrollBarContainer/Bar/Scroll" to="." method="_on_scroll_gui_input"]
 [connection signal="gui_input" from="ThreatContainer/CardContainer" to="." method="_on_card_container_gui_input"]
 [connection signal="gui_input" from="ThreatContainer/CardContainer/Threat1" to="." method="_on_threat_1_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat1" to="." method="_on_threat_1_pressed"]
 [connection signal="gui_input" from="ThreatContainer/CardContainer/Threat2" to="." method="_on_threat_2_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat2" to="." method="_on_threat_2_pressed"]
 [connection signal="gui_input" from="ThreatContainer/CardContainer/Threat3" to="." method="_on_threat_3_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat3" to="." method="_on_threat_3_pressed"]
 [connection signal="gui_input" from="ThreatContainer/CardContainer/Threat4" to="." method="_on_threat_4_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat4" to="." method="_on_threat_4_pressed"]
 [connection signal="gui_input" from="ThreatContainer/CardContainer/Threat5" to="." method="_on_threat_5_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat5" to="." method="_on_threat_5_pressed"]
 [connection signal="gui_input" from="ThreatContainer/CardContainer/Threat6" to="." method="_on_threat_6_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat6" to="." method="_on_threat_6_pressed"]
 [connection signal="gui_input" from="ThreatContainer/CardContainer/Threat7" to="." method="_on_threat_7_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat7" to="." method="_on_threat_7_pressed"]
 [connection signal="gui_input" from="ThreatContainer/CardContainer/Threat8" to="." method="_on_threat_8_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat8" to="." method="_on_threat_8_pressed"]
 [connection signal="gui_input" from="ThreatContainer/CardContainer/Threat9" to="." method="_on_threat_9_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat9" to="." method="_on_threat_9_pressed"]
 [connection signal="gui_input" from="ThreatContainer/CardContainer/Threat10" to="." method="_on_threat_10_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat10" to="." method="_on_threat_10_pressed"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat11" to="." method="_on_threat_1_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat11" to="." method="_on_threat_11_pressed"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat12" to="." method="_on_threat_2_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat12" to="." method="_on_threat_12_pressed"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat13" to="." method="_on_threat_3_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat13" to="." method="_on_threat_13_pressed"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat14" to="." method="_on_threat_4_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat14" to="." method="_on_threat_14_pressed"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat15" to="." method="_on_threat_5_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat15" to="." method="_on_threat_15_pressed"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat16" to="." method="_on_threat_6_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat16" to="." method="_on_threat_16_pressed"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat17" to="." method="_on_threat_7_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat17" to="." method="_on_threat_17_pressed"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat18" to="." method="_on_threat_8_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat18" to="." method="_on_threat_18_pressed"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat19" to="." method="_on_threat_9_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat19" to="." method="_on_threat_19_pressed"]
+[connection signal="gui_input" from="ThreatContainer/CardContainer/Threat20" to="." method="_on_threat_10_gui_input"]
+[connection signal="pressed" from="ThreatContainer/CardContainer/Threat20" to="." method="_on_threat_20_pressed"]
