@@ -24,6 +24,8 @@ func update_wave_state() -> void:
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	if wave_active and not spawning_wave and enemies.size() == 0:
 		wave_active = false
+		if Data.current_wave > 0 and Data.current_wave % 5 == 0 and Data.checkpoint_wave < Data.current_wave:
+			Data.checkpoint_wave = Data.current_wave
 		if not wave_active and Data.current_wave % 10 == 0:
 			if !Data.is_sandbox:
 				if ui:
@@ -48,10 +50,6 @@ func start_wave() -> void:
 		ui.update_wave_label()
 
 	Data.current_wave += 1
-
-	
-	if Data.current_wave % 5 == 0:
-		Data.checkpoint_wave = Data.current_wave
 
 	match Data.current_wave:
 		6:

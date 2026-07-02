@@ -4,10 +4,21 @@ extends CanvasLayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false
+	visibility_changed.connect(_on_visibility_changed)
+	update_display()
+
+func update_display() -> void:
 	%txtScore.text = "You reached wave " + str(Data.current_wave) + "!"
-	%btnCheckpoint.visible = Data.current_wave > 5
+	%btnCheckpoint.visible = Data.checkpoint_wave > 0
+
+func _on_visibility_changed() -> void:
+	if visible:
+		update_display()
 
 func _on_btn_checkpoint_pressed() -> void:
+	if Data.checkpoint_wave <= 0:
+		return
+
 	get_tree().paused = false
 	visible = false
 	Data.health = 100
