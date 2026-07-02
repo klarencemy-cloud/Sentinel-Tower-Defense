@@ -32,8 +32,9 @@ const FROZEN_TINT: Color = Color(0.1, 0.2, 0.6, 1.0)
 
 var rootkit_skill_used := false
 const ROOTKIT_PORTAL = preload("res://scenes/enemies/rootkit_skill.tscn")
-
-
+var worm_spawn_timer : Timer
+var worm_spawn_interval:= 15.0
+var can_clone := true
 @export var spacing := 32
 
 func _ready() -> void:
@@ -47,6 +48,16 @@ func _ready() -> void:
 	stun_timer.wait_time = 0.5
 	stun_timer.timeout.connect(_on_stun_end)
 	add_child(stun_timer)
+	
+	worm_spawn_timer = Timer.new()
+	worm_spawn_timer.one_shot = false
+	worm_spawn_timer.wait_time = worm_spawn_interval
+	worm_spawn_timer.timeout.connect(_spawn_worm_clone)
+	add_child(worm_spawn_timer)
+	
+	if enemy_type_stats == Data.Enemy.WORM:
+		worm_spawn_timer.start()
+	
 
 func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	enemy_type_stats = type # save enemy type
@@ -113,6 +124,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			
 			for child in $WormSegments.get_children():
 					child.material = child.material.duplicate()
+			
 		"insiderthreat":
 			$InsiderThreat.visible = true
 			enemy_type = $InsiderThreat
@@ -388,3 +400,14 @@ func spawn_rootkit_portal():
 
 	# Tell the entrance where to send enemies
 	entrance.exit_progress = exit_progress
+
+func _spawn_worm_clone():
+	if dead or !can_clone:
+		return
+
+	var wave_manager = get_tree().get_first_node_in_group("WaveManager")
+	if wave_manager:
+		wave_manager.spawn_worm_clone(
+			path_follow.get_parent(),
+			path_follow.progress - spacing
+		)
