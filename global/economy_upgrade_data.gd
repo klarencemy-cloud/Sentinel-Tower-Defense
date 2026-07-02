@@ -5,6 +5,9 @@ signal points_changed
 var gold_multiplier: float = 1.0
 var exp_multiplier: float = 1.0
 
+const base_gold_multiplier: float = 1.0
+const base_exp_multiplier: float = 1.0
+
 const GOLD_MULT_INCREMENT: float = 0.05
 const EXP_MULT_INCREMENT: float = 0.05
 const SERVER_LOAD_INCREMENT: int = 50
@@ -32,3 +35,13 @@ func _server_load() -> void:
 	Data.maxserverload += SERVER_LOAD_INCREMENT
 	points_changed.emit()
 	economy_levels[2] += 1
+
+
+func _reset_multipliers() -> void:
+	gold_multiplier = base_gold_multiplier
+	exp_multiplier = base_exp_multiplier
+
+
+func _reset_levels() -> void:
+	economy_levels = [0, 0, 0]
+	maxed = [false, false, false]
