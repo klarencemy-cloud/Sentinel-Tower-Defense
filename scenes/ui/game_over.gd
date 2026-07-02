@@ -12,7 +12,7 @@ func _on_btn_checkpoint_pressed() -> void:
 	visible = false
 	Data.health = 100
 	Data.current_wave = max(Data.checkpoint_wave - 1, 0)
-	get_tree().change_scene_to_file("res://scenes/levels/level.tscn")
+	get_tree().change_scene_to_file("uid://h7qi8y7uyyai") # Loading screen
 	
 
 func _on_btn_quit_pressed() -> void:
@@ -29,4 +29,5 @@ func _on_btn_retry_pressed() -> void:
 	Data.health = 100
 	Data.money = 200
 	Data.currentserverload= 0
-	get_tree().change_scene_to_file("res://scenes/levels/level.tscn")
+	get_tree().call_group("retry_game", "_reset_map_level")
+	
