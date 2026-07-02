@@ -33,7 +33,7 @@ const FROZEN_TINT: Color = Color(0.1, 0.2, 0.6, 1.0)
 var rootkit_skill_used := false
 const ROOTKIT_PORTAL = preload("res://scenes/enemies/rootkit_skill.tscn")
 var worm_spawn_timer : Timer
-var worm_spawn_interval:= 1.0
+var worm_spawn_interval:= 15.0
 var can_clone := true
 @export var spacing := 32
 
