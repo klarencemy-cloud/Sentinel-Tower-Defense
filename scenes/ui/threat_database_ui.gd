@@ -370,7 +370,7 @@ var THREAT_DATA = {
 		'damage': 200,
 		'speed': 100,
 		'special_ability': "Periodically spawns botnet drones on the battlefield.",
-		'irl_desc': ""
+		'irl_desc': "The computer worm Conficker, also referred to as Downup, Downadup, or Kido, was first discovered in November 2008, and it targets the Microsoft Windows operating system, specifically in Windows Server Service. It goes along with a number of advanced malware techniques, and it has proven super challenging to stop. It spreads by using dictionary attacks on administrator passwords and vulnerabilities in Windows OS software to create a botnet. The Conflicker takes advantage of the vulnerability in the buffer overflow of the Windows Server Service through the RPC requests, where it then allows attackers to install malware, steal data, or control the machine as part of a botnet. Moreover, it can also download arbitrary files, including malware, and deactivate important system services and security programs."
 		},
 	Threat.WANNACRY: {
 		'health': 50000,
@@ -409,6 +409,8 @@ var THREAT_DATA = {
 @onready var desc_health: Label = $Reddatabasebg/Health
 @onready var desc_sp: Label = $Reddatabasebg/Special
 @onready var desc_desc: Label = $Reddatabasebg/Special/RealLifeDesc/Description
+
+@onready var animation: AnimatedSprite2D = $Reddatabasebg/AnimatedSprite2D
 
 
 func _on_threat_20_pressed() -> void:
@@ -457,6 +459,7 @@ func _on_threat_15_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[14]['health'])
 	desc_sp.text = str(THREAT_DATA[14]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[14]['irl_desc'])
+	animation.play("ilu")
 
 func _on_threat_14_pressed() -> void:
 	desc_name.text = threat_name[13]
@@ -465,6 +468,7 @@ func _on_threat_14_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[13]['health'])
 	desc_sp.text = str(THREAT_DATA[13]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[13]['irl_desc'])
+	animation.play("zero")
 
 func _on_threat_13_pressed() -> void:
 	desc_name.text = threat_name[12]
@@ -473,6 +477,7 @@ func _on_threat_13_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[12]['health'])
 	desc_sp.text = str(THREAT_DATA[12]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[12]['irl_desc'])
+	animation.play("ransomware")
 
 func _on_threat_12_pressed() -> void:
 	desc_name.text = threat_name[11]
@@ -481,6 +486,7 @@ func _on_threat_12_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[11]['health'])
 	desc_sp.text = str(THREAT_DATA[11]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[11]['irl_desc'])
+	animation.play("ddos")
 
 
 func _on_threat_11_pressed() -> void:
@@ -490,6 +496,7 @@ func _on_threat_11_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[10]['health'])
 	desc_sp.text = str(THREAT_DATA[10]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[10]['irl_desc'])
+	animation.play("sql")
 
 func _on_threat_9_pressed() -> void:
 	desc_name.text = threat_name[8]
@@ -498,6 +505,7 @@ func _on_threat_9_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[8]['health'])
 	desc_sp.text = str(THREAT_DATA[8]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[8]['irl_desc'])
+	animation.play("insider")
 
 func _on_threat_8_pressed() -> void:
 	desc_name.text = threat_name[7]
@@ -506,6 +514,7 @@ func _on_threat_8_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[7]['health'])
 	desc_sp.text = str(THREAT_DATA[7]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[7]['irl_desc'])
+	animation.play("botnet")
 
 func _on_threat_7_pressed() -> void:
 	desc_name.text = threat_name[6]
@@ -514,6 +523,7 @@ func _on_threat_7_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[6]['health'])
 	desc_sp.text = str(THREAT_DATA[6]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[6]['irl_desc'])
+	animation.play("creds")
 
 
 func _on_threat_6_pressed() -> void:
@@ -523,7 +533,7 @@ func _on_threat_6_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[5]['health'])
 	desc_sp.text = str(THREAT_DATA[5]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[5]['irl_desc'])
-
+	
 
 func _on_threat_5_pressed() -> void:
 	desc_name.text = threat_name[4]
@@ -532,6 +542,7 @@ func _on_threat_5_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[4]['health'])
 	desc_sp.text = str(THREAT_DATA[4]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[4]['irl_desc'])
+	animation.play("spyware")
 
 
 func _on_threat_4_pressed() -> void:
@@ -549,6 +560,7 @@ func _on_threat_3_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[2]['health'])
 	desc_sp.text = str(THREAT_DATA[2]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[2]['irl_desc'])
+	animation.play("adware")
 
 func _on_threat_2_pressed() -> void:
 	desc_name.text = threat_name[1]
@@ -557,6 +569,7 @@ func _on_threat_2_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[1]['health'])
 	desc_sp.text = str(THREAT_DATA[1]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[1]['irl_desc'])
+	animation.play("virus")
 
 func _on_threat_1_pressed() -> void:
 	desc_name.text = threat_name[0]
@@ -565,6 +578,7 @@ func _on_threat_1_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[0]['health'])
 	desc_sp.text = str(THREAT_DATA[0]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[0]['irl_desc'])
+	animation.play("spam")
 
 
 func _on_threat_10_pressed() -> void:
@@ -574,4 +588,4 @@ func _on_threat_10_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[9]['health'])
 	desc_sp.text = str(THREAT_DATA[9]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[9]['irl_desc'])
-	pass # Replace with function body.
+	animation.play("rootkit")

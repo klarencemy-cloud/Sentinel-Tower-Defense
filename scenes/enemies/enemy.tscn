@@ -1007,6 +1007,7 @@ animation = &"Right"
 autoplay = "Right"
 
 [node name="Rootkit" type="AnimatedSprite2D" parent="." unique_id=1755953387]
+visible = false
 texture_filter = 2
 material = SubResource("ShaderMaterial_x3klb")
 sprite_frames = SubResource("SpriteFrames_i5650")
