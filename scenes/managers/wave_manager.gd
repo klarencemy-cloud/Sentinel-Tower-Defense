@@ -10,7 +10,9 @@ var level_manager: Node
 var wave_active: bool = false
 var spawning_wave: bool = false
 
-
+func _ready() -> void:
+	add_to_group("WaveManager")
+	
 func setup(root: Node2D, map_manager: Node) -> void:
 	level_root = root
 	level_manager = map_manager
@@ -164,3 +166,15 @@ func _get_paths() -> Array[Path2D]:
 func _choose_path_for_spawn() -> Path2D:
 	var paths: Array = _get_paths()
 	return paths[randi() % paths.size()]
+
+func spawn_worm_clone(path: Path2D, progress: float):
+	var path_follow = PathFollow2D.new()
+	path_follow.progress = progress
+
+	var enemy = enemy_scene.instantiate()
+	enemy.setup(path_follow, Data.Enemy.WORM)
+	enemy.can_clone = false
+
+	path_follow.add_child(enemy)
+	path.add_child(path_follow)
+	enemy.can_clone = false
