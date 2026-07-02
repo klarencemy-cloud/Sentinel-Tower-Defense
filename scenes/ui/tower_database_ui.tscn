@@ -8,7 +8,9 @@
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="6_72m6s"]
 [ext_resource type="Texture2D" uid="uid://cdpfmjb5ui3he" path="res://graphics/backgrounds/databasebg.png" id="6_uhtcm"]
 [ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="7_07cd3"]
-[ext_resource type="Texture2D" uid="uid://bglyuypj0sahq" path="res://graphics/ui/sword.png" id="9_86ccd"]
+[ext_resource type="Texture2D" uid="uid://bgd5c2bukefyk" path="res://graphics/icons/damage.png" id="8_0ivax"]
+[ext_resource type="Texture2D" uid="uid://57wufxm4w484" path="res://graphics/icons/atk_speed.png" id="9_utb3e"]
+[ext_resource type="Texture2D" uid="uid://2crwmmgdjvd0" path="res://graphics/icons/ammo.png" id="10_utb3e"]
 
 [node name="TowerDatabaseUi" type="Control" unique_id=1039645555]
 layout_mode = 3
@@ -459,77 +461,83 @@ metadata/_edit_use_anchors_ = true
 [node name="Sword" type="TextureRect" parent="Databasebg" unique_id=1765417363]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.10610926
-anchor_top = 0.29001367
-anchor_right = 0.12986313
-anchor_bottom = 0.32033154
-offset_right = 82.0
-offset_bottom = 82.0
+anchor_left = 0.3676313
+anchor_top = 0.30232555
+anchor_right = 0.40297824
+anchor_bottom = 0.34473342
+offset_right = 40.109283
+offset_bottom = 37.70288
 scale = Vector2(0.4512191, 0.45121938)
-texture = ExtResource("9_86ccd")
+texture = ExtResource("8_0ivax")
+expand_mode = 1
+flip_h = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Damage" type="Label" parent="Databasebg" unique_id=1907092814]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.15219721
-anchor_top = 0.30232558
-anchor_right = 0.15219721
-anchor_bottom = 0.30232558
+anchor_left = 0.40836012
+anchor_top = 0.30232555
+anchor_right = 0.40836012
+anchor_bottom = 0.31737345
 offset_right = 56.0
 offset_bottom = 19.0
 theme_override_font_sizes/font_size = 25
-text = "0"
+text = "Atk Speed"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sword2" type="TextureRect" parent="Databasebg" unique_id=1073644303]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.20900309
+anchor_left = 0.26259366
 anchor_top = 0.29001367
-anchor_right = 0.23988335
+anchor_right = 0.2934739
 anchor_bottom = 0.32033128
-offset_right = 82.0
-offset_bottom = 82.0
+offset_left = 0.00012207031
+offset_top = 9.0
+offset_right = 44.276855
+offset_bottom = 55.540848
 scale = Vector2(0.4512191, 0.45121938)
-texture = ExtResource("9_86ccd")
+texture = ExtResource("9_utb3e")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Speed" type="Label" parent="Databasebg" unique_id=888561717]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.26259378
+anchor_left = 0.30439442
 anchor_top = 0.30232558
-anchor_right = 0.26259378
+anchor_right = 0.30439442
 anchor_bottom = 0.31737345
 offset_right = 70.0
 offset_bottom = 19.0
 theme_override_font_sizes/font_size = 25
-text = "0"
+text = "Dmg"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sword3" type="TextureRect" parent="Databasebg" unique_id=123416035]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.31939986
-anchor_top = 0.29001367
-anchor_right = 0.35027957
-anchor_bottom = 0.32033128
-offset_right = 82.0
-offset_bottom = 82.0
+anchor_left = 0.11146838
+anchor_top = 0.30506155
+anchor_right = 0.13769342
+anchor_bottom = 0.3365253
+offset_right = 29.758392
+offset_bottom = 27.972977
 scale = Vector2(0.4512191, 0.45121938)
-texture = ExtResource("9_86ccd")
+texture = ExtResource("10_utb3e")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Type" type="Label" parent="Databasebg" unique_id=868935659]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3676313
+anchor_left = 0.14576635
 anchor_top = 0.30232558
-anchor_right = 0.4426581
+anchor_right = 0.22079314
 anchor_bottom = 0.34336525
 theme_override_font_sizes/font_size = 25
-text = "0"
+text = "Type"
 metadata/_edit_use_anchors_ = true
 
 [node name="Special" type="Label" parent="Databasebg" unique_id=1066469485]
@@ -561,7 +569,7 @@ offset_top = 28.415092
 offset_right = 223.08481
 offset_bottom = 58.415092
 theme_override_font_sizes/font_size = 26
-text = "Real Life Description"
+text = "Real World Description"
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 

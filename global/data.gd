@@ -28,7 +28,7 @@ var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
 enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, QUARANTINE_CANNON, IDPS}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
-enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1}
+enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2}
 
 var TOWER_DATA = {
 	Tower.BASIC: {
@@ -272,6 +272,7 @@ var ENEMY_DATA = {
 	Enemy.ADWARE: {'health': 80, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 105, 'name': "adware", 'damage': 12, "exp": 5},
 	Enemy.WORM: {'health': 30, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 120, 'name': "worm", 'damage': 15, "exp": 5},
 	Enemy.SPYWARE: {'health': 100, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 115, 'name': "spyware", 'damage': 35, "exp": 5},
+	Enemy.TROJAN: {'health': 350, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 100, 'name': "trojan", 'damage': 55, "exp": 5},
 	Enemy.BOTNET: {'health': 200, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 105, 'name': "botnet", 'damage': 55, "exp": 5},
 	Enemy.CREDS: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "creds", 'damage': 5, "exp": 5},
 	Enemy.INSIDERTHREAT: {'health': 120, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 110, 'name': "insiderthreat", 'damage': 80, "exp": 5},
@@ -280,7 +281,8 @@ var ENEMY_DATA = {
 	Enemy.DDOS: {'health': 500, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 95, 'name': "ddos", 'damage': 150, "exp": 5},
 	Enemy.RANSOMWARE: {'health': 150, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 105, 'name': "ransomware", 'damage': 250}, "exp": 5,
 	Enemy.ZERO: {'health': 220, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 110, 'name': "zero", 'damage': 350, "exp": 5},
-	Enemy.BOSS1: {'health': 15000, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "boss1", 'damage': 100, "exp": 5}
+	Enemy.BOSS1: {'health': 15000, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "boss1", 'damage': 100, "exp": 5},
+	Enemy.BOSS2: {'health': 30000, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 100, 'name': "boss2", 'damage': 200, "exp": 5}
 }
 
 var ads_visible := false:

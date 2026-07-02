@@ -411,7 +411,7 @@ var THREAT_DATA = {
 @onready var desc_desc: Label = $Reddatabasebg/Special/RealLifeDesc/Description
 
 @onready var animation: AnimatedSprite2D = $Reddatabasebg/AnimatedSprite2D
-
+@onready var worm_animation = $Reddatabasebg/AnimatedSprite2D2
 
 func _on_threat_20_pressed() -> void:
 	desc_name.text = threat_name[19]
@@ -420,6 +420,8 @@ func _on_threat_20_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[19]['health'])
 	desc_sp.text = str(THREAT_DATA[19]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[19]['irl_desc'])
+	animation.visible = true
+	worm_animation.visible = false
 
 func _on_threat_19_pressed() -> void:
 	desc_name.text = threat_name[18]
@@ -428,6 +430,8 @@ func _on_threat_19_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[18]['health'])
 	desc_sp.text = str(THREAT_DATA[18]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[18]['irl_desc'])
+	animation.visible = true
+	worm_animation.visible = false
 
 func _on_threat_18_pressed() -> void:
 	desc_name.text = threat_name[17]
@@ -436,6 +440,8 @@ func _on_threat_18_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[17]['health'])
 	desc_sp.text = str(THREAT_DATA[17]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[17]['irl_desc'])
+	animation.visible = true
+	worm_animation.visible = false
 
 func _on_threat_17_pressed() -> void:
 	desc_name.text = threat_name[16]
@@ -444,6 +450,8 @@ func _on_threat_17_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[16]['health'])
 	desc_sp.text = str(THREAT_DATA[16]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[16]['irl_desc'])
+	animation.visible = true
+	worm_animation.visible = false
 
 func _on_threat_16_pressed() -> void:
 	desc_name.text = threat_name[15]
@@ -452,6 +460,10 @@ func _on_threat_16_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[15]['health'])
 	desc_sp.text = str(THREAT_DATA[15]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[15]['irl_desc'])
+	animation.play("conficker")
+	animation.visible = true
+	worm_animation.visible = false
+
 func _on_threat_15_pressed() -> void:
 	desc_name.text = threat_name[14]
 	desc_damage.text = str(THREAT_DATA[14]['damage'])
@@ -460,6 +472,8 @@ func _on_threat_15_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[14]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[14]['irl_desc'])
 	animation.play("ilu")
+	animation.visible = true
+	worm_animation.visible = false
 
 func _on_threat_14_pressed() -> void:
 	desc_name.text = threat_name[13]
@@ -469,6 +483,8 @@ func _on_threat_14_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[13]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[13]['irl_desc'])
 	animation.play("zero")
+	animation.visible = true
+	worm_animation.visible = false
 
 func _on_threat_13_pressed() -> void:
 	desc_name.text = threat_name[12]
@@ -478,6 +494,8 @@ func _on_threat_13_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[12]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[12]['irl_desc'])
 	animation.play("ransomware")
+	animation.visible = true
+	worm_animation.visible = false
 
 func _on_threat_12_pressed() -> void:
 	desc_name.text = threat_name[11]
@@ -487,6 +505,8 @@ func _on_threat_12_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[11]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[11]['irl_desc'])
 	animation.play("ddos")
+	animation.visible = true
+	worm_animation.visible = false
 
 
 func _on_threat_11_pressed() -> void:
@@ -497,6 +517,8 @@ func _on_threat_11_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[10]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[10]['irl_desc'])
 	animation.play("sql")
+	animation.visible = true
+	worm_animation.visible = false
 
 func _on_threat_9_pressed() -> void:
 	desc_name.text = threat_name[8]
@@ -506,6 +528,8 @@ func _on_threat_9_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[8]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[8]['irl_desc'])
 	animation.play("insider")
+	animation.visible = true
+	worm_animation.visible = false
 
 func _on_threat_8_pressed() -> void:
 	desc_name.text = threat_name[7]
@@ -515,6 +539,8 @@ func _on_threat_8_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[7]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[7]['irl_desc'])
 	animation.play("botnet")
+	animation.visible = true
+	worm_animation.visible = false
 
 func _on_threat_7_pressed() -> void:
 	desc_name.text = threat_name[6]
@@ -524,6 +550,8 @@ func _on_threat_7_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[6]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[6]['irl_desc'])
 	animation.play("creds")
+	animation.visible = true
+	worm_animation.visible = false
 
 
 func _on_threat_6_pressed() -> void:
@@ -533,6 +561,9 @@ func _on_threat_6_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[5]['health'])
 	desc_sp.text = str(THREAT_DATA[5]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[5]['irl_desc'])
+	animation.play("trojan")
+	animation.visible = true
+	worm_animation.visible = false
 	
 
 func _on_threat_5_pressed() -> void:
@@ -543,6 +574,8 @@ func _on_threat_5_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[4]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[4]['irl_desc'])
 	animation.play("spyware")
+	animation.visible = true
+	worm_animation.visible = false
 
 
 func _on_threat_4_pressed() -> void:
@@ -552,6 +585,8 @@ func _on_threat_4_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[3]['health'])
 	desc_sp.text = str(THREAT_DATA[3]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[3]['irl_desc'])
+	animation.visible = false
+	worm_animation.visible = true
 
 func _on_threat_3_pressed() -> void:
 	desc_name.text = threat_name[2]
@@ -561,6 +596,8 @@ func _on_threat_3_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[2]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[2]['irl_desc'])
 	animation.play("adware")
+	animation.visible = true
+	worm_animation.visible = false
 
 func _on_threat_2_pressed() -> void:
 	desc_name.text = threat_name[1]
@@ -570,6 +607,8 @@ func _on_threat_2_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[1]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[1]['irl_desc'])
 	animation.play("virus")
+	animation.visible = true
+	worm_animation.visible = false
 
 func _on_threat_1_pressed() -> void:
 	desc_name.text = threat_name[0]
@@ -579,6 +618,8 @@ func _on_threat_1_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[0]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[0]['irl_desc'])
 	animation.play("spam")
+	animation.visible = true
+	worm_animation.visible = false
 
 
 func _on_threat_10_pressed() -> void:
@@ -589,3 +630,5 @@ func _on_threat_10_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[9]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[9]['irl_desc'])
 	animation.play("rootkit")
+	animation.visible = true
+	worm_animation.visible = false

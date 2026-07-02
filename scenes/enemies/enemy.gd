@@ -76,6 +76,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$Virus.visible = false
 	$Spyware.visible = false
 	$Adware.visible = false
+	$Trojan.visible = false
 	$Creds.visible = false
 	$Botnet.visible = false
 	$Worm.visible = false
@@ -87,6 +88,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$Ransomware.visible = false
 	$Zero.visible = false
 	$Boss1.visible = false
+	$Boss2.visible = false
 
 	match Data.ENEMY_DATA[type]['name']:
 		"spam":
@@ -107,6 +109,10 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Spyware.visible = true
 			enemy_type = $Spyware
 			$Spyware.material = $Spyware.material.duplicate()
+		"trojan":
+			$Trojan.visible = true
+			enemy_type = $Trojan
+			$Trojan.material = $Trojan.material.duplicate()
 		"creds":
 			$Creds.visible = true
 			enemy_type = $Creds
@@ -155,6 +161,10 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Boss1.visible = true
 			enemy_type = $Boss1
 			$Boss1.material = $Boss1.material.duplicate()
+		"boss2":
+			$Boss2.visible = true
+			enemy_type = $Boss2
+			$Boss2.material = $Boss2.material.duplicate()
 			
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
 
@@ -186,7 +196,7 @@ func _process(delta: float):
 		var dir = current_pos - previous_pos
 		var margin = 1
 	
-		if abs(dir.x) > abs(dir.y):
+		if abs(dir.x) > abs(dir.y) + margin:
 			if dir.x > 1:
 				enemy_type.flip_h = false
 				enemy_type.play("Right")
@@ -196,7 +206,7 @@ func _process(delta: float):
 				else:
 					enemy_type.play("Right")
 					enemy_type.flip_h = true
-		elif abs(dir.x) < abs(dir.y):
+		elif abs(dir.x) < abs(dir.y) + margin:
 			if dir.y > 1:
 				if enemy_type.sprite_frames.has_animation("Down"):
 					enemy_type.play("Down")

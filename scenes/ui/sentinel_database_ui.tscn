@@ -349,7 +349,7 @@ offset_top = -1784.3428
 offset_right = 103.99997
 offset_bottom = -1784.3428
 theme_override_font_sizes/font_size = 26
-text = "Real Life Description"
+text = "Real World Description"
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
