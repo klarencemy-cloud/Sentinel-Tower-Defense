@@ -20,14 +20,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	_refresh_server_pts()
 
 
 func _refresh_server_pts() -> void:
 	if Data.is_maxed_lvl:
 		Data.server_points = 99999
 		server_pts.text = "∞"
-	else:	
+	else:
 		server_pts.text = str(Data.server_points)
 
 

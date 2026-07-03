@@ -11,11 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://bb6cvffm5145y" path="res://graphics/ui/sandbox_setting_button.png" id="5_0i47d"]
 [ext_resource type="PackedScene" uid="uid://b4xw080momfhv" path="res://scenes/ui/victory_overlay.tscn" id="5_4w2x3"]
 [ext_resource type="Texture2D" uid="uid://d0tvbvnfugwl5" path="res://graphics/ui/enemy_card_button.png" id="6_mgwkc"]
-[ext_resource type="PackedScene" uid="uid://bjuh3ncqnotqe" path="res://scenes/ui/dialogue_ui.tscn" id="7_26a3v"]
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="7_hl07w"]
 [ext_resource type="PackedScene" uid="uid://n0x1dg8naleh" path="res://scenes/ui/pause_menu.tscn" id="7_jcn1r"]
 [ext_resource type="PackedScene" uid="uid://cyglh5x7ci5ra" path="res://scenes/server/server_upgrade.tscn" id="8_fv78h"]
 [ext_resource type="Texture2D" uid="uid://b4lb0nrlipf4j" path="res://graphics/ui/TowersRectangle.png" id="9_4kltc"]
+[ext_resource type="PackedScene" uid="uid://0caonkrjweq0" path="res://scenes/enemies/pop_up.tscn" id="9_khplb"]
 [ext_resource type="Texture2D" uid="uid://dh1ehslhpji6n" path="res://graphics/ui/pause.png" id="10_4kltc"]
 [ext_resource type="Script" uid="uid://cbx4dxix5gl2o" path="res://scenes/ui/upgrade_button.gd" id="11_hc5d0"]
 [ext_resource type="Texture2D" uid="uid://cp25rrr2snh2l" path="res://graphics/ui/UpgradeButton.png" id="11_swkix"]
@@ -35,7 +35,7 @@ texture_margin_top = 6.0
 texture_margin_right = 6.0
 texture_margin_bottom = 6.0
 
-[node name="UI" type="CanvasLayer" unique_id=1846012905 groups=["UI", "server"]]
+[node name="UI" type="CanvasLayer" unique_id=1846012905 groups=["UI"]]
 script = ExtResource("1_pfayw")
 
 [node name="EnemyTowerStatsCounter" parent="." unique_id=1729359607 instance=ExtResource("2_qmss2")]
@@ -54,10 +54,6 @@ visible = false
 
 [node name="VictoryOverlay" parent="." unique_id=1881744022 instance=ExtResource("5_4w2x3")]
 layer = 10
-visible = false
-
-[node name="DialogueUi" parent="." unique_id=934514018 instance=ExtResource("7_26a3v")]
-layer = 3
 visible = false
 
 [node name="ServerUpgrade" parent="." unique_id=986532546 instance=ExtResource("8_fv78h")]
@@ -472,6 +468,9 @@ offset_right = -61.0
 offset_bottom = 221.0
 grow_horizontal = 0
 flat = true
+
+[node name="PopUp" parent="." unique_id=264578413 instance=ExtResource("9_khplb")]
+visible = false
 
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/SandboxSetting" to="." method="_on_sandbox_setting_pressed"]
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/TowerEnemiesButton" to="." method="_on_tower_enemies_button_pressed"]

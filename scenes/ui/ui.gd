@@ -9,6 +9,7 @@ extends CanvasLayer
 @onready var server_upgrade = $ServerUpgrade
 @onready var server_pts_label: Label = server_upgrade.find_child("LabelServerPts", true, false)
 
+
 signal place_tower(tower_type: Data.Tower)
 signal spawn_enemy(enemy_type: Data.Enemy)
 signal start_wave
@@ -57,7 +58,6 @@ func _ready() -> void:
 		$Control/HBoxContainer.position.y = 780
 		
 
-	
 	for tower_enum in Data.Tower.values():
 		var tower_card = tower_card_scene.instantiate()
 		tower_card.setup(tower_enum)
@@ -78,6 +78,11 @@ func _ready() -> void:
 
 func tower_select(tower_enum: Data.Tower):
 	place_tower.emit(tower_enum)
+
+
+func trigger_shake():
+	var camera = get_tree().get_first_node_in_group("camera")
+	camera.trigger_shake()
 
 #sandbox
 func sandbox_spawn_enemy(enemy_enum: Data.Enemy):
@@ -130,8 +135,6 @@ func _on_pause_button_pressed() -> void:
 	get_tree().paused = true
 
 
-
-		
 func update_server_load():
 	var progress_bar = $Control/TextureProgressBar
 	
@@ -293,3 +296,7 @@ func _on_unli_senti_cap_toggled(toggled_on: bool) -> void: # UNLI SERVER CAPACIT
 		Data.maxserverload = Data.before_max_server_load
 	
 	update_server_load()
+
+
+func hide_pop(state: bool):
+	$PopUp.visible = state
