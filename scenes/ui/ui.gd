@@ -6,6 +6,8 @@ extends CanvasLayer
 @onready var sandbox_setting: TextureButton = $Control/TextureRect/HBoxContainer/SandboxSetting
 @onready var tower_cards_container: HBoxContainer = $Control/TextureRect/ScrollContainer/TowerCardsContainer
 @onready var enemy_cards_container: HBoxContainer = $Control/TextureRect/ScrollContainer/EnemyCardsContainer
+@onready var server_upgrade = $ServerUpgrade
+@onready var server_pts_label: Label = server_upgrade.find_child("LabelServerPts", true, false)
 
 signal place_tower(tower_type: Data.Tower)
 signal spawn_enemy(enemy_type: Data.Enemy)
@@ -248,6 +250,7 @@ func _on_maxed_lvl_toggled(toggled_on: bool) -> void:
 		Data.player_level = 100
 		Data.experience = 100
 		update_experience(Data.experience, Data.player_level, Data.default_level_pool)
+		server_pts_label.text = "∞"
 	else:
 		Data.is_maxed_lvl = false
 		Data.player_level = Data.before_player_level

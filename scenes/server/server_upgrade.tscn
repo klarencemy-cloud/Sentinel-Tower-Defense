@@ -1687,7 +1687,7 @@ offset_right = 1541.0
 offset_bottom = 437.0
 texture = ExtResource("15_womid")
 
-[node name="Label" type="Label" parent="UIContainer/ServerUpdate/ServerPoints" unique_id=2026628267]
+[node name="LabelServerPts" type="Label" parent="UIContainer/ServerUpdate/ServerPoints" unique_id=2026628267]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.26027396

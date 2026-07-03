@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var server_pts: Label = $UIContainer/ServerUpdate/ServerPoints/Label
+@onready var server_pts: Label = $UIContainer/ServerUpdate/ServerPoints/LabelServerPts
 @onready var offense_container: Control = $UIContainer/ServerUpdate/OffenseContainer
 @onready var defense_container: Control = $UIContainer/ServerUpdate/DefenseContainer
 @onready var economy_container: Control = $UIContainer/ServerUpdate/EconomyContainer
