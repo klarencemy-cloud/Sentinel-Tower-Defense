@@ -3,11 +3,12 @@ extends Area2D
 var path_follow: PathFollow2D
 var health: int
 var speed: int
+var base_speed: int
 var dead := false
 var is_worm: bool = false
 var dmg_tween: Tween
 var enemy_tween: Tween
-
+var damage: int
 var enemy_type: Node
 var enemy_type_stats: Data.Enemy
 
@@ -36,6 +37,7 @@ var worm_spawn_timer : Timer
 var worm_spawn_interval:= 15.0
 var can_clone := true
 @export var spacing := 32
+var spyware_count := 0
 
 func _ready() -> void:
 	add_to_group('Enemies')
@@ -70,6 +72,8 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 
 	health = Data.ENEMY_DATA[type]['health']
 	speed = Data.ENEMY_DATA[type]['speed']
+	base_speed = speed
+	damage = Data.ENEMY_DATA[type]['damage']
 	is_worm = false
 
 	$Spam.visible = false
@@ -107,8 +111,12 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			Data.active_adware_changed.emit()
 		"spyware":
 			$Spyware.visible = true
+			$SpywareAbility.monitoring = true
+			$SpywareAbility.monitorable = true
+			$SpywareAbility/SpywareAbilityRange.disabled = false
 			enemy_type = $Spyware
 			$Spyware.material = $Spyware.material.duplicate()
+			$SpywareAbility.visible = true
 		"trojan":
 			$Trojan.visible = true
 			enemy_type = $Trojan
@@ -191,6 +199,9 @@ func _process(delta: float):
 			rootkit_skill_used = true
 			spawn_rootkit_portal()
 	
+	if enemy_type_stats == Data.Enemy.SPYWARE:
+		update_spyware_buff()
+		
 	if enemy_type != $Worm:
 		var current_pos = path_follow.global_position
 		var dir = current_pos - previous_pos
@@ -223,11 +234,15 @@ func _process(delta: float):
 
 	if path_follow.progress_ratio >= 0.99:
 		var processed_enemy_damage: float = 0.0
-		var raw_dmg = Data.ENEMY_DATA[enemy_type_stats]["damage"]
+		var raw_dmg = damage
 		processed_enemy_damage = Defense._dmg_reduc_armor(raw_dmg) # sends dmg to defense_data.gd to reduc dmg based on armor
 		Data.health -= processed_enemy_damage
 		queue_free()
+	if enemy_type_stats == Data.Enemy.SPYWARE:
+		pass # skip the spyware itself
 
+	if spyware_count > 0:
+		print(name, speed)
 
 ##func _on_area_entered(bullet: Area2D) -> void:
 ##	bullet.queue_free()
@@ -421,3 +436,63 @@ func _spawn_worm_clone():
 			path_follow.get_parent(),
 			path_follow.progress - spacing
 		)
+
+
+func _on_spyware_ability_area_entered(area: Area2D) -> void:
+	if area.name == "ClickArea":
+		var tower = area.get_parent() as Tower
+		tower.spyware_count += 1
+
+		if tower.spyware_count == 1:
+			var shape = tower.get_node("EnemyDetectionArea/CollisionShape2D").shape as CircleShape2D
+			shape.radius = max(shape.radius - 50, 10)
+
+
+func _on_spyware_ability_area_exited(area: Area2D) -> void:
+	if area.name == "ClickArea":
+		var tower = area.get_parent() as Tower
+
+		tower.spyware_count -= 1
+
+		if tower.spyware_count == 0:
+			var shape := tower.get_node("EnemyDetectionArea/CollisionShape2D").shape as CircleShape2D
+			shape.radius += 50
+
+func update_spyware_buff():
+	for area in $SpywareAbility.get_overlapping_areas():
+
+		if !area.is_in_group("Enemies"):
+			continue
+
+		if area == self:
+			continue
+
+		if area.enemy_type_stats == Data.Enemy.SPYWARE:
+			continue
+
+		area.speed = area.base_speed * 1.15
+		area.damage = Data.ENEMY_DATA[area.enemy_type_stats]["damage"] + 10
+
+	var buffed = []
+	for area in $SpywareAbility.get_overlapping_areas():
+		if !area.is_in_group("Enemies"):
+			continue
+		if area == self:
+			continue
+		if area.enemy_type_stats == Data.Enemy.SPYWARE:
+			continue
+
+		buffed.append(area)
+		area.speed = area.base_speed * 5
+		area.damage = Data.ENEMY_DATA[area.enemy_type_stats]["damage"] + 10
+
+	for enemy in get_tree().get_nodes_in_group("Enemies"):
+		if enemy == self:
+			continue
+		if enemy.enemy_type_stats == Data.Enemy.SPYWARE:
+			continue
+		if enemy in buffed:
+			continue
+
+		enemy.speed = enemy.base_speed
+		enemy.damage = Data.ENEMY_DATA[enemy.enemy_type_stats]["damage"]

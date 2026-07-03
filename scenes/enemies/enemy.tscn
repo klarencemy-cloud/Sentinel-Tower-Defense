@@ -1018,6 +1018,8 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_n7575"]
+
 [node name="Enemy" type="Area2D" unique_id=434305055 groups=["Enemies"]]
 z_index = 1
 collision_mask = 2
@@ -1045,7 +1047,6 @@ frame_progress = 0.5342863
 offset = Vector2(2.630137, -34.19178)
 
 [node name="Spyware" type="AnimatedSprite2D" parent="." unique_id=1983232872]
-visible = false
 texture_filter = 2
 material = SubResource("ShaderMaterial_n7575")
 position = Vector2(-9.999999, -14.999994)
@@ -1116,6 +1117,7 @@ sprite_frames = SubResource("SpriteFrames_rme1b")
 autoplay = "default"
 
 [node name="Trojan" type="AnimatedSprite2D" parent="." unique_id=200762088]
+visible = false
 material = SubResource("ShaderMaterial_f6y8w")
 position = Vector2(0, -25)
 sprite_frames = SubResource("SpriteFrames_jt03m")
@@ -1217,4 +1219,15 @@ animation = &"Right"
 autoplay = "Right"
 frame_progress = 0.5596954
 
+[node name="SpywareAbility" type="Area2D" parent="." unique_id=1638499242]
+visible = false
+collision_layer = 0
+collision_mask = 9
+
+[node name="SpywareAbilityRange" type="CollisionShape2D" parent="SpywareAbility" unique_id=1899016744]
+scale = Vector2(25.1, 25.1)
+shape = SubResource("CircleShape2D_n7575")
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_entered" from="SpywareAbility" to="." method="_on_spyware_ability_area_entered"]
+[connection signal="area_exited" from="SpywareAbility" to="." method="_on_spyware_ability_area_exited"]

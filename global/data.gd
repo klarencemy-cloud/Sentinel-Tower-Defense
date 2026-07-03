@@ -140,7 +140,7 @@ var TOWER_DATA = {
 		'server_load': 15,
 		'damage': 10,
 		'reload_time': 1,
-		'range': 1000,
+		'range': 100,
 		'crit rate': 0,
 		'crit damage': 50,
 		'bullet': Bullet.SINGLE,
