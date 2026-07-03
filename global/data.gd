@@ -4,6 +4,7 @@ signal active_ransomware_changed
 var default_health: float = 100.0
 var default_money: int = 200
 var default_system_load: int = 200
+const default_server_points: int = 30
 var is_sandbox: bool = false
 var is_vmmode: bool = false
 var is_unli_money: bool = false
@@ -17,9 +18,15 @@ signal toggle_server_scene # to toggle server upgrade visibility
 
 signal change_challenge() # for vm
 
-var before_total_money: int # sandbox save total money para hindi ma overwrite yung sa main story
-var before_total_health: float # sandbox save total health para hindi ma overwrite yung sa main story
-var before_max_server_load: int # sandbox save total server load capaccity para hindi ma overwrite yung sa main story
+# "before" variables to store the original values before entering sandbox mode
+var before_total_money: int 
+var before_total_health: float 
+var before_max_server_load: int #
+var before_owned_towers: Dictionary 
+var before_server_points: int 
+var before_player_level: int
+var before_total_experience: int
+
 
 var before_level_index: int
 var current_level_index: int = 0 # map count 0 = level 1
@@ -330,18 +337,18 @@ var checkpoint_wave: int = 0 # checkpoint count
 var current_wave: int = 0 # wave count
 
 func reset_game():
-	money = 200
+	money = default_money
 	currentserverload = 0
 
 var multiplier: int = 1
-var server_points: int = 30:
+var server_points: int = default_server_points:
 	set(value):
 		server_points = value
-		var server = get_tree().get_first_node_in_group("server")
-		if server_points > 0:
-			server.toggle_particle(true)
-		if server_points == 0:
-			server.toggle_particle(false)
+		#var server = get_tree().get_first_node_in_group("server")
+		#if server_points > 0:
+			#server.toggle_particle(true)
+		#if server_points == 0:
+			#server.toggle_particle(false)
 
 
 var default_level_pool: float = 100
@@ -349,11 +356,26 @@ var player_level: int = 1
 var experience: int = 0:
 	set(value):
 		experience = value
+		var ui = get_tree().get_first_node_in_group("UI")
+		# Cap at level 100
+		if player_level >= 100:
+			player_level = 100
+			experience = int(default_level_pool)  # Keep bar eexp full
+			if ui:
+				ui.update_experience(experience, player_level, default_level_pool)
+			return
+		
 		while experience >= default_level_pool:
 			experience -= default_level_pool
 			player_level += 1
 			server_points += 1
 			default_level_pool += default_level_pool * .5
-		var ui = get_tree().get_first_node_in_group("UI")
+			
+			# Stop leveling to 101 if we hit lvl 100
+			if player_level >= 100:
+				player_level = 100
+				experience = int(default_level_pool)
+				break
+		
 		if ui:
 			ui.update_experience(experience, player_level, default_level_pool)
