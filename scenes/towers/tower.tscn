@@ -16,7 +16,7 @@ texture = ExtResource("2_g767u")
 [node name="Turret" type="Sprite2D" parent="." unique_id=280637358]
 
 [node name="EnemyDetectionArea" type="Area2D" parent="." unique_id=854437296]
-collision_layer = 0
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea" unique_id=435652351]
 
@@ -24,7 +24,7 @@ collision_layer = 0
 autostart = true
 
 [node name="ClickArea" type="Area2D" parent="." unique_id=1507995253]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1535168098]
