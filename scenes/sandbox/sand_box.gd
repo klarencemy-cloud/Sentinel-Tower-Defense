@@ -1,7 +1,7 @@
 extends Node2D
 
-var sandbox_setting: bool #sandbox menu toggle
-var tower_cards_showing: bool = true #toggles between tower and enemy cards in sandbox menu
+var sandbox_setting: bool # sandbox menu toggle
+var tower_cards_showing: bool = true # toggles between tower and enemy cards in sandbox menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

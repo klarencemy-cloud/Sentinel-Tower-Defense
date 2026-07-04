@@ -36,17 +36,17 @@ region = Rect2(1285.7681, 211.22359, 55.027588, 47.66716)
 atlas = ExtResource("7_ky4o8")
 region = Rect2(0, 576, 128, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvqnu"]
-atlas = ExtResource("9_sry3f")
-region = Rect2(2.8793335, 805.1457, 248.89706, 212.29456)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ycqj"]
+atlas = ExtResource("7_ky4o8")
+region = Rect2(1280, 576, 128, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jg1md"]
 atlas = ExtResource("7_ky4o8")
 region = Rect2(896, 576, 128, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ycqj"]
-atlas = ExtResource("7_ky4o8")
-region = Rect2(1280, 576, 128, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvqnu"]
+atlas = ExtResource("9_sry3f")
+region = Rect2(2.8793335, 805.1457, 248.89706, 212.29456)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3st52"]
 atlas = ExtResource("7_ky4o8")
@@ -711,9 +711,9 @@ metadata/_edit_use_anchors_ = true
 [node name="CardContainer" type="Control" parent="ThreatContainer" unique_id=961428850]
 texture_filter = 2
 layout_mode = 1
-anchor_top = -6.7710395
+anchor_top = -7.1212873
 anchor_right = 0.9978678
-anchor_bottom = -2.2314355
+anchor_bottom = -2.5816832
 offset_top = 5482.0
 offset_bottom = 5482.0
 metadata/_edit_use_anchors_ = true
@@ -921,6 +921,16 @@ texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect2" type="TextureRect" parent="ThreatContainer/CardContainer/Threat6" unique_id=430622547]
+texture_filter = 2
+layout_mode = 0
+offset_left = 41.0
+offset_top = 41.0
+offset_right = 172.0
+offset_bottom = 172.0
+texture = SubResource("AtlasTexture_5ycqj")
+expand_mode = 1
+
 [node name="Threat_Name_6" type="Label" parent="ThreatContainer/CardContainer/Threat6" unique_id=2023869708]
 texture_filter = 2
 layout_mode = 1
@@ -932,21 +942,12 @@ anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "Trojan Horse"
+text = "Botnet Node"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="ThreatContainer/CardContainer/Threat6" unique_id=682235597]
-layout_mode = 0
-offset_left = 36.0
-offset_top = 41.0
-offset_right = 177.0
-offset_bottom = 182.0
-texture = SubResource("AtlasTexture_nvqnu")
-expand_mode = 1
 
 [node name="Threat7" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1132838910]
 texture_filter = 2
@@ -1009,21 +1010,20 @@ anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "Botnet Node"
+text = "Trojan Horse"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="ThreatContainer/CardContainer/Threat8" unique_id=430622547]
-texture_filter = 2
+[node name="TextureRect" type="TextureRect" parent="ThreatContainer/CardContainer/Threat8" unique_id=682235597]
 layout_mode = 0
-offset_left = 41.0
+offset_left = 37.0
 offset_top = 48.0
-offset_right = 172.0
-offset_bottom = 179.0
-texture = SubResource("AtlasTexture_5ycqj")
+offset_right = 178.0
+offset_bottom = 189.0
+texture = SubResource("AtlasTexture_nvqnu")
 expand_mode = 1
 
 [node name="Threat9" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=464604319]

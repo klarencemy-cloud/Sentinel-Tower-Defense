@@ -239,9 +239,9 @@ var threat_name: Array = [
 	"Adware",
 	"Worm",
 	"Spyware",
-	"Trojan Horse",
-	"Credential Stuffing",
 	"Botnet Node",
+	"Credential Stuffing",
+	"Trojan Horse",
 	"Insider Threat",
 	"Rootkit",
 	"SQL Injection",
@@ -257,7 +257,7 @@ var threat_name: Array = [
 	]
 
 	
-enum Threat {SPAM, VIRUS, ADWARE, WORM, SPYWARE, TROJAN_HORSE, CREDS, BOTNET, INSIDER, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, ILOVEYOU, CONFICKER, WANNACRY, NOTPEYTA, DOOM, TROJAN}
+enum Threat {SPAM, VIRUS, ADWARE, WORM, SPYWARE, BOTNET, CREDS, TROJAN_HORSE, INSIDER, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, ILOVEYOU, CONFICKER, WANNACRY, NOTPEYTA, DOOM, TROJAN}
 
 var THREAT_DATA = {
 	Threat.SPAM: {
@@ -295,13 +295,15 @@ var THREAT_DATA = {
 		'special_ability': "Infects the tower, reducing its range, and it increases enemy speed and damage to the enemies nearby.",
 		'irl_desc': "Spyware is a type of software that unethically, without proper permissions or authorization, steals a user's personal or business information and sends it to a third party."
 		},
-		Threat.TROJAN_HORSE: {
-		'health': 350,
-		'damage': 40,
-		'speed': 110,
-		'special_ability': "Appears as a friendly unit at first, but when it is near a defense tower, it reveals itself and rushes to attack (increase in speed).",
-		'irl_desc': "Trojan horse attacks deceive people into running programs that appear to be trusted and safe but are actually malicious by using social engineering and deception. Trojans are programs that appear as attachments, downloads, or video downloads, or programs that pretend to do one thing but actually do another thing maliciously."
+
+		Threat.BOTNET: {
+		'health': 200,
+		'damage': 55,
+		'speed': 105,
+		'special_ability': "Infects then control towers to malfunction, causing them to fire inaccurately or in different directions.",
+		'irl_desc': "Botnets are networks of hijacked computer devices used to carry out various scams and cyberattacks. The term “botnet” is formed from the words “robot” and “network.” The assembly of a botnet is usually the infiltration stage of a multi-layer scheme. The bots serve as a tool to automate mass attacks, such as data theft, server crashing, and malware distribution."
 		},
+	
 		Threat.CREDS: {
 		'health': "N/A",
 		'damage': "N/A",
@@ -309,13 +311,15 @@ var THREAT_DATA = {
 		'special_ability': "Copies the ability of a near enemy and uses it",
 		'irl_desc': "Credential stuffing is a cyberattack that uses stolen login credentials from one breach to gain access to accounts on other services."
 		},
-	Threat.BOTNET: {
-		'health': 200,
-		'damage': 55,
-		'speed': 105,
-		'special_ability': "Infects then control towers to malfunction, causing them to fire inaccurately or in different directions.",
-		'irl_desc': "Botnets are networks of hijacked computer devices used to carry out various scams and cyberattacks. The term “botnet” is formed from the words “robot” and “network.” The assembly of a botnet is usually the infiltration stage of a multi-layer scheme. The bots serve as a tool to automate mass attacks, such as data theft, server crashing, and malware distribution."
+
+		Threat.TROJAN_HORSE: {
+		'health': 350,
+		'damage': 40,
+		'speed': 110,
+		'special_ability': "Appears as a friendly unit at first, but when it is near a defense tower, it reveals itself and rushes to attack (increase in speed).",
+		'irl_desc': "Trojan horse attacks deceive people into running programs that appear to be trusted and safe but are actually malicious by using social engineering and deception. Trojans are programs that appear as attachments, downloads, or video downloads, or programs that pretend to do one thing but actually do another thing maliciously."
 		},
+	
 	Threat.INSIDER: {
 		'health': 120,
 		'damage': 80,
@@ -391,7 +395,7 @@ var THREAT_DATA = {
 		'damage': 200,
 		'speed': 100,
 		'special_ability': "Spawns swarm enemies along the paths, such as botnet drones, DDoS, spam emails, worms, and even insider threats.",
-		'irl_desc': ""
+		'irl_desc': "MyDoom was actually a computer worm rather than a virus. However, it is sometimes called the MyDoom Virus, which is a highly destructive malware first discovered in January 2004. It remains the fastest-spreading mass-mailing threat in history. It infected an estimated millions of computers and caused billions in damages by turning machines into botnets, causing massive Distributed Denial-of-Service (DDoS) attacks. "
 		},
 	Threat.TROJAN: {
 		'health': 150000,
@@ -538,7 +542,7 @@ func _on_threat_8_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[7]['health'])
 	desc_sp.text = str(THREAT_DATA[7]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[7]['irl_desc'])
-	animation.play("botnet")
+	animation.play("trojan")
 	animation.visible = true
 	worm_animation.visible = false
 
@@ -561,7 +565,7 @@ func _on_threat_6_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[5]['health'])
 	desc_sp.text = str(THREAT_DATA[5]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[5]['irl_desc'])
-	animation.play("trojan")
+	animation.play("botnet")
 	animation.visible = true
 	worm_animation.visible = false
 	

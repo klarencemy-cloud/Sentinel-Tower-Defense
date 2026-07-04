@@ -628,8 +628,11 @@ modulate = Color(1, 1, 1, 0.6862745)
 [node name="UI" parent="." unique_id=1090151980 instance=ExtResource("6_d4w6o")]
 
 [node name="PlayerCamera" parent="." unique_id=2052181342 groups=["camera"] instance=ExtResource("5_urvlt")]
+process_mode = 3
 position = Vector2(2851, 1564)
 acceleration = 0.7
+max_shake = 100.0
+shake_fade = 5.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=752247016]
 stream = ExtResource("6_mbbpy")

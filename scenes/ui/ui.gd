@@ -84,6 +84,13 @@ func trigger_shake():
 	var camera = get_tree().get_first_node_in_group("camera")
 	camera.trigger_shake()
 
+func move_camera(coords: Vector2):
+	var camera = get_tree().get_first_node_in_group("camera")
+	var camera_tween = create_tween()
+	camera_tween.tween_property(camera, "position", coords, 1)
+
+	# camera.position = coords
+
 #sandbox
 func sandbox_spawn_enemy(enemy_enum: Data.Enemy):
 	spawn_enemy.emit(enemy_enum)

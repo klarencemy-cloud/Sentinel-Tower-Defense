@@ -41,8 +41,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			position -= event.relative * acceleration
 
 
-var max_shake: float = 30.0
-var shake_fade: float = 30.0
+@export var max_shake: float = 30.0
+@export var shake_fade: float = 30.0
 var shake_strength: float = 0.0
 
 func trigger_shake() -> void:

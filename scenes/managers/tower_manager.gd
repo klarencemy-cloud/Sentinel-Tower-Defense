@@ -176,7 +176,6 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 
 	if Data.TOWER_DATA[selected_tower]["name"] == "Spam Filter" and !GameDialogueManager.is_introduction_spam_filter and !Data.is_sandbox and (Data.current_wave == 0 or Data.current_wave == 1):
 		GameDialogueManager.show_dialogue_spam_filter()
-
 	print("Placed tower ID: ", tower.tower_id)
 
 

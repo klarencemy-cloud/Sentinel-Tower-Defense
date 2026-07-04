@@ -345,10 +345,11 @@ var server_points: int = 0:
 	set(value):
 		server_points = value
 		var server = get_tree().get_first_node_in_group("server")
-		if server_points > 0:
-			server.toggle_particle(true)
-		if server_points == 0:
-			server.toggle_particle(false)
+		if server:
+			if server_points > 0:
+				server.toggle_particle(true)
+			if server_points == 0:
+				server.toggle_particle(false)
 
 var default_level_pool: float = 100
 var player_level: int = 1

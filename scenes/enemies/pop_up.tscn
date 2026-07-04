@@ -6,11 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://bi7d3ifie15g6" path="res://graphics/container/red_pop.png" id="2_q1l02"]
 [ext_resource type="Texture2D" uid="uid://ds225f3jg8tik" path="res://graphics/enemies/enemies.png" id="2_t8vrm"]
 [ext_resource type="Texture2D" uid="uid://d3isx7xodcwuf" path="res://graphics/enemies/enemies2.png" id="3_nnuf7"]
+[ext_resource type="Texture2D" uid="uid://fry3g0xyw020" path="res://graphics/container/lower.png" id="4_ba8xt"]
+[ext_resource type="Texture2D" uid="uid://cm0uo5i3sik83" path="res://graphics/container/rotating.png" id="4_bfgac"]
 [ext_resource type="Texture2D" uid="uid://couylhx13i6ip" path="res://graphics/enemies/enemies3.png" id="4_bjuj1"]
 [ext_resource type="FontFile" uid="uid://26svlmw1apk8" path="res://font/Libre_Franklin/static/LibreFranklin-Light.ttf" id="5_nnuf7"]
 [ext_resource type="Texture2D" uid="uid://qde702xowd7u" path="res://graphics/icons/heart.png" id="6_xms32"]
 [ext_resource type="Texture2D" uid="uid://bgd5c2bukefyk" path="res://graphics/icons/damage.png" id="7_hdsen"]
 [ext_resource type="Texture2D" uid="uid://dvk31x3ftr3ux" path="res://graphics/icons/ms.png" id="8_hdsen"]
+[ext_resource type="Texture2D" uid="uid://bylfjvl554lgh" path="res://graphics/container/upper.png" id="8_pntdg"]
+[ext_resource type="FontFile" uid="uid://cxqairacw6y1n" path="res://font/Libre_Franklin/static/LibreFranklin-ThinItalic.ttf" id="10_bxm1x"]
 
 [sub_resource type="Gradient" id="Gradient_ysedr"]
 colors = PackedColorArray(0.13725491, 0.22352941, 0.2784314, 0.6784314, 0.13725491, 0.22352941, 0.2784314, 0.47058824)
@@ -18,12 +22,18 @@ colors = PackedColorArray(0.13725491, 0.22352941, 0.2784314, 0.6784314, 0.137254
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xo11b"]
 gradient = SubResource("Gradient_ysedr")
 
+[sub_resource type="Gradient" id="Gradient_ba8xt"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bxm1x"]
+gradient = SubResource("Gradient_ba8xt")
+
 [sub_resource type="Animation" id="Animation_q1l02"]
 length = 4.733333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/AnimatedSprite2D:scale")
+tracks/0/path = NodePath("Pop/Animation/AnimatedSprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -35,7 +45,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/RedPop:scale")
+tracks/1/path = NodePath("Pop/Animation/RedPop:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -44,6 +54,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pop/Animation/LowerDoor:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 507)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pop/Animation/UpperDoor:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_kw2ov"]
 resource_name = "pop"
@@ -51,7 +85,7 @@ length = 0.8666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/AnimatedSprite2D:scale")
+tracks/0/path = NodePath("Pop/Animation/AnimatedSprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -63,7 +97,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/RedPop:scale")
+tracks/1/path = NodePath("Pop/Animation/RedPop:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -72,12 +106,44 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(2, 2), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1.1, 1.1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pop/Animation/UpperDoor:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -507), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pop/Animation/LowerDoor:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1080), Vector2(0, 507)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bfgac"]
 _data = {
 &"RESET": SubResource("Animation_q1l02"),
 &"pop": SubResource("Animation_kw2ov")
 }
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kw2ov"]
+particle_flag_disable_z = true
+radial_velocity_min = 413.21997
+radial_velocity_max = 580.51996
+scale_max = 8.21
+hue_variation_min = -0.050000023
+hue_variation_max = 0.059999976
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7shr5"]
 atlas = ExtResource("2_t8vrm")
@@ -528,32 +594,163 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="Animation" id="Animation_pntdg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DisplayContainer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bfgac"]
+resource_name = "info_pop"
+length = 0.23333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.2, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DisplayContainer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.2, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pntdg"]
+_data = {
+&"RESET": SubResource("Animation_pntdg"),
+&"info_pop": SubResource("Animation_bfgac")
+}
+
+[sub_resource type="Gradient" id="Gradient_kw2ov"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bfgac"]
+gradient = SubResource("Gradient_kw2ov")
+fill = 1
+fill_from = Vector2(0.51282054, 0.47863248)
+fill_to = Vector2(0.47863248, 0.021367522)
+
 [node name="PopUp" type="CanvasLayer" unique_id=264578413 groups=["animate"]]
+process_mode = 3
 script = ExtResource("1_nldt8")
 
-[node name="Overlay" type="TextureRect" parent="." unique_id=2003662893]
-visible = false
+[node name="Pop" type="Control" parent="." unique_id=2012089707]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Pop" unique_id=1024353395]
+top_level = true
+z_index = 1
+position = Vector2(2136, -121)
+color = Color(0.8392791, 0.925866, 1, 1)
+energy = 0.0
+range_layer_max = 1
+
+[node name="Overlay" type="TextureRect" parent="Pop" unique_id=2003662893]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_xo11b")
+metadata/_edit_use_anchors_ = true
 
-[node name="Animation" type="Control" parent="." unique_id=395497610]
-layout_mode = 3
+[node name="Animation" type="Control" parent="Pop" unique_id=395497610]
 anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 pivot_offset = Vector2(960, 498)
 script = ExtResource("2_kw2ov")
+metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation" unique_id=626542747]
-root_node = NodePath("../..")
+[node name="SlitLight" type="PointLight2D" parent="Pop/Animation" unique_id=728243893]
+position = Vector2(958.49994, 505.5)
+scale = Vector2(30.515623, 0.046874758)
+color = Color(0.6, 0.030000009, 0.039499857, 0.12156863)
+energy = 3.53
+blend_mode = 2
+range_layer_max = 1
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_bxm1x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pop/Animation" unique_id=626542747]
+root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_bfgac")
 speed_scale = 1.505
 
-[node name="RedPop" type="TextureRect" parent="Animation" unique_id=1151442935]
+[node name="UpperDoor" type="TextureRect" parent="Pop/Animation" unique_id=1401443725]
+light_mask = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.45
+anchor_right = 1.0
+anchor_bottom = 0.019444445
+offset_top = 486.0
+offset_bottom = 486.0
+texture = ExtResource("8_pntdg")
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LowerDoor" type="TextureRect" parent="Pop/Animation" unique_id=36468109]
+light_mask = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.019444445
+anchor_right = 1.0
+anchor_bottom = 0.55000114
+offset_top = 486.0
+offset_bottom = 486.0
+texture = ExtResource("4_ba8xt")
+metadata/_edit_use_anchors_ = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Pop/Animation" unique_id=2060549403]
+position = Vector2(967, 486)
+emitting = false
+amount = 50
+visibility_rect = Rect2(-250, -250, 500, 500)
+process_material = SubResource("ParticleProcessMaterial_kw2ov")
+
+[node name="RedPop" type="TextureRect" parent="Pop/Animation" unique_id=1151442935]
+z_index = 1
 layout_mode = 0
 offset_left = 679.0
 offset_top = 220.0
@@ -563,18 +760,42 @@ pivot_offset = Vector2(307, 275)
 texture = ExtResource("2_q1l02")
 expand_mode = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animation" unique_id=444069515]
+[node name="TextureRect" type="TextureRect" parent="Pop/Animation/RedPop" unique_id=851695509]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09457514
+anchor_top = 0.066795
+anchor_right = 0.923722
+anchor_bottom = 0.90171295
+pivot_offset = Vector2(228.324, 229.185)
+texture = ExtResource("4_bfgac")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pop/Animation" unique_id=444069515]
 modulate = Color(0, 0, 0, 1)
+z_index = 1
 texture_filter = 2
 position = Vector2(973.55426, 448.1886)
 scale = Vector2(1.3081704, 1.3081703)
 sprite_frames = SubResource("SpriteFrames_xms32")
-animation = &"ilu"
+animation = &"spam"
 autoplay = "spam"
 
-[node name="Info" type="Control" parent="." unique_id=137236267]
+[node name="Label" type="Label" parent="Pop/Animation" unique_id=1896812019]
+layout_mode = 0
+offset_left = 1447.0
+offset_top = 1018.0
+offset_right = 1858.0
+offset_bottom = 1057.0
+theme_override_fonts/font = ExtResource("10_bxm1x")
+theme_override_font_sizes/font_size = 32
+text = "Threat Signature Identified"
+
+[node name="Info" type="Control" parent="Pop" unique_id=137236267]
 visible = false
-layout_mode = 3
+z_index = 1
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -582,133 +803,188 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="Info" unique_id=1770208282]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pop/Info" unique_id=1624410665]
+libraries/ = SubResource("AnimationLibrary_pntdg")
+
+[node name="TextureRect" type="TextureRect" parent="Pop/Info" unique_id=1770208282]
 layout_mode = 0
 offset_left = 87.0
 offset_top = 47.0
 offset_right = 1809.8547
 offset_bottom = 1018.0
+pivot_offset = Vector2(861, 474)
 texture = ExtResource("1_xo11b")
 expand_mode = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Info" unique_id=1829873686]
+[node name="DisplayContainer" type="Control" parent="Pop/Info" unique_id=303370693]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="Pop/Info/DisplayContainer" unique_id=1486091662]
+layout_mode = 1
+anchor_left = 0.595
+anchor_top = 0.45800003
+anchor_right = 0.595
+anchor_bottom = 0.45800003
+offset_left = -30.400024
+offset_top = -358.64005
+offset_right = 642.6
+offset_bottom = 471.35995
+mouse_filter = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="Pop/Info/DisplayContainer/Control" unique_id=2065292448]
+z_index = 1
+position = Vector2(320.99988, 425)
+scale = Vector2(11.007812, 11.007812)
+color = Color(1, 0.27999997, 0.27999997, 1)
+energy = 5.47
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_bfgac")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pop/Info/DisplayContainer/Control" unique_id=1829873686]
+light_mask = 2
+z_index = 1
 texture_filter = 2
-position = Vector2(1413, 555)
+position = Vector2(325.99988, 381)
 scale = Vector2(2.534424, 2.534424)
 sprite_frames = SubResource("SpriteFrames_xms32")
-animation = &"creds"
+animation = &"spam"
 autoplay = "creds"
 
-[node name="Name" type="Label" parent="Info" unique_id=2134197941]
+[node name="Name" type="Label" parent="Pop/Info/DisplayContainer" unique_id=2134197941]
 layout_mode = 0
-offset_left = 200.0
-offset_top = 220.0
-offset_right = 825.0
-offset_bottom = 335.0
+anchor_left = 0.104166664
+anchor_top = 0.2037037
+anchor_right = 0.4296875
+anchor_bottom = 0.3101852
 theme_override_font_sizes/font_size = 100
-text = "Credit Sucker"
+text = "Credential Stuffing"
+metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="Info" unique_id=1410305698]
+[node name="Label2" type="Label" parent="Pop/Info/DisplayContainer" unique_id=1410305698]
 layout_mode = 0
-offset_left = 200.0
-offset_top = 369.0
-offset_right = 467.0
-offset_bottom = 404.0
+anchor_left = 0.104166664
+anchor_top = 0.34166667
+anchor_right = 0.24322917
+anchor_bottom = 0.37407407
 theme_override_colors/font_color = Color(0.86, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "In-game Description"
+metadata/_edit_use_anchors_ = true
 
-[node name="InG_desc" type="Label" parent="Info/Label2" unique_id=1571268256]
+[node name="InG_desc" type="Label" parent="Pop/Info/DisplayContainer/Label2" unique_id=1571268256]
 layout_mode = 0
 offset_top = 54.0
-offset_right = 461.0
-offset_bottom = 135.0
+offset_right = 788.0
+offset_bottom = 97.0
 theme_override_fonts/font = ExtResource("5_nnuf7")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "They spawn in swarms or in groups, making towers less efficient as they come in groups."
 horizontal_alignment = 3
 autowrap_mode = 2
 
-[node name="Label3" type="Label" parent="Info/Label2" unique_id=2139048189]
-layout_mode = 0
-offset_top = 186.0
-offset_right = 267.0
-offset_bottom = 221.0
+[node name="Label3" type="Label" parent="Pop/Info/DisplayContainer/Label2/InG_desc" unique_id=2139048189]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11732996
+anchor_top = 1.0
+anchor_right = 0.11732996
+anchor_bottom = 1.0
+offset_left = -92.45601
+offset_top = 20.0
+offset_right = 207.54399
+offset_bottom = 55.0
 theme_override_colors/font_color = Color(0.86, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Real-world Description"
+metadata/_edit_use_anchors_ = true
 
-[node name="RL_desc" type="Label" parent="Info/Label2/Label3" unique_id=1126347985]
+[node name="RL_desc" type="Label" parent="Pop/Info/DisplayContainer/Label2/InG_desc/Label3" unique_id=1126347985]
 layout_mode = 0
 offset_top = 54.0
-offset_right = 461.0
+offset_right = 788.0
 offset_bottom = 163.0
 theme_override_fonts/font = ExtResource("5_nnuf7")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "Spam is unsolicited, unwelcome digital communication that is transmitted in large quantities, mostly via email but sometimes via texts, phone calls, and social media."
 horizontal_alignment = 3
 autowrap_mode = 2
 
-[node name="Heart" type="TextureRect" parent="Info" unique_id=1621090089]
-layout_mode = 0
-offset_left = 757.0
-offset_top = 389.0
-offset_right = 865.0
-offset_bottom = 498.0
+[node name="Heart" type="TextureRect" parent="Pop/Info/DisplayContainer" unique_id=1621090089]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.104166664
+anchor_top = 0.60462964
+anchor_right = 0.16041666
+anchor_bottom = 0.70555556
 texture = ExtResource("6_xms32")
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Info/Heart" unique_id=1450193470]
-layout_mode = 0
+[node name="Health" type="Label" parent="Pop/Info/DisplayContainer/Heart" unique_id=1450193470]
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 1.0462962
 anchor_top = 0.17431192
 anchor_right = 2.3333333
 anchor_bottom = 0.8165138
 offset_right = 1.5258789e-05
 theme_override_font_sizes/font_size = 50
-text = "1000"
+text = "10000"
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Sword" type="TextureRect" parent="Info" unique_id=1695004350]
-layout_mode = 0
-offset_left = 765.0
-offset_top = 499.0
-offset_right = 865.0
-offset_bottom = 599.0
+[node name="Sword" type="TextureRect" parent="Pop/Info/DisplayContainer" unique_id=1695004350]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25885418
+anchor_top = 0.60925925
+anchor_right = 0.3109375
+anchor_bottom = 0.70185184
 texture = ExtResource("7_hdsen")
 flip_h = true
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Info/Sword" unique_id=628021840]
+[node name="Damage" type="Label" parent="Pop/Info/DisplayContainer/Sword" unique_id=628021840]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.05
-anchor_top = 0.18
+anchor_top = 0.15
 anchor_right = 2.44
-anchor_bottom = 0.88
+anchor_bottom = 0.85
 offset_right = -1.5258789e-05
 theme_override_font_sizes/font_size = 50
-text = "1000"
+text = "100"
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Boot" type="TextureRect" parent="Info" unique_id=1687024499]
-layout_mode = 0
-offset_left = 783.0
-offset_top = 623.0
-offset_right = 853.0
-offset_bottom = 693.0
+[node name="Boot" type="TextureRect" parent="Pop/Info/DisplayContainer" unique_id=1687024499]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.37864584
+anchor_top = 0.62314814
+anchor_right = 0.41510418
+anchor_bottom = 0.6879629
 texture = ExtResource("8_hdsen")
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Info/Boot" unique_id=1950071256]
-layout_mode = 0
+[node name="Speed" type="Label" parent="Pop/Info/DisplayContainer/Boot" unique_id=1950071256]
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 1.2428571
-anchor_top = 0.071428575
+anchor_top = 0.1
 anchor_right = 2.9
-anchor_bottom = 0.9
+anchor_bottom = 0.9285714
 theme_override_font_sizes/font_size = 50
-text = "1000"
+text = "100"
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[connection signal="gui_input" from="Animation" to="Animation" method="_on_gui_input"]
-[connection signal="gui_input" from="Info" to="." method="_on_info_gui_input"]
+[connection signal="gui_input" from="Pop/Animation" to="Pop/Animation" method="_on_gui_input"]
+[connection signal="gui_input" from="Pop/Info" to="." method="_on_info_gui_input"]

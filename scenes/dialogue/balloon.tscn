@@ -162,9 +162,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 400.0
-offset_top = -445.0
+offset_top = -531.0
 offset_right = -325.0
-offset_bottom = -63.0
+offset_bottom = -149.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -191,9 +191,9 @@ scroll_active = false
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer" unique_id=1030936092]
 layout_mode = 0
-offset_left = 17.0
+offset_left = 40.0
 offset_top = 121.0
-offset_right = 1104.0
+offset_right = 1135.0
 offset_bottom = 300.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer" unique_id=1428277592]
@@ -217,7 +217,8 @@ size_flags_vertical = 8
 
 [node name="Progress" type="Polygon2D" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=821575988]
 unique_name_in_owner = true
-polygon = PackedVector2Array(0, 0, 10, 10, 20, 0)
+position = Vector2(-49, 0)
+polygon = PackedVector2Array(0, 0, 10, 10, 20, 0, 11.325134, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=452325722]
 libraries/ = SubResource("AnimationLibrary_1337t")
@@ -232,9 +233,9 @@ anchor_top = 0.41500002
 anchor_right = 0.6428543
 anchor_bottom = 0.41500002
 offset_left = -338.28015
-offset_top = 24.799988
+offset_top = -61.200012
 offset_right = 242.71985
-offset_bottom = 94.79999
+offset_bottom = 8.799988
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
@@ -255,10 +256,10 @@ text = "Response example"
 [node name="Show" type="TextureRect" parent="Balloon" unique_id=1467588304]
 texture_filter = 2
 layout_mode = 0
-offset_left = 424.03506
-offset_top = 259.0
+offset_left = 424.03503
+offset_top = 173.0
 offset_right = 835.2163
-offset_bottom = 635.0
+offset_bottom = 549.0
 texture = ExtResource("6_onvhc")
 
 [node name="Character" type="TextureRect" parent="Balloon/Show" unique_id=1142477465]
