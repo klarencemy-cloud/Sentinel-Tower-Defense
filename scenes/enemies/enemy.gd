@@ -33,8 +33,8 @@ const FROZEN_TINT: Color = Color(0.1, 0.2, 0.6, 1.0)
 
 var rootkit_skill_used := false
 const ROOTKIT_PORTAL = preload("res://scenes/enemies/rootkit_skill.tscn")
-var worm_spawn_timer : Timer
-var worm_spawn_interval:= 15.0
+var worm_spawn_timer: Timer
+var worm_spawn_interval := 15.0
 var can_clone := true
 @export var spacing := 32
 var spyware_count := 0
@@ -98,6 +98,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$Zero.visible = false
 	$Boss1.visible = false
 	$Boss2.visible = false
+	$Boss3.visible = false
 
 	match Data.ENEMY_DATA[type]['name']:
 		"spam":
@@ -178,6 +179,10 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Boss2.visible = true
 			enemy_type = $Boss2
 			$Boss2.material = $Boss2.material.duplicate()
+		"boss3":
+			$Boss3.visible = true
+			enemy_type = $Boss3
+			$Boss3.material = $Boss3.material.duplicate()
 			
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
 
@@ -465,7 +470,6 @@ func _on_spyware_ability_area_exited(area: Area2D) -> void:
 
 func update_spyware_buff():
 	for area in $SpywareAbility.get_overlapping_areas():
-
 		if !area.is_in_group("Enemies"):
 			continue
 

@@ -1018,6 +1018,65 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2gxb"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqqkk"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(1280, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qw7yt"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(1280, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn0i4"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(1536, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dutic"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t32uw"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(256, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4ksu"]
+atlas = ExtResource("4_jt03m")
+region = Rect2(512, 768, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e4ksu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqqkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qw7yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn0i4")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dutic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t32uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4ksu")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 4.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7575"]
 
 [node name="Enemy" type="Area2D" unique_id=434305055 groups=["Enemies"]]
@@ -1047,6 +1106,7 @@ frame_progress = 0.5342863
 offset = Vector2(2.630137, -34.19178)
 
 [node name="Spyware" type="AnimatedSprite2D" parent="." unique_id=1983232872]
+visible = false
 texture_filter = 2
 material = SubResource("ShaderMaterial_n7575")
 position = Vector2(-9.999999, -14.999994)
@@ -1218,6 +1278,16 @@ sprite_frames = SubResource("SpriteFrames_qt6tg")
 animation = &"Right"
 autoplay = "Right"
 frame_progress = 0.5596954
+
+[node name="Boss3" type="AnimatedSprite2D" parent="." unique_id=203369779]
+visible = false
+texture_filter = 2
+material = SubResource("ShaderMaterial_y2gxb")
+position = Vector2(0, -53)
+sprite_frames = SubResource("SpriteFrames_e4ksu")
+animation = &"Left"
+autoplay = "Right"
+frame_progress = 0.06261643
 
 [node name="SpywareAbility" type="Area2D" parent="." unique_id=1638499242]
 visible = false
