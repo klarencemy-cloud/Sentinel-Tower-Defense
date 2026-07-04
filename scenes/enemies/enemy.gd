@@ -75,6 +75,11 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	base_speed = speed
 	damage = Data.ENEMY_DATA[type]['damage']
 	is_worm = false
+	
+	$SpywareAbility.monitoring = false
+	$SpywareAbility.monitorable = false
+	$SpywareAbility/SpywareAbilityRange.disabled = true
+	$SpywareAbility.visible = false
 
 	$Spam.visible = false
 	$Virus.visible = false
@@ -483,7 +488,7 @@ func update_spyware_buff():
 			continue
 
 		buffed.append(area)
-		area.speed = area.base_speed * 5
+		area.speed = area.base_speed * 1.15
 		area.damage = Data.ENEMY_DATA[area.enemy_type_stats]["damage"] + 10
 
 	for enemy in get_tree().get_nodes_in_group("Enemies"):
