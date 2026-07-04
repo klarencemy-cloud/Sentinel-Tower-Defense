@@ -6,6 +6,9 @@ extends CanvasLayer
 @onready var sandbox_setting: TextureButton = $Control/TextureRect/HBoxContainer/SandboxSetting
 @onready var tower_cards_container: HBoxContainer = $Control/TextureRect/ScrollContainer/TowerCardsContainer
 @onready var enemy_cards_container: HBoxContainer = $Control/TextureRect/ScrollContainer/EnemyCardsContainer
+@onready var server_upgrade = $ServerUpgrade
+@onready var server_pts_label: Label = server_upgrade.find_child("LabelServerPts", true, false)
+
 
 signal place_tower(tower_type: Data.Tower)
 signal spawn_enemy(enemy_type: Data.Enemy)
@@ -45,14 +48,16 @@ func _ready() -> void:
 
 	Data.toggle_server_scene.connect(_show_server_upgrade)
 
-	if Data.is_sandbox:
+	if Data.is_sandbox: # SANDBOX MODE!!!!!!
 		sandbox_setting.visible = true
 		tower_enemies_button.visible = true
 		auto_label.visible = false # alis visible ng auto button
 		wave_button.disabled = true # disable start wave button
+		Data.before_owned_towers = Data.owned_towers.duplicate() # save owned towers before sandbox
+		Data.owned_towers.clear() # clear owned towers para sa sandbox
 		$Control/HBoxContainer.position.y = 780
+		
 
-	
 	for tower_enum in Data.Tower.values():
 		var tower_card = tower_card_scene.instantiate()
 		tower_card.setup(tower_enum)
@@ -73,6 +78,11 @@ func _ready() -> void:
 
 func tower_select(tower_enum: Data.Tower):
 	place_tower.emit(tower_enum)
+
+
+func trigger_shake():
+	var camera = get_tree().get_first_node_in_group("camera")
+	camera.trigger_shake()
 
 #sandbox
 func sandbox_spawn_enemy(enemy_enum: Data.Enemy):
@@ -125,49 +135,6 @@ func _on_pause_button_pressed() -> void:
 	get_tree().paused = true
 
 
-func _on_maxed_lvl_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		Data.is_maxed_lvl = true
-	else:
-		Data.is_maxed_lvl = false
-
-
-func _on_unli_money_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		Data.is_unli_money = true
-		Data.before_total_money = Data.money
-		Data.money = 999999
-
-	else:
-		Data.is_unli_money = false
-		Data.money = Data.before_total_money
-
-
-func _on_unli_health_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		Data.is_unli_health = true
-		Data.before_total_health = Data.health
-		
-		Data.health = 999999
-
-	else:
-		Data.is_unli_health = false
-		Data.health = Data.before_total_health
-
-
-func _on_unli_senti_cap_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		Data.is_unli_senti_cap = true
-		Data.before_max_server_load = Data.maxserverload
-
-		Data.maxserverload = 999999
-
-	else:
-		Data.is_unli_senti_cap = false
-		Data.maxserverload = Data.before_max_server_load
-	
-	update_server_load()
-		
 func update_server_load():
 	var progress_bar = $Control/TextureProgressBar
 	
@@ -276,3 +243,60 @@ func _spawn_random_ransomware():
 
 	candidates.pick_random().ransomware_effect()
 	_schedule_next_ransomware()
+
+# SANDBOX MODE TO NANDITO NAKAKALITO NILIPAT KO SA PINAKA BABA CODES NG SANDBOX
+func _on_maxed_lvl_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		Data.is_maxed_lvl = true
+		Data.before_player_level = Data.player_level
+		Data.before_total_experience = Data.experience
+		Data.player_level = 100
+		Data.experience = 100
+		update_experience(Data.experience, Data.player_level, Data.default_level_pool)
+		server_pts_label.text = "∞"
+	else:
+		Data.is_maxed_lvl = false
+		Data.player_level = Data.before_player_level
+		Data.experience = Data.before_total_experience
+		update_experience(Data.experience, Data.player_level, Data.default_level_pool)
+
+
+func _on_unli_money_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		Data.is_unli_money = true
+		Data.before_total_money = Data.money
+		Data.money = 999999
+
+	else:
+		Data.is_unli_money = false
+		Data.money = Data.before_total_money
+
+
+func _on_unli_health_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		Data.is_unli_health = true
+		Data.before_total_health = Data.health
+		
+		Data.health = 999999
+
+	else:
+		Data.is_unli_health = false
+		Data.health = Data.before_total_health
+
+ 
+func _on_unli_senti_cap_toggled(toggled_on: bool) -> void: # UNLI SERVER CAPACITY TO
+	if toggled_on:
+		Data.is_unli_senti_cap = true
+		Data.before_max_server_load = Data.maxserverload
+
+		Data.maxserverload = 999999
+
+	else:
+		Data.is_unli_senti_cap = false
+		Data.maxserverload = Data.before_max_server_load
+	
+	update_server_load()
+
+
+func hide_pop(state: bool):
+	$PopUp.visible = state

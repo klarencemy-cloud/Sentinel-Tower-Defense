@@ -15,5 +15,4 @@ func _on_resume_pressed() -> void:
 func _on_quit_pressed() -> void:
 	get_tree().paused = false #unfreezes game #2
 	visible = false#go poof #2
-	Data.reset_game()#resets server load and money
 	get_tree().change_scene_to_file("res://scenes/mainmenu/main_menu.tscn")#goes back to main menu

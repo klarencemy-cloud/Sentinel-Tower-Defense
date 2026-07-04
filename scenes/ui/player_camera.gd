@@ -6,6 +6,7 @@ extends Camera2D
 @export var min_zoom: Vector2 = Vector2(0.7, 0.7)
 @export var max_zoom: Vector2 = Vector2(2.0, 2.0)
 
+
 const WHEEL_ZOOM_STEP = 0.15
 const PINCH_ZOOM_SPEED = 0.004
 
@@ -39,9 +40,22 @@ func _unhandled_input(event: InputEvent) -> void:
 		if drag:
 			position -= event.relative * acceleration
 
+
+var max_shake: float = 30.0
+var shake_fade: float = 30.0
+var shake_strength: float = 0.0
+
+func trigger_shake() -> void:
+	shake_strength = max_shake
+
 func _process(_delta: float) -> void:
 	if target:
 		position = target.position
+
+	if shake_strength > 0:
+		shake_strength = lerp(shake_strength, 0.0, shake_fade * _delta)
+		offset = Vector2(randf_range(-shake_strength, shake_strength), randf_range(-shake_strength, shake_strength))
+
 
 func _apply_zoom(amount: float) -> void:
 	zoom = (zoom + Vector2.ONE * amount).clamp(min_zoom, max_zoom)

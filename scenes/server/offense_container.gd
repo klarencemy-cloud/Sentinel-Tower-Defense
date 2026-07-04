@@ -61,6 +61,9 @@ func _ready() -> void:
 	
 	counts = [offense_1_count, offense_2_count, offense_3_count]
 
+	if Data.is_sandbox: # SANDBOX MODE!!!!!!
+		Offense._sandbox_mode() # Server Upgrade for SANDBOX MODE
+
 	_update_upgrades() # Initial update to reflect current levels and maxed states
 
 

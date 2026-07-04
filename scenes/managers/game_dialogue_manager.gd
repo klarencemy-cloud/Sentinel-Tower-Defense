@@ -20,3 +20,10 @@ func show_dialogue_spam_filter(): # used in tower manager
 func show_dialogue_spam_defeat(): # used in wave manager
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "spam_defeat")
 	is_defeat_spam = true
+
+
+func show_enemy():
+	var animation = get_tree().get_first_node_in_group("animate")
+	var ui = get_tree().get_first_node_in_group("UI")
+	ui.trigger_shake()
+	animation.play_animation()

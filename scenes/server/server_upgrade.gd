@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var server_pts: Label = $UIContainer/ServerUpdate/ServerPoints/Label
+@onready var server_pts: Label = $UIContainer/ServerUpdate/ServerPoints/LabelServerPts
 @onready var offense_container: Control = $UIContainer/ServerUpdate/OffenseContainer
 @onready var defense_container: Control = $UIContainer/ServerUpdate/DefenseContainer
 @onready var economy_container: Control = $UIContainer/ServerUpdate/EconomyContainer
@@ -10,16 +10,25 @@ func _ready() -> void:
 	offense_container.refresh_pts.connect(_refresh_server_pts)
 	defense_container.refresh_pts.connect(_refresh_server_pts)
 	economy_container.refresh_pts.connect(_refresh_server_pts)
-	_refresh_server_pts()
+	
 
+	if Data.is_sandbox:
+		Data.before_server_points = Data.server_points # save server points before sandbox
+		Data.server_points = Data.default_server_points # reset server points for sandbox
+
+	_refresh_server_pts()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	_refresh_server_pts()
 
 
 func _refresh_server_pts() -> void:
-	server_pts.text = str(Data.server_points)
+	if Data.is_maxed_lvl:
+		Data.server_points = 99999
+		server_pts.text = "∞"
+	else:
+		server_pts.text = str(Data.server_points)
 
 
 func _on_back_btn_pressed() -> void:

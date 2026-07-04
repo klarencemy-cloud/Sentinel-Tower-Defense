@@ -13,6 +13,7 @@ do GameDialogueManager.is_override=false
 Odysseus: I have been protecting the SERVER for so long. Thankfully, you are here now! 
 Player: What? Wait, where are we?
 Odysseus: Save the chatter for later! See those? Ohh, Spams! They come unwelcome, unsolicited, and in large quantities. So be ready!
+do GameDialogueManager.show_enemy()
 do get_tree().create_timer(1.0).timeout
 Odysseus: Can you see the server's health? It helps you visualize how many beatings it takes before the SERVER collapses. You don’t want to let it drop to 0! 
 Player: These things are so annoying.
