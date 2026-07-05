@@ -61,6 +61,9 @@ func _ready() -> void:
 	skill_slot_price = Defense.skill_slot_price
 	sentinel_slot_price = Defense.sentinel_slot_price
 
+	if Data.is_sandbox:
+		Defense._sandbox_mode()
+
 	_update_upgrades()
 
 func _update_upgrades() -> void:

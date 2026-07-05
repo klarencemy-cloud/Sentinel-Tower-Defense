@@ -52,6 +52,9 @@ func _ready() -> void:
 	exp_rate_real_cost = Economy.exp_cost_tier
 	server_load_real_cost = Economy.server_cost_tier
 
+	if Data.is_sandbox:
+		Economy._sandbox_mode()
+
 	_update_upgrades()
 
 

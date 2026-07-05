@@ -265,6 +265,7 @@ func _on_maxed_lvl_toggled(toggled_on: bool) -> void:
 		Data.is_maxed_lvl = false
 		Data.player_level = Data.before_player_level
 		Data.experience = Data.before_total_experience
+		Data.server_points = Data.before_server_points
 		update_experience(Data.experience, Data.player_level, Data.default_level_pool)
 
 
