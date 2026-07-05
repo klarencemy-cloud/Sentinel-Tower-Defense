@@ -99,6 +99,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$Boss1.visible = false
 	$Boss2.visible = false
 	$Boss3.visible = false
+	$Boss4.visible = false
 
 	match Data.ENEMY_DATA[type]['name']:
 		"spam":
@@ -183,6 +184,10 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Boss3.visible = true
 			enemy_type = $Boss3
 			$Boss3.material = $Boss3.material.duplicate()
+		"boss4":
+			$Boss4.visible = true
+			enemy_type = $Boss4
+			$Boss4.material = $Boss4.material.duplicate()
 			
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
 

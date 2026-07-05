@@ -80,6 +80,10 @@ region = Rect2(1536, 0, 256, 256)
 atlas = ExtResource("8_mkhnq")
 region = Rect2(1281.5497, 340.69904, 254.01624, 171.90625)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtm43"]
+atlas = ExtResource("8_mkhnq")
+region = Rect2(0, 768, 256, 256)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7shr5"]
 atlas = ExtResource("7_ky4o8")
 region = Rect2(0, 384, 128, 192)
@@ -118,11 +122,11 @@ region = Rect2(1408, 576, 128, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w0wyr"]
 atlas = ExtResource("8_mkhnq")
-region = Rect2(1280, 270, 256, 270)
+region = Rect2(1280, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yg3hf"]
 atlas = ExtResource("8_mkhnq")
-region = Rect2(1536, 270, 256, 270)
+region = Rect2(1536, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4ea4"]
 atlas = ExtResource("7_ky4o8")
@@ -283,6 +287,18 @@ region = Rect2(384, 0, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_46drd"]
 atlas = ExtResource("8_mkhnq")
 region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vlfs"]
+atlas = ExtResource("8_mkhnq")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl5vo"]
+atlas = ExtResource("8_mkhnq")
+region = Rect2(256, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gsco"]
+atlas = ExtResource("8_mkhnq")
+region = Rect2(512, 768, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3554a"]
 atlas = ExtResource("8_mkhnq")
@@ -519,6 +535,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3vlfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl5vo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gsco")
+}],
+"loop": true,
+"name": &"wannacry",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3554a")
 }, {
 "duration": 1.0,
@@ -711,9 +741,9 @@ metadata/_edit_use_anchors_ = true
 [node name="CardContainer" type="Control" parent="ThreatContainer" unique_id=961428850]
 texture_filter = 2
 layout_mode = 1
-anchor_top = -7.1212873
+anchor_top = -8.919555
 anchor_right = 0.9978678
-anchor_bottom = -2.5816832
+anchor_bottom = -4.37995
 offset_top = 5482.0
 offset_bottom = 5482.0
 metadata/_edit_use_anchors_ = true
@@ -1372,6 +1402,15 @@ autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="ThreatContainer/CardContainer/Threat17" unique_id=480578779]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 50.999756
+offset_right = 180.0
+offset_bottom = 188.99976
+texture = SubResource("AtlasTexture_rtm43")
+expand_mode = 1
+
 [node name="Threat18" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1875283157]
 texture_filter = 2
 layout_mode = 1
@@ -1395,7 +1434,8 @@ anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "NotPeyta"
+text = "NotPetya
+a"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -1628,9 +1668,9 @@ texture_filter = 2
 position = Vector2(687, 221)
 scale = Vector2(1.2617182, 1.2617182)
 sprite_frames = SubResource("SpriteFrames_ndtrb")
-animation = &"trojan"
+animation = &"conficker"
 autoplay = "ilu"
-frame_progress = 0.80182457
+frame_progress = 0.16800839
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Reddatabasebg" unique_id=212389795]
 visible = false

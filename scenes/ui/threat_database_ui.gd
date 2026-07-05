@@ -251,13 +251,13 @@ var threat_name: Array = [
 	"ILOVEYOU Virus",
 	"Conficker",
 	"WannaCry",
-	"Notpeyta",
+	"Notpetya",
 	"My Doom",
 	"TROJAN"
 	]
 
 	
-enum Threat {SPAM, VIRUS, ADWARE, WORM, SPYWARE, BOTNET, CREDS, TROJAN_HORSE, INSIDER, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, ILOVEYOU, CONFICKER, WANNACRY, NOTPEYTA, DOOM, TROJAN}
+enum Threat {SPAM, VIRUS, ADWARE, WORM, SPYWARE, BOTNET, CREDS, TROJAN_HORSE, INSIDER, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, ILOVEYOU, CONFICKER, WANNACRY, NOTPETYA, DOOM, TROJAN}
 
 var THREAT_DATA = {
 	Threat.SPAM: {
@@ -383,7 +383,7 @@ var THREAT_DATA = {
 		'special_ability': "Periodically stuns defensive towers on the battlefield. ",
 		'irl_desc': "Ransomware is a kind of malicious software that is used to extort money, and the WannaCry Ransomware that attacked Windows OS in May 2017 is one example. It is one of the most infamous operating system vulnerabilities, and it spreads to more than 300,000 computers across 150 countries. It encrypts important user data and demands Bitcoin as ransom. The attackers exploit a flaw in the Microsoft Windows operating system, the EternalBlue Windows vulnerability in the Server Message Block protocol. The WannaCry ransomware spreads quickly like a worm by remotely running its malware on susceptible computers, then automatically scans and infects more machines. An attacker can transmit specially crafted network packets to cause the target to execute arbitrary code."
 		},
-	Threat.NOTPEYTA: {
+	Threat.NOTPETYA: {
 		'health': 90000,
 		'damage': 200,
 		'speed': 100,
@@ -454,6 +454,7 @@ func _on_threat_17_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[16]['health'])
 	desc_sp.text = str(THREAT_DATA[16]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[16]['irl_desc'])
+	animation.play("wannacry")
 	animation.visible = true
 	worm_animation.visible = false
 

@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://couylhx13i6ip" path="res://graphics/enemies/enemies3.png" id="5_n7575"]
 [ext_resource type="Texture2D" uid="uid://1qgvsuhf841g" path="res://graphics/ui/enemyhpbar1.png" id="7_n7575"]
 [ext_resource type="Texture2D" uid="uid://ba1dyadxb3f65" path="res://graphics/ui/enemyhpbar2.png" id="8_qch6t"]
+[ext_resource type="Texture2D" uid="uid://dc1008xax0yk6" path="res://graphics/enemies/enemies4.png" id="9_qch6t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fcftc"]
 resource_local_to_scene = true
@@ -1077,6 +1078,65 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3xxyr"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hc3e"]
+atlas = ExtResource("9_qch6t")
+region = Rect2(576, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cngr"]
+atlas = ExtResource("9_qch6t")
+region = Rect2(768, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8p4qo"]
+atlas = ExtResource("9_qch6t")
+region = Rect2(960, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohsc6"]
+atlas = ExtResource("9_qch6t")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylb76"]
+atlas = ExtResource("9_qch6t")
+region = Rect2(192, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr2nf"]
+atlas = ExtResource("9_qch6t")
+region = Rect2(384, 0, 192, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6hc3e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hc3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cngr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8p4qo")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohsc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylb76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr2nf")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 4.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7575"]
 
 [node name="Enemy" type="Area2D" unique_id=434305055 groups=["Enemies"]]
@@ -1288,6 +1348,15 @@ sprite_frames = SubResource("SpriteFrames_e4ksu")
 animation = &"Left"
 autoplay = "Right"
 frame_progress = 0.06261643
+
+[node name="Boss4" type="AnimatedSprite2D" parent="." unique_id=1872474707]
+visible = false
+material = SubResource("ShaderMaterial_3xxyr")
+position = Vector2(0, -51)
+sprite_frames = SubResource("SpriteFrames_6hc3e")
+animation = &"Right"
+autoplay = "Right"
+frame_progress = 0.4854103
 
 [node name="SpywareAbility" type="Area2D" parent="." unique_id=1638499242]
 visible = false
