@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://d3isx7xodcwuf" path="res://graphics/enemies/enemies2.png" id="8_mkhnq"]
 [ext_resource type="Texture2D" uid="uid://couylhx13i6ip" path="res://graphics/enemies/enemies3.png" id="9_sry3f"]
 [ext_resource type="Texture2D" uid="uid://qde702xowd7u" path="res://graphics/icons/heart.png" id="11_fe30g"]
+[ext_resource type="Texture2D" uid="uid://dc1008xax0yk6" path="res://graphics/enemies/enemies4.png" id="11_jg1md"]
 [ext_resource type="Texture2D" uid="uid://bgd5c2bukefyk" path="res://graphics/icons/damage.png" id="12_qkl14"]
 [ext_resource type="Texture2D" uid="uid://dvk31x3ftr3ux" path="res://graphics/icons/ms.png" id="13_qkl14"]
 
@@ -84,6 +85,14 @@ region = Rect2(1281.5497, 340.69904, 254.01624, 171.90625)
 atlas = ExtResource("8_mkhnq")
 region = Rect2(0, 768, 256, 256)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2sm1"]
+atlas = ExtResource("11_jg1md")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k41nc"]
+atlas = ExtResource("11_jg1md")
+region = Rect2(0, 256, 256, 256)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7shr5"]
 atlas = ExtResource("7_ky4o8")
 region = Rect2(0, 384, 128, 192)
@@ -144,6 +153,22 @@ region = Rect2(0, 576, 192, 192)
 atlas = ExtResource("8_mkhnq")
 region = Rect2(192, 576, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dafj"]
+atlas = ExtResource("11_jg1md")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq5g3"]
+atlas = ExtResource("11_jg1md")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhogb"]
+atlas = ExtResource("11_jg1md")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb7ul"]
+atlas = ExtResource("11_jg1md")
+region = Rect2(256, 256, 256, 256)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qswmu"]
 atlas = ExtResource("8_mkhnq")
 region = Rect2(1280, 0, 256, 256)
@@ -163,6 +188,18 @@ region = Rect2(192, 768, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_x6i4m"]
 atlas = ExtResource("7_ky4o8")
 region = Rect2(384, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha7pk"]
+atlas = ExtResource("11_jg1md")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjvmm"]
+atlas = ExtResource("11_jg1md")
+region = Rect2(192, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wc8u"]
+atlas = ExtResource("11_jg1md")
+region = Rect2(384, 0, 192, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2bfdt"]
 atlas = ExtResource("7_ky4o8")
@@ -382,6 +419,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_0dafj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq5g3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhogb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb7ul")
+}],
+"loop": true,
+"name": &"doom",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_qswmu")
 }, {
 "duration": 1.0,
@@ -404,6 +458,20 @@ animations = [{
 "loop": true,
 "name": &"insider",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ha7pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjvmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wc8u")
+}],
+"loop": true,
+"name": &"notpetya",
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -741,11 +809,11 @@ metadata/_edit_use_anchors_ = true
 [node name="CardContainer" type="Control" parent="ThreatContainer" unique_id=961428850]
 texture_filter = 2
 layout_mode = 1
-anchor_top = -8.919555
+anchor_top = -13.871287
 anchor_right = 0.9978678
-anchor_bottom = -4.37995
-offset_top = 5482.0
-offset_bottom = 5482.0
+anchor_bottom = -9.331683
+offset_top = 9215.0
+offset_bottom = 9215.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat1" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=767183370]
@@ -1368,7 +1436,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_left = 41.0
 offset_top = 51.999878
-offset_right = 168.0
+offset_right = 177.0
 offset_bottom = 179.9141
 texture = SubResource("AtlasTexture_me715")
 expand_mode = 1
@@ -1434,13 +1502,21 @@ anchor_bottom = 0.91322315
 theme_override_colors/font_color = Color(0.76862746, 0.19215687, 0.19607843, 1)
 theme_override_fonts/font = ExtResource("6_davr5")
 theme_override_font_sizes/font_size = 20
-text = "NotPetya
-a"
+text = "NotPetya"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="ThreatContainer/CardContainer/Threat18" unique_id=1446775228]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 50.99977
+offset_right = 162.0
+offset_bottom = 187.74863
+texture = SubResource("AtlasTexture_i2sm1")
+expand_mode = 1
 
 [node name="Threat19" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=2137647245]
 texture_filter = 2
@@ -1470,6 +1546,15 @@ vertical_alignment = 1
 autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="ThreatContainer/CardContainer/Threat19" unique_id=1543301212]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 41.0
+offset_right = 175.0
+offset_bottom = 181.0
+texture = SubResource("AtlasTexture_k41nc")
+expand_mode = 1
 
 [node name="Threat20" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=1791336679]
 texture_filter = 2
@@ -1668,9 +1753,9 @@ texture_filter = 2
 position = Vector2(687, 221)
 scale = Vector2(1.2617182, 1.2617182)
 sprite_frames = SubResource("SpriteFrames_ndtrb")
-animation = &"conficker"
-autoplay = "ilu"
-frame_progress = 0.16800839
+animation = &"spam"
+autoplay = "spam"
+frame_progress = 0.42159158
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Reddatabasebg" unique_id=212389795]
 visible = false

@@ -1137,6 +1137,46 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xiois"]
+shader = ExtResource("2_38ino")
+shader_parameter/Progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeowk"]
+atlas = ExtResource("9_qch6t")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0loy"]
+atlas = ExtResource("9_qch6t")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhc2u"]
+atlas = ExtResource("9_qch6t")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gd2fb"]
+atlas = ExtResource("9_qch6t")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_42onr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eeowk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0loy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhc2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gd2fb")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7575"]
 
 [node name="Enemy" type="Area2D" unique_id=434305055 groups=["Enemies"]]
@@ -1351,12 +1391,22 @@ frame_progress = 0.06261643
 
 [node name="Boss4" type="AnimatedSprite2D" parent="." unique_id=1872474707]
 visible = false
+texture_filter = 2
 material = SubResource("ShaderMaterial_3xxyr")
 position = Vector2(0, -51)
 sprite_frames = SubResource("SpriteFrames_6hc3e")
 animation = &"Right"
 autoplay = "Right"
-frame_progress = 0.4854103
+frame_progress = 0.8894142
+
+[node name="Boss5" type="AnimatedSprite2D" parent="." unique_id=1279504658]
+visible = false
+texture_filter = 2
+material = SubResource("ShaderMaterial_xiois")
+position = Vector2(0, -49)
+sprite_frames = SubResource("SpriteFrames_42onr")
+animation = &"Right"
+frame_progress = 0.6747537
 
 [node name="SpywareAbility" type="Area2D" parent="." unique_id=1638499242]
 visible = false

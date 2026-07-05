@@ -38,7 +38,7 @@ func show_dialogue_spam_filter(): # used in tower manager
 	is_introduction_spam_filter = true
 
 func show_dialogue_spam_defeat(): # used in wave manager
-	pause_game(true)
+	pause_game(false)
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "spam_defeat")
 	is_defeat_spam = true
 

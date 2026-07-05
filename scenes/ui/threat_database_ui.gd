@@ -434,6 +434,7 @@ func _on_threat_19_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[18]['health'])
 	desc_sp.text = str(THREAT_DATA[18]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[18]['irl_desc'])
+	animation.play("doom")
 	animation.visible = true
 	worm_animation.visible = false
 
@@ -444,6 +445,7 @@ func _on_threat_18_pressed() -> void:
 	desc_health.text = str(THREAT_DATA[17]['health'])
 	desc_sp.text = str(THREAT_DATA[17]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[17]['irl_desc'])
+	animation.play("notpetya")
 	animation.visible = true
 	worm_animation.visible = false
 
