@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="6_hfdvg"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_wqcay"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wqcay"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_872qs"]
 atlas = ExtResource("5_qhywc")
 region = Rect2(0, 0, 24, 24)
@@ -58,6 +60,9 @@ texture = ExtResource("3_0hga0")
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
 visible = false
+
+[node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
+shape = SubResource("CircleShape2D_wqcay")
 
 [node name="ReloadTimer" parent="." index="3" unique_id=18505784]
 wait_time = 3.0
