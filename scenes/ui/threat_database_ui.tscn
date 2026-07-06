@@ -812,8 +812,8 @@ layout_mode = 1
 anchor_top = -13.871287
 anchor_right = 0.9978678
 anchor_bottom = -9.331683
-offset_top = 9215.0
-offset_bottom = 9215.0
+offset_top = 11219.0
+offset_bottom = 11219.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat1" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=767183370]
@@ -1755,7 +1755,7 @@ scale = Vector2(1.2617182, 1.2617182)
 sprite_frames = SubResource("SpriteFrames_ndtrb")
 animation = &"spam"
 autoplay = "spam"
-frame_progress = 0.42159158
+frame_progress = 0.4396239
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Reddatabasebg" unique_id=212389795]
 visible = false

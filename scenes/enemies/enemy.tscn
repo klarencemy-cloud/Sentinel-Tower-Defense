@@ -1397,7 +1397,7 @@ position = Vector2(0, -51)
 sprite_frames = SubResource("SpriteFrames_6hc3e")
 animation = &"Right"
 autoplay = "Right"
-frame_progress = 0.8894142
+frame_progress = 0.36158547
 
 [node name="Boss5" type="AnimatedSprite2D" parent="." unique_id=1279504658]
 visible = false
@@ -1406,7 +1406,7 @@ material = SubResource("ShaderMaterial_xiois")
 position = Vector2(0, -49)
 sprite_frames = SubResource("SpriteFrames_42onr")
 animation = &"Right"
-frame_progress = 0.6747537
+frame_progress = 0.26497495
 
 [node name="SpywareAbility" type="Area2D" parent="." unique_id=1638499242]
 visible = false

@@ -426,6 +426,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kr8px")
 script = ExtResource("1_375b0")
 
 [node name="ServerLevel1" type="AnimatedSprite2D" parent="." unique_id=1895705512]
+visible = false
 texture_filter = 2
 position = Vector2(174, 45)
 sprite_frames = SubResource("SpriteFrames_q1xj5")
@@ -449,7 +450,6 @@ autoplay = "default"
 frame_progress = 0.98206884
 
 [node name="ServerLevel4" type="AnimatedSprite2D" parent="." unique_id=1662128924]
-visible = false
 texture_filter = 2
 position = Vector2(174, 45)
 sprite_frames = SubResource("SpriteFrames_fp0pw")
@@ -473,6 +473,7 @@ autoplay = "default"
 frame_progress = 0.8144926
 
 [node name="WhiteGlow" type="PointLight2D" parent="." unique_id=1804873689]
+visible = false
 position = Vector2(150.125, 148)
 scale = Vector2(5.5351567, 4.84375)
 texture = SubResource("GradientTexture2D_2t17j")
