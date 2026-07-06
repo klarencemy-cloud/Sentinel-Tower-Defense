@@ -2,25 +2,34 @@
 
 [ext_resource type="PackedScene" uid="uid://to6d1j5dni6t" path="res://scenes/towers/tower.tscn" id="1_l7y1m"]
 [ext_resource type="Script" uid="uid://017kd2s5kpw7" path="res://scenes/towers/tower_spamfilter.gd" id="2_d2kd5"]
-[ext_resource type="Texture2D" uid="uid://dcus2mnf1agk7" path="res://graphics/towers/basic/basic tower bottom.png" id="3_l7y1m"]
-[ext_resource type="Texture2D" uid="uid://drqd7mybdere0" path="res://graphics/towers/basic/basic tower top.png" id="4_uin2q"]
+[ext_resource type="Texture2D" uid="uid://b00gbf4bkr8pr" path="res://graphics/towers/spam filter/spam_filter_turret.png" id="4_uin2q"]
 [ext_resource type="AudioStream" uid="uid://sicd08w0ce6c" path="res://audio/bullet.wav" id="5_81w6i"]
+[ext_resource type="Texture2D" uid="uid://bgijljt2l6qml" path="res://graphics/towers/spam filter/spam_filter_base.png" id="5_dmts7"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_l7y1m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ku0u"]
-radius = 100.0
+radius = 130.31117
 
 [node name="TowerBasic" unique_id=1033549676 instance=ExtResource("1_l7y1m")]
 script = ExtResource("2_d2kd5")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
-texture = ExtResource("3_l7y1m")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_dmts7")
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
+position = Vector2(-6.3948914e-14, -16.000002)
+rotation = -3.1415927
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_uin2q")
+offset = Vector2(0, 35)
+flip_v = true
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
 shape = SubResource("CircleShape2D_6ku0u")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
+position = Vector2(0, -10.5)
 
 [node name="ShootSound" parent="." index="7" unique_id=1474961134]
 stream = ExtResource("5_81w6i")
@@ -32,6 +41,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 ignore_texture_size = true
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="PayButton" type="TextureButton" parent="." index="9" unique_id=1402831666]
 visible = false
