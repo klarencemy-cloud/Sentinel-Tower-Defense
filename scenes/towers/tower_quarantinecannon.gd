@@ -26,14 +26,13 @@ func _on_reload_timer_timeout() -> void:
 	var base_damage = Data.TOWER_DATA[type]["damage"]
 	var final_damage = Data.calculate_crit_damage(type, base_damage)
 
-	shoot.emit(
-		enemies[0].global_position,
-		0,
-		bullet_type,
-		int(final_damage),
-		type,
-		tower_id
-	)
+	shoot_mortar.emit(
+	$Turret.global_position,
+	enemies[0].global_position,
+	int(final_damage),
+	type,
+	tower_id
+)
 
 
 func _on_pay_button_pressed() -> void:

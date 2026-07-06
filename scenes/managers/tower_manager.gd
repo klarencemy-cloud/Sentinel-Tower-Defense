@@ -11,7 +11,7 @@ var tower_scenes = {
 
 var bullet_scene = preload("res://scenes/bullets/bullet.tscn")
 var explosion_scene = preload("res://scenes/bullets/explosion.tscn")
-
+var mortar_projectile_scene = preload("res://scenes/towers/mortar_projectile.tscn")
 var level_root: Node2D
 var level_manager: Node
 var selected_tower: Data.Tower
@@ -89,12 +89,6 @@ func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage:
 					enemy.set_invisible(false)
 				enemy.hit(damage, tower_id)
 
-	if bullet_enum == Data.Bullet.MORTAR_EXPLOSION:
-		var explosion = explosion_scene.instantiate()
-		_get_bullet_parent().add_child(explosion)
-		explosion.get_node("Explosion").setup(pos, damage, tower_type, tower_id)
-
-
 func tower_selection(tower: Tower) -> void:
 	if current_tower and current_tower != tower:
 		current_tower.hide_ui()
@@ -106,6 +100,7 @@ func tower_selection(tower: Tower) -> void:
 
 
 func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
+	
 	var layer = level_manager.get_build_layer()
 	if layer == null:
 		return
@@ -138,6 +133,7 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	tower.setup(selected_tower)
 	tower.cell_pos = cell_pos
 	tower.connect("shoot", create_bullet)
+	tower.connect("shoot_mortar", create_mortar_projectile)
 	tower.connect("select", tower_selection)
 	tower.connect("removed", _on_tower_removed)
 	_get_tower_parent().add_child(tower)
@@ -165,6 +161,7 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if Data.TOWER_DATA[selected_tower]["name"] == "Spam Filter" and !GameDialogueManager.is_introduction_spam_filter and !Data.is_sandbox and (Data.current_wave == 0 or Data.current_wave == 1):
 		GameDialogueManager.show_dialogue_spam_filter()
 	print("Placed tower ID: ", tower.tower_id)
+	
 
 
 func _on_tower_removed(cell_pos: Vector2i) -> void:
@@ -186,3 +183,9 @@ func _get_bullet_parent() -> Node:
 func _get_tower_preview() -> Sprite2D:
 	var preview = level_root.get_node_or_null("BG/TowerPreview")
 	return preview as Sprite2D
+
+
+func create_mortar_projectile(start_pos: Vector2, target_pos: Vector2, damage: int, tower_type, tower_id):
+	var projectile = mortar_projectile_scene.instantiate()
+	projectile.setup(start_pos, target_pos, damage, tower_type, tower_id)
+	_get_bullet_parent().add_child(projectile)

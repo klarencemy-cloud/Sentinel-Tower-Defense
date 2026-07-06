@@ -24,6 +24,7 @@ var spyware_count := 0
 
 @warning_ignore("unused_signal")
 signal shoot(pos: Vector2, direction: float, bullet_enum: Data.Bullet, damage: int, tower_type: Data.Tower, tower_id: int)
+signal shoot_mortar(start_pos: Vector2, target_pos: Vector2, damage: int, tower_type: Data.Tower, tower_id: int)
 signal select(tower: Tower)
 signal removed(cell_pos: Vector2i)
 
