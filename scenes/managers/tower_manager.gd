@@ -41,15 +41,6 @@ func handle_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_mask == 1 and place_tower:
 		_try_place_tower(cell_pos, world_pos)
 
-	if event is InputEventMouseButton and event.button_mask == 1 and current_tower:
-		if current_tower.type == Data.Tower.MORTAR or current_tower.type == Data.Tower.QUARANTINE_CANNON:
-			current_tower.finish_placing()
-			current_tower = null
-
-	if event is InputEventMouseMotion and tower_menu:
-		if current_tower and (current_tower.type == Data.Tower.MORTAR or current_tower.type == Data.Tower.QUARANTINE_CANNON):
-			current_tower.crosshair_pos_update(world_pos)
-
 	if event is InputEventMouseMotion and place_tower:
 		var preview = _get_tower_preview()
 		if preview:
@@ -100,8 +91,8 @@ func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage:
 
 	if bullet_enum == Data.Bullet.MORTAR_EXPLOSION:
 		var explosion = explosion_scene.instantiate()
-		explosion.setup(pos, damage, tower_type, tower_id)
 		_get_bullet_parent().add_child(explosion)
+		explosion.get_node("Explosion").setup(pos, damage, tower_type, tower_id)
 
 
 func tower_selection(tower: Tower) -> void:
@@ -110,9 +101,6 @@ func tower_selection(tower: Tower) -> void:
 
 	current_tower = tower
 	tower_menu = true
-
-	if tower.type == Data.Tower.MORTAR or tower.type == Data.Tower.QUARANTINE_CANNON:
-		tower.show_crosshair()
 
 	tower.show_range()
 
