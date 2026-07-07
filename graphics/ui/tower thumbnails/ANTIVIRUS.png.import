@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfbpgyadk5noa"
-path="res://.godot/imported/ANTIVIRUS.png-c935ae87dc60ec56335537df51ce7bf1.ctex"
+uid="uid://bcorqfcvss52k"
+path="res://.godot/imported/antivirus.png-5d37c78046cf2764f82fec9413b64cd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/ANTIVIRUS.png"
-dest_files=["res://.godot/imported/ANTIVIRUS.png-c935ae87dc60ec56335537df51ce7bf1.ctex"]
+source_file="res://graphics/ui/tower thumbnails/antivirus.png"
+dest_files=["res://.godot/imported/antivirus.png-5d37c78046cf2764f82fec9413b64cd7.ctex"]
 
 [params]
 
