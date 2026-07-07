@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="3_vfpy0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfpy0"]
-size = Vector2(100, 127)
+size = Vector2(100, 161)
 
 [node name="Tower" type="Node2D" unique_id=855770893 groups=["Towers"]]
 script = ExtResource("1_by3tn")

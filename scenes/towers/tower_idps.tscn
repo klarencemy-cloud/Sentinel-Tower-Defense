@@ -2,13 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://to6d1j5dni6t" path="res://scenes/towers/tower.tscn" id="1_b2ii2"]
 [ext_resource type="Script" uid="uid://dmxcy8dtcajua" path="res://scenes/towers/tower_idps.gd" id="2_b2ii2"]
-[ext_resource type="Texture2D" uid="uid://ctglvdto0scv8" path="res://graphics/towers/blaster/blaster.png" id="3_56y0f"]
+[ext_resource type="Texture2D" uid="uid://chefrr3etmbm7" path="res://graphics/towers/idps/idps_turret.png" id="3_56y0f"]
 [ext_resource type="Texture2D" uid="uid://hqsncaw7fucr" path="res://graphics/explosion animations/fire explosion.png" id="4_5ge8c"]
+[ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="4_hginv"]
 [ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="5_hginv"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_bhf25"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ujad2"]
-radius = 30.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_56y0f"]
+radius = 64.50775
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_itnc1"]
 particles_animation = true
@@ -55,13 +56,19 @@ anim_speed_max = 1.0
 script = ExtResource("2_b2ii2")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
+position = Vector2(0, -51.000004)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_56y0f")
+offset = Vector2(0, -17.142868)
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
-visible = false
+z_index = -1
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_hginv")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
-shape = SubResource("CircleShape2D_ujad2")
+position = Vector2(-0.5, 0)
+shape = SubResource("CircleShape2D_56y0f")
 
 [node name="Particles" type="Node2D" parent="." index="4" unique_id=1139715742]
 
@@ -100,6 +107,9 @@ texture = ExtResource("4_5ge8c")
 lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_t8p0d")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
+position = Vector2(0, -28.25)
 
 [node name="ShootSound" parent="." index="8" unique_id=1474961134]
 stream = ExtResource("5_hginv")
