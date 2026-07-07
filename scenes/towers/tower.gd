@@ -15,6 +15,7 @@ var disabled_by_ad := false
 var ransomware_active := false
 var disabled_by_ransomware := false
 var spyware_count := 0
+var botnet_count := 0
 @onready var ad_button = $AdButton
 @onready var pay_button: TextureButton = $PayButton
 @onready var ads = [
@@ -185,3 +186,4 @@ func remove_ransomware():
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui._schedule_next_ransomware()
+	

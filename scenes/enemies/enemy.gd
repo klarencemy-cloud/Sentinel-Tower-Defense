@@ -83,6 +83,11 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$SpywareAbility.monitorable = false
 	$SpywareAbility/SpywareAbilityRange.disabled = true
 	$SpywareAbility.visible = false
+	
+	$BotnetAbility.monitoring = false
+	$BotnetAbility.monitorable = false
+	$BotnetAbility/BotnetAbilityRange.disabled = true
+	$BotnetAbility.visible = false
 
 	$Spam.visible = false
 	$Virus.visible = false
@@ -138,6 +143,10 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Creds.material = $Creds.material.duplicate()
 		"botnet":
 			$Botnet.visible = true
+			$BotnetAbility.monitoring = true
+			$BotnetAbility.monitorable = true
+			$BotnetAbility/BotnetAbilityRange.disabled = false
+			$BotnetAbility.visible = true
 			enemy_type = $Botnet
 			$Botnet.material = $Botnet.material.duplicate()
 		"worm":
@@ -525,3 +534,16 @@ func update_spyware_buff():
 
 		enemy.speed = enemy.base_speed
 		enemy.damage = Data.ENEMY_DATA[enemy.enemy_type_stats]["damage"]
+
+
+func _on_bot_net_ability_area_entered(area):
+	if area.name == "ClickArea":
+		var tower = area.get_parent() as Tower
+		tower.botnet_count += 1
+
+
+func _on_bot_net_ability_area_exited(area):
+	if area.name == "ClickArea":
+		var tower = area.get_parent() as Tower
+		tower.botnet_count -= 1
+		tower.botnet_count = max(tower.botnet_count, 0)

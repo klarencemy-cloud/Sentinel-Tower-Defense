@@ -8,15 +8,23 @@ func _process(_delta: float) -> void:
 func _on_reload_timer_timeout() -> void:
 	if disabled_by_ad or disabled_by_ransomware:
 		return
+
 	if enemies.size() > 0:
-		var dir = Vector2.DOWN.rotated($Turret.rotation).normalized()
+		var fire_rotation = $Turret.rotation
+
+		# Botnet effect
+		if botnet_count > 0:
+			var spread = min(botnet_count * 10.0, 45.0)
+			fire_rotation += deg_to_rad(randf_range(-spread, spread))
+
+		var dir = Vector2.DOWN.rotated(fire_rotation).normalized()
 
 		var base_damage = Data.TOWER_DATA[type]["damage"]
 		var final_damage = Data.calculate_crit_damage(type, base_damage)
 
 		shoot.emit(
 			position + dir * 16,
-			$Turret.rotation,
+			fire_rotation,
 			bullet_type,
 			final_damage,
 			type,
@@ -24,7 +32,6 @@ func _on_reload_timer_timeout() -> void:
 		)
 
 		$ShootSound.play()
-
 
 func _on_pay_button_pressed() -> void:
 	if Data.money < 5:

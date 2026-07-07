@@ -19,6 +19,17 @@ func _on_reload_timer_timeout() -> void:
 	$ShootSound.play()
 
 	await $ShootAnimation.animation_finished
+	
+	var target_pos = $CrosshairSprite.global_position
+
+	# Botnet effect
+	if botnet_count > 0:
+		var spread = min(botnet_count * 30.0, 100.0)
+		target_pos += Vector2(
+			randf_range(-spread, spread),
+			randf_range(-spread, spread)
+		)
+
 
 	var base_damage = Data.TOWER_DATA[type]["damage"]
 	var final_damage = Data.calculate_crit_damage(type, base_damage)
