@@ -176,3 +176,24 @@ func spawn_worm_clone(path: Path2D, progress: float):
 	path_follow.add_child(enemy)
 	path.add_child(path_follow)
 	enemy.can_clone = false
+
+func spawn_ddos_clones(path: Path2D, progress: float):
+	var offsets = [-40, 0, 40]
+
+	for offset in offsets:
+		var path_follow = PathFollow2D.new()
+		path_follow.progress = max(progress + offset, 0)
+
+		var enemy = enemy_scene.instantiate()
+		enemy.setup(path_follow, Data.Enemy.DDOS)
+
+		enemy.scale = Vector2(0.75, 0.75) #clone is 25% smaller
+		enemy.is_ddos_clone = true
+
+		var hp = int(Data.ENEMY_DATA[Data.Enemy.DDOS]["health"] * 0.35)
+		enemy.health = hp
+		enemy.get_node("hpbar").max_value = hp
+		enemy.get_node("hpbar").value = hp
+
+		path_follow.add_child(enemy)
+		path.add_child(path_follow)

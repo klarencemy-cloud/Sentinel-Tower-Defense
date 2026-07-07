@@ -39,6 +39,9 @@ var can_clone := true
 @export var spacing := 32
 var spyware_count := 0
 
+var is_ddos_clone := false
+const DDOS_HEALTH_MULTIPLIER := 0.35 # 35% HP
+
 func _ready() -> void:
 	add_to_group('Enemies')
 	damage_label_template = $DamageLabel.duplicate() as Label
@@ -325,6 +328,13 @@ func hit(damage: int = 1, tower_id: int = -1):
 	if enemy_type_stats == Data.Enemy.RANSOMWARE:
 		Data.active_ransomware = max(0, Data.active_ransomware - 1)
 		Data.active_ransomware_changed.emit()
+	if enemy_type_stats == Data.Enemy.DDOS and !is_ddos_clone:
+		var wave_manager = get_tree().get_first_node_in_group("WaveManager")
+		if wave_manager:
+			wave_manager.spawn_ddos_clones(
+				path_follow.get_parent(),
+				path_follow.progress
+			)
 	dead = true
 	Data.money += int(round(10 * Economy.gold_multiplier)) # update money
 
