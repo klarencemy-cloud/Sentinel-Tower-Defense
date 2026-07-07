@@ -54,19 +54,19 @@ var sb_map_desc: Array = [
 ]
 
 #virual mode
-var vm_title_array: Array = ["Ticking Bomb", "Swarm Overload", "Malware Interruption", "Mirai Botnet", "DDoS Stress Test", "Random Defense", "Switched Positions", "Automatic Defense", "Endless Onslaught"]
-var recommended: Array = ["5", "10", "16", "25", "34", "37", "45", "50", "51"]
-var vm_difficulty: Array = ["Easy", "Moderate", "Hard", "Hard", "Hard", "Extreme", "Hard", "Hard", "Survival"]
+var vm_title_array: Array = ["Ticking Bomb", "Swarm Overload", "Malware Interruption", "Mirai Botnet", "Packet Loss", "DDoS Stress Test", "Random Defense", "Automatic Defense", "Endless Onslaught"]
+var recommended: Array = ["5", "10", "16", "25", "30", "35", "40", "45", "51"]
+var vm_difficulty: Array = ["Easy", "Moderate", "Hard", "Hard", "Hard", "Hard", "Extreme", "Extreme", "Survival"]
 var vm_map_desc_paragraph: Array = [
 	"The S.E.R.V.E.R. malfunctions; it loses health every 5 seconds. Defeat 300 virus enemies before the S.E.R.V.E.R. health reaches 0.",
 	"A massive outbreak of Worms and Spam floods the paths. Defeat 1,000 enemies without taking any damage.",
 	"The S.E.R.V.E.R. has only 1 HP left. Win the game without taking any damage from malware enemies for 7 waves. A single damage will cost the player everything. The player must defend the S.E.R.V.E.R. at any cost.",
 	"Inspired by a real-world exploit, a large number of Botnet drone that mainly compromise low-power devices swarms fast to attack the S.E.R.V.E.R., but are fragile as individuals. Win 7 waves to win the challenge.",
+	"The map has blind spots (fog), whenever enemies are in that location, they cannot be targeted. Win 7 waves to win the challenge.",
 	"Only Distributed Denial-of-Service (DDoS) attacks the S.E.R.V.E.R. to test how it handles floods of internet traffic. The player must defeat 300 enemies before the timer runs out.",
 	"Random towers randomly appear. The player must place them correctly and strategically. Win 7 waves to win the challenge.",
-	"The battlefield is already filled with defense towers. The player must breach the S.E.R.V.E.R. Defeat the S.E.R.V.E.R. ( 0 HP) by placing enemies.",
 	"All sentinels are disabled during the challenge. Win 7 waves to win the challenge.",
-	"Survive as long as you can!                                                       "
+	"This challenge is endless. A survival game where the player must defend the S.E.R.V.E.R. with an endless number of waves."
 
 ]
 

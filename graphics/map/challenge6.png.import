@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s8xhvy48k726"
-path="res://.godot/imported/virus.png-cee666ee976b93eaf03dbdc750517113.ctex"
+uid="uid://frtxct0seq3u"
+path="res://.godot/imported/challenge6.png-dfe0cfc6258ef088c141a9219ea7176f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/bosses/virus.png"
-dest_files=["res://.godot/imported/virus.png-cee666ee976b93eaf03dbdc750517113.ctex"]
+source_file="res://graphics/map/challenge6.png"
+dest_files=["res://.godot/imported/challenge6.png-dfe0cfc6258ef088c141a9219ea7176f.ctex"]
 
 [params]
 

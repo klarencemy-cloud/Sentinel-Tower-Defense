@@ -10,9 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://c2ka012ylc4b3" path="res://graphics/buttons/buttonbg.png" id="6_wbmct"]
 [ext_resource type="Texture2D" uid="uid://bmgpyq7aikwk0" path="res://graphics/currency/experience.png" id="7_6qbrb"]
 [ext_resource type="Texture2D" uid="uid://m2v4co1jqaap" path="res://graphics/buttons/right.png" id="9_q5btu"]
+[ext_resource type="Texture2D" uid="uid://c507xxnt0mfeq" path="res://graphics/map/challenge1.png" id="10_khfni"]
 [ext_resource type="Script" uid="uid://cyrxvelj6b5co" path="res://scenes/ui/carousel_container.gd" id="10_yyxhe"]
+[ext_resource type="Texture2D" uid="uid://dixvrwxmdd0xd" path="res://graphics/map/challenge2.png" id="11_ih4g6"]
 [ext_resource type="Texture2D" uid="uid://i82l68ekl10p" path="res://graphics/vm_maps/worldmap.png" id="11_yyxhe"]
 [ext_resource type="Texture2D" uid="uid://css1nofmamha6" path="res://graphics/vm_maps/base.png" id="12_4vhxa"]
+[ext_resource type="Texture2D" uid="uid://frtxct0seq3u" path="res://graphics/map/challenge6.png" id="13_1ntix"]
+[ext_resource type="Texture2D" uid="uid://btrwed7mk8ndh" path="res://graphics/map/challenge4.png" id="13_ey7bj"]
+[ext_resource type="Texture2D" uid="uid://c5xqdc6xxcrhx" path="res://graphics/map/challenge5.png" id="13_ne1tg"]
 
 [node name="VirtualMachineUI" type="Control" unique_id=785887472]
 layout_mode = 3
@@ -277,96 +282,135 @@ metadata/_custom_type_script = "uid://cyrxvelj6b5co"
 [node name="Control" type="Control" parent="CarouselContainer" unique_id=712177690]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -221.5
-offset_right = -181.5
+offset_left = -407.4768
+offset_right = -367.4768
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Map1" type="TextureRect" parent="CarouselContainer/Control" unique_id=669022723]
 z_index = 1
-layout_mode = 0
-offset_top = -195.0
-offset_right = 443.0
-offset_bottom = 195.0
-pivot_offset = Vector2(221.5, 195)
-texture = ExtResource("4_3akup")
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -4.971875
+anchor_right = 20.37384
+anchor_bottom = 4.971875
+pivot_offset = Vector2(407.4768, 198.875)
+mouse_filter = 2
+texture = ExtResource("10_khfni")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Map2" type="TextureRect" parent="CarouselContainer/Control" unique_id=718124916]
 modulate = Color(1, 1, 1, 0)
 z_index = -1
-layout_mode = 0
-offset_left = 463.0
-offset_top = -195.0
-offset_right = 906.00244
-offset_bottom = 195.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 20.87384
+anchor_top = -5.4312863
+anchor_right = 40.18508
+anchor_bottom = 5.4312863
+offset_top = -1.5258789e-05
+offset_bottom = 1.5258789e-05
 scale = Vector2(0.75, 0.75)
-pivot_offset = Vector2(221.50122, 195)
-texture = ExtResource("4_3akup")
+pivot_offset = Vector2(386.22485, 217.25146)
+mouse_filter = 2
+texture = ExtResource("11_ih4g6")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Map3" type="TextureRect" parent="CarouselContainer/Control" unique_id=747624342]
 modulate = Color(1, 1, 1, 0)
 z_index = -2
-layout_mode = 0
-offset_left = 926.00244
-offset_top = -195.0
-offset_right = 1371.1282
-offset_bottom = 195.0
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 44.979576
+anchor_top = -2.4156544
+anchor_right = 53.568573
+anchor_bottom = 2.4156544
+offset_left = -171.77979
+offset_top = -96.626144
+offset_right = 171.77979
+offset_bottom = 96.626144
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(222.56287, 195)
-texture = ExtResource("4_3akup")
+pivot_offset = Vector2(343.5597, 193.25232)
+mouse_filter = 2
+texture = ExtResource("13_ey7bj")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Map4" type="TextureRect" parent="CarouselContainer/Control" unique_id=85474663]
 modulate = Color(1, 1, 1, 0)
 z_index = -3
-layout_mode = 0
-offset_left = 1391.1282
-offset_top = -195.0
-offset_right = 1834.1283
-offset_bottom = 195.0
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 59.696545
+anchor_top = -1.384375
+anchor_right = 64.61877
+anchor_bottom = 1.3843753
+offset_left = -53.33911
+offset_top = -166.125
+offset_right = 537.3281
+offset_bottom = 166.12498
 scale = Vector2(0.25, 0.25)
-pivot_offset = Vector2(221.50006, 195)
-texture = ExtResource("4_3akup")
+pivot_offset = Vector2(393.77808, 221.5)
+mouse_filter = 2
+texture = ExtResource("13_ey7bj")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Map5" type="TextureRect" parent="CarouselContainer/Control" unique_id=1748115973]
 modulate = Color(1, 1, 1, 0)
 z_index = -4
-layout_mode = 0
-offset_left = 1854.1283
-offset_top = -195.0
-offset_right = 2297.1284
-offset_bottom = 195.0
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 78.55197
+anchor_top = -5.2683854
+anchor_right = 97.284
+anchor_bottom = 5.2683854
+offset_top = -4.5776367e-05
+offset_right = 0.00024414063
+offset_bottom = 4.5776367e-05
 scale = Vector2(0.1, 0.1)
-pivot_offset = Vector2(221.50006, 195)
-texture = ExtResource("4_3akup")
+pivot_offset = Vector2(374.64063, 210.73546)
+mouse_filter = 2
+texture = ExtResource("13_ne1tg")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Map6" type="TextureRect" parent="CarouselContainer/Control" unique_id=1355844515]
 modulate = Color(1, 1, 1, 0)
 z_index = -5
-layout_mode = 0
-offset_left = 2317.1284
-offset_top = -196.95087
-offset_right = 2760.129
-offset_bottom = 196.95087
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 97.78401
+anchor_top = -5.949999
+anchor_right = 118.93955
+anchor_bottom = 5.949999
+offset_left = -0.00024414063
+offset_top = -0.00010681152
+offset_bottom = 0.00010681152
 scale = Vector2(0.1, 0.1)
-pivot_offset = Vector2(221.50024, 196.95087)
-texture = ExtResource("4_3akup")
+pivot_offset = Vector2(423.11096, 238.00006)
+mouse_filter = 2
+texture = ExtResource("13_1ntix")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Map7" type="TextureRect" parent="CarouselContainer/Control" unique_id=345180947]
 modulate = Color(1, 1, 1, 0)
 z_index = -6
 layout_mode = 0
-offset_left = 2780.129
+offset_left = 4777.582
 offset_top = -196.95087
-offset_right = 3223.1294
+offset_right = 5220.5825
 offset_bottom = 196.95087
 scale = Vector2(0.1, 0.1)
 pivot_offset = Vector2(221.50024, 196.95087)
+mouse_filter = 2
 texture = ExtResource("4_3akup")
 metadata/_edit_use_anchors_ = true
 
@@ -374,12 +418,13 @@ metadata/_edit_use_anchors_ = true
 modulate = Color(1, 1, 1, 0)
 z_index = -7
 layout_mode = 0
-offset_left = 3243.1294
+offset_left = 5240.5825
 offset_top = -196.95087
-offset_right = 3686.13
+offset_right = 5683.584
 offset_bottom = 196.95087
 scale = Vector2(0.1, 0.1)
-pivot_offset = Vector2(221.50024, 196.95087)
+pivot_offset = Vector2(221.50073, 196.95087)
+mouse_filter = 2
 texture = ExtResource("4_3akup")
 metadata/_edit_use_anchors_ = true
 
@@ -387,12 +432,12 @@ metadata/_edit_use_anchors_ = true
 modulate = Color(1, 1, 1, 0)
 z_index = -8
 layout_mode = 0
-offset_left = 3706.13
+offset_left = 5703.584
 offset_top = -196.95087
-offset_right = 4149.1304
+offset_right = 6146.585
 offset_bottom = 196.95087
 scale = Vector2(0.1, 0.1)
-pivot_offset = Vector2(221.50024, 196.95087)
+pivot_offset = Vector2(221.50049, 196.95087)
 texture = ExtResource("4_3akup")
 metadata/_edit_use_anchors_ = true
 
@@ -408,10 +453,10 @@ offset_bottom = 813.0
 [node name="Map" type="TextureButton" parent="MapContainer" unique_id=1204325682]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.09607843
-anchor_top = -1.9485904
-anchor_right = 0.91764706
-anchor_bottom = 0.8380384
+anchor_left = 0.17058824
+anchor_top = -1.8872305
+anchor_right = 0.99215686
+anchor_bottom = 0.89939845
 offset_top = -3.0517578e-05
 texture_normal = ExtResource("11_yyxhe")
 ignore_texture_size = true
@@ -435,6 +480,7 @@ anchor_right = 1.0084746
 anchor_bottom = 1.0762712
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("4_3akup")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
@@ -457,6 +503,7 @@ anchor_right = 1.0254238
 anchor_bottom = 1.0762712
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("4_3akup")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
@@ -479,6 +526,7 @@ anchor_right = 1.0254238
 anchor_bottom = 1.0762712
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("4_3akup")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
@@ -496,12 +544,14 @@ stretch_mode = 0
 [node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge6" unique_id=363751627]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.050847456
-anchor_right = 1.0254238
-anchor_bottom = 1.0762712
+anchor_left = -0.8220339
+anchor_top = -0.44067797
+anchor_right = 1.7542373
+anchor_bottom = 1.0847458
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_3akup")
+mouse_filter = 2
+texture = ExtResource("13_1ntix")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -518,12 +568,14 @@ stretch_mode = 0
 [node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge5" unique_id=505073945]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.050847456
-anchor_right = 1.0254238
-anchor_bottom = 1.0762712
+anchor_left = -0.5254237
+anchor_top = -0.22033899
+anchor_right = 1.559322
+anchor_bottom = 1.1779661
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_3akup")
+mouse_filter = 2
+texture = ExtResource("13_ne1tg")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -540,12 +592,14 @@ stretch_mode = 0
 [node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge4" unique_id=1830858800]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.050847456
-anchor_right = 1.0254238
-anchor_bottom = 1.0762712
+anchor_left = -0.4915254
+anchor_top = -0.18644068
+anchor_right = 1.4830508
+anchor_bottom = 1.161017
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_3akup")
+mouse_filter = 2
+texture = ExtResource("13_ey7bj")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -562,12 +616,14 @@ stretch_mode = 0
 [node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge3" unique_id=1659103459]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.050847456
-anchor_right = 1.0254238
-anchor_bottom = 1.0762712
+anchor_left = -0.5338983
+anchor_top = -0.2542373
+anchor_right = 1.5
+anchor_bottom = 1.1355932
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_3akup")
+mouse_filter = 2
+texture = ExtResource("13_ey7bj")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -584,12 +640,14 @@ stretch_mode = 0
 [node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge2" unique_id=816288224]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.050847456
-anchor_right = 1.0254238
-anchor_bottom = 1.0762712
+anchor_left = -0.69491524
+anchor_top = -0.3559322
+anchor_right = 1.6355932
+anchor_bottom = 1.1101695
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_3akup")
+mouse_filter = 2
+texture = ExtResource("11_ih4g6")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -606,12 +664,14 @@ stretch_mode = 0
 [node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge1" unique_id=1181963134]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.050847456
-anchor_right = 1.0254238
-anchor_bottom = 1.0762712
+anchor_left = -0.6101695
+anchor_top = -0.24576265
+anchor_right = 1.5423728
+anchor_bottom = 1.1101695
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_3akup")
+mouse_filter = 2
+texture = ExtResource("10_khfni")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
