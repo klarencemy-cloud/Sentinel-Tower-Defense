@@ -10,10 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://c7h81dhdijgid" path="res://graphics/map/level1.png" id="9_p24p8"]
 [ext_resource type="Script" uid="uid://cyrxvelj6b5co" path="res://scenes/ui/carousel_container.gd" id="10_fa42h"]
 [ext_resource type="Texture2D" uid="uid://bjf3g70xoymds" path="res://graphics/map/level2.png" id="10_p24p8"]
-[ext_resource type="Texture2D" uid="uid://gu6kknerpdee" path="res://graphics/vm_maps/vm1.png" id="11_k140q"]
 [ext_resource type="Texture2D" uid="uid://b335xfgljykok" path="res://graphics/map/level3.png" id="11_p24p8"]
 [ext_resource type="Texture2D" uid="uid://6mrooni21hax" path="res://graphics/map/level4.png" id="12_p24p8"]
 [ext_resource type="Texture2D" uid="uid://663576ums5og" path="res://graphics/map/level5.png" id="13_p24p8"]
+[ext_resource type="Texture2D" uid="uid://2ru8h08q0ki3" path="res://graphics/map/level6.png" id="14_p24p8"]
 
 [node name="SandBoxUI" type="Control" unique_id=785887472]
 layout_mode = 3
@@ -266,13 +266,18 @@ expand_mode = 1
 modulate = Color(1, 1, 1, 0)
 z_index = -5
 layout_mode = 0
-offset_left = 3432.0488
-offset_top = -196.95087
-offset_right = 3875.0515
-offset_bottom = 196.95087
+anchor_left = 85.80122
+anchor_top = -3.9562488
+anchor_right = 99.71987
+anchor_bottom = 3.9562488
+offset_top = -1.5258789e-05
+offset_bottom = 1.5258789e-05
 scale = Vector2(0.1, 0.1)
-pivot_offset = Vector2(221.50134, 196.95087)
-texture = ExtResource("11_k140q")
+pivot_offset = Vector2(278.37305, 158.24997)
+mouse_filter = 2
+texture = ExtResource("14_p24p8")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="ButtonManager/RightBtn" to="." method="_on_right_btn_pressed"]
 [connection signal="pressed" from="ButtonManager/LeftBtn" to="." method="_on_left_btn_pressed"]
