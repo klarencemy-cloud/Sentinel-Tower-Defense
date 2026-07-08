@@ -271,11 +271,13 @@ theme_override_font_sizes/font_size = 24
 text = "Maxed Player Level"
 
 [node name="UnliMoney" type="CheckBox" parent="Control/TextureRect/SandboxMenuContainer" unique_id=899948441]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Unlimited Money"
 
 [node name="UnliHealth" type="CheckBox" parent="Control/TextureRect/SandboxMenuContainer" unique_id=2065866052]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Unlimited Health"

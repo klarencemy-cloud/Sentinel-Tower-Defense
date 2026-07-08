@@ -311,7 +311,7 @@ var ENEMY_DATA = {
 		"exp": 5},
 	Enemy.TROJAN: {
 		'health': 350, 
-		'texture': "res://graphics/Ships/ship_0000.png", 
+		'texture': "uid://dg8b5ek5g0byi", 
 		'speed': 100, 
 		'name': "trojan", 
 		'damage': 55, 
