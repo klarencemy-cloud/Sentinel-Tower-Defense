@@ -343,7 +343,7 @@ func _on_tower_1_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[0]['type'])
 	desc_sp.text = str(TOWER_DATA[0]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[0]['irl_desc'])
-
+	$Databasebg/AnimatedSprite2D.play("spam")
 
 func _on_tower_2_pressed() -> void:
 	desc_name.text = tower_name[1]
@@ -352,6 +352,7 @@ func _on_tower_2_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[1]['type'])
 	desc_sp.text = str(TOWER_DATA[1]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[1]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.play("antivirus")
 
 
 func _on_tower_3_pressed() -> void:
@@ -361,6 +362,7 @@ func _on_tower_3_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[2]['type'])
 	desc_sp.text = str(TOWER_DATA[2]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[2]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.play("adblocker")
 
 
 func _on_tower_4_pressed() -> void:
@@ -370,6 +372,7 @@ func _on_tower_4_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[3]['type'])
 	desc_sp.text = str(TOWER_DATA[3]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[3]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.play("dlp")
 
 func _on_tower_5_pressed() -> void:
 	desc_name.text = tower_name[4]
@@ -378,6 +381,7 @@ func _on_tower_5_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[4]['type'])
 	desc_sp.text = str(TOWER_DATA[4]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[4]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.play("idps")
 
 
 func _on_tower_6_pressed() -> void:
@@ -387,6 +391,7 @@ func _on_tower_6_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[5]['type'])
 	desc_sp.text = str(TOWER_DATA[5]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[5]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.play("qcannon")
 
 
 func _on_tower_7_pressed() -> void:
@@ -396,6 +401,7 @@ func _on_tower_7_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[6]['type'])
 	desc_sp.text = str(TOWER_DATA[6]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[6]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.play("acs")
 
 
 func _on_tower_8_pressed() -> void:
@@ -405,6 +411,7 @@ func _on_tower_8_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[7]['type'])
 	desc_sp.text = str(TOWER_DATA[7]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[7]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.play("aisec")
 
 
 func _on_tower_9_pressed() -> void:
@@ -414,7 +421,7 @@ func _on_tower_9_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[8]['type'])
 	desc_sp.text = str(TOWER_DATA[8]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[8]['irl_desc'])
-
+	$Databasebg/AnimatedSprite2D.play("epprotection")
 
 func _on_tower_10_pressed() -> void:
 	desc_name.text = tower_name[9]
@@ -423,6 +430,7 @@ func _on_tower_10_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[9]['type'])
 	desc_sp.text = str(TOWER_DATA[9]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[9]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.play("sbanalyzer")
 
 
 func _on_tower_11_pressed() -> void:
@@ -432,3 +440,4 @@ func _on_tower_11_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[10]['type'])
 	desc_sp.text = str(TOWER_DATA[10]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[10]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.play("soar")
