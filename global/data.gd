@@ -275,138 +275,138 @@ func calculate_crit_damage(tower_type: int, base_damage: int) -> int:
 
 var ENEMY_DATA = {
 	Enemy.DEFAULT: {
-		'health': 20, 
-		'texture': "uid://biixy5e8v8how", 
-		'speed': 105, 
-		'name': "spam", 
-		'damage': 5, 
-		"exp": 5},
+		'health': 20,
+		'texture': "uid://biixy5e8v8how",
+		'speed': 105,
+		'name': "spam",
+		'damage': 5,
+		"exp": 2},
 	Enemy.VIRUS: {
-		'health': 40, 
-		'texture': "uid://c6j3u1ewdc7ry", 
-		'speed': 100, 
-		'name': "virus", 
-		'damage': 10, 
-		"exp": 5},
+		'health': 40,
+		'texture': "uid://c6j3u1ewdc7ry",
+		'speed': 100,
+		'name': "virus",
+		'damage': 10,
+		"exp": 3},
 	Enemy.ADWARE: {
-		'health': 80, 
-		'texture': "uid://uv3lkpfkcqb1", 
-		'speed': 105, 
-		'name': "adware", 
-		'damage': 12, 
-		"exp": 5},
+		'health': 80,
+		'texture': "uid://uv3lkpfkcqb1",
+		'speed': 105,
+		'name': "adware",
+		'damage': 12,
+		"exp": 4},
 	Enemy.WORM: {
-		'health': 30, 
-		'texture': "uid://cq83i85lk0drt", 
-		'speed': 120, 
-		'name': "worm", 
-		'damage': 15, 
+		'health': 30,
+		'texture': "uid://cq83i85lk0drt",
+		'speed': 120,
+		'name': "worm",
+		'damage': 15,
 		"exp": 5},
 	Enemy.SPYWARE: {
-		'health': 100, 
-		'texture': "uid://brqrfbf3rnun3", 
-		'speed': 115, 
-		'name': "spyware", 
-		'damage': 35, 
-		"exp": 5},
+		'health': 100,
+		'texture': "uid://brqrfbf3rnun3",
+		'speed': 115,
+		'name': "spyware",
+		'damage': 35,
+		"exp": 6},
 	Enemy.TROJAN: {
-		'health': 350, 
-		'texture': "uid://dg8b5ek5g0byi", 
-		'speed': 100, 
-		'name': "trojan", 
-		'damage': 55, 
-		"exp": 5},
+		'health': 350,
+		'texture': "uid://dg8b5ek5g0byi",
+		'speed': 100,
+		'name': "trojan",
+		'damage': 55,
+		"exp": 9},
 	Enemy.BOTNET: {
-		'health': 200, 
-		'texture': "uid://dcx6ley5pknyn", 
-		'speed': 105, 
-		'name': "botnet", 
-		'damage': 55, 
-		"exp": 5},
+		'health': 200,
+		'texture': "uid://dcx6ley5pknyn",
+		'speed': 105,
+		'name': "botnet",
+		'damage': 55,
+		"exp": 8},
 	Enemy.CREDS: {
-		'health': 20, 
-		'texture': "uid://ie82cokh85on", 
-		'speed': 100, 
-		'name': "creds", 
-		'damage': 5, 
-		"exp": 5},
+		'health': 20,
+		'texture': "uid://ie82cokh85on",
+		'speed': 100,
+		'name': "creds",
+		'damage': 5,
+		"exp": 9},
 	Enemy.INSIDERTHREAT: {
-		'health': 120, 
-		'texture': "uid://f3kmwgwtwhby", 
-		'speed': 110, 
-		'name': "insiderthreat", 
-		'damage': 80, 
-		"exp": 5},
+		'health': 120,
+		'texture': "uid://f3kmwgwtwhby",
+		'speed': 110,
+		'name': "insiderthreat",
+		'damage': 80,
+		"exp": 10},
 	Enemy.ROOTKIT: {
-		'health': 200, 
-		'texture': "uid://chs1nrp5s1cne", 
-		'speed': 100, 
-		'name': "rootkit", 
-		'damage': 100, 
-		"exp": 5},
+		'health': 200,
+		'texture': "uid://chs1nrp5s1cne",
+		'speed': 100,
+		'name': "rootkit",
+		'damage': 100,
+		"exp": 11},
 	Enemy.SQL: {
-		'health': 150, 
-		'texture': "uid://diyet18ahl6mf", 
-		'speed': 118, 
-		'name': "sql", 
-		'damage': 120, 
-		"exp": 5},
+		'health': 150,
+		'texture': "uid://diyet18ahl6mf",
+		'speed': 118,
+		'name': "sql",
+		'damage': 120,
+		"exp": 12},
 	Enemy.DDOS: {
-		'health': 500, 
-		'texture': "uid://bfaik0etx7yif", 
-		'speed': 95, 
-		'name': "ddos", 
-		'damage': 150, 
-		"exp": 5},
+		'health': 500,
+		'texture': "uid://bfaik0etx7yif",
+		'speed': 95,
+		'name': "ddos",
+		'damage': 150,
+		"exp": 13},
 	Enemy.RANSOMWARE: {
-		'health': 150, 
-		'texture': "uid://c654gnfm0an4n", 
-		'speed': 105, 
-		'name': "ransomware", 
-		'damage': 250, 
-		"exp": 5},
+		'health': 150,
+		'texture': "uid://c654gnfm0an4n",
+		'speed': 105,
+		'name': "ransomware",
+		'damage': 250,
+		"exp": 15},
 	Enemy.ZERO: {
-		'health': 220, 
-		'texture': "uid://bgewpl0g08iay", 
-		'speed': 110, 
-		'name': "zero", 
-		'damage': 350, 
-		"exp": 5},
+		'health': 220,
+		'texture': "uid://bgewpl0g08iay",
+		'speed': 110,
+		'name': "zero",
+		'damage': 350,
+		"exp": 16},
 	Enemy.BOSS1: { # I LOVE YOU
-		'health': 15000, 
-		'texture': "uid://bh62x426nayqs", 
-		'speed': 100, 
-		'name': "boss1", 
-		'damage': 100, 
-		"exp": 5},
+		'health': 15000,
+		'texture': "uid://bh62x426nayqs",
+		'speed': 100,
+		'name': "boss1",
+		'damage': 100,
+		"exp": 100},
 	Enemy.BOSS2: { # CONFICKER
-		'health': 30000, 
-		'texture': "uid://btscyncy6p42a", 
-		'speed': 100, 
-		'name': "boss2", 
-		'damage': 200, 
-		"exp": 5},
+		'health': 30000,
+		'texture': "uid://btscyncy6p42a",
+		'speed': 100,
+		'name': "boss2",
+		'damage': 200,
+		"exp": 145},
 	Enemy.BOSS3: { # WANNA CRY
-		'health': 50000, 
-		'texture': "uid://b7ojhou6ogpwf", 
-		'speed': 100, 
-		'name': "boss3", 
-		'damage': 320, 
-		"exp": 5},
+		'health': 50000,
+		'texture': "uid://b7ojhou6ogpwf",
+		'speed': 100,
+		'name': "boss3",
+		'damage': 320,
+		"exp": 200},
 	Enemy.BOSS4: { # NOT PETYA
-		'health': 90000, 
-		'texture': "uid://he2k33y4efo3", 
-		'speed': 100, 
-		'name': "boss4", 
-		'damage': 200, 
-		"exp": 5},
+		'health': 90000,
+		'texture': "uid://he2k33y4efo3",
+		'speed': 100,
+		'name': "boss4",
+		'damage': 200,
+		"exp": 325},
 	Enemy.BOSS5: { # MY DOOM
-		'health': 110000, 
-		'texture': "uid://bsbw28l1xncts", 
-		'speed': 100, 
-		'name': "boss5", 
-		'damage': 200, 
-		"exp": 5}
+		'health': 110000,
+		'texture': "uid://bsbw28l1xncts",
+		'speed': 100,
+		'name': "boss5",
+		'damage': 200,
+		"exp": 450}
 }
 
 var ads_visible := false:
@@ -468,7 +468,7 @@ var server_points: int = 0:
 			if server_points == 0:
 				server.toggle_particle(false)
 
-var default_level_pool: float = 100
+var default_level_pool: float = 50
 var player_level: int = 1
 var experience: int = 0:
 	set(value):
@@ -486,13 +486,17 @@ var experience: int = 0:
 			experience -= default_level_pool
 			player_level += 1
 			server_points += 1
-			default_level_pool += default_level_pool * .5
-			
+			if player_level <= 51:
+				default_level_pool += 8
+			else:
+				default_level_pool += 16
 			# Stop leveling to 101 if we hit lvl 100
 			if player_level >= 100:
 				player_level = 100
 				experience = int(default_level_pool)
 				break
+
+			print("level_pool", default_level_pool)
 		
 		if ui:
 			ui.update_experience(experience, player_level, default_level_pool)
