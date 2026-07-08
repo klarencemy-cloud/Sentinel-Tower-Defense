@@ -247,19 +247,23 @@ metadata/_edit_use_anchors_ = true
 [node name="TowerContainer" type="Control" parent="." unique_id=2077580062]
 clip_contents = true
 layout_mode = 1
-anchor_left = 0.171875
-anchor_top = 0.14074074
-anchor_right = 0.41614583
-anchor_bottom = 0.8888889
+anchor_left = 0.45400003
+anchor_top = 0.48700002
+anchor_right = 0.45400003
+anchor_bottom = 0.48700002
+offset_left = -541.68005
+offset_top = -373.96002
+offset_right = -72.68005
+offset_bottom = 434.03998
 metadata/_edit_use_anchors_ = true
 
 [node name="CardContainer" type="Control" parent="TowerContainer" unique_id=1261632526]
 layout_mode = 1
-anchor_top = -1.0903466
+anchor_top = 0.013613861
 anchor_right = 0.9978678
-anchor_bottom = 0.6460396
-offset_top = 892.00006
-offset_bottom = 1178.0
+anchor_bottom = 2.1039605
+offset_bottom = -0.00012207031
+metadata/_edit_use_anchors_ = true
 
 [node name="Tower1" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=128861833]
 texture_filter = 2
@@ -714,14 +718,14 @@ expand_mode = 1
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.47395834
-anchor_top = 0.16203703
-anchor_right = 0.47395834
-anchor_bottom = 0.16203703
-offset_left = 8.0
-offset_top = -24.999985
-offset_right = 941.0
-offset_bottom = 706.0
+anchor_left = 0.96400005
+anchor_top = 0.55600005
+anchor_right = 0.96400005
+anchor_bottom = 0.55600005
+offset_left = -932.8801
+offset_top = -450.48004
+offset_right = 0.11987305
+offset_bottom = 280.51996
 texture = ExtResource("6_uhtcm")
 metadata/_edit_use_anchors_ = true
 
@@ -734,7 +738,7 @@ anchor_right = 0.6795284
 anchor_bottom = 0.29001367
 theme_override_constants/line_spacing = -18
 theme_override_font_sizes/font_size = 50
-text = "Counter Measure"
+text = "Spam Filter"
 vertical_alignment = 2
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
@@ -742,9 +746,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Sword" type="TextureRect" parent="Databasebg" unique_id=1765417363]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3676313
+anchor_left = 0.26902464
 anchor_top = 0.30232555
-anchor_right = 0.40297824
+anchor_right = 0.30437163
 anchor_bottom = 0.34473342
 offset_right = 40.109283
 offset_bottom = 37.70288
@@ -757,22 +761,22 @@ metadata/_edit_use_anchors_ = true
 [node name="Damage" type="Label" parent="Databasebg" unique_id=1907092814]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.40836012
+anchor_left = 0.30975348
 anchor_top = 0.30232555
-anchor_right = 0.40836012
+anchor_right = 0.30975348
 anchor_bottom = 0.31737345
 offset_right = 56.0
 offset_bottom = 19.0
 theme_override_font_sizes/font_size = 25
-text = "Atk Speed"
+text = "20"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sword2" type="TextureRect" parent="Databasebg" unique_id=1073644303]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.26259366
+anchor_left = 0.36763117
 anchor_top = 0.29001367
-anchor_right = 0.2934739
+anchor_right = 0.3985114
 anchor_bottom = 0.32033128
 offset_left = 0.00012207031
 offset_top = 9.0
@@ -786,14 +790,14 @@ metadata/_edit_use_anchors_ = true
 [node name="Speed" type="Label" parent="Databasebg" unique_id=888561717]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.30439442
+anchor_left = 0.40943193
 anchor_top = 0.30232558
-anchor_right = 0.30439442
+anchor_right = 0.40943193
 anchor_bottom = 0.31737345
 offset_right = 70.0
 offset_bottom = 19.0
 theme_override_font_sizes/font_size = 25
-text = "Dmg"
+text = "0.75"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sword3" type="TextureRect" parent="Databasebg" unique_id=123416035]
@@ -818,7 +822,7 @@ anchor_top = 0.30232558
 anchor_right = 0.22079314
 anchor_bottom = 0.34336525
 theme_override_font_sizes/font_size = 25
-text = "Type"
+text = "Bullet"
 metadata/_edit_use_anchors_ = true
 
 [node name="Special" type="Label" parent="Databasebg" unique_id=1066469485]
@@ -831,7 +835,7 @@ anchor_bottom = 0.4008208
 theme_override_colors/font_color = Color(0.137, 1, 1, 1)
 theme_override_fonts/font = ExtResource("7_07cd3")
 theme_override_font_sizes/font_size = 17
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se"
+text = "Attacks bounce to nearby enemies. Deals bonus damage to Spam"
 horizontal_alignment = 3
 autowrap_mode = 3
 justification_flags = 42
@@ -867,7 +871,7 @@ offset_right = 319.09424
 offset_bottom = 154.81476
 theme_override_fonts/font = ExtResource("7_07cd3")
 theme_override_font_sizes/font_size = 17
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+text = "These are automated security tools that are used to identify, block, redirect, or allow bulk, unwanted, or malicious emails before it reaches the primary inbox of a user's email."
 horizontal_alignment = 3
 autowrap_mode = 3
 justification_flags = 42

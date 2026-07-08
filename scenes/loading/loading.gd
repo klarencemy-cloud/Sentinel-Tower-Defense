@@ -24,6 +24,18 @@ var tips: Array[String] = [
 
 
 func _ready() -> void:
+	if Data.current_wave <= 10:
+		$Anchor/Animation/AnimatedSprite2D.play("boss1")
+	elif Data.current_wave <= 20 and Data.current_wave > 10:
+		$Anchor/Animation/AnimatedSprite2D.play("boss2")
+	elif Data.current_wave <= 30 and Data.current_wave > 20:
+		$Anchor/Animation/AnimatedSprite2D.play("boss3")
+	elif Data.current_wave <= 40 and Data.current_wave > 30:
+		$Anchor/Animation/AnimatedSprite2D.play("boss4")
+	elif Data.current_wave <= 50 and Data.current_wave > 40:
+		$Anchor/Animation/AnimatedSprite2D.play("boss5")
+	else:
+		$Anchor/Animation/AnimatedSprite2D.play("boss6")
 	randomize()
 	var index: int = randi_range(0, 11)
 	$Anchor/Facts/Details.text = tips[index]

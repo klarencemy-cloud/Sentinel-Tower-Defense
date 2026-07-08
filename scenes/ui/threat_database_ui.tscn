@@ -799,21 +799,23 @@ metadata/_edit_use_anchors_ = true
 [node name="ThreatContainer" type="Control" parent="." unique_id=49551088]
 texture_filter = 2
 clip_contents = true
-anchors_preset = 0
-anchor_left = 0.171875
-anchor_top = 0.14074074
-anchor_right = 0.41614583
-anchor_bottom = 0.8888889
+layout_mode = 1
+anchor_left = 0.44900003
+anchor_top = 0.563
+anchor_right = 0.44900003
+anchor_bottom = 0.563
+offset_left = -532.0801
+offset_top = -456.04004
+offset_right = -63.08008
+offset_bottom = 351.95996
 metadata/_edit_use_anchors_ = true
 
 [node name="CardContainer" type="Control" parent="ThreatContainer" unique_id=961428850]
 texture_filter = 2
 layout_mode = 1
-anchor_top = -13.871287
+anchor_top = 0.013613861
 anchor_right = 0.9978678
-anchor_bottom = -9.331683
-offset_top = 11219.0
-offset_bottom = 11219.0
+anchor_bottom = 4.553218
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat1" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=767183370]
@@ -1588,11 +1590,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Reddatabasebg" type="TextureRect" parent="." unique_id=1701079266]
 texture_filter = 2
-layout_mode = 0
-anchor_left = 0.478125
-anchor_top = 0.1388889
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9640625
+anchor_top = 0.46600002
 anchor_right = 0.9640625
-anchor_bottom = 0.81574076
+anchor_bottom = 0.46600002
+offset_left = -933.0
+offset_top = -353.28003
+offset_bottom = 377.71997
 texture = ExtResource("6_tl1kg")
 metadata/_edit_use_anchors_ = true
 
@@ -1605,7 +1611,7 @@ anchor_top = 0.19425444
 anchor_right = 0.58949625
 anchor_bottom = 0.2900137
 theme_override_font_sizes/font_size = 50
-text = "Cyber Threats"
+text = "Spam"
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
@@ -1634,7 +1640,7 @@ anchor_bottom = 0.30232558
 offset_right = 56.0
 offset_bottom = 30.0
 theme_override_font_sizes/font_size = 25
-text = "Health"
+text = "20"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sword2" type="TextureRect" parent="Reddatabasebg" unique_id=830287709]
@@ -1664,7 +1670,7 @@ anchor_bottom = 0.31600547
 offset_right = 70.0
 offset_bottom = 19.0
 theme_override_font_sizes/font_size = 25
-text = "Dmg"
+text = "5"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sword3" type="TextureRect" parent="Reddatabasebg" unique_id=1453557746]
@@ -1691,7 +1697,7 @@ anchor_top = 0.30232558
 anchor_right = 0.48338693
 anchor_bottom = 0.34336525
 theme_override_font_sizes/font_size = 25
-text = "Move Speed"
+text = "105"
 metadata/_edit_use_anchors_ = true
 
 [node name="Special" type="Label" parent="Reddatabasebg" unique_id=1790255648]
@@ -1705,7 +1711,7 @@ anchor_bottom = 0.46922025
 theme_override_colors/font_color = Color(1, 0.4123333, 0.13999999, 1)
 theme_override_fonts/font = ExtResource("7_jjgt1")
 theme_override_font_sizes/font_size = 17
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut l"
+text = "They spawn in swarms or in groups, making towers less efficient as they come in groups."
 horizontal_alignment = 3
 autowrap_mode = 3
 justification_flags = 42
@@ -1742,7 +1748,7 @@ offset_right = 425.80698
 offset_bottom = 221.98999
 theme_override_fonts/font = ExtResource("7_jjgt1")
 theme_override_font_sizes/font_size = 17
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+text = "Spam is unsolicited, unwelcome digital communication that is transmitted in large quantities, mostly via email but sometimes via texts, phone calls, and social media."
 horizontal_alignment = 3
 autowrap_mode = 3
 justification_flags = 42

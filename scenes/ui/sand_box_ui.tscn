@@ -121,26 +121,33 @@ offset_bottom = 40.0
 z_index = 6
 texture_filter = 2
 layout_mode = 0
-offset_left = 792.0
-offset_top = 464.0
-offset_right = 908.0
-offset_bottom = 614.0
+anchor_left = 19.8
+anchor_top = 11.6
+anchor_right = 22.7
+anchor_bottom = 15.35
 texture_normal = ExtResource("5_03fy7")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="LeftBtn" type="TextureButton" parent="ButtonManager" unique_id=1293332622]
 z_index = 7
 texture_filter = 2
-layout_mode = 0
-offset_left = 328.0
-offset_top = 616.0
-offset_right = 444.0
-offset_bottom = 766.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 5.3
+anchor_top = 11.65
+anchor_right = 8.200001
+anchor_bottom = 15.400001
+offset_left = 116.0
+offset_top = 150.0
+offset_right = 115.99997
+offset_bottom = 150.0
 rotation = 3.1415927
 texture_normal = ExtResource("5_03fy7")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="StartGame" type="TextureButton" parent="." unique_id=470087992]
 texture_filter = 2

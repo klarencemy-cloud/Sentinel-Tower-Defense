@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+var is_skippable: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,11 +13,12 @@ func _process(delta: float) -> void:
 
 
 func _on_info_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and is_skippable:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			$Pop/Animation.visible = false
 			$Pop/Info/AnimationPlayer.play_backwards("info_pop")
 			await get_tree().create_timer(0.3).timeout
+			is_skippable = false
 			$Pop/Info.visible = false
 			var ui = get_tree().get_first_node_in_group("UI")
 			ui.hide_pop(false)
@@ -210,3 +212,7 @@ func play_animation(enemy_name: String, index: int):
 	while $Pop/DirectionalLight2D.energy > 0:
 		await get_tree().create_timer(.06).timeout
 		$Pop/DirectionalLight2D.energy -= 1
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	is_skippable = true

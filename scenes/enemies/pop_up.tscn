@@ -987,4 +987,6 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [connection signal="gui_input" from="Pop/Animation" to="Pop/Animation" method="_on_gui_input"]
+[connection signal="animation_finished" from="Pop/Animation/AnimationPlayer" to="Pop/Animation" method="_on_animation_player_animation_finished"]
 [connection signal="gui_input" from="Pop/Info" to="." method="_on_info_gui_input"]
+[connection signal="animation_finished" from="Pop/Info/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

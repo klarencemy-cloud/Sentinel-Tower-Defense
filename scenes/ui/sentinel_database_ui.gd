@@ -90,7 +90,7 @@ var SENTINEL_DATA = {
 @onready var desc_sp: Label = $Databasebg/Special
 @onready var desc_cd: Label = $Databasebg/Special/Cooldown
 @onready var desc_passive: Label = $Databasebg/Special/Cooldown/Passive
-@onready var desc_desc: Label = $Databasebg/Description
+@onready var desc_desc: Label = $Databasebg/Special/Cooldown/Passive/RealLifeDesc/Description
 
 func _on_sentinel_6_pressed() -> void:
 	print("ye")
