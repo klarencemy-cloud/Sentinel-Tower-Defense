@@ -8,9 +8,189 @@
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="6_72m6s"]
 [ext_resource type="Texture2D" uid="uid://cdpfmjb5ui3he" path="res://graphics/backgrounds/databasebg.png" id="6_uhtcm"]
 [ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="7_07cd3"]
+[ext_resource type="Texture2D" uid="uid://bh5ngl58v76nv" path="res://graphics/towers/tower sheet/whole_towers.png" id="7_p434n"]
 [ext_resource type="Texture2D" uid="uid://bgd5c2bukefyk" path="res://graphics/icons/damage.png" id="8_0ivax"]
 [ext_resource type="Texture2D" uid="uid://57wufxm4w484" path="res://graphics/icons/atk_speed.png" id="9_utb3e"]
 [ext_resource type="Texture2D" uid="uid://2crwmmgdjvd0" path="res://graphics/icons/ammo.png" id="10_utb3e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p434n"]
+atlas = ExtResource("7_p434n")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueaga"]
+atlas = ExtResource("7_p434n")
+region = Rect2(192, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7t6q"]
+atlas = ExtResource("7_p434n")
+region = Rect2(384, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chvfp"]
+atlas = ExtResource("7_p434n")
+region = Rect2(576, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kybm1"]
+atlas = ExtResource("7_p434n")
+region = Rect2(768, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqmad"]
+atlas = ExtResource("7_p434n")
+region = Rect2(1536, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hajoe"]
+atlas = ExtResource("7_p434n")
+region = Rect2(960, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4v40"]
+atlas = ExtResource("7_p434n")
+region = Rect2(0, 256, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frlvr"]
+atlas = ExtResource("7_p434n")
+region = Rect2(1152, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcypq"]
+atlas = ExtResource("7_p434n")
+region = Rect2(1344, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj7r2"]
+atlas = ExtResource("7_p434n")
+region = Rect2(1728, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqft4"]
+atlas = ExtResource("7_p434n")
+region = Rect2(960, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oo5c"]
+atlas = ExtResource("7_p434n")
+region = Rect2(384, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osja4"]
+atlas = ExtResource("7_p434n")
+region = Rect2(0, 256, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpxwr"]
+atlas = ExtResource("7_p434n")
+region = Rect2(192, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02yex"]
+atlas = ExtResource("7_p434n")
+region = Rect2(576, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbsko"]
+atlas = ExtResource("7_p434n")
+region = Rect2(1152, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diqpk"]
+atlas = ExtResource("7_p434n")
+region = Rect2(768, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5kvp"]
+atlas = ExtResource("7_p434n")
+region = Rect2(1536, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq045"]
+atlas = ExtResource("7_p434n")
+region = Rect2(1344, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8pcj"]
+atlas = ExtResource("7_p434n")
+region = Rect2(1728, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeytb"]
+atlas = ExtResource("7_p434n")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p434n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqft4")
+}],
+"loop": true,
+"name": &"acs",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oo5c")
+}],
+"loop": true,
+"name": &"adblocker",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osja4")
+}],
+"loop": true,
+"name": &"aisec",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpxwr")
+}],
+"loop": true,
+"name": &"antivirus",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02yex")
+}],
+"loop": true,
+"name": &"dlp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbsko")
+}],
+"loop": true,
+"name": &"epprotection",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diqpk")
+}],
+"loop": true,
+"name": &"idps",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5kvp")
+}],
+"loop": true,
+"name": &"qcannon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sq045")
+}],
+"loop": true,
+"name": &"sbanalyzer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8pcj")
+}],
+"loop": true,
+"name": &"soar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oeytb")
+}],
+"loop": true,
+"name": &"spam",
+"speed": 5.0
+}]
 
 [node name="TowerDatabaseUi" type="Control" unique_id=1039645555]
 layout_mode = 3
@@ -113,6 +293,15 @@ autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="TowerContainer/CardContainer/Tower1" unique_id=1094918936]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 40.0
+offset_right = 157.0
+offset_bottom = 178.66667
+texture = SubResource("AtlasTexture_p434n")
+expand_mode = 1
+
 [node name="Tower2" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=473344375]
 texture_filter = 2
 layout_mode = 1
@@ -143,6 +332,17 @@ horizontal_alignment = 1
 vertical_alignment = 3
 autowrap_mode = 2
 justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="TowerContainer/CardContainer/Tower2" unique_id=214775164]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 55.0
+offset_top = 40.0
+offset_right = 159.0
+offset_bottom = 178.667
+texture = SubResource("AtlasTexture_ueaga")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Tower3" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=294768729]
@@ -177,6 +377,15 @@ autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="TowerContainer/CardContainer/Tower3" unique_id=1235415079]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 40.0
+offset_right = 157.0
+offset_bottom = 178.667
+texture = SubResource("AtlasTexture_d7t6q")
+expand_mode = 1
+
 [node name="Tower4" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=1479714812]
 texture_filter = 2
 layout_mode = 1
@@ -209,6 +418,15 @@ autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="TowerContainer/CardContainer/Tower4" unique_id=135731387]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 40.0
+offset_right = 159.0
+offset_bottom = 178.667
+texture = SubResource("AtlasTexture_chvfp")
+expand_mode = 1
+
 [node name="Tower5" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=413058293]
 texture_filter = 2
 layout_mode = 1
@@ -239,6 +457,15 @@ vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="TowerContainer/CardContainer/Tower5" unique_id=1201653663]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 41.0
+offset_right = 158.0
+offset_bottom = 179.667
+texture = SubResource("AtlasTexture_kybm1")
+expand_mode = 1
 
 [node name="Tower6" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=1907321790]
 texture_filter = 2
@@ -272,6 +499,15 @@ autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="TowerContainer/CardContainer/Tower6" unique_id=60263676]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 42.0
+offset_right = 159.0
+offset_bottom = 180.667
+texture = SubResource("AtlasTexture_rqmad")
+expand_mode = 1
+
 [node name="Tower7" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=1204519957]
 texture_filter = 2
 layout_mode = 1
@@ -302,6 +538,15 @@ vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="TowerContainer/CardContainer/Tower7" unique_id=171252399]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 41.0
+offset_right = 157.0
+offset_bottom = 179.667
+texture = SubResource("AtlasTexture_hajoe")
+expand_mode = 1
 
 [node name="Tower8" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=347680842]
 texture_filter = 2
@@ -335,6 +580,15 @@ autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="TowerContainer/CardContainer/Tower8" unique_id=1519404717]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 41.0
+offset_right = 159.0
+offset_bottom = 179.667
+texture = SubResource("AtlasTexture_o4v40")
+expand_mode = 1
+
 [node name="Tower9" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=1649747624]
 texture_filter = 2
 layout_mode = 1
@@ -365,6 +619,15 @@ vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="TowerContainer/CardContainer/Tower9" unique_id=157396033]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 41.0
+offset_right = 157.0
+offset_bottom = 179.667
+texture = SubResource("AtlasTexture_frlvr")
+expand_mode = 1
 
 [node name="Tower10" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=1877787450]
 texture_filter = 2
@@ -398,6 +661,15 @@ autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="TowerContainer/CardContainer/Tower10" unique_id=307389892]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 41.0
+offset_right = 159.0
+offset_bottom = 179.667
+texture = SubResource("AtlasTexture_vcypq")
+expand_mode = 1
+
 [node name="Tower11" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=469410091]
 texture_filter = 2
 layout_mode = 1
@@ -429,6 +701,15 @@ autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="TowerContainer/CardContainer/Tower11" unique_id=880485106]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 42.0
+offset_right = 157.0
+offset_bottom = 180.667
+texture = SubResource("AtlasTexture_cj7r2")
+expand_mode = 1
+
 [node name="Databasebg" type="TextureRect" parent="." unique_id=167259212]
 texture_filter = 2
 layout_mode = 1
@@ -449,10 +730,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.11146838
 anchor_top = 0.10670315
-anchor_right = 0.926045
+anchor_right = 0.6795284
 anchor_bottom = 0.29001367
 theme_override_constants/line_spacing = -18
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 50
 text = "Counter Measure"
 vertical_alignment = 2
 autowrap_mode = 3
@@ -545,7 +826,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.11146838
 anchor_top = 0.37072504
-anchor_right = 0.926045
+anchor_right = 0.63987136
 anchor_bottom = 0.4008208
 theme_override_colors/font_color = Color(0.137, 1, 1, 1)
 theme_override_fonts/font = ExtResource("7_07cd3")
@@ -560,10 +841,10 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.25500003
-anchor_top = 1.0
-anchor_right = 0.25500003
-anchor_bottom = 1.0
+anchor_left = 0.39310354
+anchor_top = 0.9811318
+anchor_right = 0.39310354
+anchor_bottom = 0.9811318
 offset_left = -193.80002
 offset_top = 28.415092
 offset_right = 223.08481
@@ -591,6 +872,12 @@ horizontal_alignment = 3
 autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Databasebg" unique_id=883112235]
+position = Vector2(730, 209)
+sprite_frames = SubResource("SpriteFrames_p434n")
+animation = &"adblocker"
+autoplay = "spam"
 
 [connection signal="gui_input" from="ScrollBarContainer/Bar/Scroll" to="." method="_on_texture_button_gui_input"]
 [connection signal="gui_input" from="TowerContainer/CardContainer" to="." method="_on_card_container_gui_input"]
