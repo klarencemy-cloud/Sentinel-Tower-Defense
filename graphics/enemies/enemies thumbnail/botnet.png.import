@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dntcfnl7af217"
-path="res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"
+uid="uid://dcx6ley5pknyn"
+path="res://.godot/imported/botnet.png-e5f000301469e46924f263049499c27f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/dlp.png"
-dest_files=["res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"]
+source_file="res://graphics/enemies/enemies thumbnail/botnet.png"
+dest_files=["res://.godot/imported/botnet.png-e5f000301469e46924f263049499c27f.ctex"]
 
 [params]
 

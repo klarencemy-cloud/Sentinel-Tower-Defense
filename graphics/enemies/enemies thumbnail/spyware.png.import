@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dntcfnl7af217"
-path="res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"
+uid="uid://brqrfbf3rnun3"
+path="res://.godot/imported/spyware.png-6be16cc4d7d911003d6bd230bb63d987.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/dlp.png"
-dest_files=["res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"]
+source_file="res://graphics/enemies/enemies thumbnail/spyware.png"
+dest_files=["res://.godot/imported/spyware.png-6be16cc4d7d911003d6bd230bb63d987.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dntcfnl7af217"
-path="res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"
+uid="uid://cq83i85lk0drt"
+path="res://.godot/imported/worm.png-5796dc752ba719acfe674e563702cea3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/dlp.png"
-dest_files=["res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"]
+source_file="res://graphics/enemies/enemies thumbnail/worm.png"
+dest_files=["res://.godot/imported/worm.png-5796dc752ba719acfe674e563702cea3.ctex"]
 
 [params]
 

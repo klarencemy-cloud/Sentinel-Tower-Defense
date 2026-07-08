@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dntcfnl7af217"
-path="res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"
+uid="uid://he2k33y4efo3"
+path="res://.godot/imported/notpetya.png-580c0a1cfefe2fd5996633f83ff6073e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/dlp.png"
-dest_files=["res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"]
+source_file="res://graphics/enemies/enemies thumbnail/notpetya.png"
+dest_files=["res://.godot/imported/notpetya.png-580c0a1cfefe2fd5996633f83ff6073e.ctex"]
 
 [params]
 

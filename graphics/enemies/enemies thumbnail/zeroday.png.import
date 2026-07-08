@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dntcfnl7af217"
-path="res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"
+uid="uid://bgewpl0g08iay"
+path="res://.godot/imported/zeroday.png-96d7ce643b4710e00e99d8c4d71141ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/dlp.png"
-dest_files=["res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"]
+source_file="res://graphics/enemies/enemies thumbnail/zeroday.png"
+dest_files=["res://.godot/imported/zeroday.png-96d7ce643b4710e00e99d8c4d71141ad.ctex"]
 
 [params]
 

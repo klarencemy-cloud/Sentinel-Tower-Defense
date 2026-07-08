@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dntcfnl7af217"
-path="res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"
+uid="uid://c654gnfm0an4n"
+path="res://.godot/imported/ransomware.png-898e7e723a0b8ddfd547da44f25b11bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/dlp.png"
-dest_files=["res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"]
+source_file="res://graphics/enemies/enemies thumbnail/ransomware.png"
+dest_files=["res://.godot/imported/ransomware.png-898e7e723a0b8ddfd547da44f25b11bb.ctex"]
 
 [params]
 
