@@ -338,6 +338,12 @@ func hit(damage: int = 1, tower_id: int = -1):
 		Data.active_ransomware = max(0, Data.active_ransomware - 1)
 		Data.active_ransomware_changed.emit()
 	if enemy_type_stats == Data.Enemy.DDOS and !is_ddos_clone:
+		dead = true
+		$CollisionShape2D.disabled = true
+		speed = 0
+		if enemy_type:
+			enemy_type.stop()
+		await get_tree().create_timer(1.5).timeout
 		var wave_manager = get_tree().get_first_node_in_group("WaveManager")
 		if wave_manager:
 			wave_manager.spawn_ddos_clones(

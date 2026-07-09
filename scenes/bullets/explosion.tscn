@@ -96,9 +96,6 @@ _data = {
 &"explosion": SubResource("Animation_aiuqa")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_npy6q"]
-radius = 19.026299
-
 [node name="Area2D" type="Area2D" unique_id=35872659]
 
 [node name="Explosion" type="Sprite2D" parent="." unique_id=1119713804]
@@ -111,6 +108,3 @@ script = ExtResource("2_npy6q")
 libraries/ = SubResource("AnimationLibrary_fy5vt")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Explosion" unique_id=392630249]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=806358357]
-shape = SubResource("CircleShape2D_npy6q")

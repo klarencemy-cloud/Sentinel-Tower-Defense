@@ -116,7 +116,7 @@ func _on_upgrade_button_pressed() -> void:
 	$StatPanel/CurrentStat.text = $BigTowerName.text
 	%SentinelsContainer.visible = false
 
-	%BigPic.position.x -= 297
+	%BigPic.position.x -= 430
 	$BigTowerName.visible = false
 	$UpgradeButton.visible = false
 
@@ -373,7 +373,7 @@ func _on_back_btn_pressed() -> void:
 	else:
 		%SentinelsContainer.visible = true
 
-		%BigPic.position.x += 297
+		%BigPic.position.x += 430
 		$BigTowerName.visible = true
 		$UpgradeButton.visible = true
 
