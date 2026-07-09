@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://di6r580otnkle" path="res://scenes/upgrade/upgrade.gd" id="1_6bmsu"]
 [ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="2_gukx4"]
 [ext_resource type="Texture2D" uid="uid://dn30hv2mjhygn" path="res://graphics/buttons/upgradebg.png" id="4_01d24"]
-[ext_resource type="Texture2D" uid="uid://brxs5tnb0jebj" path="res://graphics/ui/tower thumbnails/SPAM_FILTER.png" id="4_86m51"]
 [ext_resource type="Texture2D" uid="uid://ml3kegt85f83" path="res://graphics/towers/placeholdertowers/tower1.png" id="5_gukx4"]
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="5_gvuwm"]
 [ext_resource type="Texture2D" uid="uid://dxmkoip2h3t7j" path="res://graphics/sentinels/placeholdersentinels/sentinel.png" id="6_x71o2"]
@@ -74,7 +73,6 @@ offset_top = 182.0
 offset_right = 614.0
 offset_bottom = 694.0
 grow_horizontal = 2
-texture = ExtResource("4_86m51")
 stretch_mode = 4
 
 [node name="BigTowerName" type="Label" parent="." unique_id=1988465839]
