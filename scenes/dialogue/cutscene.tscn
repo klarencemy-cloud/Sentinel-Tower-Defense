@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://bqpti3tgq4fh2"]
+
+[ext_resource type="Texture2D" uid="uid://bp4akcunjim5b" path="res://graphics/cutscene/story_frame1.png" id="1_5v8ry"]
+[ext_resource type="Script" uid="uid://dqq4aflt2no33" path="res://scenes/dialogue/cutscene.gd" id="1_04766"]
+[ext_resource type="FontFile" uid="uid://8pl0pe2glt3g" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraLight.ttf" id="2_j3u75"]
+
+[sub_resource type="Animation" id="Animation_5v8ry"]
+resource_name = "1st_scene"
+length = 3.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cutscene/frame1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cutscene/frame1/RichTextLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.26666668, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j3u75"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cutscene/frame1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cutscene/frame1/RichTextLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_04766"]
+_data = {
+&"1st_scene": SubResource("Animation_5v8ry"),
+&"RESET": SubResource("Animation_j3u75")
+}
+
+[node name="Cutscene" type="AnimationPlayer" unique_id=1233131737 groups=["cutscene"]]
+libraries/ = SubResource("AnimationLibrary_04766")
+script = ExtResource("1_04766")
+
+[node name="Control" type="Control" parent="." unique_id=1310625342]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="frame1" type="TextureRect" parent="." unique_id=238814468]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5v8ry")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="frame1" unique_id=1877210798]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29783916
+anchor_top = 0.9231965
+anchor_right = 0.70442575
+anchor_bottom = 0.96023357
+theme_override_fonts/normal_font = ExtResource("2_j3u75")
+theme_override_font_sizes/normal_font_size = 32
+text = "We are now near the end of time."
+horizontal_alignment = 1
+visible_characters = 100
+visible_ratio = 3.125
+metadata/_edit_use_anchors_ = true

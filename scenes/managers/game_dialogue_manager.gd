@@ -42,6 +42,9 @@ func show_dialogue_spam_defeat(): # used in wave manager
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "spam_defeat")
 	is_defeat_spam = true
 
+
+func play_scene():
+	get_tree().change_scene_to_file("res://scenes/dialogue/cutscene.tscn")
 # func show_dialogue_server_health(): # used in pop up
 # 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "server_health")
 # 	is_health_shown = true

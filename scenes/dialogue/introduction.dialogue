@@ -43,6 +43,7 @@ Player: Upgrading the canon saves us from that cliff. It really does keep these 
 Odysseus: Now, don't be hasty; there are many cyber threats out there that you have not encountered yet. Each of them has ways to find weaknesses in your defense and evolve to find an exploit in your system. This does not mean that these threats will stay the same as you encounter them.
 Player: It's about time that you do the explaining on what on earth is happening!
 #insert function that starts cutscene
+do GameDialogueManager.play_scene()
 => END
 
 ~ backstory

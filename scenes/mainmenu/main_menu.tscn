@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://djodiaoyky37i" path="res://scenes/mainmenu/main_menu.gd" id="1_ysd44"]
 [ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="2_a3yut"]
 [ext_resource type="Texture2D" uid="uid://c2ka012ylc4b3" path="res://graphics/buttons/buttonbg.png" id="3_jl081"]
-[ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="3_ukhca"]
 [ext_resource type="Texture2D" uid="uid://c37p88b3udmpw" path="res://graphics/buttons/config.svg" id="5_l3hwl"]
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="5_yn0lx"]
 [ext_resource type="Texture2D" uid="uid://3uyksps1bjop" path="res://graphics/buttons/settings.svg" id="6_l3hwl"]
 [ext_resource type="Texture2D" uid="uid://5nwlyarf5y3v" path="res://graphics/buttons/exit.svg" id="6_otieh"]
+[ext_resource type="Script" uid="uid://cfksw4o72tltq" path="res://scenes/mainmenu/title.gd" id="8_l3hwl"]
 
 [sub_resource type="Gradient" id="Gradient_otieh"]
 offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
@@ -30,6 +30,47 @@ scale_min = 0.0
 scale_max = 10.0
 color = Color(0.3273128, 0.61982703, 0.88803005, 0.8901961)
 color_ramp = SubResource("GradientTexture1D_bva0v")
+
+[sub_resource type="Animation" id="Animation_otieh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[matrix]SENTINELS[/matrix]"]
+}
+
+[sub_resource type="Animation" id="Animation_l3hwl"]
+resource_name = "opening"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[matrix]SENTINELS[/matrix]"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_otieh"]
+_data = {
+&"RESET": SubResource("Animation_otieh"),
+&"opening": SubResource("Animation_l3hwl")
+}
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_l3hwl"]
+script = ExtResource("8_l3hwl")
+metadata/_custom_type_script = "uid://cfksw4o72tltq"
 
 [node name="MainMenu" type="Control" unique_id=610381814]
 layout_mode = 3
@@ -172,25 +213,32 @@ ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Title" type="Label" parent="ButtonManager" unique_id=369088243]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.305
-anchor_right = 0.5
-anchor_bottom = 0.305
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_ukhca")
-theme_override_font_sizes/font_size = 150
-text = "SENTINELS"
-
 [node name="DustParticles" type="GPUParticles2D" parent="." unique_id=2028780263]
 light_mask = 2
 position = Vector2(961.0802, 536.93976)
 amount = 100
 visibility_rect = Rect2(-960, -540, 1920, 1080)
 process_material = SubResource("ParticleProcessMaterial_n3o3g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=641835542]
+libraries/ = SubResource("AnimationLibrary_otieh")
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=1210088174]
+layout_mode = 0
+offset_left = 468.28375
+offset_top = 229.28049
+offset_right = 1450.3411
+offset_bottom = 472.56442
+pivot_offset = Vector2(491.02863, 121.64197)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 11
+theme_override_constants/shadow_offset_y = 14
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "[matrix]SENTINELS[/matrix]"
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_l3hwl")]
 
 [connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ButtonManager/Database" to="." method="_on_database_pressed"]

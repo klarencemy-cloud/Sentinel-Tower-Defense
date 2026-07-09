@@ -473,10 +473,10 @@ offset_bottom = 813.0
 [node name="Map" type="TextureButton" parent="MapContainer" unique_id=1204325682]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.17058824
-anchor_top = -1.8872305
-anchor_right = 0.99215686
-anchor_bottom = 0.89939845
+anchor_left = 0.08627451
+anchor_top = -1.8955224
+anchor_right = 0.9078431
+anchor_bottom = 0.8911068
 offset_top = -3.0517578e-05
 texture_normal = ExtResource("11_yyxhe")
 ignore_texture_size = true
@@ -495,13 +495,13 @@ stretch_mode = 0
 [node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge9" unique_id=1327498048]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.06779661
-anchor_right = 1.0084746
+anchor_left = -0.48305085
+anchor_right = 1.4661016
 anchor_bottom = 1.0762712
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("4_3akup")
+texture = ExtResource("18_giqpi")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -541,13 +541,14 @@ stretch_mode = 0
 [node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge7" unique_id=1892552580]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.050847456
-anchor_right = 1.0254238
-anchor_bottom = 1.0762712
+anchor_left = -0.7457627
+anchor_top = -0.43220338
+anchor_right = 1.8466572
+anchor_bottom = 1.1355932
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("4_3akup")
+texture = ExtResource("16_pwh5r")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -636,14 +637,14 @@ stretch_mode = 0
 [node name="MapIcon" type="TextureRect" parent="MapContainer/Map/Challenge3" unique_id=1659103459]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.5338983
-anchor_top = -0.2542373
-anchor_right = 1.5
-anchor_bottom = 1.1355932
+anchor_left = -0.54237276
+anchor_top = -0.1779661
+anchor_right = 1.4419184
+anchor_bottom = 1.1779661
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("13_ey7bj")
+texture = ExtResource("12_nhh0k")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
