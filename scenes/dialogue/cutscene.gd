@@ -1,4 +1,4 @@
 extends AnimationPlayer
 
-# func _ready() -> void:
-# 	play("1st_scene")
+func _ready() -> void:
+	play("1st_scene")
