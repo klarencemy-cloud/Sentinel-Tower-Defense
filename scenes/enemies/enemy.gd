@@ -198,10 +198,14 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Boss1.visible = true
 			enemy_type = $Boss1
 			$Boss1.material = $Boss1.material.duplicate()
+			print("Boss1 spawned, starting virus timer")
+			call_deferred("_start_boss1_spawn_timer")
 		"boss2":
 			$Boss2.visible = true
 			enemy_type = $Boss2
 			$Boss2.material = $Boss2.material.duplicate()
+			print("Boss2 spawned, starting botnet timer")
+			call_deferred("_start_boss2_spawn_timer")
 		"boss3":
 			$Boss3.visible = true
 			enemy_type = $Boss3
@@ -581,3 +585,37 @@ func _on_virus_ability_area_exited(area):
 		if tower.virus_count <= 0:
 			tower.virus_count = 0
 			tower.reload_time = tower.original_reload_time
+
+func _start_boss1_spawn_timer() -> void:
+	if is_queued_for_deletion():
+		return
+
+	var timer: Timer = $Boss1/SpawnVirusTimer
+	if timer:
+		timer.start()
+		print("Started boss1 timer:", timer.is_stopped())
+		print("Time left:", timer.time_left)
+
+func _start_boss2_spawn_timer() -> void:
+	if is_queued_for_deletion():
+		return
+
+	var timer: Timer = $Boss2/SpawnBotnetTimer
+	if timer:
+		timer.start()
+		print("Started boss2 timer:", timer.is_stopped())
+		print("Time left:", timer.time_left)
+
+func _on_spawn_virus_timer_timeout():
+	print("Boss spawn timer timeout")
+	var wave_manager = get_tree().get_first_node_in_group("WaveManager")
+	if not wave_manager:
+		print("WaveManager NOT found")
+		return
+
+	if enemy_type_stats == Data.Enemy.BOSS1:
+		print("Boss1 spawn timer fired")
+		wave_manager.spawn_boss_viruses()
+	elif enemy_type_stats == Data.Enemy.BOSS2:
+		print("Boss2 spawn timer fired")
+		wave_manager.spawn_boss_botnets()

@@ -197,3 +197,42 @@ func spawn_ddos_clones(path: Path2D, progress: float):
 
 		path_follow.add_child(enemy)
 		path.add_child(path_follow)
+
+func spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D):
+	var path_follow = PathFollow2D.new()
+	var enemy = enemy_scene.instantiate()
+
+	enemy.setup(path_follow, enemy_enum)
+
+	path_follow.add_child(enemy)
+	path.add_child(path_follow)
+
+func spawn_boss_viruses():
+	var paths: Array[Path2D] = []
+
+	if level_root:
+		for child in level_root.get_children():
+			if child is Path2D:
+				paths.append(child)
+	else:
+		for child in get_tree().current_scene.get_children():
+			if child is Path2D:
+				paths.append(child)
+
+	for path in paths:
+		spawn_enemy_on_path(Data.Enemy.VIRUS, path)
+
+func spawn_boss_botnets():
+	var paths: Array[Path2D] = []
+
+	if level_root:
+		for child in level_root.get_children():
+			if child is Path2D:
+				paths.append(child)
+	else:
+		for child in get_tree().current_scene.get_children():
+			if child is Path2D:
+				paths.append(child)
+
+	for path in paths:
+		spawn_enemy_on_path(Data.Enemy.BOTNET, path)

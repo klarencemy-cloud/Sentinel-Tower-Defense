@@ -562,6 +562,11 @@ animations = [{
 "loop": true,
 "name": &"Right",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"red",
+"speed": 5.0
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_twn6s"]
@@ -1282,7 +1287,7 @@ visible = false
 material = SubResource("ShaderMaterial_f6y8w")
 position = Vector2(0, -25)
 sprite_frames = SubResource("SpriteFrames_jt03m")
-animation = &"Right"
+animation = &"red"
 autoplay = "Right"
 
 [node name="InsiderThreat" type="AnimatedSprite2D" parent="." unique_id=914461198]
@@ -1371,6 +1376,9 @@ sprite_frames = SubResource("SpriteFrames_l10qw")
 autoplay = "default"
 frame_progress = 0.21455352
 
+[node name="SpawnVirusTimer" type="Timer" parent="Boss1" unique_id=1243444241]
+wait_time = 3.0
+
 [node name="Boss2" type="AnimatedSprite2D" parent="." unique_id=1818228477]
 visible = false
 material = SubResource("ShaderMaterial_gc4hx")
@@ -1379,6 +1387,9 @@ sprite_frames = SubResource("SpriteFrames_qt6tg")
 animation = &"Right"
 autoplay = "Right"
 frame_progress = 0.5596954
+
+[node name="SpawnBotnetTimer" type="Timer" parent="Boss2" unique_id=2781544892]
+wait_time = 3.0
 
 [node name="Boss3" type="AnimatedSprite2D" parent="." unique_id=203369779]
 visible = false
@@ -1437,6 +1448,8 @@ scale = Vector2(25.1, 25.1)
 shape = SubResource("CircleShape2D_n7575")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Boss1/SpawnVirusTimer" to="." method="_on_spawn_virus_timer_timeout"]
+[connection signal="timeout" from="Boss2/SpawnBotnetTimer" to="." method="_on_spawn_virus_timer_timeout"]
 [connection signal="area_entered" from="SpywareAbility" to="." method="_on_spyware_ability_area_entered"]
 [connection signal="area_exited" from="SpywareAbility" to="." method="_on_spyware_ability_area_exited"]
 [connection signal="area_entered" from="BotnetAbility" to="." method="_on_bot_net_ability_area_entered"]
