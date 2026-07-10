@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ds225f3jg8tik" path="res://graphics/enemies/enemies.png" id="3_fcftc"]
 [ext_resource type="AudioStream" uid="uid://jdma8tm1e3e2" path="res://audio/impact.1.ogg" id="4_fcftc"]
 [ext_resource type="Texture2D" uid="uid://d3isx7xodcwuf" path="res://graphics/enemies/enemies2.png" id="4_jt03m"]
-[ext_resource type="Texture2D" uid="uid://couylhx13i6ip" path="res://graphics/enemies/enemies3.png" id="5_n7575"]
+[ext_resource type="Texture2D" uid="uid://bublteo6plsvp" path="res://graphics/enemies/trojan_horse.png" id="5_y5th1"]
 [ext_resource type="Texture2D" uid="uid://1qgvsuhf841g" path="res://graphics/ui/enemyhpbar1.png" id="7_n7575"]
 [ext_resource type="Texture2D" uid="uid://ba1dyadxb3f65" path="res://graphics/ui/enemyhpbar2.png" id="8_qch6t"]
 [ext_resource type="Texture2D" uid="uid://dc1008xax0yk6" path="res://graphics/enemies/enemies4.png" id="9_qch6t"]
@@ -516,31 +516,51 @@ animations = [{
 shader = ExtResource("2_38ino")
 shader_parameter/Progress = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_muwnn"]
-atlas = ExtResource("5_n7575")
-region = Rect2(1536, 512, 256, 256)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_a4ke4"]
-atlas = ExtResource("5_n7575")
-region = Rect2(0, 768, 256, 256)
+atlas = ExtResource("5_y5th1")
+region = Rect2(0, 0, 192, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2c5v"]
-atlas = ExtResource("5_n7575")
-region = Rect2(256, 768, 256, 256)
+atlas = ExtResource("5_y5th1")
+region = Rect2(0, 256, 192, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xmdkq"]
-atlas = ExtResource("5_n7575")
-region = Rect2(512, 768, 256, 256)
+atlas = ExtResource("5_y5th1")
+region = Rect2(256, 384, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muwnn"]
+atlas = ExtResource("5_y5th1")
+region = Rect2(512, 384, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42onr"]
+atlas = ExtResource("5_y5th1")
+region = Rect2(768, 384, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_netts"]
+atlas = ExtResource("5_y5th1")
+region = Rect2(512, 384, 256, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5c7c"]
-atlas = ExtResource("5_n7575")
-region = Rect2(256, 768, 256, 256)
+atlas = ExtResource("5_y5th1")
+region = Rect2(256, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc6wb"]
+atlas = ExtResource("5_y5th1")
+region = Rect2(512, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dskkx"]
+atlas = ExtResource("5_y5th1")
+region = Rect2(768, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25nb7"]
+atlas = ExtResource("5_y5th1")
+region = Rect2(512, 0, 256, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jt03m"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_muwnn")
+"texture": SubResource("AtlasTexture_a4ke4")
 }],
 "loop": true,
 "name": &"Down",
@@ -548,19 +568,44 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a4ke4")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_e2c5v")
+}],
+"loop": true,
+"name": &"Down_Hostile",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xmdkq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s5c7c")
+"texture": SubResource("AtlasTexture_muwnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42onr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_netts")
 }],
 "loop": true,
 "name": &"Right",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5c7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nc6wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dskkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25nb7")
+}],
+"loop": true,
+"name": &"Right_Hostile",
 "speed": 5.0
 }]
 
@@ -1278,12 +1323,12 @@ sprite_frames = SubResource("SpriteFrames_rme1b")
 autoplay = "default"
 
 [node name="Trojan" type="AnimatedSprite2D" parent="." unique_id=200762088]
-visible = false
 material = SubResource("ShaderMaterial_f6y8w")
 position = Vector2(0, -25)
 sprite_frames = SubResource("SpriteFrames_jt03m")
-animation = &"Right"
+animation = &"Right_Hostile"
 autoplay = "Right"
+frame_progress = 0.3915768
 
 [node name="InsiderThreat" type="AnimatedSprite2D" parent="." unique_id=914461198]
 visible = false
