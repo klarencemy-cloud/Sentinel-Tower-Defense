@@ -102,7 +102,6 @@ func tower_selection(tower: Tower) -> void:
 
 
 func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
-	
 	var layer = level_manager.get_build_layer()
 	if layer == null:
 		return
@@ -164,7 +163,6 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		GameDialogueManager.show_dialogue_spam_filter()
 	print("Placed tower ID: ", tower.tower_id)
 	
-
 
 func _on_tower_removed(cell_pos: Vector2i) -> void:
 	if cell_pos in used_cells:

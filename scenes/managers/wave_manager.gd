@@ -32,25 +32,33 @@ func update_wave_state() -> void:
 					ui.disable_auto()
 				level_completed.emit()
 				next_map.emit()
+				
 	
 	if not wave_active and not spawning_wave and enemies.size() == 0:
-		if Data.current_wave == 1 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_defeat_spam:
+		if Data.current_wave == 2 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_defeat_spam: # to trigger spam dialogue
 			GameDialogueManager.show_dialogue_spam_defeat()
 		if ui and ui.is_auto_enabled():
 			start_wave()
 
+		if Data.current_wave == 3 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_wave2_defeated: # to trigger wave 2 defeat dialogue
+			GameDialogueManager.play_scene("1st_scene")
+			
+
+	if not wave_active and not spawning_wave and enemies.size() == 0 and Data.wave_started:
+		Data.wave_started = false
+		Data.current_wave += 1
+		ui.update_wave_label()
 
 func start_wave() -> void:
 	if wave_active or spawning_wave:
 		return
-
+	Data.wave_started = true
 	var data = _random_wave_size()
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.update_wave_label()
 
-	Data.current_wave += 1
-
+	
 	match Data.current_wave:
 		6:
 			$'../WeatherEffects/DustParticles'.visible = false
@@ -187,7 +195,7 @@ func spawn_ddos_clones(path: Path2D, progress: float):
 		var enemy = enemy_scene.instantiate()
 		enemy.setup(path_follow, Data.Enemy.DDOS)
 
-		enemy.scale = Vector2(0.75, 0.75) #clone is 25% smaller
+		enemy.scale = Vector2(0.75, 0.75) # clone is 25% smaller
 		enemy.is_ddos_clone = true
 
 		var hp = int(Data.ENEMY_DATA[Data.Enemy.DDOS]["health"] * 0.35)

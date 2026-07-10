@@ -7,17 +7,24 @@
 [ext_resource type="Texture2D" uid="uid://ot7sn0g8fsld" path="res://graphics/cutscene/story_frame3.png" id="3_l7bey"]
 [ext_resource type="Texture2D" uid="uid://c1s64ym03fnlk" path="res://graphics/cutscene/story_frame4.png" id="4_8ebca"]
 
-[sub_resource type="Animation" id="Animation_5v8ry"]
+[sub_resource type="Gradient" id="Gradient_l7bey"]
+offsets = PackedFloat32Array(0.003921569, 1)
+colors = PackedColorArray(0.08235294, 0.101960786, 0.10980392, 1, 0.08235294, 0.101960786, 0.10980392, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ebca"]
+gradient = SubResource("Gradient_l7bey")
+
+[sub_resource type="Animation" id="Animation_8ebca"]
 resource_name = "1st_scene"
-length = 30.2
+length = 37.633335
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cutscene/frame1:modulate")
+tracks/0/path = NodePath("frame1:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3, 6.6, 7.0333333, 7.366667, 12.066667, 12.566667, 13.166667, 18.966667, 19.333334, 19.7, 28.833334, 30.066668),
+"times": PackedFloat32Array(1.5666667, 4.5666666, 10.5, 10.933334, 11.266666, 15.966667, 16.466667, 17.066668, 25.433334, 26.666666, 27.566668, 35.3, 36.533333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0.9182695), Color(1, 1, 1, 0.9182695), Color(1, 1, 1, 0)]
@@ -25,11 +32,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Cutscene/RichTextLabel:modulate")
+tracks/1/path = NodePath("RichTextLabel:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3, 3.6, 6.1666665, 12, 12.6, 13.266666, 18.966667, 19.333334, 19.733334, 28.833334, 30.033333),
+"times": PackedFloat32Array(1.5666667, 4.5666666, 5.1666665, 10.066667, 15.9, 16.5, 17.166666, 25.433334, 26.666666, 27.6, 35.3, 36.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0.9182695), Color(1, 1, 1, 0.9182695), Color(1, 1, 1, 0)]
@@ -37,11 +44,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Cutscene/RichTextLabel:text")
+tracks/2/path = NodePath("RichTextLabel:text")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3.6, 12.566667, 19.333334),
+"times": PackedFloat32Array(1.5666667, 5.1666665, 16.466667, 26.666666),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": ["We are now near the end of time.", "Humanity's demise was as inevitable as resources became scarce, and Artificial Intelligence decided that it sees itself as superior and deserving to inhabit Earth more than humans.", "A battle between humanity and AI has literally shaken Earth to its core and has ceased to operate.", "Luckily, S.E.R.V.E.R., or the Secret Enigmatic Regent Vanguard of Earth's Remnant, finds a way to stabilize the planet by reviving its magnetic field to protect life as you see it today."]
@@ -49,11 +56,11 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Cutscene/RichTextLabel:visible_characters")
+tracks/3/path = NodePath("RichTextLabel:visible_characters")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(1.5666667),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [10000]
@@ -61,22 +68,34 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Cutscene/frame1:texture")
+tracks/4/path = NodePath("frame1:texture")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.033333335, 7.0333333, 12.566667, 19.333334),
+"times": PackedFloat32Array(1.6, 10.933334, 16.466667, 26.666666),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("1_5v8ry"), ExtResource("2_u34m4"), ExtResource("3_l7bey"), ExtResource("4_8ebca")]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Overlay:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.06666666, 1.4333333, 34.866665, 38.266663),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
-[sub_resource type="Animation" id="Animation_j3u75"]
+[sub_resource type="Animation" id="Animation_vp2ao"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cutscene/frame1:modulate")
+tracks/0/path = NodePath("Overlay:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -85,67 +104,25 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cutscene/RichTextLabel:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Cutscene/RichTextLabel:text")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["We are now near the end of time."]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Cutscene/RichTextLabel:visible_characters")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [100]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Cutscene/frame1:texture")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_5v8ry")]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_04766"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vp2ao"]
 _data = {
-&"1st_scene": SubResource("Animation_5v8ry"),
-&"RESET": SubResource("Animation_j3u75")
+&"1st_scene": SubResource("Animation_8ebca"),
+&"RESET": SubResource("Animation_vp2ao")
 }
 
-[node name="Cutscene" type="AnimationPlayer" unique_id=1233131737 groups=["cutscene"]]
-libraries/ = SubResource("AnimationLibrary_04766")
+[node name="Cutscene" type="Control" unique_id=604947696 groups=["cutscene"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_04766")
+metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Control" parent="." unique_id=1310625342]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -153,8 +130,22 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="frame1" type="TextureRect" parent="." unique_id=238814468]
+[node name="Overlay" type="TextureRect" parent="Control" unique_id=445920790]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_8ebca")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control" unique_id=933432591]
+libraries/ = SubResource("AnimationLibrary_vp2ao")
+
+[node name="frame1" type="TextureRect" parent="Control" unique_id=238814468]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -162,8 +153,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_8ebca")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1877210798]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control" unique_id=1877210798]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.13259023
 anchor_top = 0.8835004
@@ -182,3 +174,5 @@ vertical_alignment = 1
 visible_characters = 10000
 visible_ratio = 312.5
 metadata/_edit_use_anchors_ = true
+
+[connection signal="animation_finished" from="Control/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

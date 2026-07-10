@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bqm53gushpubk" path="res://graphics/ui/Digitalt.otf" id="1_u7n8c"]
 [ext_resource type="Texture2D" uid="uid://5fcgjf624a6x" path="res://graphics/ui/frame.png" id="2_g5kmx"]
 [ext_resource type="PackedScene" uid="uid://c6fdlvl2po04d" path="res://scenes/ui/game_over.tscn" id="2_jcn1r"]
+[ext_resource type="PackedScene" uid="uid://bqpti3tgq4fh2" path="res://scenes/dialogue/cutscene.tscn" id="2_khplb"]
 [ext_resource type="PackedScene" uid="uid://23krmoa5rhnu" path="res://scenes/upgrade/upgrade.tscn" id="2_mgwkc"]
 [ext_resource type="PackedScene" uid="uid://dbh1b6sq05wrw" path="res://scenes/ui/enemy_tower_stats_counter.tscn" id="2_qmss2"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="4_pfayw"]
@@ -473,6 +474,11 @@ flat = true
 
 [node name="PopUp" parent="." unique_id=264578413 instance=ExtResource("9_khplb")]
 visible = false
+
+[node name="Cutscene" parent="." unique_id=1233131737 instance=ExtResource("2_khplb")]
+process_mode = 3
+visible = false
+z_index = 2
 
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/SandboxSetting" to="." method="_on_sandbox_setting_pressed"]
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/TowerEnemiesButton" to="." method="_on_tower_enemies_button_pressed"]

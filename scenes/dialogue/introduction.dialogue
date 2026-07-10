@@ -43,7 +43,8 @@ Player: Upgrading the canon saves us from that cliff. It really does keep these 
 Odysseus: Now, don't be hasty; there are many cyber threats out there that you have not encountered yet. Each of them has ways to find weaknesses in your defense and evolve to find an exploit in your system. This does not mean that these threats will stay the same as you encounter them.
 Player: It's about time that you do the explaining on what on earth is happening!
 #insert function that starts cutscene
-do GameDialogueManager.play_scene()
+do GameDialogueManager.pause_game(true)
+do GameDialogueManager.play_scene("1st_scene")
 => END
 
 ~ backstory
@@ -55,6 +56,7 @@ Spam: SNARL…
 Player: Speaking of the devil
 Odysseus: Brace for another wave!
 #insert function that starts cutscene
+do GameDialogueManager.start_wave()
 => END
 
 ~ wave2_defeat
@@ -64,6 +66,7 @@ Odysseus: Yes, the S.E.R.V.E.R
 Player: Wait, wait, wait! That would eventually lead to Earth's collapse. How would it benefit them if they did not have the environment to live in?
 Odysseus: They believe that with enough power, they would be able to conquer worlds and travel light-years to search for more power. 
 Player: What if they ate the sun?
+=> END
 
 ~ player_level
 Odysseus: This gauge gets filled up when you defeat enemies. When it gets full, it will give you a core to upgrade your server.

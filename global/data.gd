@@ -28,6 +28,9 @@ var before_player_level: int
 var before_total_experience: int
 
 
+var wave_started: bool = false
+
+
 var before_level_index: int
 var current_level_index: int = 0 # map count 0 = level 1
 
@@ -451,7 +454,7 @@ var health: float = default_health:
 			get_tree().paused = true
 
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 0 # wave count
+var current_wave: int = 1 # wave count
 
 func reset_game():
 	money = default_money

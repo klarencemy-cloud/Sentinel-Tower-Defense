@@ -55,7 +55,7 @@ func _ready() -> void:
 		tower_enemies_button.visible = true
 		auto_label.visible = false # alis visible ng auto button
 		wave_button.disabled = true # disable start wave button
-		Data.before_owned_towers = Data.owned_towers.duplicate() 
+		Data.before_owned_towers = Data.owned_towers.duplicate()
 		Data.owned_towers.clear()
 		unli_money.button_pressed = true
 		unli_health.button_pressed = true
@@ -126,7 +126,7 @@ func update_stats(money: int, health: int):
 
 
 func update_wave_label() -> void:
-	$Control/TextureRect/PlayerCurrentStats/WaveNum.text = "Wave " + str(Data.current_wave + 1) + " /50"
+	$Control/TextureRect/PlayerCurrentStats/WaveNum.text = "Wave " + str(Data.current_wave) + " /50"
 
 
 func is_auto_enabled() -> bool:
@@ -312,3 +312,7 @@ func _on_unli_senti_cap_toggled(toggled_on: bool) -> void: # UNLI SERVER CAPACIT
 
 func hide_pop(state: bool):
 	$PopUp.visible = state
+
+func play_scene(scene: String):
+	$Cutscene.visible = true
+	$Cutscene/Control/AnimationPlayer.play(scene)
