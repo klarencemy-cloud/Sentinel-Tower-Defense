@@ -5,10 +5,11 @@
 [ext_resource type="FontFile" uid="uid://8pl0pe2glt3g" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraLight.ttf" id="2_j3u75"]
 [ext_resource type="Texture2D" uid="uid://bsugd67lxn8ax" path="res://graphics/cutscene/story_frame2.png" id="2_u34m4"]
 [ext_resource type="Texture2D" uid="uid://ot7sn0g8fsld" path="res://graphics/cutscene/story_frame3.png" id="3_l7bey"]
+[ext_resource type="Texture2D" uid="uid://c1s64ym03fnlk" path="res://graphics/cutscene/story_frame4.png" id="4_8ebca"]
 
 [sub_resource type="Animation" id="Animation_5v8ry"]
 resource_name = "1st_scene"
-length = 19.666666
+length = 30.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,10 +17,10 @@ tracks/0/path = NodePath("Cutscene/frame1:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3, 6.6, 7.0333333, 7.366667, 12.066667, 12.566667, 13.166667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 3, 6.6, 7.0333333, 7.366667, 12.066667, 12.566667, 13.166667, 18.966667, 19.333334, 19.7, 28.833334, 30.066668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0.9182695), Color(1, 1, 1, 0.9182695), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -28,10 +29,10 @@ tracks/1/path = NodePath("Cutscene/RichTextLabel:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3, 3.6, 6.1666665, 12, 12.6, 13.266666),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 3, 3.6, 6.1666665, 12, 12.6, 13.266666, 18.966667, 19.333334, 19.733334, 28.833334, 30.033333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0.9182695), Color(1, 1, 1, 0.9182695), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -40,10 +41,10 @@ tracks/2/path = NodePath("Cutscene/RichTextLabel:text")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3.6, 12.566667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 3.6, 12.566667, 19.333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": ["We are now near the end of time.", "Humanity's demise was as inevitable as resources became scarce, and Artificial Intelligence decided that it sees itself as superior and deserving to inhabit Earth more than humans.", "A battle between humanity and AI has literally shaken Earth to its core and has ceased to operate."]
+"values": ["We are now near the end of time.", "Humanity's demise was as inevitable as resources became scarce, and Artificial Intelligence decided that it sees itself as superior and deserving to inhabit Earth more than humans.", "A battle between humanity and AI has literally shaken Earth to its core and has ceased to operate.", "Luckily, S.E.R.V.E.R., or the Secret Enigmatic Regent Vanguard of Earth's Remnant, finds a way to stabilize the planet by reviving its magnetic field to protect life as you see it today."]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -64,10 +65,10 @@ tracks/4/path = NodePath("Cutscene/frame1:texture")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.033333335, 7.0333333, 12.566667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.033333335, 7.0333333, 12.566667, 19.333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("1_5v8ry"), ExtResource("2_u34m4"), ExtResource("3_l7bey")]
+"values": [ExtResource("1_5v8ry"), ExtResource("2_u34m4"), ExtResource("3_l7bey"), ExtResource("4_8ebca")]
 }
 
 [sub_resource type="Animation" id="Animation_j3u75"]
@@ -159,7 +160,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_5v8ry")
+texture = ExtResource("4_8ebca")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1877210798]
 modulate = Color(1, 1, 1, 0)
@@ -172,7 +173,7 @@ offset_top = 15.0
 offset_bottom = 15.0
 theme_override_fonts/normal_font = ExtResource("2_j3u75")
 theme_override_font_sizes/normal_font_size = 26
-text = "We are now near the end of time."
+text = "Luckily, S.E.R.V.E.R., or the Secret Enigmatic Regent Vanguard of Earth's Remnant, finds a way to stabilize the planet by reviving its magnetic field to protect life as you see it today."
 fit_content = true
 scroll_active = false
 autowrap_mode = 2
