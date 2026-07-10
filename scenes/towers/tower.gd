@@ -16,6 +16,8 @@ var ransomware_active := false
 var disabled_by_ransomware := false
 var spyware_count := 0
 var botnet_count := 0
+var virus_count := 0
+var original_reload_time := 0.0
 @onready var ad_button = $AdButton
 @onready var pay_button: TextureButton = $PayButton
 @onready var ads = [
@@ -34,6 +36,7 @@ var range_indicator: Line2D
 
 func _ready() -> void:
 	add_to_group("towers")
+	original_reload_time = reload_time
 	create_range_indicator()
 
 

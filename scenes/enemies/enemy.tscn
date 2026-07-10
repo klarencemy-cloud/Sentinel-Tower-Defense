@@ -1427,8 +1427,19 @@ collision_mask = 9
 scale = Vector2(25.1, 25.1)
 shape = SubResource("CircleShape2D_n7575")
 
+[node name="VirusAbility" type="Area2D" parent="." unique_id=365920919]
+visible = false
+collision_layer = 0
+collision_mask = 9
+
+[node name="VirusAbilityRange" type="CollisionShape2D" parent="VirusAbility" unique_id=1540963079]
+scale = Vector2(25.1, 25.1)
+shape = SubResource("CircleShape2D_n7575")
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_entered" from="SpywareAbility" to="." method="_on_spyware_ability_area_entered"]
 [connection signal="area_exited" from="SpywareAbility" to="." method="_on_spyware_ability_area_exited"]
 [connection signal="area_entered" from="BotnetAbility" to="." method="_on_bot_net_ability_area_entered"]
 [connection signal="area_exited" from="BotnetAbility" to="." method="_on_bot_net_ability_area_exited"]
+[connection signal="area_entered" from="VirusAbility" to="." method="_on_virus_ability_area_entered"]
+[connection signal="area_exited" from="VirusAbility" to="." method="_on_virus_ability_area_exited"]

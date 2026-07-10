@@ -88,7 +88,12 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$BotnetAbility.monitorable = false
 	$BotnetAbility/BotnetAbilityRange.disabled = true
 	$BotnetAbility.visible = false
-
+	
+	$VirusAbility.monitoring = false
+	$VirusAbility.monitorable = false
+	$VirusAbility/VirusAbilityRange.disabled = true
+	$VirusAbility.visible = false
+	
 	$Spam.visible = false
 	$Virus.visible = false
 	$Spyware.visible = false
@@ -119,6 +124,10 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Virus.visible = true
 			enemy_type = $Virus
 			$Virus.material = $Virus.material.duplicate()
+			$VirusAbility.monitoring = true
+			$VirusAbility.monitorable = true
+			$VirusAbility/VirusAbilityRange.disabled = false
+			$VirusAbility.visible = true
 		"adware":
 			$Adware.visible = true
 			enemy_type = $Adware
@@ -553,3 +562,22 @@ func _on_bot_net_ability_area_exited(area):
 		var tower = area.get_parent() as Tower
 		tower.botnet_count -= 1
 		tower.botnet_count = max(tower.botnet_count, 0)
+
+
+func _on_virus_ability_area_entered(area):
+	if area.name == "ClickArea":
+		var tower = area.get_parent()
+
+		if tower.virus_count == 0:
+			tower.reload_time = tower.original_reload_time * 1.25
+		tower.virus_count += 1
+
+func _on_virus_ability_area_exited(area):
+	if area.name == "ClickArea":
+		var tower = area.get_parent()
+
+		tower.virus_count -= 1
+
+		if tower.virus_count <= 0:
+			tower.virus_count = 0
+			tower.reload_time = tower.original_reload_time
