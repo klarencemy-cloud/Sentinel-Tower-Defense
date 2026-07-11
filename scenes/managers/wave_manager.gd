@@ -41,7 +41,7 @@ func update_wave_state() -> void:
 			start_wave()
 
 		if Data.current_wave == 3 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_wave2_defeated: # to trigger wave 2 defeat dialogue
-			GameDialogueManager.play_scene("1st_scene")
+			GameDialogueManager.play_scene("2nd_scene")
 			
 
 	if not wave_active and not spawning_wave and enemies.size() == 0 and Data.wave_started:

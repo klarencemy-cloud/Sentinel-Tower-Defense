@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bsugd67lxn8ax" path="res://graphics/cutscene/story_frame2.png" id="2_u34m4"]
 [ext_resource type="Texture2D" uid="uid://ot7sn0g8fsld" path="res://graphics/cutscene/story_frame3.png" id="3_l7bey"]
 [ext_resource type="Texture2D" uid="uid://c1s64ym03fnlk" path="res://graphics/cutscene/story_frame4.png" id="4_8ebca"]
+[ext_resource type="Texture2D" uid="uid://cot7fpd1osofi" path="res://graphics/cutscene/story_frame5.png" id="6_vp2ao"]
+[ext_resource type="Texture2D" uid="uid://dix8tqjn5q6aq" path="res://graphics/cutscene/story_frame6.png" id="7_18ulq"]
+[ext_resource type="Texture2D" uid="uid://5rtgdnh3u06l" path="res://graphics/cutscene/story_frame7.png" id="8_eo5ch"]
+[ext_resource type="Texture2D" uid="uid://cm3gg1kd7r1xc" path="res://graphics/cutscene/story_frame8.png" id="9_8kco2"]
 
 [sub_resource type="Gradient" id="Gradient_l7bey"]
 offsets = PackedFloat32Array(0.003921569, 1)
@@ -90,6 +94,82 @@ tracks/5/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_18ulq"]
+resource_name = "2nd_scene"
+length = 37.166668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("frame1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5666667, 4.5666666, 9, 9.433334, 9.766666, 15.966667, 16.466667, 17.066668, 25.433334, 26.666666, 27.566668, 35.3, 36.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0.9182695), Color(1, 1, 1, 0.9182695), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5666667, 4.5666666, 6.766667, 8.833333, 15.9, 16.5, 17.166666, 25.433334, 26.666666, 27.6, 35.3, 36.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0.9182695), Color(1, 1, 1, 0.9182695), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 6.7000003, 16.466667, 26.666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["These threats are once humanity's greatest companion towards advancement.", "However, the attempt to humanize them by giving them emotions was a big mistake.", "Greed succumbs to them as they crave more power sources, damaging Earth's core in the process.", " They do not see humans as companions anymore, but rather a hindrance to their goal and a predecessor that needs upgrading"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RichTextLabel:visible_characters")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10000]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("frame1:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5666667, 9.433334, 16.466667, 26.666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_vp2ao"), ExtResource("7_18ulq"), ExtResource("8_eo5ch"), ExtResource("9_8kco2")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Overlay:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.06666666, 1.4333333, 34.866665, 38.266663),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_vp2ao"]
 length = 0.001
 tracks/0/type = "value"
@@ -108,6 +188,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vp2ao"]
 _data = {
 &"1st_scene": SubResource("Animation_8ebca"),
+&"2nd_scene": SubResource("Animation_18ulq"),
 &"RESET": SubResource("Animation_vp2ao")
 }
 
@@ -151,7 +232,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_8ebca")
+texture = ExtResource("9_8kco2")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control" unique_id=1877210798]
 modulate = Color(1, 1, 1, 0)
@@ -165,7 +246,7 @@ offset_top = 15.0
 offset_bottom = 15.0
 theme_override_fonts/normal_font = ExtResource("2_j3u75")
 theme_override_font_sizes/normal_font_size = 26
-text = "Luckily, S.E.R.V.E.R., or the Secret Enigmatic Regent Vanguard of Earth's Remnant, finds a way to stabilize the planet by reviving its magnetic field to protect life as you see it today."
+text = " They do not see humans as companions anymore, but rather a hindrance to their goal and a predecessor that needs upgrading"
 fit_content = true
 scroll_active = false
 autowrap_mode = 2
