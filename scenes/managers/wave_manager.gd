@@ -10,6 +10,73 @@ var level_manager: Node
 var wave_active: bool = false
 var spawning_wave: bool = false
 
+# waves data
+
+var WAVE_DATA: Dictionary = {
+	# MAP 1
+	1: {
+		"enemies": {
+			Data.Enemy.DEFAULT: [26]   # 26 Spam
+		}
+	},
+	2: {
+		"enemies": {
+			Data.Enemy.DEFAULT: [30]   # 30 Spam
+		}
+	},
+	3: {
+		"enemies": {
+			Data.Enemy.DEFAULT: [32]   # 32 Spam
+		}
+	},
+	4: {
+		"enemies": {
+			Data.Enemy.DEFAULT: [16], # 16 Spam
+			Data.Enemy.VIRUS: [16]    # 16 Virus
+		}
+	},
+	5: {
+		"enemies": {
+			Data.Enemy.DEFAULT: [16], # 16 Spam
+			Data.Enemy.VIRUS: [20]    # 20 Virus
+		}
+	},
+	6: {
+		"enemies": {
+			Data.Enemy.DEFAULT: [15], # 15 Spam
+			Data.Enemy.VIRUS: [25]    # 25 Virus
+		}
+	},
+	7: {
+		"enemies": {
+			Data.Enemy.DEFAULT: [14], # 14 Spam
+			Data.Enemy.VIRUS: [29]    # 29 Virus
+		}
+	},
+	8: {
+		"enemies": {
+			Data.Enemy.DEFAULT: [13], # 13 Spam
+			Data.Enemy.VIRUS: [14],   # 14 Virus
+			Data.Enemy.ADWARE: [20]   # 20 Adware
+		}
+	},
+	9: {
+		"enemies": {
+			Data.Enemy.DEFAULT: [13], # 13 Spam
+			Data.Enemy.VIRUS: [14],   # 14 Virus
+			Data.Enemy.ADWARE: [23]   # 23 Adware
+		}
+	},
+	10: {
+		"enemies": {
+			Data.Enemy.BOSS1: [1],    # 1 Boss (ILOVEYOU)
+			Data.Enemy.VIRUS: [40],   # 40 Virus
+			Data.Enemy.DEFAULT: [15], # 15 Spam
+			Data.Enemy.ADWARE: [20]   # 20 Adware
+		}
+	}
+}
+
 func _ready() -> void:
 	add_to_group("WaveManager")
 	
@@ -53,7 +120,6 @@ func start_wave() -> void:
 	if wave_active or spawning_wave:
 		return
 	Data.wave_started = true
-	var data = _random_wave_size()
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.update_wave_label()
@@ -102,12 +168,53 @@ func start_wave() -> void:
 	wave_active = true
 	spawning_wave = true
 
-	for enemy_enum in data:
-		for i in range(data[enemy_enum]):
-			_spawn_enemy(enemy_enum)
-			await get_tree().create_timer(0.5).timeout
+	# predefined
+	var wave_data = WAVE_DATA.get(Data.current_wave, null)
+	
+	if wave_data != null:
+		# Predefined wave: spawn exact counts per path
+		await _spawn_predefined_wave(wave_data)
+	else:
+		# Fallback: random generation for undefined waves
+		var data = _random_wave_size()
+		for enemy_enum in data:
+			for i in range(data[enemy_enum]):
+				_spawn_enemy(enemy_enum)
+				await get_tree().create_timer(0.5).timeout
 
 	spawning_wave = false
+
+
+# predefined wave spanwing
+
+func _spawn_predefined_wave(wave_data: Dictionary) -> void:
+	var paths: Array[Path2D] = _get_paths()
+	
+	var enemies_data: Dictionary = wave_data["enemies"]
+	
+	for enemy_enum in enemies_data.keys():
+		var per_path_counts: Array = enemies_data[enemy_enum]
+		
+		for path_index in range(per_path_counts.size()):
+			var count: int = per_path_counts[path_index]
+			
+			if path_index >= paths.size():
+				push_warning("Wave %d: path index %d out of bounds (only %d paths)" % [Data.current_wave, path_index, paths.size()])
+				continue
+			
+			var path: Path2D = paths[path_index]
+			
+			for i in range(count):
+				_spawn_enemy_on_path(enemy_enum, path)
+				await get_tree().create_timer(0.5).timeout
+
+
+func _spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D) -> void:
+	var path_follow = PathFollow2D.new()
+	var enemy = enemy_scene.instantiate()
+	enemy.setup(path_follow, enemy_enum)
+	path_follow.add_child(enemy)
+	path.add_child(path_follow)
 
 
 func spawn_sandbox_enemy(enemy_enum: Data.Enemy) -> void:
