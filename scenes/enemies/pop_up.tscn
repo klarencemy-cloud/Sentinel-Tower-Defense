@@ -886,7 +886,7 @@ offset_right = 788.0
 offset_bottom = 97.0
 theme_override_fonts/font = ExtResource("5_nnuf7")
 theme_override_font_sizes/font_size = 16
-text = "They spawn in swarms or in groups, making towers less efficient as they come in groups."
+text = "Once nothing more than just a harmless digital junk, Spam has evolved into a stubborn threat that swarms the S.E.R.V.E.R. with endless numbers. Individually weak, they exist only to exhaust the system's defenses through large volumes. They appear in large groups. Individually weak but dangerous when left unchecked and filtered. Spam is unsolicited, unwelcome digital communication that is transmitted in large quantities, mostly via email but sometimes via texts, phone calls, and social media."
 horizontal_alignment = 3
 autowrap_mode = 2
 

@@ -264,21 +264,21 @@ var THREAT_DATA = {
 		'health': 20,
 		'damage': 5,
 		'speed': 105,
-		'special_ability': "They spawn in swarms or in groups, making towers less efficient as they come in groups.",
+		'special_ability': "Appears in large groups. Individually weak but dangerous when left unchecked and filtered. They spawn in swarms or in groups, making towers less efficient as they come in groups.",
 		'irl_desc': "Spam is unsolicited, unwelcome digital communication that is transmitted in large quantities, mostly via email but sometimes via texts, phone calls, and social media."
 	},
 	Threat.VIRUS: {
 		'health': 40,
 		'damage': 40,
 		'speed': 100,
-		'special_ability': "It debuffs towers and corrupts data (damage) in the server.",
+		'special_ability': "It debuffs towers by reducing their attack speed and corrupts data (damage) in the server.",
 		'irl_desc': "A computer virus is a malicious software program or code that can attach itself to files and programs and replicate itself. It can also spread to other devices. When it is activated, the virus modifies other software by embedding its code within the file. And, if the virus successfully replicates itself, the device is considered infected with a computer virus. Additionally, the harmful actions performed by the virus code can damage the local file system, steal data, disrupt services, download additional malware, or execute any other tasks that the malicious actor programmed into the software. Numerous viruses are disguised as legitimate programs to deceive users into running them on their devices, thus delivering the computer virus payload into their system."
 		},
 	Threat.ADWARE: {
 		'health': 80,
 		'damage': 12,
 		'speed': 105,
-		'special_ability': "This makes a tower unavailable; the player must click or tap the tower to make it available again.",
+		'special_ability': "Disables a random tower placed on the map by using ads; the CISO must click or tap the tower to make it available again.",
 		'irl_desc': "Adware is any program that shows users online advertisements for the developer to make money. These can be in the form of pop-ups, messages, new browser windows, or new browser tabs."
 		},
 	Threat.WORM: {

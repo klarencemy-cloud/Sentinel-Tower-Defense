@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://coyf7hrwgip2d"
-path="res://.godot/imported/adblocker.png-3a4dfddb9cdda3de2274736d9a5f4879.ctex"
+path="res://.godot/imported/ADBLOCKER.png-5ace83aa9901e5ab5f945f254d43d199.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/adblocker.png"
-dest_files=["res://.godot/imported/adblocker.png-3a4dfddb9cdda3de2274736d9a5f4879.ctex"]
+source_file="res://graphics/ui/tower thumbnails/ADBLOCKER.png"
+dest_files=["res://.godot/imported/ADBLOCKER.png-5ace83aa9901e5ab5f945f254d43d199.ctex"]
 
 [params]
 

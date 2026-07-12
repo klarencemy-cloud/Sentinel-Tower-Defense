@@ -34,6 +34,8 @@ func _refresh_server_pts() -> void:
 func _on_back_btn_pressed() -> void:
 	get_tree().paused = false
 	Data.toggle_server_scene.emit()
+	if Data.current_wave == 3 and !GameDialogueManager.is_wave3_defeated:
+		GameDialogueManager.show_dialogue_wave3_defeat()
 
 # Uprade category toglles
 func _on_cyber_btn_pressed() -> void:
