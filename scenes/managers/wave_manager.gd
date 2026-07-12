@@ -16,66 +16,66 @@ var WAVE_DATA: Dictionary = {
 	# MAP 1
 	1: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [26]   # 26 Spam
+			Data.Enemy.DEFAULT: [24]
 		}
 	},
 	2: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [30]   # 30 Spam
+			Data.Enemy.DEFAULT: [28]
 		}
 	},
 	3: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [32]   # 32 Spam
+			Data.Enemy.DEFAULT: [30]
 		}
 	},
 	4: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [16], # 16 Spam
-			Data.Enemy.VIRUS: [16]    # 16 Virus
+			Data.Enemy.DEFAULT: [16],
+			Data.Enemy.VIRUS: [16]
 		}
 	},
 	5: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [16], # 16 Spam
-			Data.Enemy.VIRUS: [20]    # 20 Virus
+			Data.Enemy.DEFAULT: [16],
+			Data.Enemy.VIRUS: [20]
 		}
 	},
 	6: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [15], # 15 Spam
-			Data.Enemy.VIRUS: [25]    # 25 Virus
+			Data.Enemy.DEFAULT: [15],
+			Data.Enemy.VIRUS: [25]
 		}
 	},
 	7: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [14], # 14 Spam
-			Data.Enemy.VIRUS: [29]    # 29 Virus
+			Data.Enemy.DEFAULT: [14],
+			Data.Enemy.VIRUS: [29]
 		}
 	},
 	8: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [13], # 13 Spam
-			Data.Enemy.VIRUS: [14],   # 14 Virus
-			Data.Enemy.ADWARE: [20]   # 20 Adware
+			Data.Enemy.DEFAULT: [13],
+			Data.Enemy.VIRUS: [14],
+			Data.Enemy.ADWARE: [20]
 		}
 	},
 	9: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [13], # 13 Spam
-			Data.Enemy.VIRUS: [14],   # 14 Virus
-			Data.Enemy.ADWARE: [23]   # 23 Adware
+			Data.Enemy.DEFAULT: [13],
+			Data.Enemy.VIRUS: [14],
+			Data.Enemy.ADWARE: [23]
 		}
 	},
 	10: {
 		"enemies": {
-			Data.Enemy.BOSS1: [1],    # 1 Boss (ILOVEYOU)
-			Data.Enemy.VIRUS: [40],   # 40 Virus
-			Data.Enemy.DEFAULT: [15], # 15 Spam
-			Data.Enemy.ADWARE: [20]   # 20 Adware
+			Data.Enemy.BOSS1: [1],
+			Data.Enemy.VIRUS: [40],
+			Data.Enemy.DEFAULT: [15],
+			Data.Enemy.ADWARE: [20]
 		}
 	},
-# --- MAP 2 (2 paths) ---
+	# MAP 2
 	11: {
 		"enemies": {
 			Data.Enemy.DEFAULT: [7, 7],
@@ -88,7 +88,7 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.DEFAULT: [6, 6],
 			Data.Enemy.VIRUS: [6, 6],
 			Data.Enemy.ADWARE: [8, 7],
-			Data.Enemy.WORM: [13, 12]
+			Data.Enemy.WORM: [12, 13]
 		}
 	},
 	13: {
@@ -104,7 +104,7 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.DEFAULT: [6, 6],
 			Data.Enemy.VIRUS: [6, 6],
 			Data.Enemy.ADWARE: [8, 7],
-			Data.Enemy.WORM: [18, 17]
+			Data.Enemy.WORM: [17, 18]
 		}
 	},
 	15: {
@@ -112,7 +112,7 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.DEFAULT: [6, 6],
 			Data.Enemy.VIRUS: [6, 6],
 			Data.Enemy.ADWARE: [8, 7],
-			Data.Enemy.WORM: [20, 19]
+			Data.Enemy.WORM: [19, 20]
 		}
 	},
 	16: {
@@ -154,7 +154,7 @@ var WAVE_DATA: Dictionary = {
 	},
 	20: {
 		"enemies": {
-			Data.Enemy.BOSS2: [1],
+			Data.Enemy.BOSS2: [1, 0],
 			Data.Enemy.BOTNET: [21, 21],
 			Data.Enemy.DEFAULT: [6, 5],
 			Data.Enemy.VIRUS: [6, 5],
@@ -163,13 +163,13 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.SPYWARE: [8, 7]
 		}
 	},
-	# --- MAP 3 (2 paths) ---
+	# MAP 3
 	21: {
 		"enemies": {
 			Data.Enemy.DEFAULT: [5, 5],
 			Data.Enemy.VIRUS: [5, 5],
-			Data.Enemy.ADWARE: [6, 5],
-			Data.Enemy.WORM: [8, 7],
+			Data.Enemy.ADWARE: [5, 6],
+			Data.Enemy.WORM: [7, 8],
 			Data.Enemy.SPYWARE: [9, 9],
 			Data.Enemy.BOTNET: [18, 18]
 		}
@@ -179,7 +179,7 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.DEFAULT: [5, 4],
 			Data.Enemy.VIRUS: [5, 5],
 			Data.Enemy.ADWARE: [6, 5],
-			Data.Enemy.WORM: [7, 6],
+			Data.Enemy.WORM: [6, 7],
 			Data.Enemy.SPYWARE: [8, 7],
 			Data.Enemy.BOTNET: [9, 9],
 			Data.Enemy.CREDS: [14, 14]
@@ -272,7 +272,7 @@ var WAVE_DATA: Dictionary = {
 	},
 	30: {
 		"enemies": {
-			Data.Enemy.BOSS3: [1],
+			Data.Enemy.BOSS3: [0, 1],
 			Data.Enemy.DEFAULT: [4, 4],
 			Data.Enemy.VIRUS: [4, 4],
 			Data.Enemy.ADWARE: [4, 4],
@@ -284,57 +284,57 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.INSIDERTHREAT: [18, 17]
 		}
 	},
-	# --- MAP 4 (4 paths) ---
+	# MAP 4
 	31: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [2, 2, 2, 2],
+			Data.Enemy.DEFAULT: [2, 2, 2, 2], # path 1 to 4
 			Data.Enemy.VIRUS: [2, 2, 2, 2],
 			Data.Enemy.ADWARE: [2, 2, 2, 2],
 			Data.Enemy.WORM: [2, 2, 2, 2],
-			Data.Enemy.SPYWARE: [3, 3, 2, 2],
+			Data.Enemy.SPYWARE: [3, 2, 3, 2],
 			Data.Enemy.BOTNET: [3, 3, 3, 3],
 			Data.Enemy.CREDS: [3, 3, 3, 3],
-			Data.Enemy.TROJAN: [5, 5, 4, 4],
-			Data.Enemy.INSIDERTHREAT: [12, 12, 11, 11]
+			Data.Enemy.TROJAN: [5, 4, 5, 4],
+			Data.Enemy.INSIDERTHREAT: [12, 11, 12, 11]
 		}
 	},
 	32: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [2, 2, 2, 1],
-			Data.Enemy.VIRUS: [2, 2, 2, 1],
+			Data.Enemy.DEFAULT: [3, 2, 2, 0],
+			Data.Enemy.VIRUS: [0, 2, 2, 3],
 			Data.Enemy.ADWARE: [2, 2, 2, 2],
 			Data.Enemy.WORM: [2, 2, 2, 2],
-			Data.Enemy.SPYWARE: [3, 3, 2, 2],
-			Data.Enemy.BOTNET: [3, 3, 3, 2],
+			Data.Enemy.SPYWARE: [3, 2, 2, 3],
+			Data.Enemy.BOTNET: [2, 3, 3, 3],
 			Data.Enemy.CREDS: [3, 3, 3, 2],
-			Data.Enemy.TROJAN: [5, 5, 4, 4],
+			Data.Enemy.TROJAN: [5, 4, 4, 5],
 			Data.Enemy.INSIDERTHREAT: [5, 5, 5, 5],
 			Data.Enemy.ROOTKIT: [9, 9, 8, 8]
 		}
 	},
 	33: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [2, 2, 2, 1],
-			Data.Enemy.VIRUS: [2, 2, 2, 1],
+			Data.Enemy.DEFAULT: [3, 2, 2, 0],
+			Data.Enemy.VIRUS: [2, 2, 0, 3],
 			Data.Enemy.ADWARE: [2, 2, 2, 2],
 			Data.Enemy.WORM: [2, 2, 2, 2],
 			Data.Enemy.SPYWARE: [3, 2, 2, 2],
-			Data.Enemy.BOTNET: [3, 3, 3, 2],
-			Data.Enemy.CREDS: [3, 3, 3, 2],
+			Data.Enemy.BOTNET: [2, 3, 3, 3],
+			Data.Enemy.CREDS: [3, 3, 2, 3],
 			Data.Enemy.TROJAN: [4, 4, 4, 4],
-			Data.Enemy.INSIDERTHREAT: [5, 5, 4, 4],
-			Data.Enemy.ROOTKIT: [11, 11, 11, 10]
+			Data.Enemy.INSIDERTHREAT: [4, 5, 4, 4],
+			Data.Enemy.ROOTKIT: [11, 10, 11, 11]
 		}
 	},
 	34: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [2, 2, 2, 1],
-			Data.Enemy.VIRUS: [2, 2, 2, 1],
+			Data.Enemy.DEFAULT: [3, 0, 2, 2],
+			Data.Enemy.VIRUS: [2, 3, 2, 0],
 			Data.Enemy.ADWARE: [2, 2, 2, 2],
 			Data.Enemy.WORM: [2, 2, 2, 2],
 			Data.Enemy.SPYWARE: [3, 2, 2, 2],
 			Data.Enemy.BOTNET: [3, 3, 2, 2],
-			Data.Enemy.CREDS: [3, 3, 2, 2],
+			Data.Enemy.CREDS: [3, 2, 3, 2],
 			Data.Enemy.TROJAN: [4, 4, 4, 3],
 			Data.Enemy.INSIDERTHREAT: [4, 4, 4, 4],
 			Data.Enemy.ROOTKIT: [5, 5, 5, 5],
@@ -343,8 +343,8 @@ var WAVE_DATA: Dictionary = {
 	},
 	35: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [2, 2, 1, 1],
-			Data.Enemy.VIRUS: [2, 2, 2, 1],
+			Data.Enemy.DEFAULT: [2, 2, 2, 0],
+			Data.Enemy.VIRUS: [2, 2, 0, 3],
 			Data.Enemy.ADWARE: [2, 2, 2, 2],
 			Data.Enemy.WORM: [2, 2, 2, 2],
 			Data.Enemy.SPYWARE: [2, 2, 2, 2],
@@ -358,8 +358,8 @@ var WAVE_DATA: Dictionary = {
 	},
 	36: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [2, 2, 1, 1],
-			Data.Enemy.VIRUS: [2, 2, 2, 1],
+			Data.Enemy.DEFAULT: [2, 2, 0, 2],
+			Data.Enemy.VIRUS: [3, 0, 2, 2],
 			Data.Enemy.ADWARE: [2, 2, 2, 2],
 			Data.Enemy.WORM: [2, 2, 2, 2],
 			Data.Enemy.SPYWARE: [2, 2, 2, 2],
@@ -367,15 +367,15 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.CREDS: [3, 3, 2, 2],
 			Data.Enemy.TROJAN: [3, 3, 3, 3],
 			Data.Enemy.INSIDERTHREAT: [4, 4, 4, 3],
-			Data.Enemy.ROOTKIT: [4, 4, 4, 3],
+			Data.Enemy.ROOTKIT: [4, 3, 4, 4],
 			Data.Enemy.SQL: [5, 5, 4, 4],
 			Data.Enemy.DDOS: [9, 9, 9, 8]
 		}
 	},
 	37: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [2, 2, 1, 1],
-			Data.Enemy.VIRUS: [2, 2, 2, 1],
+			Data.Enemy.DEFAULT: [2, 2, 0, 2],
+			Data.Enemy.VIRUS: [3, 2, 2, 0],
 			Data.Enemy.ADWARE: [2, 2, 2, 2],
 			Data.Enemy.WORM: [2, 2, 2, 2],
 			Data.Enemy.SPYWARE: [2, 2, 2, 2],
@@ -384,14 +384,14 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.TROJAN: [3, 3, 3, 3],
 			Data.Enemy.INSIDERTHREAT: [3, 3, 3, 3],
 			Data.Enemy.ROOTKIT: [4, 4, 4, 3],
-			Data.Enemy.SQL: [4, 4, 4, 3],
+			Data.Enemy.SQL: [4, 4, 3, 4],
 			Data.Enemy.DDOS: [12, 12, 11, 11]
 		}
 	},
 	38: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [2, 2, 1, 1],
-			Data.Enemy.VIRUS: [2, 2, 2, 1],
+			Data.Enemy.DEFAULT: [2, 0, 2, 2],
+			Data.Enemy.VIRUS: [3, 2, 2, 0],
 			Data.Enemy.ADWARE: [2, 2, 2, 2],
 			Data.Enemy.WORM: [2, 2, 2, 2],
 			Data.Enemy.SPYWARE: [2, 2, 2, 2],
@@ -399,24 +399,24 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.CREDS: [3, 2, 2, 2],
 			Data.Enemy.TROJAN: [3, 3, 3, 3],
 			Data.Enemy.INSIDERTHREAT: [3, 3, 3, 3],
-			Data.Enemy.ROOTKIT: [4, 4, 4, 3],
-			Data.Enemy.SQL: [4, 4, 4, 3],
+			Data.Enemy.ROOTKIT: [4, 4, 3, 4],
+			Data.Enemy.SQL: [4, 3, 4, 4],
 			Data.Enemy.DDOS: [5, 5, 5, 5],
 			Data.Enemy.RANSOMWARE: [8, 8, 8, 8]
 		}
 	},
 	39: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [2, 2, 1, 1],
-			Data.Enemy.VIRUS: [2, 2, 2, 1],
+			Data.Enemy.DEFAULT: [2, 2, 2, 0],
+			Data.Enemy.VIRUS: [3, 0, 2, 2],
 			Data.Enemy.ADWARE: [2, 2, 2, 2],
 			Data.Enemy.WORM: [2, 2, 2, 2],
 			Data.Enemy.SPYWARE: [2, 2, 2, 2],
 			Data.Enemy.BOTNET: [2, 2, 2, 2],
 			Data.Enemy.CREDS: [3, 2, 2, 2],
 			Data.Enemy.TROJAN: [3, 3, 2, 2],
-			Data.Enemy.INSIDERTHREAT: [3, 3, 2, 2],
-			Data.Enemy.ROOTKIT: [4, 4, 4, 3],
+			Data.Enemy.INSIDERTHREAT: [3, 2, 3, 2],
+			Data.Enemy.ROOTKIT: [4, 4, 3, 4],
 			Data.Enemy.SQL: [4, 4, 4, 3],
 			Data.Enemy.DDOS: [7, 7, 7, 7],
 			Data.Enemy.RANSOMWARE: [7, 7, 7, 7]
@@ -424,31 +424,31 @@ var WAVE_DATA: Dictionary = {
 	},
 	40: {
 		"enemies": {
-			Data.Enemy.BOSS4: [1],
-			Data.Enemy.DEFAULT: [2, 2, 1, 1],
-			Data.Enemy.VIRUS: [2, 2, 2, 1],
+			Data.Enemy.BOSS4: [1, 0, 0, 0],
+			Data.Enemy.DEFAULT: [0, 2, 2, 2],
+			Data.Enemy.VIRUS: [2, 3, 2, 0],
 			Data.Enemy.ADWARE: [2, 2, 2, 2],
 			Data.Enemy.WORM: [2, 2, 2, 2],
 			Data.Enemy.SPYWARE: [2, 2, 2, 2],
 			Data.Enemy.BOTNET: [2, 2, 2, 2],
 			Data.Enemy.CREDS: [2, 2, 2, 2],
-			Data.Enemy.TROJAN: [3, 3, 2, 2],
-			Data.Enemy.INSIDERTHREAT: [3, 3, 2, 2],
-			Data.Enemy.ROOTKIT: [3, 3, 2, 2],
-			Data.Enemy.SQL: [3, 3, 2, 2],
+			Data.Enemy.TROJAN: [3, 2, 3, 2],
+			Data.Enemy.INSIDERTHREAT: [2, 3, 2, 3],
+			Data.Enemy.ROOTKIT: [3, 2, 3, 2],
+			Data.Enemy.SQL: [2, 3, 2, 3],
 			Data.Enemy.DDOS: [4, 4, 4, 3],
-			Data.Enemy.RANSOMWARE: [4, 4, 4, 3]
+			Data.Enemy.RANSOMWARE: [4, 4, 3, 4]
 		}
 	},
-	# --- MAP 5 (3 paths) ---
+	# MAP 5 
 	41: {
 		"enemies": {
 			Data.Enemy.DEFAULT: [2, 2, 2],
 			Data.Enemy.VIRUS: [3, 2, 2],
 			Data.Enemy.ADWARE: [3, 3, 2],
-			Data.Enemy.WORM: [3, 3, 2],
+			Data.Enemy.WORM: [3, 2, 3],
 			Data.Enemy.SPYWARE: [3, 3, 2],
-			Data.Enemy.BOTNET: [3, 3, 2],
+			Data.Enemy.BOTNET: [2, 3, 3],
 			Data.Enemy.CREDS: [3, 3, 3],
 			Data.Enemy.TROJAN: [4, 4, 4],
 			Data.Enemy.INSIDERTHREAT: [4, 4, 4],
@@ -463,9 +463,9 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.DEFAULT: [2, 2, 2],
 			Data.Enemy.VIRUS: [3, 2, 2],
 			Data.Enemy.ADWARE: [3, 3, 2],
-			Data.Enemy.WORM: [3, 3, 2],
+			Data.Enemy.WORM: [3, 2, 3],
 			Data.Enemy.SPYWARE: [3, 3, 2],
-			Data.Enemy.BOTNET: [3, 3, 2],
+			Data.Enemy.BOTNET: [2, 3, 3],
 			Data.Enemy.CREDS: [3, 3, 3],
 			Data.Enemy.TROJAN: [4, 4, 4],
 			Data.Enemy.INSIDERTHREAT: [4, 4, 4],
@@ -480,14 +480,14 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.DEFAULT: [2, 2, 2],
 			Data.Enemy.VIRUS: [2, 2, 2],
 			Data.Enemy.ADWARE: [3, 2, 2],
-			Data.Enemy.WORM: [3, 2, 2],
-			Data.Enemy.SPYWARE: [3, 2, 2],
+			Data.Enemy.WORM: [2, 3, 2],
+			Data.Enemy.SPYWARE: [2, 2, 3],
 			Data.Enemy.BOTNET: [3, 2, 2],
 			Data.Enemy.CREDS: [3, 3, 2],
 			Data.Enemy.TROJAN: [4, 3, 3],
-			Data.Enemy.INSIDERTHREAT: [4, 3, 3],
+			Data.Enemy.INSIDERTHREAT: [3, 4, 3],
 			Data.Enemy.ROOTKIT: [5, 4, 4],
-			Data.Enemy.SQL: [5, 4, 4],
+			Data.Enemy.SQL: [4, 5, 4],
 			Data.Enemy.DDOS: [6, 6, 6],
 			Data.Enemy.RANSOMWARE: [7, 7, 6],
 			Data.Enemy.ZERO: [12, 12, 12]
@@ -498,14 +498,14 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.DEFAULT: [2, 2, 2],
 			Data.Enemy.VIRUS: [2, 2, 2],
 			Data.Enemy.ADWARE: [3, 2, 2],
-			Data.Enemy.WORM: [3, 2, 2],
-			Data.Enemy.SPYWARE: [3, 2, 2],
+			Data.Enemy.WORM: [2, 3, 2],
+			Data.Enemy.SPYWARE: [2, 2, 3],
 			Data.Enemy.BOTNET: [3, 2, 2],
 			Data.Enemy.CREDS: [3, 3, 2],
 			Data.Enemy.TROJAN: [4, 3, 3],
-			Data.Enemy.INSIDERTHREAT: [4, 3, 3],
+			Data.Enemy.INSIDERTHREAT: [3, 4, 3],
 			Data.Enemy.ROOTKIT: [5, 4, 4],
-			Data.Enemy.SQL: [5, 4, 4],
+			Data.Enemy.SQL: [4, 5, 4],
 			Data.Enemy.DDOS: [6, 6, 6],
 			Data.Enemy.RANSOMWARE: [7, 7, 6],
 			Data.Enemy.ZERO: [14, 13, 13]
@@ -516,16 +516,16 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.DEFAULT: [2, 2, 2],
 			Data.Enemy.VIRUS: [2, 2, 2],
 			Data.Enemy.ADWARE: [3, 2, 2],
-			Data.Enemy.WORM: [3, 2, 2],
-			Data.Enemy.SPYWARE: [3, 2, 2],
+			Data.Enemy.WORM: [2, 3, 2],
+			Data.Enemy.SPYWARE: [2, 2, 3],
 			Data.Enemy.BOTNET: [3, 2, 2],
 			Data.Enemy.CREDS: [3, 3, 2],
 			Data.Enemy.TROJAN: [4, 3, 3],
-			Data.Enemy.INSIDERTHREAT: [4, 3, 3],
-			Data.Enemy.ROOTKIT: [5, 4, 4],
+			Data.Enemy.INSIDERTHREAT: [3, 4, 3],
+			Data.Enemy.ROOTKIT: [4, 4, 5],
 			Data.Enemy.SQL: [5, 5, 5],
 			Data.Enemy.DDOS: [7, 7, 6],
-			Data.Enemy.RANSOMWARE: [7, 7, 6],
+			Data.Enemy.RANSOMWARE: [6, 7, 7],
 			Data.Enemy.ZERO: [14, 13, 13]
 		}
 	},
@@ -534,17 +534,17 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.DEFAULT: [2, 2, 2],
 			Data.Enemy.VIRUS: [2, 2, 2],
 			Data.Enemy.ADWARE: [3, 2, 2],
-			Data.Enemy.WORM: [3, 2, 2],
-			Data.Enemy.SPYWARE: [3, 2, 2],
+			Data.Enemy.WORM: [2, 3, 2],
+			Data.Enemy.SPYWARE: [2, 2, 3],
 			Data.Enemy.BOTNET: [3, 2, 2],
 			Data.Enemy.CREDS: [3, 3, 2],
 			Data.Enemy.TROJAN: [4, 3, 3],
-			Data.Enemy.INSIDERTHREAT: [4, 3, 3],
-			Data.Enemy.ROOTKIT: [5, 4, 4],
+			Data.Enemy.INSIDERTHREAT: [3, 4, 3],
+			Data.Enemy.ROOTKIT: [4, 4, 5],
 			Data.Enemy.SQL: [5, 5, 5],
 			Data.Enemy.DDOS: [7, 7, 6],
-			Data.Enemy.RANSOMWARE: [7, 7, 6],
-			Data.Enemy.ZERO: [15, 15, 14]
+			Data.Enemy.RANSOMWARE: [6, 7, 7],
+			Data.Enemy.ZERO: [16, 14, 14]
 		}
 	},
 	47: {
@@ -552,17 +552,17 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.DEFAULT: [2, 2, 2],
 			Data.Enemy.VIRUS: [2, 2, 2],
 			Data.Enemy.ADWARE: [3, 2, 2],
-			Data.Enemy.WORM: [3, 2, 2],
-			Data.Enemy.SPYWARE: [3, 2, 2],
+			Data.Enemy.WORM: [2, 3, 2],
+			Data.Enemy.SPYWARE: [2, 2, 3],
 			Data.Enemy.BOTNET: [3, 2, 2],
-			Data.Enemy.CREDS: [4, 3, 3],
-			Data.Enemy.TROJAN: [4, 4, 4],
-			Data.Enemy.INSIDERTHREAT: [4, 3, 3],
-			Data.Enemy.ROOTKIT: [5, 4, 4],
+			Data.Enemy.CREDS: [3, 3, 2],
+			Data.Enemy.TROJAN: [4, 3, 3],
+			Data.Enemy.INSIDERTHREAT: [3, 4, 3],
+			Data.Enemy.ROOTKIT: [4, 4, 5],
 			Data.Enemy.SQL: [5, 5, 5],
 			Data.Enemy.DDOS: [7, 7, 6],
-			Data.Enemy.RANSOMWARE: [7, 7, 6],
-			Data.Enemy.ZERO: [15, 15, 14]
+			Data.Enemy.RANSOMWARE: [6, 7, 7],
+			Data.Enemy.ZERO: [17, 16, 15]
 		}
 	},
 	48: {
@@ -570,17 +570,17 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.DEFAULT: [2, 2, 2],
 			Data.Enemy.VIRUS: [2, 2, 2],
 			Data.Enemy.ADWARE: [3, 2, 2],
-			Data.Enemy.WORM: [3, 2, 2],
-			Data.Enemy.SPYWARE: [3, 2, 2],
+			Data.Enemy.WORM: [2, 3, 2],
+			Data.Enemy.SPYWARE: [2, 2, 3],
 			Data.Enemy.BOTNET: [3, 2, 2],
-			Data.Enemy.CREDS: [4, 3, 3],
-			Data.Enemy.TROJAN: [4, 4, 4],
-			Data.Enemy.INSIDERTHREAT: [4, 3, 3],
-			Data.Enemy.ROOTKIT: [5, 4, 4],
+			Data.Enemy.CREDS: [3, 3, 2],
+			Data.Enemy.TROJAN: [4, 3, 3],
+			Data.Enemy.INSIDERTHREAT: [3, 4, 3],
+			Data.Enemy.ROOTKIT: [4, 4, 5],
 			Data.Enemy.SQL: [5, 5, 5],
 			Data.Enemy.DDOS: [7, 7, 6],
-			Data.Enemy.RANSOMWARE: [7, 7, 6],
-			Data.Enemy.ZERO: [16, 16, 16]
+			Data.Enemy.RANSOMWARE: [6, 7, 7],
+			Data.Enemy.ZERO: [19, 17, 16]
 		}
 	},
 	49: {
@@ -588,22 +588,22 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.DEFAULT: [2, 2, 2],
 			Data.Enemy.VIRUS: [2, 2, 2],
 			Data.Enemy.ADWARE: [3, 2, 2],
-			Data.Enemy.WORM: [3, 2, 2],
-			Data.Enemy.SPYWARE: [3, 2, 2],
+			Data.Enemy.WORM: [2, 3, 2],
+			Data.Enemy.SPYWARE: [2, 2, 3],
 			Data.Enemy.BOTNET: [3, 2, 2],
 			Data.Enemy.CREDS: [4, 3, 3],
 			Data.Enemy.TROJAN: [4, 4, 4],
-			Data.Enemy.INSIDERTHREAT: [4, 3, 3],
+			Data.Enemy.INSIDERTHREAT: [3, 4, 3],
 			Data.Enemy.ROOTKIT: [5, 4, 4],
 			Data.Enemy.SQL: [6, 6, 6],
 			Data.Enemy.DDOS: [7, 7, 6],
-			Data.Enemy.RANSOMWARE: [7, 7, 6],
+			Data.Enemy.RANSOMWARE: [6, 7, 7],
 			Data.Enemy.ZERO: [17, 16, 16]
 		}
 	},
 	50: {
 		"enemies": {
-			Data.Enemy.BOSS5: [1],
+			Data.Enemy.BOSS5: [1, 0, 0],
 			Data.Enemy.BOTNET: [9, 8, 8],
 			Data.Enemy.DDOS: [9, 8, 8],
 			Data.Enemy.DEFAULT: [14, 13, 13],
@@ -620,10 +620,10 @@ var WAVE_DATA: Dictionary = {
 			Data.Enemy.ADWARE: [3, 2, 2]
 		}
 	},
-	# --- MAP 6 (3 paths) ---
+	# MAP 6
 	51: {
 		"enemies": {
-			Data.Enemy.BOSS5: [1],
+			Data.Enemy.BOSS5: [1, 0, 0],
 			Data.Enemy.DEFAULT: [4, 3, 3],
 			Data.Enemy.VIRUS: [4, 3, 3],
 			Data.Enemy.ADWARE: [4, 3, 3],
