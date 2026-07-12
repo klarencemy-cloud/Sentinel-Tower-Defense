@@ -485,6 +485,9 @@ var experience: int = 0:
 				ui.update_experience(experience, player_level, default_level_pool)
 			return
 		
+		if player_level == 3 and GameDialogueManager.is_level_3:
+			GameDialogueManager.show_dialogue_server_upgrade()
+		
 		while experience >= default_level_pool:
 			experience -= default_level_pool
 			player_level += 1

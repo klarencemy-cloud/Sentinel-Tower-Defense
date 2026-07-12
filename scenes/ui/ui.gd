@@ -20,6 +20,8 @@ var tower_card_scene = preload("res://scenes/ui/tower_card.tscn")
 var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
 
 
+var fade_tween: Tween
+
 var ad_timer := Timer.new()
 var ransomware_timer := Timer.new()
 @onready var ad_textures := [
@@ -316,3 +318,7 @@ func hide_pop(state: bool):
 func play_scene(scene: String):
 	$Cutscene.visible = true
 	$Cutscene/Control/AnimationPlayer.play(scene)
+
+
+func toggle_fade():
+	$AnimationPlayer.play("overlay_fade")

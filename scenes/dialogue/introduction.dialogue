@@ -12,8 +12,8 @@ Mysterious Person: I forgot to introduce myself.  My name is Odysseus. I will be
 do GameDialogueManager.is_override=false
 Odysseus: I have been protecting the SERVER for so long. Thankfully, you are here now! 
 Player: What? Wait, where are we?
-do GameDialogueManager.move_camera(240,135)
-do get_tree().create_timer(1.5).timeout
+do GameDialogueManager.move_camera(240,135,1.5)
+#do get_tree().create_timer(1.5).timeout
 Odysseus: Save the chatter for later! See those? Ohh, Spams! They come unwelcome, unsolicited, and in large quantities. So be ready!
 do GameDialogueManager.show_enemy("spam", 0)
 #do GameDialogueManager.start_wave()
@@ -66,14 +66,24 @@ Odysseus: Yes, the S.E.R.V.E.R
 Player: Wait, wait, wait! That would eventually lead to Earth's collapse. How would it benefit them if they did not have the environment to live in?
 Odysseus: They believe that with enough power, they would be able to conquer worlds and travel light-years to search for more power. 
 Player: What if they ate the sun?
-=> END
+
 
 ~ player_level
-Odysseus: This gauge gets filled up when you defeat enemies. When it gets full, it will give you a core to upgrade your server.
+do GameDialogueManager.delay_dialogue(1.0)
+Odysseus: This gauge gets filled up when you defeat enemies. When it gets full, 
+Odysseus: it will give you a core to upgrade your server.
+Player: Bring it on!
+do GameDialogueManager.start_wave()
 => END
 
 ~ server_upgrade
+do GameDialogueManager.delay_dialogue(2.0)
+do GameDialogueManager.pause_game(true)
 Odysseus: You’ve leveled up! You can now upgrade the server!
+do GameDialogueManager.pause_game(false)
+do GameDialogueManager.delay_dialogue(2.0)
+do GameDialogueManager.move_camera(2851.0,1564.0, 2.0)
+do Data.toggle_server_scene.emit()
 Odysseus: The server upgrades are a game-changer. It can amplify the damage of your towers, improve your overall defenses, and manage your resource economy. Be wise about where to spend those upgrades!
 => END
 
@@ -82,8 +92,8 @@ Player: Why cyberthreats?
 Odysseus: What?
 Player: I mean, why not a mechanical robot like Dungam?
 Odysseus: Preference perhaps? I mean, since they want to infiltrate a S.E.R.V.E.R, they want to resemble what a technology fears the most. 
-=> END
-
+do GameDialogueManager.toggle_fade_transition()
+do GameDialogueManager.delay_dialogue(3)
 ~ preparation
 Player: Fighting non-stop really takes a toll on your energy.
 Odysseus: It really does. But it seems things have settled down for a bit. 

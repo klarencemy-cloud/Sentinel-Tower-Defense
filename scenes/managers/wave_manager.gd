@@ -16,63 +16,63 @@ var WAVE_DATA: Dictionary = {
 	# MAP 1
 	1: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [26]   # 26 Spam
+			Data.Enemy.DEFAULT: [24] # 24 Spam
 		}
 	},
 	2: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [30]   # 30 Spam
+			Data.Enemy.DEFAULT: [28] # 28 Spam
 		}
 	},
 	3: {
 		"enemies": {
-			Data.Enemy.DEFAULT: [32]   # 32 Spam
+			Data.Enemy.DEFAULT: [30] # 30 Spam
 		}
 	},
 	4: {
 		"enemies": {
 			Data.Enemy.DEFAULT: [16], # 16 Spam
-			Data.Enemy.VIRUS: [16]    # 16 Virus
+			Data.Enemy.VIRUS: [16] # 16 Virus
 		}
 	},
 	5: {
 		"enemies": {
 			Data.Enemy.DEFAULT: [16], # 16 Spam
-			Data.Enemy.VIRUS: [20]    # 20 Virus
+			Data.Enemy.VIRUS: [20] # 20 Virus
 		}
 	},
 	6: {
 		"enemies": {
 			Data.Enemy.DEFAULT: [15], # 15 Spam
-			Data.Enemy.VIRUS: [25]    # 25 Virus
+			Data.Enemy.VIRUS: [25] # 25 Virus
 		}
 	},
 	7: {
 		"enemies": {
 			Data.Enemy.DEFAULT: [14], # 14 Spam
-			Data.Enemy.VIRUS: [29]    # 29 Virus
+			Data.Enemy.VIRUS: [29] # 29 Virus
 		}
 	},
 	8: {
 		"enemies": {
 			Data.Enemy.DEFAULT: [13], # 13 Spam
-			Data.Enemy.VIRUS: [14],   # 14 Virus
-			Data.Enemy.ADWARE: [20]   # 20 Adware
+			Data.Enemy.VIRUS: [14], # 14 Virus
+			Data.Enemy.ADWARE: [20] # 20 Adware
 		}
 	},
 	9: {
 		"enemies": {
 			Data.Enemy.DEFAULT: [13], # 13 Spam
-			Data.Enemy.VIRUS: [14],   # 14 Virus
-			Data.Enemy.ADWARE: [23]   # 23 Adware
+			Data.Enemy.VIRUS: [14], # 14 Virus
+			Data.Enemy.ADWARE: [23] # 23 Adware
 		}
 	},
 	10: {
 		"enemies": {
-			Data.Enemy.BOSS1: [1],    # 1 Boss (ILOVEYOU)
-			Data.Enemy.VIRUS: [40],   # 40 Virus
+			Data.Enemy.BOSS1: [1], # 1 Boss (ILOVEYOU)
+			Data.Enemy.VIRUS: [40], # 40 Virus
 			Data.Enemy.DEFAULT: [15], # 15 Spam
-			Data.Enemy.ADWARE: [20]   # 20 Adware
+			Data.Enemy.ADWARE: [20] # 20 Adware
 		}
 	},
 # --- MAP 2 (2 paths) ---
@@ -674,8 +674,8 @@ func update_wave_state() -> void:
 
 		if Data.current_wave == 3 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_wave2_defeated: # to trigger wave 2 defeat dialogue
 			GameDialogueManager.play_scene("2nd_scene")
-			
 
+				
 	if not wave_active and not spawning_wave and enemies.size() == 0 and Data.wave_started:
 		Data.wave_started = false
 		Data.current_wave += 1

@@ -1323,6 +1323,7 @@ sprite_frames = SubResource("SpriteFrames_rme1b")
 autoplay = "default"
 
 [node name="Trojan" type="AnimatedSprite2D" parent="." unique_id=200762088]
+visible = false
 material = SubResource("ShaderMaterial_f6y8w")
 position = Vector2(0, -25)
 sprite_frames = SubResource("SpriteFrames_jt03m")
@@ -1428,7 +1429,7 @@ animation = &"Right"
 autoplay = "Right"
 frame_progress = 0.5596954
 
-[node name="SpawnBotnetTimer" type="Timer" parent="Boss2" unique_id=2781544892]
+[node name="SpawnBotnetTimer" type="Timer" parent="Boss2" unique_id=-1513422404]
 wait_time = 3.0
 
 [node name="Boss3" type="AnimatedSprite2D" parent="." unique_id=203369779]
