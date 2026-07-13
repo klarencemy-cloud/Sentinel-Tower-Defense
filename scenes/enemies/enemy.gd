@@ -42,6 +42,9 @@ var spyware_count := 0
 var is_ddos_clone := false
 const DDOS_HEALTH_MULTIPLIER := 0.35 # 35% HP
 
+var hostile := false
+var hostile_count := 0
+
 func _ready() -> void:
 	add_to_group('Enemies')
 	damage_label_template = $DamageLabel.duplicate() as Label
@@ -255,24 +258,24 @@ func _process(delta: float):
 		if abs(dir.x) > abs(dir.y) + margin:
 			if dir.x > 1:
 				enemy_type.flip_h = false
-				enemy_type.play("Right")
+				enemy_type.play("Right_Hostile" if hostile_count > 0 else "Right")
 			elif dir.x < -1:
 				if enemy_type.sprite_frames.has_animation("Left"):
 					enemy_type.play("Left")
 				else:
-					enemy_type.play("Right")
+					enemy_type.play("Right_Hostile" if hostile_count > 0 else "Right")
 					enemy_type.flip_h = true
 		elif abs(dir.x) < abs(dir.y) + margin:
 			if dir.y > 1:
 				if enemy_type.sprite_frames.has_animation("Down"):
-					enemy_type.play("Down")
+					enemy_type.play("Down_Hostile" if hostile_count > 0 else "Down")
 				else:
-					enemy_type.play("Right")
+					enemy_type.play("Right_Hostile" if hostile_count > 0 else "Right")
 			elif dir.y < -1:
 				if enemy_type.sprite_frames.has_animation("Up"):
 					enemy_type.play("Up")
 				else:
-					enemy_type.play("Right")
+					enemy_type.play("Right_Hostile" if hostile_count > 0 else "Right")
 
 		previous_pos = current_pos
 	

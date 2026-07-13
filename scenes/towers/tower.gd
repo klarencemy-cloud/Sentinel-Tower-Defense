@@ -94,11 +94,20 @@ func _on_enemy_detection_area_area_entered(area: Area2D) -> void:
 	if area not in enemies:
 		enemies.append(area)
 
+	if area.enemy_type_stats == Data.Enemy.TROJAN:
+		area.hostile_count += 1
+		area.speed = area.base_speed + 150
+
 
 func _on_enemy_detection_area_area_exited(area: Area2D) -> void:
 	if area in enemies:
 		enemies.erase(area)
 
+	if area.enemy_type_stats == Data.Enemy.TROJAN:
+		area.hostile_count = max(area.hostile_count - 1, 0)
+
+		if area.hostile_count == 0:
+			area.speed = area.base_speed
 
 func _on_click_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == 1 and event.button_mask == 1:
