@@ -29,6 +29,7 @@ Offense="*uid://w0ak4rdsrh6"
 DialogueManager="*uid://c3rodes2l3gxb"
 GameDialogueManager="*uid://cq0d4xcdugoxl"
 Economy="*uid://c3yec3hxkdfch"
+Wave="*uid://bb03viokakrym"
 
 [dialogue_manager]
 
