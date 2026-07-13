@@ -15,18 +15,23 @@ func _process(delta: float) -> void:
 func _on_info_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and is_skippable:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			$Pop/Animation.visible = false
 			$Pop/Info/AnimationPlayer.play_backwards("info_pop")
 			await get_tree().create_timer(0.3).timeout
 			is_skippable = false
 			$Pop/Info.visible = false
 			var ui = get_tree().get_first_node_in_group("UI")
 			ui.hide_pop(false)
+			$Pop/Animation.visible = true
+			$Pop/Info.visible = false
 			GameDialogueManager.clicked = 0
+			if GameDialogueManager.is_virus_shown:
+				GameDialogueManager.show_dialogue_virus()
 			await get_tree().create_timer(1).timeout
 			get_tree().paused = false
-			GameDialogueManager.start_wave()
-		
+			if GameDialogueManager.is_autoplay:
+				GameDialogueManager.start_wave()
+
+
 enum Enemies_Name {SPAM, VIRUS, ADWARE, WORM, SPYWARE, BOTNET, CREDS, TROJAN_HORSE, INSIDER, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, ILOVEYOU, CONFICKER, WANNACRY, NOTPEYTA, DOOM, TROJAN}
 
 var ENEMIES = {
@@ -204,9 +209,9 @@ func play_animation(enemy_name: String, index: int):
 	$Pop/Info/DisplayContainer/Name.text = ENEMIES[index]['name']
 	$Pop/Info/DisplayContainer/Label2/InG_desc.text = ENEMIES[index]['InG_desc']
 	$Pop/Info/DisplayContainer/Label2/InG_desc/Label3/RL_desc.text = ENEMIES[index]['RL_desc']
-	$Pop/Info/DisplayContainer/Heart/Health.text = str(ENEMIES[index]['health'])
-	$Pop/Info/DisplayContainer/Sword/Damage.text = str(ENEMIES[index]['damage'])
-	$Pop/Info/DisplayContainer/Boot/Speed.text = str(ENEMIES[index]['speed'])
+	$Pop/Info/DisplayContainer/Label2/InG_desc/Label3/RL_desc/Heart/Health.text = str(ENEMIES[index]['health'])
+	$Pop/Info/DisplayContainer/Label2/InG_desc/Label3/RL_desc/Sword/Damage.text = str(ENEMIES[index]['damage'])
+	$Pop/Info/DisplayContainer/Label2/InG_desc/Label3/RL_desc/Boot/Speed.text = str(ENEMIES[index]['speed'])
 	$Pop/Animation/GPUParticles2D.emitting = true
 	$Pop/DirectionalLight2D.energy = 3
 	while $Pop/DirectionalLight2D.energy > 0:

@@ -674,6 +674,12 @@ func update_wave_state() -> void:
 
 		if Data.current_wave == 3 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_wave2_defeated: # to trigger wave 2 defeat dialogue
 			GameDialogueManager.play_scene("2nd_scene")
+		
+		if Data.current_wave == 4 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_virus_shown: # to change the state for the pop-up
+			GameDialogueManager.is_virus_shown = true
+			
+		if Data.current_wave == 5 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2: # to trigger server_upgrade2 dialogue
+			GameDialogueManager.show_dialogue_server_upgrade_2()
 
 				
 	if not wave_active and not spawning_wave and enemies.size() == 0 and Data.wave_started:

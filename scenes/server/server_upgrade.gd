@@ -21,7 +21,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_refresh_server_pts()
-
+	if Data.current_wave == 5:
+		$UIContainer/CyberBtn.visible = true
 
 func _refresh_server_pts() -> void:
 	if Data.is_maxed_lvl:
@@ -45,7 +46,8 @@ func _on_cyber_btn_pressed() -> void:
 	$UIContainer/CyberBtn.add_theme_font_size_override("font_size", 40)
 	$UIContainer/ServerUpdate.visible = false
 	$UIContainer/CyberthreatUpdate.visible = true
-
+	if !GameDialogueManager.is_server_cyber_shown:
+		GameDialogueManager.show_dialogue_server_cyber()
 func _on_server_btn_pressed() -> void:
 	$UIContainer/ServerBtn.add_theme_color_override("font_color", Color(0.314, 0.655, 0.871))
 	$UIContainer/CyberBtn.add_theme_color_override("font_color", Color(0.361, 0.161, 0.192))

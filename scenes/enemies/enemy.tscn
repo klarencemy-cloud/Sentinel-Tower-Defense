@@ -1327,9 +1327,8 @@ visible = false
 material = SubResource("ShaderMaterial_f6y8w")
 position = Vector2(0, -25)
 sprite_frames = SubResource("SpriteFrames_jt03m")
-animation = &"Right_Hostile"
+animation = &"Down"
 autoplay = "Right"
-frame_progress = 0.3915768
 
 [node name="InsiderThreat" type="AnimatedSprite2D" parent="." unique_id=914461198]
 visible = false

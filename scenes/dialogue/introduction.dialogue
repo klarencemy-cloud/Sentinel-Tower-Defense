@@ -88,12 +88,14 @@ Odysseus: The server upgrades are a game-changer. It can amplify the damage of y
 => END
 
 ~ wave3_defeat
+do GameDialogueManager.move_camera(240,135,1.5)
 Player: Why cyberthreats?
 Odysseus: What?
 Player: I mean, why not a mechanical robot like Dungam?
 Odysseus: Preference perhaps? I mean, since they want to infiltrate a S.E.R.V.E.R, they want to resemble what a technology fears the most. 
 do GameDialogueManager.toggle_fade_transition()
 do GameDialogueManager.delay_dialogue(3)
+	
 ~ preparation
 Player: Fighting non-stop really takes a toll on your energy.
 Odysseus: It really does. But it seems things have settled down for a bit. 
@@ -103,7 +105,11 @@ Odysseus: Now that’s the mindset of a strategist! Contingent planning and anti
 
 ~ preparation_end
 Odysseus: The threats are already inside the perimeter. Press START to commence.
+VIRUS: 010101… INfeCt tHe sYSTem....
+do GameDialogueManager.show_play()
 #function to activate virus pop-up card
+do GameDialogueManager.is_autoplay = false
+do GameDialogueManager.show_enemy("virus", 1)
 => END
 
 ~ virus
@@ -124,6 +130,10 @@ Odysseus: Firewall prevents unauthorized traffic from entering the system while 
 
 ~ server_upgrade2
 Odysseus: There is a S.E.R.V.E.R. update now.
+do Data.toggle_server_scene.emit()
+=> END
+
+~ server_open_cyber
 #insert function that opens the server, on the threat page
 Player: Player: Now this is new.
 Odysseus: Even I didn't know about that. I guess the S.E.R.V.E.R can scan the threats of their current strength after being defeated. It does not show other threats yet.

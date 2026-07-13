@@ -1937,6 +1937,7 @@ text = "Back"
 
 [node name="CyberBtn" type="Button" parent="UIContainer" unique_id=596722035]
 process_mode = 3
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.975
