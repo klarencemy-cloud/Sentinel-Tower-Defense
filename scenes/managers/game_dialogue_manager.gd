@@ -13,7 +13,11 @@ var is_prep: bool = false
 var is_virus_shown = false
 var is_server2: bool = false
 var is_server_cyber_shown = false
-
+var is_adware_shown = false
+var is_adware_shown2 = false
+var is_specialist_shown = false
+var is_boss1_shown = false
+var is_boss1_2_shown = false
 
 var is_autoplay: bool = true
 
@@ -119,6 +123,22 @@ func show_dialogue_server_cyber(): # used in server upgrade
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "server_open_cyber")
 	is_server_cyber_shown = true
 
+func show_dialogue_adware(): # used in ui
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "adware")
+	is_adware_shown = true
 
-func show_dialogue_adware():
-	pass
+func show_dialogue_adware2(): # used in popup
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "adware2")
+	is_adware_shown2 = true
+
+func show_dialogue_specialist():
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "specialist")
+	is_specialist_shown = true
+
+func show_dialogue_boss1():
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1")
+	is_boss1_shown = true
+
+func show_dialogue_boss1_2():
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1_2")
+	is_boss1_shown = true

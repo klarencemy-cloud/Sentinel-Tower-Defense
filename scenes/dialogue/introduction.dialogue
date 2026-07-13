@@ -141,8 +141,13 @@ Player: This might come in handy! Once the threats have been detected and counte
 => END
 
 ~ adware
+do GameDialogueManager.pause_game(true)
 Player: What’s that?
+do GameDialogueManager.show_enemy("adware",2)
 #insert function to activate adware pop-up card
+=> END
+
+~ adware2
 Odysseus: That is an Adware. They may not look dangerous, but don’t get yourself too comfortable. They slow down operation by showing an ad and redirection. Their slowing capability can make it easier for the enemy to reach our server. 	
 => END
 
@@ -164,7 +169,7 @@ Odysseus: The ethical hacker opens the sandbox mode where you can simulate a bat
 Odysseus: Specialists fight directly on the Battlefield. They can be dragged and dropped anywhere on the map, command their abilities, and can be resurrected again if defeated in a certain amount of time.
 => END
 
-~ BOSS1
+~ Boss1
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
@@ -177,7 +182,10 @@ Odysseus: It’s one of the earliest cyberthreats to occur, yet crippled million
 System: Threat Identified: I Love You VIRUS
 Player: Well, that does not sound threatening at all.
 Odysseus: That is exactly why it is dangerous.
-#insert function to activate I Love You Virus pop-up card
+do GameDialogueManager.show_enemy("ilu", 14)
+=> END
+
+~ Boss1_2
 Player: So it is deceptive.
 Odysseus: Precisely. 
 => END
