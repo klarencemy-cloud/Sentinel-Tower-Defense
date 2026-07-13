@@ -654,38 +654,43 @@ func update_wave_state() -> void:
 	var ui = get_tree().get_first_node_in_group("UI")
 
 	var enemies = get_tree().get_nodes_in_group("Enemies")
+	
 	if wave_active and not spawning_wave and enemies.size() == 0:
 		wave_active = false
+		
 		if Data.current_wave > 0 and Data.current_wave % 5 == 0 and Data.checkpoint_wave < Data.current_wave:
 			Data.checkpoint_wave = Data.current_wave
-		if not wave_active and Data.current_wave % 10 == 0:
+
+		if Data.current_wave % 10 == 0:
 			if !Data.is_sandbox:
 				if ui:
 					ui.disable_auto()
 				level_completed.emit()
 				next_map.emit()
-				
+			return 
 	
 	if not wave_active and not spawning_wave and enemies.size() == 0:
-		if Data.current_wave == 2 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_defeat_spam: # to trigger spam dialogue
+		if Data.wave_started:
+			Data.wave_started = false
+			Data.current_wave += 1
+			if ui:
+				ui.update_wave_label()
+		
+		if Data.current_wave == 2 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_defeat_spam:
 			GameDialogueManager.show_dialogue_spam_defeat()
+		
+		if Data.current_wave == 3 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_wave2_defeated:
+			GameDialogueManager.play_scene("2nd_scene")
+		
+		if Data.current_wave == 4 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_virus_shown:
+			GameDialogueManager.is_virus_shown = true
+			
+		if Data.current_wave == 5 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2:
+			GameDialogueManager.show_dialogue_server_upgrade_2()
+
 		if ui and ui.is_auto_enabled():
 			start_wave()
 
-		if Data.current_wave == 3 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_wave2_defeated: # to trigger wave 2 defeat dialogue
-			GameDialogueManager.play_scene("2nd_scene")
-		
-		if Data.current_wave == 4 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_virus_shown: # to change the state for the pop-up
-			GameDialogueManager.is_virus_shown = true
-			
-		if Data.current_wave == 5 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2: # to trigger server_upgrade2 dialogue
-			GameDialogueManager.show_dialogue_server_upgrade_2()
-
-				
-	if not wave_active and not spawning_wave and enemies.size() == 0 and Data.wave_started:
-		Data.wave_started = false
-		Data.current_wave += 1
-		ui.update_wave_label()
 
 func start_wave() -> void:
 	if wave_active or spawning_wave:
