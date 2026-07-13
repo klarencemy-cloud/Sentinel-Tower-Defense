@@ -15,7 +15,7 @@ func _ready() -> void:
 	if Data.is_sandbox:
 		Data.before_server_points = Data.server_points # save server points before sandbox
 		Data.server_points = Data.default_server_points # reset server points for sandbox
-
+		$UIContainer/CyberBtn.visible = true
 	_refresh_server_pts()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,7 +35,7 @@ func _refresh_server_pts() -> void:
 func _on_back_btn_pressed() -> void:
 	get_tree().paused = false
 	Data.toggle_server_scene.emit()
-	if Data.current_wave == 3 and !GameDialogueManager.is_wave3_defeated:
+	if Data.current_wave == 3 and !GameDialogueManager.is_wave3_defeated and !Data.is_sandbox:
 		GameDialogueManager.show_dialogue_wave3_defeat()
 
 # Uprade category toglles
@@ -46,7 +46,7 @@ func _on_cyber_btn_pressed() -> void:
 	$UIContainer/CyberBtn.add_theme_font_size_override("font_size", 40)
 	$UIContainer/ServerUpdate.visible = false
 	$UIContainer/CyberthreatUpdate.visible = true
-	if !GameDialogueManager.is_server_cyber_shown:
+	if !GameDialogueManager.is_server_cyber_shown and !Data.is_sandbox:
 		GameDialogueManager.show_dialogue_server_cyber()
 func _on_server_btn_pressed() -> void:
 	$UIContainer/ServerBtn.add_theme_color_override("font_color", Color(0.314, 0.655, 0.871))

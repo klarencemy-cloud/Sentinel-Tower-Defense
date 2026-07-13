@@ -454,7 +454,7 @@ var health: float = default_health:
 			get_tree().paused = true
 
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 31 # wave count
+var current_wave: int = 1 # wave count
 
 func reset_game():
 	money = default_money
@@ -485,7 +485,7 @@ var experience: int = 0:
 				ui.update_experience(experience, player_level, default_level_pool)
 			return
 		
-		if player_level == 3 and GameDialogueManager.is_level_3:
+		if player_level == 3 and GameDialogueManager.is_level_3 and !Data.is_sandbox:
 			GameDialogueManager.show_dialogue_server_upgrade()
 		
 		while experience >= default_level_pool:

@@ -35,7 +35,7 @@ func update_wave_state() -> void:
 					ui.disable_auto()
 				level_completed.emit()
 				next_map.emit()
-			return 
+			return
 	
 	if not wave_active and not spawning_wave and enemies.size() == 0:
 		if Data.wave_started:
@@ -55,6 +55,13 @@ func update_wave_state() -> void:
 			
 		if Data.current_wave == 5 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2:
 			GameDialogueManager.show_dialogue_server_upgrade_2()
+	
+		if Data.current_wave == 8 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_adware_shown:
+			GameDialogueManager.show_dialogue_adware()
+
+		if Data.current_wave == 10 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_boss1_shown:
+			GameDialogueManager.show_dialogue_boss1()
+
 
 		if ui and ui.is_auto_enabled():
 			start_wave()

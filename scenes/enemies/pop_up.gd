@@ -26,6 +26,13 @@ func _on_info_gui_input(event: InputEvent) -> void:
 			GameDialogueManager.clicked = 0
 			if GameDialogueManager.is_virus_shown:
 				GameDialogueManager.show_dialogue_virus()
+				GameDialogueManager.is_adware_shown2 = false
+			if !GameDialogueManager.is_adware_shown2 and Data.current_wave == 8:
+				GameDialogueManager.show_dialogue_adware2()
+				GameDialogueManager.is_adware_shown2 = true
+			if !GameDialogueManager.is_boss1_2_shown and Data.current_wave == 10:
+				GameDialogueManager.is_boss1_shown = true
+				GameDialogueManager.show_dialogue_boss1_2()
 			await get_tree().create_timer(1).timeout
 			get_tree().paused = false
 			if GameDialogueManager.is_autoplay:

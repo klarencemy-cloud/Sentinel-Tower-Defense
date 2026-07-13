@@ -423,6 +423,7 @@ theme_override_font_sizes/font_size = 40
 text = "50"
 
 [node name="AutoLabel" type="Label" parent="Control" unique_id=320005110]
+visible = false
 layout_mode = 0
 offset_left = 1718.0
 offset_top = 842.0

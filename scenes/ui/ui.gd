@@ -65,7 +65,7 @@ func _ready() -> void:
 		unli_health.button_pressed = true
 		$Control/HBoxContainer.position.y = 780
 		
-	if !is_play_shown:
+	if !is_play_shown and !Data.is_sandbox:
 		$Control/TextureRect/HBoxContainer/WaveButton.visible = false
 	else:
 		$Control/TextureRect/HBoxContainer/WaveButton.visible = true
@@ -152,8 +152,8 @@ func disable_auto():
 
 func _on_wave_button_pressed() -> void:
 	start_wave.emit()
-
-
+	if Data.current_wave == 8 and !Data.is_sandbox and !GameDialogueManager.is_adware_shown:
+		GameDialogueManager.show_dialogue_adware()
 func _on_pause_button_pressed() -> void:
 	$PauseMenu.visible = true
 	get_tree().paused = true
