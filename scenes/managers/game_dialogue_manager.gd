@@ -43,7 +43,13 @@ func move_camera(x: float, y: float, timer: float):
 func delay_dialogue(time: float):
 	await get_tree().create_timer(time).timeout
 
+func _disable_auto() -> void:
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.disable_auto()
+
 func play_scene(scene: String):
+	_disable_auto()
 	var ui = get_tree().get_first_node_in_group("UI")
 	ui.play_scene(scene)
 # func show_dialogue_server_health(): # used in pop up
@@ -59,46 +65,57 @@ func toggle_fade_transition():
 	ui.toggle_fade()
 
 func show_dialogue_introduction(): # used in loading
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "start")
 
 func show_dialogue_spam_filter(): # used in tower manager
+	_disable_auto()
 	pause_game(true)
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "spam_filter")
 	is_introduction_spam_filter = true
 
 func show_dialogue_spam_defeat(): # used in wave manager
+	_disable_auto()
 	pause_game(false)
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "spam_defeat")
 	is_defeat_spam = true
 
 func show_dialogue_backstory(): # used in cutscene
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "backstory")
 
 func show_dialogue_wave2_defeat(): # used in cutscene
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "wave2_defeat")
 	is_wave2_defeated = true
 
 func show_dialogue_server_upgrade(): # used data
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "server_upgrade")
 	is_level_3 = false
 
 func show_dialogue_wave3_defeat(): # used in server_upgrade
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "wave3_defeat")
 	is_wave3_defeated = true
 
 func show_dialogue_preparation_end(): # used in tower manager
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "preparation_end")
 	is_prep = true
 
 func show_dialogue_virus(): # used in popup
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "virus")
 	is_virus_shown = false
 
 func show_dialogue_server_upgrade_2(): # used in wave manager
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "server_upgrade2")
 	is_server2 = true
 
 func show_dialogue_server_cyber(): # used in server upgrade
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "server_open_cyber")
 	is_server_cyber_shown = true
 
