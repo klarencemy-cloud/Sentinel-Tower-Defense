@@ -19,6 +19,7 @@ signal start_wave
 var tower_card_scene = preload("res://scenes/ui/tower_card.tscn")
 var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
 
+var is_play_shown: bool = false
 
 var fade_tween: Tween
 
@@ -53,6 +54,7 @@ func _ready() -> void:
 	Data.toggle_server_scene.connect(_show_server_upgrade)
 
 	if Data.is_sandbox:
+		$Control/TextureRect/HBoxContainer/WaveButton.visible = true
 		sandbox_setting.visible = true
 		tower_enemies_button.visible = true
 		auto_label.visible = false # alis visible ng auto button
@@ -63,6 +65,11 @@ func _ready() -> void:
 		unli_health.button_pressed = true
 		$Control/HBoxContainer.position.y = 780
 		
+	if !is_play_shown:
+		$Control/TextureRect/HBoxContainer/WaveButton.visible = false
+	else:
+		$Control/TextureRect/HBoxContainer/WaveButton.visible = true
+
 
 	for tower_enum in Data.Tower.values():
 		var tower_card = tower_card_scene.instantiate()
@@ -129,7 +136,11 @@ func update_stats(money: int, health: int):
 
 func update_wave_label() -> void:
 	$Control/TextureRect/PlayerCurrentStats/WaveNum.text = "Wave " + str(Data.current_wave) + " /50"
+	
 
+func show_play_button(state: bool):
+	$Control/TextureRect/HBoxContainer/WaveButton.visible = true
+	is_play_shown = state
 
 func is_auto_enabled() -> bool:
 	var auto_button = $Control/AutoLabel/AutoButton

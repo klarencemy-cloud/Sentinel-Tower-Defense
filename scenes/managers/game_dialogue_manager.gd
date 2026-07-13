@@ -9,7 +9,13 @@ var is_wave2_defeated: bool = false
 var clicked: int = 0
 var is_level_3: bool = true
 var is_wave3_defeated: bool = false
+var is_prep: bool = false
+var is_virus_shown = false
+var is_server2: bool = false
+var is_server_cyber_shown = false
 
+
+var is_autoplay: bool = true
 
 func show_character(name: String):
 	show_char.emit(name)
@@ -44,6 +50,10 @@ func play_scene(scene: String):
 # 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "server_health")
 # 	is_health_shown = true
 
+func show_play():
+	var ui = get_tree().get_first_node_in_group("UI")
+	ui.show_play_button(true)
+
 func toggle_fade_transition():
 	var ui = get_tree().get_first_node_in_group("UI")
 	ui.toggle_fade()
@@ -61,10 +71,8 @@ func show_dialogue_spam_defeat(): # used in wave manager
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "spam_defeat")
 	is_defeat_spam = true
 
-	
 func show_dialogue_backstory(): # used in cutscene
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "backstory")
-
 
 func show_dialogue_wave2_defeat(): # used in cutscene
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "wave2_defeat")
@@ -77,3 +85,23 @@ func show_dialogue_server_upgrade(): # used data
 func show_dialogue_wave3_defeat(): # used in server_upgrade
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "wave3_defeat")
 	is_wave3_defeated = true
+
+func show_dialogue_preparation_end(): # used in tower manager
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "preparation_end")
+	is_prep = true
+
+func show_dialogue_virus(): # used in popup
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "virus")
+	is_virus_shown = false
+
+func show_dialogue_server_upgrade_2(): # used in wave manager
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "server_upgrade2")
+	is_server2 = true
+
+func show_dialogue_server_cyber(): # used in server upgrade
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "server_open_cyber")
+	is_server_cyber_shown = true
+
+
+func show_dialogue_adware():
+	pass
