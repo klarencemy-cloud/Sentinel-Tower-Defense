@@ -24,13 +24,13 @@ func _on_info_gui_input(event: InputEvent) -> void:
 			$Pop/Animation.visible = true
 			$Pop/Info.visible = false
 			GameDialogueManager.clicked = 0
+			if GameDialogueManager.is_virus_shown:
+				GameDialogueManager.show_dialogue_virus()
 			await get_tree().create_timer(1).timeout
 			get_tree().paused = false
 			if GameDialogueManager.is_autoplay:
 				GameDialogueManager.start_wave()
-			if GameDialogueManager.is_virus_shown:
-				GameDialogueManager.is_virus_shown = false
-				GameDialogueManager.show_dialogue_virus()
+
 
 enum Enemies_Name {SPAM, VIRUS, ADWARE, WORM, SPYWARE, BOTNET, CREDS, TROJAN_HORSE, INSIDER, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, ILOVEYOU, CONFICKER, WANNACRY, NOTPEYTA, DOOM, TROJAN}
 

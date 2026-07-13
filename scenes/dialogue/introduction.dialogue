@@ -95,6 +95,7 @@ Player: I mean, why not a mechanical robot like Dungam?
 Odysseus: Preference perhaps? I mean, since they want to infiltrate a S.E.R.V.E.R, they want to resemble what a technology fears the most. 
 do GameDialogueManager.toggle_fade_transition()
 do GameDialogueManager.delay_dialogue(3)
+	
 ~ preparation
 Player: Fighting non-stop really takes a toll on your energy.
 Odysseus: It really does. But it seems things have settled down for a bit. 
