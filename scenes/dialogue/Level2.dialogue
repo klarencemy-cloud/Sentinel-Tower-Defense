@@ -5,17 +5,29 @@ Odysseus: Stay alert. This may be over for now, but our next visitors are alread
 => END
 
 ~ worms
-Player: I was wondering for a while now. I receive these blue cores every time I level up – what are these for?
-Odysseus: That is for the Sentinels. They resemble cybersecurity roles that will help you fight the cyber threats outside. Quick, follow me.
+#Player: I was wondering for a while now. I receive these blue cores every time I level up – what are these for?
+#Odysseus: That is for the Sentinels. Do you remember the analyst room?
+do GameDialogueManager.pause_game(true)
 WORM: REPLICATE.
 WORM: ONE BECAME THREE.
 #function to activate worms pop-up card
+do GameDialogueManager.show_enemy("worm",3)
+=> END
+
+~ worms2
+do GameDialogueManager.pause_game(true)
 Player: Those things just multiplied!
 Odysseus: Yes, that’s their natural ability. Those are standalone systems that replicate themselves; they spread across networks, often leading to crashes and data theft.
+do GameDialogueManager.pause_game(false)
 => END
 
 ~ spyware
+do GameDialogueManager.pause_game(true)
 SPYWARE: D̶A̶T̶A̶... C̷O̷N̷S̷U̷M̷E̷... 
+do GameDialogueManager.show_enemy("spyware", 4)
+=> END
+
+~ spyware2
 #function to activate spyware pop-up card
 Player: Suddenly, I’m feeling uncomfortable.
 Odysseus: Those are the spyware; they infect towers to reduce their range. At the same time, it increases the enemy's speed and damage. They do that by secretly infiltrating devices to monitor activities, harvest personal information, and transmit it to a third party without consent.

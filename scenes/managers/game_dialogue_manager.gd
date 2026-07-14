@@ -157,3 +157,24 @@ func show_dialogue_boss1_defeated(): # used in wave manager
 func show_dialogue_level2_start(): # used in loading
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "start")
 	is_level2_start_shown = true
+
+
+var is_level2_worm_shown = false # used in ui
+func show_dialogue_level2_worm():
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "worms")
+	is_level2_worm_shown = true
+
+var is_level2_worm2_shown = false # used in enemy
+func show_dialogue_level2_worm2():
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "worms2")
+	is_level2_worm2_shown = true
+
+var is_level2_spyware_shown = false
+func show_dialogue_level2_spyware(): # used in ui
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "spyware")
+	is_level2_spyware_shown = true
+
+var is_level2_spyware2_shown = false
+func show_dialogue_level2_spyware2(): # used in popup
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "spyware2")
+	is_level2_spyware2_shown = true

@@ -145,6 +145,114 @@ scale_max = 8.21
 hue_variation_min = -0.050000023
 hue_variation_max = 0.059999976
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3gyk"]
+atlas = ExtResource("2_t8vrm")
+region = Rect2(1280, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t14qi"]
+atlas = ExtResource("2_t8vrm")
+region = Rect2(1344, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd4gq"]
+atlas = ExtResource("2_t8vrm")
+region = Rect2(1408, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rux8"]
+atlas = ExtResource("2_t8vrm")
+region = Rect2(1472, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bxm1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3gyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t14qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd4gq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rux8")
+}],
+"loop": true,
+"name": &"worm",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiwa3"]
+atlas = ExtResource("2_t8vrm")
+region = Rect2(1536, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmnnj"]
+atlas = ExtResource("2_t8vrm")
+region = Rect2(1472, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fyee"]
+atlas = ExtResource("2_t8vrm")
+region = Rect2(1408, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie7yw"]
+atlas = ExtResource("2_t8vrm")
+region = Rect2(1344, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rq1w3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiwa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmnnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fyee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie7yw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at5ig"]
+atlas = ExtResource("2_t8vrm")
+region = Rect2(1280, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uo1u"]
+atlas = ExtResource("2_t8vrm")
+region = Rect2(1344, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uro5"]
+atlas = ExtResource("2_t8vrm")
+region = Rect2(1408, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw2rv"]
+atlas = ExtResource("2_t8vrm")
+region = Rect2(1472, 256, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5dcfn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at5ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uo1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uro5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw2rv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7shr5"]
 atlas = ExtResource("2_t8vrm")
 region = Rect2(0, 384, 128, 192)
@@ -734,7 +842,7 @@ anchors_preset = -1
 anchor_top = 0.46944445
 anchor_right = 1.0
 anchor_bottom = 1.0000011
-offset_bottom = 0.00012207031
+offset_bottom = -0.0010986328
 texture = ExtResource("4_ba8xt")
 metadata/_edit_use_anchors_ = true
 
@@ -768,11 +876,37 @@ texture = ExtResource("4_bfgac")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Pop/Animation/RedPop" unique_id=1891160292]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 2
+position = Vector2(282.90448, 162.0954)
+scale = Vector2(1.9970175, 1.9970175)
+sprite_frames = SubResource("SpriteFrames_bxm1x")
+animation = &"worm"
+autoplay = "worm"
+frame_progress = 0.9055169
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pop/Animation/RedPop/AnimatedSprite2D2" unique_id=792124317]
+texture_filter = 2
+position = Vector2(-0.00012207031, 44.936157)
+rotation = -1.5707964
+scale = Vector2(1.0048119, 1.0048119)
+sprite_frames = SubResource("SpriteFrames_rq1w3")
+autoplay = "default"
+frame_progress = 0.88831806
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pop/Animation/RedPop/AnimatedSprite2D2/AnimatedSprite2D" unique_id=1134386513]
+texture_filter = 2
+position = Vector2(-46.753746, 0.6776711)
+sprite_frames = SubResource("SpriteFrames_5dcfn")
+autoplay = "default"
+frame_progress = 0.4476768
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pop/Animation" unique_id=444069515]
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 texture_filter = 2
-position = Vector2(973.55426, 448.1886)
+position = Vector2(966.4614, 408.80856)
 scale = Vector2(1.3081704, 1.3081703)
 sprite_frames = SubResource("SpriteFrames_xms32")
 animation = &"virus"
@@ -854,6 +988,31 @@ scale = Vector2(2.534424, 2.534424)
 sprite_frames = SubResource("SpriteFrames_xms32")
 animation = &"virus"
 autoplay = "creds"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Pop/Info/DisplayContainer/Control" unique_id=252955445]
+light_mask = 2
+texture_filter = 2
+position = Vector2(342.44876, 199.00003)
+scale = Vector2(3.3802516, 3.3802516)
+sprite_frames = SubResource("SpriteFrames_bxm1x")
+animation = &"worm"
+autoplay = "worm"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pop/Info/DisplayContainer/Control/AnimatedSprite2D2" unique_id=25144496]
+light_mask = 2
+texture_filter = 2
+position = Vector2(-0.00012207031, 44.936157)
+rotation = -1.5707964
+scale = Vector2(1.0048119, 1.0048119)
+sprite_frames = SubResource("SpriteFrames_rq1w3")
+autoplay = "default"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pop/Info/DisplayContainer/Control/AnimatedSprite2D2/AnimatedSprite2D" unique_id=1182668050]
+light_mask = 4
+texture_filter = 2
+position = Vector2(-46.753746, 0.6776711)
+sprite_frames = SubResource("SpriteFrames_5dcfn")
+autoplay = "default"
 
 [node name="Name" type="Label" parent="Pop/Info/DisplayContainer" unique_id=2134197941]
 layout_mode = 0

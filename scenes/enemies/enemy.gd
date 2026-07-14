@@ -271,6 +271,9 @@ func _process(delta: float):
 	if enemy_type_stats == Data.Enemy.SPYWARE:
 		update_spyware_buff()
 		
+	if enemy_type == $Worm and Data.current_wave == 12 and !GameDialogueManager.is_level2_worm2_shown:
+		GameDialogueManager.show_dialogue_level2_worm2()
+
 	if enemy_type != $Worm:
 		var current_pos = path_follow.global_position
 		var dir = current_pos - previous_pos

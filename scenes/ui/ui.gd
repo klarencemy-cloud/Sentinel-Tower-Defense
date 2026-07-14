@@ -67,6 +67,9 @@ func _ready() -> void:
 		unli_money.button_pressed = true
 		unli_health.button_pressed = true
 		$Control/HBoxContainer.position.y = 780
+
+	if Data.current_wave > 3:
+		is_play_shown = true
 		
 	if !is_play_shown and !Data.is_sandbox:
 		$Control/TextureRect/HBoxContainer/WaveButton.visible = false
@@ -159,6 +162,11 @@ func _on_wave_button_pressed() -> void:
 		GameDialogueManager.show_dialogue_adware()
 	if Data.current_wave == 10 and !Data.is_sandbox and !GameDialogueManager.is_boss1_shown:
 		GameDialogueManager.show_dialogue_boss1()
+	if Data.current_wave == 12 and !Data.is_sandbox and !GameDialogueManager.is_level2_worm_shown:
+		GameDialogueManager.show_dialogue_level2_worm()
+	if Data.current_wave == 16 and !Data.is_sandbox and !GameDialogueManager.is_level2_spyware_shown:
+		GameDialogueManager.show_dialogue_level2_spyware()
+
 func _on_pause_button_pressed() -> void:
 	$PauseMenu.visible = true
 	get_tree().paused = true

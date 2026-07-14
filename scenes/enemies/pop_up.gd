@@ -32,6 +32,9 @@ func _on_info_gui_input(event: InputEvent) -> void:
 			if !GameDialogueManager.is_boss1_2_shown and Data.current_wave == 10:
 				GameDialogueManager.is_boss1_2_shown = true
 				GameDialogueManager.show_dialogue_boss1_2()
+			if !GameDialogueManager.is_level2_spyware2_shown and Data.current_wave == 16:
+				GameDialogueManager.is_level2_spyware2_shown = true
+				GameDialogueManager.show_dialogue_level2_spyware2()
 			await get_tree().create_timer(1).timeout
 			get_tree().paused = false
 			if GameDialogueManager.is_autoplay:
@@ -209,8 +212,20 @@ var ENEMIES = {
 func play_animation(enemy_name: String, index: int):
 	var ui = get_tree().get_first_node_in_group("UI")
 	ui.hide_pop(true)
-	$Pop/Animation/AnimatedSprite2D.play(enemy_name) # for the pop
-	$Pop/Info/DisplayContainer/Control/AnimatedSprite2D.play(enemy_name) # for the description card
+	if enemy_name == "worm":
+		$Pop/Animation/RedPop/AnimatedSprite2D2.visible = true
+		$Pop/Info/DisplayContainer/Control/AnimatedSprite2D2.visible = true
+		$Pop/Animation/AnimatedSprite2D.visible = false
+		$Pop/Info/DisplayContainer/Control/AnimatedSprite2D.visible = false
+		$Pop/Animation/RedPop/AnimatedSprite2D2.play(enemy_name) # for the pop
+		$Pop/Info/DisplayContainer/Control/AnimatedSprite2D2.play(enemy_name) # for the description card
+	else:
+		$Pop/Animation/RedPop/AnimatedSprite2D2.visible = false
+		$Pop/Info/DisplayContainer/Control/AnimatedSprite2D2.visible = false
+		$Pop/Animation/AnimatedSprite2D.visible = true
+		$Pop/Info/DisplayContainer/Control/AnimatedSprite2D.visible = true
+		$Pop/Animation/AnimatedSprite2D.play(enemy_name) # for the pop
+		$Pop/Info/DisplayContainer/Control/AnimatedSprite2D.play(enemy_name) # for the description card
 	$Pop/Animation/AnimationPlayer.play("pop")
 	$Pop/Info/DisplayContainer/Name.text = ENEMIES[index]['name']
 	$Pop/Info/DisplayContainer/Label2/InG_desc.text = ENEMIES[index]['InG_desc']

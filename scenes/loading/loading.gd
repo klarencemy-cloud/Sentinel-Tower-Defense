@@ -60,4 +60,4 @@ func _process(delta: float) -> void:
 			if !Data.is_sandbox and Data.current_wave == 1 and !GameDialogueManager.is_introduction_shown:
 				GameDialogueManager.show_dialogue_introduction()
 			if !Data.is_sandbox and Data.current_wave == 11:
-				GameDialogueManager.show_dialogue_introduction()
+				GameDialogueManager.show_dialogue_level2_start()

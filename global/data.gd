@@ -32,7 +32,7 @@ var wave_started: bool = false
 
 
 var before_level_index: int
-var current_level_index: int = 0 # map count 0 = level 1
+var current_level_index: int = 1 # map count 0 = level 1
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
@@ -472,7 +472,7 @@ var health: float = default_health:
 			get_tree().paused = true
 
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 1 # wave count
+var current_wave: int = 11 # wave count
 
 func reset_game():
 	money = default_money
@@ -503,7 +503,7 @@ var experience: int = 0:
 				ui.update_experience(experience, player_level, default_level_pool)
 			return
 		
-		if player_level == 3 and GameDialogueManager.is_level_3 and !Data.is_sandbox:
+		if player_level == 3 and GameDialogueManager.is_level_3 and !Data.is_sandbox and !Data.current_wave > 3:
 			GameDialogueManager.show_dialogue_server_upgrade()
 		
 		while experience >= default_level_pool:

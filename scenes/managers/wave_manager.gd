@@ -53,7 +53,7 @@ func update_wave_state() -> void:
 		if Data.current_wave == 5 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2:
 			GameDialogueManager.show_dialogue_server_upgrade_2()
 
-		if Data.current_wave == 11 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_boss1_defeated:
+		if Data.current_wave == 11 and Data.current_level_index == 0 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_boss1_defeated:
 			GameDialogueManager.show_dialogue_boss1_defeated()
 
 
