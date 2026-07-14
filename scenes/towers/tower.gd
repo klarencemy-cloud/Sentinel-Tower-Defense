@@ -92,6 +92,9 @@ func setup(tower_type: Data.Tower):
 
 
 func _on_enemy_detection_area_area_entered(area: Area2D) -> void:
+	if !("enemy_type_stats" in area):
+		return
+
 	if area not in enemies:
 		enemies.append(area)
 
@@ -101,6 +104,9 @@ func _on_enemy_detection_area_area_entered(area: Area2D) -> void:
 
 
 func _on_enemy_detection_area_area_exited(area: Area2D) -> void:
+	if !("enemy_type_stats" in area):
+		return
+
 	if area in enemies:
 		enemies.erase(area)
 
