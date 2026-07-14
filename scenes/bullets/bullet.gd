@@ -4,7 +4,7 @@ var direction: Vector2
 var speed: int = 600
 var damage: int = 1
 var tower_id: int = -1
-
+var lifetime: float = 5.0 # lifetime of bullets in seconds
 var bounce_count: int = 0
 var max_bounce: int = 1
 var owner_tower_type
@@ -41,6 +41,9 @@ func setup(pos, angle, _bullet_enum, _damage, _tower_type, _tower_id):
 func _process(delta: float) -> void:
 	position += direction * speed * delta
 
+	lifetime -= delta
+	if lifetime <= 0:
+		queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
 	if already_hit:
