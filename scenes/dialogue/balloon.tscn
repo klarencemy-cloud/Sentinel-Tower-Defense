@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dsia4nbchfsjw" path="res://graphics/container/choices.png" id="6_2ww5d"]
 [ext_resource type="Texture2D" uid="uid://c6job3pqnpp4i" path="res://graphics/container/showcontainer.png" id="6_onvhc"]
 [ext_resource type="Texture2D" uid="uid://cnaho0dsi12qr" path="res://graphics/container/choice_active.png" id="7_f8dtn"]
+[ext_resource type="Texture2D" uid="uid://bnk165ckp3vsu" path="res://graphics/character/player.png" id="9_0hms4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -264,10 +265,11 @@ texture = ExtResource("6_onvhc")
 
 [node name="Character" type="TextureRect" parent="Balloon/Show" unique_id=1142477465]
 layout_mode = 0
-offset_left = 46.0
-offset_top = 35.0
-offset_right = 335.0
-offset_bottom = 299.0
+offset_left = 68.964966
+offset_top = 34.0
+offset_right = 361.96497
+offset_bottom = 333.0
+texture = ExtResource("9_0hms4")
 expand_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1116280512]

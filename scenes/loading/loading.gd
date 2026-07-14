@@ -57,5 +57,7 @@ func _process(delta: float) -> void:
 		ResourceLoader.THREAD_LOAD_LOADED:
 			var scene = ResourceLoader.load_threaded_get(next_scene_path)
 			get_tree().change_scene_to_packed(scene)
-			if !Data.is_sandbox and Data.current_wave == 1:
+			if !Data.is_sandbox and Data.current_wave == 1 and !GameDialogueManager.is_introduction_shown:
+				GameDialogueManager.show_dialogue_introduction()
+			if !Data.is_sandbox and Data.current_wave == 11:
 				GameDialogueManager.show_dialogue_introduction()

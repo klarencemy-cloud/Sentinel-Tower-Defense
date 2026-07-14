@@ -1393,9 +1393,9 @@ stream = ExtResource("4_fcftc")
 
 [node name="hpbar" type="TextureProgressBar" parent="." unique_id=928793409]
 offset_left = -40.0
-offset_top = -91.0
+offset_top = -199.0
 offset_right = 40.0
-offset_bottom = -70.0
+offset_bottom = -178.0
 value = 100.0
 nine_patch_stretch = true
 texture_under = ExtResource("7_n7575")

@@ -142,7 +142,7 @@ func apply_dialogue_line() -> void:
 	if !GameDialogueManager.is_override:
 		match character_label.text:
 			"Player":
-				$Balloon/Show/Character.texture = load("res://graphics/character/Main_character_icon.png")
+				$Balloon/Show/Character.texture = load("res://graphics/character/player.png")
 			"Odysseus":
 				$Balloon/Show/Character.texture = load("res://graphics/currency/experience.png")
 

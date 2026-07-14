@@ -32,7 +32,7 @@ var wave_started: bool = false
 
 
 var before_level_index: int
-var current_level_index: int = 0 # map count 0 = level 1
+var current_level_index: int = 11 # map count 0 = level 1
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
@@ -394,35 +394,35 @@ var ENEMY_DATA = {
 		'damage': 350,
 		"exp": 16},
 	Enemy.BOSS1: { # I LOVE YOU
-		'health': 15000,
+		'health': 5000,
 		'texture': "uid://bh62x426nayqs",
 		'speed': 100,
 		'name': "boss1",
 		'damage': 100,
 		"exp": 100},
 	Enemy.BOSS2: { # CONFICKER
-		'health': 30000,
+		'health': 8000,
 		'texture': "uid://btscyncy6p42a",
 		'speed': 100,
 		'name': "boss2",
 		'damage': 200,
 		"exp": 145},
 	Enemy.BOSS3: { # WANNA CRY
-		'health': 50000,
+		'health': 10000,
 		'texture': "uid://b7ojhou6ogpwf",
 		'speed': 100,
 		'name': "boss3",
 		'damage': 320,
 		"exp": 200},
 	Enemy.BOSS4: { # NOT PETYA
-		'health': 90000,
+		'health': 12000,
 		'texture': "uid://he2k33y4efo3",
 		'speed': 100,
 		'name': "boss4",
 		'damage': 200,
 		"exp": 325},
 	Enemy.BOSS5: { # MY DOOM
-		'health': 110000,
+		'health': 15000,
 		'texture': "uid://bsbw28l1xncts",
 		'speed': 100,
 		'name': "boss5",
