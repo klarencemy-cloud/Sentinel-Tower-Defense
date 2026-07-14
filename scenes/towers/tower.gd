@@ -18,6 +18,7 @@ var spyware_count := 0
 var botnet_count := 0
 var virus_count := 0
 var original_reload_time := 0.0
+var stunned := false
 @onready var ad_button = $AdButton
 @onready var pay_button: TextureButton = $PayButton
 @onready var ads = [
@@ -199,3 +200,15 @@ func remove_ransomware():
 	if ui:
 		ui._schedule_next_ransomware()
 	
+
+func apply_boss3_stun(duration: float):
+	if stunned:
+		return
+
+	stunned = true
+	modulate = Color.YELLOW
+
+	await get_tree().create_timer(duration).timeout
+
+	stunned = false
+	modulate = Color.WHITE

@@ -213,6 +213,8 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Boss3.visible = true
 			enemy_type = $Boss3
 			$Boss3.material = $Boss3.material.duplicate()
+			call_deferred("_boss3_stun_loop")
+			
 		"boss4":
 			$Boss4.visible = true
 			enemy_type = $Boss4
@@ -221,6 +223,8 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Boss5.visible = true
 			enemy_type = $Boss5
 			$Boss5.material = $Boss5.material.duplicate()
+			
+			call_deferred("_boss5_spawn_loop")
 			
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
 
@@ -622,3 +626,29 @@ func _on_spawn_virus_timer_timeout():
 	elif enemy_type_stats == Data.Enemy.BOSS2:
 		print("Boss2 spawn timer fired")
 		wave_manager.spawn_boss_botnets()
+
+func _boss3_stun_loop() -> void:
+	while !dead and enemy_type_stats == Data.Enemy.BOSS3:
+		await get_tree().create_timer(3.0).timeout
+
+		if dead or is_queued_for_deletion():
+			break
+
+		var towers = get_tree().get_nodes_in_group("Towers")
+		if towers.is_empty():
+			continue
+
+		var tower = towers.pick_random()
+		if !tower.stunned:
+			tower.apply_boss3_stun(5.0)
+
+func _boss5_spawn_loop():
+	while !dead and enemy_type_stats == Data.Enemy.BOSS5:
+		await get_tree().create_timer(2.0).timeout
+
+		if dead or is_queued_for_deletion():
+			break
+
+		var wave_manager = get_tree().get_first_node_in_group("WaveManager")
+		if wave_manager:
+			wave_manager.spawn_boss5_wave()

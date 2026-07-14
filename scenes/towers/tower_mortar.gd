@@ -12,6 +12,8 @@ func finish_placing():
 
 
 func _on_reload_timer_timeout() -> void:
+	if stunned: 
+		return
 	if disabled_by_ad or disabled_by_ransomware:
 		return
 	$ShootAnimation.show()

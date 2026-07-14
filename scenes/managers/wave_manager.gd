@@ -302,3 +302,27 @@ func spawn_boss_botnets():
 
 	for path in paths:
 		spawn_enemy_on_path(Data.Enemy.BOTNET, path)
+
+func spawn_boss5_wave():
+	var enemies = [
+		Data.Enemy.DEFAULT,
+		Data.Enemy.VIRUS,
+		Data.Enemy.ADWARE,
+		Data.Enemy.SPYWARE,
+		Data.Enemy.TROJAN,
+		Data.Enemy.CREDS,
+		Data.Enemy.BOTNET,
+		Data.Enemy.WORM,
+		Data.Enemy.INSIDERTHREAT,
+		Data.Enemy.ROOTKIT,
+		Data.Enemy.SQL,
+		Data.Enemy.DDOS,
+		Data.Enemy.RANSOMWARE,
+		Data.Enemy.ZERO
+	]
+
+	var paths = _get_paths()
+
+	for path in paths:
+		var random_enemy = enemies.pick_random()
+		spawn_enemy_on_path(random_enemy, path)

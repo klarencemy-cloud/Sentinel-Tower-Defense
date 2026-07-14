@@ -6,6 +6,8 @@ func _process(_delta: float) -> void:
 		$Turret.rotation -= PI / 2
 
 func _on_reload_timer_timeout() -> void:
+	if stunned: 
+		return
 	if disabled_by_ad or disabled_by_ransomware:
 		return
 
