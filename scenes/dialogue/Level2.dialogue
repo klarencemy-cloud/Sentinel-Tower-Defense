@@ -15,10 +15,10 @@ do GameDialogueManager.show_enemy("worm",3)
 => END
 
 ~ worms2
-do GameDialogueManager.pause_game(true)
+#do GameDialogueManager.pause_game(true)
 Player: Those things just multiplied!
 Odysseus: Yes, that’s their natural ability. Those are standalone systems that replicate themselves; they spread across networks, often leading to crashes and data theft.
-do GameDialogueManager.pause_game(false)
+#do GameDialogueManager.pause_game(false)
 => END
 
 ~ spyware
@@ -35,13 +35,19 @@ Odysseus: Eliminate them first to decrease the intensity of the battlefield.
 => END
 
 ~ botnet
+do GameDialogueManager.pause_game(true)
 Botnet Node: Syncing… C0NNECT3D..
+do GameDialogueManager.show_enemy("botnet", 5)
 #function to activate botnet pop-up card
+=> END
+
+~ botnet2
 Player: Are those devices?
 Odysseus: Precisely, those are compromised computers that are controlled by the attackers and they use them to perform various disruptions and cybercriminal activities. Now, they evolved to infect and control towers to malfunction, causing it to fire inaccurately.
 => END
 
 ~ Boss2
+do GameDialogueManager.pause_game(true)
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
@@ -57,7 +63,11 @@ Botnet Node: await!ng C0mm4nd fr0M the Master..
 Player: What??
 Odysseus: It’s the Conficker. It controls them.
 System: Threat Identified. CONFICKER.
+do GameDialogueManager.show_enemy("conficker", 15)
 #function to activate conficker pop-up card
+=> END
+
+~ Boss2_2
 CONFICKER: Searching for the next host..
 CONFICKER: H0ST F0UND.
 #[Boss appears]

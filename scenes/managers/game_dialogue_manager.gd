@@ -129,52 +129,87 @@ func show_dialogue_server_cyber(): # used in server upgrade
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "server_open_cyber")
 	is_server_cyber_shown = true
 
-func show_dialogue_adware(): # used in ui
+func show_dialogue_adware(): # used in wave manager
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "adware")
 	is_adware_shown = true
 
 func show_dialogue_adware2(): # used in popup
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "adware2")
 	is_adware_shown2 = true
 
 func show_dialogue_specialist():
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "specialist")
 	is_specialist_shown = true
 
-func show_dialogue_boss1(): # used in ui
+func show_dialogue_boss1(): # used in wave manager
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1")
 	is_boss1_shown = true
 
 func show_dialogue_boss1_2(): # used in popup
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1_2")
 	is_boss1_shown = true
 
 func show_dialogue_boss1_defeated(): # used in wave manager
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1_defeated")
 	is_boss1_defeated = true
 
 
 func show_dialogue_level2_start(): # used in loading
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "start")
 	is_level2_start_shown = true
 
 
-var is_level2_worm_shown = false # used in ui
+var is_level2_worm_shown = false # used in wave manager
 func show_dialogue_level2_worm():
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "worms")
 	is_level2_worm_shown = true
 
 var is_level2_worm2_shown = false # used in enemy
 func show_dialogue_level2_worm2():
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "worms2")
 	is_level2_worm2_shown = true
 
 var is_level2_spyware_shown = false
-func show_dialogue_level2_spyware(): # used in ui
+func show_dialogue_level2_spyware(): # used in wave manager
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "spyware")
 	is_level2_spyware_shown = true
 
 var is_level2_spyware2_shown = false
 func show_dialogue_level2_spyware2(): # used in popup
+	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "spyware2")
 	is_level2_spyware2_shown = true
+
+var is_level2_botnet_shown = false
+func show_dialogue_level2_botnet(): # used in wave manager
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "botnet")
+	is_level2_botnet_shown = true
+
+var is_level2_botnet2_shown = false
+func show_dialogue_level2_botnet2(): # used in popup
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "botnet2")
+	is_level2_botnet2_shown = true
+
+var is_level2_boss2_shown = false
+func show_dialogue_level2_boss2(): # used in wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "Boss2")
+	is_level2_boss2_shown = true
+
+
+var is_level2_boss2_2_shown = false
+func show_dialogue_level2_boss2_2(): # used in popup
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "Boss2_2")
+	is_level2_boss2_2_shown = true

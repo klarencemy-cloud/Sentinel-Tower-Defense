@@ -884,7 +884,7 @@ scale = Vector2(1.9970175, 1.9970175)
 sprite_frames = SubResource("SpriteFrames_bxm1x")
 animation = &"worm"
 autoplay = "worm"
-frame_progress = 0.9055169
+frame_progress = 0.98234165
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pop/Animation/RedPop/AnimatedSprite2D2" unique_id=792124317]
 texture_filter = 2
@@ -893,14 +893,14 @@ rotation = -1.5707964
 scale = Vector2(1.0048119, 1.0048119)
 sprite_frames = SubResource("SpriteFrames_rq1w3")
 autoplay = "default"
-frame_progress = 0.88831806
+frame_progress = 0.96514004
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pop/Animation/RedPop/AnimatedSprite2D2/AnimatedSprite2D" unique_id=1134386513]
 texture_filter = 2
 position = Vector2(-46.753746, 0.6776711)
 sprite_frames = SubResource("SpriteFrames_5dcfn")
 autoplay = "default"
-frame_progress = 0.4476768
+frame_progress = 0.52450067
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pop/Animation" unique_id=444069515]
 modulate = Color(0, 0, 0, 1)

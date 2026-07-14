@@ -235,7 +235,9 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 
 	if enemy_type != $Worm:
 		path_follow.rotates = false
-		
+		print(path_follow.rotates)
+	
+	
 	if enemy_type_stats in [
 		Data.Enemy.BOSS1,
 		Data.Enemy.BOSS2,

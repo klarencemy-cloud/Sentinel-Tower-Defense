@@ -158,14 +158,7 @@ func disable_auto():
 
 func _on_wave_button_pressed() -> void:
 	start_wave.emit()
-	if Data.current_wave == 8 and !Data.is_sandbox and !GameDialogueManager.is_adware_shown:
-		GameDialogueManager.show_dialogue_adware()
-	if Data.current_wave == 10 and !Data.is_sandbox and !GameDialogueManager.is_boss1_shown:
-		GameDialogueManager.show_dialogue_boss1()
-	if Data.current_wave == 12 and !Data.is_sandbox and !GameDialogueManager.is_level2_worm_shown:
-		GameDialogueManager.show_dialogue_level2_worm()
-	if Data.current_wave == 16 and !Data.is_sandbox and !GameDialogueManager.is_level2_spyware_shown:
-		GameDialogueManager.show_dialogue_level2_spyware()
+
 
 func _on_pause_button_pressed() -> void:
 	$PauseMenu.visible = true

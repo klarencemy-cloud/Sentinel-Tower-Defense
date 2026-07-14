@@ -59,7 +59,7 @@ func update_wave_state() -> void:
 
 		if ui and ui.is_auto_enabled():
 			start_wave()
-
+			
 
 func start_wave() -> void:
 	if wave_active or spawning_wave:
@@ -68,8 +68,20 @@ func start_wave() -> void:
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.update_wave_label()
-
+	if Data.current_wave == 8 and !Data.is_sandbox and !GameDialogueManager.is_adware_shown:
+		GameDialogueManager.show_dialogue_adware()
+	if Data.current_wave == 10 and !Data.is_sandbox and !GameDialogueManager.is_boss1_shown:
+		GameDialogueManager.show_dialogue_boss1()
+	if Data.current_wave == 12 and !Data.is_sandbox and !GameDialogueManager.is_level2_worm_shown:
+		GameDialogueManager.show_dialogue_level2_worm()
+	if Data.current_wave == 16 and !Data.is_sandbox and !GameDialogueManager.is_level2_spyware_shown:
+		GameDialogueManager.show_dialogue_level2_spyware()
+	if Data.current_wave == 19 and !Data.is_sandbox and !GameDialogueManager.is_level2_botnet_shown:
+		GameDialogueManager.show_dialogue_level2_botnet()
+	if Data.current_wave == 20 and !Data.is_sandbox and !GameDialogueManager.is_level2_boss2_shown:
+		GameDialogueManager.show_dialogue_level2_boss2()
 	
+
 	match Data.current_wave:
 		6:
 			$'../WeatherEffects/DustParticles'.visible = false
