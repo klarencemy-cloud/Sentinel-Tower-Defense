@@ -478,6 +478,16 @@ offset_bottom = 121.0
 texture = ExtResource("15_lg71s")
 stretch_mode = 2
 
+[node name="Upgrade1Amount" type="Label" parent="UpgradePanel/Upgrade1" unique_id=1711925420]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 63.0
+offset_right = 71.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "+1"
+
 [node name="Upgrade2" type="TextureButton" parent="UpgradePanel" unique_id=1745496662]
 layout_mode = 0
 offset_left = 63.0
@@ -521,6 +531,16 @@ offset_right = 201.0
 offset_bottom = 121.0
 texture = ExtResource("15_lg71s")
 stretch_mode = 2
+
+[node name="Upgrade2Amount" type="Label" parent="UpgradePanel/Upgrade2" unique_id=1296368445]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 63.0
+offset_right = 71.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "+1"
 
 [node name="Upgrade3" type="TextureButton" parent="UpgradePanel" unique_id=721349242]
 visible = false
@@ -567,6 +587,16 @@ offset_bottom = 121.0
 texture = ExtResource("15_lg71s")
 stretch_mode = 2
 
+[node name="Upgrade3Amount" type="Label" parent="UpgradePanel/Upgrade3" unique_id=296246224]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 63.0
+offset_right = 71.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "+1"
+
 [node name="Upgrade4" type="TextureButton" parent="UpgradePanel" unique_id=1751677671]
 visible = false
 layout_mode = 0
@@ -611,6 +641,16 @@ offset_right = 201.0
 offset_bottom = 121.0
 texture = ExtResource("15_lg71s")
 stretch_mode = 2
+
+[node name="Upgrade4Amount" type="Label" parent="UpgradePanel/Upgrade4" unique_id=725561803]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 63.0
+offset_right = 71.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "+1"
 
 [node name="Upgrade5" type="TextureButton" parent="UpgradePanel" unique_id=2012290381]
 visible = false
@@ -657,6 +697,16 @@ offset_bottom = 121.0
 texture = ExtResource("15_lg71s")
 stretch_mode = 2
 
+[node name="Upgrade5Amount" type="Label" parent="UpgradePanel/Upgrade5" unique_id=2043700488]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 63.0
+offset_right = 71.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "+1"
+
 [node name="Upgrade6" type="TextureButton" parent="UpgradePanel" unique_id=1350624905]
 visible = false
 layout_mode = 0
@@ -701,6 +751,43 @@ offset_right = 201.0
 offset_bottom = 121.0
 texture = ExtResource("15_lg71s")
 stretch_mode = 2
+
+[node name="Upgrade6Amount" type="Label" parent="UpgradePanel/Upgrade6" unique_id=837989071]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 63.0
+offset_right = 71.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "+1"
+
+[node name="Label" type="Label" parent="UpgradePanel" unique_id=2097189818]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 28.0
+offset_right = 103.0
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 28
+text = "Money"
+
+[node name="$" type="Label" parent="UpgradePanel" unique_id=1011741469]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 79.0
+offset_right = 65.0
+offset_bottom = 151.0
+theme_override_font_sizes/font_size = 62
+text = "$"
+
+[node name="Money" type="Label" parent="UpgradePanel" unique_id=1064741857]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 79.0
+offset_right = 162.0
+offset_bottom = 151.0
+theme_override_font_sizes/font_size = 62
+text = "0"
 
 [connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]

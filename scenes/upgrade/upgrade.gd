@@ -13,6 +13,7 @@ var selected_tower: Data.Tower = Data.Tower.BASIC
 
 
 func _ready() -> void:
+	update_money_display()
 	for tower_enum in Data.Tower.values():
 		var tower_card = tower_card_scene.instantiate()
 		tower_card.setup(tower_enum)
@@ -37,21 +38,31 @@ func update_stat_label() -> void:
 
 	$StatPanel/ScrollContainer/VBoxContainer/DamageContainer/DamagePic/DamageText.text = str(data['damage'])
 	$StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic/SpeedText.text = str(data['reload_time']) + "s"
-	if selected_tower == Data.Tower.MORTAR or selected_tower == Data.Tower.QUARANTINE_CANNON:
+	if selected_tower == Data.Tower.MORTAR:
 		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = str(data['explosion_radius'])
 		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/Range.text = "Explosion Radius"
+	elif selected_tower == Data.Tower.QUARANTINE_CANNON:
+		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = "%s / %s" % [str(data['range']), str(data['explosion_radius'])]
+		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/Range.text = "Range / Radius"
 	else:
 		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = str(data['range'])
 		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/Range.text = "Range"
 	$StatPanel/ScrollContainer/VBoxContainer/CritRContainer/CritRPic/CritRText.text = str(data['crit rate']) + "%"
 	$StatPanel/ScrollContainer/VBoxContainer/CritDContainer/CritDPic/CritDText.text = str(data['crit damage']) + "%"
 
-	$UpgradePanel/Upgrade1/Upgrade1Label.text = data['upgrade1']
-	$UpgradePanel/Upgrade2/Upgrade2Label.text = data['upgrade2']
-	$UpgradePanel/Upgrade3/Upgrade3Label.text = data['upgrade3']
-	$UpgradePanel/Upgrade4/Upgrade4Label.text = data['upgrade4']
-	$UpgradePanel/Upgrade5/Upgrade5Label.text = data['upgrade5']
-	$UpgradePanel/Upgrade6/Upgrade6Label.text = data['upgrade6']
+	$UpgradePanel/Upgrade1/Upgrade1Label.text = _format_upgrade_label(data['upgrade1'], 1, upgrade1_level)
+	$UpgradePanel/Upgrade2/Upgrade2Label.text = _format_upgrade_label(data['upgrade2'], 2, upgrade2_level)
+	$UpgradePanel/Upgrade3/Upgrade3Label.text = _format_upgrade_label(data['upgrade3'], 3, upgrade3_level)
+	$UpgradePanel/Upgrade4/Upgrade4Label.text = _format_upgrade_label(data['upgrade4'], 4, upgrade4_level)
+	$UpgradePanel/Upgrade5/Upgrade5Label.text = _format_upgrade_label(data['upgrade5'], 5, upgrade5_level)
+	$UpgradePanel/Upgrade6/Upgrade6Label.text = _format_upgrade_label(data['upgrade6'], 6, upgrade6_level)
+
+	_set_upgrade_amount_label(1, data['upgrade1'], data.get('upgrade1amount', 0))
+	_set_upgrade_amount_label(2, data['upgrade2'], data.get('upgrade2amount', 0))
+	_set_upgrade_amount_label(3, data['upgrade3'], data.get('upgrade3amount', 0))
+	_set_upgrade_amount_label(4, data['upgrade4'], data.get('upgrade4amount', 0))
+	_set_upgrade_amount_label(5, data['upgrade5'], data.get('upgrade5amount', 0))
+	_set_upgrade_amount_label(6, data['upgrade6'], data.get('upgrade6amount', 0))
 
 	upgrade1_level = data['upgrade1level']
 	upgrade2_level = data['upgrade2level']
@@ -102,6 +113,82 @@ func _set_upgrade_visual(node: Node, level: int) -> void:
 			child.texture = load("res://graphics/upgrade/" + tex)
 
 
+func update_money_display() -> void:
+	$UpgradePanel/Money.text = str(Data.money)
+
+
+func _get_upgrade_cost(slot_index: int, current_level: int) -> int:
+	var tower_data = Data.TOWER_DATA[selected_tower]
+	var cost_key = "upgrade%dcost" % slot_index
+	if tower_data.has(cost_key):
+		var costs = tower_data[cost_key]
+		if typeof(costs) == TYPE_ARRAY and current_level < costs.size():
+			return int(costs[current_level])
+	return 0
+
+
+func _format_upgrade_label(upgrade_name: String, slot_index: int, current_level: int) -> String:
+	if current_level >= 3:
+		return "%s (Max)" % upgrade_name
+
+	var cost = _get_upgrade_cost(slot_index, current_level)
+	if cost > 0:
+		return "%s - $%d" % [upgrade_name, cost]
+	return upgrade_name
+
+
+func _format_upgrade_amount(upgrade_name: String, amount: Variant) -> String:
+	if upgrade_name == "Attack Speed":
+		return "-%s" % str(amount)
+	return "+%s" % str(amount)
+
+
+func _set_upgrade_amount_label(slot_index: int, upgrade_name: String, amount: Variant) -> void:
+	var label = get_node_or_null("UpgradePanel/Upgrade%d/Upgrade%dAmount" % [slot_index, slot_index])
+	if label:
+		label.text = _format_upgrade_amount(upgrade_name, amount)
+
+
+func _try_purchase_upgrade(slot_index: int) -> void:
+	var tower_data = Data.TOWER_DATA[selected_tower]
+	var level_key = "upgrade%dlevel" % slot_index
+	var upgrade_key = "upgrade%d" % slot_index
+	var current_level = int(tower_data.get(level_key, 0))
+
+	if current_level >= 3:
+		return
+
+	var cost = _get_upgrade_cost(slot_index, current_level)
+	if not Data.is_unli_money and Data.money < cost:
+		return
+
+	if not Data.is_unli_money:
+		Data.money -= cost
+
+	current_level += 1
+	tower_data[level_key] = current_level
+
+	match slot_index:
+		1:
+			upgrade1_level = current_level
+		2:
+			upgrade2_level = current_level
+		3:
+			upgrade3_level = current_level
+		4:
+			upgrade4_level = current_level
+		5:
+			upgrade5_level = current_level
+		6:
+			upgrade6_level = current_level
+
+	apply_upgrade(tower_data[upgrade_key])
+	_set_upgrade_visual(get_node("UpgradePanel/Upgrade%d" % slot_index), current_level)
+	update_tier_buttons()
+	update_ability_panel()
+	update_money_display()
+
+
 func _on_towers_pressed() -> void:
 	$TowerUpgradeUi.visible = true
 	$SentinelUpgradeUi.visible = false
@@ -113,6 +200,8 @@ func _on_sentinel_pressed() -> void:
 
 
 func _on_upgrade_button_pressed() -> void:
+	update_stat_label()
+	update_upgrade_ui()
 	$StatPanel/CurrentStat.text = $BigTowerName.text
 	%SentinelsContainer.visible = false
 
@@ -140,80 +229,26 @@ func _on_stat_panel_right_pressed() -> void:
 	$StatPanel/ScrollContainer/VBoxContainer.visible = false
 
 func _on_upgrade_1_pressed() -> void:
-	if upgrade1_level < 3:
-		upgrade1_level += 1
-		Data.TOWER_DATA[selected_tower]['upgrade1level'] = upgrade1_level
-		apply_upgrade(
-			Data.TOWER_DATA[selected_tower]["upgrade1"]
-		)
-
-		_set_upgrade_visual($UpgradePanel/Upgrade1, upgrade1_level)
-		update_tier_buttons()
-		update_ability_panel()
+	_try_purchase_upgrade(1)
 
 
 func _on_upgrade_2_pressed() -> void:
-	if upgrade2_level < 3:
-		upgrade2_level += 1
-		Data.TOWER_DATA[selected_tower]['upgrade2level'] = upgrade2_level
-		apply_upgrade(
-			Data.TOWER_DATA[selected_tower]["upgrade2"]
-		)
-
-		_set_upgrade_visual($UpgradePanel/Upgrade2, upgrade2_level)
-		update_tier_buttons()
-		update_ability_panel()
+	_try_purchase_upgrade(2)
 
 
 func _on_upgrade_3_pressed() -> void:
-	if upgrade3_level < 3:
-		upgrade3_level += 1
-		Data.TOWER_DATA[selected_tower]['upgrade3level'] = upgrade3_level
-		apply_upgrade(
-			Data.TOWER_DATA[selected_tower]["upgrade3"]
-		)
-
-		_set_upgrade_visual($UpgradePanel/Upgrade3, upgrade3_level)
-		update_tier_buttons()
-		update_ability_panel()
+	_try_purchase_upgrade(3)
 
 func _on_upgrade_4_pressed() -> void:
-	if upgrade4_level < 3:
-		upgrade4_level += 1
-		Data.TOWER_DATA[selected_tower]['upgrade4level'] = upgrade4_level
-		apply_upgrade(
-			Data.TOWER_DATA[selected_tower]["upgrade4"]
-		)
-
-		_set_upgrade_visual($UpgradePanel/Upgrade4, upgrade4_level)
-		update_tier_buttons()
-		update_ability_panel()
+	_try_purchase_upgrade(4)
 
 
 func _on_upgrade_5_pressed() -> void:
-	if upgrade5_level < 3:
-		upgrade5_level += 1
-		Data.TOWER_DATA[selected_tower]['upgrade5level'] = upgrade5_level
-		apply_upgrade(
-			Data.TOWER_DATA[selected_tower]["upgrade5"]
-		)
-
-		_set_upgrade_visual($UpgradePanel/Upgrade5, upgrade5_level)
-		update_tier_buttons()
-		update_ability_panel()
+	_try_purchase_upgrade(5)
 
 
 func _on_upgrade_6_pressed() -> void:
-	if upgrade6_level < 3:
-		upgrade6_level += 1
-		Data.TOWER_DATA[selected_tower]['upgrade6level'] = upgrade6_level
-		apply_upgrade(
-			Data.TOWER_DATA[selected_tower]["upgrade6"]
-		)
-
-		_set_upgrade_visual($UpgradePanel/Upgrade6, upgrade6_level)
-		update_tier_buttons()
-		update_ability_panel()
+	_try_purchase_upgrade(6)
 
 
 func apply_upgrade(upgrade_name: String) -> void:
