@@ -163,10 +163,11 @@ func _spawn_predefined_wave(wave_data: Dictionary) -> void:
 func _spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D) -> void:
 	var path_follow = PathFollow2D.new()
 	var enemy = enemy_scene.instantiate()
-	enemy.setup(path_follow, enemy_enum)
-	path_follow.add_child(enemy)
-	path.add_child(path_follow)
 
+	path.add_child(path_follow)
+	path_follow.add_child(enemy)
+
+	enemy.setup(path_follow, enemy_enum)
 
 func spawn_sandbox_enemy(enemy_enum: Data.Enemy) -> void:
 	wave_active = true
@@ -177,11 +178,11 @@ func _spawn_enemy(enemy_enum: Data.Enemy) -> void:
 	var path_follow = PathFollow2D.new()
 	var enemy = enemy_scene.instantiate()
 
-	enemy.setup(path_follow, enemy_enum)
-	path_follow.add_child(enemy)
-	var path: Path2D = _choose_path_for_spawn()
+	var path = _choose_path_for_spawn()
 	if path:
 		path.add_child(path_follow)
+		path_follow.add_child(enemy)
+		enemy.setup(path_follow, enemy_enum)
 
 
 func _random_wave_size() -> Dictionary:
@@ -236,11 +237,10 @@ func spawn_worm_clone(path: Path2D, progress: float):
 	path_follow.progress = progress
 
 	var enemy = enemy_scene.instantiate()
-	enemy.setup(path_follow, Data.Enemy.WORM)
-	enemy.can_clone = false
-
-	path_follow.add_child(enemy)
 	path.add_child(path_follow)
+	path_follow.add_child(enemy)
+
+	enemy.setup(path_follow, Data.Enemy.WORM)
 	enemy.can_clone = false
 
 func spawn_ddos_clones(path: Path2D, progress: float):
@@ -251,6 +251,8 @@ func spawn_ddos_clones(path: Path2D, progress: float):
 		path_follow.progress = max(progress + offset, 0)
 
 		var enemy = enemy_scene.instantiate()
+		path_follow.add_child(enemy)
+		path.add_child(path_follow)
 		enemy.setup(path_follow, Data.Enemy.DDOS)
 
 		enemy.scale = Vector2(0.75, 0.75) # clone is 25% smaller
@@ -261,17 +263,16 @@ func spawn_ddos_clones(path: Path2D, progress: float):
 		enemy.get_node("hpbar").max_value = hp
 		enemy.get_node("hpbar").value = hp
 
-		path_follow.add_child(enemy)
-		path.add_child(path_follow)
+		
 
 func spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D):
 	var path_follow = PathFollow2D.new()
 	var enemy = enemy_scene.instantiate()
 
-	enemy.setup(path_follow, enemy_enum)
-
-	path_follow.add_child(enemy)
 	path.add_child(path_follow)
+	path_follow.add_child(enemy)
+
+	enemy.setup(path_follow, enemy_enum)
 
 func spawn_boss_viruses():
 	var paths: Array[Path2D] = []

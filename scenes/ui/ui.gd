@@ -10,7 +10,9 @@ extends CanvasLayer
 @onready var unli_health: CheckBox = $Control/TextureRect/SandboxMenuContainer/UnliHealth
 @onready var server_upgrade = $ServerUpgrade
 @onready var server_pts_label: Label = server_upgrade.find_child("LabelServerPts", true, false)
-
+@onready var boss_hp_bar = $Control/bosshpbar
+@onready var boss_hp_amount = $Control/bosshpbar/hpamount
+@onready var boss_name = $Control/bosshpbar/bossname
 
 signal place_tower(tower_type: Data.Tower)
 signal spawn_enemy(enemy_type: Data.Enemy)
@@ -30,6 +32,7 @@ var ransomware_timer := Timer.new()
 	preload("res://graphics/buttons/ad2.png")
 ]
 func _ready() -> void:
+	boss_hp_bar.visible = false
 	Data.ads_visible = false
 	Data.active_adware = 0
 	Data.active_adware_changed.connect(_schedule_next_ad)
@@ -333,3 +336,21 @@ func play_scene(scene: String):
 
 func toggle_fade():
 	$AnimationPlayer.play("overlay_fade")
+	
+func update_boss_hp(enemy: Data.Enemy, current_hp: int, max_hp: int):
+	boss_hp_bar.visible = true
+	boss_hp_bar.max_value = max_hp
+	boss_hp_bar.value = current_hp
+	boss_hp_amount.text = "%d/%d" % [current_hp, max_hp]
+
+	match enemy:
+		Data.Enemy.BOSS1:
+			boss_name.text = "ILOVEYOU VIRUS"
+		Data.Enemy.BOSS2:
+			boss_name.text = "Conficker"
+		Data.Enemy.BOSS3:
+			boss_name.text = "WannaCry"
+		Data.Enemy.BOSS4:
+			boss_name.text = "NotPetya"
+		Data.Enemy.BOSS5:
+			boss_name.text = "MyDOOM"

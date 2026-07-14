@@ -28,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://b2ivf813gi1aa" path="res://graphics/ui/progress-circle.png" id="19_svq4k"]
 [ext_resource type="Texture2D" uid="uid://bubyrkehmuahc" path="res://graphics/ui/progress-bg.png" id="19_ygedu"]
 [ext_resource type="FontFile" uid="uid://cqus3kybakmf8" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraBold.ttf" id="21_oopc8"]
+[ext_resource type="Texture2D" uid="uid://1qgvsuhf841g" path="res://graphics/ui/enemyhpbar1.png" id="27_vnqvi"]
+[ext_resource type="Texture2D" uid="uid://ba1dyadxb3f65" path="res://graphics/ui/enemyhpbar2.png" id="28_7ygsn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vp6q"]
 texture = ExtResource("2_g5kmx")
@@ -528,6 +530,33 @@ theme_override_font_sizes/font_size = 20
 text = "hatdog"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="bosshpbar" type="TextureProgressBar" parent="Control" unique_id=257423371]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 26.0
+offset_right = 970.5
+offset_bottom = 107.0
+scale = Vector2(2, 2)
+texture_under = ExtResource("27_vnqvi")
+texture_progress = ExtResource("28_7ygsn")
+
+[node name="hpamount" type="Label" parent="Control/bosshpbar" unique_id=890304568]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 50.0
+offset_right = 80.0
+offset_bottom = 69.0
+text = "100/100"
+
+[node name="bossname" type="Label" parent="Control/bosshpbar" unique_id=1939673303]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 1.0
+offset_right = 296.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 23
+text = "Boss Name"
 
 [node name="StatsCounterButton" type="Button" parent="." unique_id=88214555]
 anchors_preset = 1

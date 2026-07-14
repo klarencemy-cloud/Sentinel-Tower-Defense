@@ -202,34 +202,51 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			enemy_type = $Boss1
 			$Boss1.material = $Boss1.material.duplicate()
 			print("Boss1 spawned, starting virus timer")
+			$hpbar.visible = false
 			call_deferred("_start_boss1_spawn_timer")
+			
 		"boss2":
 			$Boss2.visible = true
 			enemy_type = $Boss2
 			$Boss2.material = $Boss2.material.duplicate()
 			print("Boss2 spawned, starting botnet timer")
+			$hpbar.visible = false
 			call_deferred("_start_boss2_spawn_timer")
 		"boss3":
 			$Boss3.visible = true
 			enemy_type = $Boss3
 			$Boss3.material = $Boss3.material.duplicate()
+			$hpbar.visible = false
 			call_deferred("_boss3_stun_loop")
 			
 		"boss4":
 			$Boss4.visible = true
 			enemy_type = $Boss4
 			$Boss4.material = $Boss4.material.duplicate()
+			$hpbar.visible = false
 		"boss5":
 			$Boss5.visible = true
 			enemy_type = $Boss5
 			$Boss5.material = $Boss5.material.duplicate()
-			
+			$hpbar.visible = false
 			call_deferred("_boss5_spawn_loop")
 			
 	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
 
 	if enemy_type != $Worm:
 		path_follow.rotates = false
+		
+	if enemy_type_stats in [
+		Data.Enemy.BOSS1,
+		Data.Enemy.BOSS2,
+		Data.Enemy.BOSS3,
+		Data.Enemy.BOSS4,
+		Data.Enemy.BOSS5
+	]:
+		var ui = get_tree().get_first_node_in_group("UI")
+		if ui:
+			ui.update_boss_hp(enemy_type_stats, health, health)
+		
 
 func _process(delta: float):
 	if is_stunned:
@@ -319,6 +336,21 @@ func hit(damage: int = 1, tower_id: int = -1):
 	flash()
 	health -= actual_damage
 	$hpbar.value = health
+	
+	if enemy_type_stats in [
+		Data.Enemy.BOSS1,
+		Data.Enemy.BOSS2,
+		Data.Enemy.BOSS3,
+		Data.Enemy.BOSS4,
+		Data.Enemy.BOSS5
+	]:
+		var ui = get_tree().get_first_node_in_group("UI")
+		if ui:
+			ui.update_boss_hp(
+				enemy_type_stats,
+				health,
+				Data.ENEMY_DATA[enemy_type_stats]["health"]
+			)
 	# ensure an audio stream is present
 	if not $AudioStreamPlayer2D.stream:
 		$AudioStreamPlayer2D.stream = preload("res://audio/impact.1.ogg")
@@ -372,7 +404,16 @@ func hit(damage: int = 1, tower_id: int = -1):
 			)
 	dead = true
 	Data.money += int(round(10 * Economy.gold_multiplier)) # update money
-
+	if enemy_type_stats in [
+		Data.Enemy.BOSS1,
+		Data.Enemy.BOSS2,
+		Data.Enemy.BOSS3,
+		Data.Enemy.BOSS4,
+		Data.Enemy.BOSS5
+	]:
+		var ui = get_tree().get_first_node_in_group("UI")
+		if ui:
+			ui.boss_hp_bar.visible = false
 	Data.experience += Data.ENEMY_DATA[enemy_type_stats]["exp"] * Economy.exp_multiplier # update exp points
 	await get_tree().create_timer(0.1).timeout
 	queue_free()
@@ -402,6 +443,15 @@ func update_hp_bar_position():
 			)
 			var sprite_height = tex.get_height() * child.scale.y
 			$hpbar.position.y = - sprite_height / 2 - 10
+			
+			if enemy_type_stats in [
+				Data.Enemy.BOSS1,
+				Data.Enemy.BOSS2,
+				Data.Enemy.BOSS3,
+				Data.Enemy.BOSS4,
+				Data.Enemy.BOSS5
+			]:
+				$hpbar.position.y -= 70
 
 func set_invisible(value: bool) -> void:
 	invisible = value
