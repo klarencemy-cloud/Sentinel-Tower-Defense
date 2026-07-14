@@ -49,18 +49,12 @@ func update_wave_state() -> void:
 		
 		if Data.current_wave == 3 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_wave2_defeated:
 			GameDialogueManager.play_scene("2nd_scene")
-		
-		if Data.current_wave == 4 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_virus_shown:
-			GameDialogueManager.is_virus_shown = true
 			
 		if Data.current_wave == 5 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2:
 			GameDialogueManager.show_dialogue_server_upgrade_2()
-	
-		if Data.current_wave == 8 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_adware_shown:
-			GameDialogueManager.show_dialogue_adware()
 
-		if Data.current_wave == 10 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_boss1_shown:
-			GameDialogueManager.show_dialogue_boss1()
+		if Data.current_wave == 11 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_boss1_defeated:
+			GameDialogueManager.show_dialogue_boss1_defeated()
 
 
 		if ui and ui.is_auto_enabled():
@@ -264,7 +258,6 @@ func spawn_ddos_clones(path: Path2D, progress: float):
 		enemy.get_node("hpbar").value = hp
 
 		
-
 func spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D):
 	var path_follow = PathFollow2D.new()
 	var enemy = enemy_scene.instantiate()

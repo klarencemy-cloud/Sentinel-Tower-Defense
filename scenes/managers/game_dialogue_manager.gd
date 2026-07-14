@@ -1,6 +1,8 @@
 extends Node
 signal show_char()
 
+
+var is_introduction_shown: bool = false
 var is_override: bool = false # check to override what is being shown
 var is_introduction_spam_filter: bool = false
 var is_defeat_spam: bool = false # check if spam filter is introduced
@@ -18,6 +20,9 @@ var is_adware_shown2 = false
 var is_specialist_shown = false
 var is_boss1_shown = false
 var is_boss1_2_shown = false
+var is_boss1_defeated = false
+
+var is_level2_start_shown: bool = false
 
 var is_autoplay: bool = true
 
@@ -71,6 +76,7 @@ func toggle_fade_transition():
 func show_dialogue_introduction(): # used in loading
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "start")
+	is_introduction_shown = true
 
 func show_dialogue_spam_filter(): # used in tower manager
 	_disable_auto()
@@ -135,10 +141,19 @@ func show_dialogue_specialist():
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "specialist")
 	is_specialist_shown = true
 
-func show_dialogue_boss1():
+func show_dialogue_boss1(): # used in ui
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1")
 	is_boss1_shown = true
 
-func show_dialogue_boss1_2():
+func show_dialogue_boss1_2(): # used in popup
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1_2")
 	is_boss1_shown = true
+
+func show_dialogue_boss1_defeated(): # used in wave manager
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1_defeated")
+	is_boss1_defeated = true
+
+
+func show_dialogue_level2_start(): # used in loading
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "start")
+	is_level2_start_shown = true

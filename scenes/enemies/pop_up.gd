@@ -13,25 +13,24 @@ func _process(delta: float) -> void:
 
 
 func _on_info_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and is_skippable:
-		if event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and is_skippable:
 			$Pop/Info/AnimationPlayer.play_backwards("info_pop")
 			await get_tree().create_timer(0.3).timeout
 			is_skippable = false
-			$Pop/Info.visible = false
 			var ui = get_tree().get_first_node_in_group("UI")
 			ui.hide_pop(false)
 			$Pop/Animation.visible = true
 			$Pop/Info.visible = false
 			GameDialogueManager.clicked = 0
-			if GameDialogueManager.is_virus_shown:
+			if !GameDialogueManager.is_virus_shown and Data.current_wave == 4:
 				GameDialogueManager.show_dialogue_virus()
-				GameDialogueManager.is_adware_shown2 = false
+				GameDialogueManager.is_virus_shown = true
 			if !GameDialogueManager.is_adware_shown2 and Data.current_wave == 8:
 				GameDialogueManager.show_dialogue_adware2()
 				GameDialogueManager.is_adware_shown2 = true
 			if !GameDialogueManager.is_boss1_2_shown and Data.current_wave == 10:
-				GameDialogueManager.is_boss1_shown = true
+				GameDialogueManager.is_boss1_2_shown = true
 				GameDialogueManager.show_dialogue_boss1_2()
 			await get_tree().create_timer(1).timeout
 			get_tree().paused = false

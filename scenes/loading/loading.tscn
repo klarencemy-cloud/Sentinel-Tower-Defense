@@ -84,10 +84,6 @@ animations = [{
 atlas = ExtResource("7_xph5p")
 region = Rect2(1280, 0, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3g4tb"]
-atlas = ExtResource("7_xph5p")
-region = Rect2(1536, 0, 256, 256)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_w33o8"]
 atlas = ExtResource("7_xph5p")
 region = Rect2(1280, 256, 256, 256)
@@ -149,9 +145,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d201m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3g4tb")
 }],
 "loop": true,
 "name": &"boss1",
@@ -343,21 +336,18 @@ grow_vertical = 2
 position = Vector2(57.50006, 51.424137)
 scale = Vector2(0.66145825, 0.66884935)
 sprite_frames = SubResource("SpriteFrames_8njb0")
-autoplay = "default"
 frame_progress = 0.98632264
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Anchor/Animation" unique_id=1343061686]
 position = Vector2(162.87506, 49.46694)
 scale = Vector2(0.68880224, 0.6964988)
 sprite_frames = SubResource("SpriteFrames_8njb0")
-autoplay = "default"
 frame_progress = 0.34254503
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Anchor/Animation" unique_id=204396013]
 position = Vector2(273.50003, 46.54676)
 scale = Vector2(0.723958, 0.7320475)
 sprite_frames = SubResource("SpriteFrames_8njb0")
-autoplay = "default"
 frame_progress = 0.1825446
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor/Animation" unique_id=1249662821]
@@ -365,5 +355,3 @@ position = Vector2(-834, 195)
 scale = Vector2(1.3554688, 1.3554688)
 sprite_frames = SubResource("SpriteFrames_w33o8")
 animation = &"boss1"
-autoplay = "boss1"
-frame_progress = 0.83303136

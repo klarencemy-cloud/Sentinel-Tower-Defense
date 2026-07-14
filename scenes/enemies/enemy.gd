@@ -355,6 +355,10 @@ func hit(damage: int = 1, tower_id: int = -1):
 	if not $AudioStreamPlayer2D.stream:
 		$AudioStreamPlayer2D.stream = preload("res://audio/impact.1.ogg")
 
+	if enemy_type == $Boss1:
+		print("Boss1", health)
+
+
 	show_damage(actual_damage)
 
 	#Give damage in damage global data

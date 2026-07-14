@@ -170,6 +170,7 @@ Odysseus: Specialists fight directly on the Battlefield. They can be dragged and
 => END
 
 ~ Boss1
+do GameDialogueManager.pause_game(true)
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
@@ -179,7 +180,7 @@ Odysseus: This Warning, I have not seen this in decades.
 Player: What is it?
 Odysseus: It’s one of the earliest cyberthreats to occur, yet crippled millions of computers, costing billions of global damages.
 #insert function to show effects
-System: Threat Identified: I Love You VIRUS
+System: Threat Identified: ILOVEYOU Virus
 Player: Well, that does not sound threatening at all.
 Odysseus: That is exactly why it is dangerous.
 do GameDialogueManager.show_enemy("ilu", 14)
