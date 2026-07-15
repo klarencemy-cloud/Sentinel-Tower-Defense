@@ -78,8 +78,14 @@ func start_wave() -> void:
 		GameDialogueManager.show_dialogue_level2_boss2()
 	if Data.current_wave == 22 and !Data.is_sandbox and !GameDialogueManager.is_level3_credential_shown:
 		GameDialogueManager.show_dialogue_level3_credential()
+	if Data.current_wave == 24 and !Data.is_sandbox and !GameDialogueManager.is_level3_trojan_horse_shown:
+		GameDialogueManager.show_dialogue_level3_trojan_horse()
+	if Data.current_wave == 28 and !Data.is_sandbox and !GameDialogueManager.is_quiz1_shown:
+		GameDialogueManager.show_dialogue_level3_quiz1()
+	if Data.current_wave == 30 and !Data.is_sandbox and !GameDialogueManager.is_boss3_shown:
+		GameDialogueManager.show_dialogue_level3_boss3()
 	
-
+	
 	match Data.current_wave:
 		6:
 			$'../WeatherEffects/DustParticles'.visible = false

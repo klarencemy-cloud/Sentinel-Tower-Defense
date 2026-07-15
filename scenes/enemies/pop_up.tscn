@@ -985,7 +985,7 @@ texture_filter = 2
 position = Vector2(325.99988, 381)
 scale = Vector2(2.534424, 2.534424)
 sprite_frames = SubResource("SpriteFrames_xms32")
-animation = &"conficker"
+animation = &"trojan"
 autoplay = "creds"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Pop/Info/DisplayContainer/Control" unique_id=252955445]

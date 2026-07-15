@@ -44,6 +44,12 @@ func _on_info_gui_input(event: InputEvent) -> void:
 			if !GameDialogueManager.is_level3_credential2_shown and Data.current_wave == 22:
 				GameDialogueManager.is_level3_credential2_shown = true
 				GameDialogueManager.show_dialogue_level3_credential2()
+			if !GameDialogueManager.is_level3_trojan_horse2_shown and Data.current_wave == 22:
+				GameDialogueManager.is_level3_trojan_horse2_shown = true
+				GameDialogueManager.show_dialogue_level3_trojan2_horse()
+			if !GameDialogueManager.is_insider2_shown and Data.current_wave == 28:
+				GameDialogueManager.is_insider2_shown = true
+				GameDialogueManager.show_dialogue_level3_insider2()
 			await get_tree().create_timer(1).timeout
 			get_tree().paused = false
 			if GameDialogueManager.is_autoplay:

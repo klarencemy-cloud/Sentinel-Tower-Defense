@@ -48,22 +48,30 @@ Player: Let’s hope that’s only a myth
 Player: What is that? That doesn’t look hostile.
 Trojan Horse: I’m here to help you.
 #function to activate Trojan Horse pop-up card
-Odysseus: Be careful. Trojan horses are frauds, they may seem trustworthy and safe but they are only created to look like that, they are actually harmful software. Remember, they strike when it gets close to our defenses.
+do GameDialogueManager.show_enemy("trojan", 7)
 => END
 
 ~ trojan_horse2
+do GameDialogueManager.pause_game(true)
+Odysseus: Be careful. Trojan horses are frauds, they may seem trustworthy and safe but they are only created to look like that, they are actually harmful software. Remember, they strike when it gets close to our defenses.
+=> END
+
+~ trojan_horse3
 #[Trojan Horse got close to the tower]
 Trojan Horse: Deception successful, Attack!
 => END
 
 
 ~ wrong_ans1
-	Odysseus: Think carefully..
-	Odysseus: How do you stop something that you can’t see?
-	Odysseus: Now, Try again. => quiz1
-=> END
+do GameDialogueManager.penalty("money", 10)
+Odysseus: Think carefully..
+Odysseus: How do you stop something that you can’t see?
+Odysseus: Now, Try again. 
+=> quiz1
+
 
 ~ quiz1
+do GameDialogueManager.pause_game(true)
 Odysseus: I’m detecting multiple Trojan Horses ahead, what should we do?
 - Let them reveal themselves first before placing a tower.
 	=>< wrong_ans1
@@ -75,7 +83,6 @@ Odysseus: I’m detecting multiple Trojan Horses ahead, what should we do?
 	Odysseus: [[Good| Goodjob]].
 	Player: I’m getting better at this!
 	Odysseus: You are.
-=> END
 
 ~ insider_threat
 #[An enemy suddenly appeared near the path]
@@ -83,12 +90,18 @@ Insider Threat: I am authorized..
 Player: When did that get through there?
 Player: I didn’t even see it enter our area of resistance.
 #function to activate insider threat pop-up card
+do GameDialogueManager.show_enemy("insider", 8)
+=> END
+
+~ insider_threat2
+
 Odysseus: Insider threats can conceal themselves.  These are the users who misuse their authorized access— whether intentionally or accidentally.
 Odysseus: They remain invisible until they get close enough to attack.
 Player: That’s infiltration!
 => END
 
-~ boss3
+~ Boss3
+do GameDialogueManager.pause_game(true)
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
@@ -102,14 +115,16 @@ Odysseus: WannaCry’s attack methods is mainly on taking control of your files/
 Player: Alright. I’m not paying.
 WANNACRY: FAILURE TO COMPLY DETECTED.
 #function to activate wannacry pop-up card
+do GameDialogueManager.show_enemy("wannacry", 16)
 => END
-~ boss3_hp
+
+~ Boss3_hp
 WANNACRY: YOUR DATA BELONGS TO ME!
 Player: It infects more and more of our defenses, forcing them to malfunction.
 WANNACRY: NETWORK ACQUIRED.
 => END
 
-~ boss3_defeated
+~ Boss3_defeated
 WANNACRY: Encryption Failedd..
 Player: Conficker.. WannaCry.. They both seem connected somehow.
 Odysseus: Maybe they are serving the same purpose.

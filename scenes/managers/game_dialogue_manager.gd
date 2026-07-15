@@ -52,6 +52,13 @@ func move_camera(x: float, y: float, timer: float):
 func delay_dialogue(time: float):
 	await get_tree().create_timer(time).timeout
 
+func penalty(type: String, value: float):
+	if type == "money":
+		if Data.money > value:
+			Data.money -= value
+		elif Data.money < value:
+			Data.money = 0
+
 func _disable_auto() -> void:
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
@@ -234,7 +241,7 @@ func show_dialogue_level3_start(): # used in loading
 	is_level3_start_shown = true
 
 var is_level3_credential_shown = false
-func show_dialogue_level3_credential(): # used in loading
+func show_dialogue_level3_credential(): # used in wave manager
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "credential_stuffing")
 	is_level3_credential_shown = true
@@ -244,3 +251,45 @@ func show_dialogue_level3_credential2(): # used in popup
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "credential_stuffing2")
 	is_level3_credential2_shown = true
+
+var is_level3_trojan_horse_shown = false
+func show_dialogue_level3_trojan_horse(): # used in wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "trojan_horse")
+	is_level3_trojan_horse_shown = true
+
+var is_level3_trojan_horse2_shown = false
+func show_dialogue_level3_trojan2_horse(): # used in popup
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "trojan_horse")
+	is_level3_trojan_horse2_shown = true
+
+var is_quiz1_shown = false
+func show_dialogue_level3_quiz1(): # used wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "quiz1")
+	is_quiz1_shown = true
+ 
+var is_insider2_shown = false
+func show_dialogue_level3_insider2(): # used in popup
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "insider_threat2")
+	is_insider2_shown = true
+
+var is_boss3_shown = false
+func show_dialogue_level3_boss3(): # used wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "Boss3")
+	is_boss3_shown = true
+
+var is_boss3_hp_shown = false
+func show_dialogue_level3_boss3_hp(): # used wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "Boss3_hp")
+	is_boss3_hp_shown = true
+
+var is_boss3_defeated = false
+func show_dialogue_level3_boss3_defeated(): # used wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "Boss3_defeated")
+	is_boss3_defeated = true
