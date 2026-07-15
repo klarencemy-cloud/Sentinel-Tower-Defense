@@ -472,7 +472,7 @@ var health: float = default_health:
 			get_tree().paused = true
 
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 41 # wave count
+var current_wave: int = 52 # wave count
 
 func reset_game():
 	money = default_money

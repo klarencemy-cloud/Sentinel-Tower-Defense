@@ -64,6 +64,9 @@ func update_wave_state() -> void:
 	
 		if Data.current_wave == 50 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_level5_final_fragment_shown:
 			GameDialogueManager.show_dialogue_level5_final_fragment()
+		
+		if Data.current_wave == 52 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_story_ends:
+			GameDialogueManager.show_dialogue_story_ends()
 
 		if ui and ui.is_auto_enabled():
 			start_wave()
@@ -110,8 +113,12 @@ func start_wave() -> void:
 		GameDialogueManager.show_dialogue_level4_boss4()
 	if Data.current_wave == 43 and !Data.is_sandbox and !GameDialogueManager.is_zero_day_shown:
 		GameDialogueManager.show_dialogue_level5_zero_day()
-	if Data.current_wave == 35 and !Data.is_sandbox and !GameDialogueManager.is_level5_quiz3_shown:
+	if Data.current_wave == 45 and !Data.is_sandbox and !GameDialogueManager.is_level5_quiz3_shown:
 		GameDialogueManager.show_dialogue_level5_quiz3()
+	if Data.current_wave == 50 and !Data.is_sandbox and !GameDialogueManager.is_level5_boss5_shown:
+		GameDialogueManager.show_dialogue_level5_boss5()
+	if Data.current_wave == 51 and !Data.is_sandbox and !GameDialogueManager.is_level6_boss6_shown:
+		GameDialogueManager.show_dialogue_level6_boss6()
 	
 	
 	match Data.current_wave:
