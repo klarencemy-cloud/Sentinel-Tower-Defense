@@ -53,8 +53,17 @@ func update_wave_state() -> void:
 		if Data.current_wave == 5 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2:
 			GameDialogueManager.show_dialogue_server_upgrade_2()
 	
-		if Data.current_wave == 38 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2:
+		if Data.current_wave == 38 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_strange_discovery_shown:
 			GameDialogueManager.show_dialogue_level4_strange_discovery()
+		
+		if Data.current_wave == 47 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_level5_hidden_archive_shown:
+			GameDialogueManager.show_dialogue_level5_hidden_archive()
+		
+		if Data.current_wave == 49 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_level5_hidden_archive2_shown:
+			GameDialogueManager.show_dialogue_level5_hidden_archive2()
+	
+		if Data.current_wave == 50 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_level5_final_fragment_shown:
+			GameDialogueManager.show_dialogue_level5_final_fragment()
 
 		if ui and ui.is_auto_enabled():
 			start_wave()
@@ -95,8 +104,14 @@ func start_wave() -> void:
 		GameDialogueManager.show_dialogue_level4_quiz2()
 	if Data.current_wave == 36 and !Data.is_sandbox and !GameDialogueManager.is_level4_ddos_shown:
 		GameDialogueManager.show_dialogue_level4_ddos()
-	if Data.current_wave == 38 and !Data.is_sandbox and !GameDialogueManager.is_level4_ddos_shown:
-		GameDialogueManager.show_dialogue_level4_ddos()
+	if Data.current_wave == 38 and !Data.is_sandbox and !GameDialogueManager.is_level4_ransomware_shown:
+		GameDialogueManager.show_dialogue_level4_ransomware()
+	if Data.current_wave == 40 and !Data.is_sandbox and !GameDialogueManager.is_boss4_shown:
+		GameDialogueManager.show_dialogue_level4_boss4()
+	if Data.current_wave == 43 and !Data.is_sandbox and !GameDialogueManager.is_zero_day_shown:
+		GameDialogueManager.show_dialogue_level5_zero_day()
+	if Data.current_wave == 35 and !Data.is_sandbox and !GameDialogueManager.is_level5_quiz3_shown:
+		GameDialogueManager.show_dialogue_level5_quiz3()
 	
 	
 	match Data.current_wave:

@@ -113,7 +113,8 @@ Player: What?! It is extorting us.
 Odysseus: Well, that is what it is designed to do.
 => END
 
-~ boss4
+~ Boss4
+do GameDialogueManager.pause_game(true)
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
@@ -126,7 +127,12 @@ System: Threat Identified. NOTPETYA.
 NOTPETYA: SEVERE DAMAGE DETECTED.
 NOTPETYA: R3C0V3RY_F0UND.
 Player: That sounds familiar.
+do GameDialogueManager.show_enemy("notpetya", 17)
+=> END
+
+~ Boss4_2
 #[Boss Appears]
+do GameDialogueManager.pause_game(true)
 NOTPETYA: Pay now to restore health.
 - Pay 3000 Gold
 	NOTPETYA: *Grin*
@@ -134,19 +140,20 @@ NOTPETYA: Pay now to restore health.
 	Odysseus: It’s a trap!
 #	[NOTPETYA gains speed & damage buff]
 - Ignore
-NOTPETYA: REQUEST DENIED.
-NOTPETYA: RECOVERY IS AN ILLUSION.
-Odysseus: Good choice, you didn’t fall into deception.
-Odysseus: NOTPETYA never cared about payment. Only destruction.
+	NOTPETYA: REQUEST DENIED.
+	NOTPETYA: RECOVERY IS AN ILLUSION.
+	Odysseus: Good choice, you didn’t fall into deception.
+	Odysseus: NOTPETYA never cared about payment. Only destruction.
+
 => END
 
-~ boss4_hp
+~ Boss4_hp
 NOTPETYA: MYDOOM..
 NOTPETYA: IS.. COMING..
 Player: That name again..
 => END
 
-~ boss4_defeated
+~ Boss4_defeated
 NOTPETYA: OPERATION..
 NOTPETYA: SUCCESSFUL..
 Player: Successful?

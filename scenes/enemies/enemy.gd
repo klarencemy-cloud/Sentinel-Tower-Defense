@@ -378,6 +378,15 @@ func hit(damage: int = 1, tower_id: int = -1):
 		elif Data.current_wave == 30 and !Data.is_sandbox and !GameDialogueManager.is_boss3_defeated:
 			if health <= 0:
 				GameDialogueManager.show_dialogue_level3_boss3_defeated()
+
+	if enemy_type == $Boss4: # to check the health of boss4 for dialogue
+		if Data.current_wave == 40 and !Data.is_sandbox and !GameDialogueManager.is_boss4_hp_shown:
+			if health < (float(Data.ENEMY_DATA[Data.Enemy.BOSS2]["health"]) / 2):
+				GameDialogueManager.show_dialogue_level4_boss4_hp()
+		elif Data.current_wave == 40 and !Data.is_sandbox and !GameDialogueManager.is_boss4_defeated_shown:
+			if health <= 0:
+				GameDialogueManager.show_dialogue_level4_boss4_defeated()
+				
 	show_damage(actual_damage)
 
 	#Give damage in damage global data

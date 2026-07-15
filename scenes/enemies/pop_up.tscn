@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bgd5c2bukefyk" path="res://graphics/icons/damage.png" id="7_hdsen"]
 [ext_resource type="Texture2D" uid="uid://dvk31x3ftr3ux" path="res://graphics/icons/ms.png" id="8_hdsen"]
 [ext_resource type="Texture2D" uid="uid://bylfjvl554lgh" path="res://graphics/container/upper.png" id="8_pntdg"]
+[ext_resource type="Texture2D" uid="uid://dc1008xax0yk6" path="res://graphics/enemies/enemies4.png" id="9_rq1w3"]
 [ext_resource type="FontFile" uid="uid://cxqairacw6y1n" path="res://font/Libre_Franklin/static/LibreFranklin-ThinItalic.ttf" id="10_bxm1x"]
 
 [sub_resource type="Gradient" id="Gradient_ysedr"]
@@ -333,6 +334,34 @@ region = Rect2(192, 768, 192, 192)
 atlas = ExtResource("2_t8vrm")
 region = Rect2(384, 768, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_66pc3"]
+atlas = ExtResource("9_rq1w3")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j6sb"]
+atlas = ExtResource("9_rq1w3")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_707et"]
+atlas = ExtResource("9_rq1w3")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3etc7"]
+atlas = ExtResource("9_rq1w3")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c1hh"]
+atlas = ExtResource("9_rq1w3")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p5x0"]
+atlas = ExtResource("9_rq1w3")
+region = Rect2(192, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc7x3"]
+atlas = ExtResource("9_rq1w3")
+region = Rect2(384, 0, 192, 256)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2bfdt"]
 atlas = ExtResource("2_t8vrm")
 region = Rect2(896, 0, 128, 192)
@@ -457,6 +486,18 @@ region = Rect2(384, 0, 192, 192)
 atlas = ExtResource("3_nnuf7")
 region = Rect2(192, 0, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dcfn"]
+atlas = ExtResource("3_nnuf7")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u210w"]
+atlas = ExtResource("3_nnuf7")
+region = Rect2(256, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch7cg"]
+atlas = ExtResource("3_nnuf7")
+region = Rect2(512, 768, 256, 256)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3554a"]
 atlas = ExtResource("3_nnuf7")
 region = Rect2(0, 384, 192, 192)
@@ -561,6 +602,37 @@ animations = [{
 "loop": true,
 "name": &"insider",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66pc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j6sb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_707et")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3etc7")
+}],
+"loop": true,
+"name": &"mydoom",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c1hh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p5x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jc7x3")
+}],
+"loop": true,
+"name": &"notpetya",
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -689,6 +761,20 @@ animations = [{
 "loop": true,
 "name": &"virus",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dcfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u210w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch7cg")
+}],
+"loop": true,
+"name": &"wannacry",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -909,8 +995,9 @@ texture_filter = 2
 position = Vector2(966.4614, 408.80856)
 scale = Vector2(1.3081704, 1.3081703)
 sprite_frames = SubResource("SpriteFrames_xms32")
-animation = &"conficker"
+animation = &"zero"
 autoplay = "spam"
+frame_progress = 0.2870423
 
 [node name="Label" type="Label" parent="Pop/Animation" unique_id=1896812019]
 layout_mode = 0
@@ -985,8 +1072,9 @@ texture_filter = 2
 position = Vector2(325.99988, 381)
 scale = Vector2(2.534424, 2.534424)
 sprite_frames = SubResource("SpriteFrames_xms32")
-animation = &"trojan"
+animation = &"mydoom"
 autoplay = "creds"
+frame_progress = 0.98643744
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Pop/Info/DisplayContainer/Control" unique_id=252955445]
 light_mask = 2

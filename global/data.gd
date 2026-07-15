@@ -32,7 +32,7 @@ var wave_started: bool = false
 
 
 var before_level_index: int
-var current_level_index: int = 3 # map count 0 = level 1
+var current_level_index: int = 4 # map count 0 = level 1
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
@@ -472,7 +472,7 @@ var health: float = default_health:
 			get_tree().paused = true
 
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 38 # wave count
+var current_wave: int = 41 # wave count
 
 func reset_game():
 	money = default_money

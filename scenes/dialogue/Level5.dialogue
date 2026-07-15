@@ -16,22 +16,27 @@ Odysseus: Maybe we'll find additional hints along the way.
 => END
 
 ~ zero_day
+do GameDialogueManager.pause_game(true)
 Zero-Day: I am the flaw that is never found.
 Player: It seems undetectable to our defenses.
 Odysseus: Zero-Day.
 Odysseus: A threat that no one knows exists or hasn’t been patched yet!
 #function to activate zero day pop-up card
+do GameDialogueManager.show_enemy("zero", 13)
+=> END
+
+~ zero_day2
 Player: How do we stop it?
 Odysseus: Deploy Patch Management System.
 => END
 
 ~ wrong_ans3
-Odysseus: C’mon can your defenses detect a threat it can’t even detect? => quiz3
-=> END
+Odysseus: C’mon can your defenses detect a threat it can’t even detect?
+=> quiz3
 
 ~ quiz3
 Odysseus: I’m detecting multiple Zero-Days ahead. What should we do?
-- eploy detection towers and strengthen layered defenses to identify and contain the Zero-Days before they spread.
+- Deploy detection towers and strengthen layered defenses to identify and contain the Zero-Days before they spread.
 	Odysseus: You’re finally thinking like a Sentinel.
 	Player: Like what?
 	Odysseus: ..
