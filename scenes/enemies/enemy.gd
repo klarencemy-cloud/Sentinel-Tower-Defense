@@ -235,8 +235,6 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 
 	if enemy_type != $Worm:
 		path_follow.rotates = false
-		print(path_follow.rotates)
-	
 	
 	if enemy_type_stats in [
 		Data.Enemy.BOSS1,
@@ -360,10 +358,18 @@ func hit(damage: int = 1, tower_id: int = -1):
 	if not $AudioStreamPlayer2D.stream:
 		$AudioStreamPlayer2D.stream = preload("res://audio/impact.1.ogg")
 
-	if enemy_type == $Boss1:
-		print("Boss1", health)
+	if enemy_type == $Boss1: # to check the health of boss1 for dialogue
+		if Data.current_wave == 11 and !Data.is_sandbox and !GameDialogueManager.is_boss1_defeated:
+			if health <= 0:
+				GameDialogueManager.show_dialogue_boss1_defeated()
 
-
+	if enemy_type == $Boss2: # to check the health of boss2 for dialogue
+		if Data.current_wave == 20 and !Data.is_sandbox and !GameDialogueManager.is_leve2_boss2_hp_shown:
+			if health < (float(Data.ENEMY_DATA[Data.Enemy.BOSS2]["health"]) / 2):
+				GameDialogueManager.show_dialogue_level2_boss2_hp()
+		elif Data.current_wave == 20 and !Data.is_sandbox and !GameDialogueManager.is_level2_boss2_defeated:
+			if health <= 0:
+				GameDialogueManager.show_dialogue_level2_boss2_defeated()
 	show_damage(actual_damage)
 
 	#Give damage in damage global data

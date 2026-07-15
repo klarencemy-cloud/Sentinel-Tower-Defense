@@ -53,10 +53,6 @@ func update_wave_state() -> void:
 		if Data.current_wave == 5 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2:
 			GameDialogueManager.show_dialogue_server_upgrade_2()
 
-		if Data.current_wave == 11 and Data.current_level_index == 0 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_boss1_defeated:
-			GameDialogueManager.show_dialogue_boss1_defeated()
-
-
 		if ui and ui.is_auto_enabled():
 			start_wave()
 			
@@ -80,6 +76,8 @@ func start_wave() -> void:
 		GameDialogueManager.show_dialogue_level2_botnet()
 	if Data.current_wave == 20 and !Data.is_sandbox and !GameDialogueManager.is_level2_boss2_shown:
 		GameDialogueManager.show_dialogue_level2_boss2()
+	if Data.current_wave == 22 and !Data.is_sandbox and !GameDialogueManager.is_level3_credential_shown:
+		GameDialogueManager.show_dialogue_level3_credential()
 	
 
 	match Data.current_wave:

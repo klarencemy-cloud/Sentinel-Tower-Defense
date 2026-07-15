@@ -289,13 +289,13 @@ region = Rect2(1280, 576, 128, 192)
 atlas = ExtResource("2_t8vrm")
 region = Rect2(1408, 576, 128, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w0wyr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxm1x"]
 atlas = ExtResource("3_nnuf7")
-region = Rect2(1280, 270, 256, 270)
+region = Rect2(1280, 256, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yg3hf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq1w3"]
 atlas = ExtResource("3_nnuf7")
-region = Rect2(1536, 270, 256, 270)
+region = Rect2(1536, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4ea4"]
 atlas = ExtResource("2_t8vrm")
@@ -506,10 +506,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w0wyr")
+"texture": SubResource("AtlasTexture_bxm1x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yg3hf")
+"texture": SubResource("AtlasTexture_rq1w3")
 }],
 "loop": true,
 "name": &"conficker",
@@ -909,9 +909,8 @@ texture_filter = 2
 position = Vector2(966.4614, 408.80856)
 scale = Vector2(1.3081704, 1.3081703)
 sprite_frames = SubResource("SpriteFrames_xms32")
-animation = &"virus"
+animation = &"conficker"
 autoplay = "spam"
-frame_progress = 0.907912
 
 [node name="Label" type="Label" parent="Pop/Animation" unique_id=1896812019]
 layout_mode = 0
@@ -986,7 +985,7 @@ texture_filter = 2
 position = Vector2(325.99988, 381)
 scale = Vector2(2.534424, 2.534424)
 sprite_frames = SubResource("SpriteFrames_xms32")
-animation = &"virus"
+animation = &"conficker"
 autoplay = "creds"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Pop/Info/DisplayContainer/Control" unique_id=252955445]

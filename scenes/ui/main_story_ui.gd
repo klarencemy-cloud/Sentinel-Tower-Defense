@@ -84,10 +84,14 @@ func _process(delta: float) -> void:
 		difficulty.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
 
 	elif wave_num <= 20 and wave_num >= 11:
+		difficulty.text = "EASY"
 		boss.texture = load("res://graphics/map/map2.png")
+		difficulty.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
 
 	elif wave_num <= 30 and wave_num >= 21:
+		difficulty.text = "EASY"
 		boss.texture = load("res://graphics/map/map3.png")
+		difficulty.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
 	
 	elif wave_num <= 40 and wave_num >= 31:
 		difficulty.text = "MEDIUM"

@@ -31,7 +31,11 @@ Odysseus: I don’t know. But I guess that we will encounter it eventually.
 
 ~ credential_stuffing
 Credential Stuffing: Let’s see what works.
+do GameDialogueManager.show_enemy("creds", 6)
 #function to activate credential stuffing pop-up card
+=> END
+
+~ credential_stuffing2
 Credential Stuffing: I'll take that.
 Player: What’s that thing doing?
 Odysseus: That’s the CS,  it copies the ability of a nearby threat and uses it to attack. They do that by using stolen credentials, to gain access, and execute criminal activity.

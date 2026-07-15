@@ -78,10 +78,12 @@ Odysseus: We can’t afford to let it live longer, its networks keep on expandin
 => END
 
 ~ Boss2_hp
+do GameDialogueManager.pause_game(true)
 CONFICKER: The propagation cannot be stopped!!
 Botnet Node(s): C0NNECT3D..C0NNECT3D..C0NNECT3D………………….
 Player: We’re getting surrounded!
 Odysseus: Those are mere distractions, destroy the source!
+do GameDialogueManager.pause_game(false)
 => END
 
 ~ Boss2_defeated

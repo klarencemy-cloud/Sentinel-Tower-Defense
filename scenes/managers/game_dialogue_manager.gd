@@ -154,7 +154,7 @@ func show_dialogue_boss1_2(): # used in popup
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1_2")
 	is_boss1_shown = true
 
-func show_dialogue_boss1_defeated(): # used in wave manager
+func show_dialogue_boss1_defeated(): # used in enemy
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1_defeated")
 	is_boss1_defeated = true
@@ -213,3 +213,34 @@ func show_dialogue_level2_boss2_2(): # used in popup
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "Boss2_2")
 	is_level2_boss2_2_shown = true
+
+
+var is_leve2_boss2_hp_shown = false
+func show_dialogue_level2_boss2_hp(): # used in enemy
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "Boss2_hp")
+	is_leve2_boss2_hp_shown = true
+
+var is_level2_boss2_defeated
+func show_dialogue_level2_boss2_defeated(): # used in enemy
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "Boss2_defeated")
+	is_level2_boss2_defeated = true
+
+var is_level3_start_shown = false
+func show_dialogue_level3_start(): # used in loading
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "start")
+	is_level3_start_shown = true
+
+var is_level3_credential_shown = false
+func show_dialogue_level3_credential(): # used in loading
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "credential_stuffing")
+	is_level3_credential_shown = true
+
+var is_level3_credential2_shown = false
+func show_dialogue_level3_credential2(): # used in popup
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "credential_stuffing2")
+	is_level3_credential2_shown = true
