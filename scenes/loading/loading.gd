@@ -59,7 +59,9 @@ func _process(delta: float) -> void:
 			get_tree().change_scene_to_packed(scene)
 			if !Data.is_sandbox and Data.current_wave == 1 and !GameDialogueManager.is_introduction_shown:
 				GameDialogueManager.show_dialogue_introduction()
-			if !Data.is_sandbox and Data.current_wave == 11:
+			if !Data.is_sandbox and Data.current_wave == 11 and !GameDialogueManager.is_level2_start_shown:
 				GameDialogueManager.show_dialogue_level2_start()
-			if !Data.is_sandbox and Data.current_wave == 21:
+			if !Data.is_sandbox and Data.current_wave == 21 and !GameDialogueManager.is_level3_start_shown:
 				GameDialogueManager.show_dialogue_level3_start()
+			if !Data.is_sandbox and Data.current_wave == 31 and !GameDialogueManager.is_level4_start_shown:
+				GameDialogueManager.show_dialogue_level4_start()

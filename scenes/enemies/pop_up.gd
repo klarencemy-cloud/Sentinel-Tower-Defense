@@ -50,6 +50,9 @@ func _on_info_gui_input(event: InputEvent) -> void:
 			if !GameDialogueManager.is_insider2_shown and Data.current_wave == 28:
 				GameDialogueManager.is_insider2_shown = true
 				GameDialogueManager.show_dialogue_level3_insider2()
+			if !GameDialogueManager.is_level4_ransomware2_shown and Data.current_wave == 38:
+				GameDialogueManager.is_level4_ransomware2_shown = true
+				GameDialogueManager.show_dialogue_level4_ransomware2()
 			await get_tree().create_timer(1).timeout
 			get_tree().paused = false
 			if GameDialogueManager.is_autoplay:

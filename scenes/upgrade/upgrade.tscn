@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cbl5d2bdrdjmn" path="res://graphics/container/stats.png" id="8_x71o2"]
 [ext_resource type="Texture2D" uid="uid://bglyuypj0sahq" path="res://graphics/ui/sword.png" id="9_cfr7g"]
 [ext_resource type="Texture2D" uid="uid://b82cq14jn2r1" path="res://graphics/buttons/UpgradeBtn.png" id="9_x71o2"]
+[ext_resource type="FontFile" uid="uid://le60lmnqi5fk" path="res://font/Libre_Franklin/static/LibreFranklin-Thin.ttf" id="10_86m51"]
 [ext_resource type="Texture2D" uid="uid://bfxkorh1n7m3c" path="res://graphics/container/UpgradePanel.png" id="10_tq3cf"]
 [ext_resource type="Texture2D" uid="uid://dw8ga7758gp7i" path="res://graphics/buttons/1stTierClicked.png" id="11_aprt0"]
 [ext_resource type="Texture2D" uid="uid://bsnmf7dwoo18l" path="res://graphics/buttons/2ndTierUnclicked.png" id="12_lg71s"]
@@ -48,10 +49,10 @@ anchor_left = 0.753
 anchor_top = 0.71300006
 anchor_right = 0.753
 anchor_bottom = 0.71300006
-offset_left = -275.76
-offset_top = 4.959961
-offset_right = -91.76001
-offset_bottom = 68.95996
+offset_left = -147.76001
+offset_top = -4.040039
+offset_right = 36.23999
+offset_bottom = 59.95996
 texture_normal = ExtResource("9_x71o2")
 
 [node name="Label" type="Label" parent="UpgradeButton" unique_id=200488369]
@@ -366,9 +367,9 @@ vertical_alignment = 1
 visible = false
 layout_mode = 0
 offset_left = 24.0
-offset_top = 234.0
+offset_top = 256.0
 offset_right = 473.0
-offset_bottom = 480.0
+offset_bottom = 502.0
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StatPanel/AbilityPanel" unique_id=1257084174]
@@ -379,26 +380,30 @@ theme_override_constants/separation = 28
 [node name="Passive" type="Label" parent="StatPanel/AbilityPanel/VBoxContainer" unique_id=1837062741]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("10_86m51")
+theme_override_font_sizes/font_size = 16
 text = "Bullet bounces to the nearby enemy that deals 50% of the original damage."
 autowrap_mode = 2
 
 [node name="Tier1Ability" type="Label" parent="StatPanel/AbilityPanel/VBoxContainer" unique_id=1483426784]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("10_86m51")
+theme_override_font_sizes/font_size = 16
 text = "aa"
 autowrap_mode = 3
 
 [node name="Tier2Ability" type="Label" parent="StatPanel/AbilityPanel/VBoxContainer" unique_id=265199765]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("10_86m51")
+theme_override_font_sizes/font_size = 16
 text = "a"
 autowrap_mode = 3
 
 [node name="Tier3Ability" type="Label" parent="StatPanel/AbilityPanel/VBoxContainer" unique_id=1228887189]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("10_86m51")
+theme_override_font_sizes/font_size = 16
 text = "a"
 autowrap_mode = 3
 

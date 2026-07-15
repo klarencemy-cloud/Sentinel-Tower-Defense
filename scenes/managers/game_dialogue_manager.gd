@@ -289,7 +289,55 @@ func show_dialogue_level3_boss3_hp(): # used wave manager
 	is_boss3_hp_shown = true
 
 var is_boss3_defeated = false
-func show_dialogue_level3_boss3_defeated(): # used wave manager
+func show_dialogue_level3_boss3_defeated(): # used enemy
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "Boss3_defeated")
 	is_boss3_defeated = true
+
+var is_level4_start_shown = false
+func show_dialogue_level4_start(): # used loading
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "start")
+	is_level4_start_shown = true
+
+var is_level4_rootkit_shown = false
+func show_dialogue_level4_rootkit(): # used wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "rootkit")
+	is_level4_rootkit_shown = true
+
+var is_level4_sql_shown = false
+func show_dialogue_level4_sql(): # used wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "sql")
+	is_level4_sql_shown = true
+
+var is_level4_quiz2_shown = false
+func show_dialogue_level4_quiz2(): # used wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "quiz2")
+	is_level4_quiz2_shown = true
+
+var is_level4_ddos_shown = false
+func show_dialogue_level4_ddos(): # used wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "ddos")
+	is_level4_ddos_shown = true
+
+var is_strange_discovery_shown # used wave manager
+func show_dialogue_level4_strange_discovery(): # used wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "strange_discovery")
+	is_strange_discovery_shown = true
+
+var is_level4_ransomware_shown = false
+func show_dialogue_level4_ransomware(): # used wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "ransomware")
+	is_level4_ransomware_shown = true
+
+var is_level4_ransomware2_shown = false
+func show_dialogue_level4_ransomware2(): # used popup
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "ransomware2")
+	is_level4_ransomware2_shown = true

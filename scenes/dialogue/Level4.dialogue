@@ -10,6 +10,7 @@ Odysseus:  But I have a feeling we’re missing something.
 => END
 
 ~ rootkit
+do GameDialogueManager.pause_game(true)
 #[The ground of the battlefield cracked suddenly]
 RootKit: B4CKd00r_EST4BLISH3D.
 #[RootKit digs a tunnel beneath the battlefield]
@@ -18,9 +19,11 @@ Odysseus: It created a path. Not just for itself. Others can enter and use that 
 Player: Now they can attack underneath too?
 Odysseus: They are learning. *Smirk*
 #function to activate rootkit pop-up card
+do GameDialogueManager.show_enemy("rootkit", 9)
 => END
 
 ~ sql
+do GameDialogueManager.pause_game(true)
 SQL Injection: PARSING_DATABASE.
 Player: Did that thing just skip half of the path!?
 Odysseus: SQL Injection.
@@ -28,14 +31,16 @@ Odysseus: it is a cyberattack where malicious SQL code is inserted into vulnerab
 Odysseus: That thing exploits weaknesses and bypasses security checkpoints, instead of attacking defenses directly.
 Player: Too easy.
 #function to activate sql injection pop-up card
+do GameDialogueManager.show_enemy("sql", 10)
 => END
 
 ~ wrong_ans2
 Odysseus: Focus on the question. 
 Odysseus: What do you think makes an SQL injection a dangerous enemy? => quiz2 
-=> END
+=> quiz2
 
 ~ quiz2
+do GameDialogueManager.pause_game(true)
 Odysseus: I’m detecting multiple SQL Injections ahead. What should we do?
 - Place the towers near the SERVER to stop the threats.
 	=>< wrong_ans2
@@ -44,12 +49,15 @@ Odysseus: I’m detecting multiple SQL Injections ahead. What should we do?
 - Strengthen the areas near vulnerable checkpoints and prioritize eliminating SQL Injections before they exploit a gap.
 	Odysseus: Excellent.
 	Odysseus: The threats are evolving.
-	Odysseus: And you must evolve faster. => END
+	Odysseus: And you must evolve faster. 
+	do GameDialogueManager.start_wave()
+	=> END
 - Wait for the SQL Injection to get closer to the SERVER then place a tower.
 	=>< wrong_ans2
 => END
 
 ~ ddos
+do GameDialogueManager.pause_game(true)
 DoS: INFECT..
 DoS: MERGING..
 #[Dos Merged]
@@ -59,10 +67,12 @@ Player: Did they just merge together?
 Odysseus: Yes. They are weak individually.
 Odysseus: So they group to be overwhelming.
 DDoS: We are one
+do GameDialogueManager.show_enemy("ddos", 11)
 #function to activate DDOS pop-up card
 => END
 
 ~ strange_discovery
+do GameDialogueManager.pause_game(true)
 #[After defeating the wave37]
 Odysseus: Scanning Anomaly.
 Player: What is that?
@@ -85,11 +95,16 @@ Odysseus: Maybe, if we can find its missing fragments.
 => END
 
 ~ ransomware
+do GameDialogueManager.pause_game(true)
 Ransomware: Files encrypted..
 Ransomware: Tick..Tock..
 #[A nearby tower malfuctioned]
 Player: What happened?
 #function to activate ransomware pop-up card
+do GameDialogueManager.show_enemy("ransomware",12)
+=> END
+
+~ ransomware2
 Odysseus: Ransomware.
 Odysseus: It was a malware that blocks access to a computer system or encrypts its files.
 Odysseus: Now,  It locked one of your towers to conquer the battlefield.

@@ -52,6 +52,9 @@ func update_wave_state() -> void:
 			
 		if Data.current_wave == 5 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2:
 			GameDialogueManager.show_dialogue_server_upgrade_2()
+	
+		if Data.current_wave == 38 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2:
+			GameDialogueManager.show_dialogue_level4_strange_discovery()
 
 		if ui and ui.is_auto_enabled():
 			start_wave()
@@ -84,6 +87,16 @@ func start_wave() -> void:
 		GameDialogueManager.show_dialogue_level3_quiz1()
 	if Data.current_wave == 30 and !Data.is_sandbox and !GameDialogueManager.is_boss3_shown:
 		GameDialogueManager.show_dialogue_level3_boss3()
+	if Data.current_wave == 32 and !Data.is_sandbox and !GameDialogueManager.is_level4_rootkit_shown:
+		GameDialogueManager.show_dialogue_level4_rootkit()
+	if Data.current_wave == 34 and !Data.is_sandbox and !GameDialogueManager.is_level4_sql_shown:
+		GameDialogueManager.show_dialogue_level4_sql()
+	if Data.current_wave == 35 and !Data.is_sandbox and !GameDialogueManager.is_level4_quiz2_shown:
+		GameDialogueManager.show_dialogue_level4_quiz2()
+	if Data.current_wave == 36 and !Data.is_sandbox and !GameDialogueManager.is_level4_ddos_shown:
+		GameDialogueManager.show_dialogue_level4_ddos()
+	if Data.current_wave == 38 and !Data.is_sandbox and !GameDialogueManager.is_level4_ddos_shown:
+		GameDialogueManager.show_dialogue_level4_ddos()
 	
 	
 	match Data.current_wave:
