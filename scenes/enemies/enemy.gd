@@ -74,6 +74,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$hpbar.value = Data.ENEMY_DATA[type]['health']
 	path_follow = new_path_follow
 	previous_pos = path_follow.global_position
+	path_follow.rotation = 0.0
 	
 
 	health = Data.ENEMY_DATA[type]['health']
