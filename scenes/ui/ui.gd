@@ -221,7 +221,9 @@ func _schedule_next_ad():
 		ad_timer.stop()
 		return
 
-	ad_timer.start(20.0)
+	var ad_count: int = min(Data.active_adware, 10)
+	var wait_time: float = 15.0 - (float(ad_count - 1) * 11.0 / 9.0)
+	ad_timer.start(wait_time)
 
 func _spawn_random_ad():
 	if Data.active_adware <= 0:

@@ -173,6 +173,7 @@ func show_ad():
 		return
 
 	ad_button.texture_normal = ads.pick_random()
+	ad_button.scale = Vector2(3.5, 3.5)
 	ad_button.visible = true
 	ad_active = true
 	disabled_by_ad = true

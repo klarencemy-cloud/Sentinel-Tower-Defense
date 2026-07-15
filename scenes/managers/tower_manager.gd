@@ -139,7 +139,8 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	tower.connect("removed", _on_tower_removed)
 	_get_tower_parent().add_child(tower)
 	EnemyTower.register_tower(tower.tower_id, selected_tower)
-
+	
+	
 	place_tower = false
 	if using_free:
 		var remaining: int = Data.free_towers.get(selected_tower, 0)
@@ -158,6 +159,12 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.refresh_tower_cards()
+		
+		if Data.active_adware > 0:
+			ui._schedule_next_ad()
+
+		if Data.active_ransomware > 0:
+			ui._schedule_next_ransomware()
 
 	if Data.TOWER_DATA[selected_tower]["name"] == "Spam Filter" and !GameDialogueManager.is_introduction_spam_filter and !Data.is_sandbox and (Data.current_wave == 0 or Data.current_wave == 1):
 		GameDialogueManager.show_dialogue_spam_filter()

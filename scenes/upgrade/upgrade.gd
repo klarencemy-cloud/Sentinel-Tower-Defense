@@ -31,6 +31,8 @@ func set_selected_tower(tower_enum: Data.Tower) -> void:
 
 	update_stat_label()
 	update_upgrade_ui()
+	update_tier_buttons()
+	_set_tier_view(1)
 
 
 func update_stat_label() -> void:
@@ -50,6 +52,13 @@ func update_stat_label() -> void:
 	$StatPanel/ScrollContainer/VBoxContainer/CritRContainer/CritRPic/CritRText.text = str(data['crit rate']) + "%"
 	$StatPanel/ScrollContainer/VBoxContainer/CritDContainer/CritDPic/CritDText.text = str(data['crit damage']) + "%"
 
+	upgrade1_level = int(data.get('upgrade1level', 0))
+	upgrade2_level = int(data.get('upgrade2level', 0))
+	upgrade3_level = int(data.get('upgrade3level', 0))
+	upgrade4_level = int(data.get('upgrade4level', 0))
+	upgrade5_level = int(data.get('upgrade5level', 0))
+	upgrade6_level = int(data.get('upgrade6level', 0))
+
 	$UpgradePanel/Upgrade1/Upgrade1Label.text = _format_upgrade_label(data['upgrade1'], 1, upgrade1_level)
 	$UpgradePanel/Upgrade2/Upgrade2Label.text = _format_upgrade_label(data['upgrade2'], 2, upgrade2_level)
 	$UpgradePanel/Upgrade3/Upgrade3Label.text = _format_upgrade_label(data['upgrade3'], 3, upgrade3_level)
@@ -63,13 +72,6 @@ func update_stat_label() -> void:
 	_set_upgrade_amount_label(4, data['upgrade4'], data.get('upgrade4amount', 0))
 	_set_upgrade_amount_label(5, data['upgrade5'], data.get('upgrade5amount', 0))
 	_set_upgrade_amount_label(6, data['upgrade6'], data.get('upgrade6amount', 0))
-
-	upgrade1_level = data['upgrade1level']
-	upgrade2_level = data['upgrade2level']
-	upgrade3_level = data['upgrade3level']
-	upgrade4_level = data['upgrade4level']
-	upgrade5_level = data['upgrade5level']
-	upgrade6_level = data['upgrade6level']
 
 
 func update_upgrade_ui() -> void:
@@ -202,6 +204,8 @@ func _on_sentinel_pressed() -> void:
 func _on_upgrade_button_pressed() -> void:
 	update_stat_label()
 	update_upgrade_ui()
+	update_tier_buttons()
+	_set_tier_view(1)
 	$StatPanel/CurrentStat.text = $BigTowerName.text
 	%SentinelsContainer.visible = false
 
@@ -291,71 +295,66 @@ func apply_upgrade(upgrade_name: String) -> void:
 	update_stat_label()
 
 
-func _on_tier_1_btn_pressed() -> void:
-	$UpgradePanel/Upgrade1.visible = true
-	$UpgradePanel/Upgrade2.visible = true
-	$UpgradePanel/Upgrade3.visible = false
-	$UpgradePanel/Upgrade4.visible = false
-	$UpgradePanel/Upgrade5.visible = false
-	$UpgradePanel/Upgrade6.visible = false
-	$UpgradePanel/Tier1Btn.texture_normal = load("res://graphics/buttons/1stTierClicked.png")
-	$UpgradePanel/Tier2Btn.texture_normal = load("res://graphics/buttons/2ndTierUnclicked.png")
-	$UpgradePanel/Tier3Btn.texture_normal = load("res://graphics/buttons/3rdTierUnclicked.png")
+func _set_tier_view(tier: int) -> void:
+	var panel = $UpgradePanel
+	for upgrade_name in ["Upgrade1", "Upgrade2", "Upgrade3", "Upgrade4", "Upgrade5", "Upgrade6"]:
+		panel.get_node(upgrade_name).visible = false
 
+	match tier:
+		1:
+			panel.get_node("Upgrade1").visible = true
+			panel.get_node("Upgrade2").visible = true
+		2:
+			panel.get_node("Upgrade3").visible = true
+			panel.get_node("Upgrade4").visible = true
+		3:
+			panel.get_node("Upgrade5").visible = true
+			panel.get_node("Upgrade6").visible = true
+
+	panel.get_node("Tier1Btn").texture_normal = load("res://graphics/buttons/1stTier%s.png" % ("Clicked" if tier == 1 else "Unclicked"))
+	panel.get_node("Tier2Btn").texture_normal = load("res://graphics/buttons/2ndTier%s.png" % ("Clicked" if tier == 2 else "Unclicked"))
+	panel.get_node("Tier3Btn").texture_normal = load("res://graphics/buttons/3rdTier%s.png" % ("Clicked" if tier == 3 else "Unclicked"))
+
+func _on_tier_1_btn_pressed() -> void:
+	_set_tier_view(1)
 
 func _on_tier_2_btn_pressed() -> void:
 	if $UpgradePanel/Tier2Btn.disabled:
 		return
-
-	$UpgradePanel/Upgrade1.visible = false
-	$UpgradePanel/Upgrade2.visible = false
-	$UpgradePanel/Upgrade3.visible = true
-	$UpgradePanel/Upgrade4.visible = true
-	$UpgradePanel/Upgrade5.visible = false
-	$UpgradePanel/Upgrade6.visible = false
-	$UpgradePanel/Tier1Btn.texture_normal = load("res://graphics/buttons/1stTierUnclicked.png")
-	$UpgradePanel/Tier2Btn.texture_normal = load("res://graphics/buttons/2ndTierClicked.png")
-	$UpgradePanel/Tier3Btn.texture_normal = load("res://graphics/buttons/3rdTierUnclicked.png")
+	_set_tier_view(2)
 
 func _on_tier_3_btn_pressed() -> void:
 	if $UpgradePanel/Tier3Btn.disabled:
 		return
-
-	$UpgradePanel/Upgrade1.visible = false
-	$UpgradePanel/Upgrade2.visible = false
-	$UpgradePanel/Upgrade3.visible = false
-	$UpgradePanel/Upgrade4.visible = false
-	$UpgradePanel/Upgrade5.visible = true
-	$UpgradePanel/Upgrade6.visible = true
-	$UpgradePanel/Tier1Btn.texture_normal = load("res://graphics/buttons/1stTierUnclicked.png")
-	$UpgradePanel/Tier2Btn.texture_normal = load("res://graphics/buttons/2ndTierUnclicked.png")
-	$UpgradePanel/Tier3Btn.texture_normal = load("res://graphics/buttons/3rdTierClicked.png")
+	_set_tier_view(3)
 
 func update_tier_buttons():
-	# Tier 1 always available
 	$UpgradePanel/Tier1Btn.disabled = false
 
-	# Update tier ability unlocked flags in tower data (persist unlocks)
+	var tier1_unlocked := true
+	var tier2_unlocked := false
+
 	if Data.TOWER_DATA.has(selected_tower):
 		var d = Data.TOWER_DATA[selected_tower]
-		if d.has("tier1abilityunlocked"):
-			d['tier1abilityunlocked'] = (d['upgrade1level'] == 3 and d['upgrade2level'] == 3)
-		if d.has("tier2abilityunlocked"):
-			d['tier2abilityunlocked'] = (d['upgrade3level'] == 3 and d['upgrade4level'] == 3)
-		if d.has("tier3abilityunlocked"):
-			d['tier3abilityunlocked'] = (d['upgrade5level'] == 3 and d['upgrade6level'] == 3)
+		upgrade1_level = int(d.get('upgrade1level', 0))
+		upgrade2_level = int(d.get('upgrade2level', 0))
+		upgrade3_level = int(d.get('upgrade3level', 0))
+		upgrade4_level = int(d.get('upgrade4level', 0))
+		upgrade5_level = int(d.get('upgrade5level', 0))
+		upgrade6_level = int(d.get('upgrade6level', 0))
 
-	# Unlock Tier 2
-	$UpgradePanel/Tier2Btn.disabled = !(
-		upgrade1_level == 3 and
-		upgrade2_level == 3
-	)
+		tier1_unlocked = (upgrade1_level == 3 and upgrade2_level == 3)
+		tier2_unlocked = (upgrade3_level == 3 and upgrade4_level == 3)
 
-	# Unlock Tier 3
-	$UpgradePanel/Tier3Btn.disabled = !(
-		upgrade3_level == 3 and
-		upgrade4_level == 3
-	)
+		if d.has('tier1abilityunlocked'):
+			d['tier1abilityunlocked'] = tier1_unlocked
+		if d.has('tier2abilityunlocked'):
+			d['tier2abilityunlocked'] = tier2_unlocked
+		if d.has('tier3abilityunlocked'):
+			d['tier3abilityunlocked'] = (upgrade5_level == 3 and upgrade6_level == 3)
+
+	$UpgradePanel/Tier2Btn.disabled = !tier1_unlocked
+	$UpgradePanel/Tier3Btn.disabled = !tier2_unlocked
 	
 func update_ability_panel() -> void:
 	var tower_data = Data.TOWER_DATA[selected_tower]

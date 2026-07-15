@@ -135,8 +135,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Adware.visible = true
 			enemy_type = $Adware
 			$Adware.material = $Adware.material.duplicate()
-			Data.active_adware += 1
-			Data.active_adware_changed.emit()
+			_update_active_enemy_counter(Data.Enemy.ADWARE, 1)
 		"spyware":
 			$Spyware.visible = true
 			$SpywareAbility.monitoring = true
@@ -192,7 +191,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Ransomware.visible = true
 			enemy_type = $Ransomware
 			$Ransomware.material = $Ransomware.material.duplicate()
-			Data.active_ransomware += 1
+			_update_active_enemy_counter(Data.Enemy.RANSOMWARE, 1)
 		"zero":
 			$Zero.visible = true
 			enemy_type = $Zero
@@ -309,6 +308,7 @@ func _process(delta: float):
 		var raw_dmg = damage
 		processed_enemy_damage = Defense._dmg_reduc_armor(raw_dmg) # sends dmg to defense_data.gd to reduc dmg based on armor
 		Data.health -= processed_enemy_damage
+		_update_active_enemy_counter(enemy_type_stats, -1)
 		queue_free()
 	if enemy_type_stats == Data.Enemy.SPYWARE:
 		pass # skip the spyware itself
@@ -415,12 +415,7 @@ func hit(damage: int = 1, tower_id: int = -1):
 	# schedule the detached audio to be freed after a short delay
 	get_tree().create_timer(2.0).connect("timeout", Callable(audio, "queue_free"))
 
-	if enemy_type_stats == Data.Enemy.ADWARE:
-		Data.active_adware = max(0, Data.active_adware - 1)
-		Data.active_adware_changed.emit()
-	if enemy_type_stats == Data.Enemy.RANSOMWARE:
-		Data.active_ransomware = max(0, Data.active_ransomware - 1)
-		Data.active_ransomware_changed.emit()
+	_update_active_enemy_counter(enemy_type_stats, -1)
 	if enemy_type_stats == Data.Enemy.DDOS and !is_ddos_clone:
 		dead = true
 		$CollisionShape2D.disabled = true
@@ -450,6 +445,14 @@ func hit(damage: int = 1, tower_id: int = -1):
 	await get_tree().create_timer(0.1).timeout
 	queue_free()
 	
+func _update_active_enemy_counter(enemy_type: Data.Enemy, delta: int) -> void:
+	if enemy_type == Data.Enemy.ADWARE:
+		Data.active_adware = max(0, Data.active_adware + delta)
+		Data.active_adware_changed.emit()
+	elif enemy_type == Data.Enemy.RANSOMWARE:
+		Data.active_ransomware = max(0, Data.active_ransomware + delta)
+		Data.active_ransomware_changed.emit()
+
 func flash():
 	if enemy_tween:
 		enemy_tween.kill()
@@ -488,7 +491,7 @@ func update_hp_bar_position():
 func set_invisible(value: bool) -> void:
 	invisible = value
 	if enemy_type_stats == Data.Enemy.INSIDERTHREAT and enemy_type:
-		enemy_type.modulate.a = 0.5 if invisible else 1.0
+		enemy_type.modulate.a = 0.3 if invisible else 1.0
 		$CollisionShape2D.disabled = invisible
 
 func show_damage(damage: int):
