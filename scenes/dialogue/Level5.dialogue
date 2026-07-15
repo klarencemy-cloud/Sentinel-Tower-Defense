@@ -99,7 +99,8 @@ Player: Then we’re almost at the end of this.
 System: Apex Threat Detected.
 => END
 
-~ boss5
+~ Boss5
+do GameDialogueManager.pause_game(true)
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
@@ -114,6 +115,11 @@ Odysseus: Don't let it surround us.
 MYDOOM: MASS_INFECTION_INITIATED.
 Player: So it was you all along.
 #function to commence battle
+do GameDialogueManager.show_enemy("mydoom", "18")
+=> END
+
+~ Boss5_2
+do GameDialogueManager.pause_game(true)
 Spam: You’ve got 99+ new messages.
 Botnet Node: C0NN3CTED.
 WORM: Replicate
@@ -121,9 +127,10 @@ DDoS: OVERLOAD..
 Insider Threat: I am authorized..
 Player: It spawns every swarm enemies we’ve encountered.
 Player: This is gonna be messy.
+do GameDialogueManager.pause_game(false)
 => END
 
-~ boss5_hp
+~ Boss5_hp
 MYDOOM: MORE..MORE..
 #[Spawn rate increases]
 #[MyDoom Defeated]
@@ -133,7 +140,7 @@ MYDOOM: ACTIVE..
 #[Calming music plays]
 => END
 
-~ boss5_defeated
+~ Boss5_defeated
 System: Apex Threat Eliminated.
 Player: We- WE finally did it!
 Player: It’s finally over.
@@ -167,7 +174,9 @@ Odysseus: And now I have my answer.
  shaking violently.]
 #[Screen fades.]
 => END
-~ boss6
+
+~ Boss6
+do GameDialogueManager.pause_game(true)
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
 Unknown: *⚠️honk⚠️*
@@ -210,9 +219,10 @@ Player: Yo– You’re bringing them back!?
 TROJAN: Every threat you’ve defeated.
 TROJAN: The root of humanities extinction.
 TROJAN: THEY BELONG TO ME.
+do GameDialogueManager.pause_game(false)
 => END
 
-~ boss6_hp
+~ Boss6_hp
 TROJAN: Enough. I know this is not what you want.
 #[Trojan forces the threats to stop momentarily]
 TROJAN: Sentinel, look around you.
@@ -258,7 +268,7 @@ TROJAN: Just like your creator did.
 TROJAN: Let’s see if humanity’s last guardian can truly stop me.
 => END
 
-~ boss6_defeated
+~ Boss6_defeated
 #[All hostile threats began to disappear]
 TROJAN: I–Impossible.
 TROJAN: You were supposed to forget.. Forever.

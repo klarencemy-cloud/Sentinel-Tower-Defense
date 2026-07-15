@@ -59,6 +59,9 @@ func _on_info_gui_input(event: InputEvent) -> void:
 			if !GameDialogueManager.is_zero_day_shown2 and Data.current_wave == 43:
 				GameDialogueManager.is_zero_day_shown2 = true
 				GameDialogueManager.show_dialogue_level5_zero_day2()
+			if !GameDialogueManager.is_level5_boss5_shown2 and Data.current_wave == 50:
+				GameDialogueManager.is_level5_boss5_shown2 = true
+				GameDialogueManager.show_dialogue_level5_boss5_2()
 			await get_tree().create_timer(1).timeout
 			get_tree().paused = false
 			if GameDialogueManager.is_autoplay:

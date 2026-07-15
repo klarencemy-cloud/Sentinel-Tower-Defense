@@ -997,7 +997,7 @@ scale = Vector2(1.3081704, 1.3081703)
 sprite_frames = SubResource("SpriteFrames_xms32")
 animation = &"zero"
 autoplay = "spam"
-frame_progress = 0.2870423
+frame_progress = 0.3162996
 
 [node name="Label" type="Label" parent="Pop/Animation" unique_id=1896812019]
 layout_mode = 0
@@ -1074,7 +1074,7 @@ scale = Vector2(2.534424, 2.534424)
 sprite_frames = SubResource("SpriteFrames_xms32")
 animation = &"mydoom"
 autoplay = "creds"
-frame_progress = 0.98643744
+frame_progress = 0.36655378
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Pop/Info/DisplayContainer/Control" unique_id=252955445]
 light_mask = 2

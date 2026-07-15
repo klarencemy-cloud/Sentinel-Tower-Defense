@@ -408,3 +408,53 @@ func show_dialogue_level5_final_fragment(): # used in wave manager
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "final_fragment")
 	is_level5_final_fragment_shown = true
+
+var is_level5_boss5_shown: bool = false
+func show_dialogue_level5_boss5(): # used in wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "boss5")
+	is_level5_boss5_shown = true
+
+var is_level5_boss5_shown2: bool = false
+func show_dialogue_level5_boss5_2(): # used in popup
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "boss5_2")
+	is_level5_boss5_shown2 = true
+
+var is_level5_boss5_hp_shown: bool = false
+func show_dialogue_level5_boss5_hp(): # used in enemy
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "Boss5_hp")
+	is_level5_boss5_hp_shown = true
+
+
+var is_level5_boss5_defeated_shown: bool = false
+func show_dialogue_level5_boss5_defeated(): # used in enemy
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "Boss5_defeated")
+	is_level5_boss5_defeated_shown = true
+
+var is_level6_boss6_shown: bool = false
+func show_dialogue_level6_boss6(): # used in wave_manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "Boss6")
+	is_level6_boss6_shown = true
+
+
+var is_level6_boss6_hp_shown: bool = false
+func show_dialogue_level6_boss6_hp(): # used in enemy
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "Boss6_hp")
+	is_level6_boss6_hp_shown = true
+
+var is_level6_boss6_defeated_shown: bool = false
+func show_dialogue_level6_boss6_defeated(): # used in enemy
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "Boss6_defeated")
+	is_level6_boss6_defeated_shown = true
+
+var is_story_ends: bool = false
+func show_dialogue_story_ends(): # used in wave
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "ending")
+	is_story_ends = true
