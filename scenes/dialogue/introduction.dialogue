@@ -171,8 +171,11 @@ Odysseus: Specialists fight directly on the Battlefield. They can be dragged and
 
 ~ Boss1
 do GameDialogueManager.pause_game(true)
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
 Player: What’s happening?
 System: Warning. High-Threat enemy detected.

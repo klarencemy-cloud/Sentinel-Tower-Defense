@@ -48,8 +48,11 @@ Odysseus: Precisely, those are compromised computers that are controlled by the 
 
 ~ Boss2
 do GameDialogueManager.pause_game(true)
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
 System: Warning. High-Threat enemy detected.
 Player: No way.. Not againn.

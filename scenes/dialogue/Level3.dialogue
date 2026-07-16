@@ -63,7 +63,7 @@ Trojan Horse: Deception successful, Attack!
 
 
 ~ wrong_ans1
-do GameDialogueManager.penalty("money", 10)
+do GameDialogueManager.penalty("money", 1000)
 Odysseus: Think carefully..
 Odysseus: How do you stop something that you can’t see?
 Odysseus: Now, Try again. 
@@ -103,8 +103,11 @@ Player: That’s infiltration!
 
 ~ Boss3
 do GameDialogueManager.pause_game(true)
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
 System: Warning. High-Threat enemy detected.
 Player: WannaCry.
