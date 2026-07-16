@@ -6,16 +6,21 @@
 [ext_resource type="Texture2D" uid="uid://ml3kegt85f83" path="res://graphics/towers/placeholdertowers/tower1.png" id="5_gukx4"]
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="5_gvuwm"]
 [ext_resource type="Texture2D" uid="uid://dxmkoip2h3t7j" path="res://graphics/sentinels/placeholdersentinels/sentinel.png" id="6_x71o2"]
-[ext_resource type="Texture2D" uid="uid://cbl5d2bdrdjmn" path="res://graphics/container/stats.png" id="8_x71o2"]
 [ext_resource type="Texture2D" uid="uid://bglyuypj0sahq" path="res://graphics/ui/sword.png" id="9_cfr7g"]
 [ext_resource type="Texture2D" uid="uid://b82cq14jn2r1" path="res://graphics/buttons/UpgradeBtn.png" id="9_x71o2"]
 [ext_resource type="FontFile" uid="uid://le60lmnqi5fk" path="res://font/Libre_Franklin/static/LibreFranklin-Thin.ttf" id="10_86m51"]
-[ext_resource type="Texture2D" uid="uid://bfxkorh1n7m3c" path="res://graphics/container/UpgradePanel.png" id="10_tq3cf"]
 [ext_resource type="Texture2D" uid="uid://dw8ga7758gp7i" path="res://graphics/buttons/1stTierClicked.png" id="11_aprt0"]
 [ext_resource type="Texture2D" uid="uid://bsnmf7dwoo18l" path="res://graphics/buttons/2ndTierUnclicked.png" id="12_lg71s"]
 [ext_resource type="Texture2D" uid="uid://dme0d0pdsfgpo" path="res://graphics/buttons/3rdTierUnclicked.png" id="13_86m51"]
 [ext_resource type="Texture2D" uid="uid://dwu3dv78jklkp" path="res://graphics/buttons/UpgradeButtonPanel.png" id="14_aprt0"]
 [ext_resource type="Texture2D" uid="uid://dmtujmh840v6" path="res://graphics/upgrade/NotUpgraded.png" id="15_lg71s"]
+[ext_resource type="Texture2D" uid="uid://v6nn418cpr87" path="res://graphics/currency/gold.png" id="17_qujrc"]
+
+[sub_resource type="Gradient" id="Gradient_lg71s"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_86m51"]
+gradient = SubResource("Gradient_lg71s")
+fill_from = Vector2(0.8034188, 0.7777778)
 
 [node name="Upgrade" type="CanvasLayer" unique_id=1877158934]
 process_mode = 3
@@ -29,10 +34,10 @@ offset_bottom = 1080.0
 texture = ExtResource("2_gukx4")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2062673488]
-offset_left = 106.0
-offset_top = 188.0
-offset_right = 601.0
-offset_bottom = 771.0
+offset_left = 397.0
+offset_top = 233.0
+offset_right = 892.0
+offset_bottom = 816.0
 horizontal_scroll_mode = 0
 
 [node name="SentinelsContainer" type="GridContainer" parent="ScrollContainer" unique_id=390548765]
@@ -44,44 +49,57 @@ columns = 3
 
 [node name="UpgradeButton" type="TextureButton" parent="." unique_id=333239655]
 visible = false
+z_index = 1
 anchors_preset = -1
 anchor_left = 0.753
 anchor_top = 0.71300006
 anchor_right = 0.753
 anchor_bottom = 0.71300006
-offset_left = -147.76001
-offset_top = -4.040039
-offset_right = 36.23999
-offset_bottom = 59.95996
+offset_left = -256.76
+offset_top = -48.04004
+offset_right = -72.76001
+offset_bottom = 15.959961
 texture_normal = ExtResource("9_x71o2")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="UpgradeButton" unique_id=200488369]
 layout_mode = 0
-offset_left = 34.0
+offset_left = 26.0
 offset_top = 13.0
-offset_right = 151.0
+offset_right = 160.0
 offset_bottom = 51.0
 theme_override_font_sizes/font_size = 32
-text = "Upgrade"
+text = "UPGRADE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BigPic" type="TextureRect" parent="." unique_id=858188508]
 unique_name_in_owner = true
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 257.0
-offset_top = 182.0
-offset_right = 614.0
-offset_bottom = 694.0
+anchors_preset = -1
+anchor_left = 0.5729167
+anchor_top = 0.18240741
+anchor_right = 0.75885415
+anchor_bottom = 0.6564815
 grow_horizontal = 2
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="BigPic" unique_id=483344601]
+z_index = 2
+position = Vector2(217, 337)
+energy = 6.51
+texture = SubResource("GradientTexture2D_86m51")
 
 [node name="BigTowerName" type="Label" parent="." unique_id=1988465839]
 anchors_preset = -1
-anchor_left = 0.5442708
-anchor_top = 0.058333334
-anchor_right = 0.89270836
-anchor_bottom = 0.125
+anchor_left = 0.521875
+anchor_top = 0.1
+anchor_right = 0.80260414
+anchor_bottom = 0.16666667
+offset_left = 7.999939
+offset_top = 31.0
+offset_right = 8.0
+offset_bottom = 31.0
 theme_override_font_sizes/font_size = 60
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -154,21 +172,22 @@ text = "Back"
 
 [node name="StatPanel" type="TextureRect" parent="." unique_id=1164040288]
 visible = false
-offset_left = 199.0
-offset_top = 241.0
-offset_right = 706.0
-offset_bottom = 748.7263
-texture = ExtResource("8_x71o2")
+offset_left = 154.0
+offset_top = 227.0
+offset_right = 661.0
+offset_bottom = 734.7263
 expand_mode = 1
 
 [node name="CurrentStat" type="Label" parent="StatPanel" unique_id=1095132444]
 layout_mode = 0
 offset_left = 42.0
-offset_top = 53.0
-offset_right = 443.0
-offset_bottom = 128.0
+offset_top = 38.0
+offset_right = 613.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0.3137255, 0.654902, 0.87058824, 1)
 theme_override_font_sizes/font_size = 64
 text = "Current Status"
+autowrap_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="StatPanel" unique_id=1021842995]
 layout_mode = 0
@@ -207,9 +226,10 @@ offset_left = 171.0
 offset_top = 23.0
 offset_right = 377.0
 offset_bottom = 61.0
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 23
 text = "D"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="SpeedContainer" type="HBoxContainer" parent="StatPanel/ScrollContainer/VBoxContainer" unique_id=1651987304]
 layout_mode = 2
@@ -225,9 +245,10 @@ offset_left = 75.0
 offset_top = 23.0
 offset_right = 377.0
 offset_bottom = 59.0
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 23
 text = "D"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Speed" type="Label" parent="StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic" unique_id=598963538]
 layout_mode = 0
@@ -252,9 +273,10 @@ offset_left = 75.0
 offset_top = 23.0
 offset_right = 377.0
 offset_bottom = 59.0
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 23
 text = "D"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Range" type="Label" parent="StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic" unique_id=1666378236]
 layout_mode = 0
@@ -279,9 +301,10 @@ offset_left = 75.0
 offset_top = 23.0
 offset_right = 377.0
 offset_bottom = 59.0
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 23
 text = "D"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="CritR" type="Label" parent="StatPanel/ScrollContainer/VBoxContainer/CritRContainer/CritRPic" unique_id=765900639]
 layout_mode = 0
@@ -306,9 +329,10 @@ offset_left = 75.0
 offset_top = 23.0
 offset_right = 377.0
 offset_bottom = 59.0
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 23
 text = "D"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="CritD" type="Label" parent="StatPanel/ScrollContainer/VBoxContainer/CritDContainer/CritDPic" unique_id=830560088]
 layout_mode = 0
@@ -367,7 +391,7 @@ vertical_alignment = 1
 [node name="AbilityPanel" type="ScrollContainer" parent="StatPanel" unique_id=552620802]
 visible = false
 layout_mode = 0
-offset_left = 24.0
+offset_left = 71.0
 offset_top = 256.0
 offset_right = 473.0
 offset_bottom = 502.0
@@ -410,11 +434,10 @@ autowrap_mode = 3
 
 [node name="UpgradePanel" type="TextureRect" parent="." unique_id=6382960]
 visible = false
-offset_left = 1319.0
-offset_top = 79.0
-offset_right = 1790.0
-offset_bottom = 886.0
-texture = ExtResource("10_tq3cf")
+offset_left = 1342.0
+offset_top = 61.0
+offset_right = 1813.0
+offset_bottom = 868.0
 
 [node name="Tier1Btn" type="TextureButton" parent="UpgradePanel" unique_id=2070011790]
 layout_mode = 0
@@ -442,10 +465,10 @@ texture_normal = ExtResource("13_86m51")
 
 [node name="Upgrade1" type="TextureButton" parent="UpgradePanel" unique_id=704011039]
 layout_mode = 0
-offset_left = 63.0
-offset_top = 380.0
-offset_right = 396.0
-offset_bottom = 511.0
+offset_left = 30.0
+offset_top = 347.0
+offset_right = 363.0
+offset_bottom = 478.0
 texture_normal = ExtResource("14_aprt0")
 
 [node name="Upgrade1Label" type="Label" parent="UpgradePanel/Upgrade1" unique_id=1930408030]
@@ -496,10 +519,10 @@ text = "+1"
 
 [node name="Upgrade2" type="TextureButton" parent="UpgradePanel" unique_id=1745496662]
 layout_mode = 0
-offset_left = 63.0
-offset_top = 587.0
-offset_right = 396.0
-offset_bottom = 718.0
+offset_left = 30.0
+offset_top = 505.0
+offset_right = 363.0
+offset_bottom = 636.0
 texture_normal = ExtResource("14_aprt0")
 
 [node name="Upgrade2Label" type="Label" parent="UpgradePanel/Upgrade2" unique_id=797404000]
@@ -551,10 +574,10 @@ text = "+1"
 [node name="Upgrade3" type="TextureButton" parent="UpgradePanel" unique_id=721349242]
 visible = false
 layout_mode = 0
-offset_left = 63.0
-offset_top = 380.0
-offset_right = 396.0
-offset_bottom = 511.0
+offset_left = 30.0
+offset_top = 347.0
+offset_right = 363.0
+offset_bottom = 478.0
 texture_normal = ExtResource("14_aprt0")
 
 [node name="Upgrade3Label" type="Label" parent="UpgradePanel/Upgrade3" unique_id=267309596]
@@ -606,10 +629,10 @@ text = "+1"
 [node name="Upgrade4" type="TextureButton" parent="UpgradePanel" unique_id=1751677671]
 visible = false
 layout_mode = 0
-offset_left = 63.0
-offset_top = 587.0
-offset_right = 396.0
-offset_bottom = 718.0
+offset_left = 30.0
+offset_top = 505.0
+offset_right = 363.0
+offset_bottom = 636.0
 texture_normal = ExtResource("14_aprt0")
 
 [node name="Upgrade4Label" type="Label" parent="UpgradePanel/Upgrade4" unique_id=703714304]
@@ -661,10 +684,10 @@ text = "+1"
 [node name="Upgrade5" type="TextureButton" parent="UpgradePanel" unique_id=2012290381]
 visible = false
 layout_mode = 0
-offset_left = 63.0
-offset_top = 380.0
-offset_right = 396.0
-offset_bottom = 511.0
+offset_left = 30.0
+offset_top = 347.0
+offset_right = 363.0
+offset_bottom = 478.0
 texture_normal = ExtResource("14_aprt0")
 
 [node name="Upgrade5Label" type="Label" parent="UpgradePanel/Upgrade5" unique_id=1902483567]
@@ -716,10 +739,10 @@ text = "+1"
 [node name="Upgrade6" type="TextureButton" parent="UpgradePanel" unique_id=1350624905]
 visible = false
 layout_mode = 0
-offset_left = 63.0
-offset_top = 587.0
-offset_right = 396.0
-offset_bottom = 718.0
+offset_left = 30.0
+offset_top = 505.0
+offset_right = 363.0
+offset_bottom = 636.0
 texture_normal = ExtResource("14_aprt0")
 
 [node name="Upgrade6Label" type="Label" parent="UpgradePanel/Upgrade6" unique_id=476319098]
@@ -768,30 +791,22 @@ theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
 theme_override_font_sizes/font_size = 19
 text = "+1"
 
-[node name="Label" type="Label" parent="UpgradePanel" unique_id=2097189818]
+[node name="$" type="TextureRect" parent="UpgradePanel" unique_id=1815093376]
 layout_mode = 0
-offset_left = 19.0
-offset_top = 28.0
-offset_right = 103.0
-offset_bottom = 61.0
-theme_override_font_sizes/font_size = 28
-text = "Money"
-
-[node name="$" type="Label" parent="UpgradePanel" unique_id=1011741469]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 79.0
-offset_right = 65.0
-offset_bottom = 151.0
-theme_override_font_sizes/font_size = 62
-text = "$"
+offset_left = 25.0
+offset_top = 156.0
+offset_right = 99.0
+offset_bottom = 230.0
+texture = ExtResource("17_qujrc")
+expand_mode = 1
 
 [node name="Money" type="Label" parent="UpgradePanel" unique_id=1064741857]
 layout_mode = 0
-offset_left = 66.0
-offset_top = 79.0
-offset_right = 162.0
-offset_bottom = 151.0
+offset_left = 129.0
+offset_top = 159.0
+offset_right = 225.0
+offset_bottom = 231.0
+theme_override_colors/font_color = Color(0.8352941, 0.5686275, 0.19607843, 1)
 theme_override_font_sizes/font_size = 62
 text = "0"
 

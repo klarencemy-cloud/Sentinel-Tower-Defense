@@ -5,10 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="1_kp6ki"]
 [ext_resource type="FontFile" uid="uid://tujnohddqv1k" path="res://font/Libre_Franklin/LibreFranklin-Italic-VariableFont_wght.ttf" id="2_kp6ki"]
 [ext_resource type="Texture2D" uid="uid://gu6kknerpdee" path="res://graphics/vm_maps/vm1.png" id="4_3akup"]
-[ext_resource type="Texture2D" uid="uid://iydmcn6gubk8" path="res://graphics/currency/gold.png" id="5_wbmct"]
+[ext_resource type="Texture2D" uid="uid://v6nn418cpr87" path="res://graphics/currency/gold.png" id="5_wbmct"]
 [ext_resource type="Texture2D" uid="uid://crkgfxh5ne1x6" path="res://graphics/currency/sentinel_core.png" id="6_6qbrb"]
 [ext_resource type="Texture2D" uid="uid://c2ka012ylc4b3" path="res://graphics/buttons/buttonbg.png" id="6_wbmct"]
-[ext_resource type="Texture2D" uid="uid://bmgpyq7aikwk0" path="res://graphics/currency/experience.png" id="7_6qbrb"]
 [ext_resource type="Texture2D" uid="uid://c507xxnt0mfeq" path="res://graphics/map/challenge1.png" id="10_khfni"]
 [ext_resource type="Script" uid="uid://cyrxvelj6b5co" path="res://scenes/ui/carousel_container.gd" id="10_yyxhe"]
 [ext_resource type="Texture2D" uid="uid://dixvrwxmdd0xd" path="res://graphics/map/challenge2.png" id="11_ih4g6"]
@@ -165,31 +164,15 @@ text = "230"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="XP" type="Label" parent="MapDetails/Description" unique_id=1033305044]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.86600006
-anchor_bottom = 0.86600006
-offset_left = 163.0
-offset_top = 28.637997
-offset_right = 178.0
-offset_bottom = 61.637997
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.8352941, 0.5686275, 0.19607843, 1)
-theme_override_font_sizes/font_size = 28
-text = "2"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Serverpt" type="Label" parent="MapDetails/Description" unique_id=156563275]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.86600006
 anchor_bottom = 0.86600006
-offset_left = 246.0
-offset_top = 28.637997
-offset_right = 257.0
-offset_bottom = 61.637997
+offset_left = 158.0
+offset_top = 29.637997
+offset_right = 169.0
+offset_bottom = 62.637997
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_font_sizes/font_size = 28
@@ -216,27 +199,12 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.85700005
 anchor_bottom = 0.85700005
-offset_left = 214.0
-offset_top = 29.150997
-offset_right = 239.0
-offset_bottom = 58.696438
+offset_left = 126.0
+offset_top = 30.150997
+offset_right = 151.0
+offset_bottom = 59.696438
 grow_vertical = 2
 texture = ExtResource("6_6qbrb")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Exp" type="TextureRect" parent="MapDetails/Description" unique_id=1029772809]
-texture_filter = 2
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.82800007
-anchor_bottom = 0.82800007
-offset_left = 125.0
-offset_top = 27.803997
-offset_right = 155.0
-offset_bottom = 62.491497
-grow_vertical = 2
-texture = ExtResource("7_6qbrb")
 expand_mode = 1
 stretch_mode = 5
 
