@@ -92,6 +92,7 @@ Player: Can we access it?
 Odysseus: Yes, but the file appears corrupted.
 Player: Can it be recovered?
 Odysseus: Maybe, if we can find its missing fragments.
+do GameDialogueManager.pause_game(false)
 => END
 
 ~ ransomware

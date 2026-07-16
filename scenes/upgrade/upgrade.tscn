@@ -477,7 +477,7 @@ offset_left = 50.0
 offset_top = 21.0
 offset_right = 157.0
 offset_bottom = 57.0
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 26
 text = "Damage"
 
 [node name="Upgrade1a" type="TextureRect" parent="UpgradePanel/Upgrade1" unique_id=1478327665]
@@ -531,7 +531,7 @@ offset_left = 50.0
 offset_top = 21.0
 offset_right = 157.0
 offset_bottom = 57.0
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 26
 text = "Damage"
 
 [node name="Upgrade2a" type="TextureRect" parent="UpgradePanel/Upgrade2" unique_id=1669944255]
@@ -586,7 +586,7 @@ offset_left = 50.0
 offset_top = 21.0
 offset_right = 157.0
 offset_bottom = 57.0
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 26
 text = "Damage"
 
 [node name="Upgrade3a" type="TextureRect" parent="UpgradePanel/Upgrade3" unique_id=495857823]
@@ -641,7 +641,7 @@ offset_left = 50.0
 offset_top = 21.0
 offset_right = 157.0
 offset_bottom = 57.0
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 26
 text = "Damage"
 
 [node name="Upgrade4a" type="TextureRect" parent="UpgradePanel/Upgrade4" unique_id=1345804006]
@@ -696,7 +696,7 @@ offset_left = 50.0
 offset_top = 21.0
 offset_right = 157.0
 offset_bottom = 57.0
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 26
 text = "Damage"
 
 [node name="Upgrade5a" type="TextureRect" parent="UpgradePanel/Upgrade5" unique_id=1575861682]
@@ -751,7 +751,7 @@ offset_left = 50.0
 offset_top = 21.0
 offset_right = 157.0
 offset_bottom = 57.0
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 26
 text = "Damage"
 
 [node name="Upgrade6a" type="TextureRect" parent="UpgradePanel/Upgrade6" unique_id=873881937]

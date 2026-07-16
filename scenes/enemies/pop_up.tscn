@@ -849,15 +849,6 @@ _data = {
 &"info_pop": SubResource("Animation_bfgac")
 }
 
-[sub_resource type="Gradient" id="Gradient_kw2ov"]
-colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bfgac"]
-gradient = SubResource("Gradient_kw2ov")
-fill = 1
-fill_from = Vector2(0.51282054, 0.47863248)
-fill_to = Vector2(0.47863248, 0.021367522)
-
 [node name="PopUp" type="CanvasLayer" unique_id=264578413 groups=["animate"]]
 process_mode = 3
 script = ExtResource("1_nldt8")
@@ -1055,15 +1046,6 @@ offset_top = -358.64005
 offset_right = 642.6
 offset_bottom = 471.35995
 mouse_filter = 2
-
-[node name="PointLight2D" type="PointLight2D" parent="Pop/Info/DisplayContainer/Control" unique_id=2065292448]
-z_index = 1
-position = Vector2(320.99988, 425)
-scale = Vector2(11.007812, 11.007812)
-color = Color(1, 0.27999997, 0.27999997, 1)
-energy = 5.47
-range_layer_max = 1
-texture = SubResource("GradientTexture2D_bfgac")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pop/Info/DisplayContainer/Control" unique_id=1829873686]
 light_mask = 2

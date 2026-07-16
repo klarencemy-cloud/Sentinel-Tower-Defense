@@ -35,6 +35,7 @@ Odysseus: C’mon can your defenses detect a threat it can’t even detect?
 => quiz3
 
 ~ quiz3
+do GameDialogueManager.pause_game(true)
 Odysseus: I’m detecting multiple Zero-Days ahead. What should we do?
 - Deploy detection towers and strengthen layered defenses to identify and contain the Zero-Days before they spread.
 	Odysseus: You’re finally thinking like a Sentinel.
@@ -47,6 +48,7 @@ Odysseus: I’m detecting multiple Zero-Days ahead. What should we do?
 	=>< wrong_ans3
 - Allocate resources evenly across all threat paths to maintain balanced coverage.
 	=>< wrong_ans3
+do GameDialogueManager.pause_game(false)
 => END
 
 ~ hidden_archive

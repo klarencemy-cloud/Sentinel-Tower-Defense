@@ -261,7 +261,7 @@ func show_dialogue_level3_trojan_horse(): # used in wave manager
 var is_level3_trojan_horse2_shown: bool = false
 func show_dialogue_level3_trojan2_horse(): # used in popup
 	_disable_auto()
-	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "trojan_horse")
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "trojan_horse2")
 	is_level3_trojan_horse2_shown = true
 
 var is_quiz1_shown: bool = false
