@@ -30,15 +30,17 @@ texture = ExtResource("1_1lmum")
 [node name="Label" type="Label" parent="TextureRect" unique_id=1294312716]
 layout_mode = 0
 offset_left = 48.0
-offset_top = 196.0
+offset_top = 192.0
 offset_right = 172.0
-offset_bottom = 221.0
+offset_bottom = 225.0
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
+theme_override_constants/line_spacing = -5
 theme_override_fonts/font = ExtResource("2_ogj4p")
-theme_override_font_sizes/font_size = 19
+theme_override_font_sizes/font_size = 17
 text = "Tower name"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="TextureRect" unique_id=1622100548]
 layout_mode = 0
