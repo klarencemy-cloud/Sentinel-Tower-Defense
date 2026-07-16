@@ -39,7 +39,7 @@ var free_towers: Dictionary = {}
 enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, QUARANTINE_CANNON, IDPS}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
 enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2, BOSS3, BOSS4, BOSS5}
-
+enum Ability {FIREWALL}
 var TOWER_DATA = {
 	Tower.BASIC: {
 		'name': 'Basic',
@@ -301,6 +301,7 @@ var ENEMY_DATA = {
 		'speed': 105,
 		'name': "spam",
 		'damage': 5,
+		'atkspd': 0.5,
 		"exp": 2},
 	Enemy.VIRUS: {
 		'health': 40,
@@ -308,6 +309,7 @@ var ENEMY_DATA = {
 		'speed': 100,
 		'name': "virus",
 		'damage': 10,
+		'atkspd': 0.6,
 		"exp": 3},
 	Enemy.ADWARE: {
 		'health': 80,
@@ -315,6 +317,7 @@ var ENEMY_DATA = {
 		'speed': 105,
 		'name': "adware",
 		'damage': 12,
+		'atkspd': 0.7,
 		"exp": 4},
 	Enemy.WORM: {
 		'health': 30,
@@ -322,6 +325,7 @@ var ENEMY_DATA = {
 		'speed': 120,
 		'name': "worm",
 		'damage': 15,
+		'atkspd': 0.8,
 		"exp": 5},
 	Enemy.SPYWARE: {
 		'health': 100,
@@ -329,6 +333,7 @@ var ENEMY_DATA = {
 		'speed': 115,
 		'name': "spyware",
 		'damage': 35,
+		'atkspd': 1,
 		"exp": 6},
 	Enemy.TROJAN: {
 		'health': 350,
@@ -336,6 +341,7 @@ var ENEMY_DATA = {
 		'speed': 100,
 		'name': "trojan",
 		'damage': 55,
+		'atkspd': 1,
 		"exp": 9},
 	Enemy.BOTNET: {
 		'health': 200,
@@ -343,6 +349,7 @@ var ENEMY_DATA = {
 		'speed': 105,
 		'name': "botnet",
 		'damage': 55,
+		'atkspd': 1.2,
 		"exp": 8},
 	Enemy.CREDS: {
 		'health': 20,
@@ -350,6 +357,7 @@ var ENEMY_DATA = {
 		'speed': 100,
 		'name': "creds",
 		'damage': 5,
+		'atkspd': 1,
 		"exp": 9},
 	Enemy.INSIDERTHREAT: {
 		'health': 120,
@@ -357,6 +365,7 @@ var ENEMY_DATA = {
 		'speed': 110,
 		'name': "insiderthreat",
 		'damage': 80,
+		'atkspd': 1.3,
 		"exp": 10},
 	Enemy.ROOTKIT: {
 		'health': 200,
@@ -364,6 +373,7 @@ var ENEMY_DATA = {
 		'speed': 100,
 		'name': "rootkit",
 		'damage': 100,
+		'atkspd': 1.4,
 		"exp": 11},
 	Enemy.SQL: {
 		'health': 150,
@@ -371,6 +381,7 @@ var ENEMY_DATA = {
 		'speed': 118,
 		'name': "sql",
 		'damage': 120,
+		'atkspd': 1.5,
 		"exp": 12},
 	Enemy.DDOS: {
 		'health': 500,
@@ -378,6 +389,7 @@ var ENEMY_DATA = {
 		'speed': 95,
 		'name': "ddos",
 		'damage': 150,
+		'atkspd': 1.6,
 		"exp": 13},
 	Enemy.RANSOMWARE: {
 		'health': 150,
@@ -385,6 +397,7 @@ var ENEMY_DATA = {
 		'speed': 105,
 		'name': "ransomware",
 		'damage': 250,
+		'atkspd': 1.8,
 		"exp": 15},
 	Enemy.ZERO: {
 		'health': 220,
@@ -392,6 +405,7 @@ var ENEMY_DATA = {
 		'speed': 110,
 		'name': "zero",
 		'damage': 350,
+		'atkspd': 2,
 		"exp": 16},
 	Enemy.BOSS1: { # I LOVE YOU
 		'health': 5000,
@@ -399,6 +413,7 @@ var ENEMY_DATA = {
 		'speed': 100,
 		'name': "boss1",
 		'damage': 100,
+		'atkspd': 1,
 		"exp": 100},
 	Enemy.BOSS2: { # CONFICKER
 		'health': 8000,
@@ -406,6 +421,7 @@ var ENEMY_DATA = {
 		'speed': 100,
 		'name': "boss2",
 		'damage': 200,
+		'atkspd': 1.2,
 		"exp": 145},
 	Enemy.BOSS3: { # WANNA CRY
 		'health': 10000,
@@ -413,6 +429,7 @@ var ENEMY_DATA = {
 		'speed': 100,
 		'name': "boss3",
 		'damage': 320,
+		'atkspd': 1.5,
 		"exp": 200},
 	Enemy.BOSS4: { # NOT PETYA
 		'health': 12000,
@@ -420,6 +437,7 @@ var ENEMY_DATA = {
 		'speed': 100,
 		'name': "boss4",
 		'damage': 200,
+		'atkspd': 2,
 		"exp": 325},
 	Enemy.BOSS5: { # MY DOOM
 		'health': 15000,
@@ -427,6 +445,7 @@ var ENEMY_DATA = {
 		'speed': 100,
 		'name': "boss5",
 		'damage': 200,
+		'atkspd': 2,
 		"exp": 450}
 }
 
@@ -471,6 +490,11 @@ var health: float = default_health:
 			ui.get_node("GameOver").visible = true
 			get_tree().paused = true
 
+var ABILITY_DATA = {
+	Ability.FIREWALL:{
+		'health': 500,
+	}
+}
 var checkpoint_wave: int = 0 # checkpoint count
 var current_wave: int = 52 # wave count
 

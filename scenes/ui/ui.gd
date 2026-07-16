@@ -13,8 +13,10 @@ extends CanvasLayer
 @onready var boss_hp_bar = $Control/bosshpbar
 @onready var boss_hp_amount = $Control/bosshpbar/hpamount
 @onready var boss_name = $Control/bosshpbar/bossname
+@onready var skill1_button: TextureButton = $Control/HBoxContainer/Skill1
 
 signal place_tower(tower_type: Data.Tower)
+signal place_ability(ability: Data.Ability)
 signal spawn_enemy(enemy_type: Data.Enemy)
 signal start_wave
 
@@ -55,6 +57,8 @@ func _ready() -> void:
 	
 
 	Data.toggle_server_scene.connect(_show_server_upgrade)
+	skill1_button.texture_normal = preload("res://graphics/ui/firewallbutton.png")
+	skill1_button.pressed.connect(_on_skill1_pressed)
 
 	if Data.is_sandbox:
 		$Control/TextureRect/HBoxContainer/WaveButton.visible = true
@@ -98,6 +102,8 @@ func _ready() -> void:
 func tower_select(tower_enum: Data.Tower):
 	place_tower.emit(tower_enum)
 
+func _on_skill1_pressed() -> void:
+	place_ability.emit(Data.Ability.FIREWALL)
 
 func trigger_shake():
 	var camera = get_tree().get_first_node_in_group("camera")

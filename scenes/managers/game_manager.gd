@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var level_manager = $LevelManager
 @onready var tower_manager = $TowerManager
+@onready var ability_manager = $AbilityManager
 @onready var wave_manager = $WaveManager
 
 @onready var victory_overlay = $UI/VictoryOverlay
@@ -12,6 +13,7 @@ func _ready() -> void:
 
 	level_manager.setup(self)
 	tower_manager.setup(self, level_manager)
+	ability_manager.setup(self, level_manager)
 	wave_manager.setup(level_manager.current_map, level_manager)
 
 	wave_manager.level_completed.connect(level_completed)
@@ -19,6 +21,7 @@ func _ready() -> void:
 
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
+		ui.place_ability.connect(_on_ui_place_ability)
 		ui.spawn_enemy.connect(_on_ui_spawn_sandbox_enemy)
 
 func level_completed() -> void:
@@ -38,11 +41,14 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	tower_manager.handle_input(event)
+	ability_manager.handle_input(event)
 
 
 func _on_ui_place_tower(tower_type: Data.Tower) -> void:
 	tower_manager.start_tower_placement(tower_type)
 
+func _on_ui_place_ability(ability: Data.Ability) -> void:
+	ability_manager.start_ability_placement(ability)
 
 func _on_ui_start_wave() -> void:
 	wave_manager.start_wave()

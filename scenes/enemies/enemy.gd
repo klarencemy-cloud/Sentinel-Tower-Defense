@@ -24,6 +24,7 @@ var idps_slow_aura := false # For IDPS tier2 passive
 var idps_vulnerability_aura := false # For IDPS tier3 passive
 var vulnerability_multiplier := 1.0 # Damage multiplier for vulnerabilities
 var damage_label_template: Label
+var blocked_by_firewall := false # Firewall blocking
 
 var previous_pos: Vector2
 
@@ -249,7 +250,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 		
 
 func _process(delta: float):
-	if is_stunned:
+	if is_stunned or blocked_by_firewall:
 		return
 	
 	var current_speed = speed

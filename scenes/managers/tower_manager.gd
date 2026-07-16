@@ -16,6 +16,7 @@ var level_root: Node2D
 var level_manager: Node
 var selected_tower: Data.Tower
 var current_tower: Tower
+var current_placement_kind: String = ""
 var tower_menu: bool = false
 var next_tower_id: int = 1
 var used_cells: Array[Vector2i] = []
@@ -39,7 +40,7 @@ func handle_input(event: InputEvent) -> void:
 	var world_pos = level_manager.map_to_world(cell_pos)
 
 	if event is InputEventMouseButton and event.button_mask == 1 and place_tower:
-		_try_place_tower(cell_pos, world_pos)
+		_try_place_current_building(cell_pos, world_pos)
 
 	if event is InputEventMouseMotion and place_tower:
 		var preview = _get_tower_preview()
@@ -52,6 +53,7 @@ func handle_input(event: InputEvent) -> void:
 
 func start_tower_placement(tower_type: Data.Tower) -> void:
 	place_tower = true
+	current_placement_kind = "tower"
 	selected_tower = tower_type
 
 	var preview = _get_tower_preview()
@@ -60,9 +62,9 @@ func start_tower_placement(tower_type: Data.Tower) -> void:
 		preview.scale = Vector2(0.7, 0.7) # Scale down preview para same size ng actual towers
 		preview.offset = Vector2(0, -35) # Offset the preview para kapag nag place ng towers, same sa tower's position
 
-
 func cancel_selection() -> void:
 	place_tower = false
+	current_placement_kind = ""
 	tower_menu = false
 	current_tower = null
 
@@ -100,6 +102,10 @@ func tower_selection(tower: Tower) -> void:
 
 	tower.show_range()
 
+
+func _try_place_current_building(cell_pos: Vector2i, world_pos: Vector2) -> void:
+	if current_placement_kind == "tower":
+		_try_place_tower(cell_pos, world_pos)
 
 func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	var layer = level_manager.get_build_layer()
@@ -172,6 +178,7 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if ((Data.maxserverload - Data.currentserverload) < 15 or Data.money == 0) and !GameDialogueManager.is_prep and !Data.is_sandbox and Data.current_wave == 4:
 		GameDialogueManager.show_dialogue_preparation_end()
 	
+
 
 func _on_tower_removed(cell_pos: Vector2i) -> void:
 	if cell_pos in used_cells:
