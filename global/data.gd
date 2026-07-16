@@ -466,11 +466,25 @@ var active_ransomware := 0:
 	set(value):
 		active_ransomware = value
 		active_ransomware_changed.emit()
+		
 var currentserverload: int = 0:
 	set(value):
 		currentserverload = value
 		server_load_changed.emit()
-var maxserverload := default_system_load
+
+		for node in get_tree().get_nodes_in_group("TowerCard"):
+			if node.has_method("toggle_active"):
+				node.toggle_active(Data.money)
+		
+var maxserverload := default_system_load:
+	set(value):
+		maxserverload = value
+		server_load_changed.emit()
+
+		for node in get_tree().get_nodes_in_group("TowerCard"):
+			if node.has_method("toggle_active"):
+				node.toggle_active(Data.money)
+				
 var money := default_money:
 	set(value):
 		money = value

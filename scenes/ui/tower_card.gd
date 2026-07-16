@@ -18,6 +18,7 @@ func _ready() -> void:
 	if not is_in_group("TowerCard"):
 		add_to_group("TowerCard")
 
+	Data.server_load_changed.connect(_on_server_load_changed)
 	# ensure cost is set even if setup wasn't called before ready
 	cost = Data.TOWER_DATA[id]['cost']
 	$TextureRect/TowerCost.text = str(cost)
@@ -43,3 +44,6 @@ func update_free_label():
 
 func _on_pressed() -> void:
 	press.emit(id)
+	
+func _on_server_load_changed():
+	toggle_active(Data.money)
