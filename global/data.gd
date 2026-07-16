@@ -510,7 +510,7 @@ var ABILITY_DATA = {
 	}
 }
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 50 # wave count
+var current_wave: int = 1 # wave count
 
 func reset_game():
 	money = default_money

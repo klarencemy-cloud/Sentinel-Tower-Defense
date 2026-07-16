@@ -176,7 +176,7 @@ func start_wave() -> void:
 		for enemy_enum in data:
 			for i in range(data[enemy_enum]):
 				_spawn_enemy(enemy_enum)
-				await get_tree().create_timer(0.5).timeout
+				await get_tree().create_timer(0.5, false).timeout
 
 	spawning_wave = false
 
@@ -202,7 +202,7 @@ func _spawn_predefined_wave(wave_data: Dictionary) -> void:
 			
 			for i in range(count):
 				_spawn_enemy_on_path(enemy_enum, path)
-				await get_tree().create_timer(0.5).timeout
+				await get_tree().create_timer(0.5, false).timeout
 
 
 func _spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D) -> void:
