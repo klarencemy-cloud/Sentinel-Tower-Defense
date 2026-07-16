@@ -31,6 +31,7 @@ Odysseus: Deploy Patch Management System.
 => END
 
 ~ wrong_ans3
+do GameDialogueManager.penalty("money", 3000)
 Odysseus: C’mon can your defenses detect a threat it can’t even detect?
 => quiz3
 
@@ -103,8 +104,11 @@ System: Apex Threat Detected.
 
 ~ Boss5
 do GameDialogueManager.pause_game(true)
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
 Odysseus: We don’t have time for this. Another high-threat is approaching, Player.
 System: Apex Threat Detected.
@@ -179,8 +183,11 @@ Odysseus: And now I have my answer.
 
 ~ Boss6
 do GameDialogueManager.pause_game(true)
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
+do GameDialogueManager.camera_shake()
 Unknown: *⚠️honk⚠️*
 Player: Odysseus?
 Odysseus: NOT ANYMORE.

@@ -34,6 +34,9 @@ var wave_started: bool = false
 var before_level_index: int
 var current_level_index: int = 1 # map count 0 = level 1
 
+var checkpoint_wave: int = 0 # checkpoint count
+var current_wave: int = 11 # wave count
+
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
 enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, QUARANTINE_CANNON, IDPS}
@@ -495,8 +498,7 @@ var ABILITY_DATA = {
 		'health': 500,
 	}
 }
-var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 50 # wave count
+
 
 func reset_game():
 	money = default_money

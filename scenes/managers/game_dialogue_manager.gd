@@ -39,6 +39,10 @@ func show_enemy(enemy_name: String, index: int):
 	ui.trigger_shake()
 	animation.play_animation(enemy_name, index)
 
+func camera_shake():
+	var ui = get_tree().get_first_node_in_group("UI")
+	ui.trigger_shake()
+
 func start_wave():
 	get_tree().paused = false
 	var ui = get_tree().get_first_node_in_group("UI")
@@ -412,13 +416,13 @@ func show_dialogue_level5_final_fragment(): # used in wave manager
 var is_level5_boss5_shown: bool = false
 func show_dialogue_level5_boss5(): # used in wave manager
 	_disable_auto()
-	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "boss5")
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "Boss5")
 	is_level5_boss5_shown = true
 
 var is_level5_boss5_shown2: bool = false
 func show_dialogue_level5_boss5_2(): # used in popup
 	_disable_auto()
-	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "boss5_2")
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "Boss5_2")
 	is_level5_boss5_shown2 = true
 
 var is_level5_boss5_hp_shown: bool = false
