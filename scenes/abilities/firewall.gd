@@ -2,8 +2,10 @@ extends Node2D
 
 @onready var area_2d = $Area2D
 @onready var hpbar = $hpbar
+@onready var sprite = $Sprite2D
 var health: float
 var max_health: float
+var firewall_tween: Tween
 
 var attacking_enemies: Dictionary = {} # {enemy_instance: Timer}
 var blocked_enemies: Array[Area2D] = []
@@ -80,8 +82,17 @@ func _on_enemy_attack(enemy: Area2D) -> void:
 func take_damage(damage: int) -> void:
 	health -= damage
 	hpbar.value = health
+	flash()
 	print("Firewall hit! Health: ", health, "/", max_health)
 	
 	if health <= 0:
 		print("Firewall destroyed!")
 		queue_free()
+
+func flash() -> void:
+	if firewall_tween and firewall_tween.is_valid():
+		firewall_tween.kill()
+
+	firewall_tween = create_tween()
+	firewall_tween.tween_property(sprite, "modulate", Color(1, 1, 1, 0.3), 0.1)
+	firewall_tween.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.15)
