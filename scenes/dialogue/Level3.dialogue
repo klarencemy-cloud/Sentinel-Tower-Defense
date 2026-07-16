@@ -30,21 +30,25 @@ Odysseus: I don’t know. But I guess that we will encounter it eventually.
 => END
 
 ~ credential_stuffing
+do GameDialogueManager.pause_game(true)
 Credential Stuffing: Let’s see what works.
 do GameDialogueManager.show_enemy("creds", 6)
 #function to activate credential stuffing pop-up card
 => END
 
 ~ credential_stuffing2
+do GameDialogueManager.pause_game(true)
 Credential Stuffing: I'll take that.
 Player: What’s that thing doing?
 Odysseus: That’s the CS,  it copies the ability of a nearby threat and uses it to attack. They do that by using stolen credentials, to gain access, and execute criminal activity.
+do GameDialogueManager.pause_game(false)
 Player: So it learns from others.
 Odysseus: Yeah, legend says it can also copy high-threat enemies.
 Player: Let’s hope that’s only a myth
 => END
 
 ~ trojan_horse
+do GameDialogueManager.pause_game(true)
 Player: What is that? That doesn’t look hostile.
 Trojan Horse: I’m here to help you.
 #function to activate Trojan Horse pop-up card
@@ -54,10 +58,6 @@ do GameDialogueManager.show_enemy("trojan", 7)
 ~ trojan_horse2
 do GameDialogueManager.pause_game(true)
 Odysseus: Be careful. Trojan horses are frauds, they may seem trustworthy and safe but they are only created to look like that, they are actually harmful software. Remember, they strike when it gets close to our defenses.
-=> END
-
-~ trojan_horse3
-#[Trojan Horse got close to the tower]
 Trojan Horse: Deception successful, Attack!
 => END
 
@@ -85,6 +85,7 @@ Odysseus: I’m detecting multiple Trojan Horses ahead, what should we do?
 	Odysseus: You are.
 
 ~ insider_threat
+do GameDialogueManager.pause_game(true)
 #[An enemy suddenly appeared near the path]
 Insider Threat: I am authorized..
 Player: When did that get through there?
@@ -94,7 +95,7 @@ do GameDialogueManager.show_enemy("insider", 8)
 => END
 
 ~ insider_threat2
-
+do GameDialogueManager.pause_game(true)
 Odysseus: Insider threats can conceal themselves.  These are the users who misuse their authorized access— whether intentionally or accidentally.
 Odysseus: They remain invisible until they get close enough to attack.
 Player: That’s infiltration!

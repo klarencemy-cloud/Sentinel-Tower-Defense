@@ -175,10 +175,9 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if Data.TOWER_DATA[selected_tower]["name"] == "Spam Filter" and !GameDialogueManager.is_introduction_spam_filter and !Data.is_sandbox and (Data.current_wave == 0 or Data.current_wave == 1):
 		GameDialogueManager.show_dialogue_spam_filter()
 
-	if ((Data.maxserverload - Data.currentserverload) < 15 or Data.money == 0) and !GameDialogueManager.is_prep and !Data.is_sandbox and Data.current_wave == 4:
+	if ((Data.maxserverload - Data.currentserverload) < 15 or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and Data.current_wave == 4:
 		GameDialogueManager.show_dialogue_preparation_end()
 	
-
 
 func _on_tower_removed(cell_pos: Vector2i) -> void:
 	if cell_pos in used_cells:

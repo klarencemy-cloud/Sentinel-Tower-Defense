@@ -2,7 +2,7 @@ extends Node
 signal active_adware_changed
 signal active_ransomware_changed
 var default_health: float = 100.0
-var default_money: int = 1000
+var default_money: int = 3000
 var default_system_load: int = 200
 const default_server_points: int = 0
 var is_sandbox: bool = false
@@ -32,7 +32,7 @@ var wave_started: bool = false
 
 
 var before_level_index: int
-var current_level_index: int = 4 # map count 0 = level 1
+var current_level_index: int = 1 # map count 0 = level 1
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
@@ -505,12 +505,12 @@ var health: float = default_health:
 			get_tree().paused = true
 
 var ABILITY_DATA = {
-	Ability.FIREWALL:{
+	Ability.FIREWALL: {
 		'health': 500,
 	}
 }
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 52 # wave count
+var current_wave: int = 50 # wave count
 
 func reset_game():
 	money = default_money
