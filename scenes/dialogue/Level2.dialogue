@@ -36,7 +36,7 @@ Odysseus: Eliminate them first to decrease the intensity of the battlefield.
 
 ~ botnet
 do GameDialogueManager.pause_game(true)
-Botnet Node: Syncing… C0NNECT3D..
+BOTNET NODE: Syncing… C0NNECT3D..
 do GameDialogueManager.show_enemy("botnet", 5)
 #function to activate botnet pop-up card
 => END
@@ -61,8 +61,8 @@ Odysseus: It’s one of the most tenacious worms ever created. It infected milli
 Player: You really know your stuff, do you?
 Odysseus: Flattery will get us nowhere. We have more urgent concerns right now!
 #[Red alerts began appearing on the screen]
-Botnet Node: Syncing… C0NNECT3D..
-Botnet Node: await!ng C0mm4nd fr0M the Master..
+BOTNET NODE: Syncing… C0NNECT3D..
+BOTNET NODE: await!ng C0mm4nd fr0M the Master..
 Player: What??
 Odysseus: It’s the Conficker. It controls them.
 System: Threat Identified. CONFICKER.

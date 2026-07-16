@@ -275,9 +275,9 @@ texture = ExtResource("6_onvhc")
 
 [node name="Character" type="TextureRect" parent="Balloon/Show" unique_id=1142477465]
 layout_mode = 0
-offset_left = 68.964966
+offset_left = 60.964966
 offset_top = 34.0
-offset_right = 361.96497
+offset_right = 353.96497
 offset_bottom = 333.0
 texture = ExtResource("9_0hms4")
 expand_mode = 1

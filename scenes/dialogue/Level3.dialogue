@@ -31,14 +31,14 @@ Odysseus: I don’t know. But I guess that we will encounter it eventually.
 
 ~ credential_stuffing
 do GameDialogueManager.pause_game(true)
-Credential Stuffing: Let’s see what works.
+CREDENTIAL STUFFING: Let’s see what works.
 do GameDialogueManager.show_enemy("creds", 6)
 #function to activate credential stuffing pop-up card
 => END
 
 ~ credential_stuffing2
 do GameDialogueManager.pause_game(true)
-Credential Stuffing: I'll take that.
+CREDENTIAL STUFFING: I'll take that.
 Player: What’s that thing doing?
 Odysseus: That’s the CS,  it copies the ability of a nearby threat and uses it to attack. They do that by using stolen credentials, to gain access, and execute criminal activity.
 do GameDialogueManager.pause_game(false)
@@ -50,7 +50,7 @@ Player: Let’s hope that’s only a myth
 ~ trojan_horse
 do GameDialogueManager.pause_game(true)
 Player: What is that? That doesn’t look hostile.
-Trojan Horse: I’m here to help you.
+TROJAN HORSE: I’m here to help you.
 #function to activate Trojan Horse pop-up card
 do GameDialogueManager.show_enemy("trojan", 7)
 => END
@@ -58,7 +58,7 @@ do GameDialogueManager.show_enemy("trojan", 7)
 ~ trojan_horse2
 do GameDialogueManager.pause_game(true)
 Odysseus: Be careful. Trojan horses are frauds, they may seem trustworthy and safe but they are only created to look like that, they are actually harmful software. Remember, they strike when it gets close to our defenses.
-Trojan Horse: Deception successful, Attack!
+TROJAN HORSE: Deception successful, Attack!
 => END
 
 
@@ -87,7 +87,7 @@ Odysseus: I’m detecting multiple Trojan Horses ahead, what should we do?
 ~ insider_threat
 do GameDialogueManager.pause_game(true)
 #[An enemy suddenly appeared near the path]
-Insider Threat: I am authorized..
+INSIDER THREAT: I am authorized..
 Player: When did that get through there?
 Player: I didn’t even see it enter our area of resistance.
 #function to activate insider threat pop-up card

@@ -17,7 +17,7 @@ Odysseus: Maybe we'll find additional hints along the way.
 
 ~ zero_day
 do GameDialogueManager.pause_game(true)
-Zero-Day: I am the flaw that is never found.
+ZERO-DAY: I am the flaw that is never found.
 Player: It seems undetectable to our defenses.
 Odysseus: Zero-Day.
 Odysseus: A threat that no one knows exists or hasn’t been patched yet!
@@ -126,11 +126,11 @@ do GameDialogueManager.show_enemy("mydoom", "18")
 
 ~ Boss5_2
 do GameDialogueManager.pause_game(true)
-Spam: You’ve got 99+ new messages.
-Botnet Node: C0NN3CTED.
+SPAM: You’ve got 99+ new messages.
+BOTNET NODE: C0NN3CTED.
 WORM: Replicate
 DDoS: OVERLOAD..
-Insider Threat: I am authorized..
+INSIDER THREAT: I am authorized..
 Player: It spawns every swarm enemies we’ve encountered.
 Player: This is gonna be messy.
 do GameDialogueManager.pause_game(false)

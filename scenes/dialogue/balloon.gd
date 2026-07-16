@@ -145,7 +145,48 @@ func apply_dialogue_line() -> void:
 				$Balloon/Show/Character.texture = load("res://graphics/character/player.png")
 			"Odysseus":
 				$Balloon/Show/Character.texture = load("res://graphics/currency/experience.png")
-
+			"WORM":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/worm2.png")
+			"SPYWARE":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/spyware.png")
+			"BOTNET NODE":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/botnet.png")
+			"CONFICKER":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/conficker.png")
+			"CREDENTIAL STUFFING":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/creds.png")
+			"TROJAN HORSE":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/trojanhorse.png")
+			"TROJAN HORSE":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/trojanhorse.png")
+			"INSIDER THREAT":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/insider.png")
+			"WANNACRY":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/wannacry.png")
+			"WANNACRY":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/wannacry.png")
+			"ROOTKIT":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/rootkit.png")
+			"SQL INJECTION":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/sql.png")
+			"DDoS", "DoS":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/ddos.png")
+			"RANSOMWARE":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/ransomware.png")
+			"NOTPETYA":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/notpetya.png")
+			"NOTPETYA":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/notpetya.png")
+			"ZERO-DAY":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/notpetya.png")
+			"MYDOOM":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/mydoom.png")
+			"SPAM":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/spam.png")
+			"ILY VIRUS":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/iloveyou.png")
+			"TROJAN":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/iloveyou.png")
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line

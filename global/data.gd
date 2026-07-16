@@ -35,7 +35,7 @@ var before_level_index: int
 var current_level_index: int = 1 # map count 0 = level 1
 
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 11 # wave count
+var current_wave: int = 51 # wave count
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}

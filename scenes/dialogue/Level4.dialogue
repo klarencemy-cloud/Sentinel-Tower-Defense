@@ -12,7 +12,7 @@ Odysseus:  But I have a feeling we’re missing something.
 ~ rootkit
 do GameDialogueManager.pause_game(true)
 #[The ground of the battlefield cracked suddenly]
-RootKit: B4CKd00r_EST4BLISH3D.
+ROOTKIT: B4CKd00r_EST4BLISH3D.
 #[RootKit digs a tunnel beneath the battlefield]
 Player: Where did it go?
 Odysseus: It created a path. Not just for itself. Others can enter and use that route.
@@ -24,7 +24,7 @@ do GameDialogueManager.show_enemy("rootkit", 9)
 
 ~ sql
 do GameDialogueManager.pause_game(true)
-SQL Injection: PARSING_DATABASE.
+SQL INJECTION: PARSING_DATABASE.
 Player: Did that thing just skip half of the path!?
 Odysseus: SQL Injection.
 Odysseus: it is a cyberattack where malicious SQL code is inserted into vulnerable input fields.
@@ -98,8 +98,8 @@ do GameDialogueManager.pause_game(false)
 
 ~ ransomware
 do GameDialogueManager.pause_game(true)
-Ransomware: Files encrypted..
-Ransomware: Tick..Tock..
+RANSOMWARE: Files encrypted..
+RANSOMWARE: Tick..Tock..
 #[A nearby tower malfuctioned]
 Player: What happened?
 #function to activate ransomware pop-up card
@@ -110,7 +110,7 @@ do GameDialogueManager.show_enemy("ransomware",12)
 Odysseus: Ransomware.
 Odysseus: It was a malware that blocks access to a computer system or encrypts its files.
 Odysseus: Now,  It locked one of your towers to conquer the battlefield.
-Ransomware: Payment=Restore Access.
+RANSOMWARE: Payment = Restore Access.
 Player: What?! It is extorting us.
 Odysseus: Well, that is what it is designed to do.
 => END
