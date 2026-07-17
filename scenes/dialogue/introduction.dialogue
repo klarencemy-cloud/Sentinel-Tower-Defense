@@ -29,9 +29,15 @@ do GameDialogueManager.show_enemy("spam", 0)
 Odysseus: Good choice! That tower is called Spam Filter; this was specifically built for this cyber threat.  They have automated security tools that identify, block, redirect, or allow bulk, unwanted, or malicious emails.
 Player: Since when do cyberthreats turn into monsters? 
 Odysseus: I'll explain later. 
+do GameDialogueManager.is_override=true
+do GameDialogueManager.show_character("Upgrade")
 Odysseus: Now, each enemy drops money and exp points for you to upgrade your towers. Let's ramp up its damage before we get overtaken by them.
+do GameDialogueManager.is_override=true
+do GameDialogueManager.show_character("TowerUpgrade")
 Odysseus: Each tower upgrade is important to make your offense stronger. By maxing the upgrades from the first tier, you can unlock upgrades of a stronger caliber.
+do GameDialogueManager.show_character("ServerHp")
 Odysseus: Also, can you see the server's health? It helps you visualize how many beatings it takes before the SERVER collapses. You don’t want to let it drop to 0! 
+do GameDialogueManager.is_override=false
 Player: These things are so annoying.
 Guide: Spam incoming, get ready.
 do GameDialogueManager.pause_game(false)
@@ -70,8 +76,12 @@ Player: What if they ate the sun?
 
 ~ player_level
 do GameDialogueManager.delay_dialogue(1.0)
+do GameDialogueManager.is_override=true
+do GameDialogueManager.show_character("Level")
 Odysseus: This gauge gets filled up when you defeat enemies. When it gets full, 
+do GameDialogueManager.show_character("Core")
 Odysseus: it will give you a core to upgrade your server.
+do GameDialogueManager.is_override=false
 Player: Bring it on!
 do GameDialogueManager.start_wave()
 => END
@@ -81,7 +91,7 @@ do GameDialogueManager.delay_dialogue(2.0)
 do GameDialogueManager.pause_game(true)
 Odysseus: You’ve leveled up! You can now upgrade the server!
 do GameDialogueManager.pause_game(false)
-do GameDialogueManager.delay_dialogue(2.0)
+do GameDialogueManager.delay_dialogue(1.0)
 do GameDialogueManager.move_camera(2851.0,1564.0, 2.0)
 do Data.toggle_server_scene.emit()
 Odysseus: The server upgrades are a game-changer. It can amplify the damage of your towers, improve your overall defenses, and manage your resource economy. Be wise about where to spend those upgrades!
@@ -101,6 +111,11 @@ Player: Fighting non-stop really takes a toll on your energy.
 Odysseus: It really does. But it seems things have settled down for a bit. 
 Player: It might be the calm before the storm. Better get ready before threats swarm their way in!
 Odysseus: Now that’s the mindset of a strategist! Contingent planning and anticipating cyber attacks are important to minimize damage and to have room to formulate smart decisions on how to deal with the unforeseen. 
+if ((Data.maxserverload - Data.currentserverload) < 15 or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and Data.current_wave == 4
+	do GameDialogueManager.toggle_fade_transition()
+	do GameDialogueManager.delay_dialogue(3)
+	do GameDialogueManager.show_dialogue_preparation_end()
+	
 => END
 
 ~ preparation_end
@@ -120,6 +135,8 @@ Odysseus: Those are Virus. They are malicious software that can infect our defen
 ~ firewall
 Player: What is this?
 Odysseus: You've unlocked a new skill, the Firewall. Let's START the wave for you to know how it actually works.
+do GameDialogueManager.start_wave()
+do GameDialogueManager.delay_dialogue(1)
 Player: Woah! They became faster!
 Odysseus: Quick! Deploy the Firewall!
 => END
@@ -134,6 +151,7 @@ do Data.toggle_server_scene.emit()
 => END
 
 ~ server_open_cyber
+do GameDialogueManager.delay_dialogue(1)
 #insert function that opens the server, on the threat page
 Player: Player: Now this is new.
 Odysseus: Even I didn't know about that. I guess the S.E.R.V.E.R can scan the threats of their current strength after being defeated. It does not show other threats yet.

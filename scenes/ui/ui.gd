@@ -20,6 +20,7 @@ signal place_ability(ability: Data.Ability)
 signal spawn_enemy(enemy_type: Data.Enemy)
 signal start_wave
 
+
 var tower_card_scene = preload("res://scenes/ui/tower_card.tscn")
 var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
 
@@ -99,8 +100,20 @@ func _ready() -> void:
 	update_experience(Data.experience, Data.player_level, Data.default_level_pool)
 	update_wave_label()
 
+	if not GameDialogueManager.is_skill_activated:
+		$Control/HBoxContainer/Skill1.disabled = true
+		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/container/skillcontainer.png")
+	
+	else:
+		$Control/HBoxContainer/Skill1.disabled = false
+		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
+
 func tower_select(tower_enum: Data.Tower):
 	place_tower.emit(tower_enum)
+
+func toggle_skill_activation():
+	$Control/HBoxContainer/Skill1.disabled = false
+	$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
 
 func _on_skill1_pressed() -> void:
 	place_ability.emit(Data.Ability.FIREWALL)
@@ -206,6 +219,10 @@ func _show_server_upgrade() -> void:
 		$ServerUpgrade.visible = true
 		$Control.visible = false
 		is_shown = true
+		if !Data.is_server_cyber_shown and Data.current_wave == 7:
+			Data.is_server_cyber_shown = true
+			Data.open_server_cyber.emit()
+
 	else:
 		$ServerUpgrade.visible = false
 		$Control.visible = true

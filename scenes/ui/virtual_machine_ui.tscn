@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://tujnohddqv1k" path="res://font/Libre_Franklin/LibreFranklin-Italic-VariableFont_wght.ttf" id="2_kp6ki"]
 [ext_resource type="Texture2D" uid="uid://gu6kknerpdee" path="res://graphics/vm_maps/vm1.png" id="4_3akup"]
 [ext_resource type="Texture2D" uid="uid://v6nn418cpr87" path="res://graphics/currency/gold.png" id="5_wbmct"]
-[ext_resource type="Texture2D" uid="uid://crkgfxh5ne1x6" path="res://graphics/currency/sentinel_core.png" id="6_6qbrb"]
+[ext_resource type="Texture2D" uid="uid://clw64leoblwkc" path="res://graphics/currency/core.png" id="6_pwh5r"]
 [ext_resource type="Texture2D" uid="uid://c2ka012ylc4b3" path="res://graphics/buttons/buttonbg.png" id="6_wbmct"]
 [ext_resource type="Texture2D" uid="uid://c507xxnt0mfeq" path="res://graphics/map/challenge1.png" id="10_khfni"]
 [ext_resource type="Script" uid="uid://cyrxvelj6b5co" path="res://scenes/ui/carousel_container.gd" id="10_yyxhe"]
@@ -204,7 +204,7 @@ offset_top = 30.150997
 offset_right = 151.0
 offset_bottom = 59.696438
 grow_vertical = 2
-texture = ExtResource("6_6qbrb")
+texture = ExtResource("6_pwh5r")
 expand_mode = 1
 stretch_mode = 5
 
