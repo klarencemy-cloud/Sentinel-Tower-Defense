@@ -32,8 +32,8 @@ Odysseus: Deploy Patch Management System.
 
 ~ wrong_ans3
 do GameDialogueManager.penalty("money", 3000)
-Odysseus: C’mon can your defenses detect a threat it can’t even detect?
-=> quiz3
+Odysseus: C’mon can your defenses detect a threat it can’t even detect? => quiz3
+=> END
 
 ~ quiz3
 do GameDialogueManager.pause_game(true)

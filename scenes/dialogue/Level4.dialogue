@@ -38,7 +38,7 @@ do GameDialogueManager.show_enemy("sql", 10)
 do GameDialogueManager.penalty("money", 2000)
 Odysseus: Focus on the question. 
 Odysseus: What do you think makes an SQL injection a dangerous enemy? => quiz2 
-=> quiz2
+=> END
 
 ~ quiz2
 do GameDialogueManager.pause_game(true)
@@ -52,7 +52,6 @@ Odysseus: I’m detecting multiple SQL Injections ahead. What should we do?
 	Odysseus: The threats are evolving.
 	Odysseus: And you must evolve faster. 
 	do GameDialogueManager.start_wave()
-	=> END
 - Wait for the SQL Injection to get closer to the SERVER then place a tower.
 	=>< wrong_ans2
 => END

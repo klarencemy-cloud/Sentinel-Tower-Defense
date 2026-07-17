@@ -66,8 +66,8 @@ TROJAN HORSE: Deception successful, Attack!
 do GameDialogueManager.penalty("money", 1000)
 Odysseus: Think carefully..
 Odysseus: How do you stop something that you can’t see?
-Odysseus: Now, Try again. 
-=> quiz1
+Odysseus: Now, Try again. => quiz1
+=> END
 
 
 ~ quiz1
@@ -82,7 +82,8 @@ Odysseus: I’m detecting multiple Trojan Horses ahead, what should we do?
 - Deploy detection towers to reveal the Insider Threats, then eliminate them before they infiltrate our defenses.
 	Odysseus: [[Good| Goodjob]].
 	Player: I’m getting better at this!
-	Odysseus: You are.
+	Odysseus: You are. => insider_threat
+=> END
 
 ~ insider_threat
 do GameDialogueManager.pause_game(true)

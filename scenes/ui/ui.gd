@@ -80,8 +80,10 @@ func _ready() -> void:
 		$Control/TextureRect/HBoxContainer/WaveButton.visible = false
 	else:
 		$Control/TextureRect/HBoxContainer/WaveButton.visible = true
-
-
+	
+	if Data.current_wave >= 5 or Data.is_sandbox:
+		toggle_skill_activation()
+	
 	for tower_enum in Data.Tower.values():
 		var tower_card = tower_card_scene.instantiate()
 		tower_card.setup(tower_enum)
@@ -112,6 +114,7 @@ func tower_select(tower_enum: Data.Tower):
 	place_tower.emit(tower_enum)
 
 func toggle_skill_activation():
+	GameDialogueManager.is_skill_activated = true
 	$Control/HBoxContainer/Skill1.disabled = false
 	$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
 

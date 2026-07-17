@@ -713,6 +713,7 @@ visibility_rect = Rect2(-1920, -1080, 3840, 2160)
 process_material = SubResource("ParticleProcessMaterial_7pb6i")
 
 [node name="TextureRect" type="ColorRect" parent="WeatherEffects" unique_id=502444866]
+z_index = 2
 texture_repeat = 2
 material = SubResource("ShaderMaterial_mq31s")
 offset_left = -1.0
