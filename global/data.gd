@@ -36,10 +36,11 @@ var current_level_index: int = 1 # map count 0 = level 1
 
 var checkpoint_wave: int = 0 # checkpoint count
 var current_wave: int = 51 # wave count
+var backup_server_placed := false
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
-enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, QUARANTINE_CANNON, IDPS}
+enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, QUARANTINE_CANNON, IDPS, BACKUP_SERVER}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
 enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2, BOSS3, BOSS4, BOSS5}
 enum Ability {FIREWALL}
@@ -286,7 +287,18 @@ var TOWER_DATA = {
 		'upgrade6cost': [120, 150, 180],
 		'tier1abilityunlocked': false,
 		'tier2abilityunlocked': false,
-		'tier3abilityunlocked': false, }
+		'tier3abilityunlocked': false, },
+	Tower.BACKUP_SERVER:{
+		'name': "Backup Server",
+		'cost':  550,
+		'damage':  5000,
+		'server_load': 65,
+		'thumbnail': "res://graphics/ui/tower thumbnails/basic.png",
+		'scene': "res://scenes/towers/tower_backup_server.tscn",
+		'bullet': Bullet.FIRE,
+		'upgradeable' : false,
+		
+	}
 	}
 
 func calculate_crit_damage(tower_type: int, base_damage: int) -> int:

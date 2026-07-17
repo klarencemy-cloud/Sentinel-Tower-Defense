@@ -28,7 +28,11 @@ func set_selected_tower(tower_enum: Data.Tower) -> void:
 	$BigPic.texture = load(Data.TOWER_DATA[tower_enum]['thumbnail'])
 
 	$UpgradeButton.visible = true
-
+	var upgradeable: bool = bool(Data.TOWER_DATA[tower_enum].get("upgradeable", true))
+	if upgradeable:
+		$UpgradeButton/Label.text = "Upgrade"
+	else:
+		$UpgradeButton/Label.text = "Not Upgradeable"
 	update_stat_label()
 	update_upgrade_ui()
 	update_tier_buttons()
@@ -37,7 +41,16 @@ func set_selected_tower(tower_enum: Data.Tower) -> void:
 
 func update_stat_label() -> void:
 	var data = Data.TOWER_DATA[selected_tower]
+	if !data.has("upgrade1"):
+		$UpgradePanel.visible = false
 
+		$StatPanel/ScrollContainer/VBoxContainer/DamageContainer/DamagePic/DamageText.text = "-"
+		$StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic/SpeedText.text = "-"
+		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = "-"
+		$StatPanel/ScrollContainer/VBoxContainer/CritRContainer/CritRPic/CritRText.text = "-"
+		$StatPanel/ScrollContainer/VBoxContainer/CritDContainer/CritDPic/CritDText.text = "-"
+		return
+	
 	$StatPanel/ScrollContainer/VBoxContainer/DamageContainer/DamagePic/DamageText.text = str(data['damage'])
 	$StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic/SpeedText.text = str(data['reload_time']) + "s"
 	if selected_tower == Data.Tower.MORTAR:
@@ -77,13 +90,16 @@ func update_stat_label() -> void:
 func update_upgrade_ui() -> void:
 	var data = Data.TOWER_DATA[selected_tower]
 
+	if !data.get("has_upgrades", true):
+		return
+
 	var levels = [
-		data['upgrade1level'],
-		data['upgrade2level'],
-		data['upgrade3level'],
-		data['upgrade4level'],
-		data['upgrade5level'],
-		data['upgrade6level']
+		int(data.get("upgrade1level", 0)),
+		int(data.get("upgrade2level", 0)),
+		int(data.get("upgrade3level", 0)),
+		int(data.get("upgrade4level", 0)),
+		int(data.get("upgrade5level", 0)),
+		int(data.get("upgrade6level", 0))
 	]
 
 	var upgrades = [
@@ -97,8 +113,7 @@ func update_upgrade_ui() -> void:
 
 	for i in range(6):
 		_set_upgrade_visual(upgrades[i], levels[i])
-
-
+		
 func _set_upgrade_visual(node: Node, level: int) -> void:
 	var node_name_prefix = node.name
 
@@ -153,6 +168,8 @@ func _set_upgrade_amount_label(slot_index: int, upgrade_name: String, amount: Va
 
 func _try_purchase_upgrade(slot_index: int) -> void:
 	var tower_data = Data.TOWER_DATA[selected_tower]
+	if !tower_data.has("upgrade1"):
+		return
 	var level_key = "upgrade%dlevel" % slot_index
 	var upgrade_key = "upgrade%d" % slot_index
 	var current_level = int(tower_data.get(level_key, 0))
@@ -203,6 +220,8 @@ func _on_sentinel_pressed() -> void:
 
 func _on_upgrade_button_pressed() -> void:
 	update_stat_label()
+	if !Data.TOWER_DATA[selected_tower].has("upgrade1"):
+		return
 	update_upgrade_ui()
 	update_tier_buttons()
 	_set_tier_view(1)

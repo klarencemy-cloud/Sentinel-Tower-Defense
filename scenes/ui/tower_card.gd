@@ -32,6 +32,9 @@ func toggle_active(_money := 0):
 	var can_buy = Data.is_unli_money or Data.money >= cost
 	var can_use = has_free or can_buy
 	var can_load = Data.currentserverload + load <= Data.maxserverload
+	if id == Data.Tower.BACKUP_SERVER and Data.backup_server_placed:
+		disabled = true
+		return
 	disabled = !(can_use and can_load)
 	
 func update_free_label():

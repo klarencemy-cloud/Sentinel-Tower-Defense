@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ckw2r5sxu2dft"]
+
+[ext_resource type="Script" uid="uid://by21bbit8igg0" path="res://scenes/towers/tower_backup_server.gd" id="1_4jq7i"]
+[ext_resource type="Texture2D" uid="uid://bgijljt2l6qml" path="res://graphics/towers/spam filter/spam_filter_base.png" id="1_jrsj1"]
+[ext_resource type="Texture2D" uid="uid://b00gbf4bkr8pr" path="res://graphics/towers/spam filter/spam_filter_turret.png" id="2_4jq7i"]
+[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="3_6gdv8"]
+[ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="5_6gdv8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frx7f"]
+size = Vector2(100, 161)
+
+[node name="TowerBasic" type="Node2D" unique_id=1855858258]
+script = ExtResource("1_4jq7i")
+
+[node name="Base" type="Sprite2D" parent="." unique_id=230419259]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_jrsj1")
+
+[node name="Turret" type="Sprite2D" parent="." unique_id=34233293]
+position = Vector2(-6.3948914e-14, -16.000002)
+rotation = -3.1415927
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_4jq7i")
+offset = Vector2(0, 35)
+flip_v = true
+
+[node name="ClickArea" type="Area2D" parent="." unique_id=2143986532]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1343961913]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_frx7f")
+
+[node name="AdButton" type="TextureButton" parent="." unique_id=268705646]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+ignore_texture_size = true
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="PayButton" type="TextureButton" parent="." unique_id=357681325]
+visible = false
+offset_left = -31.0
+offset_top = -32.0
+offset_right = 33.0
+offset_bottom = 32.0
+texture_normal = ExtResource("3_6gdv8")
+
+[node name="TowerMenu" parent="." unique_id=872359436 instance=ExtResource("5_6gdv8")]
+
+[connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
+[connection signal="delete_press" from="TowerMenu" to="." method="_on_tower_menu_delete_press"]

@@ -52,12 +52,15 @@ func create_range_indicator() -> void:
 	range_indicator.z_index = 100
 	add_child(range_indicator)
 
-
 func _update_range_indicator() -> void:
 	if not range_indicator:
 		return
+
+	if not has_node("EnemyDetectionArea/CollisionShape2D"):
+		return
+
 	var shape = $EnemyDetectionArea/CollisionShape2D.shape
-	var radius = 0.0
+	var radius := 0.0
 
 	if shape is CircleShape2D:
 		radius = shape.radius
@@ -70,8 +73,10 @@ func _update_range_indicator() -> void:
 
 	range_indicator.points = points
 
-
 func show_range() -> void:
+	if not has_node("EnemyDetectionArea/CollisionShape2D"):
+		return
+
 	create_range_indicator()
 	_update_range_indicator()
 	range_indicator.visible = true
@@ -85,9 +90,10 @@ func hide_range() -> void:
 func setup(tower_type: Data.Tower):
 	type = tower_type
 
-	bullet_type = Data.TOWER_DATA[tower_type]["bullet"]
-	cost = Data.TOWER_DATA[tower_type]["cost"]
-	currentserverload = Data.TOWER_DATA[tower_type]["server_load"]
+	var tower_data = Data.TOWER_DATA.get(tower_type, {})
+	bullet_type = tower_data.get("bullet", Data.Bullet.SINGLE)
+	cost = tower_data.get("cost", 0)
+	currentserverload = tower_data.get("server_load", 0)
 	refresh_stats()
 
 
@@ -117,14 +123,19 @@ func _on_enemy_detection_area_area_exited(area: Area2D) -> void:
 			area.speed = area.base_speed
 
 func _on_click_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == 1 and event.button_mask == 1:
-		if not $DelayTimer.time_left:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var delay_timer := get_node_or_null("DelayTimer")
+
+		if delay_timer == null or delay_timer.time_left <= 0.0:
 			select.emit(self)
 			$TowerMenu.reveal()
 			show_range()
 
 
 func _on_tower_menu_delete_press() -> void:
+	if type == Data.Tower.BACKUP_SERVER:
+		Data.backup_server_placed = false
+		
 	Data.money += cost
 	Data.currentserverload -= currentserverload
 	emit_signal("removed", cell_pos)
@@ -138,22 +149,24 @@ func hide_ui():
 	$TowerMenu.hide()
 	hide_range()
 
-func refresh_stats(): 
-	var data = Data.TOWER_DATA[type]
+func refresh_stats():
+	var data = Data.TOWER_DATA.get(type, {})
 
-	damage = data["damage"]
-	reload_time = data["reload_time"] - (data["reload_time"] * Offense.multiplied_atk_speed) # Applies server upgrade reload time or atk speed not sure if working din
-	range = data["range"]
+	damage = data.get("damage", 0)
+	range = data.get("range", 0.0)
 
-	# reload timer update
-	$ReloadTimer.wait_time = reload_time
+	if data.has("reload_time"):
+		var base_reload: float = float(data["reload_time"])
+		reload_time = base_reload - (base_reload * Offense.multiplied_atk_speed)
 
-	# range collision update
-	var shape = $EnemyDetectionArea/CollisionShape2D.shape
-	if shape is CircleShape2D:
-		shape.radius = range
+		if has_node("ReloadTimer"):
+			$ReloadTimer.wait_time = reload_time
 
-	# visual update
+	if has_node("EnemyDetectionArea/CollisionShape2D"):
+		var shape = $EnemyDetectionArea/CollisionShape2D.shape
+		if shape is CircleShape2D:
+			shape.radius = range
+
 	_update_range_indicator()
 
 	if range_indicator and range_indicator.visible:

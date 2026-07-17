@@ -6,7 +6,8 @@ var tower_scenes = {
 	Data.Tower.MORTAR: "res://scenes/towers/tower_mortar.tscn",
 	Data.Tower.SPAM_FILTER: "res://scenes/towers/tower_spamfilter.tscn",
 	Data.Tower.QUARANTINE_CANNON: "res://scenes/towers/tower_quarantinecannon.tscn",
-	Data.Tower.IDPS: "res://scenes/towers/tower_idps.tscn"
+	Data.Tower.IDPS: "res://scenes/towers/tower_idps.tscn",
+	Data.Tower.BACKUP_SERVER: "res://scenes/towers/tower_backup_server.tscn"
 }
 
 var bullet_scene = preload("res://scenes/bullets/bullet.tscn")
@@ -146,6 +147,8 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	_get_tower_parent().add_child(tower)
 	EnemyTower.register_tower(tower.tower_id, selected_tower)
 	
+	if selected_tower == Data.Tower.BACKUP_SERVER:
+		Data.backup_server_placed = true
 	
 	place_tower = false
 	if using_free:
@@ -182,7 +185,8 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 func _on_tower_removed(cell_pos: Vector2i) -> void:
 	if cell_pos in used_cells:
 		used_cells.erase(cell_pos)
-
+	
+	
 	if current_tower and current_tower.cell_pos == cell_pos:
 		current_tower = null
 

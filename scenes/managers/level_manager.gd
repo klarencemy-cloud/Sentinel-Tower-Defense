@@ -46,6 +46,7 @@ func setup(root: Node2D) -> void:
 
 func load_map(map_path: String) -> Node:
 	Data.currentserverload = 0
+	Data.backup_server_placed = false
 	Data.free_towers = Data.owned_towers.duplicate(true)
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
