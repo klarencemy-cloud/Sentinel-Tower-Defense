@@ -362,4 +362,5 @@ position = Vector2(-834, 195)
 scale = Vector2(1.3554688, 1.3554688)
 sprite_frames = SubResource("SpriteFrames_w33o8")
 animation = &"boss1"
-frame_progress = 0.79248536
+autoplay = "boss1"
+frame_progress = 0.9716946

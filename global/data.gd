@@ -37,7 +37,7 @@ var before_level_index: int
 var current_level_index: int = 0 # map count 0 = level 1
 
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 51 # wave count
+var current_wave: int = 6 # wave count
 var backup_server_placed := false
 
 var owned_towers: Dictionary = {}
@@ -290,15 +290,15 @@ var TOWER_DATA = {
 		'tier1abilityunlocked': false,
 		'tier2abilityunlocked': false,
 		'tier3abilityunlocked': false, },
-	Tower.BACKUP_SERVER:{
+	Tower.BACKUP_SERVER: {
 		'name': "Backup Server",
-		'cost':  550,
-		'damage':  5000,
+		'cost': 550,
+		'damage': 5000,
 		'server_load': 65,
 		'thumbnail': "res://graphics/ui/tower thumbnails/basic.png",
 		'scene': "res://scenes/towers/tower_backup_server.tscn",
 		'bullet': Bullet.FIRE,
-		'upgradeable' : false,
+		'upgradeable': false,
 		
 	}
 	}

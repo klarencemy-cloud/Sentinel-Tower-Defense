@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bglyuypj0sahq" path="res://graphics/ui/sword.png" id="9_cfr7g"]
 [ext_resource type="Texture2D" uid="uid://b82cq14jn2r1" path="res://graphics/buttons/UpgradeBtn.png" id="9_x71o2"]
 [ext_resource type="FontFile" uid="uid://le60lmnqi5fk" path="res://font/Libre_Franklin/static/LibreFranklin-Thin.ttf" id="10_86m51"]
+[ext_resource type="Texture2D" uid="uid://bj686dqri1xme" path="res://graphics/container/upgrade_container.png" id="10_qujrc"]
 [ext_resource type="Texture2D" uid="uid://dw8ga7758gp7i" path="res://graphics/buttons/1stTierClicked.png" id="11_aprt0"]
 [ext_resource type="Texture2D" uid="uid://bsnmf7dwoo18l" path="res://graphics/buttons/2ndTierUnclicked.png" id="12_lg71s"]
 [ext_resource type="Texture2D" uid="uid://dme0d0pdsfgpo" path="res://graphics/buttons/3rdTierUnclicked.png" id="13_86m51"]
@@ -28,10 +29,13 @@ layer = 4
 script = ExtResource("1_6bmsu")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1917108759]
-offset_left = 27.0
-offset_right = 1947.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_gukx4")
+metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2062673488]
 offset_left = 397.0
@@ -48,6 +52,7 @@ size_flags_vertical = 4
 columns = 3
 
 [node name="UpgradeButton" type="TextureButton" parent="." unique_id=333239655]
+visible = false
 z_index = 1
 anchors_preset = -1
 anchor_left = 0.7316458
@@ -435,41 +440,42 @@ autowrap_mode = 3
 
 [node name="UpgradePanel" type="TextureRect" parent="." unique_id=6382960]
 visible = false
-offset_left = 1342.0
-offset_top = 61.0
-offset_right = 1813.0
-offset_bottom = 868.0
+offset_left = 1270.0
+offset_top = 164.0
+offset_right = 1811.0
+offset_bottom = 782.0
+texture = ExtResource("10_qujrc")
 
 [node name="Tier1Btn" type="TextureButton" parent="UpgradePanel" unique_id=2070011790]
 layout_mode = 0
-offset_left = 27.0
-offset_top = 249.0
-offset_right = 141.0
-offset_bottom = 294.0
+offset_left = 68.0
+offset_top = 146.0
+offset_right = 182.0
+offset_bottom = 191.0
 texture_normal = ExtResource("11_aprt0")
 
 [node name="Tier2Btn" type="TextureButton" parent="UpgradePanel" unique_id=564990751]
 layout_mode = 0
-offset_left = 176.0
-offset_top = 249.0
-offset_right = 294.0
-offset_bottom = 300.0
+offset_left = 217.0
+offset_top = 146.0
+offset_right = 335.0
+offset_bottom = 197.0
 texture_normal = ExtResource("12_lg71s")
 
 [node name="Tier3Btn" type="TextureButton" parent="UpgradePanel" unique_id=1224880459]
 layout_mode = 0
-offset_left = 326.0
-offset_top = 249.0
-offset_right = 442.0
-offset_bottom = 297.0
+offset_left = 367.0
+offset_top = 146.0
+offset_right = 483.0
+offset_bottom = 194.0
 texture_normal = ExtResource("13_86m51")
 
 [node name="Upgrade1" type="TextureButton" parent="UpgradePanel" unique_id=704011039]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 347.0
-offset_right = 363.0
-offset_bottom = 478.0
+offset_left = 71.0
+offset_top = 244.0
+offset_right = 404.0
+offset_bottom = 375.0
 texture_normal = ExtResource("14_aprt0")
 
 [node name="Upgrade1Label" type="Label" parent="UpgradePanel/Upgrade1" unique_id=1930408030]
@@ -514,16 +520,16 @@ offset_left = 51.0
 offset_top = 63.0
 offset_right = 71.0
 offset_bottom = 87.0
-theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
+theme_override_colors/font_color = Color(0.3137255, 0.654902, 0.87058824, 1)
 theme_override_font_sizes/font_size = 19
 text = "+1"
 
 [node name="Upgrade2" type="TextureButton" parent="UpgradePanel" unique_id=1745496662]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 505.0
-offset_right = 363.0
-offset_bottom = 636.0
+offset_left = 71.0
+offset_top = 402.0
+offset_right = 404.0
+offset_bottom = 533.0
 texture_normal = ExtResource("14_aprt0")
 
 [node name="Upgrade2Label" type="Label" parent="UpgradePanel/Upgrade2" unique_id=797404000]
@@ -568,17 +574,17 @@ offset_left = 51.0
 offset_top = 63.0
 offset_right = 71.0
 offset_bottom = 87.0
-theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
+theme_override_colors/font_color = Color(0.3137255, 0.654902, 0.87058824, 1)
 theme_override_font_sizes/font_size = 19
 text = "+1"
 
 [node name="Upgrade3" type="TextureButton" parent="UpgradePanel" unique_id=721349242]
 visible = false
 layout_mode = 0
-offset_left = 30.0
-offset_top = 347.0
-offset_right = 363.0
-offset_bottom = 478.0
+offset_left = 71.0
+offset_top = 244.0
+offset_right = 404.0
+offset_bottom = 375.0
 texture_normal = ExtResource("14_aprt0")
 
 [node name="Upgrade3Label" type="Label" parent="UpgradePanel/Upgrade3" unique_id=267309596]
@@ -623,17 +629,17 @@ offset_left = 51.0
 offset_top = 63.0
 offset_right = 71.0
 offset_bottom = 87.0
-theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
+theme_override_colors/font_color = Color(0.3137255, 0.654902, 0.87058824, 1)
 theme_override_font_sizes/font_size = 19
 text = "+1"
 
 [node name="Upgrade4" type="TextureButton" parent="UpgradePanel" unique_id=1751677671]
 visible = false
 layout_mode = 0
-offset_left = 30.0
-offset_top = 505.0
-offset_right = 363.0
-offset_bottom = 636.0
+offset_left = 71.0
+offset_top = 402.0
+offset_right = 404.0
+offset_bottom = 533.0
 texture_normal = ExtResource("14_aprt0")
 
 [node name="Upgrade4Label" type="Label" parent="UpgradePanel/Upgrade4" unique_id=703714304]
@@ -678,17 +684,17 @@ offset_left = 51.0
 offset_top = 63.0
 offset_right = 71.0
 offset_bottom = 87.0
-theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
+theme_override_colors/font_color = Color(0.3137255, 0.654902, 0.87058824, 1)
 theme_override_font_sizes/font_size = 19
 text = "+1"
 
 [node name="Upgrade5" type="TextureButton" parent="UpgradePanel" unique_id=2012290381]
 visible = false
 layout_mode = 0
-offset_left = 30.0
-offset_top = 347.0
-offset_right = 363.0
-offset_bottom = 478.0
+offset_left = 71.0
+offset_top = 244.0
+offset_right = 404.0
+offset_bottom = 375.0
 texture_normal = ExtResource("14_aprt0")
 
 [node name="Upgrade5Label" type="Label" parent="UpgradePanel/Upgrade5" unique_id=1902483567]
@@ -733,17 +739,17 @@ offset_left = 51.0
 offset_top = 63.0
 offset_right = 71.0
 offset_bottom = 87.0
-theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
+theme_override_colors/font_color = Color(0.3137255, 0.654902, 0.87058824, 1)
 theme_override_font_sizes/font_size = 19
 text = "+1"
 
 [node name="Upgrade6" type="TextureButton" parent="UpgradePanel" unique_id=1350624905]
 visible = false
 layout_mode = 0
-offset_left = 30.0
-offset_top = 505.0
-offset_right = 363.0
-offset_bottom = 636.0
+offset_left = 71.0
+offset_top = 402.0
+offset_right = 404.0
+offset_bottom = 533.0
 texture_normal = ExtResource("14_aprt0")
 
 [node name="Upgrade6Label" type="Label" parent="UpgradePanel/Upgrade6" unique_id=476319098]
@@ -788,25 +794,25 @@ offset_left = 51.0
 offset_top = 63.0
 offset_right = 71.0
 offset_bottom = 87.0
-theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
+theme_override_colors/font_color = Color(0.3137255, 0.654902, 0.87058824, 1)
 theme_override_font_sizes/font_size = 19
 text = "+1"
 
 [node name="$" type="TextureRect" parent="UpgradePanel" unique_id=1815093376]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 156.0
-offset_right = 99.0
-offset_bottom = 230.0
+offset_left = 66.0
+offset_top = 53.0
+offset_right = 140.0
+offset_bottom = 127.0
 texture = ExtResource("17_qujrc")
 expand_mode = 1
 
 [node name="Money" type="Label" parent="UpgradePanel" unique_id=1064741857]
 layout_mode = 0
-offset_left = 129.0
-offset_top = 159.0
-offset_right = 225.0
-offset_bottom = 231.0
+offset_left = 170.0
+offset_top = 56.0
+offset_right = 266.0
+offset_bottom = 128.0
 theme_override_colors/font_color = Color(0.8352941, 0.5686275, 0.19607843, 1)
 theme_override_font_sizes/font_size = 62
 text = "0"
