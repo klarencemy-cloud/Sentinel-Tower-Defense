@@ -167,20 +167,11 @@ func start_wave() -> void:
 	wave_active = true
 	spawning_wave = true
 
-	# All waves are predefined — fetch from Wave.WAVE_DATA
+	# FETCHS WAVE DATA FROM wave_data.gd(Global)
 	var wave_data = Wave.WAVE_DATA.get(Data.current_wave, null)
 
 	if wave_data != null:
-		# Predefined wave: spawn exact counts per path
 		await _spawn_predefined_wave(wave_data)
-	# else:
-		# Fallback random generation removed — all waves must be predefined
-		# var data = _random_wave_size()
-		# for enemy_enum in data:
-		# 	for i in range(data[enemy_enum]):
-		# 		_spawn_enemy(enemy_enum)
-		# 		await get_tree().create_timer(0.5, false).timeout
-
 	spawning_wave = false
 
 
@@ -225,52 +216,6 @@ func spawn_sandbox_enemy(enemy_enum: Data.Enemy) -> void:
 		_spawn_enemy_on_path(enemy_enum, path)
 
 
-# func _spawn_enemy(enemy_enum: Data.Enemy) -> void:
-# 	var path_follow = PathFollow2D.new()
-# 	var enemy = enemy_scene.instantiate()
-# 
-# 	var path = _choose_path_for_spawn()
-# 	if path:
-# 		path.add_child(path_follow)
-# 		path_follow.add_child(enemy)
-# 		enemy.setup(path_follow, enemy_enum)
-
-
-# func _random_wave_size() -> Dictionary:
-# 	var difficulty = Data.current_wave
-# 	var total_enemies = randi_range(5 + difficulty * 2, 8 + difficulty * 3)
-# 	var wave: Dictionary = {}
-# 
-# 	for i in range(total_enemies):
-# 		var enemy_type = _choose_random_enemy_type(difficulty)
-# 		wave[enemy_type] = wave.get(enemy_type, 0) + 1
-# 
-# 	return wave
-
-
-# func _choose_random_enemy_type(difficulty: int) -> Data.Enemy:
-# 	var default_chance = clamp(70 - difficulty * 4, 15, 70)
-# 	var fast_chance = clamp(70 - difficulty * 4, 15, 70)
-# 	var big_chance = clamp(60 + difficulty * 3, 15, 60)
-# 	var strong_chance = clamp(50 + difficulty * 2, 10, 50)
-# 	var extreme_chance = clamp(40 + difficulty * 2, 10, 40)
-# 	var worm_chance = clamp(40 + difficulty * 2, 10, 40)
-# 	var insider_chance = clamp(40 + difficulty * 2, 10, 40)
-# 
-# 	var roll = randi() % 100
-# 	if roll < default_chance:
-# 		return Data.Enemy.DEFAULT
-# 	elif roll < default_chance + big_chance:
-# 		return Data.Enemy.ADWARE
-# 	elif roll < default_chance + fast_chance + strong_chance:
-# 		return Data.Enemy.SPYWARE
-# 	elif roll < default_chance + fast_chance + strong_chance + worm_chance:
-# 		return Data.Enemy.CREDS
-# 	elif roll < default_chance + fast_chance + strong_chance + extreme_chance + worm_chance:
-# 		return Data.Enemy.BOTNET
-# 	return Data.Enemy.WORM
-
-
 func _get_paths() -> Array[Path2D]:
 	var paths: Array[Path2D] = []
 
@@ -279,9 +224,6 @@ func _get_paths() -> Array[Path2D]:
 			paths.append(child)
 	return paths
 
-# func _choose_path_for_spawn() -> Path2D:
-# 	var paths: Array = _get_paths()
-# 	return paths[randi() % paths.size()]
 
 func spawn_worm_clone(path: Path2D, progress: float):
 	var path_follow = PathFollow2D.new()
