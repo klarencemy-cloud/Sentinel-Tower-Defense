@@ -10,7 +10,7 @@ func _ready() -> void:
 	offense_container.refresh_pts.connect(_refresh_server_pts)
 	defense_container.refresh_pts.connect(_refresh_server_pts)
 	economy_container.refresh_pts.connect(_refresh_server_pts)
-	
+	Data.open_server_cyber.connect(toggle_open_server_cyber)
 
 	if Data.is_sandbox:
 		Data.before_server_points = Data.server_points # save server points before sandbox
@@ -21,7 +21,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_refresh_server_pts()
-	if Data.current_wave == 5:
+	if Data.current_wave == 7:
 		$UIContainer/CyberBtn.visible = true
 
 func _refresh_server_pts() -> void:
@@ -31,6 +31,8 @@ func _refresh_server_pts() -> void:
 	else:
 		server_pts.text = str(Data.server_points)
 
+func toggle_open_server_cyber():
+	$UIContainer/CyberBtn.pressed.emit()
 
 func _on_back_btn_pressed() -> void:
 	get_tree().paused = false
@@ -38,7 +40,7 @@ func _on_back_btn_pressed() -> void:
 	if Data.current_wave == 3 and !GameDialogueManager.is_wave3_defeated and !Data.is_sandbox:
 		GameDialogueManager.show_dialogue_wave3_defeat()
 
-# Uprade category toglles
+# Uprade category toggles
 func _on_cyber_btn_pressed() -> void:
 	$UIContainer/ServerBtn.add_theme_color_override("font_color", Color(0.176, 0.337, 0.451))
 	$UIContainer/CyberBtn.add_theme_color_override("font_color", Color(0.827, 0.2, 0.2))

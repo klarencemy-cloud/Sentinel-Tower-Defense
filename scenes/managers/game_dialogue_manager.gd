@@ -22,6 +22,8 @@ var is_boss1_shown: bool = false
 var is_boss1_2_shown: bool = false
 var is_boss1_defeated: bool = false
 
+var is_skill_activated: bool = false
+
 var is_level2_start_shown: bool = false
 
 var is_autoplay: bool = true
@@ -129,6 +131,20 @@ func show_dialogue_virus(): # used in popup
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "virus")
 	is_virus_shown = false
+
+var is_firewall_shown: bool = false # used in wave manager
+func show_dialogue_firewall():
+	_disable_auto()
+	var ui = get_tree().get_first_node_in_group("UI")
+	ui.toggle_skill_activation()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "firewall")
+	is_firewall_shown = true
+
+var is_firewall_activated_shown: bool = false
+func show_dialogue_firewall_activated(): # used in ability manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "firewall_activated")
+	is_firewall_activated_shown = true
 
 func show_dialogue_server_upgrade_2(): # used in wave manager
 	_disable_auto()

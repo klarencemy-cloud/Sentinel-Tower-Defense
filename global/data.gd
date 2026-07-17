@@ -14,8 +14,10 @@ var is_maxed_lvl: bool = false
 signal server_load_changed
 signal ads_visible_changed
 
-signal toggle_server_scene # to toggle server upgrade visibility
+signal open_server_cyber
 
+var is_server_cyber_shown: bool = false
+signal toggle_server_scene # to toggle server upgrade visibility
 signal change_challenge() # for vm
 
 # "before" variables to store the original values before entering sandbox mode
@@ -32,7 +34,7 @@ var wave_started: bool = false
 
 
 var before_level_index: int
-var current_level_index: int = 1 # map count 0 = level 1
+var current_level_index: int = 0 # map count 0 = level 1
 
 var checkpoint_wave: int = 0 # checkpoint count
 var current_wave: int = 51 # wave count
