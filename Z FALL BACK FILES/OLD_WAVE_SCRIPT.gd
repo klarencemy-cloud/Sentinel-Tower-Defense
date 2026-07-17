@@ -12,7 +12,7 @@ var spawning_wave: bool = false
 
 func _ready() -> void:
 	add_to_group("WaveManager")
-
+	
 func setup(root: Node2D, map_manager: Node) -> void:
 	level_root = root
 	level_manager = map_manager
@@ -22,10 +22,10 @@ func update_wave_state() -> void:
 	var ui = get_tree().get_first_node_in_group("UI")
 
 	var enemies = get_tree().get_nodes_in_group("Enemies")
-
+	
 	if wave_active and not spawning_wave and enemies.size() == 0:
 		wave_active = false
-
+		
 		if Data.current_wave > 0 and Data.current_wave % 5 == 0 and Data.checkpoint_wave < Data.current_wave:
 			Data.checkpoint_wave = Data.current_wave
 
@@ -36,44 +36,44 @@ func update_wave_state() -> void:
 				level_completed.emit()
 				next_map.emit()
 			return
-
+	
 	if not wave_active and not spawning_wave and enemies.size() == 0:
 		if Data.wave_started:
 			Data.wave_started = false
 			Data.current_wave += 1
 			if ui:
 				ui.update_wave_label()
-
+		
 		if Data.current_wave == 2 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_defeat_spam:
 			GameDialogueManager.show_dialogue_spam_defeat()
-
+		
 		if Data.current_wave == 3 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_wave2_defeated:
 			GameDialogueManager.play_scene("2nd_scene")
-
+			
 		if Data.current_wave == 5 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_firewall_shown:
 			GameDialogueManager.show_dialogue_firewall()
 
 		if Data.current_wave == 7 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2:
 			GameDialogueManager.show_dialogue_server_upgrade_2()
-
+	
 		if Data.current_wave == 38 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_strange_discovery_shown:
 			GameDialogueManager.show_dialogue_level4_strange_discovery()
-
+		
 		if Data.current_wave == 47 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_level5_hidden_archive_shown:
 			GameDialogueManager.show_dialogue_level5_hidden_archive()
-
+		
 		if Data.current_wave == 49 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_level5_hidden_archive2_shown:
 			GameDialogueManager.show_dialogue_level5_hidden_archive2()
-
+	
 		if Data.current_wave == 50 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_level5_final_fragment_shown:
 			GameDialogueManager.show_dialogue_level5_final_fragment()
-
+		
 		if Data.current_wave == 52 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_story_ends:
 			GameDialogueManager.show_dialogue_story_ends()
 
 		if ui and ui.is_auto_enabled():
 			start_wave()
-
+			
 
 func start_wave() -> void:
 	if wave_active or spawning_wave:
@@ -122,8 +122,8 @@ func start_wave() -> void:
 		GameDialogueManager.show_dialogue_level5_boss5()
 	if Data.current_wave == 51 and !Data.is_sandbox and !GameDialogueManager.is_level6_boss6_shown:
 		GameDialogueManager.show_dialogue_level6_boss6()
-
-
+	
+	
 	match Data.current_wave:
 		6:
 			$'../WeatherEffects/DustParticles'.visible = false
@@ -167,42 +167,42 @@ func start_wave() -> void:
 	wave_active = true
 	spawning_wave = true
 
-	# All waves are predefined — fetch from Wave.WAVE_DATA
+	# predefined
 	var wave_data = Wave.WAVE_DATA.get(Data.current_wave, null)
-
+	
 	if wave_data != null:
 		# Predefined wave: spawn exact counts per path
 		await _spawn_predefined_wave(wave_data)
-	# else:
-		# Fallback random generation removed — all waves must be predefined
-		# var data = _random_wave_size()
-		# for enemy_enum in data:
-		# 	for i in range(data[enemy_enum]):
-		# 		_spawn_enemy(enemy_enum)
-		# 		await get_tree().create_timer(0.5, false).timeout
+	else:
+		# Fallback: random generation for undefined waves
+		var data = _random_wave_size()
+		for enemy_enum in data:
+			for i in range(data[enemy_enum]):
+				_spawn_enemy(enemy_enum)
+				await get_tree().create_timer(0.5, false).timeout
 
 	spawning_wave = false
 
 
-# Predefined wave spawning
+# predefined wave spanwing
 
 func _spawn_predefined_wave(wave_data: Dictionary) -> void:
 	var paths: Array[Path2D] = _get_paths()
-
+	
 	var enemies_data: Dictionary = wave_data["enemies"]
-
+	
 	for enemy_enum in enemies_data.keys():
 		var per_path_counts: Array = enemies_data[enemy_enum]
-
+		
 		for path_index in range(per_path_counts.size()):
 			var count: int = per_path_counts[path_index]
-
+			
 			if path_index >= paths.size():
 				push_warning("Wave %d: path index %d out of bounds (only %d paths)" % [Data.current_wave, path_index, paths.size()])
 				continue
-
+			
 			var path: Path2D = paths[path_index]
-
+			
 			for i in range(count):
 				_spawn_enemy_on_path(enemy_enum, path)
 				await get_tree().create_timer(0.5, false).timeout
@@ -219,69 +219,66 @@ func _spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D) -> void:
 
 func spawn_sandbox_enemy(enemy_enum: Data.Enemy) -> void:
 	wave_active = true
-	var paths = _get_paths()
-	if paths.size() > 0:
-		var path = paths[randi() % paths.size()]
-		_spawn_enemy_on_path(enemy_enum, path)
+	_spawn_enemy(enemy_enum)
 
 
-# func _spawn_enemy(enemy_enum: Data.Enemy) -> void:
-# 	var path_follow = PathFollow2D.new()
-# 	var enemy = enemy_scene.instantiate()
-# 
-# 	var path = _choose_path_for_spawn()
-# 	if path:
-# 		path.add_child(path_follow)
-# 		path_follow.add_child(enemy)
-# 		enemy.setup(path_follow, enemy_enum)
+func _spawn_enemy(enemy_enum: Data.Enemy) -> void:
+	var path_follow = PathFollow2D.new()
+	var enemy = enemy_scene.instantiate()
+
+	var path = _choose_path_for_spawn()
+	if path:
+		path.add_child(path_follow)
+		path_follow.add_child(enemy)
+		enemy.setup(path_follow, enemy_enum)
 
 
-# func _random_wave_size() -> Dictionary:
-# 	var difficulty = Data.current_wave
-# 	var total_enemies = randi_range(5 + difficulty * 2, 8 + difficulty * 3)
-# 	var wave: Dictionary = {}
-# 
-# 	for i in range(total_enemies):
-# 		var enemy_type = _choose_random_enemy_type(difficulty)
-# 		wave[enemy_type] = wave.get(enemy_type, 0) + 1
-# 
-# 	return wave
+func _random_wave_size() -> Dictionary:
+	var difficulty = Data.current_wave
+	var total_enemies = randi_range(5 + difficulty * 2, 8 + difficulty * 3)
+	var wave: Dictionary = {}
+
+	for i in range(total_enemies):
+		var enemy_type = _choose_random_enemy_type(difficulty)
+		wave[enemy_type] = wave.get(enemy_type, 0) + 1
+
+	return wave
 
 
-# func _choose_random_enemy_type(difficulty: int) -> Data.Enemy:
-# 	var default_chance = clamp(70 - difficulty * 4, 15, 70)
-# 	var fast_chance = clamp(70 - difficulty * 4, 15, 70)
-# 	var big_chance = clamp(60 + difficulty * 3, 15, 60)
-# 	var strong_chance = clamp(50 + difficulty * 2, 10, 50)
-# 	var extreme_chance = clamp(40 + difficulty * 2, 10, 40)
-# 	var worm_chance = clamp(40 + difficulty * 2, 10, 40)
-# 	var insider_chance = clamp(40 + difficulty * 2, 10, 40)
-# 
-# 	var roll = randi() % 100
-# 	if roll < default_chance:
-# 		return Data.Enemy.DEFAULT
-# 	elif roll < default_chance + big_chance:
-# 		return Data.Enemy.ADWARE
-# 	elif roll < default_chance + fast_chance + strong_chance:
-# 		return Data.Enemy.SPYWARE
-# 	elif roll < default_chance + fast_chance + strong_chance + worm_chance:
-# 		return Data.Enemy.CREDS
-# 	elif roll < default_chance + fast_chance + strong_chance + extreme_chance + worm_chance:
-# 		return Data.Enemy.BOTNET
-# 	return Data.Enemy.WORM
+func _choose_random_enemy_type(difficulty: int) -> Data.Enemy:
+	var default_chance = clamp(70 - difficulty * 4, 15, 70)
+	var fast_chance = clamp(70 - difficulty * 4, 15, 70)
+	var big_chance = clamp(60 + difficulty * 3, 15, 60)
+	var strong_chance = clamp(50 + difficulty * 2, 10, 50)
+	var extreme_chance = clamp(40 + difficulty * 2, 10, 40)
+	var worm_chance = clamp(40 + difficulty * 2, 10, 40)
+	var insider_chance = clamp(40 + difficulty * 2, 10, 40)
+
+	var roll = randi() % 100
+	if roll < default_chance:
+		return Data.Enemy.DEFAULT
+	elif roll < default_chance + big_chance:
+		return Data.Enemy.ADWARE
+	elif roll < default_chance + fast_chance + strong_chance:
+		return Data.Enemy.SPYWARE
+	elif roll < default_chance + fast_chance + strong_chance + worm_chance:
+		return Data.Enemy.CREDS
+	elif roll < default_chance + fast_chance + strong_chance + extreme_chance + worm_chance:
+		return Data.Enemy.BOTNET
+	return Data.Enemy.WORM
 
 
 func _get_paths() -> Array[Path2D]:
 	var paths: Array[Path2D] = []
-
+	
 	for child in level_root.get_children():
 		if child is Path2D:
 			paths.append(child)
 	return paths
 
-# func _choose_path_for_spawn() -> Path2D:
-# 	var paths: Array = _get_paths()
-# 	return paths[randi() % paths.size()]
+func _choose_path_for_spawn() -> Path2D:
+	var paths: Array = _get_paths()
+	return paths[randi() % paths.size()]
 
 func spawn_worm_clone(path: Path2D, progress: float):
 	var path_follow = PathFollow2D.new()
@@ -314,7 +311,7 @@ func spawn_ddos_clones(path: Path2D, progress: float):
 		enemy.get_node("hpbar").max_value = hp
 		enemy.get_node("hpbar").value = hp
 
-
+		
 func spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D):
 	var path_follow = PathFollow2D.new()
 	var enemy = enemy_scene.instantiate()
