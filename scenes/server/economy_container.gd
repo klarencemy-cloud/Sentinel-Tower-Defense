@@ -160,26 +160,54 @@ func _upgrade(index: int) -> void:
 
 func _gold_max_level() -> void:
 	var level = Economy.economy_levels[0]
-	# check if level 6 to increase cost tier
-	if level == 6:
-		gold_real_cost = 2
-		Economy.gold_cost_tier = 2
-		gold_cost.text = "Cost: " + str(gold_real_cost)
+	# checks every 2 level to increase the cost of the next upgrade
+
+	match level:
+		2:
+			gold_real_cost = 2
+			Economy.gold_cost_tier = 2
+			gold_cost.text = "Cost: " + str(gold_real_cost)
+		4:
+			gold_real_cost = 3
+			Economy.gold_cost_tier = 3
+			gold_cost.text = "Cost: " + str(gold_real_cost)
+		6:
+			gold_real_cost = 4
+			Economy.gold_cost_tier = 4
+			gold_cost.text = "Cost: " + str(gold_real_cost)
 
 
 func _exp_rate_max_level() -> void:
 	var level = Economy.economy_levels[1]
 	
-	if level == 6:
-		exp_rate_real_cost = 2
-		Economy.exp_cost_tier = 2
-		exp_rate_cost.text = "Cost: " + str(exp_rate_real_cost)
+	match level:
+		2:
+			exp_rate_real_cost = 2
+			Economy.exp_cost_tier = 2
+			exp_rate_cost.text = "Cost: " + str(exp_rate_real_cost)
+		4:
+			exp_rate_real_cost = 3
+			Economy.exp_cost_tier = 3
+			exp_rate_cost.text = "Cost: " + str(exp_rate_real_cost)
+		6:
+			exp_rate_real_cost = 4
+			Economy.exp_cost_tier = 4
+			exp_rate_cost.text = "Cost: " + str(exp_rate_real_cost)
 
 
 func _server_load_max_level() -> void:
 	var level = Economy.economy_levels[2]
 	
-	if level == 6:
-		server_load_real_cost = 2
-		Economy.server_cost_tier = 2
-		server_load_cost.text = "Cost: " + str(server_load_real_cost)
+	match level:
+		2:
+			server_load_real_cost = 2
+			Economy.server_cost_tier = 2
+			server_load_cost.text = "Cost: " + str(server_load_real_cost)
+		4:
+			server_load_real_cost = 3
+			Economy.server_cost_tier = 3
+			server_load_cost.text = "Cost: " + str(server_load_real_cost)
+		6:
+			server_load_real_cost = 4
+			Economy.server_cost_tier = 4
+			server_load_cost.text = "Cost: " + str(server_load_real_cost)
