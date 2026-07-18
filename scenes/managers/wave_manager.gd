@@ -208,6 +208,8 @@ func _spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D) -> void:
 
 	enemy.setup(path_follow, enemy_enum)
 
+	path.move_child(path_follow, 0)
+
 func spawn_sandbox_enemy(enemy_enum: Data.Enemy) -> void:
 	wave_active = true
 	var paths = _get_paths()
@@ -236,6 +238,8 @@ func spawn_worm_clone(path: Path2D, progress: float):
 	enemy.setup(path_follow, Data.Enemy.WORM)
 	enemy.can_clone = false
 
+	path.move_child(path_follow, 0)
+
 func spawn_ddos_clones(path: Path2D, progress: float):
 	var offsets = [-40, 0, 40]
 
@@ -255,7 +259,8 @@ func spawn_ddos_clones(path: Path2D, progress: float):
 		enemy.health = hp
 		enemy.get_node("hpbar").max_value = hp
 		enemy.get_node("hpbar").value = hp
-
+		path.move_child(path_follow, 0)	
+	
 
 func spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D):
 	var path_follow = PathFollow2D.new()
@@ -265,6 +270,8 @@ func spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D):
 	path_follow.add_child(enemy)
 
 	enemy.setup(path_follow, enemy_enum)
+
+	path.move_child(path_follow, 0)
 
 func spawn_boss_viruses():
 	var paths: Array[Path2D] = []

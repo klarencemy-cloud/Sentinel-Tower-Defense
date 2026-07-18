@@ -65,7 +65,19 @@ func load_map(map_path: String) -> Node:
 		current_map.z_index = -1
 	level_root.add_child(current_map)
 	level_root.move_child(current_map, 0)
+
+	_enemy_container()
+
 	return current_map
+
+
+func _enemy_container() -> void: # Puts enemies from multiple paths from multiple container
+	var container = level_root.get_node_or_null("EnemyContainer")
+	if container == null:
+		container = Node2D.new()
+		container.name = "EnemyContainer"
+		level_root.add_child(container)
+	level_root.move_child(container, 1)
 
 
 func get_build_layer() -> TileMapLayer:
