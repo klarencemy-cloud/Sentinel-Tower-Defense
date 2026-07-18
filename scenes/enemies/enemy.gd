@@ -361,7 +361,7 @@ func hit(damage: int = 1, tower_id: int = -1):
 		$AudioStreamPlayer2D.stream = preload("res://audio/impact.1.ogg")
 
 	if enemy_type == $Boss1: # to check the health of boss1 for dialogue
-		if Data.current_wave == 11 and !Data.is_sandbox and !GameDialogueManager.is_boss1_defeated:
+		if Data.current_wave == 10 and !Data.is_sandbox and !GameDialogueManager.is_boss1_defeated:
 			if health <= 0:
 				GameDialogueManager.show_dialogue_boss1_defeated()
 

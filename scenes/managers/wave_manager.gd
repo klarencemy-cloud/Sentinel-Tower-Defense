@@ -259,7 +259,7 @@ func spawn_ddos_clones(path: Path2D, progress: float):
 		enemy.health = hp
 		enemy.get_node("hpbar").max_value = hp
 		enemy.get_node("hpbar").value = hp
-		path.move_child(path_follow, 0)	
+		path.move_child(path_follow, 0)
 	
 
 func spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D):

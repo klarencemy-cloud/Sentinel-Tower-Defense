@@ -1,8 +1,9 @@
 ~ start 
+
 do GameDialogueManager.is_override=true
 do GameDialogueManager.show_character("Mysterious Person")
 Mysterious Person : Goodness! You're finally awake. Time to stop these vermin from reaching the server!
-| Mysterious Person : I thought I had lost you!
+Mysterious Person : I thought I had lost you!
 do GameDialogueManager.is_override=false
 Player: Wait, who are you?
 do GameDialogueManager.is_override=true
@@ -13,10 +14,9 @@ do GameDialogueManager.is_override=false
 Odysseus: I have been protecting the SERVER for so long. Thankfully, you are here now! 
 Player: What? Wait, where are we?
 do GameDialogueManager.move_camera(240,135,1.5)
-#do get_tree().create_timer(1.5).timeout
 Odysseus: Save the chatter for later! See those? Ohh, Spams! They come unwelcome, unsolicited, and in large quantities. So be ready!
 do GameDialogueManager.show_enemy("spam", 0)
-#do GameDialogueManager.start_wave()
+do GameDialogueManager.start_wave()
 => END
 
 #~ server_health
@@ -220,5 +220,6 @@ Odysseus: Looks like you got the remnant of the Virus.
 System: Scriptures of the Past unlocked.
 System: Scripture I obtained.
 #insert function to show scripture
+do GameDialogueManager.show_script("yeaya", 1)
 Player: It looks like we have recovered historical data.
 Odysseus: Yes, every High-Threat you defeat drops Remnants containing Scriptures. Some Scriptures can also be recovered as you progress.

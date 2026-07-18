@@ -1,0 +1,258 @@
+[gd_scene format=3 uid="uid://qimt0w5cnppk"]
+
+[ext_resource type="Script" uid="uid://mgspb4m2nu7r" path="res://scenes/dialogue/scripture.gd" id="1_c0ukr"]
+[ext_resource type="Script" uid="uid://ds608oas2l3m2" path="res://scenes/dialogue/animation.gd" id="2_c0ukr"]
+[ext_resource type="Texture2D" uid="uid://co5olt0y80ugy" path="res://graphics/container/upper_blue.png" id="3_c0ukr"]
+[ext_resource type="Texture2D" uid="uid://bi7d3ifie15g6" path="res://graphics/container/red_pop.png" id="4_8rx1i"]
+[ext_resource type="Texture2D" uid="uid://du4nha0nlcege" path="res://graphics/container/lower_blue.png" id="4_ebn4j"]
+[ext_resource type="Texture2D" uid="uid://cm0uo5i3sik83" path="res://graphics/container/rotating.png" id="5_8adel"]
+[ext_resource type="Texture2D" uid="uid://brji8ddv1va22" path="res://graphics/container/scripture1.png" id="7_ult64"]
+[ext_resource type="FontFile" uid="uid://cxqairacw6y1n" path="res://font/Libre_Franklin/static/LibreFranklin-ThinItalic.ttf" id="10_vmyf7"]
+
+[sub_resource type="Gradient" id="Gradient_ysedr"]
+colors = PackedColorArray(0.13725491, 0.22352941, 0.2784314, 0.6784314, 0.13725491, 0.22352941, 0.2784314, 0.47058824)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0uhmu"]
+gradient = SubResource("Gradient_ysedr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qy835"]
+particle_flag_disable_z = true
+radial_velocity_min = 413.21997
+radial_velocity_max = 580.51996
+scale_max = 8.21
+hue_variation_min = -0.050000023
+hue_variation_max = 0.059999976
+
+[sub_resource type="Animation" id="Animation_ult64"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UpperDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LowerDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 507)]
+}
+
+[sub_resource type="Animation" id="Animation_d2eyq"]
+resource_name = "pop_script"
+length = 0.8667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UpperDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -507), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LowerDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1080), Vector2(0, 507)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RedPop:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.47886848, 0.6666667, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, 2), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ult64"]
+_data = {
+&"RESET": SubResource("Animation_ult64"),
+&"pop_script": SubResource("Animation_d2eyq")
+}
+
+[sub_resource type="Animation" id="Animation_c0ukr"]
+resource_name = "pop_info"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333333, 0.19999999, 0.23333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ebn4j"]
+_data = {
+&"pop_info": SubResource("Animation_c0ukr")
+}
+
+[node name="Scripture" type="CanvasLayer" unique_id=317540891 groups=["animate2"]]
+process_mode = 3
+script = ExtResource("1_c0ukr")
+
+[node name="Pop" type="Control" parent="." unique_id=1841151167]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Pop" unique_id=923263835]
+top_level = true
+z_index = 1
+position = Vector2(2136, -121)
+color = Color(0.8392791, 0.925866, 1, 1)
+energy = 0.0
+range_layer_max = 1
+
+[node name="Overlay" type="TextureRect" parent="Pop" unique_id=1559103559]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0uhmu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Animation" type="Control" parent="Pop/Overlay" unique_id=299120814]
+z_index = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 498)
+script = ExtResource("2_c0ukr")
+metadata/_edit_use_anchors_ = true
+
+[node name="UpperDoor" type="TextureRect" parent="Pop/Overlay/Animation" unique_id=1024090940]
+light_mask = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.46944445
+texture = ExtResource("3_c0ukr")
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LowerDoor" type="TextureRect" parent="Pop/Overlay/Animation" unique_id=1210099816]
+light_mask = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.46944445
+anchor_right = 1.0
+anchor_bottom = 1.0000011
+texture = ExtResource("4_ebn4j")
+metadata/_edit_use_anchors_ = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Pop/Overlay/Animation" unique_id=1545577099]
+position = Vector2(967, 486)
+emitting = false
+amount = 50
+visibility_rect = Rect2(-250, -250, 500, 500)
+process_material = SubResource("ParticleProcessMaterial_qy835")
+
+[node name="RedPop" type="TextureRect" parent="Pop/Overlay/Animation" unique_id=984557374]
+z_index = 1
+layout_mode = 0
+offset_left = 679.0
+offset_top = 220.0
+offset_right = 1229.7429
+offset_bottom = 769.0
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(307, 275)
+texture = ExtResource("4_8rx1i")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Pop/Overlay/Animation/RedPop" unique_id=1898510061]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09457514
+anchor_top = 0.066795
+anchor_right = 0.923722
+anchor_bottom = 0.90171295
+pivot_offset = Vector2(228.324, 229.185)
+texture = ExtResource("5_8adel")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Pop/Overlay/Animation" unique_id=74128809]
+layout_mode = 0
+offset_left = 1447.0
+offset_top = 1018.0
+offset_right = 1858.0
+offset_bottom = 1057.0
+theme_override_fonts/font = ExtResource("10_vmyf7")
+theme_override_font_sizes/font_size = 32
+text = "SCRIPTURE RECOVERED"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pop/Overlay/Animation" unique_id=397421522]
+libraries/ = SubResource("AnimationLibrary_ult64")
+speed_scale = 1.505
+
+[node name="Info" type="Control" parent="." unique_id=1078619580]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Info" unique_id=1991104597]
+libraries/ = SubResource("AnimationLibrary_ebn4j")
+autoplay = &"pop_info"
+
+[node name="TextureRect" type="TextureRect" parent="Info" unique_id=177073091]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0429835
+anchor_top = 0.048032243
+anchor_right = 0.94030374
+anchor_bottom = 0.94710636
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(861.4274, 485.50006)
+texture = ExtResource("7_ult64")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="gui_input" from="Pop/Overlay/Animation" to="Pop/Overlay/Animation" method="_on_gui_input"]
+[connection signal="animation_finished" from="Pop/Overlay/Animation/AnimationPlayer" to="Pop/Overlay/Animation" method="_on_animation_player_animation_finished"]
+[connection signal="gui_input" from="Info" to="." method="_on_info_gui_input"]

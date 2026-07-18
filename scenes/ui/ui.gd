@@ -360,6 +360,9 @@ func _on_unli_senti_cap_toggled(toggled_on: bool) -> void: # UNLI SERVER CAPACIT
 func hide_pop(state: bool):
 	$PopUp.visible = state
 
+func hide_pop2(state: bool):
+	$Scripture.visible = state
+
 func play_scene(scene: String):
 	$Cutscene.visible = true
 	$Cutscene/Control/AnimationPlayer.play(scene)

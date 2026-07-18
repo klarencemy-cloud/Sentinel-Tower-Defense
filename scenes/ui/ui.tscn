@@ -31,6 +31,7 @@
 [ext_resource type="FontFile" uid="uid://cqus3kybakmf8" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraBold.ttf" id="21_oopc8"]
 [ext_resource type="Texture2D" uid="uid://1qgvsuhf841g" path="res://graphics/ui/enemyhpbar1.png" id="27_vnqvi"]
 [ext_resource type="Texture2D" uid="uid://ba1dyadxb3f65" path="res://graphics/ui/enemyhpbar2.png" id="28_7ygsn"]
+[ext_resource type="PackedScene" uid="uid://qimt0w5cnppk" path="res://scenes/dialogue/scripture.tscn" id="31_272wc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vp6q"]
 texture = ExtResource("2_g5kmx")
@@ -570,6 +571,11 @@ grow_horizontal = 0
 flat = true
 
 [node name="PopUp" parent="." unique_id=264578413 instance=ExtResource("9_khplb")]
+layer = 2
+visible = false
+
+[node name="Scripture" parent="." unique_id=317540891 instance=ExtResource("31_272wc")]
+layer = 2
 visible = false
 
 [node name="Cutscene" parent="." unique_id=1233131737 instance=ExtResource("2_khplb")]

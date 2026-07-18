@@ -41,6 +41,13 @@ func show_enemy(enemy_name: String, index: int):
 	ui.trigger_shake()
 	animation.play_animation(enemy_name, index)
 
+func show_script(script_name: String, index: int):
+	get_tree().paused = true
+	var animation = get_tree().get_first_node_in_group("animate2")
+	var ui = get_tree().get_first_node_in_group("UI")
+	ui.trigger_shake()
+	animation.play_animation(script_name, index)
+
 func camera_shake():
 	var ui = get_tree().get_first_node_in_group("UI")
 	ui.trigger_shake()

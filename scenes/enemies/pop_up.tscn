@@ -17,17 +17,17 @@
 [ext_resource type="Texture2D" uid="uid://dc1008xax0yk6" path="res://graphics/enemies/enemies4.png" id="9_rq1w3"]
 [ext_resource type="FontFile" uid="uid://cxqairacw6y1n" path="res://font/Libre_Franklin/static/LibreFranklin-ThinItalic.ttf" id="10_bxm1x"]
 
-[sub_resource type="Gradient" id="Gradient_ysedr"]
+[sub_resource type="Gradient" id="Gradient_rq1w3"]
 colors = PackedColorArray(0.13725491, 0.22352941, 0.2784314, 0.6784314, 0.13725491, 0.22352941, 0.2784314, 0.47058824)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xo11b"]
-gradient = SubResource("Gradient_ysedr")
+gradient = SubResource("Gradient_rq1w3")
 
-[sub_resource type="Gradient" id="Gradient_ba8xt"]
+[sub_resource type="Gradient" id="Gradient_5dcfn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bxm1x"]
-gradient = SubResource("Gradient_ba8xt")
+gradient = SubResource("Gradient_5dcfn")
 
 [sub_resource type="Animation" id="Animation_q1l02"]
 length = 4.733333
@@ -919,7 +919,7 @@ anchors_preset = -1
 anchor_top = 0.46944445
 anchor_right = 1.0
 anchor_bottom = 1.0000011
-offset_bottom = -0.0010986328
+offset_bottom = 0.00012207031
 texture = ExtResource("4_ba8xt")
 metadata/_edit_use_anchors_ = true
 
