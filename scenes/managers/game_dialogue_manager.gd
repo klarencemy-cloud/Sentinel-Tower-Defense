@@ -41,12 +41,12 @@ func show_enemy(enemy_name: String, index: int):
 	ui.trigger_shake()
 	animation.play_animation(enemy_name, index)
 
-func show_script(script_name: String, index: int):
+func show_script(index: int):
 	get_tree().paused = true
 	var animation = get_tree().get_first_node_in_group("animate2")
 	var ui = get_tree().get_first_node_in_group("UI")
 	ui.trigger_shake()
-	animation.play_animation(script_name, index)
+	animation.play_animation(index)
 
 func camera_shake():
 	var ui = get_tree().get_first_node_in_group("UI")
@@ -193,6 +193,12 @@ func show_dialogue_boss1_defeated(): # used in enemy
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1_defeated")
 	is_boss1_defeated = true
 
+var is_boss1_defeated2: bool = false
+func show_dialogue_boss1_defeated2(): # used in enemy
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1_defeated2")
+	is_boss1_defeated2 = true
+
 
 func show_dialogue_level2_start(): # used in loading
 	_disable_auto()
@@ -261,6 +267,12 @@ func show_dialogue_level2_boss2_defeated(): # used in enemy
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "Boss2_defeated")
 	is_level2_boss2_defeated = true
 
+var is_level2_boss2_defeated2: bool = false
+func show_dialogue_level2_boss2_defeated2(): # used in enemy
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "Boss2_defeated2")
+	is_level2_boss2_defeated2 = true
+
 var is_level3_start_shown: bool = false
 func show_dialogue_level3_start(): # used in loading
 	_disable_auto()
@@ -320,6 +332,13 @@ func show_dialogue_level3_boss3_defeated(): # used enemy
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "Boss3_defeated")
 	is_boss3_defeated = true
+
+var is_boss3_defeated2: bool = false
+func show_dialogue_level3_boss3_defeated2(): # used enemy
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "Boss3_defeated2")
+	is_boss3_defeated2 = true
+
 
 var is_level4_start_shown: bool = false
 func show_dialogue_level4_start(): # used loading
@@ -393,6 +412,12 @@ func show_dialogue_level4_boss4_defeated(): # used enemy
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "Boss4_defeated")
 	is_boss4_defeated_shown = true
+
+var is_boss4_defeated_shown2: bool = false
+func show_dialogue_level4_boss4_defeated2(): # used enemy
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "Boss4_defeated2")
+	is_boss4_defeated_shown2 = true
 
 var is_level5_start_shown: bool = false
 func show_dialogue_level5_start(): # used loading
@@ -480,8 +505,14 @@ func show_dialogue_level6_boss6_defeated(): # used in enemy
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "Boss6_defeated")
 	is_level6_boss6_defeated_shown = true
 
+var is_level6_boss6_defeated_shown2: bool = false
+func show_dialogue_level6_boss6_defeated2(): # used in enemy
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "Boss6_defeated2")
+	is_level6_boss6_defeated_shown2 = true
+
 var is_story_ends: bool = false
-func show_dialogue_story_ends(): # used in wave
+func show_dialogue_story_ends(): # used in scripture
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "ending")
 	is_story_ends = true

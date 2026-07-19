@@ -165,6 +165,11 @@ Odysseus: Ignore it, don’t let it distract you.
 System: Boss Remnant recovered.
 System: Scripture IV obtained.
 #insert function to show scripture
+do GameDialogueManager.pause_game(true)
+do GameDialogueManager.show_script(3)
+=> END
+
+~ Boss4_defeated2
 Player: So.. This wasn’t all caused by the machines?
 Odysseus: It seems that way.
 Player: Then who is this person? 

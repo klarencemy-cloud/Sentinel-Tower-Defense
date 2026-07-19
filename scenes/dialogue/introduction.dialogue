@@ -220,6 +220,11 @@ Odysseus: Looks like you got the remnant of the Virus.
 System: Scriptures of the Past unlocked.
 System: Scripture I obtained.
 #insert function to show scripture
-do GameDialogueManager.show_script("yeaya", 1)
+do GameDialogueManager.pause_game(true)
+do GameDialogueManager.show_script(0)
+=> END
+
+~ Boss1_defeated2
 Player: It looks like we have recovered historical data.
 Odysseus: Yes, every High-Threat you defeat drops Remnants containing Scriptures. Some Scriptures can also be recovered as you progress.
+=> END
