@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brji8ddv1va22"
-path="res://.godot/imported/scripture1.png-6e2fe618da029638055e1d7530596717.ctex"
+uid="uid://jqakj3mjmfi3"
+path="res://.godot/imported/vfx_lightning.jpg-25701b02d8fd20e5718216fa5c7aec2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/container/scripture1.png"
-dest_files=["res://.godot/imported/scripture1.png-6e2fe618da029638055e1d7530596717.ctex"]
+source_file="res://texture/shaders/vfx_lightning.jpg"
+dest_files=["res://.godot/imported/vfx_lightning.jpg-25701b02d8fd20e5718216fa5c7aec2d.ctex"]
 
 [params]
 

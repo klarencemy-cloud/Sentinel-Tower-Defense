@@ -68,8 +68,8 @@ func update_wave_state() -> void:
 		if Data.current_wave == 50 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_level5_final_fragment_shown:
 			GameDialogueManager.show_dialogue_level5_final_fragment()
 
-		if Data.current_wave == 52 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_story_ends:
-			GameDialogueManager.show_dialogue_story_ends()
+		# if Data.current_wave == 52 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_story_ends:
+		# 	GameDialogueManager.show_dialogue_story_ends()
 
 		if ui and ui.is_auto_enabled():
 			start_wave()

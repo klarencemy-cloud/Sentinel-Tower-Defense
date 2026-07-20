@@ -6,9 +6,12 @@
 [ext_resource type="AudioStream" uid="uid://jdma8tm1e3e2" path="res://audio/impact.1.ogg" id="4_fcftc"]
 [ext_resource type="Texture2D" uid="uid://d3isx7xodcwuf" path="res://graphics/enemies/enemies2.png" id="4_jt03m"]
 [ext_resource type="Texture2D" uid="uid://bublteo6plsvp" path="res://graphics/enemies/trojan_horse.png" id="5_y5th1"]
+[ext_resource type="Script" uid="uid://cu22lxqgx5hh0" path="res://scenes/enemies/lightning_1.gd" id="6_p7w77"]
 [ext_resource type="Texture2D" uid="uid://1qgvsuhf841g" path="res://graphics/ui/enemyhpbar1.png" id="7_n7575"]
 [ext_resource type="Texture2D" uid="uid://ba1dyadxb3f65" path="res://graphics/ui/enemyhpbar2.png" id="8_qch6t"]
 [ext_resource type="Texture2D" uid="uid://dc1008xax0yk6" path="res://graphics/enemies/enemies4.png" id="9_qch6t"]
+[ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="10_tihwb"]
+[ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="11_tihwb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fcftc"]
 resource_local_to_scene = true
@@ -1225,16 +1228,31 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7575"]
 radius = 14.622871
 
+[sub_resource type="Curve" id="Curve_qch6t"]
+_data = [Vector2(0.012158059, 1), 0.0, 0.0, 0, 0, Vector2(0.993921, 0.0006053448), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e4ejd"]
+shader = ExtResource("10_tihwb")
+shader_parameter/Vanishing_Value = 0.5850000277875
+shader_parameter/Speed = Vector2(0, 0)
+shader_parameter/Basic_Texture = ExtResource("11_tihwb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7v5dn"]
+shader = ExtResource("10_tihwb")
+shader_parameter/Vanishing_Value = 0.0
+shader_parameter/Speed = Vector2(0, 0)
+shader_parameter/Basic_Texture = ExtResource("11_tihwb")
+
 [node name="Enemy" type="Area2D" unique_id=434305055 groups=["Enemies"]]
 z_index = 1
 collision_mask = 2
 script = ExtResource("1_8e3ao")
 
 [node name="Spam" type="AnimatedSprite2D" parent="." unique_id=522781916]
-visible = false
 texture_filter = 2
 material = SubResource("ShaderMaterial_fcftc")
-position = Vector2(0, -30)
+position = Vector2(-1, -29.88832)
 sprite_frames = SubResource("SpriteFrames_tihwb")
 animation = &"Right"
 autoplay = "Right"
@@ -1385,6 +1403,7 @@ animation = &"Right"
 autoplay = "Right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1419893999]
+visible = false
 position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_fcftc")
 
@@ -1486,6 +1505,39 @@ collision_mask = 9
 [node name="VirusAbilityRange" type="CollisionShape2D" parent="VirusAbility" unique_id=1540963079]
 scale = Vector2(25.1, 25.1)
 shape = SubResource("CircleShape2D_n7575")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=158932789]
+visible = false
+z_index = -1
+position = Vector2(-3, -11.357422)
+emitting = false
+amount = 200
+lifetime = 0.5
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 300.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_qch6t")
+color = Color(1, 0, 0, 1)
+
+[node name="Lightning" type="Line2D" parent="." unique_id=1242619236]
+material = SubResource("ShaderMaterial_e4ejd")
+position = Vector2(2.2891235, 0)
+points = PackedVector2Array(9.202927, -17.782053, 15.29446, -11.385942, 9.609032, -4.4822063, 11.639542, 3.0306835)
+width = 18.28
+default_color = Color(0.94738966, 0.8004939, 0.31299722, 1)
+texture_mode = 2
+script = ExtResource("6_p7w77")
+
+[node name="Lightning2" type="Line2D" parent="." unique_id=2025592734]
+material = SubResource("ShaderMaterial_7v5dn")
+position = Vector2(-3, -11.357422)
+points = PackedVector2Array(-15.263138, -22.9962, -33.169647, -21.152885, -38.962936, -8.512985, -26.58638, 8.34021)
+default_color = Color(1, 0.8040001, 0.01999998, 0.4627451)
+texture_mode = 2
+script = ExtResource("6_p7w77")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Boss1/SpawnVirusTimer" to="." method="_on_spawn_virus_timer_timeout"]

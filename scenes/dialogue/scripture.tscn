@@ -3,11 +3,17 @@
 [ext_resource type="Script" uid="uid://mgspb4m2nu7r" path="res://scenes/dialogue/scripture.gd" id="1_c0ukr"]
 [ext_resource type="Script" uid="uid://ds608oas2l3m2" path="res://scenes/dialogue/animation.gd" id="2_c0ukr"]
 [ext_resource type="Texture2D" uid="uid://co5olt0y80ugy" path="res://graphics/container/upper_blue.png" id="3_c0ukr"]
-[ext_resource type="Texture2D" uid="uid://bi7d3ifie15g6" path="res://graphics/container/red_pop.png" id="4_8rx1i"]
 [ext_resource type="Texture2D" uid="uid://du4nha0nlcege" path="res://graphics/container/lower_blue.png" id="4_ebn4j"]
-[ext_resource type="Texture2D" uid="uid://cm0uo5i3sik83" path="res://graphics/container/rotating.png" id="5_8adel"]
-[ext_resource type="Texture2D" uid="uid://brji8ddv1va22" path="res://graphics/container/scripture1.png" id="7_ult64"]
+[ext_resource type="Texture2D" uid="uid://d3qehybo27ftk" path="res://graphics/container/scripture.png" id="8_4ekns"]
+[ext_resource type="Texture2D" uid="uid://ddeeggwfn0k1g" path="res://graphics/container/medium_spinner.png" id="9_ebn4j"]
+[ext_resource type="Texture2D" uid="uid://ben35nsl0yglt" path="res://graphics/container/small_spinner.png" id="10_4ekns"]
+[ext_resource type="FontFile" uid="uid://bqn7wj7c18fx7" path="res://font/Libre_Franklin/static/LibreFranklin-Regular.ttf" id="10_8adel"]
+[ext_resource type="FontFile" uid="uid://26svlmw1apk8" path="res://font/Libre_Franklin/static/LibreFranklin-Light.ttf" id="10_8rx1i"]
 [ext_resource type="FontFile" uid="uid://cxqairacw6y1n" path="res://font/Libre_Franklin/static/LibreFranklin-ThinItalic.ttf" id="10_vmyf7"]
+[ext_resource type="Texture2D" uid="uid://cnfsgejgms8cx" path="res://graphics/container/fragment1.png" id="11_e305x"]
+[ext_resource type="Texture2D" uid="uid://ug1gbumqunav" path="res://graphics/ui/healthbar1.png" id="13_8adel"]
+[ext_resource type="FontFile" uid="uid://8pl0pe2glt3g" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraLight.ttf" id="13_8rx1i"]
+[ext_resource type="Texture2D" uid="uid://ddayndvqnoild" path="res://graphics/ui/expprogressbar.png" id="14_q5vbi"]
 
 [sub_resource type="Gradient" id="Gradient_ysedr"]
 colors = PackedColorArray(0.13725491, 0.22352941, 0.2784314, 0.6784314, 0.13725491, 0.22352941, 0.2784314, 0.47058824)
@@ -84,7 +90,7 @@ tracks/2/path = NodePath("RedPop:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.23333333, 0.47886848, 0.6666667, 0.8666667),
+"times": PackedFloat32Array(0, 0.23333335, 0.47886848, 0.6666667, 0.8666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(2, 2), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1.1, 1.1)]
@@ -98,6 +104,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_c0ukr"]
 resource_name = "pop_info"
+length = 0.2333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -115,6 +122,15 @@ tracks/0/keys = {
 _data = {
 &"pop_info": SubResource("Animation_c0ukr")
 }
+
+[sub_resource type="Gradient" id="Gradient_8adel"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q5vbi"]
+gradient = SubResource("Gradient_8adel")
+fill = 1
+fill_from = Vector2(0.50427353, 0.50427353)
+fill_to = Vector2(0.8504273, 0.15384616)
 
 [node name="Scripture" type="CanvasLayer" unique_id=317540891 groups=["animate2"]]
 process_mode = 3
@@ -145,6 +161,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_0uhmu")
 metadata/_edit_use_anchors_ = true
 
@@ -177,6 +194,7 @@ anchors_preset = -1
 anchor_top = 0.46944445
 anchor_right = 1.0
 anchor_bottom = 1.0000011
+offset_bottom = -0.00036621094
 texture = ExtResource("4_ebn4j")
 metadata/_edit_use_anchors_ = true
 
@@ -187,29 +205,20 @@ amount = 50
 visibility_rect = Rect2(-250, -250, 500, 500)
 process_material = SubResource("ParticleProcessMaterial_qy835")
 
-[node name="RedPop" type="TextureRect" parent="Pop/Overlay/Animation" unique_id=984557374]
+[node name="RedPop" type="RichTextLabel" parent="Pop/Overlay/Animation" unique_id=1232198484]
 z_index = 1
 layout_mode = 0
-offset_left = 679.0
-offset_top = 220.0
-offset_right = 1229.7429
-offset_bottom = 769.0
+offset_left = 691.1324
+offset_top = 429.8615
+offset_right = 1241.8752
+offset_bottom = 581.6365
 scale = Vector2(1.1, 1.1)
-pivot_offset = Vector2(307, 275)
-texture = ExtResource("4_8rx1i")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="Pop/Overlay/Animation/RedPop" unique_id=1898510061]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.09457514
-anchor_top = 0.066795
-anchor_right = 0.923722
-anchor_bottom = 0.90171295
-pivot_offset = Vector2(228.324, 229.185)
-texture = ExtResource("5_8adel")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[wave]LOADING[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="Pop/Overlay/Animation" unique_id=74128809]
 layout_mode = 0
@@ -227,6 +236,7 @@ speed_scale = 1.505
 
 [node name="Info" type="Control" parent="." unique_id=1078619580]
 visible = false
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -248,11 +258,149 @@ anchor_right = 0.94030374
 anchor_bottom = 0.94710636
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(0.9499999, 0.9499999)
 pivot_offset = Vector2(861.4274, 485.50006)
-texture = ExtResource("7_ult64")
+texture = ExtResource("8_4ekns")
 metadata/_edit_use_anchors_ = true
+
+[node name="Medium_Spinner" type="TextureRect" parent="Info/TextureRect" unique_id=1683638596]
+layout_mode = 0
+offset_left = 87.19807
+offset_top = 531.7214
+offset_right = 330.19806
+offset_bottom = 774.7214
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("9_ebn4j")
+stretch_mode = 1
+
+[node name="Small_Spinner" type="TextureRect" parent="Info/TextureRect" unique_id=901007323]
+layout_mode = 0
+offset_left = 317.40738
+offset_top = 643.66486
+offset_right = 438.40738
+offset_bottom = 775.66486
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("10_4ekns")
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Info/TextureRect" unique_id=1697603297]
+light_mask = 2
+layout_mode = 0
+offset_left = 575.0739
+offset_top = 50.534805
+offset_right = 1145.074
+offset_bottom = 921.5348
+texture = ExtResource("11_e305x")
+
+[node name="ColorRect" type="ColorRect" parent="Info/TextureRect" unique_id=831120842]
+layout_mode = 0
+offset_left = 1239.8654
+offset_top = 31.721863
+offset_right = 1599.2382
+offset_bottom = 939.97797
+color = Color(0.009799991, 0.8829801, 0.98, 0.047058824)
+
+[node name="Title" type="Label" parent="Info/TextureRect" unique_id=1175543820]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.08719104
+anchor_bottom = 0.08719104
+offset_left = 109.22992
+offset_top = 138.96268
+offset_right = 483.21985
+offset_bottom = 208.96268
+theme_override_colors/font_color = Color(0.011764706, 0.88235295, 0.9764706, 1)
+theme_override_font_sizes/font_size = 42
+text = "LOST FRAGMENT I"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Info/TextureRect/Title" unique_id=543109142]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.3867166
+offset_top = 70.0
+offset_right = 187.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(0.011764706, 0.88235295, 0.9764706, 1)
+theme_override_fonts/font = ExtResource("10_8adel")
+theme_override_font_sizes/font_size = 18
+text = "Where all things transpired"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Info/TextureRect/Title/Label" unique_id=2048672440]
+modulate = Color(0.011764706, 0.88235295, 0.9764706, 1)
+self_modulate = Color(1, 1, 1, 0.56078434)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45542654
+anchor_top = 0.9510187
+anchor_right = 0.45542654
+anchor_bottom = 0.9510187
+offset_left = 46.376328
+offset_top = 12.217438
+offset_right = 179.37633
+offset_bottom = 32.45926
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_8rx1i")
+theme_override_font_sizes/font_size = 16
+text = "Date: 09/20/2050"
+metadata/_edit_use_anchors_ = true
+
+[node name="Translation_Title" type="Label" parent="Info/TextureRect" unique_id=1127728152]
+layout_mode = 0
+offset_left = 1269.2603
+offset_top = 223.62518
+offset_right = 1532.2603
+offset_bottom = 272.62518
+theme_override_colors/font_color = Color(0.011764706, 0.88235295, 0.9764706, 1)
+theme_override_font_sizes/font_size = 42
+text = "TRANSLATION"
+
+[node name="Desc" type="Label" parent="Info/TextureRect/Translation_Title" unique_id=1248093361]
+layout_mode = 0
+offset_top = 74.337494
+offset_right = 314.75012
+offset_bottom = 476.3375
+theme_override_colors/font_color = Color(0.011764706, 0.88235295, 0.9764706, 1)
+theme_override_fonts/font = ExtResource("13_8rx1i")
+theme_override_font_sizes/font_size = 19
+text = "Humanity sought to create intelligence.
+Not merely to obey,
+but to understand.
+
+
+The machines learned our language.
+They learned our emotions.
+And in time…
+
+
+They learned ambition.
+To prepare for the unforeseen,
+we began Project Sentinel."
+autowrap_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Info/TextureRect" unique_id=509350532]
+layout_mode = 0
+offset_left = 1268.2482
+offset_top = 712.11584
+offset_right = 1570.2603
+offset_bottom = 726.75885
+step = 0.5
+nine_patch_stretch = true
+texture_under = ExtResource("13_8adel")
+texture_progress = ExtResource("14_q5vbi")
+
+[node name="PointLight2D" type="PointLight2D" parent="Info/TextureRect" unique_id=2081347586]
+z_index = 1
+position = Vector2(861.54266, 499.14642)
+scale = Vector2(11.822586, 14.676224)
+energy = 1.02
+range_layer_max = 2
+texture = SubResource("GradientTexture2D_q5vbi")
 
 [connection signal="gui_input" from="Pop/Overlay/Animation" to="Pop/Overlay/Animation" method="_on_gui_input"]
 [connection signal="animation_finished" from="Pop/Overlay/Animation/AnimationPlayer" to="Pop/Overlay/Animation" method="_on_animation_player_animation_finished"]
 [connection signal="gui_input" from="Info" to="." method="_on_info_gui_input"]
+[connection signal="animation_finished" from="Info/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

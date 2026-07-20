@@ -297,6 +297,8 @@ Player: It is.
 System: Artificial Magnetic Field Stabilized
 System: Earth Integrity restored.
 System: Final Scripture obtained.
+do GameDialogueManager.pause_game(true)
+do GameDialogueManager.show_script(4)
 => END
 
 ~ ending

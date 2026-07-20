@@ -919,11 +919,11 @@ anchors_preset = -1
 anchor_top = 0.46944445
 anchor_right = 1.0
 anchor_bottom = 1.0000011
-offset_bottom = 0.00012207031
 texture = ExtResource("4_ba8xt")
 metadata/_edit_use_anchors_ = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Pop/Animation" unique_id=2060549403]
+light_mask = 7
 position = Vector2(967, 486)
 emitting = false
 amount = 50
