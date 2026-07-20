@@ -1,11 +1,13 @@
 extends Line2D
 
 var timer: float = 0.0
-@onready var mat = material as ShaderMaterial
+@onready var mat = ShaderMaterial
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready() -> void:
+	material = material.duplicate()
+	mat = material as ShaderMaterial
 func _process(delta: float) -> void:
-	timer += delta + .02
+	timer += delta + .08
 
 	if timer >= 1.0:
 		timer = 0.0

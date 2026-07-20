@@ -1238,11 +1238,45 @@ shader_parameter/Vanishing_Value = 0.5850000277875
 shader_parameter/Speed = Vector2(0, 0)
 shader_parameter/Basic_Texture = ExtResource("11_tihwb")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ma66"]
+shader = ExtResource("10_tihwb")
+shader_parameter/Vanishing_Value = 0.57200002717
+shader_parameter/Speed = Vector2(0, 0)
+shader_parameter/Basic_Texture = ExtResource("11_tihwb")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7v5dn"]
 shader = ExtResource("10_tihwb")
 shader_parameter/Vanishing_Value = 0.0
 shader_parameter/Speed = Vector2(0, 0)
 shader_parameter/Basic_Texture = ExtResource("11_tihwb")
+
+[sub_resource type="Gradient" id="Gradient_p7w77"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k4gvh"]
+gradient = SubResource("Gradient_p7w77")
+
+[sub_resource type="Gradient" id="Gradient_twn6s"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sb86v"]
+gradient = SubResource("Gradient_twn6s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pe3k2"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 55.36
+direction = Vector3(0, 3, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 50, 0)
+damping_min = 100.00001
+damping_max = 800.00006
+scale_min = 3.0
+scale_max = 6.0
+color_ramp = SubResource("GradientTexture1D_sb86v")
+color_initial_ramp = SubResource("GradientTexture1D_k4gvh")
 
 [node name="Enemy" type="Area2D" unique_id=434305055 groups=["Enemies"]]
 z_index = 1
@@ -1250,6 +1284,7 @@ collision_mask = 2
 script = ExtResource("1_8e3ao")
 
 [node name="Spam" type="AnimatedSprite2D" parent="." unique_id=522781916]
+visible = false
 texture_filter = 2
 material = SubResource("ShaderMaterial_fcftc")
 position = Vector2(-1, -29.88832)
@@ -1531,6 +1566,14 @@ default_color = Color(0.94738966, 0.8004939, 0.31299722, 1)
 texture_mode = 2
 script = ExtResource("6_p7w77")
 
+[node name="Lightning3" type="Line2D" parent="." unique_id=1629733621]
+material = SubResource("ShaderMaterial_8ma66")
+position = Vector2(-3, -11.357422)
+points = PackedVector2Array(4.816208, -38.86587, 9.9353485, -33.702045, 7.5188217, -25.082561)
+default_color = Color(0.79, 0.68598336, 0.16589999, 1)
+texture_mode = 2
+script = ExtResource("6_p7w77")
+
 [node name="Lightning2" type="Line2D" parent="." unique_id=2025592734]
 material = SubResource("ShaderMaterial_7v5dn")
 position = Vector2(-3, -11.357422)
@@ -1538,6 +1581,14 @@ points = PackedVector2Array(-15.263138, -22.9962, -33.169647, -21.152885, -38.96
 default_color = Color(1, 0.8040001, 0.01999998, 0.4627451)
 texture_mode = 2
 script = ExtResource("6_p7w77")
+
+[node name="HitParticles" type="GPUParticles2D" parent="." unique_id=1568487352]
+position = Vector2(-1, -11.357422)
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_pe3k2")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Boss1/SpawnVirusTimer" to="." method="_on_spawn_virus_timer_timeout"]

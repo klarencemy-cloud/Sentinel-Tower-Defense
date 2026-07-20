@@ -78,7 +78,7 @@ func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage:
 		var bullet = bullet_scene.instantiate()
 		bullet.setup(pos, angle, bullet_enum, damage, tower_type, tower_id)
 		_get_bullet_parent().add_child(bullet)
-
+		
 	if bullet_enum == Data.Bullet.FIRE:
 		# Get the tower's range from data
 		var tower_range = 100 # default fallback
@@ -93,6 +93,9 @@ func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage:
 				if tower_type == Data.Tower.IDPS and enemy.invisible:
 					enemy.set_invisible(false)
 				enemy.hit(damage, tower_id)
+	
+	var enemies = get_tree().get_first_node_in_group("Enemies")
+	enemies.emit_hit_particles(angle) # to set the angle of the hit particles
 
 func tower_selection(tower: Tower) -> void:
 	if current_tower and current_tower != tower:

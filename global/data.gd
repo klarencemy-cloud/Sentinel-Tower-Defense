@@ -30,6 +30,8 @@ var before_player_level: int
 var before_total_experience: int
 
 
+var bullet_angle: Vector2
+
 var wave_started: bool = false
 
 

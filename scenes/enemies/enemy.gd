@@ -46,6 +46,9 @@ const DDOS_HEALTH_MULTIPLIER := 0.35 # 35% HP
 var hostile := false
 var hostile_count := 0
 
+
+@onready var hit_particles: GPUParticles2D = $HitParticles
+
 func _ready() -> void:
 	add_to_group('Enemies')
 	damage_label_template = $DamageLabel.duplicate() as Label
@@ -324,10 +327,16 @@ func _process(delta: float):
 ##	hit(bullet.damage)
 ## RESPONSIBLE FOR DOUBLE DAMAGE BUG (I THINK)
 
+
+func emit_hit_particles(angle: float):
+	hit_particles.rotation = angle
+
 func hit(damage: int = 1, tower_id: int = -1):
 	if dead:
 		return
 	
+	hit_particles.restart()
+	hit_particles.emitting = true
 
 	print("HIT", damage, " frame:", Engine.get_process_frames())
 	damage += int(round(damage * Offense.multiplied_total_dmg))

@@ -3,11 +3,11 @@ extends Tower
 func _process(_delta: float) -> void:
 	if enemies.size() > 0:
 		$Turret.look_at(enemies[0].global_position)
-		$Turret.rotation -= PI/2
+		$Turret.rotation -= PI / 2
 
 
 func _on_reload_timer_timeout() -> void:
-	if stunned: 
+	if stunned:
 		return
 	if disabled_by_ad or disabled_by_ransomware:
 		return
@@ -23,7 +23,6 @@ func _on_reload_timer_timeout() -> void:
 
 		var base_damage = damage
 		var final_damage = Data.calculate_crit_damage(type, base_damage)
-
 		shoot.emit(
 			position + dir * 16,
 			fire_rotation,

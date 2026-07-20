@@ -10,7 +10,7 @@ var max_bounce: int = 1
 var owner_tower_type
 var bullet_enum: Data.Bullet
 var ricochet_range: int = 0
-var hit_enemies: Array = []  # Track which enemies have been hit by this ricochet chain
+var hit_enemies: Array = [] # Track which enemies have been hit by this ricochet chain
 var already_hit := false
 func _ready():
 	add_to_group("bullet")
@@ -54,7 +54,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 	already_hit = true
 	area.hit(damage, tower_id)
-	hit_enemies.append(area)  # Track this enemy as hit
+	hit_enemies.append(area) # Track this enemy as hit
 
 	if _can_ricochet():
 		ricochet(area)
@@ -125,7 +125,7 @@ func ricochet(from_enemy: Node) -> void:
 	new_bullet.bounce_count = bounce_count + 1
 	new_bullet.max_bounce = max_bounce
 	new_bullet.ricochet_range = ricochet_range
-	new_bullet.hit_enemies = hit_enemies.duplicate()  # Pass the hit list to the new bullet
+	new_bullet.hit_enemies = hit_enemies.duplicate() # Pass the hit list to the new bullet
 
 	new_bullet.tower_id = tower_id
 
