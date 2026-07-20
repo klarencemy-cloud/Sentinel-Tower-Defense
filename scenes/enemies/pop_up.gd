@@ -242,16 +242,16 @@ func play_animation(enemy_name: String, index: int):
 	if enemy_name == "worm":
 		$Pop/Animation/RedPop/AnimatedSprite2D2.visible = true
 		$Pop/Info/DisplayContainer/Control/AnimatedSprite2D2.visible = true
-		$Pop/Animation/AnimatedSprite2D.visible = false
+		$Pop/Animation/RedPop/AnimatedSprite2D.visible = false
 		$Pop/Info/DisplayContainer/Control/AnimatedSprite2D.visible = false
 		$Pop/Animation/RedPop/AnimatedSprite2D2.play(enemy_name) # for the pop
 		$Pop/Info/DisplayContainer/Control/AnimatedSprite2D2.play(enemy_name) # for the description card
 	else:
 		$Pop/Animation/RedPop/AnimatedSprite2D2.visible = false
 		$Pop/Info/DisplayContainer/Control/AnimatedSprite2D2.visible = false
-		$Pop/Animation/AnimatedSprite2D.visible = true
+		$Pop/Animation/RedPop/AnimatedSprite2D.visible = true
 		$Pop/Info/DisplayContainer/Control/AnimatedSprite2D.visible = true
-		$Pop/Animation/AnimatedSprite2D.play(enemy_name) # for the pop
+		$Pop/Animation/RedPop/AnimatedSprite2D.play(enemy_name) # for the pop
 		$Pop/Info/DisplayContainer/Control/AnimatedSprite2D.play(enemy_name) # for the description card
 	$Pop/Animation/AnimationPlayer.play("pop")
 	$Pop/Info/DisplayContainer/Name.text = ENEMIES[index]['name']

@@ -338,11 +338,12 @@ expand_mode = 1
 [node name="OffenseUpgrade1" type="TextureButton" parent="UIContainer/ServerUpdate/OffenseContainer/Offense1" unique_id=1932633493]
 process_mode = 3
 layout_mode = 0
-offset_left = 337.0
-offset_top = 39.0
-offset_right = 400.0
-offset_bottom = 102.0
+anchor_left = 1.012012
+anchor_top = 0.25000003
+anchor_right = 1.2012012
+anchor_bottom = 0.6538462
 texture_normal = ExtResource("13_jrx1v")
+metadata/_edit_use_anchors_ = true
 
 [node name="Cost" type="Label" parent="UIContainer/ServerUpdate/OffenseContainer/Offense1" unique_id=1356618496]
 layout_mode = 1
@@ -491,11 +492,12 @@ expand_mode = 1
 [node name="OffenseUpgrade2" type="TextureButton" parent="UIContainer/ServerUpdate/OffenseContainer/Offense2" unique_id=709918143]
 process_mode = 3
 layout_mode = 0
-offset_left = 337.0
-offset_top = 39.0
-offset_right = 400.0
-offset_bottom = 102.0
+anchor_left = 1.012012
+anchor_top = 0.25
+anchor_right = 1.2012012
+anchor_bottom = 0.65384614
 texture_normal = ExtResource("13_jrx1v")
+metadata/_edit_use_anchors_ = true
 
 [node name="Cost" type="Label" parent="UIContainer/ServerUpdate/OffenseContainer/Offense2" unique_id=692278894]
 layout_mode = 1
@@ -627,11 +629,12 @@ expand_mode = 1
 [node name="OffenseUpgrade3" type="TextureButton" parent="UIContainer/ServerUpdate/OffenseContainer/Offense3" unique_id=427514572]
 process_mode = 3
 layout_mode = 0
-offset_left = 337.0
-offset_top = 39.0
-offset_right = 400.0
-offset_bottom = 102.0
+anchor_left = 1.012012
+anchor_top = 0.25
+anchor_right = 1.2012012
+anchor_bottom = 0.65384614
 texture_normal = ExtResource("13_jrx1v")
+metadata/_edit_use_anchors_ = true
 
 [node name="OffenseName3_Desc" type="Label" parent="UIContainer/ServerUpdate/OffenseContainer/Offense3" unique_id=144832850]
 layout_mode = 1
@@ -790,11 +793,12 @@ expand_mode = 1
 
 [node name="DefenseUpgrade1" type="TextureButton" parent="UIContainer/ServerUpdate/DefenseContainer/Defense1" unique_id=1617318169]
 layout_mode = 0
-offset_left = 337.0
-offset_top = 39.0
-offset_right = 400.0
-offset_bottom = 102.0
+anchor_left = 1.012012
+anchor_top = 0.25000006
+anchor_right = 1.2012012
+anchor_bottom = 0.6538463
 texture_normal = ExtResource("13_jrx1v")
+metadata/_edit_use_anchors_ = true
 
 [node name="DefenseName1_Desc" type="Label" parent="UIContainer/ServerUpdate/DefenseContainer/Defense1" unique_id=727409871]
 layout_mode = 1
@@ -897,11 +901,12 @@ expand_mode = 1
 
 [node name="DefenseUpgrade2" type="TextureButton" parent="UIContainer/ServerUpdate/DefenseContainer/Defense2" unique_id=549992159]
 layout_mode = 0
-offset_left = 337.0
-offset_top = 39.0
-offset_right = 400.0
-offset_bottom = 102.0
+anchor_left = 1.012012
+anchor_top = 0.25000003
+anchor_right = 1.2012012
+anchor_bottom = 0.6538462
 texture_normal = ExtResource("13_jrx1v")
+metadata/_edit_use_anchors_ = true
 
 [node name="DefenseName2_Desc" type="Label" parent="UIContainer/ServerUpdate/DefenseContainer/Defense2" unique_id=1860327767]
 layout_mode = 1
@@ -1049,11 +1054,12 @@ expand_mode = 1
 
 [node name="DefenseUpgrade3" type="TextureButton" parent="UIContainer/ServerUpdate/DefenseContainer/Defense3" unique_id=393174454]
 layout_mode = 0
-offset_left = 337.0
-offset_top = 39.0
-offset_right = 400.0
-offset_bottom = 102.0
+anchor_left = 1.012012
+anchor_top = 0.24999921
+anchor_right = 1.2012012
+anchor_bottom = 0.6538441
 texture_normal = ExtResource("13_jrx1v")
+metadata/_edit_use_anchors_ = true
 
 [node name="DefenseName3_Desc" type="Label" parent="UIContainer/ServerUpdate/DefenseContainer/Defense3" unique_id=1974383594]
 layout_mode = 1
@@ -1158,11 +1164,12 @@ expand_mode = 1
 
 [node name="DefenseUpgrade4" type="TextureButton" parent="UIContainer/ServerUpdate/DefenseContainer/Defense4" unique_id=1766572351]
 layout_mode = 0
-offset_left = 337.0
-offset_top = 39.0
-offset_right = 400.0
-offset_bottom = 102.0
+anchor_left = 1.012012
+anchor_top = 0.2499999
+anchor_right = 1.2012012
+anchor_bottom = 0.6538459
 texture_normal = ExtResource("13_jrx1v")
+metadata/_edit_use_anchors_ = true
 
 [node name="DefenseName4_Desc" type="Label" parent="UIContainer/ServerUpdate/DefenseContainer/Defense4" unique_id=57292691]
 layout_mode = 1
@@ -1321,11 +1328,12 @@ expand_mode = 1
 
 [node name="EconomyUpgrade1" type="TextureButton" parent="UIContainer/ServerUpdate/EconomyContainer/Economy1" unique_id=1034152896]
 layout_mode = 0
-offset_left = 337.0
-offset_top = 39.0
-offset_right = 400.0
-offset_bottom = 102.0
+anchor_left = 1.012012
+anchor_top = 0.25000003
+anchor_right = 1.2012012
+anchor_bottom = 0.6538462
 texture_normal = ExtResource("13_jrx1v")
+metadata/_edit_use_anchors_ = true
 
 [node name="EconomyName1_Desc" type="Label" parent="UIContainer/ServerUpdate/EconomyContainer/Economy1" unique_id=1336061438]
 layout_mode = 1
@@ -1473,11 +1481,12 @@ expand_mode = 1
 
 [node name="EconomyUpgrade2" type="TextureButton" parent="UIContainer/ServerUpdate/EconomyContainer/Economy2" unique_id=1123480792]
 layout_mode = 0
-offset_left = 337.0
-offset_top = 39.0
-offset_right = 400.0
-offset_bottom = 102.0
+anchor_left = 1.012012
+anchor_top = 0.25
+anchor_right = 1.2012012
+anchor_bottom = 0.65384614
 texture_normal = ExtResource("13_jrx1v")
+metadata/_edit_use_anchors_ = true
 
 [node name="EconomyName2_Desc" type="Label" parent="UIContainer/ServerUpdate/EconomyContainer/Economy2" unique_id=375113622]
 layout_mode = 1
@@ -1625,11 +1634,12 @@ expand_mode = 1
 
 [node name="EconomyUpgrade3" type="TextureButton" parent="UIContainer/ServerUpdate/EconomyContainer/Economy3" unique_id=1740411744]
 layout_mode = 0
-offset_left = 337.0
-offset_top = 39.0
-offset_right = 400.0
-offset_bottom = 102.0
+anchor_left = 1.012012
+anchor_top = 0.25
+anchor_right = 1.2012012
+anchor_bottom = 0.65384614
 texture_normal = ExtResource("13_jrx1v")
+metadata/_edit_use_anchors_ = true
 
 [node name="EconomyName3_Desc" type="Label" parent="UIContainer/ServerUpdate/EconomyContainer/Economy3" unique_id=1352986819]
 layout_mode = 1

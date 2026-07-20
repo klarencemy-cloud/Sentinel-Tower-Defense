@@ -134,32 +134,26 @@ visible = false
 
 [node name="Control" type="Control" parent="." unique_id=818495937]
 layout_mode = 3
-anchor_left = 0.38900003
-anchor_top = 0.065000005
-anchor_right = 0.4
-anchor_bottom = 0.109000005
-offset_left = -745.88007
-offset_top = -74.200005
-offset_right = 1153.0
-offset_bottom = 958.27997
+anchor_left = 0.00052083336
+anchor_top = -0.0037037036
+anchor_right = 1.0005208
+anchor_bottom = 0.9962963
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=1803522441]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.499
-anchor_top = 1.0040001
-anchor_right = 0.499
-anchor_bottom = 1.0040001
-offset_left = -959.08
-offset_top = -171.32007
-offset_right = 960.92
-offset_bottom = -0.32006836
+anchor_left = -0.00052083336
+anchor_top = 0.84537035
+anchor_right = 0.9994792
+anchor_bottom = 1.0037037
 mouse_filter = 2
 texture = ExtResource("9_4kltc")
+metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/TextureRect" unique_id=1317179898]
 layout_mode = 1
@@ -222,104 +216,109 @@ texture_normal = ExtResource("4_y220t")
 
 [node name="UpgradeButton" type="TextureButton" parent="Control/TextureRect" unique_id=1470226152]
 layout_mode = 0
-offset_left = 1060.0
-offset_right = 1178.0
-offset_bottom = 91.0
+anchor_left = 0.5520833
+anchor_right = 0.61354166
+anchor_bottom = 0.53216374
 texture_normal = ExtResource("11_swkix")
 script = ExtResource("11_hc5d0")
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerCurrentStats" type="Control" parent="Control/TextureRect" unique_id=1291522238]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchor_right = 0.020833334
+anchor_bottom = 0.23391813
+metadata/_edit_use_anchors_ = true
 
 [node name="WaveNum" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=890659221]
 z_index = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.20400001
-anchor_bottom = 0.123
-offset_left = 1671.0
-offset_top = 83.0
-offset_right = 1859.84
-offset_bottom = 126.08
+anchor_left = 41.775
+anchor_top = 2.075
+anchor_right = 46.7
+anchor_bottom = 3.275
 theme_override_font_sizes/font_size = 41
 text = "Wave 1/50"
+metadata/_edit_use_anchors_ = true
 
 [node name="ServerHealth" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=1597613385]
 layout_mode = 0
-offset_left = 1216.0
-offset_top = 79.0
-offset_right = 1349.0
-offset_bottom = 110.0
+anchor_left = 30.4
+anchor_top = 1.975
+anchor_right = 33.725
+anchor_bottom = 2.75
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("7_hl07w")
 theme_override_font_sizes/font_size = 23
 text = "SERVER HP"
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerLevel" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=1767574153]
 layout_mode = 0
-offset_left = 1432.0
-offset_top = 79.0
-offset_right = 1570.0
-offset_bottom = 107.0
+anchor_left = 35.8
+anchor_top = 1.975
+anchor_right = 39.25
+anchor_bottom = 2.675
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("7_hl07w")
 theme_override_font_sizes/font_size = 23
 text = "LEVEL"
+metadata/_edit_use_anchors_ = true
 
 [node name="HPBar" type="TextureProgressBar" parent="Control/TextureRect/PlayerCurrentStats" unique_id=2044464610]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.66300005
-anchor_top = 1.0
-anchor_right = 0.66300005
-anchor_bottom = 1.0
-offset_left = 1189.48
-offset_top = 69.99996
-offset_right = 1250.7045
-offset_bottom = 75.44216
+anchor_left = 30.4
+anchor_top = 2.749999
+anchor_right = 34.9
+anchor_bottom = 3.1500008
+offset_right = -118.77551
+offset_bottom = -10.557869
 scale = Vector2(2.94, 2.94)
 value = 100.0
 rounded = true
 nine_patch_stretch = true
 texture_under = ExtResource("16_o71gb")
 texture_progress = ExtResource("18_qhbcy")
+metadata/_edit_use_anchors_ = true
 
 [node name="LabelHP" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=2140871254]
 layout_mode = 0
-offset_left = 1365.0
-offset_top = 83.0
-offset_right = 1396.0
-offset_bottom = 103.0
+anchor_left = 34.125
+anchor_top = 2.075
+anchor_right = 34.9
+anchor_bottom = 2.575
 theme_override_fonts/font = ExtResource("18_fqqne")
 theme_override_font_sizes/font_size = 16
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="Control/TextureRect/PlayerCurrentStats" unique_id=1912802674]
 layout_mode = 0
-offset_left = 1432.0
-offset_top = 110.0
-offset_right = 1612.0
-offset_bottom = 126.0
+anchor_left = 35.8
+anchor_top = 2.75
+anchor_right = 40.3
+anchor_bottom = 3.15
 nine_patch_stretch = true
 texture_under = ExtResource("16_o71gb")
 texture_progress = ExtResource("19_qhbcy")
+metadata/_edit_use_anchors_ = true
 
 [node name="LabelExp" type="Label" parent="Control/TextureRect/PlayerCurrentStats/ExperienceBar" unique_id=939532958]
 layout_mode = 0
-offset_left = 146.0
-offset_top = -27.0
-offset_right = 177.0
-offset_bottom = -7.0
+anchor_left = 0.8111111
+anchor_top = -1.6875
+anchor_right = 0.98333335
+anchor_bottom = -0.4375
 theme_override_fonts/font = ExtResource("18_fqqne")
 theme_override_font_sizes/font_size = 16
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="SandboxMenuContainer" type="GridContainer" parent="Control/TextureRect" unique_id=1078425248]
 visible = false
@@ -362,12 +361,13 @@ text = "Unlimited Server Load"
 [node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1732841883]
 texture_filter = 2
 layout_mode = 0
-offset_left = 1213.0
-offset_top = 878.0
-offset_right = 1468.0
-offset_bottom = 955.0
+anchor_left = 0.63177085
+anchor_top = 0.81296295
+anchor_right = 0.76458335
+anchor_bottom = 0.8842593
 mouse_filter = 2
 theme_override_constants/separation = 12
+metadata/_edit_use_anchors_ = true
 
 [node name="Skill1" type="TextureButton" parent="Control/HBoxContainer" unique_id=1786617336]
 custom_minimum_size = Vector2(77, 50)
@@ -428,12 +428,13 @@ text = "50"
 
 [node name="AutoLabel" type="Label" parent="Control" unique_id=320005110]
 layout_mode = 0
-offset_left = 1718.0
-offset_top = 842.0
-offset_right = 1782.0
-offset_bottom = 878.0
+anchor_left = 0.89479166
+anchor_top = 0.77962965
+anchor_right = 0.928125
+anchor_bottom = 0.81296295
 theme_override_font_sizes/font_size = 31
 text = "Auto"
+metadata/_edit_use_anchors_ = true
 
 [node name="AutoButton" type="CheckButton" parent="Control/AutoLabel" unique_id=1872802199]
 layout_mode = 1
@@ -470,20 +471,21 @@ offset_right = 25.0
 offset_bottom = 25.0
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("19_ygedu")
+stretch_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Control" unique_id=1034551329]
 texture_filter = 2
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 713.30005
-offset_top = -502.7
-offset_right = 913.30005
-offset_bottom = -302.7
+anchors_preset = -1
+anchor_left = 0.86500007
+anchor_top = 0.023000002
+anchor_right = 0.86500007
+anchor_bottom = 0.023000002
+offset_left = 12.499878
+offset_top = 12.459986
+offset_right = 212.49988
+offset_bottom = 212.45999
 grow_horizontal = 2
 grow_vertical = 2
 value = 10.0
@@ -492,6 +494,7 @@ texture_under = ExtResource("19_svq4k")
 texture_progress = ExtResource("19_svq4k")
 tint_under = Color(0.12941177, 0.23137255, 0.29411766, 1)
 tint_progress = Color(0.18039216, 0.39215687, 0.52156866, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ServerLoadText" type="Label" parent="Control/TextureProgressBar" unique_id=310426915]
 texture_filter = 2
@@ -512,6 +515,7 @@ theme_override_fonts/font = ExtResource("7_hl07w")
 theme_override_font_sizes/font_size = 20
 text = "Server Load"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="SystemLoadData" type="Label" parent="Control/TextureProgressBar/ServerLoadText" unique_id=1969950523]
 layout_mode = 1
@@ -560,15 +564,14 @@ theme_override_font_sizes/font_size = 23
 text = "Boss Name"
 
 [node name="StatsCounterButton" type="Button" parent="." unique_id=88214555]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -229.0
-offset_top = 53.0
-offset_right = -61.0
-offset_bottom = 221.0
+anchors_preset = -1
+anchor_left = 0.88072914
+anchor_top = 0.049074072
+anchor_right = 0.9682292
+anchor_bottom = 0.20462963
 grow_horizontal = 0
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="PopUp" parent="." unique_id=264578413 instance=ExtResource("9_khplb")]
 layer = 2
@@ -584,6 +587,7 @@ visible = false
 z_index = 2
 
 [node name="Overlay" type="TextureRect" parent="." unique_id=1622159644]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 z_index = 3
 anchors_preset = 15
