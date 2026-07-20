@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://im6v0y8om2jb" path="res://scenes/server/server.gd" id="1_375b0"]
 [ext_resource type="Texture2D" uid="uid://donbx7hjhnewp" path="res://graphics/server/server.png" id="2_375b0"]
+[ext_resource type="Texture2D" uid="uid://b6fmmtoqty73t" path="res://graphics/ui/backup_server_shield.png" id="3_jqkn5"]
+[ext_resource type="Texture2D" uid="uid://cqmrdgmn3jcik" path="res://graphics/bullets/backup_server_pulse.png" id="4_hkcox"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_375b0"]
 
@@ -412,6 +414,9 @@ color = Color(0.4862745, 1, 1, 1)
 color_ramp = SubResource("GradientTexture1D_hkcox")
 color_initial_ramp = SubResource("GradientTexture1D_kr8px")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kr8px"]
+radius = 56.435802
+
 [node name="Server" type="Button" unique_id=580628515 groups=["server"]]
 process_mode = 3
 offset_left = -156.0
@@ -492,4 +497,29 @@ amount = 20
 visibility_rect = Rect2(-125, -125, 250, 250)
 process_material = SubResource("ParticleProcessMaterial_375b0")
 
+[node name="BackupServerShield" type="TextureRect" parent="." unique_id=1884061481]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51600003
+anchor_right = 0.51600003
+offset_left = -200.02402
+offset_top = -234.0
+offset_right = 199.97598
+offset_bottom = 166.0
+texture = ExtResource("3_jqkn5")
+
+[node name="PulseAnchor" type="Node2D" parent="." unique_id=1320850161]
+position = Vector2(157, 156)
+
+[node name="BackupServerPulse" type="Area2D" parent="PulseAnchor" unique_id=2052605774]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PulseAnchor/BackupServerPulse" unique_id=1806118530]
+shape = SubResource("CircleShape2D_kr8px")
+
+[node name="Sprite2D" type="Sprite2D" parent="PulseAnchor/BackupServerPulse" unique_id=295815802]
+texture = ExtResource("4_hkcox")
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="area_entered" from="PulseAnchor/BackupServerPulse" to="." method="_on_backup_server_pulse_area_entered"]

@@ -309,7 +309,8 @@ func _process(delta: float):
 		var processed_enemy_damage: float = 0.0
 		var raw_dmg = damage
 		processed_enemy_damage = Defense._dmg_reduc_armor(raw_dmg) # sends dmg to defense_data.gd to reduc dmg based on armor
-		Data.health -= processed_enemy_damage
+		if !Data.backup_server_invincible:
+			Data.health -= processed_enemy_damage
 		_update_active_enemy_counter(enemy_type_stats, -1)
 		queue_free()
 	if enemy_type_stats == Data.Enemy.SPYWARE:
@@ -755,3 +756,10 @@ func _boss5_spawn_loop():
 		var wave_manager = get_tree().get_first_node_in_group("WaveManager")
 		if wave_manager:
 			wave_manager.spawn_boss5_wave()
+
+func backup_server_knockback():
+	if dead:
+		return
+
+	path_follow.progress_ratio = max(path_follow.progress_ratio - 0.2, 0.0)
+	previous_pos = path_follow.global_position

@@ -37,8 +37,9 @@ var before_level_index: int
 var current_level_index: int = 0 # map count 0 = level 1
 
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 10 # wave count
+var current_wave: int = 1 # wave count
 var backup_server_placed := false
+var backup_server_invincible := false
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
@@ -518,8 +519,11 @@ var health: float = default_health:
 		if ui:
 			ui.update_stats(money, health)
 		if health <= 0:
-			ui.get_node("GameOver").visible = true
-			get_tree().paused = true
+			if backup_server_placed:
+				activate_backup_server()	
+			else:
+				ui.get_node("GameOver").visible = true
+				get_tree().paused = true
 
 var ABILITY_DATA = {
 	Ability.FIREWALL: {
@@ -578,3 +582,20 @@ var experience: int = 0:
 		
 		if ui:
 			ui.update_experience(experience, player_level, default_level_pool)
+			
+func activate_backup_server():
+	backup_server_placed = false
+	for card in get_tree().get_nodes_in_group("TowerCard"):
+		card.toggle_active(money)
+	backup_server_invincible = true
+	health = 1
+	
+
+	for tower in get_tree().get_nodes_in_group("Towers"):
+		if tower.scene_file_path == "res://scenes/towers/tower_backup_server.tscn":
+			tower.queue_free()
+			break
+
+	var server = get_tree().get_first_node_in_group("server")
+	if server:
+		server.activate_backup_server()
