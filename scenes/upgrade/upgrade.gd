@@ -19,20 +19,20 @@ func _ready() -> void:
 		tower_card.setup(tower_enum)
 		%SentinelsContainer.add_child(tower_card)
 	update_tier_buttons()
-
+	
 
 func set_selected_tower(tower_enum: Data.Tower) -> void:
 	selected_tower = tower_enum
 
-	$BigTowerName.text = Data.TOWER_DATA[tower_enum]['name']
-	$BigPic.texture = load(Data.TOWER_DATA[tower_enum]['thumbnail'])
+	$TextureRect/BigTowerName.text = Data.TOWER_DATA[tower_enum]['name']
+	%BigPic.texture = load(Data.TOWER_DATA[tower_enum]['thumbnail'])
 
-	$UpgradeButton.visible = true
+	$TextureRect/UpgradeButton.visible = true
 	var upgradeable: bool = bool(Data.TOWER_DATA[tower_enum].get("upgradeable", true))
 	if upgradeable:
-		$UpgradeButton/Label.text = "Upgrade"
+		$TextureRect/UpgradeButton/Label.text = "Upgrade"
 	else:
-		$UpgradeButton/Label.text = "Not Upgradeable"
+		$TextureRect/UpgradeButton/Label.text = "Not Upgradeable"
 	update_stat_label()
 	update_upgrade_ui()
 	update_tier_buttons()
@@ -42,28 +42,27 @@ func set_selected_tower(tower_enum: Data.Tower) -> void:
 func update_stat_label() -> void:
 	var data = Data.TOWER_DATA[selected_tower]
 	if !data.has("upgrade1"):
-		$UpgradePanel.visible = false
-
-		$StatPanel/ScrollContainer/VBoxContainer/DamageContainer/DamagePic/DamageText.text = "-"
-		$StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic/SpeedText.text = "-"
-		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = "-"
-		$StatPanel/ScrollContainer/VBoxContainer/CritRContainer/CritRPic/CritRText.text = "-"
-		$StatPanel/ScrollContainer/VBoxContainer/CritDContainer/CritDPic/CritDText.text = "-"
+		$TextureRect/UpgradePanel.visible = false
+		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/DamageContainer/DamagePic/DamageText.text = "-"
+		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic/SpeedText.text = "-"
+		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = "-"
+		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/CritRContainer/CritRPic/CritRText.text = "-"
+		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/CritDContainer/CritDPic/CritDText.text = "-"
 		return
 	
-	$StatPanel/ScrollContainer/VBoxContainer/DamageContainer/DamagePic/DamageText.text = str(data['damage'])
-	$StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic/SpeedText.text = str(data['reload_time']) + "s"
+	$TextureRect/StatPanel/ScrollContainer/VBoxContainer/DamageContainer/DamagePic/DamageText.text = str(data['damage'])
+	$TextureRect/StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic/SpeedText.text = str(data['reload_time']) + "s"
 	if selected_tower == Data.Tower.MORTAR:
-		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = str(data['explosion_radius'])
-		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/Range.text = "Explosion Radius"
+		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = str(data['explosion_radius'])
+		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/Range.text = "Explosion Radius"
 	elif selected_tower == Data.Tower.QUARANTINE_CANNON:
-		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = "%s / %s" % [str(data['range']), str(data['explosion_radius'])]
-		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/Range.text = "Range / Radius"
+		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = "%s / %s" % [str(data['range']), str(data['explosion_radius'])]
+		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/Range.text = "Range / Radius"
 	else:
-		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = str(data['range'])
-		$StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/Range.text = "Range"
-	$StatPanel/ScrollContainer/VBoxContainer/CritRContainer/CritRPic/CritRText.text = str(data['crit rate']) + "%"
-	$StatPanel/ScrollContainer/VBoxContainer/CritDContainer/CritDPic/CritDText.text = str(data['crit damage']) + "%"
+		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = str(data['range'])
+		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/Range.text = "Range"
+	$TextureRect/StatPanel/ScrollContainer/VBoxContainer/CritRContainer/CritRPic/CritRText.text = str(data['crit rate']) + "%"
+	$TextureRect/StatPanel/ScrollContainer/VBoxContainer/CritDContainer/CritDPic/CritDText.text = str(data['crit damage']) + "%"
 
 	upgrade1_level = int(data.get('upgrade1level', 0))
 	upgrade2_level = int(data.get('upgrade2level', 0))
@@ -72,12 +71,12 @@ func update_stat_label() -> void:
 	upgrade5_level = int(data.get('upgrade5level', 0))
 	upgrade6_level = int(data.get('upgrade6level', 0))
 
-	$UpgradePanel/Upgrade1/Upgrade1Label.text = _format_upgrade_label(data['upgrade1'], 1, upgrade1_level)
-	$UpgradePanel/Upgrade2/Upgrade2Label.text = _format_upgrade_label(data['upgrade2'], 2, upgrade2_level)
-	$UpgradePanel/Upgrade3/Upgrade3Label.text = _format_upgrade_label(data['upgrade3'], 3, upgrade3_level)
-	$UpgradePanel/Upgrade4/Upgrade4Label.text = _format_upgrade_label(data['upgrade4'], 4, upgrade4_level)
-	$UpgradePanel/Upgrade5/Upgrade5Label.text = _format_upgrade_label(data['upgrade5'], 5, upgrade5_level)
-	$UpgradePanel/Upgrade6/Upgrade6Label.text = _format_upgrade_label(data['upgrade6'], 6, upgrade6_level)
+	$TextureRect/UpgradePanel/Upgrade1/Upgrade1Label.text = _format_upgrade_label(data['upgrade1'], 1, upgrade1_level)
+	$TextureRect/UpgradePanel/Upgrade2/Upgrade2Label.text = _format_upgrade_label(data['upgrade2'], 2, upgrade2_level)
+	$TextureRect/UpgradePanel/Upgrade3/Upgrade3Label.text = _format_upgrade_label(data['upgrade3'], 3, upgrade3_level)
+	$TextureRect/UpgradePanel/Upgrade4/Upgrade4Label.text = _format_upgrade_label(data['upgrade4'], 4, upgrade4_level)
+	$TextureRect/UpgradePanel/Upgrade5/Upgrade5Label.text = _format_upgrade_label(data['upgrade5'], 5, upgrade5_level)
+	$TextureRect/UpgradePanel/Upgrade6/Upgrade6Label.text = _format_upgrade_label(data['upgrade6'], 6, upgrade6_level)
 
 	_set_upgrade_amount_label(1, data['upgrade1'], data.get('upgrade1amount', 0))
 	_set_upgrade_amount_label(2, data['upgrade2'], data.get('upgrade2amount', 0))
@@ -103,12 +102,13 @@ func update_upgrade_ui() -> void:
 	]
 
 	var upgrades = [
-		$UpgradePanel/Upgrade1,
-		$UpgradePanel/Upgrade2,
-		$UpgradePanel/Upgrade3,
-		$UpgradePanel/Upgrade4,
-		$UpgradePanel/Upgrade5,
-		$UpgradePanel/Upgrade6
+		$TextureRect/UpgradePanel/Upgrade1,
+		$TextureRect/UpgradePanel/Upgrade2,
+		$TextureRect/UpgradePanel/Upgrade3,
+		$TextureRect/UpgradePanel/Upgrade4,
+		$TextureRect/UpgradePanel/Upgrade5,
+		$TextureRect/UpgradePanel/Upgrade6
+		
 	]
 
 	for i in range(6):
@@ -131,7 +131,7 @@ func _set_upgrade_visual(node: Node, level: int) -> void:
 
 
 func update_money_display() -> void:
-	$UpgradePanel/Money.text = str(Data.money)
+	$TextureRect/UpgradePanel/Money.text = str(Data.money)
 
 
 func _get_upgrade_cost(slot_index: int, current_level: int) -> int:
@@ -161,7 +161,7 @@ func _format_upgrade_amount(upgrade_name: String, amount: Variant) -> String:
 
 
 func _set_upgrade_amount_label(slot_index: int, upgrade_name: String, amount: Variant) -> void:
-	var label = get_node_or_null("UpgradePanel/Upgrade%d/Upgrade%dAmount" % [slot_index, slot_index])
+	var label = get_node_or_null("TextureRect/UpgradePanel/Upgrade%d/Upgrade%dAmount" % [slot_index, slot_index])
 	if label:
 		label.text = _format_upgrade_amount(upgrade_name, amount)
 
@@ -202,7 +202,7 @@ func _try_purchase_upgrade(slot_index: int) -> void:
 			upgrade6_level = current_level
 
 	apply_upgrade(tower_data[upgrade_key])
-	_set_upgrade_visual(get_node("UpgradePanel/Upgrade%d" % slot_index), current_level)
+	_set_upgrade_visual(get_node("TextureRect/UpgradePanel/Upgrade%d" % slot_index), current_level)
 	update_tier_buttons()
 	update_ability_panel()
 	update_money_display()
@@ -225,29 +225,29 @@ func _on_upgrade_button_pressed() -> void:
 	update_upgrade_ui()
 	update_tier_buttons()
 	_set_tier_view(1)
-	$StatPanel/CurrentStat.text = $BigTowerName.text
+	$TextureRect/StatPanel/CurrentStat.text = $TextureRect/BigTowerName.text
 	%SentinelsContainer.visible = false
 
 	%BigPic.position.x -= 340
-	$BigTowerName.visible = false
-	$UpgradeButton.visible = false
+	$TextureRect/BigTowerName.visible = false
+	$TextureRect/UpgradeButton.visible = false
 
-	$StatPanel.visible = true
-	$UpgradePanel.visible = true
+	$TextureRect/StatPanel.visible = true
+	$TextureRect/UpgradePanel.visible = true
 	
 	if Data.TOWER_DATA[selected_tower].has("passive"):
-		$StatPanel/AbilityPanel/VBoxContainer/Passive.text = Data.TOWER_DATA[selected_tower]["passive"] + "(Passive): " + Data.TOWER_DATA[selected_tower]['passive description']
+		$TextureRect/StatPanel/AbilityPanel/VBoxContainer/Passive.text = Data.TOWER_DATA[selected_tower]["passive"] + "(Passive): " + Data.TOWER_DATA[selected_tower]['passive description']
 	else:
-		$StatPanel/AbilityPanel/VBoxContainer/Passive.text = "This tower has no passive skill!"
+		$TextureRect/StatPanel/AbilityPanel/VBoxContainer/Passive.text = "This tower has no passive skill!"
 	update_ability_panel()
 
 func _on_stat_panel_left_pressed() -> void:
-	$StatPanel/AbilityPanel.visible = false
-	$StatPanel/ScrollContainer/VBoxContainer.visible = true
+	$TextureRect/StatPanel/AbilityPanel.visible = false
+	$TextureRect/StatPanel/ScrollContainer/VBoxContainer.visible = true
 
 func _on_stat_panel_right_pressed() -> void:
-	$StatPanel/AbilityPanel.visible = true
-	$StatPanel/ScrollContainer/VBoxContainer.visible = false
+	$TextureRect/StatPanel/AbilityPanel.visible = true
+	$TextureRect/StatPanel/ScrollContainer/VBoxContainer.visible = false
 
 func _on_upgrade_1_pressed() -> void:
 	_try_purchase_upgrade(1)
@@ -313,7 +313,7 @@ func apply_upgrade(upgrade_name: String) -> void:
 
 
 func _set_tier_view(tier: int) -> void:
-	var panel = $UpgradePanel
+	var panel = $TextureRect/UpgradePanel
 	for upgrade_name in ["Upgrade1", "Upgrade2", "Upgrade3", "Upgrade4", "Upgrade5", "Upgrade6"]:
 		panel.get_node(upgrade_name).visible = false
 
@@ -336,17 +336,17 @@ func _on_tier_1_btn_pressed() -> void:
 	_set_tier_view(1)
 
 func _on_tier_2_btn_pressed() -> void:
-	if $UpgradePanel/Tier2Btn.disabled:
+	if $TextureRect/UpgradePanel/Tier2Btn.disabled:
 		return
 	_set_tier_view(2)
 
 func _on_tier_3_btn_pressed() -> void:
-	if $UpgradePanel/Tier3Btn.disabled:
+	if $TextureRect/UpgradePanel/Tier3Btn.disabled:
 		return
 	_set_tier_view(3)
 
 func update_tier_buttons():
-	$UpgradePanel/Tier1Btn.disabled = false
+	$TextureRect/UpgradePanel/Tier1Btn.disabled = false
 
 	var tier1_unlocked := true
 	var tier2_unlocked := false
@@ -370,15 +370,15 @@ func update_tier_buttons():
 		if d.has('tier3abilityunlocked'):
 			d['tier3abilityunlocked'] = (upgrade5_level == 3 and upgrade6_level == 3)
 
-	$UpgradePanel/Tier2Btn.disabled = !tier1_unlocked
-	$UpgradePanel/Tier3Btn.disabled = !tier2_unlocked
+	$TextureRect/UpgradePanel/Tier2Btn.disabled = !tier1_unlocked
+	$TextureRect/UpgradePanel/Tier3Btn.disabled = !tier2_unlocked
 	
 func update_ability_panel() -> void:
 	var tower_data = Data.TOWER_DATA[selected_tower]
 
 	for i in range(3):
 		var tier = i + 1
-		var label = get_node("StatPanel/AbilityPanel/VBoxContainer/Tier%dAbility" % tier)
+		var label = get_node("TextureRect/StatPanel/AbilityPanel/VBoxContainer/Tier%dAbility" % tier)
 
 		var unlocked := false
 		var unlock_text := ""
@@ -425,10 +425,10 @@ func _on_back_btn_pressed() -> void:
 		%SentinelsContainer.visible = true
 
 		%BigPic.position.x += 340
-		$BigTowerName.visible = true
-		$UpgradeButton.visible = true
+		$TextureRect/BigTowerName.visible = true
+		$TextureRect/UpgradeButton.visible = true
 
-		$StatPanel.visible = false
-		$UpgradePanel.visible = false
-		$StatPanel/AbilityPanel.visible = false
-		$StatPanel/ScrollContainer/VBoxContainer.visible = true
+		$TextureRect/StatPanel.visible = false
+		$TextureRect/UpgradePanel.visible = false
+		$TextureRect/StatPanel/AbilityPanel.visible = false
+		$TextureRect/StatPanel/ScrollContainer/VBoxContainer.visible = true
