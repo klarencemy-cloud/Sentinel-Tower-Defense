@@ -34,7 +34,7 @@ length = 4.733333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pop/Animation/AnimatedSprite2D:scale")
+tracks/0/path = NodePath("Pop/Animation/RedPop/AnimatedSprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -86,7 +86,7 @@ length = 0.8666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pop/Animation/AnimatedSprite2D:scale")
+tracks/0/path = NodePath("Pop/Animation/RedPop/AnimatedSprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -931,31 +931,34 @@ process_material = SubResource("ParticleProcessMaterial_kw2ov")
 
 [node name="RedPop" type="TextureRect" parent="Pop/Animation" unique_id=1151442935]
 z_index = 1
-layout_mode = 0
-offset_left = 679.0
-offset_top = 220.0
-offset_right = 1229.7429
-offset_bottom = 769.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35364583
+anchor_top = 0.2037037
+anchor_right = 0.6404911
+anchor_bottom = 0.712037
 pivot_offset = Vector2(307, 275)
 texture = ExtResource("2_q1l02")
 expand_mode = 1
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Pop/Animation/RedPop" unique_id=851695509]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.09457514
-anchor_top = 0.066795
-anchor_right = 0.923722
-anchor_bottom = 0.90171295
-pivot_offset = Vector2(228.324, 229.185)
+anchor_left = 0.112575166
+anchor_top = 0.07389423
+anchor_right = 1.0749117
+anchor_bottom = 1.0429288
+pivot_offset = Vector2(265, 266)
 texture = ExtResource("4_bfgac")
-expand_mode = 1
+stretch_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Pop/Animation/RedPop" unique_id=1891160292]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 2
-position = Vector2(282.90448, 162.0954)
+position = Vector2(312.1352, 193.27484)
 scale = Vector2(1.9970175, 1.9970175)
 sprite_frames = SubResource("SpriteFrames_bxm1x")
 animation = &"worm"
@@ -978,11 +981,11 @@ sprite_frames = SubResource("SpriteFrames_5dcfn")
 autoplay = "default"
 frame_progress = 0.52450067
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pop/Animation" unique_id=444069515]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pop/Animation/RedPop" unique_id=444069515]
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 texture_filter = 2
-position = Vector2(966.4614, 408.80856)
+position = Vector2(340, 279.00003)
 scale = Vector2(1.3081704, 1.3081703)
 sprite_frames = SubResource("SpriteFrames_xms32")
 animation = &"zero"
@@ -1015,13 +1018,14 @@ libraries/ = SubResource("AnimationLibrary_pntdg")
 
 [node name="TextureRect" type="TextureRect" parent="Pop/Info" unique_id=1770208282]
 layout_mode = 0
-offset_left = 87.0
-offset_top = 47.0
-offset_right = 1809.8547
-offset_bottom = 1018.0
+anchor_left = 0.0453125
+anchor_top = 0.043518517
+anchor_right = 0.9426327
+anchor_bottom = 0.9425926
 pivot_offset = Vector2(861, 474)
 texture = ExtResource("1_xo11b")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="DisplayContainer" type="Control" parent="Pop/Info" unique_id=303370693]
 layout_mode = 1

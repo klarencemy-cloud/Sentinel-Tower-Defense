@@ -137,6 +137,7 @@ process_mode = 3
 script = ExtResource("1_c0ukr")
 
 [node name="Pop" type="Control" parent="." unique_id=1841151167]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -184,7 +185,6 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.46944445
 texture = ExtResource("3_c0ukr")
-stretch_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="LowerDoor" type="TextureRect" parent="Pop/Overlay/Animation" unique_id=1210099816]
@@ -208,10 +208,14 @@ process_material = SubResource("ParticleProcessMaterial_qy835")
 [node name="RedPop" type="RichTextLabel" parent="Pop/Overlay/Animation" unique_id=1232198484]
 z_index = 1
 layout_mode = 0
-offset_left = 691.1324
-offset_top = 429.8615
-offset_right = 1241.8752
-offset_bottom = 581.6365
+anchor_left = 0.3456225
+anchor_top = 0.3909933
+anchor_right = 0.66115224
+anchor_bottom = 0.5455789
+offset_left = 27.53717
+offset_top = 7.588745
+offset_right = -27.53711
+offset_bottom = -7.588745
 scale = Vector2(1.1, 1.1)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_font_sizes/normal_font_size = 120
@@ -219,6 +223,7 @@ bbcode_enabled = true
 text = "[wave]LOADING[/wave]"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Pop/Overlay/Animation" unique_id=74128809]
 layout_mode = 0
@@ -235,7 +240,6 @@ libraries/ = SubResource("AnimationLibrary_ult64")
 speed_scale = 1.505
 
 [node name="Info" type="Control" parent="." unique_id=1078619580]
-visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -265,50 +269,54 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Medium_Spinner" type="TextureRect" parent="Info/TextureRect" unique_id=1683638596]
 layout_mode = 0
-offset_left = 87.19807
-offset_top = 531.7214
-offset_right = 330.19806
-offset_bottom = 774.7214
+anchor_left = 0.050612543
+anchor_top = 0.5476018
+anchor_right = 0.1916575
+anchor_bottom = 0.79785925
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("9_ebn4j")
-stretch_mode = 1
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Small_Spinner" type="TextureRect" parent="Info/TextureRect" unique_id=901007323]
-layout_mode = 0
-offset_left = 317.40738
-offset_top = 643.66486
-offset_right = 438.40738
-offset_bottom = 775.66486
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.18423338
+anchor_top = 0.6628886
+anchor_right = 0.25446564
+anchor_bottom = 0.7988309
+offset_right = 3.0517578e-05
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("10_4ekns")
-stretch_mode = 1
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Info/TextureRect" unique_id=1697603297]
 light_mask = 2
 layout_mode = 0
-offset_left = 575.0739
-offset_top = 50.534805
-offset_right = 1145.074
-offset_bottom = 921.5348
+anchor_left = 0.3337913
+anchor_top = 0.05204408
+anchor_right = 0.6646375
+anchor_bottom = 0.9490574
 texture = ExtResource("11_e305x")
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Info/TextureRect" unique_id=831120842]
 layout_mode = 0
-offset_left = 1239.8654
-offset_top = 31.721863
-offset_right = 1599.2382
-offset_bottom = 939.97797
+anchor_left = 0.7196575
+anchor_top = 0.03266927
+anchor_right = 0.92824894
+anchor_bottom = 0.9680514
 color = Color(0.009799991, 0.8829801, 0.98, 0.047058824)
+metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="Info/TextureRect" unique_id=1175543820]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.08719104
-anchor_bottom = 0.08719104
-offset_left = 109.22992
-offset_top = 138.96268
-offset_right = 483.21985
-offset_bottom = 208.96268
+anchor_left = 0.06340054
+anchor_top = 0.23030399
+anchor_right = 0.28047624
+anchor_bottom = 0.3023946
 theme_override_colors/font_color = Color(0.011764706, 0.88235295, 0.9764706, 1)
 theme_override_font_sizes/font_size = 42
 text = "LOST FRAGMENT I"
@@ -318,10 +326,13 @@ metadata/_edit_use_anchors_ = true
 [node name="Label" type="Label" parent="Info/TextureRect/Title" unique_id=543109142]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.3867166
-offset_top = 70.0
-offset_right = 187.0
-offset_bottom = 89.0
+anchor_left = 0.33400002
+anchor_top = 1.0
+anchor_right = 0.33400002
+anchor_bottom = 1.0
+offset_left = -124.91264
+offset_right = 206.71547
+offset_bottom = 19.0
 theme_override_colors/font_color = Color(0.011764706, 0.88235295, 0.9764706, 1)
 theme_override_fonts/font = ExtResource("10_8adel")
 theme_override_font_sizes/font_size = 18
@@ -350,19 +361,20 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Translation_Title" type="Label" parent="Info/TextureRect" unique_id=1127728152]
 layout_mode = 0
-offset_left = 1269.2603
-offset_top = 223.62518
-offset_right = 1532.2603
-offset_bottom = 272.62518
+anchor_left = 0.7367192
+anchor_top = 0.23030399
+anchor_right = 0.8893728
+anchor_bottom = 0.2807674
 theme_override_colors/font_color = Color(0.011764706, 0.88235295, 0.9764706, 1)
 theme_override_font_sizes/font_size = 42
 text = "TRANSLATION"
+metadata/_edit_use_anchors_ = true
 
 [node name="Desc" type="Label" parent="Info/TextureRect/Translation_Title" unique_id=1248093361]
 layout_mode = 0
-offset_top = 74.337494
-offset_right = 314.75012
-offset_bottom = 476.3375
+anchor_top = 1.5170918
+anchor_right = 1.1967685
+anchor_bottom = 9.721173
 theme_override_colors/font_color = Color(0.011764706, 0.88235295, 0.9764706, 1)
 theme_override_fonts/font = ExtResource("13_8rx1i")
 theme_override_font_sizes/font_size = 19
@@ -380,17 +392,19 @@ They learned ambition.
 To prepare for the unforeseen,
 we began Project Sentinel."
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Info/TextureRect" unique_id=509350532]
 layout_mode = 0
-offset_left = 1268.2482
-offset_top = 712.11584
-offset_right = 1570.2603
-offset_bottom = 726.75885
+anchor_left = 0.7361317
+anchor_top = 0.73338395
+anchor_right = 0.9114292
+anchor_bottom = 0.7484643
 step = 0.5
 nine_patch_stretch = true
 texture_under = ExtResource("13_8adel")
 texture_progress = ExtResource("14_q5vbi")
+metadata/_edit_use_anchors_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="Info/TextureRect" unique_id=2081347586]
 z_index = 1

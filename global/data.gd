@@ -522,7 +522,7 @@ var health: float = default_health:
 			ui.update_stats(money, health)
 		if health <= 0:
 			if backup_server_placed:
-				activate_backup_server()	
+				activate_backup_server()
 			else:
 				ui.get_node("GameOver").visible = true
 				get_tree().paused = true

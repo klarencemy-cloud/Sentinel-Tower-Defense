@@ -59,17 +59,14 @@ visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.7316458
-anchor_top = 0.71300006
-anchor_right = 0.77904165
-anchor_bottom = 0.7176297
-offset_left = -256.76
-offset_top = -48.04004
-offset_right = -72.76001
-offset_bottom = 15.959961
+anchor_left = 0.5942708
+anchor_top = 0.66944444
+anchor_right = 0.7375
+anchor_bottom = 0.73333335
 texture_normal = ExtResource("9_x71o2")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="TextureRect/UpgradeButton" unique_id=200488369]
 layout_mode = 0
@@ -90,6 +87,8 @@ anchor_left = 0.5729167
 anchor_top = 0.18240741
 anchor_right = 0.75885415
 anchor_bottom = 0.6564815
+offset_top = -11.0
+offset_bottom = -11.0
 grow_horizontal = 2
 stretch_mode = 5
 
@@ -448,12 +447,14 @@ autowrap_mode = 3
 
 [node name="UpgradePanel" type="TextureRect" parent="TextureRect" unique_id=6382960]
 visible = false
-layout_mode = 0
-offset_left = 1270.0
-offset_top = 164.0
-offset_right = 1811.0
-offset_bottom = 782.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.665625
+anchor_top = 0.15185185
+anchor_right = 0.94739586
+anchor_bottom = 0.72407407
 texture = ExtResource("10_qujrc")
+metadata/_edit_use_anchors_ = true
 
 [node name="Tier1Btn" type="TextureButton" parent="TextureRect/UpgradePanel" unique_id=2070011790]
 layout_mode = 0

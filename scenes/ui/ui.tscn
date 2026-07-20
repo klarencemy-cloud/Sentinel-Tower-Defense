@@ -134,17 +134,14 @@ visible = false
 
 [node name="Control" type="Control" parent="." unique_id=818495937]
 layout_mode = 3
-anchor_left = 0.38900003
-anchor_top = 0.065000005
-anchor_right = 0.4
-anchor_bottom = 0.109000005
-offset_left = -745.88007
-offset_top = -74.200005
-offset_right = 1153.0
-offset_bottom = 958.27997
+anchor_left = 0.00052083336
+anchor_top = -0.0037037036
+anchor_right = 1.0005208
+anchor_bottom = 0.9962963
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=1803522441]
 texture_filter = 2

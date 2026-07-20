@@ -5,7 +5,7 @@ signal next_map
 
 var enemy_scene = preload("res://scenes/enemies/enemy.tscn")
 
-var level_root: Node2D
+var level_root: Control
 var level_manager: Node
 var wave_active: bool = false
 var spawning_wave: bool = false
@@ -13,7 +13,7 @@ var spawning_wave: bool = false
 func _ready() -> void:
 	add_to_group("WaveManager")
 
-func setup(root: Node2D, map_manager: Node) -> void:
+func setup(root: Control, map_manager: Node) -> void:
 	level_root = root
 	level_manager = map_manager
 
