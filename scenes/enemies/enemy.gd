@@ -339,7 +339,7 @@ func hit(damage: int = 1, tower_id: int = -1):
 	hit_particles.emitting = true
 
 	print("HIT", damage, " frame:", Engine.get_process_frames())
-	damage += int(round(damage * Offense.multiplied_total_dmg))
+	damage = int(round(damage * Offense.multiplied_total_dmg))
 	var actual_damage: int = damage
 	print("MULTIPLIED DMG: " + str(actual_damage))
 	if is_frozen and is_frozen_vulnerable:

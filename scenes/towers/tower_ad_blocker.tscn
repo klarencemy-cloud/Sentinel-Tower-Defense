@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://dr0m0j1ib1qt2"]
+
+[ext_resource type="PackedScene" uid="uid://to6d1j5dni6t" path="res://scenes/towers/tower.tscn" id="1_ahwdj"]
+[ext_resource type="Script" uid="uid://chxky6r530yxp" path="res://scenes/towers/tower_ad_blocker.gd" id="2_ahwdj"]
+[ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="3_ohmc7"]
+[ext_resource type="Texture2D" uid="uid://d4b7u07wg4e3d" path="res://graphics/towers/ad blocker/ad_blocker_turret.png" id="4_ahwdj"]
+[ext_resource type="Texture2D" uid="uid://hqsncaw7fucr" path="res://graphics/explosion animations/fire explosion.png" id="5_8d7iw"]
+[ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="6_su0h8"]
+[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_l7jje"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56y0f"]
+radius = 64.50775
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_itnc1"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c5o44"]
+particle_flag_disable_z = true
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.5
+anim_speed_max = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6lo63"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.5
+anim_speed_max = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_itnc1"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.5
+anim_speed_max = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t8p0d"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.5
+anim_speed_max = 1.0
+
+[node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_ahwdj")]
+script = ExtResource("2_ahwdj")
+
+[node name="Base" parent="." index="0" unique_id=230566731]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_ohmc7")
+offset = Vector2(0, -17.142868)
+
+[node name="Turret" parent="." index="1" unique_id=280637358]
+position = Vector2(0, -74.99999)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_ahwdj")
+
+[node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
+position = Vector2(-0.5, 0)
+shape = SubResource("CircleShape2D_56y0f")
+
+[node name="Particles" type="Node2D" parent="." index="4" unique_id=1139715742]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Particles" index="0" unique_id=740687947]
+material = SubResource("CanvasItemMaterial_itnc1")
+position = Vector2(10, 0)
+emitting = false
+texture = ExtResource("5_8d7iw")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_c5o44")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Particles" index="1" unique_id=1055276676]
+material = SubResource("CanvasItemMaterial_itnc1")
+position = Vector2(-10, 0)
+emitting = false
+texture = ExtResource("5_8d7iw")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_6lo63")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="Particles" index="2" unique_id=1172452887]
+material = SubResource("CanvasItemMaterial_itnc1")
+position = Vector2(0, -10)
+emitting = false
+texture = ExtResource("5_8d7iw")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_itnc1")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="Particles" index="3" unique_id=560501590]
+material = SubResource("CanvasItemMaterial_itnc1")
+position = Vector2(0, 10)
+emitting = false
+texture = ExtResource("5_8d7iw")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_t8p0d")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
+position = Vector2(0, -40.25)
+
+[node name="ShootSound" parent="." index="8" unique_id=1474961134]
+stream = ExtResource("6_su0h8")
+
+[node name="AdButton" type="TextureButton" parent="." index="9" unique_id=298330297]
+visible = false
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PayButton" type="TextureButton" parent="." index="10" unique_id=11286891]
+visible = false
+offset_left = -31.0
+offset_top = -32.0
+offset_right = 33.0
+offset_bottom = 32.0
+texture_normal = ExtResource("7_l7jje")
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]
+[connection signal="pressed" from="PayButton" to="." method="_on_pay_button_pressed"]

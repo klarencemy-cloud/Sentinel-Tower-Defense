@@ -7,7 +7,8 @@ var tower_scenes = {
 	Data.Tower.SPAM_FILTER: "res://scenes/towers/tower_spamfilter.tscn",
 	Data.Tower.QUARANTINE_CANNON: "res://scenes/towers/tower_quarantinecannon.tscn",
 	Data.Tower.IDPS: "res://scenes/towers/tower_idps.tscn",
-	Data.Tower.BACKUP_SERVER: "res://scenes/towers/tower_backup_server.tscn"
+	Data.Tower.BACKUP_SERVER: "res://scenes/towers/tower_backup_server.tscn",
+	Data.Tower.AD_BLOCKER: "res://scenes/towers/tower_ad_blocker.tscn"
 }
 
 var bullet_scene = preload("res://scenes/bullets/bullet.tscn")

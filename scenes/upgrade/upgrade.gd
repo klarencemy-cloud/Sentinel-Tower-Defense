@@ -79,12 +79,12 @@ func update_stat_label() -> void:
 	$UpgradePanel/Upgrade5/Upgrade5Label.text = _format_upgrade_label(data['upgrade5'], 5, upgrade5_level)
 	$UpgradePanel/Upgrade6/Upgrade6Label.text = _format_upgrade_label(data['upgrade6'], 6, upgrade6_level)
 
-	_set_upgrade_amount_label(1, data['upgrade1'], data.get('upgrade1amount', 0))
-	_set_upgrade_amount_label(2, data['upgrade2'], data.get('upgrade2amount', 0))
-	_set_upgrade_amount_label(3, data['upgrade3'], data.get('upgrade3amount', 0))
-	_set_upgrade_amount_label(4, data['upgrade4'], data.get('upgrade4amount', 0))
-	_set_upgrade_amount_label(5, data['upgrade5'], data.get('upgrade5amount', 0))
-	_set_upgrade_amount_label(6, data['upgrade6'], data.get('upgrade6amount', 0))
+	_set_upgrade_amount_label(1, data['upgrade1'], data.get('upgrade1amount', 0), upgrade1_level)
+	_set_upgrade_amount_label(2, data['upgrade2'], data.get('upgrade2amount', 0), upgrade2_level)
+	_set_upgrade_amount_label(3, data['upgrade3'], data.get('upgrade3amount', 0), upgrade3_level)
+	_set_upgrade_amount_label(4, data['upgrade4'], data.get('upgrade4amount', 0), upgrade4_level)
+	_set_upgrade_amount_label(5, data['upgrade5'], data.get('upgrade5amount', 0), upgrade5_level)
+	_set_upgrade_amount_label(6, data['upgrade6'], data.get('upgrade6amount', 0), upgrade6_level)
 
 
 func update_upgrade_ui() -> void:
@@ -144,6 +144,16 @@ func _get_upgrade_cost(slot_index: int, current_level: int) -> int:
 	return 0
 
 
+func _get_upgrade_amount_for_level(amount: Variant, level: int) -> Variant:
+	if typeof(amount) == TYPE_ARRAY:
+		if level < 0:
+			level = 0
+		elif level >= amount.size():
+			level = amount.size() - 1
+		return amount[level]
+	return amount
+
+
 func _format_upgrade_label(upgrade_name: String, slot_index: int, current_level: int) -> String:
 	if current_level >= 3:
 		return "%s (Max)" % upgrade_name
@@ -155,15 +165,18 @@ func _format_upgrade_label(upgrade_name: String, slot_index: int, current_level:
 
 
 func _format_upgrade_amount(upgrade_name: String, amount: Variant) -> String:
+	if typeof(amount) == TYPE_ARRAY:
+		amount = _get_upgrade_amount_for_level(amount, 0)
 	if upgrade_name == "Attack Speed":
 		return "-%s" % str(amount)
 	return "+%s" % str(amount)
 
 
-func _set_upgrade_amount_label(slot_index: int, upgrade_name: String, amount: Variant) -> void:
+func _set_upgrade_amount_label(slot_index: int, upgrade_name: String, amount: Variant, current_level: int) -> void:
 	var label = get_node_or_null("UpgradePanel/Upgrade%d/Upgrade%dAmount" % [slot_index, slot_index])
 	if label:
-		label.text = _format_upgrade_amount(upgrade_name, amount)
+		var display_amount = _get_upgrade_amount_for_level(amount, current_level)
+		label.text = _format_upgrade_amount(upgrade_name, display_amount)
 
 
 func _try_purchase_upgrade(slot_index: int) -> void:
@@ -201,7 +214,7 @@ func _try_purchase_upgrade(slot_index: int) -> void:
 		6:
 			upgrade6_level = current_level
 
-	apply_upgrade(tower_data[upgrade_key])
+	apply_upgrade(slot_index)
 	_set_upgrade_visual(get_node("UpgradePanel/Upgrade%d" % slot_index), current_level)
 	update_tier_buttons()
 	update_ability_panel()
@@ -272,17 +285,15 @@ func _on_upgrade_6_pressed() -> void:
 	_try_purchase_upgrade(6)
 
 
-func apply_upgrade(upgrade_name: String) -> void:
+func apply_upgrade(slot_index: int) -> void:
 	var tower_data = Data.TOWER_DATA[selected_tower]
-	var amount = 0
-
-	# Find which upgrade slot matches this upgrade_name for the selected tower
-	for i in range(1, 7):
-		var key = "upgrade%d" % i
-		var amt_key = "upgrade%damount" % i
-		if tower_data.has(key) and tower_data[key] == upgrade_name:
-			amount = tower_data.get(amt_key, 0)
-			break
+	var key = "upgrade%d" % slot_index
+	var amt_key = "upgrade%damount" % slot_index
+	var level_key = "upgrade%dlevel" % slot_index
+	var upgrade_name = tower_data.get(key, "")
+	var amount = tower_data.get(amt_key, 0)
+	var level = int(tower_data.get(level_key, 0))
+	amount = _get_upgrade_amount_for_level(amount, level - 1)
 
 	match upgrade_name:
 		"Damage":
