@@ -1,6 +1,6 @@
-extends Node2D
+extends Control
 
-@onready var progress_bar: ProgressBar = $Anchor/ProgressBar
+@onready var progress_bar: ProgressBar = $ProgressBar
 @export var next_scene_path1: String = "res://scenes/levels/level.tscn"
 @export var next_scene_path2: String = "res://scenes/sandbox/sand_box.tscn"
 var next_scene_path: String
@@ -25,20 +25,20 @@ var tips: Array[String] = [
 
 func _ready() -> void:
 	if Data.current_wave <= 10:
-		$Anchor/Animation/AnimatedSprite2D.play("boss1")
+		$Animation/AnimatedSprite2D.play("boss1")
 	elif Data.current_wave <= 20 and Data.current_wave > 10:
-		$Anchor/Animation/AnimatedSprite2D.play("boss2")
+		$Animation/AnimatedSprite2D.play("boss2")
 	elif Data.current_wave <= 30 and Data.current_wave > 20:
-		$Anchor/Animation/AnimatedSprite2D.play("boss3")
+		$Animation/AnimatedSprite2D.play("boss3")
 	elif Data.current_wave <= 40 and Data.current_wave > 30:
-		$Anchor/Animation/AnimatedSprite2D.play("boss4")
+		$Animation/AnimatedSprite2D.play("boss4")
 	elif Data.current_wave <= 50 and Data.current_wave > 40:
-		$Anchor/Animation/AnimatedSprite2D.play("boss5")
+		$Animation/AnimatedSprite2D.play("boss5")
 	else:
-		$Anchor/Animation/AnimatedSprite2D.play("boss6")
+		$Animation/AnimatedSprite2D.play("boss6")
 	randomize()
 	var index: int = randi_range(0, 11)
-	$Anchor/Facts/Details.text = tips[index]
+	$Facts/Details.text = tips[index]
 	if Data.is_sandbox:
 		next_scene_path = next_scene_path2
 	else:

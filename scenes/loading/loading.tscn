@@ -225,17 +225,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Loading" type="Node2D" unique_id=1520300234]
+[node name="Loading" type="Control" unique_id=301610900]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_23b5w")
 
-[node name="Anchor" type="Control" parent="." unique_id=341952232]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
-
-[node name="Loadingbg" type="TextureRect" parent="Anchor" unique_id=2074992678]
+[node name="Loadingbg" type="TextureRect" parent="." unique_id=2074992678]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -244,14 +244,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_ddh15")
 
-[node name="DustParticles" type="GPUParticles2D" parent="Anchor/Loadingbg" unique_id=1496005191]
+[node name="DustParticles" type="GPUParticles2D" parent="Loadingbg" unique_id=1496005191]
 light_mask = 2
 position = Vector2(960.08014, 539.93976)
 amount = 100
 visibility_rect = Rect2(-960, -540, 1920, 1080)
 process_material = SubResource("ParticleProcessMaterial_l0cve")
 
-[node name="ProgressBar" type="ProgressBar" parent="Anchor" unique_id=779728317]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=779728317]
 z_index = 1
 texture_filter = 2
 layout_mode = 1
@@ -260,47 +260,45 @@ anchor_left = 0.083000004
 anchor_top = 0.27400002
 anchor_right = 0.083000004
 anchor_bottom = 0.27400002
-offset_left = 636.64
-offset_top = 174.07999
-offset_right = 1548.64
-offset_bottom = 224.07999
+offset_left = 676.64
+offset_top = 162.6401
+offset_right = 1588.64
+offset_bottom = 212.6401
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/background = SubResource("StyleBoxFlat_l0cve")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xph5p")
-metadata/_edit_use_anchors_ = true
 
-[node name="Loading" type="Label" parent="Anchor" unique_id=585149729]
+[node name="Loading" type="Label" parent="." unique_id=585149729]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.09
 anchor_top = 0.26700002
 anchor_right = 0.09
 anchor_bottom = 0.26700002
-offset_left = 618.2
-offset_top = -0.36001587
-offset_right = 1137.2
-offset_bottom = 189.63998
+offset_left = 671.66095
+offset_top = -19.359955
+offset_right = 1190.6609
+offset_bottom = 170.64005
 theme_override_fonts/font = ExtResource("4_2asxc")
 theme_override_font_sizes/font_size = 150
 text = "Loading"
-metadata/_edit_use_anchors_ = true
 
-[node name="Facts" type="Label" parent="Anchor" unique_id=81825721]
+[node name="Facts" type="Label" parent="." unique_id=81825721]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.083000004
 anchor_top = 0.294
 anchor_right = 0.083000004
 anchor_bottom = 0.294
-offset_left = 635.64
-offset_top = 245.48001
-offset_right = 986.64
-offset_bottom = 314.48
+offset_left = 675.64
+offset_top = 255.64005
+offset_right = 1026.64
+offset_bottom = 324.64005
 theme_override_fonts/font = ExtResource("5_l0cve")
 theme_override_font_sizes/font_size = 40
 text = "Cyber Facts!"
 
-[node name="Details" type="Label" parent="Anchor/Facts" unique_id=852833026]
+[node name="Details" type="Label" parent="Facts" unique_id=852833026]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 64.0
@@ -313,52 +311,54 @@ text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
 horizontal_alignment = 3
 autowrap_mode = 2
 
-[node name="Databasebg" type="TextureRect" parent="Anchor" unique_id=838234388]
+[node name="Databasebg" type="TextureRect" parent="." unique_id=838234388]
 texture_filter = 2
-layout_mode = 0
-anchor_left = 0.08229167
-anchor_top = 0.27962965
-anchor_right = 0.3947275
-anchor_bottom = 0.71481484
-offset_right = 333.12323
-offset_bottom = 261.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09374999
+anchor_top = 0.20185183
+anchor_right = 0.29463208
+anchor_bottom = 0.4816561
+offset_left = -12.0
+offset_top = 51.0
+offset_right = 535.3064
+offset_bottom = 479.8114
 scale = Vector2(0.6429547, 0.64295477)
 texture = ExtResource("7_l0cve")
-metadata/_edit_use_anchors_ = true
 
-[node name="Animation" type="Control" parent="Anchor" unique_id=1901643478]
+[node name="Animation" type="Control" parent="." unique_id=1901643478]
 layout_mode = 1
 anchor_left = 0.09200001
 anchor_top = 0.30600002
 anchor_right = 0.09200001
 anchor_bottom = 0.30600002
-offset_left = 1126.36
-offset_top = -0.480011
-offset_right = 1524.36
-offset_bottom = 114.51999
+offset_left = 1195.667
+offset_top = -28.360016
+offset_right = 1593.667
+offset_bottom = 86.639984
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Anchor/Animation" unique_id=1622320455]
-position = Vector2(57.50006, 51.424137)
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Animation" unique_id=1622320455]
+position = Vector2(51.19287, 42.39995)
 scale = Vector2(0.66145825, 0.66884935)
 sprite_frames = SubResource("SpriteFrames_8njb0")
 frame_progress = 0.98632264
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Anchor/Animation" unique_id=1343061686]
-position = Vector2(162.87506, 49.46694)
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Animation" unique_id=1343061686]
+position = Vector2(156.568, 40.44278)
 scale = Vector2(0.68880224, 0.6964988)
 sprite_frames = SubResource("SpriteFrames_8njb0")
 frame_progress = 0.34254503
 
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Anchor/Animation" unique_id=204396013]
-position = Vector2(273.50003, 46.54676)
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Animation" unique_id=204396013]
+position = Vector2(267.19287, 37.522583)
 scale = Vector2(0.723958, 0.7320475)
 sprite_frames = SubResource("SpriteFrames_8njb0")
 frame_progress = 0.1825446
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor/Animation" unique_id=1249662821]
-position = Vector2(-834, 195)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animation" unique_id=1249662821]
+position = Vector2(-891.307, 188.88)
 scale = Vector2(1.3554688, 1.3554688)
 sprite_frames = SubResource("SpriteFrames_w33o8")
 animation = &"boss1"
