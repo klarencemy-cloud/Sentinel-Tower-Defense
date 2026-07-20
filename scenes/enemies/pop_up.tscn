@@ -909,7 +909,6 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.46944445
 texture = ExtResource("8_pntdg")
-stretch_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="LowerDoor" type="TextureRect" parent="Pop/Animation" unique_id=36468109]

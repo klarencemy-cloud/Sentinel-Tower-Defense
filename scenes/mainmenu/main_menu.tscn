@@ -225,10 +225,10 @@ libraries/ = SubResource("AnimationLibrary_otieh")
 
 [node name="Title" type="RichTextLabel" parent="." unique_id=1210088174]
 layout_mode = 0
-offset_left = 468.28375
-offset_top = 229.28049
-offset_right = 1450.3411
-offset_bottom = 472.56442
+anchor_left = 0.24389778
+anchor_top = 0.21229675
+anchor_right = 0.755386
+anchor_bottom = 0.43755966
 pivot_offset = Vector2(491.02863, 121.64197)
 theme_override_colors/font_shadow_color = Color(0.3382, 0.89, 0.8256234, 0.043137256)
 theme_override_constants/shadow_offset_x = 11
@@ -239,6 +239,7 @@ text = "[matrix]SENTINELS[/matrix]"
 horizontal_alignment = 1
 vertical_alignment = 1
 custom_effects = [SubResource("RichTextEffect_l3hwl")]
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ButtonManager/Database" to="." method="_on_database_pressed"]
