@@ -31,10 +31,12 @@ curve = SubResource("Curve_me6x0")
 
 [resource]
 particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
+emission_shape = 1
+emission_sphere_radius = 19.29
+direction = Vector3(0, 1, 0)
 spread = 21.786
 initial_velocity_max = 40.0
-gravity = Vector3(0, -30, 0)
+gravity = Vector3(0, 20, 0)
 damping_min = 1.0
 damping_max = 2.0
 damping_curve = SubResource("CurveTexture_tnvbm")

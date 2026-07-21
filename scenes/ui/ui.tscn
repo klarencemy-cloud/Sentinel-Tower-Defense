@@ -407,7 +407,7 @@ grow_vertical = 0
 theme_override_constants/separation = 10
 
 [node name="PanelContainer2" type="PanelContainer" parent="Control/StatsContainer" unique_id=1002781053]
-self_modulate = Color(0.15294118, 0.15294118, 0.15294118, 1)
+self_modulate = Color(0.15, 0.15, 0.15, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7vp6q")
 

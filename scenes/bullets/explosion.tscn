@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cn3dps3m2qep2"]
 
-[ext_resource type="Texture2D" uid="uid://bngxdi2wdjkr1" path="res://graphics/explosion animations/mortar explosion.png" id="1_2ydpy"]
+[ext_resource type="Texture2D" uid="uid://cmsgc1m1iuifh" path="res://graphics/explosion animations/mortar frost explosion.png" id="1_npy6q"]
 [ext_resource type="Script" uid="uid://chma1t40gg4b4" path="res://scenes/bullets/explosion.gd" id="2_npy6q"]
 [ext_resource type="AudioStream" uid="uid://c4eps6y231ocw" path="res://audio/explosion.wav" id="3_npy6q"]
 
@@ -100,7 +100,7 @@ _data = {
 
 [node name="Explosion" type="Sprite2D" parent="." unique_id=1119713804]
 scale = Vector2(2, 2)
-texture = ExtResource("1_2ydpy")
+texture = ExtResource("1_npy6q")
 hframes = 5
 script = ExtResource("2_npy6q")
 

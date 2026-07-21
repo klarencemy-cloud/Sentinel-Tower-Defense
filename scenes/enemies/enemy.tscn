@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://cu22lxqgx5hh0" path="res://scenes/enemies/lightning_1.gd" id="6_p7w77"]
 [ext_resource type="Texture2D" uid="uid://1qgvsuhf841g" path="res://graphics/ui/enemyhpbar1.png" id="7_n7575"]
 [ext_resource type="Texture2D" uid="uid://ba1dyadxb3f65" path="res://graphics/ui/enemyhpbar2.png" id="8_qch6t"]
+[ext_resource type="Script" uid="uid://dqoaji6r2by5b" path="res://scenes/enemies/virus.gd" id="8_sb86v"]
+[ext_resource type="Material" uid="uid://immkg7wkeqte" path="res://texture/shaders/smoke_particles.tres" id="8_twn6s"]
 [ext_resource type="Texture2D" uid="uid://dc1008xax0yk6" path="res://graphics/enemies/enemies4.png" id="9_qch6t"]
 [ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="10_tihwb"]
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="11_tihwb"]
@@ -530,7 +532,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xteqa")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Right",
 "speed": 12.0
 }]
 
@@ -1018,7 +1020,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xdla0")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Right",
 "speed": 5.0
 }]
 
@@ -1328,8 +1330,17 @@ scale = Vector2(0.7604167, 0.7604167)
 sprite_frames = SubResource("SpriteFrames_iv7dn")
 animation = &"Right"
 autoplay = "Right"
-frame_progress = 0.5342863
 offset = Vector2(2.630137, -34.19178)
+script = ExtResource("8_sb86v")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Virus" unique_id=743861725]
+z_index = -1
+position = Vector2(3.9452055, 61.808228)
+emitting = false
+amount = 50
+lifetime = 0.8
+one_shot = true
+process_material = ExtResource("8_twn6s")
 
 [node name="Spyware" type="AnimatedSprite2D" parent="." unique_id=1983232872]
 visible = false
@@ -1400,7 +1411,8 @@ material = SubResource("ShaderMaterial_p7w77")
 position = Vector2(72, 1)
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_rme1b")
-autoplay = "default"
+animation = &"Right"
+autoplay = "Right"
 
 [node name="Trojan" type="AnimatedSprite2D" parent="." unique_id=200762088]
 visible = false
@@ -1423,9 +1435,8 @@ visible = false
 texture_filter = 2
 material = SubResource("ShaderMaterial_x3klb")
 sprite_frames = SubResource("SpriteFrames_i5650")
-animation = &"Down"
+animation = &"Right"
 autoplay = "Right"
-frame_progress = 0.28841245
 
 [node name="SQL" type="AnimatedSprite2D" parent="." unique_id=1932437665]
 visible = false
@@ -1470,6 +1481,7 @@ position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_fcftc")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1195363167]
+position = Vector2(-1, 21.310684)
 stream = ExtResource("4_fcftc")
 
 [node name="hpbar" type="TextureProgressBar" parent="." unique_id=928793409]
@@ -1494,8 +1506,8 @@ visible = false
 material = SubResource("ShaderMaterial_4f0mh")
 position = Vector2(0, -51)
 sprite_frames = SubResource("SpriteFrames_l10qw")
-autoplay = "default"
-frame_progress = 0.21455352
+animation = &"Right"
+autoplay = "Right"
 
 [node name="SpawnVirusTimer" type="Timer" parent="Boss1" unique_id=1243444241]
 wait_time = 3.0

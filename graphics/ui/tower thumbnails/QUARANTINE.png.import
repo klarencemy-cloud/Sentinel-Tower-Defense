@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3wqddoidhytt"
-path="res://.godot/imported/quarantine.png-44b442d9a4427e8e92bdb3af775aa7dd.ctex"
+path="res://.godot/imported/QUARANTINE.png-ec48dc238a24b12742d4abdf0353b0ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/quarantine.png"
-dest_files=["res://.godot/imported/quarantine.png-44b442d9a4427e8e92bdb3af775aa7dd.ctex"]
+source_file="res://graphics/ui/tower thumbnails/QUARANTINE.png"
+dest_files=["res://.godot/imported/QUARANTINE.png-ec48dc238a24b12742d4abdf0353b0ce.ctex"]
 
 [params]
 
