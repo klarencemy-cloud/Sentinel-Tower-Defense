@@ -6,7 +6,7 @@ func _process(_delta: float) -> void:
 		$Turret.rotation -= PI / 2
 
 func _on_reload_timer_timeout() -> void:
-	if stunned: 
+	if stunned:
 		return
 	if disabled_by_ad or disabled_by_ransomware:
 		return
@@ -32,7 +32,7 @@ func _on_reload_timer_timeout() -> void:
 			type,
 			tower_id
 		)
-
+		fire_animation()
 		$ShootSound.play()
 
 func _on_pay_button_pressed() -> void:
@@ -41,3 +41,9 @@ func _on_pay_button_pressed() -> void:
 
 	Data.money -= 5
 	remove_ransomware()
+
+
+func fire_animation():
+	for particles: GPUParticles2D in $Turret/Particles.get_children():
+		particles.restart()
+		particles.emitting = true

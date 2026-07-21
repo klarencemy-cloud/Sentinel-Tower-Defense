@@ -4,7 +4,7 @@ var target_position: Vector2
 var damage: int
 var tower_type
 var tower_id
-var speed := 350
+var speed := 600
 
 func setup(start_pos, target_pos, new_damage, _tower_type, _tower_id):
 	global_position = start_pos
@@ -20,6 +20,7 @@ func _process(delta):
 		explode()
 
 func explode():
+	GameDialogueManager.camera_tremor(5.0)
 	var explosion = preload("res://scenes/bullets/explosion.tscn").instantiate()
 
 	get_parent().add_child(explosion)

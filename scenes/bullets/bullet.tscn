@@ -2,6 +2,16 @@
 
 [ext_resource type="Script" uid="uid://r6s86v5yupbp" path="res://scenes/bullets/bullet.gd" id="1_5f1na"]
 [ext_resource type="Texture2D" uid="uid://b4osqpoxn1y7t" path="res://graphics/bullets/spam_filter_bullet.png" id="2_5f1na"]
+[ext_resource type="Shader" uid="uid://tsbpejfyq5fc" path="res://texture/shaders/glow_shader.gdshader" id="2_lj7gv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tocqt"]
+shader = ExtResource("2_lj7gv")
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0, 0, 0, 1)
+shader_parameter/threshold = 0.74
+shader_parameter/intensity = 4.5649999999999995
+shader_parameter/opacity = 0.055
+shader_parameter/glow_color = Color(0, 0.97719985, 0.796124, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5f1na"]
 size = Vector2(26.75, 49)
@@ -11,6 +21,7 @@ collision_layer = 2
 script = ExtResource("1_5f1na")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=111004165]
+material = SubResource("ShaderMaterial_tocqt")
 texture = ExtResource("2_5f1na")
 flip_v = true
 

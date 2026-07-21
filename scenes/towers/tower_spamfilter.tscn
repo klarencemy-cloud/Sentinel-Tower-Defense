@@ -5,7 +5,33 @@
 [ext_resource type="Texture2D" uid="uid://b00gbf4bkr8pr" path="res://graphics/towers/spam filter/spam_filter_turret.png" id="4_uin2q"]
 [ext_resource type="AudioStream" uid="uid://sicd08w0ce6c" path="res://audio/bullet.wav" id="5_81w6i"]
 [ext_resource type="Texture2D" uid="uid://bgijljt2l6qml" path="res://graphics/towers/spam filter/spam_filter_base.png" id="5_dmts7"]
+[ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="5_uin2q"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_l7y1m"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_81w6i"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_uin2q"]
+offsets = PackedFloat32Array(0.4429066, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.45513505, 0.99999994, 0.85618454, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_81w6i"]
+gradient = SubResource("Gradient_uin2q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dmts7"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 31.5
+angle_min = 1.0728835e-05
+angle_max = 350.00003
+spread = 180.0
+gravity = Vector3(0, -20, 0)
+color_ramp = SubResource("GradientTexture1D_81w6i")
+anim_speed_max = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ku0u"]
 radius = 130.31117
@@ -24,6 +50,23 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_uin2q")
 offset = Vector2(0, 35)
 flip_v = true
+
+[node name="Particles" type="Node2D" parent="Turret" index="0" unique_id=335993198]
+z_index = 1
+position = Vector2(1.9982351e-06, -22.857141)
+rotation = -3.1415925
+scale = Vector2(1.4285712, 1.4285712)
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="Turret/Particles" index="0" unique_id=1874118967]
+z_index = -1
+material = SubResource("CanvasItemMaterial_81w6i")
+position = Vector2(7.105438e-14, -93.99998)
+emitting = false
+amount = 2
+texture = ExtResource("5_uin2q")
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_dmts7")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
 shape = SubResource("CircleShape2D_6ku0u")

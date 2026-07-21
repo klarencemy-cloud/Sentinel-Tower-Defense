@@ -48,6 +48,9 @@ var shake_strength: float = 0.0
 func trigger_shake() -> void:
 	shake_strength = max_shake
 
+func shell_tremor(intensity: float):
+	shake_strength = intensity
+
 func _process(_delta: float) -> void:
 	if target:
 		position = target.position

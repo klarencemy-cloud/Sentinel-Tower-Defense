@@ -1,7 +1,7 @@
 extends Area2D
-
+@onready var mat = ShaderMaterial
 var direction: Vector2
-var speed: int = 600
+var speed: int = 1000
 var damage: int = 1
 var tower_id: int = -1
 var lifetime: float = 5.0 # lifetime of bullets in seconds
@@ -13,6 +13,8 @@ var ricochet_range: int = 0
 var hit_enemies: Array = [] # Track which enemies have been hit by this ricochet chain
 var already_hit := false
 func _ready():
+	$Sprite2D.material = $Sprite2D.material.duplicate()
+	mat = material as ShaderMaterial
 	add_to_group("bullet")
 	monitoring = true
 	monitorable = true

@@ -125,6 +125,10 @@ func trigger_shake():
 	var camera = get_tree().get_first_node_in_group("camera")
 	camera.trigger_shake()
 
+func trigger_shell_tremor(intensity: float):
+	var camera = get_tree().get_first_node_in_group("camera")
+	camera.shell_tremor(intensity)
+
 func move_camera(coords: Vector2):
 	var camera = get_tree().get_first_node_in_group("camera")
 	var camera_tween = create_tween()

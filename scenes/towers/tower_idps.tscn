@@ -3,53 +3,30 @@
 [ext_resource type="PackedScene" uid="uid://to6d1j5dni6t" path="res://scenes/towers/tower.tscn" id="1_b2ii2"]
 [ext_resource type="Script" uid="uid://dmxcy8dtcajua" path="res://scenes/towers/tower_idps.gd" id="2_b2ii2"]
 [ext_resource type="Texture2D" uid="uid://chefrr3etmbm7" path="res://graphics/towers/idps/idps_turret.png" id="3_56y0f"]
-[ext_resource type="Texture2D" uid="uid://hqsncaw7fucr" path="res://graphics/explosion animations/fire explosion.png" id="4_5ge8c"]
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="4_hginv"]
 [ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="5_hginv"]
+[ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="6_5ge8c"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_bhf25"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56y0f"]
 radius = 64.50775
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_itnc1"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hginv"]
+blend_mode = 1
 particles_animation = true
-particles_anim_h_frames = 5
-particles_anim_v_frames = 1
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
 particles_anim_loop = false
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c5o44"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dbesr"]
 particle_flag_disable_z = true
-initial_velocity_min = 40.0
-initial_velocity_max = 60.0
-gravity = Vector3(0, 0, 0)
-anim_speed_min = 0.5
-anim_speed_max = 1.0
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6lo63"]
-particle_flag_disable_z = true
-direction = Vector3(-1, 0, 0)
-initial_velocity_min = 40.0
-initial_velocity_max = 60.0
-gravity = Vector3(0, 0, 0)
-anim_speed_min = 0.5
-anim_speed_max = 1.0
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_itnc1"]
-particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
-initial_velocity_min = 40.0
-initial_velocity_max = 60.0
-gravity = Vector3(0, 0, 0)
-anim_speed_min = 0.5
-anim_speed_max = 1.0
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t8p0d"]
-particle_flag_disable_z = true
-direction = Vector3(0, 1, 0)
-initial_velocity_min = 40.0
-initial_velocity_max = 60.0
-gravity = Vector3(0, 0, 0)
-anim_speed_min = 0.5
+emission_shape = 1
+emission_sphere_radius = 26.17
+angle_min = 1.0728835e-05
+angle_max = 350.00003
+spread = 180.0
+gravity = Vector3(0, -20, 0)
+color = Color(0, 0.6996187, 0.6823587, 1)
 anim_speed_max = 1.0
 
 [node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_b2ii2")]
@@ -70,42 +47,17 @@ position = Vector2(-0.5, 0)
 shape = SubResource("CircleShape2D_56y0f")
 
 [node name="Particles" type="Node2D" parent="." index="4" unique_id=1139715742]
+z_index = 1
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Particles" index="0" unique_id=740687947]
-material = SubResource("CanvasItemMaterial_itnc1")
-position = Vector2(10, 0)
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="Particles" index="0" unique_id=2031848410]
+z_index = -1
+material = SubResource("CanvasItemMaterial_hginv")
+position = Vector2(0, -99)
 emitting = false
-texture = ExtResource("4_5ge8c")
-lifetime = 0.3
+amount = 10
+texture = ExtResource("6_5ge8c")
 one_shot = true
-process_material = SubResource("ParticleProcessMaterial_c5o44")
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="Particles" index="1" unique_id=1055276676]
-material = SubResource("CanvasItemMaterial_itnc1")
-position = Vector2(-10, 0)
-emitting = false
-texture = ExtResource("4_5ge8c")
-lifetime = 0.3
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_6lo63")
-
-[node name="GPUParticles2D3" type="GPUParticles2D" parent="Particles" index="2" unique_id=1172452887]
-material = SubResource("CanvasItemMaterial_itnc1")
-position = Vector2(0, -10)
-emitting = false
-texture = ExtResource("4_5ge8c")
-lifetime = 0.3
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_itnc1")
-
-[node name="GPUParticles2D4" type="GPUParticles2D" parent="Particles" index="3" unique_id=560501590]
-material = SubResource("CanvasItemMaterial_itnc1")
-position = Vector2(0, 10)
-emitting = false
-texture = ExtResource("4_5ge8c")
-lifetime = 0.3
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_t8p0d")
+process_material = SubResource("ParticleProcessMaterial_dbesr")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
 position = Vector2(0, -40.25)

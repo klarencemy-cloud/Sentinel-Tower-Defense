@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dc1008xax0yk6" path="res://graphics/enemies/enemies4.png" id="9_qch6t"]
 [ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="10_tihwb"]
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="11_tihwb"]
+[ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="13_k4gvh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fcftc"]
 resource_local_to_scene = true
@@ -74,6 +75,24 @@ animations = [{
 "name": &"Right",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e4ejd"]
+shader = ExtResource("10_tihwb")
+shader_parameter/Vanishing_Value = 0.5850000277875
+shader_parameter/Speed = Vector2(0, 0)
+shader_parameter/Basic_Texture = ExtResource("11_tihwb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ma66"]
+shader = ExtResource("10_tihwb")
+shader_parameter/Vanishing_Value = 0.57200002717
+shader_parameter/Speed = Vector2(0, 0)
+shader_parameter/Basic_Texture = ExtResource("11_tihwb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7v5dn"]
+shader = ExtResource("10_tihwb")
+shader_parameter/Vanishing_Value = 0.0
+shader_parameter/Speed = Vector2(0, 0)
+shader_parameter/Basic_Texture = ExtResource("11_tihwb")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kugq1"]
 shader = ExtResource("2_38ino")
@@ -1232,35 +1251,18 @@ radius = 14.622871
 _data = [Vector2(0.012158059, 1), 0.0, 0.0, 0, 0, Vector2(0.993921, 0.0006053448), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e4ejd"]
-shader = ExtResource("10_tihwb")
-shader_parameter/Vanishing_Value = 0.5850000277875
-shader_parameter/Speed = Vector2(0, 0)
-shader_parameter/Basic_Texture = ExtResource("11_tihwb")
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_twn6s"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ma66"]
-shader = ExtResource("10_tihwb")
-shader_parameter/Vanishing_Value = 0.57200002717
-shader_parameter/Speed = Vector2(0, 0)
-shader_parameter/Basic_Texture = ExtResource("11_tihwb")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7v5dn"]
-shader = ExtResource("10_tihwb")
-shader_parameter/Vanishing_Value = 0.0
-shader_parameter/Speed = Vector2(0, 0)
-shader_parameter/Basic_Texture = ExtResource("11_tihwb")
-
-[sub_resource type="Gradient" id="Gradient_p7w77"]
+[sub_resource type="Gradient" id="Gradient_k4gvh"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_k4gvh"]
-gradient = SubResource("Gradient_p7w77")
-
-[sub_resource type="Gradient" id="Gradient_twn6s"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_sb86v"]
-gradient = SubResource("Gradient_twn6s")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_twn6s"]
+gradient = SubResource("Gradient_k4gvh")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pe3k2"]
 lifetime_randomness = 1.0
@@ -1268,15 +1270,15 @@ particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 55.36
 direction = Vector3(0, 3, 0)
+spread = 27.296
 initial_velocity_min = 200.0
-initial_velocity_max = 400.0
+initial_velocity_max = 326.32
 gravity = Vector3(0, 50, 0)
 damping_min = 100.00001
 damping_max = 800.00006
-scale_min = 3.0
-scale_max = 6.0
-color_ramp = SubResource("GradientTexture1D_sb86v")
-color_initial_ramp = SubResource("GradientTexture1D_k4gvh")
+scale_min = 0.0
+scale_max = 0.5
+color_ramp = SubResource("GradientTexture1D_twn6s")
 
 [node name="Enemy" type="Area2D" unique_id=434305055 groups=["Enemies"]]
 z_index = 1
@@ -1291,6 +1293,31 @@ position = Vector2(-1, -29.88832)
 sprite_frames = SubResource("SpriteFrames_tihwb")
 animation = &"Right"
 autoplay = "Right"
+
+[node name="Lightning" type="Line2D" parent="Spam" unique_id=1242619236]
+material = SubResource("ShaderMaterial_e4ejd")
+position = Vector2(3.2891235, 29.88832)
+points = PackedVector2Array(9.202927, -17.782053, 15.29446, -11.385942, 9.609032, -4.4822063, 11.639542, 3.0306835)
+width = 18.28
+default_color = Color(0.94738966, 0.8004939, 0.31299722, 1)
+texture_mode = 2
+script = ExtResource("6_p7w77")
+
+[node name="Lightning3" type="Line2D" parent="Spam" unique_id=1629733621]
+material = SubResource("ShaderMaterial_8ma66")
+position = Vector2(-2, 18.5309)
+points = PackedVector2Array(4.816208, -38.86587, 9.9353485, -33.702045, 7.5188217, -25.082561)
+default_color = Color(0.79, 0.68598336, 0.16589999, 1)
+texture_mode = 2
+script = ExtResource("6_p7w77")
+
+[node name="Lightning2" type="Line2D" parent="Spam" unique_id=2025592734]
+material = SubResource("ShaderMaterial_7v5dn")
+position = Vector2(-2, 18.5309)
+points = PackedVector2Array(-15.263138, -22.9962, -33.169647, -21.152885, -38.962936, -8.512985, -26.58638, 8.34021)
+default_color = Color(1, 0.8040001, 0.01999998, 0.4627451)
+texture_mode = 2
+script = ExtResource("6_p7w77")
 
 [node name="Virus" type="AnimatedSprite2D" parent="." unique_id=1623913965]
 visible = false
@@ -1557,35 +1584,12 @@ scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_qch6t")
 color = Color(1, 0, 0, 1)
 
-[node name="Lightning" type="Line2D" parent="." unique_id=1242619236]
-material = SubResource("ShaderMaterial_e4ejd")
-position = Vector2(2.2891235, 0)
-points = PackedVector2Array(9.202927, -17.782053, 15.29446, -11.385942, 9.609032, -4.4822063, 11.639542, 3.0306835)
-width = 18.28
-default_color = Color(0.94738966, 0.8004939, 0.31299722, 1)
-texture_mode = 2
-script = ExtResource("6_p7w77")
-
-[node name="Lightning3" type="Line2D" parent="." unique_id=1629733621]
-material = SubResource("ShaderMaterial_8ma66")
-position = Vector2(-3, -11.357422)
-points = PackedVector2Array(4.816208, -38.86587, 9.9353485, -33.702045, 7.5188217, -25.082561)
-default_color = Color(0.79, 0.68598336, 0.16589999, 1)
-texture_mode = 2
-script = ExtResource("6_p7w77")
-
-[node name="Lightning2" type="Line2D" parent="." unique_id=2025592734]
-material = SubResource("ShaderMaterial_7v5dn")
-position = Vector2(-3, -11.357422)
-points = PackedVector2Array(-15.263138, -22.9962, -33.169647, -21.152885, -38.962936, -8.512985, -26.58638, 8.34021)
-default_color = Color(1, 0.8040001, 0.01999998, 0.4627451)
-texture_mode = 2
-script = ExtResource("6_p7w77")
-
 [node name="HitParticles" type="GPUParticles2D" parent="." unique_id=1568487352]
+material = SubResource("CanvasItemMaterial_twn6s")
 position = Vector2(-1, -11.357422)
 emitting = false
-amount = 20
+amount = 25
+texture = ExtResource("13_k4gvh")
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_pe3k2")

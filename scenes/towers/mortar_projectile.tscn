@@ -2,9 +2,16 @@
 
 [ext_resource type="Script" uid="uid://v068hjdgc7g6" path="res://scenes/towers/mortar_projectile.gd" id="1_tbhlj"]
 [ext_resource type="Texture2D" uid="uid://74lqmmwep6dm" path="res://graphics/bullets/quarantine_cannon_bullet.png" id="2_bbrwc"]
+[ext_resource type="Material" uid="uid://immkg7wkeqte" path="res://texture/shaders/smoke_particles.tres" id="3_bbrwc"]
 
 [node name="Mortar_Projectile" type="Area2D" unique_id=459724044]
 script = ExtResource("1_tbhlj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1510609040]
+position = Vector2(0.76277924, 0)
 texture = ExtResource("2_bbrwc")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D" unique_id=739526045]
+position = Vector2(-0.76277924, -19.52106)
+amount = 500
+process_material = ExtResource("3_bbrwc")

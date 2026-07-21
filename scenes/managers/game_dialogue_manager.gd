@@ -48,6 +48,10 @@ func show_script(index: int):
 	ui.trigger_shake()
 	animation.play_animation(index)
 
+func camera_tremor(intensity: float):
+	var ui = get_tree().get_first_node_in_group("UI")
+	ui.trigger_shell_tremor(intensity)
+
 func camera_shake():
 	var ui = get_tree().get_first_node_in_group("UI")
 	ui.trigger_shake()
@@ -505,11 +509,6 @@ func show_dialogue_level6_boss6_defeated(): # used in enemy
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "Boss6_defeated")
 	is_level6_boss6_defeated_shown = true
 
-var is_level6_boss6_defeated_shown2: bool = false
-func show_dialogue_level6_boss6_defeated2(): # used in enemy
-	_disable_auto()
-	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "Boss6_defeated2")
-	is_level6_boss6_defeated_shown2 = true
 
 var is_story_ends: bool = false
 func show_dialogue_story_ends(): # used in scripture
