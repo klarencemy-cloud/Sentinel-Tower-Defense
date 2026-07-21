@@ -5,6 +5,7 @@ var tower_scenes = {
 	Data.Tower.BLAST: "res://scenes/towers/tower_blaster.tscn",
 	Data.Tower.MORTAR: "res://scenes/towers/tower_mortar.tscn",
 	Data.Tower.SPAM_FILTER: "res://scenes/towers/tower_spamfilter.tscn",
+	Data.Tower.ANTIVIRUS: "res://scenes/towers/tower_antivirus.tscn",
 	Data.Tower.QUARANTINE_CANNON: "res://scenes/towers/tower_quarantinecannon.tscn",
 	Data.Tower.IDPS: "res://scenes/towers/tower_idps.tscn",
 	Data.Tower.BACKUP_SERVER: "res://scenes/towers/tower_backup_server.tscn",
