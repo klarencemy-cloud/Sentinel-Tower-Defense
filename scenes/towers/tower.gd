@@ -28,9 +28,9 @@ var stunned := false
 
 @warning_ignore("unused_signal")
 signal shoot(pos: Vector2, direction: float, bullet_enum: Data.Bullet, damage: int, tower_type: Data.Tower, tower_id: int)
-signal shoot_mortar(start_pos: Vector2, target_pos: Vector2, damage: int, tower_type: Data.Tower, tower_id: int)
-signal select(tower: Tower)
+signal shoot_mortar(start_pos, target_enemy, damage, tower_type, tower_id)
 signal removed(cell_pos: Vector2i)
+signal select(tower: Tower)
 
 var range_indicator: Line2D
 

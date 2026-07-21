@@ -208,7 +208,7 @@ func _get_tower_preview() -> Sprite2D:
 	return preview as Sprite2D
 
 
-func create_mortar_projectile(start_pos: Vector2, target_pos: Vector2, damage: int, tower_type, tower_id):
+func create_mortar_projectile(start_pos, target_enemy, damage, tower_type, tower_id):
 	var projectile = mortar_projectile_scene.instantiate()
-	projectile.setup(start_pos, target_pos, damage, tower_type, tower_id)
+	projectile.setup(start_pos, target_enemy, damage, tower_type, tower_id)
 	_get_bullet_parent().add_child(projectile)
