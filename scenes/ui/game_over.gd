@@ -37,7 +37,7 @@ func _on_btn_retry_pressed() -> void:
 	get_tree().paused = false
 	_reset_game_stats()
 	Offense._reset_multipliers() # reset multipliers
-	Offense._reset_levels()		 # reset levels tiers yung images
+	Offense._reset_levels() # reset levels tiers yung images
 	Defense._reset_multipliers()
 	Defense._reset_levels()
 	Economy._reset_multipliers()
@@ -50,7 +50,7 @@ func _reset_game_stats() -> void:
 	Data.checkpoint_wave = 0
 	Data.health = 100
 	Data.money = 200
-	Data.currentserverload= 0
+	Data.currentserverload = 0
 	Data.player_level = 1
 	Data.server_points = 0
 	Data.experience = 0

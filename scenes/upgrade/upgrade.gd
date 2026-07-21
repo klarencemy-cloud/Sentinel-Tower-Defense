@@ -173,7 +173,7 @@ func _format_upgrade_amount(upgrade_name: String, amount: Variant) -> String:
 
 
 func _set_upgrade_amount_label(slot_index: int, upgrade_name: String, amount: Variant, current_level: int) -> void:
-	var label = get_node_or_null("UpgradePanel/Upgrade%d/Upgrade%dAmount" % [slot_index, slot_index])
+	var label = get_node_or_null("TextureRect/UpgradePanel/Upgrade%d/Upgrade%dAmount" % [slot_index, slot_index])
 	if label:
 		var display_amount = _get_upgrade_amount_for_level(amount, current_level)
 		label.text = _format_upgrade_amount(upgrade_name, display_amount)
@@ -214,8 +214,9 @@ func _try_purchase_upgrade(slot_index: int) -> void:
 		6:
 			upgrade6_level = current_level
 
-	apply_upgrade(tower_data[upgrade_key])
-	_set_upgrade_visual(get_node("UpgradePanel/Upgrade%d" % slot_index), current_level)
+	# apply_upgrade(tower_data[upgrade_key])
+	apply_upgrade(slot_index)
+	_set_upgrade_visual(get_node("TextureRect/UpgradePanel/Upgrade%d" % slot_index), current_level)
 	update_tier_buttons()
 	update_ability_panel()
 	update_money_display()

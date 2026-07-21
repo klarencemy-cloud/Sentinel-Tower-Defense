@@ -15,27 +15,23 @@ script = ExtResource("1_go7qu")
 show_behind_parent = true
 z_index = -3
 layout_mode = 3
-anchor_left = 0.80300003
-anchor_top = 0.080000006
+anchor_left = 0.7640625
+anchor_top = 0.041666668
 anchor_right = 1.0
-anchor_bottom = 0.78900003
-offset_left = -74.76001
-offset_top = -41.40001
-offset_bottom = -14.120056
+anchor_bottom = 0.77592593
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Content" type="Control" parent="Container" unique_id=261222032]
 layout_mode = 1
-anchor_left = 0.192
+anchor_left = 0.19205311
 anchor_top = 0.14600001
-anchor_right = 0.91800004
-anchor_bottom = 1.0
-offset_left = 0.02406311
-offset_right = 37.146027
-offset_bottom = 2.000061
+anchor_right = 1.0000001
+anchor_bottom = 1.0025221
 grow_horizontal = 2
 mouse_force_pass_scroll_events = false
+metadata/_edit_use_anchors_ = true
 
 [node name="DmgCounterTop" type="TextureRect" parent="Container/Content" unique_id=1965771647]
 light_mask = 8
@@ -221,14 +217,17 @@ tint_progress = Color(0.17923622, 0.39151636, 0.51584375, 1)
 [node name="KillButton" type="TextureButton" parent="Container/Content" unique_id=1967456331]
 light_mask = 8
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 1.0
-offset_top = 97.222
-offset_right = -200.99994
-offset_bottom = 147.222
+anchors_preset = -1
+anchor_left = 0.0027322404
+anchor_top = 0.14313729
+anchor_right = 0.45081985
+anchor_bottom = 0.21675092
+offset_right = -6.1035156e-05
+offset_bottom = 1.6699982
 grow_horizontal = 2
 texture_normal = ExtResource("6_go7qu")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="EnemiesStatsLabel" type="Label" parent="Container/Content/KillButton" unique_id=610115021]
 texture_filter = 2
@@ -259,6 +258,7 @@ offset_top = 1.4516678
 offset_right = -0.008056641
 offset_bottom = 2.8588867
 texture_normal = ExtResource("6_go7qu")
+stretch_mode = 0
 flip_h = true
 
 [node name="TowersStatsLabel" type="Label" parent="Container/Content/TowerButton" unique_id=440602623]
