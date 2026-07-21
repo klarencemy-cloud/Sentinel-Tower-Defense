@@ -12,6 +12,9 @@ var bullet_enum: Data.Bullet
 var ricochet_range: int = 0
 var hit_enemies: Array = [] # Track which enemies have been hit by this ricochet chain
 var already_hit: bool = false
+var target: Area2D = null
+var homingspeed = 6
+
 
 func _ready():
 	$Sprite2D.material = $Sprite2D.material.duplicate()
@@ -22,8 +25,7 @@ func _ready():
 
 	area_entered.connect(_on_area_entered)
 
-
-func setup(pos, angle, _bullet_enum, _damage, _tower_type, _tower_id):
+func setup(pos, angle, _bullet_enum, _damage, _tower_type, _tower_id, _target = null):
 	position = pos
 	direction = Vector2.DOWN.rotated(angle)
 	rotation = angle
@@ -32,6 +34,7 @@ func setup(pos, angle, _bullet_enum, _damage, _tower_type, _tower_id):
 	bullet_enum = _bullet_enum
 	owner_tower_type = _tower_type
 	tower_id = _tower_id
+	target = _target
 
 	var tower_data = Data.TOWER_DATA.get(owner_tower_type, {})
 	if tower_data.has("range"):
@@ -42,6 +45,12 @@ func setup(pos, angle, _bullet_enum, _damage, _tower_type, _tower_id):
 
 
 func _process(delta: float) -> void:
+	if is_instance_valid(target):
+		var desired = (target.global_position - global_position).normalized()
+		direction = direction.lerp(desired, homingspeed * delta).normalized() 
+		rotation = direction.angle()
+		rotation = direction.angle() - PI / 2
+
 	position += direction * speed * delta
 
 	lifetime -= delta

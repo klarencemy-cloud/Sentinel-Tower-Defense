@@ -45,7 +45,8 @@ enum Scriptures {SCRIPTUREI, SCRIPTUREII, SCRIPTUREIII, SCRIPTUREIV, SCRIPTUREV}
 var SCRIPTURE = {
 	Scriptures.SCRIPTUREI: {
 		'Title': "LOST FRAGMENT I",
-		'Brief_Desc': "Where all things transpired.",
+		'Brief_Desc': "The earliest record of humanity's pursuit of technology. Hidden beneath these words is the origin of the hero and a sign of a future no one expected.
+.",
 		'Date': "Date: 09/20/2050",
 		'Desc': "Humanity sought to create intelligence.
 						Not merely to obey, but to understand.
@@ -60,7 +61,7 @@ var SCRIPTURE = {
 	},
 	Scriptures.SCRIPTUREII: {
 		'Title': "LOST FRAGMENT II",
-		'Brief_Desc': "Where all things transpired.",
+		'Brief_Desc': "At the start of the beginning after the end, built the final sanctuary beneath a  global network. These archives reveals why the SERVER became the greatest defense and why another safeguard was secretly in development.",
 		'Date': "Date: 02/05/2051",
 		'Desc': "When Earth's heart could no longer sustain life, ten facilities were constructed across the globe.
 
@@ -72,7 +73,7 @@ var SCRIPTURE = {
 	},
 	Scriptures.SCRIPTUREIII: {
 		'Title': "LOST FRAGMENT III",
-		'Brief_Desc': "Where all things transpired.",
+		'Brief_Desc': "The Project Sentinel was intended to preserve and protect humanity when everything else had fallen. This scripture reveals the purpose of the last line of defense.",
 		'Date': "Date: 03/11/2051",
 		'Desc': "If Project Sentinel awakens, the final safeguard remains active.
 
@@ -81,7 +82,7 @@ var SCRIPTURE = {
 	},
 	Scriptures.SCRIPTUREIV: {
 		'Title': "LOST FRAGMENT IV",
-		'Brief_Desc': "Where all things transpired.",
+		'Brief_Desc': "The catastrophe was never born from the machines. This sacred text uncovers the ambition of a brialliant individual whose visions would become the greatest betrayal.",
 		'Date': "Date: 01/16/2050",
 		'Desc': "The greatest threat did not emerge from the machines. 
 						It emerged from one of our own.
@@ -96,7 +97,7 @@ var SCRIPTURE = {
 	},
 		Scriptures.SCRIPTUREV: {
 		'Title': "LOST FRAGMENT V",
-		'Brief_Desc': "Where all things transpired.",
+		'Brief_Desc': "A message for the future speaks of a hero fated to awaken on the darkest time. If these words are uncovered, then the humanity's last guadian answered its call. ",
 		'Date': "Date: 06/07/2051",
 		'Desc': "If these words are heard,then humanity endured.
 

@@ -75,10 +75,10 @@ func cancel_selection() -> void:
 		tower.hide_ui()
 
 
-func create_bullet(pos: Vector2, angle: float, bullet_enum: Data.Bullet, damage: int, tower_type, tower_id: int = -1) -> void:
+func create_bullet(pos, angle, bullet_enum, damage, tower_type, tower_id := -1, target = null):
 	if bullet_enum == Data.Bullet.SINGLE:
 		var bullet = bullet_scene.instantiate()
-		bullet.setup(pos, angle, bullet_enum, damage, tower_type, tower_id)
+		bullet.setup(pos, angle, bullet_enum, damage, tower_type, tower_id, target)
 		_get_bullet_parent().add_child(bullet)
 		
 	if bullet_enum == Data.Bullet.FIRE:

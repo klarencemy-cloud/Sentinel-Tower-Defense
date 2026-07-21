@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bqpti3tgq4fh2" path="res://scenes/dialogue/cutscene.tscn" id="2_khplb"]
 [ext_resource type="PackedScene" uid="uid://23krmoa5rhnu" path="res://scenes/upgrade/upgrade.tscn" id="2_mgwkc"]
 [ext_resource type="PackedScene" uid="uid://dbh1b6sq05wrw" path="res://scenes/ui/enemy_tower_stats_counter.tscn" id="2_qmss2"]
-[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="4_pfayw"]
 [ext_resource type="Texture2D" uid="uid://c06sbymdntwef" path="res://graphics/ui/StartWaveButton.png" id="4_y220t"]
 [ext_resource type="Texture2D" uid="uid://bb6cvffm5145y" path="res://graphics/ui/sandbox_setting_button.png" id="5_0i47d"]
 [ext_resource type="PackedScene" uid="uid://b4xw080momfhv" path="res://scenes/ui/victory_overlay.tscn" id="5_4w2x3"]
@@ -29,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://b2ivf813gi1aa" path="res://graphics/ui/progress-circle.png" id="19_svq4k"]
 [ext_resource type="Texture2D" uid="uid://bubyrkehmuahc" path="res://graphics/ui/progress-bg.png" id="19_ygedu"]
 [ext_resource type="FontFile" uid="uid://cqus3kybakmf8" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraBold.ttf" id="21_oopc8"]
+[ext_resource type="Texture2D" uid="uid://csv6mnj4uo2vr" path="res://graphics/currency/small_gold.png" id="22_272wc"]
 [ext_resource type="Texture2D" uid="uid://1qgvsuhf841g" path="res://graphics/ui/enemyhpbar1.png" id="27_vnqvi"]
 [ext_resource type="Texture2D" uid="uid://ba1dyadxb3f65" path="res://graphics/ui/enemyhpbar2.png" id="28_7ygsn"]
 [ext_resource type="PackedScene" uid="uid://qimt0w5cnppk" path="res://scenes/dialogue/scripture.tscn" id="31_272wc"]
@@ -413,12 +413,13 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_7vp6q")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/StatsContainer/PanelContainer2" unique_id=507404986]
 layout_mode = 2
+theme_override_constants/separation = 15
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/StatsContainer/PanelContainer2/HBoxContainer" unique_id=1191801401]
 modulate = Color(1, 0.9411765, 0.09019608, 1)
 layout_mode = 2
-texture = ExtResource("4_pfayw")
+texture = ExtResource("22_272wc")
 
 [node name="Label" type="Label" parent="Control/StatsContainer/PanelContainer2/HBoxContainer" unique_id=723430324]
 layout_mode = 2
@@ -547,6 +548,7 @@ texture_under = ExtResource("27_vnqvi")
 texture_progress = ExtResource("28_7ygsn")
 
 [node name="hpamount" type="Label" parent="Control/bosshpbar" unique_id=890304568]
+texture_filter = 2
 layout_mode = 0
 offset_left = 4.0
 offset_top = 50.0
@@ -555,6 +557,7 @@ offset_bottom = 69.0
 text = "100/100"
 
 [node name="bossname" type="Label" parent="Control/bosshpbar" unique_id=1939673303]
+texture_filter = 2
 layout_mode = 0
 offset_left = 190.0
 offset_top = 1.0
