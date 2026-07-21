@@ -7,7 +7,7 @@ func _process(_delta):
 
 
 func _on_reload_timer_timeout() -> void:
-	if stunned: 
+	if stunned:
 		return
 	if disabled_by_ad or disabled_by_ransomware:
 		return
@@ -15,11 +15,13 @@ func _on_reload_timer_timeout() -> void:
 	if enemies.is_empty():
 		return
 
-	$ShootAnimation.show()
-	$ShootAnimation.play()
+	$Turret/ShootAnimation.show()
+	$Turret/ShootAnimation2.show()
+	$Turret/ShootAnimation.play()
+	$Turret/ShootAnimation2.play()
 	$ShootSound.play()
 
-	await $ShootAnimation.animation_finished
+	# await $Turret/ShootAnimation.animation_finished
 
 	# Enemy may have died during the animation
 	if enemies.is_empty():

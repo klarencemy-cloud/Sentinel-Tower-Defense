@@ -9,12 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="6_hfdvg"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_wqcay"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0hga0"]
-radius = 92.26592
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0c3ac"]
-size = Vector2(94, 138)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_872qs"]
 atlas = ExtResource("5_qhywc")
 region = Rect2(0, 0, 24, 24)
@@ -54,8 +48,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0hga0"]
+radius = 92.26592
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0c3ac"]
+size = Vector2(94, 138)
 
 [node name="TowerQuarantineCannon" unique_id=525808216 instance=ExtResource("1_7a66m")]
 script = ExtResource("2_7a66m")
@@ -71,6 +71,22 @@ rotation = 3.1415927
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_0hga0")
 flip_v = true
+
+[node name="ShootAnimation" type="AnimatedSprite2D" parent="Turret" index="0" unique_id=1583112646]
+position = Vector2(-15.714276, 110.00001)
+rotation = 3.1415925
+scale = Vector2(1.4285713, 1.4285713)
+sprite_frames = SubResource("SpriteFrames_61v7j")
+frame = 5
+frame_progress = 1.0
+
+[node name="ShootAnimation2" type="AnimatedSprite2D" parent="Turret" index="1" unique_id=384980068]
+position = Vector2(15.714296, 110)
+rotation = 3.1415925
+scale = Vector2(1.4285713, 1.4285713)
+sprite_frames = SubResource("SpriteFrames_61v7j")
+frame = 5
+frame_progress = 1.0
 
 [node name="EnemyDetectionArea" parent="." index="2" unique_id=854437296]
 visible = false
@@ -91,17 +107,10 @@ visible = false
 position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_0c3ac")
 
-[node name="ShootAnimation" type="AnimatedSprite2D" parent="." index="8" unique_id=1583112646]
-visible = false
-position = Vector2(0, 6)
-sprite_frames = SubResource("SpriteFrames_61v7j")
-frame = 1
-frame_progress = 0.60802555
-
-[node name="ShootSound" parent="." index="9" unique_id=1474961134]
+[node name="ShootSound" parent="." index="8" unique_id=1474961134]
 stream = ExtResource("6_hfdvg")
 
-[node name="AdButton" type="TextureButton" parent="." index="10" unique_id=393847519]
+[node name="AdButton" type="TextureButton" parent="." index="9" unique_id=393847519]
 offset_left = -19.0
 offset_top = -20.0
 offset_right = 21.0
@@ -109,7 +118,7 @@ offset_bottom = 20.0
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="PayButton" type="TextureButton" parent="." index="11" unique_id=666665922]
+[node name="PayButton" type="TextureButton" parent="." index="10" unique_id=666665922]
 visible = false
 offset_left = -31.0
 offset_top = -32.0

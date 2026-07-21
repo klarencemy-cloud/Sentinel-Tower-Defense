@@ -59,7 +59,7 @@ func _on_ad_purge_timer_timeout() -> void:
 				tower.remove_ad()
 
 func _on_reload_timer_timeout() -> void:
-	if stunned: 
+	if stunned:
 		return
 	if disabled_by_ad or disabled_by_ransomware:
 		return
@@ -68,14 +68,15 @@ func _on_reload_timer_timeout() -> void:
 	
 	
 	if valid_enemies > 0:
-		fire_animation()
 		var base_damage = Data.TOWER_DATA[type]["damage"]
 		var final_damage = Data.calculate_crit_damage(type, base_damage)
 		shoot.emit(position, 0, bullet_type, final_damage, type, tower_id)
 		$ShootSound.play()
+		fire_animation()
 
 func fire_animation():
 	for particles: GPUParticles2D in $Particles.get_children():
+		particles.restart()
 		particles.emitting = true
 
 

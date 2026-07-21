@@ -529,6 +529,8 @@ func show_damage(damage: int):
 	label.text = str(damage)
 	label.visible = true
 	label.modulate.a = 1.0
+	label.add_theme_color_override("font_color", Color(0.0, 0.898, 0.949))
+	label.add_theme_font_size_override("font_size", 20)
 	label.position = Vector2(
 		randi_range(-10, 10),
 		-60 + randi_range(-5, 5)

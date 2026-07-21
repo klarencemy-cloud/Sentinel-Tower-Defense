@@ -4,53 +4,80 @@
 [ext_resource type="Script" uid="uid://chxky6r530yxp" path="res://scenes/towers/tower_ad_blocker.gd" id="2_ahwdj"]
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="3_ohmc7"]
 [ext_resource type="Texture2D" uid="uid://d4b7u07wg4e3d" path="res://graphics/towers/ad blocker/ad_blocker_turret.png" id="4_ahwdj"]
-[ext_resource type="Texture2D" uid="uid://hqsncaw7fucr" path="res://graphics/explosion animations/fire explosion.png" id="5_8d7iw"]
+[ext_resource type="Texture2D" uid="uid://w5j0qyrwut4t" path="res://texture/Ellipse 35.png" id="4_p6w5a"]
+[ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="5_8d7iw"]
+[ext_resource type="Shader" uid="uid://tsbpejfyq5fc" path="res://texture/shaders/glow_shader.gdshader" id="5_p6w5a"]
+[ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_l7jje"]
 [ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="6_su0h8"]
+[ext_resource type="Script" uid="uid://cu22lxqgx5hh0" path="res://scenes/enemies/lightning_1.gd" id="7_8d7iw"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_l7jje"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjk60"]
+shader = ExtResource("5_8d7iw")
+shader_parameter/Vanishing_Value = 0.0
+shader_parameter/Speed = Vector2(0, 0)
+shader_parameter/Basic_Texture = ExtResource("6_l7jje")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8d7iw"]
+shader = ExtResource("5_8d7iw")
+shader_parameter/Vanishing_Value = 0.0
+shader_parameter/Speed = Vector2(0, 0)
+shader_parameter/Basic_Texture = ExtResource("6_l7jje")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_su0h8"]
+shader = ExtResource("5_8d7iw")
+shader_parameter/Vanishing_Value = 0.0
+shader_parameter/Speed = Vector2(0.22, 0)
+shader_parameter/Basic_Texture = ExtResource("6_l7jje")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l7jje"]
+shader = ExtResource("5_8d7iw")
+shader_parameter/Vanishing_Value = 0.0
+shader_parameter/Speed = Vector2(-0.44, 0)
+shader_parameter/Basic_Texture = ExtResource("6_l7jje")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56y0f"]
 radius = 64.50775
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_itnc1"]
-particles_animation = true
-particles_anim_h_frames = 5
-particles_anim_v_frames = 1
-particles_anim_loop = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ohmc7"]
+shader = ExtResource("5_p6w5a")
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0, 0, 0, 1)
+shader_parameter/threshold = 3.815
+shader_parameter/intensity = 3.22
+shader_parameter/opacity = 0.11
+shader_parameter/glow_color = Color(0, 0.76984626, 0.6135378, 1)
+
+[sub_resource type="Gradient" id="Gradient_p6w5a"]
+offsets = PackedFloat32Array(0.0069204154, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.3019608)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ohmc7"]
+gradient = SubResource("Gradient_p6w5a")
+
+[sub_resource type="Gradient" id="Gradient_ahwdj"]
+offsets = PackedFloat32Array(0.30795848, 0.48096886, 0.6401384)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.25882354)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p6w5a"]
+gradient = SubResource("Gradient_ahwdj")
+
+[sub_resource type="Curve" id="Curve_ahwdj"]
+_data = [Vector2(0.006349206, 0), 0.0, 0.0, 0, 0, Vector2(0.23492062, 0.4098063), -0.079139695, -0.079139695, 0, 0, Vector2(0.71746033, 0.41135204), 0.0, 0.0, 0, 0, Vector2(1, 0.41135204), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_p6w5a"]
+curve = SubResource("Curve_ahwdj")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c5o44"]
 particle_flag_disable_z = true
-initial_velocity_min = 40.0
-initial_velocity_max = 60.0
 gravity = Vector3(0, 0, 0)
-anim_speed_min = 0.5
-anim_speed_max = 1.0
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6lo63"]
-particle_flag_disable_z = true
-direction = Vector3(-1, 0, 0)
-initial_velocity_min = 40.0
-initial_velocity_max = 60.0
-gravity = Vector3(0, 0, 0)
-anim_speed_min = 0.5
-anim_speed_max = 1.0
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_itnc1"]
-particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
-initial_velocity_min = 40.0
-initial_velocity_max = 60.0
-gravity = Vector3(0, 0, 0)
-anim_speed_min = 0.5
-anim_speed_max = 1.0
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t8p0d"]
-particle_flag_disable_z = true
-direction = Vector3(0, 1, 0)
-initial_velocity_min = 40.0
-initial_velocity_max = 60.0
-gravity = Vector3(0, 0, 0)
-anim_speed_min = 0.5
-anim_speed_max = 1.0
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_p6w5a")
+color_ramp = SubResource("GradientTexture1D_p6w5a")
+color_initial_ramp = SubResource("GradientTexture1D_ohmc7")
+turbulence_noise_speed_random = 0.0
 
 [node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_ahwdj")]
 script = ExtResource("2_ahwdj")
@@ -61,9 +88,35 @@ texture = ExtResource("3_ohmc7")
 offset = Vector2(0, -17.142868)
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
-position = Vector2(0, -74.99999)
+position = Vector2(0, -63.999992)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_ahwdj")
+
+[node name="Line2D" type="Line2D" parent="Turret" index="0" unique_id=1394749344]
+material = SubResource("ShaderMaterial_xjk60")
+points = PackedVector2Array(8.571428, -54.28572, 14.285713, -48.571426, 9.999999, -44.28572, 18.571428, -35.714294)
+default_color = Color(0, 1, 0.73333335, 1)
+texture_mode = 2
+script = ExtResource("7_8d7iw")
+
+[node name="Line2D2" type="Line2D" parent="Turret" index="1" unique_id=637802299]
+material = SubResource("ShaderMaterial_8d7iw")
+points = PackedVector2Array(-31.42857, -54.28572, -44.285713, -50, -41.42857, -44.28572, -28.571426, -30.000008, -19.999998, -34.28572)
+default_color = Color(0, 1, 0.76666665, 1)
+texture_mode = 2
+script = ExtResource("7_8d7iw")
+
+[node name="Line2D3" type="Line2D" parent="Turret" index="2" unique_id=959438407]
+material = SubResource("ShaderMaterial_su0h8")
+points = PackedVector2Array(-11.428571, -54.28572, -17.142857, -51.428574, -17.142857, -47.142868, -5.7142854, -42.857147, 5.7142854, -42.857147, 15.714285, -47.142868, 17.142857, -51.428574, 11.428571, -54.28572)
+default_color = Color(0, 0.94666725, 0.8273864, 1)
+texture_mode = 2
+
+[node name="Line2D4" type="Line2D" parent="Turret" index="3" unique_id=1442266159]
+material = SubResource("ShaderMaterial_l7jje")
+points = PackedVector2Array(-17.142857, -47.142868, -25.714285, -45.714294, -25.714285, -40, -8.571428, -35.714294, 9.999999, -35.714294, 25.714285, -40, 24.285713, -45.714294, 15.714285, -48.571426)
+default_color = Color(1.0203719e-05, 0.9301326, 0.87296414, 1)
+texture_mode = 2
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
 position = Vector2(-0.5, 0)
@@ -72,40 +125,14 @@ shape = SubResource("CircleShape2D_56y0f")
 [node name="Particles" type="Node2D" parent="." index="4" unique_id=1139715742]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Particles" index="0" unique_id=740687947]
-material = SubResource("CanvasItemMaterial_itnc1")
-position = Vector2(10, 0)
+z_index = -1
+texture_filter = 2
+material = SubResource("ShaderMaterial_ohmc7")
 emitting = false
-texture = ExtResource("5_8d7iw")
-lifetime = 0.3
+amount = 1
+texture = ExtResource("4_p6w5a")
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_c5o44")
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="Particles" index="1" unique_id=1055276676]
-material = SubResource("CanvasItemMaterial_itnc1")
-position = Vector2(-10, 0)
-emitting = false
-texture = ExtResource("5_8d7iw")
-lifetime = 0.3
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_6lo63")
-
-[node name="GPUParticles2D3" type="GPUParticles2D" parent="Particles" index="2" unique_id=1172452887]
-material = SubResource("CanvasItemMaterial_itnc1")
-position = Vector2(0, -10)
-emitting = false
-texture = ExtResource("5_8d7iw")
-lifetime = 0.3
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_itnc1")
-
-[node name="GPUParticles2D4" type="GPUParticles2D" parent="Particles" index="3" unique_id=560501590]
-material = SubResource("CanvasItemMaterial_itnc1")
-position = Vector2(0, 10)
-emitting = false
-texture = ExtResource("5_8d7iw")
-lifetime = 0.3
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_t8p0d")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
 position = Vector2(0, -40.25)
