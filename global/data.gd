@@ -23,7 +23,7 @@ signal change_challenge() # for vm
 # "before" variables to store the original values before entering sandbox mode
 var before_total_money: int
 var before_total_health: float
-var before_max_server_load: int #
+var before_max_server_load: int
 var before_owned_towers: Dictionary
 var before_server_points: int
 var before_player_level: int
@@ -45,7 +45,7 @@ var backup_server_invincible := false
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
-enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, QUARANTINE_CANNON, IDPS, BACKUP_SERVER, AD_BLOCKER}
+enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, ANTIVIRUS, QUARANTINE_CANNON, IDPS, BACKUP_SERVER, AD_BLOCKER}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
 enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2, BOSS3, BOSS4, BOSS5}
 enum Ability {FIREWALL}
@@ -313,7 +313,7 @@ var TOWER_DATA = {
 		'crit rate': 0,
 		'crit damage': 50,
 		'bullet': Bullet.FIRE,
-		'thumbnail': "res://graphics/ui/tower thumbnails/ADBLOCKER.png",
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/ADBLOCKER.png",
 		'scene': "res://scenes/towers/tower_ad_blocker.tscn",
 		'passive': "Ad Purge",
 		'passive description': "Automatically disables ads on nearby affected towers every 3s.",
@@ -351,6 +351,54 @@ var TOWER_DATA = {
 		'tier3abilitydesc': "Passive ability reduced to 1s.",
 		'tier3abilityunlocked': false,
 		},
+	Tower.ANTIVIRUS: {
+		'name': 'Antivirus',
+		'cost': 50,
+		'server_load': 20,
+		'damage': 30,
+		'reload_time': 1,
+		'range': 400,
+		'crit rate': 0,
+		'crit damage': 50,
+		'bullet': Bullet.SINGLE,
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/ANTIVIRUS.png",
+		'scene': "res://scenes/towers/tower_antivirus.tscn",
+		'passive': "Increased Damage to Malwares by 20%",
+		'passive description': "Deals increased damage to malware enemies such as Viruses, Worms, and Trojan horses.",
+		'upgrade1': "Damage",
+		'upgrade1level': 0,
+		'upgrade1amount': 2,
+		'upgrade1cost': [10, 15, 20],
+		'upgrade2': "Attack Speed",
+		'upgrade2level': 0,
+		'upgrade2amount': 0.1,
+		'upgrade2cost': [10, 15, 20],
+		'tier1ability': "Increased Damage+",
+		'tier1abilitydesc': "Increase total increase damage to 30%.",
+		'tier1abilityunlocked': false,
+		'upgrade3': "Attack Speed",
+		'upgrade3level': 0,
+		'upgrade3amount': [0.25, 0.25, 0.2],
+		'upgrade3cost': [25, 35, 40],
+		'upgrade4': "Crit Rate",
+		'upgrade4level': 0,
+		'upgrade4amount': 15,
+		'upgrade4cost': [25, 35, 40],
+		'tier2ability': "Increased Damage++",
+		'tier2abilitydesc': "Increase total increase damage to 40%.",
+		'tier2abilityunlocked': false,
+		'upgrade5': "Damage",
+		'upgrade5level': 0,
+		'upgrade5amount': [4, 5, 5],
+		'upgrade5cost': [35, 45, 55],
+		'upgrade6': "Range",
+		'upgrade6level': 0,
+		'upgrade6amount': 25,
+		'upgrade6cost': [40, 50, 60],
+		'tier3ability': "Increased Damage+++",
+		'tier3abilitydesc': "Increase total increase damage to 50%.",
+		'tier3abilityunlocked': false,
+		}
 	}
 
 func calculate_crit_damage(tower_type: int, base_damage: int) -> int:

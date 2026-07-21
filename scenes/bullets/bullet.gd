@@ -11,7 +11,8 @@ var owner_tower_type
 var bullet_enum: Data.Bullet
 var ricochet_range: int = 0
 var hit_enemies: Array = [] # Track which enemies have been hit by this ricochet chain
-var already_hit := false
+var already_hit: bool = false
+
 func _ready():
 	$Sprite2D.material = $Sprite2D.material.duplicate()
 	mat = material as ShaderMaterial
