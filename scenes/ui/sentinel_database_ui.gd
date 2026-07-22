@@ -91,14 +91,15 @@ var SENTINEL_DATA = {
 @onready var desc_cd: Label = $Databasebg/Special/Cooldown
 @onready var desc_passive: Label = $Databasebg/Special/Cooldown/Passive
 @onready var desc_desc: Label = $Databasebg/Special/Cooldown/Passive/RealLifeDesc/Description
+@onready var animation: AnimatedSprite2D = $Databasebg/AnimatedSprite2D
 
 func _on_sentinel_6_pressed() -> void:
-	print("ye")
 	desc_name.text = sentinel_name[5]
 	desc_sp.text = "Ability: %s"%SENTINEL_DATA[5]["special_ability"]
 	desc_cd.text = "Cooldown: %s"%SENTINEL_DATA[5]["cooldown"]
 	desc_passive.text = "Passive: %s"%SENTINEL_DATA[5]["passive_ability"]
 	desc_desc.text = SENTINEL_DATA[5]["irl_desc"]
+	animation.play("DeceptionAnalyst")
 
 func _on_sentinel_5_pressed() -> void:
 	desc_name.text = sentinel_name[4]
@@ -106,6 +107,7 @@ func _on_sentinel_5_pressed() -> void:
 	desc_cd.text = "Cooldown: %s"%SENTINEL_DATA[4]["cooldown"]
 	desc_passive.text = "Passive: %s"%SENTINEL_DATA[4]["passive_ability"]
 	desc_desc.text = SENTINEL_DATA[4]["irl_desc"]
+	animation.play("MalwareAnalyst")
 
 func _on_sentinel_4_pressed() -> void:
 	desc_name.text = sentinel_name[3]
@@ -113,6 +115,7 @@ func _on_sentinel_4_pressed() -> void:
 	desc_cd.text = "Cooldown: %s"%SENTINEL_DATA[3]["cooldown"]
 	desc_passive.text = "Passive: %s"%SENTINEL_DATA[3]["passive_ability"]
 	desc_desc.text = SENTINEL_DATA[3]["irl_desc"]
+	animation.play("SecurityArchitect")
 
 
 func _on_sentinel_3_pressed() -> void:
@@ -121,6 +124,7 @@ func _on_sentinel_3_pressed() -> void:
 	desc_cd.text = "Cooldown: %s"%SENTINEL_DATA[2]["cooldown"]
 	desc_passive.text = "Passive: %s"%SENTINEL_DATA[2]["passive_ability"]
 	desc_desc.text = SENTINEL_DATA[2]["irl_desc"]
+	animation.play("IntrusionAnalyst")
 
 
 func _on_sentinel_2_pressed() -> void:
@@ -129,6 +133,7 @@ func _on_sentinel_2_pressed() -> void:
 	desc_cd.text = "Cooldown: %s"%SENTINEL_DATA[1]["cooldown"]
 	desc_passive.text = "Passive: %s"%SENTINEL_DATA[1]["passive_ability"]
 	desc_desc.text = SENTINEL_DATA[1]["irl_desc"]
+	animation.play("SystemAdmin")
 
 func _on_sentinel_1_pressed() -> void:
 	desc_name.text = sentinel_name[0]
@@ -136,3 +141,4 @@ func _on_sentinel_1_pressed() -> void:
 	desc_cd.text = "Cooldown: %s"%SENTINEL_DATA[0]["cooldown"]
 	desc_passive.text = "Passive: %s"%SENTINEL_DATA[0]["passive_ability"]
 	desc_desc.text = SENTINEL_DATA[0]["irl_desc"]
+	animation.play("EthicalHacker")

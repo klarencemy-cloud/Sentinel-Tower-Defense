@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dntcfnl7af217"
-path="res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"
+uid="uid://dxpj7ubvxif7n"
+path="res://.godot/imported/sentinel2.png-777e8971037318fcffb353e7252817d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/dlp.png"
-dest_files=["res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"]
+source_file="res://graphics/sentinels/sentinel2.png"
+dest_files=["res://.godot/imported/sentinel2.png-777e8971037318fcffb353e7252817d3.ctex"]
 
 [params]
 

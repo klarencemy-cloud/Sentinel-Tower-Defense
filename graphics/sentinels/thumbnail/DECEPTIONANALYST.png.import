@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dntcfnl7af217"
-path="res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"
+uid="uid://cwdjmra2f5hj2"
+path="res://.godot/imported/DECEPTIONANALYST.png-515a0ef5c672df5d81cb31978d8d7e86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/dlp.png"
-dest_files=["res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"]
+source_file="res://graphics/sentinels/thumbnail/DECEPTIONANALYST.png"
+dest_files=["res://.godot/imported/DECEPTIONANALYST.png-515a0ef5c672df5d81cb31978d8d7e86.ctex"]
 
 [params]
 

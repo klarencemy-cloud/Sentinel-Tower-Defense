@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dntcfnl7af217"
-path="res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"
+uid="uid://bhe1pw8va777g"
+path="res://.godot/imported/0001.png-52c54a056556927847e6fe2c373e995f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/dlp.png"
-dest_files=["res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"]
+source_file="res://texture/0001.png"
+dest_files=["res://.godot/imported/0001.png-52c54a056556927847e6fe2c373e995f.ctex"]
 
 [params]
 

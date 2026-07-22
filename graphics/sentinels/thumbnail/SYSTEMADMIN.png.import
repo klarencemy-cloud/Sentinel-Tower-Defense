@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dntcfnl7af217"
-path="res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"
+uid="uid://dvbqcqiy7pr8v"
+path="res://.godot/imported/SYSTEMADMIN.png-4ce065d31a1fb948977c5b45bf9b0a42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/dlp.png"
-dest_files=["res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"]
+source_file="res://graphics/sentinels/thumbnail/SYSTEMADMIN.png"
+dest_files=["res://.godot/imported/SYSTEMADMIN.png-4ce065d31a1fb948977c5b45bf9b0a42.ctex"]
 
 [params]
 
