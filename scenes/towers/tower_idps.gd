@@ -1,32 +1,35 @@
 extends Tower
 
 func _process(_delta: float) -> void:
-	# Apply passive auras to enemies in range
-	var tower_data = Data.TOWER_DATA.get(type, null)
-	if not tower_data:
-		return
-	
-	var tier2_unlocked = tower_data.get('tier2abilityunlocked', false)
-	var tier3_unlocked = tower_data.get('tier3abilityunlocked', false)
-	var detection_range = Data.TOWER_DATA[type]["range"]
-	
-	# Apply auras to all enemies
-	for enemy in get_tree().get_nodes_in_group("Enemies"):
-		var in_range = position.distance_to(enemy.global_position) < detection_range
-		
-		# Tier 2: Slow Pulse - 15% slower
-		if tier2_unlocked and in_range:
-			enemy.idps_slow_aura = true
-		else:
+	var idps_towers := []
+	for tower in get_tree().get_nodes_in_group("towers"):
+		if tower.type == Data.Tower.IDPS:
+			idps_towers.append(tower)
+
+	if idps_towers.is_empty():
+		for enemy in get_tree().get_nodes_in_group("Enemies"):
 			enemy.idps_slow_aura = false
-		
-		# Tier 3: Vulnerability Pulse - 15% more damage taken
-		if tier3_unlocked and in_range:
-			enemy.idps_vulnerability_aura = true
-			enemy.vulnerability_multiplier = 1.15
-		else:
 			enemy.idps_vulnerability_aura = false
 			enemy.vulnerability_multiplier = 1.0
+		return
+
+	if idps_towers[0] != self:
+		return
+
+	for enemy in get_tree().get_nodes_in_group("Enemies"):
+		var slow_active := false
+		var vulnerability_multiplier := 1.0
+		for tower in idps_towers:
+			var tower_data = Data.TOWER_DATA[tower.type]
+			if tower.position.distance_to(enemy.global_position) >= tower.range:
+				continue
+			slow_active = slow_active or tower_data.get("tier2abilityunlocked", false)
+			if tower_data.get("tier3abilityunlocked", false):
+				vulnerability_multiplier = max(vulnerability_multiplier, 1.15)
+
+		enemy.idps_slow_aura = slow_active
+		enemy.idps_vulnerability_aura = vulnerability_multiplier > 1.0
+		enemy.vulnerability_multiplier = vulnerability_multiplier
 
 
 func _on_reload_timer_timeout() -> void:

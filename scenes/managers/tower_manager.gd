@@ -9,7 +9,8 @@ var tower_scenes = {
 	Data.Tower.QUARANTINE_CANNON: "res://scenes/towers/tower_quarantinecannon.tscn",
 	Data.Tower.IDPS: "res://scenes/towers/tower_idps.tscn",
 	Data.Tower.BACKUP_SERVER: "res://scenes/towers/tower_backup_server.tscn",
-	Data.Tower.AD_BLOCKER: "res://scenes/towers/tower_ad_blocker.tscn"
+	Data.Tower.AD_BLOCKER: "res://scenes/towers/tower_ad_blocker.tscn",
+	Data.Tower.ACCESS_CONTROL_SYSTEM: "res://scenes/towers/tower_acs.tscn",
 }
 
 var bullet_scene = preload("res://scenes/bullets/bullet.tscn")
@@ -94,7 +95,13 @@ func create_bullet(pos, angle, bullet_enum, damage, tower_type, tower_id := -1, 
 				# IDPS can hit invisible enemies and disables their invisibility
 				if tower_type == Data.Tower.IDPS and enemy.invisible:
 					enemy.set_invisible(false)
-				enemy.hit(damage, tower_id)
+
+				var enemy_damage = damage
+				if tower_type == Data.Tower.ACCESS_CONTROL_SYSTEM and enemy.enemy_type_stats == Data.Enemy.INSIDERTHREAT:
+					var acs_data = Data.TOWER_DATA[Data.Tower.ACCESS_CONTROL_SYSTEM]
+					var damage_multiplier = 1.5 if acs_data.get("tier2abilityunlocked", false) else 1.25
+					enemy_damage = int(round(damage * damage_multiplier))
+				enemy.hit(enemy_damage, tower_id)
 	
 	var enemies = get_tree().get_first_node_in_group("Enemies")
 	enemies.emit_hit_particles(angle) # to set the angle of the hit particles

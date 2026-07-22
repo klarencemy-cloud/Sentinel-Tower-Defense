@@ -20,6 +20,9 @@ var is_slowed := false
 var original_speed: int
 var pending_slow_duration: float = 0.0
 var invisible: bool = false
+var acs_in_range := false
+var acs_slow_multiplier := 1.0
+var acs_lockdown_remaining := 0.0
 var idps_slow_aura := false # For IDPS tier2 passive
 var idps_vulnerability_aura := false # For IDPS tier3 passive
 var vulnerability_multiplier := 1.0 # Damage multiplier for vulnerabilities
@@ -257,9 +260,15 @@ func _process(delta: float):
 		return
 	
 	var current_speed = speed
+	if acs_lockdown_remaining > 0.0:
+		acs_lockdown_remaining = max(acs_lockdown_remaining - delta, 0.0)
 	
-	# Apply IDPS tier2 slow aura (15% slower = 85% speed)
-	if idps_slow_aura:
+	# Apply the strongest passive slow affecting this enemy.
+	if acs_lockdown_remaining > 0.0:
+		current_speed = int(speed * 0.4)
+	elif acs_slow_multiplier < 1.0:
+		current_speed = int(speed * acs_slow_multiplier)
+	elif idps_slow_aura:
 		current_speed = int(speed * 0.85)
 	# Apply regular slow effect
 	elif is_slowed:
