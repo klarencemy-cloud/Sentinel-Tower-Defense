@@ -8,6 +8,247 @@
 [ext_resource type="Texture2D" uid="uid://cdpfmjb5ui3he" path="res://graphics/backgrounds/databasebg.png" id="5_u5m5o"]
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="6_u5m5o"]
 [ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="7_0lc6t"]
+[ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="7_1rcdm"]
+[ext_resource type="Texture2D" uid="uid://dxpj7ubvxif7n" path="res://graphics/sentinels/sentinel2.png" id="8_wecnc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wecnc"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(768, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3ulv"]
+atlas = ExtResource("8_wecnc")
+region = Rect2(0, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rcdm"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(0, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcfot"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(0, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxva6"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(960, 448, 320, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lavis"]
+atlas = ExtResource("8_wecnc")
+region = Rect2(0, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fad81"]
+atlas = ExtResource("8_wecnc")
+region = Rect2(0, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehavp"]
+atlas = ExtResource("8_wecnc")
+region = Rect2(256, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgrqy"]
+atlas = ExtResource("8_wecnc")
+region = Rect2(512, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gabr"]
+atlas = ExtResource("8_wecnc")
+region = Rect2(768, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uau6v"]
+atlas = ExtResource("8_wecnc")
+region = Rect2(512, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb62y"]
+atlas = ExtResource("8_wecnc")
+region = Rect2(256, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28umu"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(768, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmupk"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(1024, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt08x"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(1280, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqaay"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(1024, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hpra"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(0, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbmms"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(256, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecg4n"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(512, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf6ih"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(256, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn3v6"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(1280, 448, 320, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kapyg"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(1600, 448, 320, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgeb6"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(960, 448, 320, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whjda"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(1600, 448, 320, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hdf1"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(512, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne5hk"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(256, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yqf2"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(0, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bodw"]
+atlas = ExtResource("7_1rcdm")
+region = Rect2(256, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drxg4"]
+atlas = ExtResource("8_wecnc")
+region = Rect2(0, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wju6l"]
+atlas = ExtResource("8_wecnc")
+region = Rect2(256, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88qim"]
+atlas = ExtResource("8_wecnc")
+region = Rect2(512, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12rfo"]
+atlas = ExtResource("8_wecnc")
+region = Rect2(256, 448, 256, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_drxg4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fad81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehavp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgrqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gabr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uau6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb62y")
+}],
+"loop": true,
+"name": &"DeceptionAnalyst",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28umu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmupk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt08x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqaay")
+}],
+"loop": true,
+"name": &"EthicalHacker",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hpra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbmms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecg4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rf6ih")
+}],
+"loop": true,
+"name": &"IntrusionAnalyst",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn3v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kapyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgeb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whjda")
+}],
+"loop": true,
+"name": &"MalwareAnalyst",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hdf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne5hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yqf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bodw")
+}],
+"loop": true,
+"name": &"SecurityArchitect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drxg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wju6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88qim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12rfo")
+}],
+"loop": true,
+"name": &"SystemAdmin",
+"speed": 5.0
+}]
 
 [node name="SentinelDatabaseUi" type="Control" unique_id=858543934]
 layout_mode = 3
@@ -104,6 +345,16 @@ autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="SentinelContainer/CardContainer/Sentinel1" unique_id=1560817480]
+layout_mode = 0
+anchor_left = 0.28985506
+anchor_top = 0.11983471
+anchor_right = 0.71497583
+anchor_bottom = 0.75619835
+texture = SubResource("AtlasTexture_wecnc")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="Sentinel2" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=568840570]
 layout_mode = 0
 anchor_left = 0.5534188
@@ -131,6 +382,17 @@ autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="SentinelContainer/CardContainer/Sentinel2" unique_id=606211219]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2753623
+anchor_top = 0.053719006
+anchor_right = 0.7294686
+anchor_bottom = 0.7334711
+texture = SubResource("AtlasTexture_i3ulv")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="Sentinel3" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=1419071215]
 layout_mode = 0
 anchor_top = 0.19814683
@@ -138,6 +400,16 @@ anchor_right = 0.44230768
 anchor_bottom = 0.37063435
 texture_normal = ExtResource("4_x7vdu")
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="SentinelContainer/CardContainer/Sentinel3" unique_id=419956317]
+layout_mode = 0
+anchor_left = 0.28985506
+anchor_top = 0.11570248
+anchor_right = 0.71497583
+anchor_bottom = 0.75206614
+texture = SubResource("AtlasTexture_1rcdm")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Sentinel_Name_3" type="Label" parent="SentinelContainer/CardContainer/Sentinel3" unique_id=1941520790]
@@ -159,7 +431,8 @@ justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="Sentinel4" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=1049039864]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.5534188
 anchor_top = 0.19814683
 anchor_right = 0.99572647
@@ -184,6 +457,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="SentinelContainer/CardContainer/Sentinel4" unique_id=1928725869]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26570046
+anchor_top = 0.19008271
+anchor_right = 0.7536232
+anchor_bottom = 0.7550493
+texture = SubResource("AtlasTexture_dcfot")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Sentinel5" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=1222275939]
@@ -214,6 +498,16 @@ autowrap_mode = 2
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="SentinelContainer/CardContainer/Sentinel5" unique_id=2138863729]
+layout_mode = 0
+anchor_left = 0.2415459
+anchor_top = 0.13223153
+anchor_right = 0.76328504
+anchor_bottom = 0.7570249
+texture = SubResource("AtlasTexture_sxva6")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="Sentinel6" type="TextureButton" parent="SentinelContainer/CardContainer" unique_id=1027380043]
 layout_mode = 0
 anchor_left = 0.5534188
@@ -241,6 +535,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="SentinelContainer/CardContainer/Sentinel6" unique_id=946229924]
+layout_mode = 0
+anchor_left = 0.23671497
+anchor_top = 0.07024793
+anchor_right = 0.77294683
+anchor_bottom = 0.7582645
+texture = SubResource("AtlasTexture_lavis")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Databasebg" type="TextureRect" parent="." unique_id=2078207965]
@@ -299,7 +603,7 @@ offset_right = 176.63998
 offset_bottom = 21.588982
 theme_override_colors/font_color = Color(0.13725491, 1, 1, 1)
 theme_override_fonts/font = ExtResource("7_0lc6t")
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 15
 text = "Cooldown: N/A"
 horizontal_alignment = 3
 autowrap_mode = 3
@@ -355,6 +659,14 @@ horizontal_alignment = 3
 autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Databasebg" unique_id=1774010106]
+position = Vector2(771, 237)
+scale = Vector2(0.6113281, 0.6113281)
+sprite_frames = SubResource("SpriteFrames_drxg4")
+animation = &"SecurityArchitect"
+autoplay = "EthicalHacker"
+frame_progress = 0.5456689
 
 [connection signal="gui_input" from="ScrollBarContainer/Bar/Scroll" to="." method="_on_scroll_gui_input"]
 [connection signal="gui_input" from="SentinelContainer/CardContainer/Sentinel1" to="." method="_on_sentinel_1_gui_input"]

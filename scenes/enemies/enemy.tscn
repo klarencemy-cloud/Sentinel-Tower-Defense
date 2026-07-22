@@ -293,7 +293,27 @@ region = Rect2(640, 384, 128, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kugq1"]
 atlas = ExtResource("3_fcftc")
-region = Rect2(768, 384, 128, 192)
+region = Rect2(896, 384, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8p28"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1024, 384, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djp0r"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1152, 384, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqngw"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1280, 384, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4e5ip"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1408, 384, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjlf7"]
+atlas = ExtResource("3_fcftc")
+region = Rect2(1536, 384, 128, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x3klb"]
 animations = [{
@@ -315,13 +335,33 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pe3k2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kugq1")
 }],
 "loop": true,
 "name": &"Right",
-"speed": 5.0
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kugq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8p28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djp0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqngw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e5ip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjlf7")
+}],
+"loop": true,
+"name": &"Right_Hostile",
+"speed": 6.0
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y5th1"]
@@ -375,6 +415,24 @@ animations = [{
 "name": &"Right",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_emj2s"]
+shader = ExtResource("10_tihwb")
+shader_parameter/Vanishing_Value = 0.454000021565
+shader_parameter/Speed = Vector2(0, 0)
+shader_parameter/Basic_Texture = ExtResource("11_tihwb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rhg24"]
+shader = ExtResource("10_tihwb")
+shader_parameter/Vanishing_Value = 0.362000017195
+shader_parameter/Speed = Vector2(0, 0)
+shader_parameter/Basic_Texture = ExtResource("11_tihwb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xteqa"]
+shader = ExtResource("10_tihwb")
+shader_parameter/Vanishing_Value = 0.2850000135375
+shader_parameter/Speed = Vector2(0, 0)
+shader_parameter/Basic_Texture = ExtResource("11_tihwb")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nb6gf"]
 shader = ExtResource("2_38ino")
@@ -1309,6 +1367,7 @@ script = ExtResource("6_p7w77")
 material = SubResource("ShaderMaterial_8ma66")
 position = Vector2(-2, 18.5309)
 points = PackedVector2Array(4.816208, -38.86587, 9.9353485, -33.702045, 7.5188217, -25.082561)
+width = 20.0
 default_color = Color(0.79, 0.68598336, 0.16589999, 1)
 texture_mode = 2
 script = ExtResource("6_p7w77")
@@ -1317,6 +1376,7 @@ script = ExtResource("6_p7w77")
 material = SubResource("ShaderMaterial_7v5dn")
 position = Vector2(-2, 18.5309)
 points = PackedVector2Array(-15.263138, -22.9962, -33.169647, -21.152885, -38.962936, -8.512985, -26.58638, 8.34021)
+width = 15.0
 default_color = Color(1, 0.8040001, 0.01999998, 0.4627451)
 texture_mode = 2
 script = ExtResource("6_p7w77")
@@ -1353,14 +1413,14 @@ animation = &"Right"
 autoplay = "Right"
 
 [node name="Adware" type="AnimatedSprite2D" parent="." unique_id=443890855]
-visible = false
 texture_filter = 2
 material = SubResource("ShaderMaterial_qch6t")
 position = Vector2(-12, -3.0000002)
 scale = Vector2(0.7109375, 0.7109375)
 sprite_frames = SubResource("SpriteFrames_x3klb")
-animation = &"Right"
+animation = &"Right_Hostile"
 autoplay = "Right"
+frame_progress = 0.79297775
 
 [node name="Creds" type="AnimatedSprite2D" parent="." unique_id=976868947]
 visible = false
@@ -1378,6 +1438,32 @@ material = SubResource("ShaderMaterial_tihwb")
 sprite_frames = SubResource("SpriteFrames_8ma66")
 animation = &"Right"
 autoplay = "Right"
+
+[node name="Static_Lightning" type="Line2D" parent="Botnet" unique_id=1012521339]
+material = SubResource("ShaderMaterial_emj2s")
+position = Vector2(0, -79)
+points = PackedVector2Array(-6.577675, 50.56539, -0.048805237, 57.09426, 7.785843, 56.441376)
+width = 20.0
+default_color = Color(0.77, 0.030800017, 0.030800017, 1)
+texture_mode = 2
+script = ExtResource("6_p7w77")
+
+[node name="Static_Lightning2" type="Line2D" parent="Botnet" unique_id=1952603230]
+material = SubResource("ShaderMaterial_rhg24")
+position = Vector2(-11, -59)
+points = PackedVector2Array(28.025345, 57.31189, 19.755447, 65.79942, 15.8381195, 73.198814, -0.34023285, 80.60612)
+default_color = Color(1, 0, 0, 1)
+texture_mode = 2
+script = ExtResource("6_p7w77")
+
+[node name="Static_Lightning3" type="Line2D" parent="Botnet" unique_id=1010073237]
+material = SubResource("ShaderMaterial_xteqa")
+position = Vector2(17, -70.36722)
+points = PackedVector2Array(-43.01549, 37.937866, -39.439667, 61.31736, -23.77037, 74.15748, -5.054268, 68.71675)
+width = 20.0
+default_color = Color(1, 0, 0, 1)
+texture_mode = 2
+script = ExtResource("6_p7w77")
 
 [node name="WormSegments" type="Sprite2D" parent="." unique_id=481074252]
 visible = false
@@ -1551,7 +1637,7 @@ material = SubResource("ShaderMaterial_xiois")
 position = Vector2(0, -49)
 sprite_frames = SubResource("SpriteFrames_42onr")
 animation = &"Right"
-frame_progress = 0.26497495
+frame_progress = 0.67781234
 
 [node name="SpywareAbility" type="Area2D" parent="." unique_id=1638499242]
 visible = false
