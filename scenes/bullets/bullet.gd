@@ -43,6 +43,16 @@ func setup(pos, angle, _bullet_enum, _damage, _tower_type, _tower_id, _target = 
 	if owner_tower_type == Data.Tower.SPAM_FILTER and tower_data.get("tier1abilityunlocked", false):
 		max_bounce = 2
 
+	# BULLETS PER TOWER
+	match owner_tower_type:
+		Data.Tower.SPAM_FILTER:
+			$Sprite2D.texture = load("res://graphics/bullets/spam_filter_bullet.png")
+		Data.Tower.ANTIVIRUS:
+			$Sprite2D.texture = load("res://graphics/bullets/anti_virus_bullet.png")
+		_:
+			$Sprite2D.texture = load("res://graphics/bullets/default.png")
+	z_index = -1
+
 
 func _process(delta: float) -> void:
 	if is_instance_valid(target):
