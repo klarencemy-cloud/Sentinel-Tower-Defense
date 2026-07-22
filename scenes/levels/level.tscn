@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://k2uh63vandnx" path="res://scenes/ui/player_camera.tscn" id="5_urvlt"]
 [ext_resource type="PackedScene" uid="uid://4e4dveqj5cpq" path="res://scenes/ui/ui.tscn" id="6_d4w6o"]
 [ext_resource type="AudioStream" uid="uid://b7xwf0s7rktfd" path="res://audio/sound_placeholder.mp3" id="6_mbbpy"]
+[ext_resource type="Script" uid="uid://d3hyvmjtdxi5k" path="res://scenes/managers/sentinel_manager.gd" id="6_mq31s"]
 [ext_resource type="Script" uid="uid://1biiqhqmsago" path="res://scenes/managers/level_manager.gd" id="9_1phd1"]
 [ext_resource type="Script" uid="uid://dpqclxypode5g" path="res://scenes/managers/tower_manager.gd" id="10_g7lvq"]
 [ext_resource type="Script" uid="uid://dy1mk1bohkjnf" path="res://scenes/managers/wave_manager.gd" id="11_y8dwe"]
@@ -631,6 +632,9 @@ script = ExtResource("4_qogh7")
 [node name="WaveManager" type="Node" parent="." unique_id=682020050]
 script = ExtResource("11_y8dwe")
 
+[node name="SentinelManager" type="Node" parent="." unique_id=878225377]
+script = ExtResource("6_mq31s")
+
 [node name="BG" type="Node2D" parent="." unique_id=834286070]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="BG" unique_id=1555211169]
@@ -642,6 +646,8 @@ tile_set = SubResource("TileSet_urvlt")
 modulate = Color(1, 1, 1, 0.6862745)
 
 [node name="Towers" type="Node2D" parent="." unique_id=59664562]
+
+[node name="Sentinels" type="Node2D" parent="." unique_id=1328726913]
 
 [node name="Bullets" type="Node2D" parent="." unique_id=1114794130]
 
@@ -724,5 +730,6 @@ mouse_filter = 2
 color = Color(0.49837798, 0.8743902, 0.78778285, 0.24705882)
 metadata/_edit_use_anchors_ = true
 
+[connection signal="place_sentinel" from="UI" to="." method="_on_ui_place_sentinel"]
 [connection signal="place_tower" from="UI" to="." method="_on_ui_place_tower"]
 [connection signal="start_wave" from="UI" to="." method="_on_ui_start_wave"]

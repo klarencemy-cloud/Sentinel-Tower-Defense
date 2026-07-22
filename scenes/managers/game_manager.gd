@@ -4,7 +4,7 @@ extends Node2D
 @onready var tower_manager = $TowerManager
 @onready var ability_manager = $AbilityManager
 @onready var wave_manager = $WaveManager
-
+@onready var sentinel_manager = $SentinelManager
 @onready var victory_overlay = $UI/VictoryOverlay
 
 func _ready() -> void:
@@ -14,6 +14,7 @@ func _ready() -> void:
 	level_manager.setup(self)
 	tower_manager.setup(self, level_manager)
 	ability_manager.setup(self, level_manager)
+	sentinel_manager.setup(self, level_manager)
 	wave_manager.setup(level_manager.current_map, level_manager)
 
 	wave_manager.level_completed.connect(level_completed)
@@ -38,10 +39,11 @@ func next_map() -> void:
 func _process(_delta: float) -> void:
 	wave_manager.update_wave_state()
 
-
+	
 func _input(event: InputEvent) -> void:
 	tower_manager.handle_input(event)
 	ability_manager.handle_input(event)
+	sentinel_manager.handle_input(event)
 
 
 func _on_ui_place_tower(tower_type: Data.Tower) -> void:
@@ -49,6 +51,9 @@ func _on_ui_place_tower(tower_type: Data.Tower) -> void:
 
 func _on_ui_place_ability(ability: Data.Ability) -> void:
 	ability_manager.start_ability_placement(ability)
+
+func _on_ui_place_sentinel(sentinel_type: Data.Sentinel) -> void:
+	sentinel_manager.start_sentinel_placement(sentinel_type)
 
 func _on_ui_start_wave() -> void:
 	wave_manager.start_wave()

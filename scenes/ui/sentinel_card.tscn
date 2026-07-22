@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ctf4i2pnlbhl4"]
+
+[ext_resource type="Script" uid="uid://cu5ffokwt3ewq" path="res://scenes/ui/sentinel_card.gd" id="1_gnafq"]
+[ext_resource type="Texture2D" uid="uid://h0g75frj1eg4" path="res://graphics/database/sentinel_container.png" id="1_xqdd5"]
+[ext_resource type="FontFile" uid="uid://bqm53gushpubk" path="res://graphics/ui/Digitalt.otf" id="2_gnafq"]
+[ext_resource type="Texture2D" uid="uid://ftkgg8wg17u" path="res://graphics/ui/tower thumbnails/basic.png" id="3_mekj6"]
+
+[node name="SentinelCard" type="Button" unique_id=1468454596 groups=["SentinelCard"]]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(179, 241)
+offset_right = 179.0
+offset_bottom = 241.0
+script = ExtResource("1_gnafq")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1240427165]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xqdd5")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=1661416606]
+layout_mode = 0
+offset_left = 43.930336
+offset_top = 195.74858
+offset_right = 133.93668
+offset_bottom = 225.74858
+theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
+theme_override_constants/line_spacing = -8
+theme_override_fonts/font = ExtResource("2_gnafq")
+theme_override_font_sizes/font_size = 18
+text = "Enemy name"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=1822368038]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = 72.0
+offset_right = 37.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_mekj6")
+expand_mode = 2
+stretch_mode = 5
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -16,6 +16,7 @@ extends CanvasLayer
 @onready var skill1_button: TextureButton = $Control/HBoxContainer/Skill1
 
 signal place_tower(tower_type: Data.Tower)
+signal place_sentinel(sentinel_type: Data.Sentinel)
 signal place_ability(ability: Data.Ability)
 signal spawn_enemy(enemy_type: Data.Enemy)
 signal start_wave
@@ -23,6 +24,7 @@ signal start_wave
 
 var tower_card_scene = preload("res://scenes/ui/tower_card.tscn")
 var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
+var sentinel_card_scene = preload("res://scenes/ui/sentinel_card.tscn")
 
 var is_play_shown: bool = false
 
@@ -90,6 +92,12 @@ func _ready() -> void:
 		$Control/TextureRect/ScrollContainer/TowerCardsContainer.add_child(tower_card)
 		tower_card.connect('press', tower_select)
 
+	for sentinel_enum in Data.Sentinel.values():
+		var sentinel_card = sentinel_card_scene.instantiate()
+		sentinel_card.setup(sentinel_enum)
+		$Control/TextureRect/ScrollContainer/TowerCardsContainer.add_child(sentinel_card)
+		sentinel_card.connect('press', sentinel_select)
+
 
 	for enemy_enum in Data.Enemy.values():
 		var enemy_card = enemy_card_scene.instantiate()
@@ -112,6 +120,10 @@ func _ready() -> void:
 
 func tower_select(tower_enum: Data.Tower):
 	place_tower.emit(tower_enum)
+
+
+func sentinel_select(sentinel_enum: Data.Sentinel):
+	place_sentinel.emit(sentinel_enum)
 
 func toggle_skill_activation():
 	GameDialogueManager.is_skill_activated = true

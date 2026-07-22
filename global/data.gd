@@ -47,6 +47,7 @@ var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
 enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, ANTIVIRUS, QUARANTINE_CANNON, IDPS, BACKUP_SERVER, AD_BLOCKER, ACCESS_CONTROL_SYSTEM}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
+enum Sentinel {SYSAD}
 enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2, BOSS3, BOSS4, BOSS5}
 enum Ability {FIREWALL}
 var TOWER_DATA = {
@@ -342,11 +343,11 @@ var TOWER_DATA = {
 		'upgrade5': "Damage",
 		'upgrade5level': 0,
 		'upgrade5amount': [4, 5, 5],
-		'upgrade5cost': [50,70,85],
+		'upgrade5cost': [50, 70, 85],
 		'upgrade6': "Range",
 		'upgrade6level': 0,
 		'upgrade6amount': 25,
-		'upgrade6cost': [50,70,90],
+		'upgrade6cost': [50, 70, 90],
 		'tier3ability': "Rapid Purge+",
 		'tier3abilitydesc': "Passive ability reduced to 1s.",
 		'tier3abilityunlocked': false,
@@ -415,7 +416,7 @@ var TOWER_DATA = {
 		'passive description': "Slows enemies by 20% within its range and deals 25% bonus damage to Insider Threats.",
 		'upgrade1': "Damage",
 		'upgrade1level': 0,
-		'upgrade1amount': [5,5,15],
+		'upgrade1amount': [5, 5, 15],
 		'upgrade1cost': [45, 70, 90],
 		'upgrade2': "Range",
 		'upgrade2level': 0,
@@ -427,18 +428,18 @@ var TOWER_DATA = {
 		'upgrade3': "Crit Rate",
 		'upgrade3level': 0,
 		'upgrade3amount': 15,
-		'upgrade3cost': [115,145,180],
+		'upgrade3cost': [115, 145, 180],
 		'upgrade4': "Attack Speed",
 		'upgrade4level': 0,
 		'upgrade4amount': 0.2,
-		'upgrade4cost': [115,145,180],
+		'upgrade4cost': [115, 145, 180],
 		'tier2ability': "Enhanced Restrictions",
 		'tier2abilitydesc': "Increase damage against Insider Threats by an additional of 25% and enhances the slow by an additional 10%",
 		'tier2abilityunlocked': true,
 		'upgrade5': "Damage",
 		'upgrade5level': 0,
-		'upgrade5amount': [30,30,35],
-		'upgrade5cost': [145,200,250],
+		'upgrade5amount': [30, 30, 35],
+		'upgrade5cost': [145, 200, 250],
 		'upgrade6': "Crit Damage",
 		'upgrade6level': 0,
 		'upgrade6amount': 25,
@@ -456,6 +457,37 @@ func calculate_crit_damage(tower_type: int, base_damage: int) -> int:
 	if randf() < crit_chance:
 		return int(base_damage * (1.0 + crit_multiplier))
 	return base_damage
+
+
+var SENTINEL_DATA = {
+	Sentinel.SYSAD: {
+		'name': 'System Administrator',
+		'cooldown': 90,
+		'range': 1000,
+		'thumbnail': "res://graphics/sentinels/thumbnail/SYSTEMADMIN.png",
+		'scene': "res://scenes/sentinels/sentinel_system_administrator.tscn",
+		'upgrade1': "Damage",
+		'upgrade1level': 0,
+		'upgrade1amount': 1,
+		'upgrade2': "Attack Speed",
+		'upgrade2level': 0,
+		'upgrade2amount': 0.2,
+		'upgrade3': "Damage",
+		'upgrade3level': 0,
+		'upgrade3amount': 1,
+		'upgrade4': "Crit Rate",
+		'upgrade4level': 0,
+		'upgrade4amount': 15,
+		'upgrade5': "Crit Damage",
+		'upgrade5level': 0,
+		'upgrade5amount': 25,
+		'upgrade6': "Range",
+		'upgrade6level': 0,
+		'upgrade6amount': 25,
+		'tier1abilityunlocked': false,
+		'tier2abilityunlocked': false,
+		'tier3abilityunlocked': false, }
+}
 
 var ENEMY_DATA = {
 	Enemy.DEFAULT: {
