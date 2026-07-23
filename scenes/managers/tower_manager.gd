@@ -11,6 +11,7 @@ var tower_scenes = {
 	Data.Tower.BACKUP_SERVER: "res://scenes/towers/tower_backup_server.tscn",
 	Data.Tower.AD_BLOCKER: "res://scenes/towers/tower_ad_blocker.tscn",
 	Data.Tower.ACCESS_CONTROL_SYSTEM: "res://scenes/towers/tower_acs.tscn",
+	Data.Tower.ENDPOINT_PROTECTION : "res://scenes/towers/tower_endpoint_protection.tscn"
 }
 
 var bullet_scene = preload("res://scenes/bullets/bullet.tscn")
