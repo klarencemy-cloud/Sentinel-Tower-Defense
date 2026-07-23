@@ -7,7 +7,7 @@ var current_placement_kind: String = ""
 var selected_sentinel: Data.Sentinel
 var used_cells: Array[Vector2i] = []
 
-
+	
 var place_sentinel: bool = false:
 	set(value):
 		place_sentinel = value
