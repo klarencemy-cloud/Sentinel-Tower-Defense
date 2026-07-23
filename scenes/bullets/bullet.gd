@@ -15,6 +15,14 @@ var already_hit: bool = false
 var target: Area2D = null
 var homingspeed = 6
 
+var boss_types: Array = [
+	Data.Enemy.BOSS1,
+	Data.Enemy.BOSS2,
+	Data.Enemy.BOSS3,
+	Data.Enemy.BOSS4,
+	Data.Enemy.BOSS5
+]
+
 
 func _ready():
 	$Sprite2D.material = $Sprite2D.material.duplicate()
@@ -49,6 +57,8 @@ func setup(pos, angle, _bullet_enum, _damage, _tower_type, _tower_id, _target = 
 			$Sprite2D.texture = load("res://graphics/bullets/spam_filter_bullet.png")
 		Data.Tower.ANTIVIRUS:
 			$Sprite2D.texture = load("res://graphics/bullets/anti_virus_bullet.png")
+		Data.Tower.SANDBOX_ANALYZER:
+			$Sprite2D.texture = load("res://graphics/bullets/sandbox_bullet.png")
 		_:
 			$Sprite2D.texture = load("res://graphics/bullets/default.png")
 	z_index = -1
@@ -78,10 +88,23 @@ func _on_area_entered(area: Area2D) -> void:
 	area.hit(damage, tower_id)
 	hit_enemies.append(area) # Track this enemy as hit
 
-	if _can_ricochet():
+	# sandbox analyzer traps enemy
+	if owner_tower_type == Data.Tower.SANDBOX_ANALYZER:
+		var tower = _get_owner_tower()
+		if tower != null:
+			tower.on_bullet_hit_enemy(area)
+
+	if _can_ricochet(): # Spam Filter
 		ricochet(area)
 	else:
 		queue_free()
+
+func _get_owner_tower() -> Node:
+	var towers = get_tree().get_nodes_in_group("Towers")
+	for t in towers:
+		if t.tower_id == tower_id:
+			return t
+	return null
 
 
 func _can_ricochet() -> bool:
@@ -154,3 +177,5 @@ func ricochet(from_enemy: Node) -> void:
 
 	get_parent().add_child(new_bullet)
 	queue_free()
+
+

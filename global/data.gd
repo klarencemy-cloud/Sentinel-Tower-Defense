@@ -45,7 +45,7 @@ var backup_server_invincible := false
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
-enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, ANTIVIRUS, QUARANTINE_CANNON, IDPS, BACKUP_SERVER, AD_BLOCKER, ACCESS_CONTROL_SYSTEM, ENDPOINT_PROTECTION}
+enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, ANTIVIRUS, QUARANTINE_CANNON, IDPS, BACKUP_SERVER, SANDBOX_ANALYZER, AD_BLOCKER, ACCESS_CONTROL_SYSTEM, ENDPOINT_PROTECTION}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
 enum Sentinel {SYSAD}
 enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2, BOSS3, BOSS4, BOSS5}
@@ -494,6 +494,54 @@ var TOWER_DATA = {
 		'upgrade6cost': [280,350,420],
 		'tier3ability': "Network-Wide Remediation",
 		'tier3abilitydesc': "Every tower within the range can be cleared of the debuffs.",
+		'tier3abilityunlocked': false,
+		},
+		Tower.SANDBOX_ANALYZER: {
+		'name': 'Sandbox Analyzer',
+		'cost': 150,
+		'server_load': 55,
+		'damage': 220,
+		'reload_time': 3,
+		'range': 1000,
+		'crit rate': 0,
+		'crit damage': 50,
+		'bullet': Bullet.SINGLE,
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/SANDBOX.png",
+		'scene': "res://scenes/towers/tower_sandbox_analyzer.tscn",
+		'passive': "Increased Damage to Malwares by 20%",
+		'passive description': "Traps one enemy in a force cage until it dies, but it cannot target another enemy while occupied.       Nearby enemies become infected as well.",
+		'upgrade1': "Damage",
+		'upgrade1level': 0,
+		'upgrade1amount': 2,
+		'upgrade1cost': [100, 150, 200],
+		'upgrade2': "Attack Speed",
+		'upgrade2level': 0,
+		'upgrade2amount': 0.1,
+		'upgrade2cost': [100, 150, 200],
+		'tier1ability': "Viral Spread",
+		'tier1abilitydesc': "Trapped enemy infects up to 2 nearby enemies.",
+		'tier1abilityunlocked': false,
+		'upgrade3': "Attack Speed",
+		'upgrade3level': 0,
+		'upgrade3amount': [0.1, 0.1, 0.1],
+		'upgrade3cost': [250, 325, 400],
+		'upgrade4': "Crit Rate",
+		'upgrade4level': 0,
+		'upgrade4amount': 15,
+		'upgrade4cost': [200, 325, 400],
+		'tier2ability': "Accelerated Decay",
+		'tier2abilitydesc': "Trapped enemy loses health 20% faster.",
+		'tier2abilityunlocked': false,
+		'upgrade5': "Damage",
+		'upgrade5level': 0,
+		'upgrade5amount': [4, 5, 5],
+		'upgrade5cost': [325, 450, 550],
+		'upgrade6': "Range",
+		'upgrade6level': 0,
+		'upgrade6amount': 25,
+		'upgrade6cost': [400, 500, 600],
+		'tier3ability': "Epidemic Lock",
+		'tier3abilitydesc': "Infection cap increased to 5 nearby enemies.",
 		'tier3abilityunlocked': false,
 		}
 	}
