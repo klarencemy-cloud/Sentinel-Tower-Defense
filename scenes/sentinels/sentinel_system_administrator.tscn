@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bkwr5n7sy5ao7" path="res://scenes/sentinels/sentinel_system_administrator.gd" id="1_c2rk0"]
 [ext_resource type="Texture2D" uid="uid://dxpj7ubvxif7n" path="res://graphics/sentinels/sentinel2.png" id="1_my3uq"]
+[ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="3_2wnok"]
+[ext_resource type="Texture2D" uid="uid://dj56rn3t4lvwk" path="res://graphics/currency/gold_gain.png" id="4_j83ts"]
+[ext_resource type="Texture2D" uid="uid://bhe1pw8va777g" path="res://texture/0001.png" id="5_3oo1d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c2rk0"]
 atlas = ExtResource("1_my3uq")
@@ -42,6 +45,56 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my3uq"]
 size = Vector2(100, 161)
 
+[sub_resource type="Gradient" id="Gradient_ikqs0"]
+offsets = PackedFloat32Array(0.7361111, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m3g65"]
+gradient = SubResource("Gradient_ikqs0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3oo1d"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.76
+direction = Vector3(1, -40, 0)
+spread = 17.143
+initial_velocity_min = 67.0
+initial_velocity_max = 67.0
+gravity = Vector3(0, 70, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 25.679996
+scale_min = 1.1
+scale_max = 1.1
+color_ramp = SubResource("GradientTexture1D_m3g65")
+turbulence_noise_strength = 0.0
+turbulence_noise_scale = 0.0
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.64
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e0uin"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e0uin"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 22.1
+direction = Vector3(1, -100, 0)
+spread = 36.429
+initial_velocity_min = 67.0
+initial_velocity_max = 67.0
+gravity = Vector3(0, 70, 0)
+scale_min = 0.0
+scale_max = 0.5
+anim_speed_max = 1.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3oo1d"]
+polygon = PackedVector2Array(-117, 44, 130, 44, 81.890625, 49.181023, 0, 58)
+
 [node name="SentinelSystemAdministrator" type="Node2D" unique_id=1163133944]
 script = ExtResource("1_c2rk0")
 
@@ -50,7 +103,7 @@ position = Vector2(0.12500122, -64.71874)
 scale = Vector2(0.46777344, 0.46777344)
 sprite_frames = SubResource("SpriteFrames_2ogf1")
 autoplay = "default"
-frame_progress = 0.059479173
+frame_progress = 0.91815436
 
 [node name="ClickArea" type="Area2D" parent="." unique_id=1739627776]
 collision_layer = 8
@@ -59,3 +112,63 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1301772262]
 position = Vector2(0, -40.25)
 shape = SubResource("RectangleShape2D_my3uq")
+
+[node name="TowerMenu" parent="." unique_id=872359436 instance=ExtResource("3_2wnok")]
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=164587640]
+wait_time = 5.0
+autostart = true
+
+[node name="CoinRain" type="GPUParticles2D" parent="." unique_id=578376079]
+texture_filter = 2
+position = Vector2(0, -105)
+emitting = false
+amount = 5
+texture = ExtResource("4_j83ts")
+lifetime = 4.0
+one_shot = true
+speed_scale = 4.09
+explosiveness = 0.42
+visibility_rect = Rect2(-75, -100, 150, 200)
+process_material = SubResource("ParticleProcessMaterial_3oo1d")
+
+[node name="Glow" type="GPUParticles2D" parent="." unique_id=330118410]
+z_index = 1
+material = SubResource("CanvasItemMaterial_e0uin")
+position = Vector2(0, -117)
+emitting = false
+amount = 10
+texture = ExtResource("5_3oo1d")
+lifetime = 3.0
+one_shot = true
+speed_scale = 4.0
+explosiveness = 0.44
+process_material = SubResource("ParticleProcessMaterial_e0uin")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1289365519]
+position = Vector2(0, -57)
+occluder = SubResource("OccluderPolygon2D_3oo1d")
+
+[node name="GoldGain" type="RichTextLabel" parent="." unique_id=1115932276]
+offset_left = 10.0
+offset_top = -141.0
+offset_right = 64.0
+offset_bottom = -122.0
+theme_override_colors/default_color = Color(1, 0.78431374, 0, 1)
+bbcode_enabled = true
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealGain" type="RichTextLabel" parent="." unique_id=953336170]
+offset_left = -61.0
+offset_top = -138.01
+offset_right = -21.0
+offset_bottom = -124.009995
+theme_override_colors/default_color = Color(0, 0.50980395, 0.2901961, 1)
+bbcode_enabled = true
+fit_content = true
+
+[connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
+[connection signal="delete_press" from="TowerMenu" to="TowerMenu" method="_on_delete_press"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

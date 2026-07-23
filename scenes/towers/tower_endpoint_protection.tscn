@@ -88,10 +88,7 @@ texture = ExtResource("5_i1106")
 lifetime = 0.52
 process_material = SubResource("ParticleProcessMaterial_u1lur")
 
-[node name="EnemyDetectionArea" parent="." index="2" unique_id=854437296]
-visible = false
-
-[node name="CollisionShape2D" parent="EnemyDetectionArea" index="0" unique_id=435652351]
+[node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
 position = Vector2(-0.5, 0)
 shape = SubResource("CircleShape2D_56y0f")
 
@@ -108,10 +105,7 @@ texture = ExtResource("5_i1106")
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_dbesr")
 
-[node name="ClickArea" parent="." index="5" unique_id=1507995253]
-visible = false
-
-[node name="CollisionShape2D" parent="ClickArea" index="0" unique_id=1535168098]
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
 position = Vector2(0, -40.25)
 
 [node name="ShootSound" parent="." index="8" unique_id=1474961134]
