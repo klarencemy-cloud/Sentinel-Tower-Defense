@@ -38,6 +38,7 @@ offset_top = 190.0
 offset_right = 163.0
 offset_bottom = 231.0
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
+theme_override_constants/line_spacing = -5
 theme_override_fonts/font = ExtResource("3_yp74u")
 theme_override_font_sizes/font_size = 16
 text = "Tower name"
@@ -53,7 +54,7 @@ offset_right = 172.0
 offset_bottom = 33.0
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("3_yp74u")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 text = "Tower cost"
 horizontal_alignment = 1
 
