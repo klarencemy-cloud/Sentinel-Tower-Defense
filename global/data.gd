@@ -2,6 +2,7 @@ extends Node
 signal active_adware_changed
 signal active_ransomware_changed
 var default_health: float = 100.0
+var max_health: float = default_health
 var default_money: int = 3000
 var default_system_load: int = 200
 const default_server_points: int = 0
@@ -786,8 +787,8 @@ var money := default_money:
 				node.toggle_active(money)
 var health: float = default_health:
 	set(value):
-		health = value
-			
+		health = clamp(value, 0, max_health)
+		
 		var ui = get_tree().get_first_node_in_group('UI')
 		if ui:
 			ui.update_stats(money, health)
@@ -808,9 +809,11 @@ var ABILITY_DATA = {
 func reset_game():
 	money = default_money
 	currentserverload = 0
+	max_health = default_health
+	health = default_health 
 
 var multiplier: int = 1
-var server_points: int = 0:
+var server_points: int = 1:
 	set(value):
 		server_points = value
 		var server = get_tree().get_first_node_in_group("server")

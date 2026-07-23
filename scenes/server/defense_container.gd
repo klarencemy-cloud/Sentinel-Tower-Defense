@@ -6,7 +6,7 @@ signal refresh_pts
 @onready var defense_2: TextureButton = $Defense2
 @onready var defense_3: TextureButton = $Defense3
 @onready var defense_4: TextureButton = $Defense4
-@onready var skill_cost: Label = $Defense2/Cost
+@onready var server_health_cost: Label = $Defense2/Cost
 @onready var sentinel_cost: Label = $Defense4/Cost
 @onready var armor_cost: Label = $Defense1/Cost
 @onready var skill_cd_cost: Label = $Defense3/Cost
@@ -28,7 +28,7 @@ var counts: Array = []
 var armor_real_cost: int = 1
 var skill_cd_real_cost: int = 1
 
-var skill_slot_price: int = 2
+var server_health_slot_price: int = 2
 var sentinel_slot_price: int = 2
 
 const price_increment1: int = 2
@@ -58,7 +58,7 @@ func _ready() -> void:
 	
 	counts = [defense1_count, defense2_count, defense3_count, defense4_count]
 
-	skill_slot_price = Defense.skill_slot_price
+	server_health_slot_price = Defense.server_health_slot_price
 	sentinel_slot_price = Defense.sentinel_slot_price
 
 	if Data.is_sandbox:
@@ -93,7 +93,7 @@ func _update_cost_label(index: int) -> void:
 	if Defense.maxed[index]:
 		match index:
 			0: armor_cost.text = "Max"
-			1: skill_cost.text = "Max"
+			1: server_health_cost.text = "Max"
 			2: skill_cd_cost.text = "Max"
 			3: sentinel_cost.text = "Max"
 		return
@@ -101,7 +101,7 @@ func _update_cost_label(index: int) -> void:
 	# Not maxed — show current cost
 	match index:
 		0: armor_cost.text = "Cost: " + str(armor_real_cost)
-		1: skill_cost.text = "Cost: " + str(skill_slot_price)
+		1: server_health_cost.text = "Cost: " + str(server_health_slot_price)
 		2: skill_cd_cost.text = "Cost: " + str(skill_cd_real_cost)
 		3: sentinel_cost.text = "Cost: " + str(sentinel_slot_price)
 
@@ -138,10 +138,10 @@ func _upgrade(index: int) -> void:
 			Defense._armor_damage_reduction()
 			_armor_max_level()
 		1:
-			if Data.server_points < skill_slot_price:
+			if Data.server_points < server_health_slot_price:
 				return
-			Data.server_points -= skill_slot_price
-			Defense._skill_slot_add()
+			Data.server_points -= server_health_slot_price
+			Defense._server_health()
 			_skill_price_increment()
 		2:
 			if Data.server_points < skill_cd_real_cost:
@@ -186,15 +186,15 @@ func _skill_cd_max_level() -> void:
 
 func _skill_price_increment() -> void:
 	var times_bought = Defense.defense_levels[1]
-	skill_slot_price = 2 + (times_bought * price_increment1)
-	Defense.skill_slot_price = skill_slot_price
+	server_health_slot_price = 2 + (times_bought * price_increment1)
+	Defense.server_health_slot_price = server_health_slot_price
 	
-	if skill_slot_price >= 8:
-		skill_cost.text = "Max"
+	if server_health_slot_price >= 8:
+		server_health_cost.text = "Max"
 		Defense.maxed[1] = true
-		Defense.skill_slot_price = 8  # Cap it
+		Defense.server_health_slot_price = 8  # Cap it
 	else:
-		skill_cost.text = "Cost: " + str(skill_slot_price)
+		server_health_cost.text = "Cost: " + str(server_health_slot_price)
 
 
 func _sentinel_slot_increment() -> void:

@@ -37,6 +37,7 @@ var ransomware_timer := Timer.new()
 	preload("res://graphics/buttons/ad2.png")
 ]
 func _ready() -> void:
+	Defense.server_health_upgraded.connect(_on_server_health_upgraded)
 	boss_hp_bar.visible = false
 	Data.ads_visible = false
 	Data.active_adware = 0
@@ -169,8 +170,9 @@ func update_stats(money: int, health: int):
 		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = "∞"
 		$Control/TextureRect/PlayerCurrentStats/HPBar.value = 100
 	else:
-		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = str(health)
-		$Control/TextureRect/PlayerCurrentStats/HPBar.value = health * 100 / 100
+		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = str(health) 
+		$Control/TextureRect/PlayerCurrentStats/HPBar.max_value = Data.max_health
+		$Control/TextureRect/PlayerCurrentStats/HPBar.value = health
 
 	update_server_load()
 
@@ -404,3 +406,7 @@ func update_boss_hp(enemy: Data.Enemy, current_hp: int, max_hp: int):
 			boss_name.text = "NotPetya"
 		Data.Enemy.BOSS5:
 			boss_name.text = "MyDOOM"
+
+
+func _on_server_health_upgraded(new_max_health: float) -> void:
+	update_stats(Data.money, Data.health)
