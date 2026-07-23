@@ -630,22 +630,39 @@ func _spawn_worm_clone():
 func _on_spyware_ability_area_entered(area: Area2D) -> void:
 	if area.name == "ClickArea":
 		var tower = area.get_parent() as Tower
+		var source_id = get_instance_id()
+
+		if tower.spyware_immunity_sources.has(source_id):
+			return
+
+		if tower.spyware_sources.has(source_id):
+			return
+
+		tower.spyware_sources[source_id] = self
 		tower.spyware_count += 1
 
 		if tower.spyware_count == 1:
 			var shape = tower.get_node("EnemyDetectionArea/CollisionShape2D").shape as CircleShape2D
 			shape.radius = max(shape.radius - 50, 10)
 
-
 func _on_spyware_ability_area_exited(area: Area2D) -> void:
 	if area.name == "ClickArea":
 		var tower = area.get_parent() as Tower
+		var source_id = get_instance_id()
 
-		tower.spyware_count -= 1
+		var was_active = tower.spyware_sources.has(source_id)
+
+		tower.spyware_sources.erase(source_id)
+		tower.spyware_immunity_sources.erase(source_id)
+
+		if !was_active:
+			return
+
+		tower.spyware_count = max(tower.spyware_count - 1, 0)
 
 		if tower.spyware_count == 0:
 			var shape := tower.get_node("EnemyDetectionArea/CollisionShape2D").shape as CircleShape2D
-			shape.radius += 50
+			shape.radius = tower.range
 
 func update_spyware_buff():
 	for area in $SpywareAbility.get_overlapping_areas():
@@ -685,37 +702,69 @@ func update_spyware_buff():
 		enemy.speed = enemy.base_speed
 		enemy.damage = Data.ENEMY_DATA[enemy.enemy_type_stats]["damage"]
 
-
 func _on_bot_net_ability_area_entered(area):
 	if area.name == "ClickArea":
 		var tower = area.get_parent() as Tower
-		tower.botnet_count += 1
+		var source_id = get_instance_id()
 
+		if tower.botnet_immunity_sources.has(source_id):
+			return
+
+		if tower.botnet_sources.has(source_id):
+			return
+
+		tower.botnet_sources[source_id] = self
+		tower.botnet_count += 1
 
 func _on_bot_net_ability_area_exited(area):
 	if area.name == "ClickArea":
 		var tower = area.get_parent() as Tower
-		tower.botnet_count -= 1
-		tower.botnet_count = max(tower.botnet_count, 0)
+		var source_id = get_instance_id()
 
+		var was_active = tower.botnet_sources.has(source_id)
 
+		tower.botnet_sources.erase(source_id)
+		tower.botnet_immunity_sources.erase(source_id)
+
+		if !was_active:
+			return
+
+		tower.botnet_count = max(tower.botnet_count - 1, 0)
+		
 func _on_virus_ability_area_entered(area):
 	if area.name == "ClickArea":
-		var tower = area.get_parent()
+		var tower = area.get_parent() as Tower
+		var virus_range = $VirusAbility/VirusAbilityRange.shape.radius * $VirusAbility/VirusAbilityRange.global_scale.x
+		if tower == null or area.global_position.distance_to(global_position) > virus_range:
+			return
+		var source_id = get_instance_id()
+		if tower.virus_immunity_sources.has(source_id):
+			return
 
 		if tower.virus_count == 0:
 			tower.reload_time = tower.original_reload_time * 1.25
+			tower.get_node("ReloadTimer").wait_time = tower.reload_time
+		tower.virus_sources[source_id] = self
 		tower.virus_count += 1
 
 func _on_virus_ability_area_exited(area):
 	if area.name == "ClickArea":
-		var tower = area.get_parent()
+		var tower = area.get_parent() as Tower
+		if tower == null:
+			return
+		var source_id = get_instance_id()
+		var was_active = tower.virus_sources.has(source_id)
+		tower.virus_sources.erase(source_id)
+		tower.virus_immunity_sources.erase(source_id)
+		if not was_active:
+			return
 
-		tower.virus_count -= 1
+		tower.virus_count = max(tower.virus_count - 1, 0)
 
 		if tower.virus_count <= 0:
 			tower.virus_count = 0
 			tower.reload_time = tower.original_reload_time
+			tower.get_node("ReloadTimer").wait_time = tower.reload_time
 
 func _start_boss1_spawn_timer() -> void:
 	if is_queued_for_deletion():
