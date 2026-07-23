@@ -787,7 +787,10 @@ var money := default_money:
 				node.toggle_active(money)
 var health: float = default_health:
 	set(value):
-		health = clamp(value, 0, max_health)
+		if Data.is_unli_health:
+			health = value 
+		else:
+			health = clamp(value, 0, max_health)
 		
 		var ui = get_tree().get_first_node_in_group('UI')
 		if ui:
