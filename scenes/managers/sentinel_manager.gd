@@ -7,6 +7,7 @@ var current_placement_kind: String = ""
 var selected_sentinel: Data.Sentinel
 var used_cells: Array[Vector2i] = []
 
+
 var place_sentinel: bool = false:
 	set(value):
 		place_sentinel = value
@@ -22,7 +23,6 @@ func setup(root: Node2D, map_manager: Node) -> void:
 
 
 func handle_input(event: InputEvent) -> void:
-	print("fawefeaw")
 	var cell_pos = level_manager.mouse_to_map_position()
 	var world_pos = level_manager.map_to_world(cell_pos)
 
@@ -47,7 +47,7 @@ func start_sentinel_placement(sentinel_type: Data.Sentinel) -> void:
 	if preview:
 		preview.texture = load(Data.SENTINEL_DATA[sentinel_type]["thumbnail"])
 		preview.scale = Vector2(0.5, 0.5)
-		preview.offset = Vector2(0, -35)
+		preview.offset = Vector2(0, -105)
 
 
 func cancel_selection() -> void:
