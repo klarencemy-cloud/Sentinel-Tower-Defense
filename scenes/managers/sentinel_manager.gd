@@ -1,13 +1,22 @@
 extends Node
 
-var sentinel_scene = preload("res://scenes/sentinels/sentinel_system_administrator.tscn")
+
+var sentinel_scenes = {
+	Data.Sentinel.SYSAD: "res://scenes/sentinels/sentinel_system_administrator.tscn",
+	Data.Sentinel.INTRUSION: "res://scenes/sentinels/sentinel_intrusion_analyst.tscn",
+	Data.Sentinel.SECURITY: "res://scenes/sentinels/sentinel_security_architect.tscn",
+	Data.Sentinel.MALWARE: "res://scenes/sentinels/sentinel_malware_analyst.tscn",
+	Data.Sentinel.DECEPTION: "res://scenes/sentinels/sentinel_deception_analyst.tscn"
+}
+
+
 var level_root: Node2D
 var level_manager: Node
 var current_placement_kind: String = ""
 var selected_sentinel: Data.Sentinel
 var used_cells: Array[Vector2i] = []
 
-	
+
 var place_sentinel: bool = false:
 	set(value):
 		place_sentinel = value
@@ -46,8 +55,8 @@ func start_sentinel_placement(sentinel_type: Data.Sentinel) -> void:
 	var preview = _get_sentinel_preview()
 	if preview:
 		preview.texture = load(Data.SENTINEL_DATA[sentinel_type]["thumbnail"])
-		preview.scale = Vector2(0.5, 0.5)
-		preview.offset = Vector2(0, -105)
+		preview.scale = Vector2(0.65, 0.65)
+		preview.offset = Vector2(0, -126)
 
 
 func cancel_selection() -> void:
@@ -72,11 +81,27 @@ func _try_place_sentinel(cell_pos: Vector2i, world_pos: Vector2) -> void:
 
 	used_cells.append(cell_pos)
 
-	var sentinel = sentinel_scene.instantiate()
+	var sentinel = load(sentinel_scenes[selected_sentinel]).instantiate()
 	sentinel.position = world_pos
 	level_root.get_node("Sentinels").add_child(sentinel)
-
 	place_sentinel = false
+
+	match selected_sentinel:
+		0:
+			Data.sentinel_sysad_deployed = true
+			Data.deactivate.emit()
+		1:
+			Data.sentinel_intrusion_deployed = true
+			Data.deactivate.emit()
+		2:
+			Data.sentinel_security_deployed = true
+			Data.deactivate.emit()
+		3:
+			Data.sentinel_malware_deployed = true
+			Data.deactivate.emit()
+		4:
+			Data.sentinel_deception_deployed = true
+			Data.deactivate.emit()
 
 func _get_sentinel_preview() -> Sprite2D:
 	var preview = level_root.get_node_or_null("BG/TowerPreview")

@@ -8,7 +8,7 @@ var tween: Tween
 var placed = false
 
 var heal_percentage: float = .03
-var cooldown = Data.SENTINEL_DATA[0]["cooldown"]
+var cooldown = Data.SENTINEL_DATA[2]["cooldown"]
 
 func ability_cooldown():
 	$ReloadTimer.wait_time = cooldown
@@ -31,7 +31,7 @@ func _on_tower_menu_delete_press() -> void:
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.refresh_tower_cards()
-	Data.sentinel_sysad_deployed = false
+	Data.sentinel_security_deployed = false
 	Data.deactivate.emit()
 
 func hide_ui():

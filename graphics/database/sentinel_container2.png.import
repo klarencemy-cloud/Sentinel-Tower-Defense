@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0uldm7jwfocs"
-path="res://.godot/imported/ENDPOINT_PROTECTION.png-13a0f7d7514d6c02a5fe64ba8f9bf7d0.ctex"
+uid="uid://cpbtkxcm7r5g1"
+path="res://.godot/imported/sentinel_container2.png-ff024cbd09b11b426d2fb2ed62257d08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/ENDPOINT_PROTECTION.png"
-dest_files=["res://.godot/imported/ENDPOINT_PROTECTION.png-13a0f7d7514d6c02a5fe64ba8f9bf7d0.ctex"]
+source_file="res://graphics/database/sentinel_container2.png"
+dest_files=["res://.godot/imported/sentinel_container2.png-ff024cbd09b11b426d2fb2ed62257d08.ctex"]
 
 [params]
 

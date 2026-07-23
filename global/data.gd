@@ -21,6 +21,9 @@ var is_server_cyber_shown: bool = false
 signal toggle_server_scene # to toggle server upgrade visibility
 signal change_challenge() # for vm
 
+
+signal deactivate(selected_sentinel: Data.Sentinel) # for sentinel
+
 # "before" variables to store the original values before entering sandbox mode
 var before_total_money: int
 var before_total_health: float
@@ -44,11 +47,18 @@ var current_wave: int = 1 # wave count
 var backup_server_placed := false
 var backup_server_invincible := false
 
+
+var sentinel_sysad_deployed: bool = false
+var sentinel_intrusion_deployed: bool = false
+var sentinel_security_deployed: bool = false
+var sentinel_malware_deployed: bool = false
+var sentinel_deception_deployed: bool = false
+
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
 enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, ANTIVIRUS, QUARANTINE_CANNON, IDPS, BACKUP_SERVER, SANDBOX_ANALYZER, AD_BLOCKER, ACCESS_CONTROL_SYSTEM, ENDPOINT_PROTECTION}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION}
-enum Sentinel {SYSAD}
+enum Sentinel {SYSAD, INTRUSION, SECURITY, MALWARE, DECEPTION}
 enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2, BOSS3, BOSS4, BOSS5}
 enum Ability {FIREWALL}
 var TOWER_DATA = {
@@ -559,7 +569,7 @@ func calculate_crit_damage(tower_type: int, base_damage: int) -> int:
 var SENTINEL_DATA = {
 	Sentinel.SYSAD: {
 		'name': 'System Administrator',
-		'cooldown': 90,
+		'cooldown': 3,
 		'range': 1000,
 		'thumbnail': "res://graphics/sentinels/thumbnail/SYSTEMADMIN.png",
 		'scene': "res://scenes/sentinels/sentinel_system_administrator.tscn",
@@ -583,7 +593,116 @@ var SENTINEL_DATA = {
 		'upgrade6amount': 25,
 		'tier1abilityunlocked': false,
 		'tier2abilityunlocked': false,
+		'tier3abilityunlocked': false, },
+	Sentinel.INTRUSION: {
+		'name': 'Intrusion Analyst',
+		'cooldown': 3,
+		'range': 1000,
+		'thumbnail': "res://graphics/sentinels/thumbnail/INTRUSIONANALYST.png",
+		'scene': "res://scenes/sentinels/sentinel_intrusion_analyst.tscn",
+		'upgrade1': "Damage",
+		'upgrade1level': 0,
+		'upgrade1amount': 1,
+		'upgrade2': "Attack Speed",
+		'upgrade2level': 0,
+		'upgrade2amount': 0.2,
+		'upgrade3': "Damage",
+		'upgrade3level': 0,
+		'upgrade3amount': 1,
+		'upgrade4': "Crit Rate",
+		'upgrade4level': 0,
+		'upgrade4amount': 15,
+		'upgrade5': "Crit Damage",
+		'upgrade5level': 0,
+		'upgrade5amount': 25,
+		'upgrade6': "Range",
+		'upgrade6level': 0,
+		'upgrade6amount': 25,
+		'tier1abilityunlocked': false,
+		'tier2abilityunlocked': false,
+		'tier3abilityunlocked': false, },
+	Sentinel.SECURITY: {
+		'name': 'Intrusion Analyst',
+		'cooldown': 3,
+		'range': 1000,
+		'thumbnail': "res://graphics/sentinels/thumbnail/SECURITYARCHITECT.png",
+		'scene': "res://scenes/sentinels/sentinel_security_architect.tscn",
+		'upgrade1': "Damage",
+		'upgrade1level': 0,
+		'upgrade1amount': 1,
+		'upgrade2': "Attack Speed",
+		'upgrade2level': 0,
+		'upgrade2amount': 0.2,
+		'upgrade3': "Damage",
+		'upgrade3level': 0,
+		'upgrade3amount': 1,
+		'upgrade4': "Crit Rate",
+		'upgrade4level': 0,
+		'upgrade4amount': 15,
+		'upgrade5': "Crit Damage",
+		'upgrade5level': 0,
+		'upgrade5amount': 25,
+		'upgrade6': "Range",
+		'upgrade6level': 0,
+		'upgrade6amount': 25,
+		'tier1abilityunlocked': false,
+		'tier2abilityunlocked': false,
+		'tier3abilityunlocked': false, },
+	Sentinel.MALWARE: {
+		'name': 'Malware Analyst',
+		'cooldown': 3,
+		'range': 1000,
+		'thumbnail': "res://graphics/sentinels/thumbnail/MALWAREANALYST.png",
+		'scene': "res://scenes/sentinels/sentinel_malware_analyst.tscn",
+		'upgrade1': "Damage",
+		'upgrade1level': 0,
+		'upgrade1amount': 1,
+		'upgrade2': "Attack Speed",
+		'upgrade2level': 0,
+		'upgrade2amount': 0.2,
+		'upgrade3': "Damage",
+		'upgrade3level': 0,
+		'upgrade3amount': 1,
+		'upgrade4': "Crit Rate",
+		'upgrade4level': 0,
+		'upgrade4amount': 15,
+		'upgrade5': "Crit Damage",
+		'upgrade5level': 0,
+		'upgrade5amount': 25,
+		'upgrade6': "Range",
+		'upgrade6level': 0,
+		'upgrade6amount': 25,
+		'tier1abilityunlocked': false,
+		'tier2abilityunlocked': false,
+		'tier3abilityunlocked': false, },
+	Sentinel.DECEPTION: {
+		'name': 'Deception Analyst',
+		'cooldown': 3,
+		'range': 1000,
+		'thumbnail': "res://graphics/sentinels/thumbnail/DECEPTIONANALYST.png",
+		'scene': "res://scenes/sentinels/sentinel_deception_analyst.tscn",
+		'upgrade1': "Damage",
+		'upgrade1level': 0,
+		'upgrade1amount': 1,
+		'upgrade2': "Attack Speed",
+		'upgrade2level': 0,
+		'upgrade2amount': 0.2,
+		'upgrade3': "Damage",
+		'upgrade3level': 0,
+		'upgrade3amount': 1,
+		'upgrade4': "Crit Rate",
+		'upgrade4level': 0,
+		'upgrade4amount': 15,
+		'upgrade5': "Crit Damage",
+		'upgrade5level': 0,
+		'upgrade5amount': 25,
+		'upgrade6': "Range",
+		'upgrade6level': 0,
+		'upgrade6amount': 25,
+		'tier1abilityunlocked': false,
+		'tier2abilityunlocked': false,
 		'tier3abilityunlocked': false, }
+
 }
 
 var ENEMY_DATA = {
@@ -788,7 +907,7 @@ var money := default_money:
 var health: float = default_health:
 	set(value):
 		if Data.is_unli_health:
-			health = value 
+			health = value
 		else:
 			health = clamp(value, 0, max_health)
 		
@@ -813,7 +932,7 @@ func reset_game():
 	money = default_money
 	currentserverload = 0
 	max_health = default_health
-	health = default_health 
+	health = default_health
 
 var multiplier: int = 1
 var server_points: int = 1:
