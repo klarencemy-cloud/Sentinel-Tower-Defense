@@ -17,6 +17,12 @@ var disabled_by_ransomware := false
 var spyware_count := 0
 var botnet_count := 0
 var virus_count := 0
+var spyware_sources: Dictionary = {}
+var botnet_sources: Dictionary = {}
+var virus_sources: Dictionary = {}
+var virus_immunity_sources: Dictionary = {}
+var spyware_immunity_sources: Dictionary = {}
+var botnet_immunity_sources : Dictionary = {}
 var original_reload_time := 0.0
 var stunned := false
 @onready var ad_button = $AdButton
@@ -158,6 +164,7 @@ func refresh_stats():
 	if data.has("reload_time"):
 		var base_reload: float = float(data["reload_time"])
 		reload_time = base_reload - (base_reload * Offense.multiplied_atk_speed)
+		original_reload_time = reload_time
 
 		if has_node("ReloadTimer"):
 			$ReloadTimer.wait_time = reload_time
@@ -219,6 +226,36 @@ func remove_ransomware():
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui._schedule_next_ransomware()
+
+func clear_debuffs_from_endpoint() -> void:
+	for source_id in spyware_sources:
+		spyware_immunity_sources[source_id] = true
+
+	spyware_sources.clear()
+	spyware_count = 0
+	var detection_shape := get_node_or_null("EnemyDetectionArea/CollisionShape2D")
+	if detection_shape and detection_shape.shape is CircleShape2D:
+		detection_shape.shape.radius = range
+
+	for source_id in botnet_sources:
+		botnet_immunity_sources[source_id] = true
+
+	botnet_sources.clear()
+	botnet_count = 0
+	
+	for source_id in virus_sources:
+		virus_immunity_sources[source_id] = true
+	virus_sources.clear()
+	virus_count = 0
+	reload_time = original_reload_time
+	var reload_timer := get_node_or_null("ReloadTimer") as Timer
+	if reload_timer:
+		reload_timer.wait_time = reload_time
+
+	if ad_active:
+		remove_ad()
+	if ransomware_active:
+		remove_ransomware()
 	
 
 func apply_boss3_stun(duration: float):

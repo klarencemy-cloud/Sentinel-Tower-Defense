@@ -37,7 +37,7 @@ func _on_reload_timer_timeout() -> void:
 	var final_damage = Data.calculate_crit_damage(type, base_damage)
 
 	shoot.emit(
-		$CrosshairSprite.global_position,
+		target_pos,
 		0,
 		bullet_type,
 		int(final_damage),
