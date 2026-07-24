@@ -644,6 +644,7 @@ tile_set = SubResource("TileSet_urvlt")
 
 [node name="TowerPreview" type="Sprite2D" parent="BG" unique_id=613422467]
 modulate = Color(1, 1, 1, 0.6862745)
+z_index = 2
 
 [node name="Towers" type="Node2D" parent="." unique_id=59664562]
 

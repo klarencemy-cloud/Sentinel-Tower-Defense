@@ -50,6 +50,9 @@ var backup_server_invincible := false
 
 var sentinel_sysad_deployed: bool = false
 var sentinel_intrusion_deployed: bool = false
+ # for the intrusion analyst shield
+signal deploy_shield()
+signal destroy_shield()
 var sentinel_security_deployed: bool = false
 var sentinel_malware_deployed: bool = false
 var sentinel_deception_deployed: bool = false
@@ -446,7 +449,7 @@ var TOWER_DATA = {
 		'upgrade4cost': [115, 145, 180],
 		'tier2ability': "Enhanced Restrictions",
 		'tier2abilitydesc': "Increase damage against Insider Threats by an additional of 25% and enhances the slow by an additional 10%",
-		'tier2abilityunlocked':false,
+		'tier2abilityunlocked': false,
 		'upgrade5': "Damage",
 		'upgrade5level': 0,
 		'upgrade5amount': [30, 30, 35],
@@ -457,7 +460,7 @@ var TOWER_DATA = {
 		'upgrade6cost': [180, 225, 270],
 		'tier3ability': "Psuedo Lockdown",
 		'tier3abilitydesc': "Enemies entering the tower range for the first time are immediately slowed by 60% for 3 seconds, then return to the normal slow effect.",
-		'tier3abilityunlocked':false,
+		'tier3abilityunlocked': false,
 		},
 		Tower.ENDPOINT_PROTECTION: {
 		'name': 'Endpoint Protection',
@@ -483,7 +486,7 @@ var TOWER_DATA = {
 		'upgrade2cost': [70, 105, 140],
 		'tier1ability': "Batch Remediation",
 		'tier1abilitydesc': "Clear debuffs of 5 nearby towers.",
-		'tier1abilityunlocked':false,
+		'tier1abilityunlocked': false,
 		'upgrade3': "Crit Rate",
 		'upgrade3level': 0,
 		'upgrade3amount': 15,
@@ -491,18 +494,18 @@ var TOWER_DATA = {
 		'upgrade4': "Attack Speed",
 		'upgrade4level': 0,
 		'upgrade4amount': 0.2,
-		'upgrade4cost': [175,230,280],
+		'upgrade4cost': [175, 230, 280],
 		'tier2ability': "Rapid Response Mitigation",
 		'tier2abilitydesc': "Decrease passive activation time to 1s.",
 		'tier2abilityunlocked': false,
 		'upgrade5': "Damage",
 		'upgrade5level': 0,
 		'upgrade5amount': [30, 30, 35],
-		'upgrade5cost': [230,315,385],
+		'upgrade5cost': [230, 315, 385],
 		'upgrade6': "Range",
 		'upgrade6level': 0,
 		'upgrade6amount': 25,
-		'upgrade6cost': [280,350,420],
+		'upgrade6cost': [280, 350, 420],
 		'tier3ability': "Network-Wide Remediation",
 		'tier3abilitydesc': "Every tower within the range can be cleared of the debuffs.",
 		'tier3abilityunlocked': false,
@@ -579,7 +582,7 @@ var TOWER_DATA = {
 		'upgrade2cost': [70, 105, 140],
 		'tier1ability': "Beam Amplification",
 		'tier1abilitydesc': "Increase the laser width by 25%.",
-		'tier1abilityunlocked':false,
+		'tier1abilityunlocked': false,
 		'upgrade3': "Damage",
 		'upgrade3level': 0,
 		'upgrade3amount': [5, 5, 15],
@@ -587,18 +590,18 @@ var TOWER_DATA = {
 		'upgrade4': "Crit Rate",
 		'upgrade4level': 0,
 		'upgrade4amount': 15,
-		'upgrade4cost': [175,230,280],
+		'upgrade4cost': [175, 230, 280],
 		'tier2ability': "Execution Protocol",
 		'tier2abilitydesc': "Executes enemies upon reaching 10% health.",
 		'tier2abilityunlocked': false,
 		'upgrade5': "Crit Damage",
 		'upgrade5level': 0,
 		'upgrade5amount': 25,
-		'upgrade5cost': [230,315,385],
+		'upgrade5cost': [230, 315, 385],
 		'upgrade6': "Range",
 		'upgrade6level': 0,
 		'upgrade6amount': 25,
-		'upgrade6cost': [280,350,420],
+		'upgrade6cost': [280, 350, 420],
 		'tier3ability': "Overclocked Core",
 		'tier3abilitydesc': "Laser damage continously increase every second by 10% for upto 100% when hitting the same target.",
 		'tier3abilityunlocked': false,
@@ -617,7 +620,7 @@ func calculate_crit_damage(tower_type: int, base_damage: int) -> int:
 var SENTINEL_DATA = {
 	Sentinel.SYSAD: {
 		'name': 'System Administrator',
-		'cooldown': 3,
+		'cooldown': 60,
 		'range': 1000,
 		'thumbnail': "res://graphics/sentinels/thumbnail/SYSTEMADMIN.png",
 		'scene': "res://scenes/sentinels/sentinel_system_administrator.tscn",

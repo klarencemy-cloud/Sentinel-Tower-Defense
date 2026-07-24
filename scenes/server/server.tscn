@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://im6v0y8om2jb" path="res://scenes/server/server.gd" id="1_375b0"]
 [ext_resource type="Texture2D" uid="uid://donbx7hjhnewp" path="res://graphics/server/server.png" id="2_375b0"]
-[ext_resource type="Texture2D" uid="uid://b6fmmtoqty73t" path="res://graphics/ui/backup_server_shield.png" id="3_jqkn5"]
 [ext_resource type="Texture2D" uid="uid://cqmrdgmn3jcik" path="res://graphics/bullets/backup_server_pulse.png" id="4_hkcox"]
+[ext_resource type="Shader" uid="uid://x8rxsknxl2m2" path="res://texture/shaders/force_field.gdshader" id="5_kr8px"]
+[ext_resource type="Texture2D" uid="uid://dtcs5lbvewa8w" path="res://texture/polygon.jpg" id="6_rqijc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_375b0"]
 
@@ -414,8 +415,20 @@ color = Color(0.4862745, 1, 1, 1)
 color_ramp = SubResource("GradientTexture1D_hkcox")
 color_initial_ramp = SubResource("GradientTexture1D_kr8px")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3e01g"]
+shader = ExtResource("5_kr8px")
+shader_parameter/Color_Shield = Color(0, 0.96491414, 0.7057514, 1)
+shader_parameter/Step = 0.5
+shader_parameter/Speed = Vector2(0, 0.1)
+shader_parameter/Size_Inner = 0.0
+shader_parameter/Opaticy = 0.155
+shader_parameter/Size_Outer = 0.44
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_kr8px"]
 radius = 56.435802
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hkcox"]
+radius = 284.91
 
 [node name="Server" type="Button" unique_id=580628515 groups=["server"]]
 process_mode = 3
@@ -470,7 +483,6 @@ autoplay = "default"
 frame_progress = 0.77639115
 
 [node name="ServerlLevel6" type="AnimatedSprite2D" parent="." unique_id=450285722]
-visible = false
 texture_filter = 2
 position = Vector2(158, 56)
 sprite_frames = SubResource("SpriteFrames_375b0")
@@ -497,17 +509,17 @@ amount = 20
 visibility_rect = Rect2(-125, -125, 250, 250)
 process_material = SubResource("ParticleProcessMaterial_375b0")
 
-[node name="BackupServerShield" type="TextureRect" parent="." unique_id=1884061481]
+[node name="BackupServerShield" type="TextureRect" parent="." unique_id=1824762436]
 visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.51600003
-anchor_right = 0.51600003
-offset_left = -200.02402
-offset_top = -234.0
-offset_right = 199.97598
-offset_bottom = 166.0
-texture = ExtResource("3_jqkn5")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_3e01g")
+layout_mode = 0
+offset_left = -169.0
+offset_top = -244.0
+offset_right = 481.0
+offset_bottom = 406.0
+texture = ExtResource("6_rqijc")
+expand_mode = 1
 
 [node name="PulseAnchor" type="Node2D" parent="." unique_id=1320850161]
 position = Vector2(157, 156)
@@ -521,5 +533,26 @@ shape = SubResource("CircleShape2D_kr8px")
 [node name="Sprite2D" type="Sprite2D" parent="PulseAnchor/BackupServerPulse" unique_id=295815802]
 texture = ExtResource("4_hkcox")
 
+[node name="IntrusionShield" type="TextureRect" parent="." unique_id=1294446950]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_3e01g")
+layout_mode = 0
+offset_left = -169.0
+offset_top = -244.0
+offset_right = 481.0
+offset_bottom = 406.0
+texture = ExtResource("6_rqijc")
+expand_mode = 1
+
+[node name="Shield" type="Area2D" parent="IntrusionShield" unique_id=537155642]
+position = Vector2(325, 326)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IntrusionShield/Shield" unique_id=1589772608]
+shape = SubResource("CircleShape2D_hkcox")
+debug_color = Color(1.0107458e-06, 0.4418136, 0.5191502, 0.41960785)
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="area_entered" from="PulseAnchor/BackupServerPulse" to="." method="_on_backup_server_pulse_area_entered"]
+[connection signal="area_entered" from="IntrusionShield/Shield" to="." method="_on_shield_area_entered"]
+[connection signal="area_exited" from="IntrusionShield/Shield" to="." method="_on_shield_area_exited"]

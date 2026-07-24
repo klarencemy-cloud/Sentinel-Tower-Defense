@@ -2,12 +2,14 @@ extends Node2D
 
 signal removed(cell_pos: Vector2i)
 signal select(tower: Tower)
+
+
 var cell_pos: Vector2i = Vector2i.ZERO
 var tween: Tween
 
 var placed = false
 
-var heal_percentage: float = .03
+
 var cooldown = Data.SENTINEL_DATA[1]["cooldown"]
 
 func ability_cooldown():
@@ -33,42 +35,12 @@ func _on_tower_menu_delete_press() -> void:
 		ui.refresh_tower_cards()
 	Data.sentinel_intrusion_deployed = false
 	Data.deactivate.emit()
+	Data.destroy_shield.emit()
+
 
 func hide_ui():
 	$TowerMenu.hide()
 
 
 func _on_reload_timer_timeout() -> void:
-	if Data.health < Data.default_health:
-		var heal_amount = Data.health * heal_percentage
-		Data.health += heal_amount
-		$HealGain.position.y = -193.01
-		$HealGain.text = "[img]res://graphics/icons/heal.png[/img] " + str(round(heal_amount))
-
-	$GoldGain.position.y = -193.01
-	var gold_amoumt: int = randi_range(50, 100)
-	$GoldGain.text = "[img]res://graphics/currency/gold_gain.png[/img] " + str(gold_amoumt)
-	Data.money += gold_amoumt
-
-	toggle_heal_gain()
-	toggle_gold_gain()
-	$CoinRain.emitting = true
-	$Glow.emitting = true
-	ability_cooldown()
-
-func toggle_heal_gain():
-	if tween:
-		tween.kill()
-	tween = create_tween()
-	tween.tween_property($HealGain, "position:y", -215, 1)
-	tween.parallel().tween_property($HealGain, "modulate:a", 1, 1)
-	tween.tween_property($HealGain, "modulate:a", 0, 1)
-
-	
-func toggle_gold_gain():
-	if tween:
-		tween.kill()
-	tween = create_tween()
-	tween.tween_property($GoldGain, "position:y", -215, 1)
-	tween.parallel().tween_property($GoldGain, "modulate:a", 1, 1)
-	tween.tween_property($GoldGain, "modulate:a", 0, 1)
+	Data.deploy_shield.emit()

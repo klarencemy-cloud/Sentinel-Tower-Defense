@@ -99,6 +99,7 @@ collision_bounce = 0.61
 polygon = PackedVector2Array(-117, 44, 130, 44, 81.890625, 49.181023, 0, 58)
 
 [node name="SentinelSystemAdministrator" type="Node2D" unique_id=1163133944]
+z_index = 2
 script = ExtResource("1_c2rk0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=145167270]
