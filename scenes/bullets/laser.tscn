@@ -3,18 +3,47 @@
 [ext_resource type="Script" uid="uid://dyoe5ya0m4d2f" path="res://scenes/bullets/laser.gd" id="1_ty11f"]
 [ext_resource type="Shader" uid="uid://tsbpejfyq5fc" path="res://texture/shaders/glow_shader.gdshader" id="2_hem33"]
 [ext_resource type="Texture2D" uid="uid://doluyhvr7cfgy" path="res://graphics/bullets/ai_sec_bullet.png" id="3_hem33"]
+[ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="4_hem33"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tocqt"]
 shader = ExtResource("2_hem33")
 shader_parameter/color1 = Color(0, 0, 0, 1)
 shader_parameter/color2 = Color(0, 0, 0, 1)
-shader_parameter/threshold = 0.74
-shader_parameter/intensity = 4.5649999999999995
-shader_parameter/opacity = 0.055
-shader_parameter/glow_color = Color(0, 0.97719985, 0.796124, 1)
+shader_parameter/threshold = 4.5600000000000005
+shader_parameter/intensity = 18.19
+shader_parameter/opacity = 0.035
+shader_parameter/glow_color = Color(1, 0.2452403, 0.18784595, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5f1na"]
 size = Vector2(14, 49)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ml4hr"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_6ess5"]
+offsets = PackedFloat32Array(0.1080402, 0.20351759)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.20999998, 0.22316647, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_81w6i"]
+gradient = SubResource("Gradient_6ess5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s2ufw"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+angle_min = 1.0728835e-05
+angle_max = 350.00003
+direction = Vector3(0, -100, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, -20, 0)
+color_ramp = SubResource("GradientTexture1D_81w6i")
+anim_speed_max = 1.0
 
 [node name="Bullet" type="Area2D" unique_id=1385636298]
 collision_layer = 2
@@ -22,10 +51,26 @@ script = ExtResource("1_ty11f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=111004165]
 material = SubResource("ShaderMaterial_tocqt")
-position = Vector2(-2.0000002, 0)
-scale = Vector2(3.9999993, 0.39682537)
+position = Vector2(-1.333333, 0)
+scale = Vector2(2.6666667, 0.39682537)
 texture = ExtResource("3_hem33")
 flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1031006337]
 shape = SubResource("RectangleShape2D_5f1na")
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="." unique_id=392102697]
+material = SubResource("CanvasItemMaterial_ml4hr")
+position = Vector2(0, 25)
+emitting = false
+texture = ExtResource("4_hem33")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_s2ufw")
+
+[node name="GPUParticles2D6" type="GPUParticles2D" parent="." unique_id=1841164274]
+material = SubResource("CanvasItemMaterial_ml4hr")
+position = Vector2(0, 25)
+emitting = false
+texture = ExtResource("4_hem33")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_s2ufw")

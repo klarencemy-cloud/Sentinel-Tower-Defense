@@ -36,6 +36,15 @@ shader_parameter/Vanishing_Value = 0.0
 shader_parameter/Speed = Vector2(-0.44, 0)
 shader_parameter/Basic_Texture = ExtResource("6_l7jje")
 
+[sub_resource type="Gradient" id="Gradient_8d7iw"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_su0h8"]
+gradient = SubResource("Gradient_8d7iw")
+fill = 1
+fill_from = Vector2(0.525641, 0.48290598)
+fill_to = Vector2(0.9444444, 0.102564104)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_56y0f"]
 radius = 64.50775
 
@@ -117,6 +126,12 @@ material = SubResource("ShaderMaterial_l7jje")
 points = PackedVector2Array(-17.142857, -47.142868, -25.714285, -45.714294, -25.714285, -40, -8.571428, -35.714294, 9.999999, -35.714294, 25.714285, -40, 24.285713, -45.714294, 15.714285, -48.571426)
 default_color = Color(1.0203719e-05, 0.9301326, 0.87296414, 1)
 texture_mode = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="Turret" index="4" unique_id=189467241]
+position = Vector2(-1.1444092e-05, -34.85716)
+scale = Vector2(2.7232141, 1.4553571)
+energy = 0.22
+texture = SubResource("GradientTexture2D_su0h8")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
 position = Vector2(-0.5, 0)

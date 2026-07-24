@@ -6,6 +6,41 @@
 [ext_resource type="Texture2D" uid="uid://c1vemq5lm01p0" path="res://graphics/towers/sandbox/sandbox_turret.png" id="4_ovk42"]
 [ext_resource type="AudioStream" uid="uid://sicd08w0ce6c" path="res://audio/bullet.wav" id="5_i40e1"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_nmxp2"]
+[ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="7_cvoqq"]
+[ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="8_ovk42"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i40e1"]
+shader = ExtResource("7_cvoqq")
+shader_parameter/Vanishing_Value = 0.0
+shader_parameter/Speed = Vector2(1, 0)
+shader_parameter/Basic_Texture = ExtResource("8_ovk42")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nmxp2"]
+shader = ExtResource("7_cvoqq")
+shader_parameter/Vanishing_Value = 0.0
+shader_parameter/Speed = Vector2(1, 0)
+shader_parameter/Basic_Texture = ExtResource("8_ovk42")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvoqq"]
+shader = ExtResource("7_cvoqq")
+shader_parameter/Vanishing_Value = 0.0
+shader_parameter/Speed = Vector2(1, 0)
+shader_parameter/Basic_Texture = ExtResource("8_ovk42")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovk42"]
+shader = ExtResource("7_cvoqq")
+shader_parameter/Vanishing_Value = 0.0
+shader_parameter/Speed = Vector2(1, 0)
+shader_parameter/Basic_Texture = ExtResource("8_ovk42")
+
+[sub_resource type="Gradient" id="Gradient_cvoqq"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ovk42"]
+gradient = SubResource("Gradient_cvoqq")
+fill = 1
+fill_from = Vector2(0.4957265, 0.491453)
+fill_to = Vector2(0.85897434, 0.21367522)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ku0u"]
 radius = 100.0
@@ -23,6 +58,52 @@ rotation = 3.1415927
 texture = ExtResource("4_ovk42")
 offset = Vector2(-1.4593215e-05, 55.550392)
 flip_v = true
+
+[node name="Lightning" type="Line2D" parent="Turret" index="0" unique_id=775237621]
+material = SubResource("ShaderMaterial_i40e1")
+position = Vector2(-2.1780164e-05, -25.87816)
+rotation = 3.1415925
+scale = Vector2(0.99999994, 0.99999994)
+points = PackedVector2Array(18.571428, -78.57143, 22.857141, -68.57142, 31.42857, -62.85714, 44.285713, -61.428566)
+default_color = Color(0, 0.95799166, 0.91072285, 1)
+texture_mode = 2
+
+[node name="Lightning2" type="Line2D" parent="Turret" index="1" unique_id=748812989]
+material = SubResource("ShaderMaterial_nmxp2")
+position = Vector2(-2.1905054e-05, -27.306734)
+rotation = 3.1415925
+scale = Vector2(0.99999994, 0.99999994)
+points = PackedVector2Array(24.285713, -87.14285, 29.999998, -75.71428, 38.571426, -71.428566, 48.571426, -69.99999)
+default_color = Color(0, 1, 0.6166668, 1)
+texture_mode = 2
+
+[node name="Lightning3" type="Line2D" parent="Turret" index="2" unique_id=5011606]
+material = SubResource("ShaderMaterial_cvoqq")
+points = PackedVector2Array(19.999985, 51.264694, 24.285698, 42.69326, 35.714264, 36.97898, 45.714264, 36.978973)
+default_color = Color(0.33629107, 1, 0.7281758, 1)
+texture_mode = 2
+
+[node name="Lightning4" type="Line2D" parent="Turret" index="3" unique_id=1623428521]
+material = SubResource("ShaderMaterial_ovk42")
+points = PackedVector2Array(24.2857, 58.407547, 28.571413, 51.264694, 39.99998, 45.550407, 48.57141, 42.693253)
+default_color = Color(7.123351e-06, 0.9723038, 0.79158896, 1)
+texture_mode = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="Turret" index="4" unique_id=1263220084]
+position = Vector2(-30.000013, 44.121838)
+energy = 0.29
+texture = SubResource("GradientTexture2D_ovk42")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Turret" index="5" unique_id=33683308]
+position = Vector2(32.857124, 44.121834)
+energy = 0.29
+texture = SubResource("GradientTexture2D_ovk42")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Turret" index="6" unique_id=516977912]
+position = Vector2(-0.56528664, 99.83612)
+scale = Vector2(0.3994004, 1.4107041)
+energy = 0.88
+texture = SubResource("GradientTexture2D_ovk42")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
 shape = SubResource("CircleShape2D_6ku0u")

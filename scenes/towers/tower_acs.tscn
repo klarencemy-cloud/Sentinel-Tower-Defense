@@ -8,6 +8,16 @@
 [ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="6_b1et6"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_t2bbv"]
 
+[sub_resource type="Gradient" id="Gradient_qdga5"]
+offsets = PackedFloat32Array(0.38687783, 1)
+colors = PackedColorArray(0.6246018, 0.99999994, 0.84350985, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jhwlm"]
+gradient = SubResource("Gradient_qdga5")
+fill = 1
+fill_from = Vector2(0.48290598, 0.4957265)
+fill_to = Vector2(0.93162394, 0.123931624)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_56y0f"]
 radius = 64.50775
 
@@ -41,6 +51,12 @@ offset = Vector2(0, -17.142868)
 position = Vector2(0, -65.999985)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_jhwlm")
+
+[node name="PointLight2D" type="PointLight2D" parent="Turret" index="0" unique_id=936463865]
+position = Vector2(-5.722046e-06, -37.142853)
+scale = Vector2(1.5625, 1)
+energy = 0.84
+texture = SubResource("GradientTexture2D_jhwlm")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
 position = Vector2(-0.5, 0)

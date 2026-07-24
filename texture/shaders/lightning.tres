@@ -38,6 +38,7 @@ parameter_name = "Vanishing_Value"
 hint = 1
 
 [resource]
+resource_local_to_scene = true
 mode = 1
 modes/blend = 1
 flags/unshaded = true

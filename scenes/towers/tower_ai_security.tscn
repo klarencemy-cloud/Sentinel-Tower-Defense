@@ -4,35 +4,26 @@
 [ext_resource type="Script" uid="uid://c8oii5vh458c6" path="res://scenes/towers/tower_ai_security.gd" id="2_sw2vj"]
 [ext_resource type="Texture2D" uid="uid://bgijljt2l6qml" path="res://graphics/towers/spam filter/spam_filter_base.png" id="3_ixafn"]
 [ext_resource type="Texture2D" uid="uid://bqeqm1khl70h5" path="res://graphics/towers/ai sec/ai_sec_turret.png" id="4_kbeox"]
-[ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="5_ol7t1"]
+[ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="5_ixafn"]
+[ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_45hyi"]
 [ext_resource type="AudioStream" uid="uid://sicd08w0ce6c" path="res://audio/bullet.wav" id="6_kv0k2"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_mfyuw"]
 [ext_resource type="PackedScene" uid="uid://w1r41md2l3a3" path="res://scenes/bullets/laser.tscn" id="8_ixafn"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_81w6i"]
-blend_mode = 1
-particles_animation = true
-particles_anim_h_frames = 7
-particles_anim_v_frames = 7
-particles_anim_loop = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ol7t1"]
+shader = ExtResource("5_ixafn")
+shader_parameter/Vanishing_Value = 0.070000003325
+shader_parameter/Speed = Vector2(1.72, 0)
+shader_parameter/Basic_Texture = ExtResource("6_45hyi")
 
-[sub_resource type="Gradient" id="Gradient_uin2q"]
-offsets = PackedFloat32Array(0.4429066, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.45513505, 0.99999994, 0.85618454, 1)
+[sub_resource type="Gradient" id="Gradient_ixafn"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_81w6i"]
-gradient = SubResource("Gradient_uin2q")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dmts7"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 31.5
-angle_min = 1.0728835e-05
-angle_max = 350.00003
-spread = 180.0
-gravity = Vector3(0, -20, 0)
-color_ramp = SubResource("GradientTexture1D_81w6i")
-anim_speed_max = 1.0
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_45hyi"]
+gradient = SubResource("Gradient_ixafn")
+fill = 1
+fill_from = Vector2(0.5, 0.47435898)
+fill_to = Vector2(0.8333333, 0.11111111)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ku0u"]
 radius = 130.31117
@@ -58,16 +49,16 @@ position = Vector2(1.9982351e-06, -22.857141)
 rotation = -3.1415925
 scale = Vector2(1.4285712, 1.4285712)
 
-[node name="GPUParticles2D5" type="GPUParticles2D" parent="Turret/Particles" index="0" unique_id=1874118967]
-z_index = -1
-material = SubResource("CanvasItemMaterial_81w6i")
-position = Vector2(7.105438e-14, -93.99998)
-emitting = false
-amount = 2
-texture = ExtResource("5_ol7t1")
-lifetime = 0.5
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_dmts7")
+[node name="Lightning" type="Line2D" parent="Turret/Particles" index="0" unique_id=110027788]
+material = SubResource("ShaderMaterial_ol7t1")
+points = PackedVector2Array(-6.1456847, -112.32384, 0.8543162, -115.32384, 7.854317, -112.32384)
+default_color = Color(1, 0.87026703, 0.8480768, 1)
+texture_mode = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="Turret/Particles" index="1" unique_id=1597047178]
+position = Vector2(-0.7656373, -19.765638)
+scale = Vector2(0.88232386, 0.88232386)
+texture = SubResource("GradientTexture2D_45hyi")
 
 [node name="LaserOrigin" type="Marker2D" parent="Turret" index="1" unique_id=778794618]
 position = Vector2(-1.2636185e-05, 144.28574)

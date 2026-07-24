@@ -5,13 +5,26 @@ var target: Area2D = null
 var damage_multiplier := 1.0
 const MAX_DAMAGE_MULTIPLIER := 2.0
 
+@onready var lightning := $Turret/Particles/Lightning
+var mat: ShaderMaterial
+var timer: float = 0.0
+
 func _ready():
+	mat = lightning.material.duplicate()
+	lightning.material = mat
 	super()
 
 	laser.visible = false
 	laser.monitoring = false
 	
 func _process(_delta):
+	timer += _delta + .08
+	if timer >= 1.0:
+		timer = 0.0
+		var array_thickness: Array = [.3, .4, .5, .6, .6, .6, .1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+		var thickness = randi_range(0, 16)
+		mat.set_shader_parameter("Vanishing_Value", array_thickness[thickness])
+	
 	if stunned or disabled_by_ad or disabled_by_ransomware:
 		clear_target()
 		return
@@ -54,6 +67,7 @@ func clear_target():
 	damage_multiplier = 1.0
 	laser.visible = false
 	laser.monitoring = false
+	laser.hide_particles()
 
 	if laser.has_overlapping_areas():
 		laser.monitoring = false
@@ -83,13 +97,11 @@ func _on_reload_timer_timeout() -> void:
 	var enemy_max_hp = Data.ENEMY_DATA[target.enemy_type_stats]["health"]
 
 	if Data.TOWER_DATA[type].get("tier2abilityunlocked", false):
-
 		if target.health <= enemy_max_hp * 0.10:
 			target.hit(target.health, tower_id)
 			return
 	laser.damage_enemies(final_damage, tower_id)
 
-	fire_animation()
 	$ShootSound.play()
 
 func _on_pay_button_pressed() -> void:
@@ -98,9 +110,3 @@ func _on_pay_button_pressed() -> void:
 
 	Data.money -= 5
 	remove_ransomware()
-
-
-func fire_animation():
-	for particles: GPUParticles2D in $Turret/Particles.get_children():
-		particles.restart()
-		particles.emitting = true

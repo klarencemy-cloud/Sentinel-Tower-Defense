@@ -15,10 +15,12 @@ func update_laser(start_pos: Vector2, end_pos: Vector2):
 	look_at(end_pos)
 	rotation -= PI / 2
 	var distance = start_pos.distance_to(end_pos)
-	
+	$GPUParticles2D6.global_position = end_pos
+	$GPUParticles2D6.emitting = true
+	$GPUParticles2D5.emitting = true
 	# Stretch sprite
 	sprite.scale.y = distance / sprite.texture.get_height()
-
+	
 	# Move sprite so its base stays on the tower
 	sprite.position.y = distance / 2
 
@@ -35,10 +37,14 @@ func update_laser(start_pos: Vector2, end_pos: Vector2):
 
 	collision.position.y = distance / 2
 
+
 func damage_enemies(damage, tower_id):
-
 	for enemy in get_overlapping_areas():
-
 		if enemy.is_in_group("Enemies"):
 			enemy.hit(damage, tower_id)
-			
+
+func hide_particles():
+	$GPUParticles2D5.restart()
+	$GPUParticles2D5.emitting = false
+	$GPUParticles2D6.restart()
+	$GPUParticles2D6.emitting = false
