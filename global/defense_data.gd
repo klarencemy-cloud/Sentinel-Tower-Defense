@@ -1,12 +1,14 @@
 extends Node
 
+signal server_health_upgraded(new_max_health: float)
+
 var total_armor: float = 0.0          # total armor or dmg reduction
-var total_skill_slot: int = 0         # total skill slot added
+var total_server_health: int = 0      # total server health added
 var total_skill_cooldown: float = 0.0 # total skill cd reduc
 var total_sentinel_deployed: int = 0  # total senti deployed added
 
 var before_dmg_reduc: float = 0.0
-var before_skill_slot: int = 0
+var before_server_health: int = 0
 var before_skill_cooldown: float = 0.0
 var before_sentinel_deployed: int = 0
 
@@ -16,7 +18,7 @@ const base_skill_cooldown: float = 0.0
 const base_sentinel_deployed: int = 0
 
 const dmg_reduc: float = 0.03
-const skill_add: int = 1
+const server_health_add: int = 50
 const cd_reduc: float = 0.05
 const senti_add: int = 1
 
@@ -26,7 +28,7 @@ var before_maxed: Array[bool] = [false, false, false, false]
 var defense_levels: Array[int] = [0, 0, 0, 0]
 var maxed: Array[bool] = [false, false, false, false]
 
-var skill_slot_price: int = 2
+var server_health_slot_price: int = 2
 var sentinel_slot_price: int = 2
 
 
@@ -35,9 +37,11 @@ func _armor_damage_reduction() -> void:
 	defense_levels[0] += 1 
 
 
-func _skill_slot_add() -> void:
-	total_skill_slot += skill_add
-	defense_levels[1] += 1 
+func _server_health() -> void:
+	total_server_health += server_health_add
+	defense_levels[1] += 1
+	Data.max_health += server_health_add  # Increases max health but not the current health
+	server_health_upgraded.emit(Data.max_health)
 
 
 func _skill_cooldown_reduction() -> void:
@@ -56,7 +60,7 @@ func _dmg_reduc_armor(actual_dmg: int):
 
 func _sandbox_mode() -> void:
 	before_dmg_reduc = total_armor
-	before_skill_slot = total_skill_slot
+	before_server_health = total_server_health
 	before_skill_cooldown = total_skill_cooldown
 	before_sentinel_deployed = total_sentinel_deployed
 	before_defense_levels = defense_levels.duplicate()
@@ -67,7 +71,7 @@ func _sandbox_mode() -> void:
 
 func _restore_original_server_stats() -> void:
 	total_armor = before_dmg_reduc
-	total_skill_slot = before_skill_slot
+	total_server_health = before_server_health
 	total_skill_cooldown = before_skill_cooldown
 	total_sentinel_deployed = before_sentinel_deployed
 	defense_levels = before_defense_levels.duplicate()
@@ -76,7 +80,7 @@ func _restore_original_server_stats() -> void:
 
 func _reset_multipliers() -> void:
 	total_armor = 0.0
-	total_skill_slot = 0
+	total_server_health = 0
 	total_skill_cooldown = 0.0
 	total_sentinel_deployed = 0
 

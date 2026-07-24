@@ -9,6 +9,7 @@ var tower_scenes = {
 	Data.Tower.QUARANTINE_CANNON: "res://scenes/towers/tower_quarantinecannon.tscn",
 	Data.Tower.IDPS: "res://scenes/towers/tower_idps.tscn",
 	Data.Tower.BACKUP_SERVER: "res://scenes/towers/tower_backup_server.tscn",
+	Data.Tower.SANDBOX_ANALYZER: "res://scenes/towers/tower_sandbox_analyzer.tscn",
 	Data.Tower.AD_BLOCKER: "res://scenes/towers/tower_ad_blocker.tscn",
 	Data.Tower.ACCESS_CONTROL_SYSTEM: "res://scenes/towers/tower_acs.tscn",
 	Data.Tower.ENDPOINT_PROTECTION: "res://scenes/towers/tower_endpoint_protection.tscn",

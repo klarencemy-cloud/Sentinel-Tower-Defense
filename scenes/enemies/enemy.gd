@@ -28,6 +28,10 @@ var idps_vulnerability_aura := false # For IDPS tier3 passive
 var vulnerability_multiplier := 1.0 # Damage multiplier for vulnerabilities
 var damage_label_template: Label
 var blocked_by_firewall := false # Firewall blocking
+var is_trapped := false # Sandbox analyzer trap
+var trapped_by_tower = null
+var is_infected_trap := false
+var infected_by_tower = null
 
 var previous_pos: Vector2
 
@@ -256,7 +260,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 		
 
 func _process(delta: float):
-	if is_stunned or blocked_by_firewall:
+	if is_stunned or blocked_by_firewall or is_trapped:
 		return
 	
 	var current_speed = speed
@@ -832,3 +836,31 @@ func backup_server_knockback():
 
 	path_follow.progress_ratio = max(path_follow.progress_ratio - 0.2, 0.0)
 	previous_pos = path_follow.global_position
+
+# Sandbox traps enemies and realease after death
+func trap(tower = null) -> void:
+	is_trapped = true
+	trapped_by_tower = tower
+	if enemy_type:
+		enemy_type.modulate = Color(0.5, 0.5, 0.5, 1.0)
+
+func release_from_trap() -> void:
+	is_trapped = false
+	trapped_by_tower = null
+	if enemy_type and not is_frozen and not is_slowed:
+		enemy_type.modulate = NORMAL_TINT
+
+func infect_trap(tower = null) -> void:
+	is_infected_trap = true
+	infected_by_tower = tower
+	# Trap infected enemies
+	is_trapped = true
+	if enemy_type:
+		enemy_type.modulate = Color(0.4, 0.7, 0.4, 1.0) 
+
+func release_from_infect_trap() -> void:
+	is_infected_trap = false
+	infected_by_tower = null
+	is_trapped = false
+	if enemy_type and not is_frozen and not is_slowed:
+		enemy_type.modulate = NORMAL_TINT

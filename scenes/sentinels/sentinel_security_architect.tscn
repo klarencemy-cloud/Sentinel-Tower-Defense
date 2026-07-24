@@ -1,41 +1,41 @@
-[gd_scene format=3 uid="uid://bqeblruya6jtd"]
+[gd_scene format=3 uid="uid://cherxf1uws6j1"]
 
-[ext_resource type="Script" uid="uid://bkwr5n7sy5ao7" path="res://scenes/sentinels/sentinel_system_administrator.gd" id="1_c2rk0"]
-[ext_resource type="Texture2D" uid="uid://dxpj7ubvxif7n" path="res://graphics/sentinels/sentinel2.png" id="1_my3uq"]
-[ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="3_2wnok"]
-[ext_resource type="Texture2D" uid="uid://dj56rn3t4lvwk" path="res://graphics/currency/gold_gain.png" id="4_j83ts"]
-[ext_resource type="Texture2D" uid="uid://bhe1pw8va777g" path="res://texture/0001.png" id="5_3oo1d"]
+[ext_resource type="Script" uid="uid://vdifa7foqxra" path="res://scenes/sentinels/sentinel_security_architect.gd" id="1_rk605"]
+[ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="2_rk605"]
+[ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="3_e32ag"]
+[ext_resource type="Texture2D" uid="uid://dj56rn3t4lvwk" path="res://graphics/currency/gold_gain.png" id="4_5i8g6"]
+[ext_resource type="Texture2D" uid="uid://bhe1pw8va777g" path="res://texture/0001.png" id="5_wye6e"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c2rk0"]
-atlas = ExtResource("1_my3uq")
-region = Rect2(0, 448, 256, 448)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ao5c7"]
+atlas = ExtResource("2_rk605")
+region = Rect2(0, 0, 256, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2wnok"]
-atlas = ExtResource("1_my3uq")
-region = Rect2(256, 448, 256, 448)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e32ag"]
+atlas = ExtResource("2_rk605")
+region = Rect2(256, 0, 256, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j83ts"]
-atlas = ExtResource("1_my3uq")
-region = Rect2(512, 448, 256, 448)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i8g6"]
+atlas = ExtResource("2_rk605")
+region = Rect2(512, 0, 256, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3oo1d"]
-atlas = ExtResource("1_my3uq")
-region = Rect2(256, 448, 256, 448)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wye6e"]
+atlas = ExtResource("2_rk605")
+region = Rect2(256, 0, 256, 384)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ogf1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c2rk0")
+"texture": SubResource("AtlasTexture_ao5c7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2wnok")
+"texture": SubResource("AtlasTexture_e32ag")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j83ts")
+"texture": SubResource("AtlasTexture_5i8g6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3oo1d")
+"texture": SubResource("AtlasTexture_wye6e")
 }],
 "loop": true,
 "name": &"default",
@@ -98,15 +98,15 @@ collision_bounce = 0.61
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3oo1d"]
 polygon = PackedVector2Array(-117, 44, 130, 44, 81.890625, 49.181023, 0, 58)
 
-[node name="SentinelSystemAdministrator" type="Node2D" unique_id=1163133944]
-script = ExtResource("1_c2rk0")
+[node name="SentinelSecurityArchitect" type="Node2D" unique_id=1163133944]
+script = ExtResource("1_rk605")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=145167270]
-position = Vector2(0.12500429, -106.71875)
+position = Vector2(0.12500429, -85.71876)
 scale = Vector2(0.6552735, 0.65527356)
 sprite_frames = SubResource("SpriteFrames_2ogf1")
 autoplay = "default"
-frame_progress = 0.91815436
+frame_progress = 0.2896146
 
 [node name="ClickArea" type="Area2D" parent="." unique_id=1739627776]
 collision_layer = 8
@@ -116,7 +116,7 @@ collision_mask = 0
 position = Vector2(-0.5, -71.875)
 shape = SubResource("RectangleShape2D_my3uq")
 
-[node name="TowerMenu" parent="." unique_id=872359436 instance=ExtResource("3_2wnok")]
+[node name="TowerMenu" parent="." unique_id=872359436 instance=ExtResource("3_e32ag")]
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=164587640]
 autostart = true
@@ -126,7 +126,7 @@ texture_filter = 2
 position = Vector2(0, -176)
 emitting = false
 amount = 5
-texture = ExtResource("4_j83ts")
+texture = ExtResource("4_5i8g6")
 lifetime = 4.0
 one_shot = true
 speed_scale = 4.09
@@ -140,7 +140,7 @@ material = SubResource("CanvasItemMaterial_e0uin")
 position = Vector2(0, -188)
 emitting = false
 amount = 10
-texture = ExtResource("5_3oo1d")
+texture = ExtResource("5_wye6e")
 lifetime = 3.0
 one_shot = true
 speed_scale = 4.0
