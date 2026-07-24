@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://yapp8ptcao47"]
+
+[ext_resource type="PackedScene" uid="uid://to6d1j5dni6t" path="res://scenes/towers/tower.tscn" id="1_sw2vj"]
+[ext_resource type="Script" uid="uid://c8oii5vh458c6" path="res://scenes/towers/tower_ai_security.gd" id="2_sw2vj"]
+[ext_resource type="Texture2D" uid="uid://bgijljt2l6qml" path="res://graphics/towers/spam filter/spam_filter_base.png" id="3_ixafn"]
+[ext_resource type="Texture2D" uid="uid://bqeqm1khl70h5" path="res://graphics/towers/ai sec/ai_sec_turret.png" id="4_kbeox"]
+[ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="5_ol7t1"]
+[ext_resource type="AudioStream" uid="uid://sicd08w0ce6c" path="res://audio/bullet.wav" id="6_kv0k2"]
+[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_mfyuw"]
+[ext_resource type="PackedScene" uid="uid://w1r41md2l3a3" path="res://scenes/bullets/laser.tscn" id="8_ixafn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_81w6i"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_uin2q"]
+offsets = PackedFloat32Array(0.4429066, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.45513505, 0.99999994, 0.85618454, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_81w6i"]
+gradient = SubResource("Gradient_uin2q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dmts7"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 31.5
+angle_min = 1.0728835e-05
+angle_max = 350.00003
+spread = 180.0
+gravity = Vector3(0, -20, 0)
+color_ramp = SubResource("GradientTexture1D_81w6i")
+anim_speed_max = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ku0u"]
+radius = 130.31117
+
+[node name="TowerBasic" unique_id=1033549676 instance=ExtResource("1_sw2vj")]
+script = ExtResource("2_sw2vj")
+
+[node name="Base" parent="." index="0" unique_id=230566731]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_ixafn")
+
+[node name="Turret" parent="." index="1" unique_id=280637358]
+position = Vector2(-0.8543234, -14.676177)
+rotation = -3.1415927
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_kbeox")
+offset = Vector2(-1.2204638, 51.176895)
+flip_v = true
+
+[node name="Particles" type="Node2D" parent="Turret" index="0" unique_id=335993198]
+z_index = 1
+position = Vector2(1.9982351e-06, -22.857141)
+rotation = -3.1415925
+scale = Vector2(1.4285712, 1.4285712)
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="Turret/Particles" index="0" unique_id=1874118967]
+z_index = -1
+material = SubResource("CanvasItemMaterial_81w6i")
+position = Vector2(7.105438e-14, -93.99998)
+emitting = false
+amount = 2
+texture = ExtResource("5_ol7t1")
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_dmts7")
+
+[node name="LaserOrigin" type="Marker2D" parent="Turret" index="1" unique_id=778794618]
+position = Vector2(-1.2636185e-05, 144.28574)
+
+[node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
+shape = SubResource("CircleShape2D_6ku0u")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
+position = Vector2(0, -10.5)
+
+[node name="ShootSound" parent="." index="7" unique_id=1474961134]
+stream = ExtResource("6_kv0k2")
+
+[node name="AdButton" type="TextureButton" parent="." index="8" unique_id=654513809]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+ignore_texture_size = true
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="PayButton" type="TextureButton" parent="." index="9" unique_id=1402831666]
+visible = false
+offset_left = -31.0
+offset_top = -32.0
+offset_right = 33.0
+offset_bottom = 32.0
+texture_normal = ExtResource("7_mfyuw")
+
+[node name="Laser" parent="." index="10" unique_id=1385636298 instance=ExtResource("8_ixafn")]
+visible = false
+position = Vector2(0, -107)
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]
+[connection signal="pressed" from="PayButton" to="." method="_on_pay_button_pressed"]
