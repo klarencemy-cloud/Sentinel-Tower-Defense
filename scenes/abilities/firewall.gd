@@ -31,6 +31,8 @@ func _physics_process(_delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	# Check if it's an enemy (enemies extend Area2D)
 	if area.is_in_group("Enemies"):
+		if area.enemy_type_stats == Data.Enemy.SQL:
+			return
 		# Block enemy from moving
 		if not blocked_enemies.has(area):
 			blocked_enemies.append(area)
@@ -51,6 +53,8 @@ func _on_area_entered(area: Area2D) -> void:
 func _on_area_exited(area: Area2D) -> void:
 	# Check if it's an enemy leaving
 	if area.is_in_group("Enemies"):
+		if area.enemy_type_stats == Data.Enemy.SQL:
+			return
 		# Unblock enemy
 		if blocked_enemies.has(area):
 			blocked_enemies.erase(area)
