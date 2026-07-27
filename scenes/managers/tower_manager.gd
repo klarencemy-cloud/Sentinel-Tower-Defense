@@ -1,9 +1,6 @@
 extends Node
 
 var tower_scenes = {
-	Data.Tower.BASIC: "res://scenes/towers/tower_basic.tscn",
-	Data.Tower.BLAST: "res://scenes/towers/tower_blaster.tscn",
-	Data.Tower.MORTAR: "res://scenes/towers/tower_mortar.tscn",
 	Data.Tower.SPAM_FILTER: "res://scenes/towers/tower_spamfilter.tscn",
 	Data.Tower.ANTIVIRUS: "res://scenes/towers/tower_antivirus.tscn",
 	Data.Tower.DATA_LOSS_PREVENTION: "res://scenes/towers/tower_data_loss_prevention.tscn",

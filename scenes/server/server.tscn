@@ -518,6 +518,7 @@ offset_left = -169.0
 offset_top = -244.0
 offset_right = 481.0
 offset_bottom = 406.0
+mouse_filter = 0
 texture = ExtResource("6_rqijc")
 expand_mode = 1
 
@@ -542,6 +543,7 @@ offset_left = -169.0
 offset_top = -244.0
 offset_right = 481.0
 offset_bottom = 406.0
+mouse_filter = 2
 texture = ExtResource("6_rqijc")
 expand_mode = 1
 

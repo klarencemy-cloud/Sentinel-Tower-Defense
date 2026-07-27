@@ -89,6 +89,7 @@ color_initial_ramp = SubResource("GradientTexture1D_ohmc7")
 turbulence_noise_speed_random = 0.0
 
 [node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_ahwdj")]
+z_index = 2
 script = ExtResource("2_ahwdj")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
@@ -128,9 +129,9 @@ default_color = Color(1.0203719e-05, 0.9301326, 0.87296414, 1)
 texture_mode = 2
 
 [node name="PointLight2D" type="PointLight2D" parent="Turret" index="4" unique_id=189467241]
-position = Vector2(-1.1444092e-05, -34.85716)
-scale = Vector2(2.7232141, 1.4553571)
-energy = 0.22
+position = Vector2(-7.748604e-07, -7.1428742)
+scale = Vector2(2.7678573, 1.9196427)
+energy = 0.6
 texture = SubResource("GradientTexture2D_su0h8")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
@@ -151,6 +152,12 @@ process_material = SubResource("ParticleProcessMaterial_c5o44")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
 position = Vector2(0, -40.25)
+
+[node name="TowerMenu" parent="." index="6" unique_id=489153716]
+offset_left = 28.0
+offset_top = -90.0
+offset_right = 28.0
+offset_bottom = -90.0
 
 [node name="ShootSound" parent="." index="8" unique_id=1474961134]
 stream = ExtResource("6_su0h8")

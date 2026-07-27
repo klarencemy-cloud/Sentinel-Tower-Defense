@@ -40,6 +40,7 @@ color = Color(0, 0.6996187, 0.6823587, 1)
 anim_speed_max = 1.0
 
 [node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_qdga5")]
+z_index = 2
 script = ExtResource("2_qdga5")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
@@ -77,6 +78,12 @@ process_material = SubResource("ParticleProcessMaterial_dbesr")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
 position = Vector2(0, -40.25)
+
+[node name="TowerMenu" parent="." index="6" unique_id=489153716]
+offset_left = 28.0
+offset_top = -90.0
+offset_right = 28.0
+offset_bottom = -90.0
 
 [node name="ShootSound" parent="." index="8" unique_id=1474961134]
 stream = ExtResource("6_b1et6")

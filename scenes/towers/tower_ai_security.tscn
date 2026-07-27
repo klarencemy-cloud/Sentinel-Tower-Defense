@@ -29,6 +29,7 @@ fill_to = Vector2(0.8333333, 0.11111111)
 radius = 130.31117
 
 [node name="TowerBasic" unique_id=1033549676 instance=ExtResource("1_sw2vj")]
+z_index = 2
 script = ExtResource("2_sw2vj")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
@@ -67,6 +68,12 @@ shape = SubResource("CircleShape2D_6ku0u")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
 position = Vector2(0, -10.5)
+
+[node name="TowerMenu" parent="." index="5" unique_id=489153716]
+offset_left = 29.0
+offset_top = -75.0
+offset_right = 29.0
+offset_bottom = -75.0
 
 [node name="ShootSound" parent="." index="7" unique_id=1474961134]
 stream = ExtResource("6_kv0k2")

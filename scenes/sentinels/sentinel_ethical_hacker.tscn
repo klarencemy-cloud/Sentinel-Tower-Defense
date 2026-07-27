@@ -1,52 +1,52 @@
-[gd_scene format=3 uid="uid://cherxf1uws6j1"]
+[gd_scene format=3 uid="uid://dix3h7n4iq8yv"]
 
-[ext_resource type="Script" uid="uid://vdifa7foqxra" path="res://scenes/sentinels/sentinel_security_architect.gd" id="1_rk605"]
-[ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="2_rk605"]
-[ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="3_e32ag"]
-[ext_resource type="Texture2D" uid="uid://dj56rn3t4lvwk" path="res://graphics/currency/gold_gain.png" id="4_5i8g6"]
-[ext_resource type="Texture2D" uid="uid://bhe1pw8va777g" path="res://texture/0001.png" id="5_wye6e"]
+[ext_resource type="Script" uid="uid://dwmskfb3hjo3k" path="res://scenes/sentinels/sentinel_ethical_hacker.gd" id="1_wt8kl"]
+[ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="2_wt8kl"]
+[ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="3_m2n11"]
+[ext_resource type="Texture2D" uid="uid://dj56rn3t4lvwk" path="res://graphics/currency/gold_gain.png" id="4_qy1i3"]
+[ext_resource type="Texture2D" uid="uid://bhe1pw8va777g" path="res://texture/0001.png" id="5_rxhxj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ao5c7"]
-atlas = ExtResource("2_rk605")
-region = Rect2(0, 0, 256, 384)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgh1i"]
+atlas = ExtResource("2_wt8kl")
+region = Rect2(768, 0, 256, 448)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e32ag"]
-atlas = ExtResource("2_rk605")
-region = Rect2(256, 0, 256, 384)
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2n11"]
+atlas = ExtResource("2_wt8kl")
+region = Rect2(1024, 0, 256, 448)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5i8g6"]
-atlas = ExtResource("2_rk605")
-region = Rect2(512, 0, 256, 384)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy1i3"]
+atlas = ExtResource("2_wt8kl")
+region = Rect2(1280, 0, 256, 448)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wye6e"]
-atlas = ExtResource("2_rk605")
-region = Rect2(256, 0, 256, 384)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxhxj"]
+atlas = ExtResource("2_wt8kl")
+region = Rect2(1024, 0, 256, 448)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ogf1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ao5c7")
+"texture": SubResource("AtlasTexture_xgh1i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e32ag")
+"texture": SubResource("AtlasTexture_m2n11")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5i8g6")
+"texture": SubResource("AtlasTexture_qy1i3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wye6e")
+"texture": SubResource("AtlasTexture_rxhxj")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_rk605"]
+[sub_resource type="Gradient" id="Gradient_wt8kl"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rk605"]
-gradient = SubResource("Gradient_rk605")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xgh1i"]
+gradient = SubResource("Gradient_wt8kl")
 fill = 1
 fill_from = Vector2(0.50427353, 0.5)
 fill_to = Vector2(0.5769231, 0)
@@ -107,27 +107,27 @@ collision_bounce = 0.61
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3oo1d"]
 polygon = PackedVector2Array(-117, 44, 130, 44, 81.890625, 49.181023, 0, 58)
 
-[node name="SentinelSecurityArchitect" type="Node2D" unique_id=1163133944]
+[node name="SentinelEthicalHacker" type="Node2D" unique_id=1163133944]
 z_index = 2
-script = ExtResource("1_rk605")
+script = ExtResource("1_wt8kl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=145167270]
-position = Vector2(0.12500429, -85.71876)
+position = Vector2(0.12500429, -106.71875)
 scale = Vector2(0.6552735, 0.65527356)
 sprite_frames = SubResource("SpriteFrames_2ogf1")
 autoplay = "default"
-frame_progress = 0.2896146
+frame_progress = 0.32970747
 
-[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D" unique_id=525947619]
-position = Vector2(-1.7168467, 119.368095)
-scale = Vector2(1.2876302, 0.3576751)
-energy = 1.63
-texture = SubResource("GradientTexture2D_rk605")
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D" unique_id=1697657176]
+position = Vector2(-0.16741657, 161.76714)
+scale = Vector2(1.5802655, 0.2818748)
+energy = 5.91
+texture = SubResource("GradientTexture2D_xgh1i")
 
-[node name="PointLight2D2" type="PointLight2D" parent="AnimatedSprite2D" unique_id=1520295811]
-position = Vector2(-0.95380735, 159.04619)
-scale = Vector2(3.0283158, 0.64381516)
-texture = SubResource("GradientTexture2D_rk605")
+[node name="PointLight2D2" type="PointLight2D" parent="AnimatedSprite2D" unique_id=1018177176]
+position = Vector2(-90.22625, -97.28281)
+scale = Vector2(0.5234983, 1.2177356)
+texture = SubResource("GradientTexture2D_xgh1i")
 
 [node name="ClickArea" type="Area2D" parent="." unique_id=1739627776]
 collision_layer = 8
@@ -137,11 +137,19 @@ collision_mask = 0
 position = Vector2(-0.5, -71.875)
 shape = SubResource("RectangleShape2D_my3uq")
 
-[node name="TowerMenu" parent="." unique_id=872359436 instance=ExtResource("3_e32ag")]
+[node name="TowerMenu" parent="." unique_id=872359436 instance=ExtResource("3_m2n11")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 64.0
-offset_top = -161.0
+offset_top = -163.0
 offset_right = 64.0
-offset_bottom = -161.0
+offset_bottom = -163.0
+grow_horizontal = 1
+grow_vertical = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=164587640]
 autostart = true
@@ -151,7 +159,7 @@ texture_filter = 2
 position = Vector2(0, -176)
 emitting = false
 amount = 5
-texture = ExtResource("4_5i8g6")
+texture = ExtResource("4_qy1i3")
 lifetime = 4.0
 one_shot = true
 speed_scale = 4.09
@@ -165,7 +173,7 @@ material = SubResource("CanvasItemMaterial_e0uin")
 position = Vector2(0, -188)
 emitting = false
 amount = 10
-texture = ExtResource("5_wye6e")
+texture = ExtResource("5_rxhxj")
 lifetime = 3.0
 one_shot = true
 speed_scale = 4.0

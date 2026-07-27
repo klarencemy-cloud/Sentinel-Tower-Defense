@@ -49,6 +49,7 @@ var backup_server_invincible := false
 
 var is_play_shown: bool = false # to check if play button is visible
 
+var sentinel_ethical_deployed: bool = false
 var sentinel_sysad_deployed: bool = false
 var sentinel_intrusion_deployed: bool = false
  # for the intrusion analyst shield
@@ -64,115 +65,12 @@ var damage_reduction: float = 0
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
-enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, ANTIVIRUS, DATA_LOSS_PREVENTION, QUARANTINE_CANNON, IDPS, BACKUP_SERVER, SANDBOX_ANALYZER, AD_BLOCKER, ACCESS_CONTROL_SYSTEM, ENDPOINT_PROTECTION, AI_SECURITY}
+enum Tower {SPAM_FILTER, ANTIVIRUS, DATA_LOSS_PREVENTION, QUARANTINE_CANNON, IDPS, BACKUP_SERVER, SANDBOX_ANALYZER, AD_BLOCKER, ACCESS_CONTROL_SYSTEM, ENDPOINT_PROTECTION, AI_SECURITY}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION, LASER}
-enum Sentinel {SYSAD, INTRUSION, SECURITY, MALWARE, DECEPTION}
+enum Sentinel {ETHICAL, SYSAD, INTRUSION, SECURITY, MALWARE, DECEPTION}
 enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2, BOSS3, BOSS4, BOSS5}
 enum Ability {FIREWALL}
 var TOWER_DATA = {
-	Tower.BASIC: {
-		'name': 'Basic',
-		'cost': 20,
-		'server_load': 15,
-		'damage': 2,
-		'reload_time': 1.0,
-		'range': 1000,
-		'crit rate': 0,
-		'crit damage': 50,
-		'explosion_radius': 100,
-		'bullet': Bullet.SINGLE,
-		'thumbnail': "res://graphics/ui/tower thumbnails 2/ACS.png",
-		'scene': "res://scenes/towers/single_tower.tscn",
-		'upgrade1': "Damage",
-		'upgrade1level': 0,
-		'upgrade1amount': 1,
-		'upgrade2': "Attack Speed",
-		'upgrade2level': 0,
-		'upgrade2amount': 0.2,
-		'upgrade3': "Damage",
-		'upgrade3level': 0,
-		'upgrade3amount': 1,
-		'upgrade4': "Crit Rate",
-		'upgrade4level': 0,
-		'upgrade4amount': 15,
-		'upgrade5': "Crit Damage",
-		'upgrade5level': 0,
-		'upgrade5amount': 25,
-		'upgrade6': "Range",
-		'upgrade6level': 0,
-		'upgrade6amount': 25,
-		'tier1abilityunlocked': false,
-		'tier2abilityunlocked': false,
-		'tier3abilityunlocked': false, },
-
-	Tower.BLAST: {
-		'name': 'Blaster',
-		'cost': 30,
-		'damage': 3,
-		'reload_time': 1.5,
-		'server_load': 25,
-		'range': 50,
-		'crit rate': 0,
-		'crit damage': 50,
-		'bullet': Bullet.FIRE,
-		'thumbnail': "res://graphics/ui/tower thumbnails 2/SOAR.png",
-		'scene': "res://scenes/towers/blaster_tower.tscn",
-		'upgrade1': "Damage",
-		'upgrade1level': 0,
-		'upgrade1amount': 1,
-		'upgrade2': "Attack Speed",
-		'upgrade2level': 0,
-		'upgrade2amount': 0.2,
-		'upgrade3': "Damage",
-		'upgrade3level': 0,
-		'upgrade3amount': 1,
-		'upgrade4': "Attack Speed",
-		'upgrade4level': 0,
-		'upgrade4amount': 0.2,
-		'upgrade5': "Attack Speed",
-		'upgrade5level': 0,
-		'upgrade5amount': 0.2,
-		'upgrade6': "Range",
-		'upgrade6level': 0,
-		'upgrade6amount': 25,
-		'tier1abilityunlocked': false,
-		'tier2abilityunlocked': false,
-		'tier3abilityunlocked': false, },
-		
-	Tower.MORTAR: {
-		'name': 'Mortar',
-		'cost': 30,
-		'reload_time': 2.0,
-		'server_load': 50,
-		'damage': 5,
-		'explosion_radius': 100,
-		'crit rate': 0,
-		'crit damage': 50,
-		'range': 200,
-		'bullet': Bullet.MORTAR_EXPLOSION,
-		'thumbnail': "res://graphics/ui/tower thumbnails 2/SANDBOX.png",
-		'scene': "res://scenes/towers/mortar_tower.tscn",
-		'upgrade1': "Damage",
-		'upgrade1level': 0,
-		'upgrade1amount': 1,
-		'upgrade2': "Attack Speed",
-		'upgrade2level': 0,
-		'upgrade2amount': 0.2,
-		'upgrade3': "Damage",
-		'upgrade3level': 0,
-		'upgrade3amount': 1,
-		'upgrade4': "Crit Rate",
-		'upgrade4level': 0,
-		'upgrade4amount': 15,
-		'upgrade5': "Crit Damage",
-		'upgrade5level': 0,
-		'upgrade5amount': 25,
-		'upgrade6': "Attack Speed",
-		'upgrade6level': 0,
-		'upgrade6amount': 0.2,
-		'tier1abilityunlocked': false,
-		'tier2abilityunlocked': false,
-		'tier3abilityunlocked': false, },
 	Tower.SPAM_FILTER: {
 		'name': 'Spam Filter',
 		'cost': 45,
@@ -671,6 +569,33 @@ func calculate_crit_damage(tower_type: int, base_damage: int) -> int:
 
 
 var SENTINEL_DATA = {
+	Sentinel.ETHICAL: {
+		'name': 'Ethical Hacker',
+		'cooldown': 3,
+		'range': 1000,
+		'thumbnail': "res://graphics/sentinels/thumbnail/ETHICALHACKER.png",
+		'scene': "res://scenes/sentinels/sentinel_ethical_hacker.tscn",
+		'upgrade1': "Damage",
+		'upgrade1level': 0,
+		'upgrade1amount': 1,
+		'upgrade2': "Attack Speed",
+		'upgrade2level': 0,
+		'upgrade2amount': 0.2,
+		'upgrade3': "Damage",
+		'upgrade3level': 0,
+		'upgrade3amount': 1,
+		'upgrade4': "Crit Rate",
+		'upgrade4level': 0,
+		'upgrade4amount': 15,
+		'upgrade5': "Crit Damage",
+		'upgrade5level': 0,
+		'upgrade5amount': 25,
+		'upgrade6': "Range",
+		'upgrade6level': 0,
+		'upgrade6amount': 25,
+		'tier1abilityunlocked': false,
+		'tier2abilityunlocked': false,
+		'tier3abilityunlocked': false, },
 	Sentinel.SYSAD: {
 		'name': 'System Administrator',
 		'cooldown': 60,
@@ -726,7 +651,7 @@ var SENTINEL_DATA = {
 		'tier2abilityunlocked': false,
 		'tier3abilityunlocked': false, },
 	Sentinel.SECURITY: {
-		'name': 'Intrusion Analyst',
+		'name': 'Security Architect',
 		'cooldown': 30,
 		'range': 1000,
 		'thumbnail': "res://graphics/sentinels/thumbnail/SECURITYARCHITECT.png",
@@ -806,7 +731,6 @@ var SENTINEL_DATA = {
 		'tier1abilityunlocked': false,
 		'tier2abilityunlocked': false,
 		'tier3abilityunlocked': false, }
-
 }
 
 var ENEMY_DATA = {

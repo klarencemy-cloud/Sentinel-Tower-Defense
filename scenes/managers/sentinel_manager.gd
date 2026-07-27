@@ -2,6 +2,7 @@ extends Node
 
 
 var sentinel_scenes = {
+	Data.Sentinel.ETHICAL: "res://scenes/sentinels/sentinel_ethical_hacker.tscn",
 	Data.Sentinel.SYSAD: "res://scenes/sentinels/sentinel_system_administrator.tscn",
 	Data.Sentinel.INTRUSION: "res://scenes/sentinels/sentinel_intrusion_analyst.tscn",
 	Data.Sentinel.SECURITY: "res://scenes/sentinels/sentinel_security_architect.tscn",
@@ -88,20 +89,24 @@ func _try_place_sentinel(cell_pos: Vector2i, world_pos: Vector2) -> void:
 
 	match selected_sentinel:
 		0:
-			Data.sentinel_sysad_deployed = true
+			Data.sentinel_ethical_deployed = true
 			Data.deactivate.emit()
 		1:
-			Data.sentinel_intrusion_deployed = true
+			Data.sentinel_sysad_deployed = true
 			Data.deactivate.emit()
 		2:
-			Data.sentinel_security_deployed = true
+			Data.sentinel_intrusion_deployed = true
 			Data.deactivate.emit()
 		3:
-			Data.sentinel_malware_deployed = true
+			Data.sentinel_security_deployed = true
 			Data.deactivate.emit()
 		4:
+			Data.sentinel_malware_deployed = true
+			Data.deactivate.emit()
+		5:
 			Data.sentinel_deception_deployed = true
 			Data.deactivate.emit()
+
 
 func _get_sentinel_preview() -> Sprite2D:
 	var preview = level_root.get_node_or_null("BG/TowerPreview")

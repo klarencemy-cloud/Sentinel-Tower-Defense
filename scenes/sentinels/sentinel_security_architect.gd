@@ -8,7 +8,7 @@ var tween: Tween
 var placed = false
 
 var heal_percentage: float = .03
-var cooldown = Data.SENTINEL_DATA[2]["cooldown"]
+var cooldown = Data.SENTINEL_DATA[3]["cooldown"]
 
 func ability_cooldown():
 	$ReloadTimer.wait_time = cooldown

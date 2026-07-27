@@ -7,10 +7,20 @@
 [ext_resource type="AudioStream" uid="uid://sicd08w0ce6c" path="res://audio/bullet.wav" id="5_nyic2"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_o0cti"]
 
+[sub_resource type="Gradient" id="Gradient_1oiqa"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_npkv1"]
+gradient = SubResource("Gradient_1oiqa")
+fill = 1
+fill_from = Vector2(0.53846157, 0.46153846)
+fill_to = Vector2(0.8803419, 0.13247864)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ku0u"]
 radius = 100.0
 
 [node name="Antivirus" unique_id=2039509527 instance=ExtResource("1_1oiqa")]
+z_index = 2
 scale = Vector2(0.7, 0.7)
 script = ExtResource("2_1oiqa")
 
@@ -24,12 +34,30 @@ texture = ExtResource("4_npkv1")
 offset = Vector2(-8.0637055e-06, 20.8416)
 flip_v = true
 
+[node name="PointLight2D" type="PointLight2D" parent="Turret" index="0" unique_id=1088892458]
+position = Vector2(1.3737863e-06, 27.683878)
+scale = Vector2(1, 1.5771056)
+texture = SubResource("GradientTexture2D_npkv1")
+
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
 shape = SubResource("CircleShape2D_6ku0u")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
 position = Vector2(0.05866116, -25.124151)
 scale = Vector2(0.9999996, 0.9999996)
+
+[node name="TowerMenu" parent="." index="5" unique_id=489153716]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 50.000008
+offset_top = -82.85714
+offset_right = 50.000008
+offset_bottom = -82.85714
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="ShootSound" parent="." index="7" unique_id=1474961134]
 stream = ExtResource("5_nyic2")

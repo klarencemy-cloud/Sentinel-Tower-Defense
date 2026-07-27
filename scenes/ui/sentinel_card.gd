@@ -23,6 +23,8 @@ func _on_pressed() -> void:
 
 func toggle_active():
 	match id:
+		Data.Sentinel.ETHICAL:
+			disabled = Data.sentinel_ethical_deployed
 		Data.Sentinel.SYSAD:
 			disabled = Data.sentinel_sysad_deployed
 		Data.Sentinel.INTRUSION:

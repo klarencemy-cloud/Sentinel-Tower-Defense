@@ -56,6 +56,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_ose5w"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3ihmr"]
+gradient = SubResource("Gradient_ose5w")
+fill = 1
+fill_from = Vector2(0.50427353, 0.5)
+fill_to = Vector2(0.5769231, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my3uq"]
 size = Vector2(159, 224.25)
 
@@ -123,6 +132,12 @@ sprite_frames = SubResource("SpriteFrames_2ogf1")
 autoplay = "default"
 frame_progress = 0.27308303
 
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D" unique_id=76544529]
+position = Vector2(-1.7168467, 130.05064)
+scale = Vector2(1.2876302, 0.309985)
+energy = 0.87
+texture = SubResource("GradientTexture2D_3ihmr")
+
 [node name="ClickArea" type="Area2D" parent="." unique_id=1739627776]
 collision_layer = 8
 collision_mask = 0
@@ -132,6 +147,10 @@ position = Vector2(-0.5, -71.875)
 shape = SubResource("RectangleShape2D_my3uq")
 
 [node name="TowerMenu" parent="." unique_id=872359436 instance=ExtResource("3_hlxys")]
+offset_left = 62.0
+offset_top = -162.0
+offset_right = 62.0
+offset_bottom = -162.0
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=164587640]
 autostart = true

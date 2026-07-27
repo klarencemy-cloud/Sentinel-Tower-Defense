@@ -32,12 +32,11 @@ func _on_reload_timer_timeout() -> void:
 
 	shoot_mortar.emit(
 	$Turret.global_position,
-	enemies[0],          # pass the enemy
+	enemies[0], # pass the enemy
 	int(final_damage),
 	type,
 	tower_id
 	)
-
 
 
 func _on_pay_button_pressed() -> void:

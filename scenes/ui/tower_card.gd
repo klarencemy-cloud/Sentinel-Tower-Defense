@@ -1,6 +1,6 @@
 extends Button
 
-var id: Data.Tower = Data.Tower.BASIC
+var id: Data.Tower
 var cost: int
 signal press(tower_enum: Data.Tower)
 @onready var free_label = $TextureRect/Free/FreeLabel

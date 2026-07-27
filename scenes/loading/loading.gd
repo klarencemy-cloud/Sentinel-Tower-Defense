@@ -24,6 +24,7 @@ var tips: Array[String] = [
 
 
 func _ready() -> void:
+	Data.sentinel_ethical_deployed = false
 	Data.sentinel_sysad_deployed = false
 	Data.sentinel_intrusion_deployed = false
 	Data.sentinel_security_deployed = false

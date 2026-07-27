@@ -7,6 +7,15 @@
 [ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="5_frx7f"]
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_s3ndn"]
 
+[sub_resource type="Gradient" id="Gradient_frx7f"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s3ndn"]
+gradient = SubResource("Gradient_frx7f")
+fill = 1
+fill_from = Vector2(0.4957265, 0.47008547)
+fill_to = Vector2(0.9102564, 0.02991453)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frx7f"]
 size = Vector2(100, 161)
 
@@ -74,6 +83,7 @@ shader_parameter/Speed = Vector2(0.055, 0)
 shader_parameter/Basic_Texture = ExtResource("6_s3ndn")
 
 [node name="TowerBasic" type="Node2D" unique_id=1855858258 groups=["Towers"]]
+z_index = 2
 script = ExtResource("1_4jq7i")
 
 [node name="Turret" type="Sprite2D" parent="." unique_id=34233293]
@@ -84,6 +94,11 @@ texture = ExtResource("3_frx7f")
 offset = Vector2(0, 35)
 flip_h = true
 flip_v = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Turret" unique_id=1291104854]
+position = Vector2(-0.55241394, 84.930855)
+scale = Vector2(1.9666955, 2.0443754)
+texture = SubResource("GradientTexture2D_s3ndn")
 
 [node name="ClickArea" type="Area2D" parent="." unique_id=2143986532]
 collision_layer = 8
@@ -111,6 +126,10 @@ offset_bottom = 32.0
 texture_normal = ExtResource("3_6gdv8")
 
 [node name="TowerMenu" parent="." unique_id=872359436 instance=ExtResource("5_6gdv8")]
+offset_left = 33.0
+offset_top = -90.0
+offset_right = 33.0
+offset_bottom = -90.0
 
 [node name="Line2D" type="Line2D" parent="." unique_id=727007347]
 visible = false

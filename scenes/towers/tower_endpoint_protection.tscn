@@ -46,6 +46,16 @@ color_ramp = SubResource("GradientTexture1D_pe3k2")
 turbulence_enabled = true
 turbulence_noise_speed_random = 0.0
 
+[sub_resource type="Gradient" id="Gradient_jnnmb"]
+offsets = PackedFloat32Array(0, 0.99029124)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tm11s"]
+gradient = SubResource("Gradient_jnnmb")
+fill = 1
+fill_from = Vector2(0.46581197, 0.47008547)
+fill_to = Vector2(0.7777778, 0.094017096)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_56y0f"]
 radius = 64.50775
 
@@ -68,6 +78,7 @@ color = Color(0, 0.6996187, 0.6823587, 1)
 anim_speed_max = 1.0
 
 [node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_jnnmb")]
+z_index = 2
 script = ExtResource("2_jnnmb")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
@@ -88,6 +99,11 @@ texture = ExtResource("5_i1106")
 lifetime = 0.52
 process_material = SubResource("ParticleProcessMaterial_u1lur")
 
+[node name="PointLight2D" type="PointLight2D" parent="Turret" index="1" unique_id=2051803827]
+position = Vector2(0.71428704, 45.71428)
+scale = Vector2(1.1830357, 1.2946429)
+texture = SubResource("GradientTexture2D_tm11s")
+
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
 position = Vector2(-0.5, 0)
 shape = SubResource("CircleShape2D_56y0f")
@@ -107,6 +123,13 @@ process_material = SubResource("ParticleProcessMaterial_dbesr")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
 position = Vector2(0, -40.25)
+
+[node name="TowerMenu" parent="." index="6" unique_id=489153716]
+visible = false
+offset_left = 28.0
+offset_top = -91.0
+offset_right = 28.0
+offset_bottom = -91.0
 
 [node name="ShootSound" parent="." index="8" unique_id=1474961134]
 stream = ExtResource("6_blkop")
