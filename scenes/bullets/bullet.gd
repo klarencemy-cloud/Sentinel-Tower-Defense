@@ -177,5 +177,3 @@ func ricochet(from_enemy: Node) -> void:
 
 	get_parent().add_child(new_bullet)
 	queue_free()
-
-
