@@ -46,7 +46,6 @@ fill_to = Vector2(0.6111111, 0.047008548)
 radius = 130.31117
 
 [node name="TowerBasic" unique_id=1033549676 instance=ExtResource("1_l7y1m")]
-z_index = 2
 script = ExtResource("2_d2kd5")
 
 [node name="Base" parent="." index="0" unique_id=230566731]

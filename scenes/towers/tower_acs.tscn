@@ -40,15 +40,16 @@ color = Color(0, 0.6996187, 0.6823587, 1)
 anim_speed_max = 1.0
 
 [node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_qdga5")]
-z_index = 2
 script = ExtResource("2_qdga5")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
+light_mask = 64
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_n7eo6")
 offset = Vector2(0, -17.142868)
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
+light_mask = 64
 position = Vector2(0, -65.999985)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_jhwlm")
@@ -57,6 +58,7 @@ texture = ExtResource("4_jhwlm")
 position = Vector2(-5.722046e-06, -37.142853)
 scale = Vector2(1.5625, 1)
 energy = 0.84
+range_item_cull_mask = 64
 texture = SubResource("GradientTexture2D_jhwlm")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]

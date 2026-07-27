@@ -112,6 +112,7 @@ z_index = 2
 script = ExtResource("1_rk605")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=145167270]
+light_mask = 4
 position = Vector2(0.12500429, -85.71876)
 scale = Vector2(0.6552735, 0.65527356)
 sprite_frames = SubResource("SpriteFrames_2ogf1")
@@ -122,11 +123,13 @@ frame_progress = 0.2896146
 position = Vector2(-1.7168467, 119.368095)
 scale = Vector2(1.2876302, 0.3576751)
 energy = 1.63
+range_item_cull_mask = 4
 texture = SubResource("GradientTexture2D_rk605")
 
 [node name="PointLight2D2" type="PointLight2D" parent="AnimatedSprite2D" unique_id=1520295811]
 position = Vector2(-0.95380735, 159.04619)
 scale = Vector2(3.0283158, 0.64381516)
+range_item_cull_mask = 4
 texture = SubResource("GradientTexture2D_rk605")
 
 [node name="ClickArea" type="Area2D" parent="." unique_id=1739627776]

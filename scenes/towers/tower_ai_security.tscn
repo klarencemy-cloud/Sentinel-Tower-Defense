@@ -29,14 +29,15 @@ fill_to = Vector2(0.8333333, 0.11111111)
 radius = 130.31117
 
 [node name="TowerBasic" unique_id=1033549676 instance=ExtResource("1_sw2vj")]
-z_index = 2
 script = ExtResource("2_sw2vj")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
+light_mask = 128
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_ixafn")
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
+light_mask = 128
 position = Vector2(-0.8543234, -14.676177)
 rotation = -3.1415927
 scale = Vector2(0.7, 0.7)
@@ -58,6 +59,7 @@ texture_mode = 2
 [node name="PointLight2D" type="PointLight2D" parent="Turret/Particles" index="1" unique_id=1597047178]
 position = Vector2(-0.7656373, -19.765638)
 scale = Vector2(0.88232386, 0.88232386)
+range_item_cull_mask = 128
 texture = SubResource("GradientTexture2D_45hyi")
 
 [node name="LaserOrigin" type="Marker2D" parent="Turret" index="1" unique_id=778794618]

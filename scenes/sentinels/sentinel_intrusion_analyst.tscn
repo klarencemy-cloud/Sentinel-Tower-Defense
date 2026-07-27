@@ -53,10 +53,12 @@ fill_to = Vector2(0.5769231, 0)
 size = Vector2(159, 224.25)
 
 [node name="SentinelIntrusionAnalyst" type="Node2D" unique_id=1163133944]
+light_mask = 8
 z_index = 2
 script = ExtResource("1_jmlfw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=145167270]
+light_mask = 8
 position = Vector2(0.12500429, -106.71875)
 scale = Vector2(0.6552735, 0.65527356)
 sprite_frames = SubResource("SpriteFrames_2ogf1")
@@ -64,9 +66,11 @@ autoplay = "default"
 frame_progress = 0.42466184
 
 [node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D" unique_id=507424621]
+light_mask = 13
 position = Vector2(-1.7168436, 168.96571)
 scale = Vector2(2.1460505, 0.3815192)
 energy = 1.12
+range_item_cull_mask = 8
 texture = SubResource("GradientTexture2D_kawam")
 
 [node name="ClickArea" type="Area2D" parent="." unique_id=1739627776]

@@ -109,6 +109,7 @@ polygon = PackedVector2Array(-117, 44, 130, 44, 81.890625, 49.181023, 0, 58)
 
 [node name="SentinelEthicalHacker" type="Node2D" unique_id=1163133944]
 z_index = 2
+y_sort_enabled = true
 script = ExtResource("1_wt8kl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=145167270]

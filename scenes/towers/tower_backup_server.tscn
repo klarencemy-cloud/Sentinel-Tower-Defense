@@ -87,6 +87,8 @@ z_index = 2
 script = ExtResource("1_4jq7i")
 
 [node name="Turret" type="Sprite2D" parent="." unique_id=34233293]
+light_mask = 524288
+visibility_layer = 524288
 position = Vector2(0.13348395, -13.334874)
 rotation = -3.1415927
 scale = Vector2(0.69794554, 0.6979456)
@@ -98,6 +100,7 @@ flip_v = true
 [node name="PointLight2D" type="PointLight2D" parent="Turret" unique_id=1291104854]
 position = Vector2(-0.55241394, 84.930855)
 scale = Vector2(1.9666955, 2.0443754)
+range_item_cull_mask = 524288
 texture = SubResource("GradientTexture2D_s3ndn")
 
 [node name="ClickArea" type="Area2D" parent="." unique_id=2143986532]

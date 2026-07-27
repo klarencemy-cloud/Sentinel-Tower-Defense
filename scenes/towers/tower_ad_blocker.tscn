@@ -89,15 +89,16 @@ color_initial_ramp = SubResource("GradientTexture1D_ohmc7")
 turbulence_noise_speed_random = 0.0
 
 [node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_ahwdj")]
-z_index = 2
 script = ExtResource("2_ahwdj")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
+light_mask = 4
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_ohmc7")
 offset = Vector2(0, -17.142868)
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
+light_mask = 4
 position = Vector2(0, -63.999992)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_ahwdj")
@@ -132,6 +133,7 @@ texture_mode = 2
 position = Vector2(-7.748604e-07, -7.1428742)
 scale = Vector2(2.7678573, 1.9196427)
 energy = 0.6
+range_item_cull_mask = 4
 texture = SubResource("GradientTexture2D_su0h8")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]

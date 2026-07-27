@@ -68,15 +68,16 @@ radius = 92.26592
 size = Vector2(94, 138)
 
 [node name="TowerQuarantineCannon" unique_id=525808216 instance=ExtResource("1_7a66m")]
-z_index = 2
 script = ExtResource("2_7a66m")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
+light_mask = 32
 position = Vector2(0, -0.99999803)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_qhywc")
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
+light_mask = 32
 position = Vector2(0, -28.999998)
 rotation = 3.1415927
 scale = Vector2(0.7, 0.7)
@@ -103,6 +104,7 @@ frame_progress = 1.0
 position = Vector2(-0.6442132, -1.4285688)
 scale = Vector2(2.5827925, 2.0830731)
 energy = 0.62
+range_item_cull_mask = 32
 texture = SubResource("GradientTexture2D_0c3ac")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]

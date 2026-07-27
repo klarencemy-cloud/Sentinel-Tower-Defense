@@ -11,6 +11,7 @@ radius = 104.019226
 size = Vector2(100, 161)
 
 [node name="Tower" type="Node2D" unique_id=855770893 groups=["Towers"]]
+z_index = 2
 script = ExtResource("1_by3tn")
 
 [node name="Base" type="Sprite2D" parent="." unique_id=230566731]

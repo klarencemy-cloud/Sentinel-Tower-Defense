@@ -33,6 +33,7 @@ func _on_tower_menu_delete_press() -> void:
 	if ui:
 		ui.refresh_tower_cards()
 	Data.sentinel_ethical_deployed = false
+	Data.deactivate.emit()
 
 
 func hide_ui():
