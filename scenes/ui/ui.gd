@@ -26,7 +26,6 @@ var tower_card_scene = preload("res://scenes/ui/tower_card.tscn")
 var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
 var sentinel_card_scene = preload("res://scenes/ui/sentinel_card.tscn")
 
-var is_play_shown: bool = false
 
 var fade_tween: Tween
 
@@ -77,13 +76,12 @@ func _ready() -> void:
 		$Control/HBoxContainer.position.y = 780
 
 	if Data.current_wave > 3:
-		is_play_shown = true
+		Data.is_play_shown = true
 		
-	if !is_play_shown and !Data.is_sandbox:
-		$Control/TextureRect/HBoxContainer/WaveButton.visible = false
+	if !Data.is_play_shown and !Data.is_sandbox:
+		show_start(false)
 	else:
-		$Control/TextureRect/HBoxContainer/WaveButton.visible = true
-	
+		show_start(true)
 	if Data.current_wave >= 5 or Data.is_sandbox:
 		toggle_skill_activation()
 	
@@ -118,6 +116,9 @@ func _ready() -> void:
 	else:
 		$Control/HBoxContainer/Skill1.disabled = false
 		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
+
+func show_start(state: bool) -> void:
+	$Control/TextureRect/HBoxContainer/WaveButton.visible = state
 
 func tower_select(tower_enum: Data.Tower):
 	place_tower.emit(tower_enum)
@@ -186,7 +187,7 @@ func update_wave_label() -> void:
 
 func show_play_button(state: bool):
 	$Control/TextureRect/HBoxContainer/WaveButton.visible = true
-	is_play_shown = state
+	Data.is_play_shown = state
 
 func is_auto_enabled() -> bool:
 	var auto_button = $Control/AutoLabel/AutoButton

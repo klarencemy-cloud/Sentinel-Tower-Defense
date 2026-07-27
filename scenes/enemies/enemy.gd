@@ -326,7 +326,8 @@ func _process(delta: float):
 		var raw_dmg = damage
 		processed_enemy_damage = Defense._dmg_reduc_armor(raw_dmg) # sends dmg to defense_data.gd to reduc dmg based on armor
 		if !Data.backup_server_invincible:
-			Data.health -= processed_enemy_damage
+			Data.health -= processed_enemy_damage - (processed_enemy_damage * Data.damage_reduction) # in decimal so it can be reduce by sentinel
+			print(processed_enemy_damage - (processed_enemy_damage * Data.damage_reduction))
 		_update_active_enemy_counter(enemy_type_stats, -1)
 		queue_free()
 	if enemy_type_stats == Data.Enemy.SPYWARE:
@@ -856,7 +857,7 @@ func infect_trap(tower = null) -> void:
 	# Trap infected enemies
 	is_trapped = true
 	if enemy_type:
-		enemy_type.modulate = Color(0.4, 0.7, 0.4, 1.0) 
+		enemy_type.modulate = Color(0.4, 0.7, 0.4, 1.0)
 
 func release_from_infect_trap() -> void:
 	is_infected_trap = false

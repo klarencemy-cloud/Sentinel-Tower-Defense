@@ -43,10 +43,11 @@ var before_level_index: int
 var current_level_index: int = 0 # map count 0 = level 1
 
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 10 # wave count
+var current_wave: int = 1 # wave count
 var backup_server_placed := false
 var backup_server_invincible := false
 
+var is_play_shown: bool = false # to check if play button is visible
 
 var sentinel_sysad_deployed: bool = false
 var sentinel_intrusion_deployed: bool = false
@@ -56,6 +57,10 @@ signal destroy_shield()
 var sentinel_security_deployed: bool = false
 var sentinel_malware_deployed: bool = false
 var sentinel_deception_deployed: bool = false
+
+
+var damage_reduction: float = 0
+
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
@@ -647,7 +652,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.INTRUSION: {
 		'name': 'Intrusion Analyst',
-		'cooldown': 3,
+		'cooldown': 30,
 		'range': 1000,
 		'thumbnail': "res://graphics/sentinels/thumbnail/INTRUSIONANALYST.png",
 		'scene': "res://scenes/sentinels/sentinel_intrusion_analyst.tscn",
@@ -674,7 +679,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.SECURITY: {
 		'name': 'Intrusion Analyst',
-		'cooldown': 3,
+		'cooldown': 30,
 		'range': 1000,
 		'thumbnail': "res://graphics/sentinels/thumbnail/SECURITYARCHITECT.png",
 		'scene': "res://scenes/sentinels/sentinel_security_architect.tscn",
