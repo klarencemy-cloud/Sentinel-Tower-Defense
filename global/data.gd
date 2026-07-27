@@ -64,7 +64,7 @@ var damage_reduction: float = 0
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
-enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, ANTIVIRUS, QUARANTINE_CANNON, IDPS, BACKUP_SERVER, SANDBOX_ANALYZER, AD_BLOCKER, ACCESS_CONTROL_SYSTEM, ENDPOINT_PROTECTION, AI_SECURITY}
+enum Tower {BASIC, BLAST, MORTAR, SPAM_FILTER, ANTIVIRUS, DATA_LOSS_PREVENTION, QUARANTINE_CANNON, IDPS, BACKUP_SERVER, SANDBOX_ANALYZER, AD_BLOCKER, ACCESS_CONTROL_SYSTEM, ENDPOINT_PROTECTION, AI_SECURITY}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION, LASER}
 enum Sentinel {SYSAD, INTRUSION, SECURITY, MALWARE, DECEPTION}
 enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2, BOSS3, BOSS4, BOSS5}
@@ -609,6 +609,54 @@ var TOWER_DATA = {
 		'upgrade6cost': [280, 350, 420],
 		'tier3ability': "Overclocked Core",
 		'tier3abilitydesc': "Laser damage continously increase every second by 10% for upto 100% when hitting the same target.",
+		'tier3abilityunlocked': false,
+		},
+		Tower.DATA_LOSS_PREVENTION: {
+		'name': 'DLP',
+		'cost': 50,
+		'server_load': 25,
+		'damage': 0,
+		'reload_time': 1.50,
+		'range': 1000,
+		'crit rate': 0,
+		'crit damage': 0,
+		'bullet': Bullet.SINGLE,
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/DLP.png",
+		'scene': "res://scenes/towers/tower_data_loss_prevention.tscn",
+		'passive': "Increased Damage to Malwares by 20%",
+		'passive description': "Infects enemies and reduces their damage by 50%.",
+		'upgrade1': "Damage",
+		'upgrade1level': 0,
+		'upgrade1amount': 2,
+		'upgrade1cost': [20, 30, 40],
+		'upgrade2': "Attack Speed",
+		'upgrade2level': 0,
+		'upgrade2amount': 0.1,
+		'upgrade2cost': [20, 30, 40],
+		'tier1ability': "Increased Damage+",
+		'tier1abilitydesc': "Increase total increase damage to 30%.",
+		'tier1abilityunlocked': false,
+		'upgrade3': "Attack Speed",
+		'upgrade3level': 0,
+		'upgrade3amount': [0.1, 0.1, 0.1],
+		'upgrade3cost': [50, 65, 80],
+		'upgrade4': "Crit Rate",
+		'upgrade4level': 0,
+		'upgrade4amount': 15,
+		'upgrade4cost': [50, 65, 80],
+		'tier2ability': "Increased Damage++",
+		'tier2abilitydesc': "Increase total increase damage to 40%.",
+		'tier2abilityunlocked': false,
+		'upgrade5': "Damage",
+		'upgrade5level': 0,
+		'upgrade5amount': [4, 5, 5],
+		'upgrade5cost': [65, 90, 110],
+		'upgrade6': "Range",
+		'upgrade6level': 0,
+		'upgrade6amount': 25,
+		'upgrade6cost': [80, 100, 120],
+		'tier3ability': "Increased Damage+++",
+		'tier3abilitydesc': "Increase total increase damage to 50%.",
 		'tier3abilityunlocked': false,
 		}
 	}
