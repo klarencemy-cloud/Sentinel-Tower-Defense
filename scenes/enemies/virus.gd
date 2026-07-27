@@ -9,4 +9,5 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if $'.'.frame > 2:
+		$GPUParticles2D.restart()
 		$GPUParticles2D.emitting = true

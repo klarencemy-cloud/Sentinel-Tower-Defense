@@ -170,7 +170,7 @@ func update_stats(money: int, health: int):
 		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = "∞"
 		$Control/TextureRect/PlayerCurrentStats/HPBar.value = 100
 	else:
-		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = str(health) 
+		$Control/TextureRect/PlayerCurrentStats/LabelHP.text = str(health)
 		$Control/TextureRect/PlayerCurrentStats/HPBar.max_value = Data.max_health
 		$Control/TextureRect/PlayerCurrentStats/HPBar.value = health
 

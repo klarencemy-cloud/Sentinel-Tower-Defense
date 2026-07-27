@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6u8psv1lt3ce"
-path="res://.godot/imported/firewallbutton.png-c07bd78bb2aca02052465c3b975449cc.ctex"
+uid="uid://c843o7m2bk3s1"
+path="res://.godot/imported/BACKUP.png-6c45927ed69c3b9d2f7607975706fff8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/firewallbutton.png"
-dest_files=["res://.godot/imported/firewallbutton.png-c07bd78bb2aca02052465c3b975449cc.ctex"]
+source_file="res://graphics/ui/tower thumbnails 2/BACKUP.png"
+dest_files=["res://.godot/imported/BACKUP.png-6c45927ed69c3b9d2f7607975706fff8.ctex"]
 
 [params]
 

@@ -302,6 +302,7 @@ do GameDialogueManager.show_script(4)
 => END
 
 ~ ending
+do GameDialogueManager.pause_game(true)
 #[The SERVER Core began glowing, signifying a  new beginning]
 Player: So this is what Project Sentinel was for.
 System: Identity Confirmed.

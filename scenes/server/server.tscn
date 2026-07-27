@@ -534,6 +534,7 @@ shape = SubResource("CircleShape2D_kr8px")
 texture = ExtResource("4_hkcox")
 
 [node name="IntrusionShield" type="TextureRect" parent="." unique_id=1294446950]
+visible = false
 texture_repeat = 2
 material = SubResource("ShaderMaterial_3e01g")
 layout_mode = 0

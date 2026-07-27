@@ -24,6 +24,11 @@ var tips: Array[String] = [
 
 
 func _ready() -> void:
+	Data.sentinel_sysad_deployed = false
+	Data.sentinel_intrusion_deployed = false
+	Data.sentinel_security_deployed = false
+	Data.sentinel_malware_deployed = false
+	Data.sentinel_deception_deployed = false
 	if Data.current_wave <= 10:
 		$Animation/AnimatedSprite2D.play("boss1")
 	elif Data.current_wave <= 20 and Data.current_wave > 10:

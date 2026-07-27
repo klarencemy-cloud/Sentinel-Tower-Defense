@@ -52,7 +52,6 @@ scale = Vector2(1.4285712, 1.4285712)
 [node name="Lightning" type="Line2D" parent="Turret/Particles" index="0" unique_id=110027788]
 material = SubResource("ShaderMaterial_ol7t1")
 points = PackedVector2Array(-6.1456847, -112.32384, 0.8543162, -115.32384, 7.854317, -112.32384)
-default_color = Color(1, 0.87026703, 0.8480768, 1)
 texture_mode = 2
 
 [node name="PointLight2D" type="PointLight2D" parent="Turret/Particles" index="1" unique_id=1597047178]

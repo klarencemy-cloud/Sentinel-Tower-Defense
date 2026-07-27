@@ -2,26 +2,40 @@
 
 [ext_resource type="Texture2D" uid="uid://dachyair3es0o" path="res://graphics/abilities/firewall.png" id="1_q8gp1"]
 [ext_resource type="Script" uid="uid://cv6gmr144mjdw" path="res://scenes/abilities/firewall.gd" id="2_7h5gn"]
+[ext_resource type="Shader" uid="uid://cjs8i8o0vubhe" path="res://texture/shaders/pulse_shader.gdshader" id="2_es3d4"]
 [ext_resource type="Texture2D" uid="uid://1qgvsuhf841g" path="res://graphics/ui/enemyhpbar1.png" id="3_tkr4d"]
 [ext_resource type="Texture2D" uid="uid://b1qsf64nvijgb" path="res://graphics/ui/abilityhpbar.png" id="4_tkr4d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_20aaw"]
+shader = ExtResource("2_es3d4")
+shader_parameter/beat_speed = 0.43800001754512
+shader_parameter/pulse_intensity = 0.0890000042275
+shader_parameter/glow_intensity = 0.1070000050825
+shader_parameter/pulse_color = Color(0, 0.84699595, 0.91779685, 1)
+shader_parameter/use_glow = true
+shader_parameter/use_tint = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8gp1"]
 size = Vector2(119, 122)
 
 [node name="Node2D" type="Node2D" unique_id=225355506]
-z_index = -1
 script = ExtResource("2_7h5gn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1312826852]
+material = SubResource("ShaderMaterial_20aaw")
+position = Vector2(0.04292262, 0.1845535)
+scale = Vector2(0.9141631, 0.9141631)
 texture = ExtResource("1_q8gp1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1957329847]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1134510609]
 position = Vector2(-0.5, 4)
 shape = SubResource("RectangleShape2D_q8gp1")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1918120021]
+visible = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1039812955]
 position = Vector2(-0.5, 4)

@@ -41,8 +41,8 @@ func start_ability_placement(ability: Data.Ability) -> void:
 	var preview = _get_ability_preview()
 	if preview:
 		preview.texture = preload("res://graphics/abilities/firewall.png")
-		preview.scale = Vector2(0.7, 0.7)
-		preview.offset = Vector2(0, -10)
+		preview.scale = Vector2(.9, .9)
+		preview.offset = Vector2(0, .1)
 
 
 func cancel_selection() -> void:

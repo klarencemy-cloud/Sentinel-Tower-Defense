@@ -16,4 +16,9 @@ func _on_quit_pressed() -> void:
 	get_tree().paused = false # unfreezes game #2
 	Data.wave_started = false
 	visible = false # go poof #2
+	Data.sentinel_sysad_deployed = false
+	Data.sentinel_intrusion_deployed = false
+	Data.sentinel_security_deployed = false
+	Data.sentinel_malware_deployed = false
+	Data.sentinel_deception_deployed = false
 	get_tree().change_scene_to_file("res://scenes/mainmenu/main_menu.tscn") # goes back to main menu

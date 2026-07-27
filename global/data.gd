@@ -313,7 +313,7 @@ var TOWER_DATA = {
 		'cost': 550,
 		'damage': 5000,
 		'server_load': 65,
-		'thumbnail': "res://graphics/ui/tower thumbnails/basic.png",
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/BACKUP.png",
 		'scene': "res://scenes/towers/tower_backup_server.tscn",
 		'bullet': Bullet.FIRE,
 		'upgradeable': false,

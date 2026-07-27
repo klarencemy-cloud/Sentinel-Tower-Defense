@@ -1,27 +1,88 @@
 [gd_scene format=3 uid="uid://ckw2r5sxu2dft"]
 
 [ext_resource type="Script" uid="uid://by21bbit8igg0" path="res://scenes/towers/tower_backup_server.gd" id="1_4jq7i"]
-[ext_resource type="Texture2D" uid="uid://bgijljt2l6qml" path="res://graphics/towers/spam filter/spam_filter_base.png" id="1_jrsj1"]
-[ext_resource type="Texture2D" uid="uid://b00gbf4bkr8pr" path="res://graphics/towers/spam filter/spam_filter_turret.png" id="2_4jq7i"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="3_6gdv8"]
+[ext_resource type="Texture2D" uid="uid://c843o7m2bk3s1" path="res://graphics/ui/tower thumbnails 2/BACKUP.png" id="3_frx7f"]
 [ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="5_6gdv8"]
+[ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="5_frx7f"]
+[ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_s3ndn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frx7f"]
 size = Vector2(100, 161)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xogbn"]
+resource_local_to_scene = true
+shader = ExtResource("5_frx7f")
+shader_parameter/Vanishing_Value = 0.7200000342
+shader_parameter/Speed = Vector2(0.07, 0)
+shader_parameter/Basic_Texture = ExtResource("6_s3ndn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_frx7f"]
+resource_local_to_scene = true
+shader = ExtResource("5_frx7f")
+shader_parameter/Vanishing_Value = 0.734000034865
+shader_parameter/Speed = Vector2(0.12, 0)
+shader_parameter/Basic_Texture = ExtResource("6_s3ndn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s3ndn"]
+resource_local_to_scene = true
+shader = ExtResource("5_frx7f")
+shader_parameter/Vanishing_Value = 0.8050000382375
+shader_parameter/Speed = Vector2(0.165, 0)
+shader_parameter/Basic_Texture = ExtResource("6_s3ndn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmx3x"]
+resource_local_to_scene = true
+shader = ExtResource("5_frx7f")
+shader_parameter/Vanishing_Value = 0.8650000410875
+shader_parameter/Speed = Vector2(0.13, 0)
+shader_parameter/Basic_Texture = ExtResource("6_s3ndn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q5g4n"]
+resource_local_to_scene = true
+shader = ExtResource("5_frx7f")
+shader_parameter/Vanishing_Value = 0.8030000381425
+shader_parameter/Speed = Vector2(0.14, 0)
+shader_parameter/Basic_Texture = ExtResource("6_s3ndn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w6fa5"]
+resource_local_to_scene = true
+shader = ExtResource("5_frx7f")
+shader_parameter/Vanishing_Value = 0.7250000344375
+shader_parameter/Speed = Vector2(0.095, 0)
+shader_parameter/Basic_Texture = ExtResource("6_s3ndn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bakjp"]
+resource_local_to_scene = true
+shader = ExtResource("5_frx7f")
+shader_parameter/Vanishing_Value = 0.6770000321575
+shader_parameter/Speed = Vector2(0.115, 0)
+shader_parameter/Basic_Texture = ExtResource("6_s3ndn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdmj2"]
+resource_local_to_scene = true
+shader = ExtResource("5_frx7f")
+shader_parameter/Vanishing_Value = 0.6550000311125
+shader_parameter/Speed = Vector2(0.245, 0)
+shader_parameter/Basic_Texture = ExtResource("6_s3ndn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cfld"]
+resource_local_to_scene = true
+shader = ExtResource("5_frx7f")
+shader_parameter/Vanishing_Value = 0.86000004085
+shader_parameter/Speed = Vector2(0.055, 0)
+shader_parameter/Basic_Texture = ExtResource("6_s3ndn")
+
 [node name="TowerBasic" type="Node2D" unique_id=1855858258 groups=["Towers"]]
 script = ExtResource("1_4jq7i")
 
-[node name="Base" type="Sprite2D" parent="." unique_id=230419259]
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("1_jrsj1")
-
 [node name="Turret" type="Sprite2D" parent="." unique_id=34233293]
-position = Vector2(-6.3948914e-14, -16.000002)
+position = Vector2(0.13348395, -13.334874)
 rotation = -3.1415927
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_4jq7i")
+scale = Vector2(0.69794554, 0.6979456)
+texture = ExtResource("3_frx7f")
 offset = Vector2(0, 35)
+flip_h = true
 flip_v = true
 
 [node name="ClickArea" type="Area2D" parent="." unique_id=2143986532]
@@ -50,6 +111,70 @@ offset_bottom = 32.0
 texture_normal = ExtResource("3_6gdv8")
 
 [node name="TowerMenu" parent="." unique_id=872359436 instance=ExtResource("5_6gdv8")]
+
+[node name="Line2D" type="Line2D" parent="." unique_id=727007347]
+visible = false
+material = SubResource("ShaderMaterial_xogbn")
+points = PackedVector2Array(-30, -83, -41, -70, -46, -54, -42, -28)
+default_color = Color(0.4511093, 0.99999994, 0.99471456, 1)
+texture_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="." unique_id=1145446812]
+visible = false
+material = SubResource("ShaderMaterial_frx7f")
+points = PackedVector2Array(48, -46, 50, -66, 45, -84, 35, -98)
+default_color = Color(0.4511093, 0.99999994, 0.99471456, 1)
+texture_mode = 2
+
+[node name="Line2D3" type="Line2D" parent="." unique_id=1867422479]
+visible = false
+material = SubResource("ShaderMaterial_s3ndn")
+points = PackedVector2Array(18, -34, 13, -52, 5, -67, -7, -76, -29, -82)
+default_color = Color(0.4511093, 0.99999994, 0.99471456, 1)
+texture_mode = 2
+
+[node name="Line2D4" type="Line2D" parent="." unique_id=906120094]
+visible = false
+material = SubResource("ShaderMaterial_kmx3x")
+points = PackedVector2Array(-43, -28, -19, -26, 2, -27, 18, -33)
+default_color = Color(0.4511093, 0.99999994, 0.99471456, 1)
+texture_mode = 2
+
+[node name="Line2D5" type="Line2D" parent="." unique_id=1017688292]
+visible = false
+material = SubResource("ShaderMaterial_q5g4n")
+position = Vector2(-2, 8)
+points = PackedVector2Array(-39, -116, -17, -123, 6, -123, 35, -109)
+default_color = Color(0.4511093, 0.99999994, 0.99471456, 1)
+texture_mode = 2
+
+[node name="Line2D6" type="Line2D" parent="." unique_id=471417223]
+visible = false
+material = SubResource("ShaderMaterial_w6fa5")
+points = PackedVector2Array(33, -99, 19, -91, 10, -83, 3, -70)
+default_color = Color(0.4511093, 0.99999994, 0.99471456, 1)
+texture_mode = 2
+
+[node name="Line2D7" type="Line2D" parent="." unique_id=1533133979]
+visible = false
+material = SubResource("ShaderMaterial_bakjp")
+points = PackedVector2Array(18, -34, 30, -35, 39, -38, 48, -45)
+default_color = Color(0.4511093, 0.99999994, 0.99471456, 1)
+texture_mode = 2
+
+[node name="Line2D8" type="Line2D" parent="." unique_id=1906632613]
+visible = false
+material = SubResource("ShaderMaterial_fdmj2")
+points = PackedVector2Array(-31, -82, -39, -91, -41, -99, -41, -107)
+default_color = Color(0.4511093, 0.99999994, 0.99471456, 1)
+texture_mode = 2
+
+[node name="Line2D9" type="Line2D" parent="." unique_id=1862750474]
+visible = false
+material = SubResource("ShaderMaterial_2cfld")
+points = PackedVector2Array(-43, -105, -53, -92, -57, -76, -56, -56, -42, -28)
+default_color = Color(0.4511093, 0.99999994, 0.99471456, 1)
+texture_mode = 2
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="delete_press" from="TowerMenu" to="." method="_on_tower_menu_delete_press"]

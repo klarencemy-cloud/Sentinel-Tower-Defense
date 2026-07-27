@@ -38,7 +38,7 @@ func _on_info_gui_input(event: InputEvent) -> void:
 				GameDialogueManager.show_dialogue_story_ends()
 				GameDialogueManager.is_story_ends = true
 			await get_tree().create_timer(1).timeout
-			get_tree().paused = false
+			get_tree().paused = true
 
 enum Scriptures {SCRIPTUREI, SCRIPTUREII, SCRIPTUREIII, SCRIPTUREIV, SCRIPTUREV}
 

@@ -4,6 +4,7 @@ extends Button
 
 var health: float
 var max_health: float
+var tween = Tween
 
 func _ready() -> void:
 	destroy_shield()
@@ -28,10 +29,11 @@ func activate_backup_server():
 	$BackupServerShield.visible = true
 
 	await play_backup_server_pulse()
-
-	await get_tree().create_timer(2.0).timeout
-
+	tween = create_tween()
+	tween.tween_property($BackupServerShield, "material:shader_parameter/Opaticy", 0, 1.5)
+	await get_tree().create_timer(1.5).timeout
 	$BackupServerShield.visible = false
+	tween.tween_property($BackupServerShield, "material:shader_parameter/Opaticy", 0.155, 0)
 	Data.backup_server_invincible = false
 
 func play_backup_server_pulse():

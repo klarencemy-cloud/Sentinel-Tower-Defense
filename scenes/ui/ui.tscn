@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://ug1gbumqunav" path="res://graphics/ui/healthbar1.png" id="16_o71gb"]
 [ext_resource type="FontFile" uid="uid://8rhcrd13glb1" path="res://font/Libre_Franklin/static/LibreFranklin-SemiBold.ttf" id="18_fqqne"]
 [ext_resource type="Texture2D" uid="uid://cyeder3q2c60c" path="res://graphics/ui/progressbar.png" id="18_qhbcy"]
-[ext_resource type="Texture2D" uid="uid://na3ldvsuqh0c" path="res://graphics/ui/firewallbutton.png" id="19_7ygsn"]
+[ext_resource type="Texture2D" uid="uid://6u8psv1lt3ce" path="res://graphics/ui/firewallbutton.png" id="19_272wc"]
 [ext_resource type="Texture2D" uid="uid://wwyemyf8s3x7" path="res://graphics/container/skillcontainer.png" id="19_o71gb"]
 [ext_resource type="Texture2D" uid="uid://ddayndvqnoild" path="res://graphics/ui/expprogressbar.png" id="19_qhbcy"]
 [ext_resource type="Texture2D" uid="uid://b2ivf813gi1aa" path="res://graphics/ui/progress-circle.png" id="19_svq4k"]
@@ -372,7 +372,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Skill1" type="TextureButton" parent="Control/HBoxContainer" unique_id=1786617336]
 custom_minimum_size = Vector2(77, 50)
 layout_mode = 2
-texture_normal = ExtResource("19_7ygsn")
+texture_normal = ExtResource("19_272wc")
 ignore_texture_size = true
 stretch_mode = 0
 

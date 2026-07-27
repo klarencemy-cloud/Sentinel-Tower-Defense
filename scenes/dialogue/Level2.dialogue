@@ -99,6 +99,7 @@ do GameDialogueManager.show_script(1)
 => END
 
 ~ Boss2_defeated2
+do GameDialogueManager.pause_game(true)
 Player: It seemed to say something.
 Odysseus: Whatever it said, threats can’t be trusted, especially from those high-threats. 
 Player: Anyways, looks like it’s another remnant.

@@ -170,6 +170,7 @@ do GameDialogueManager.show_script(3)
 => END
 
 ~ Boss4_defeated2
+do GameDialogueManager.pause_game(true)
 Player: So.. This wasn’t all caused by the machines?
 Odysseus: It seems that way.
 Player: Then who is this person? 
