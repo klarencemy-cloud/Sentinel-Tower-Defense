@@ -65,7 +65,7 @@ func start_tower_placement(tower_type: Data.Tower) -> void:
 	if preview:
 		preview.texture = load(Data.TOWER_DATA[tower_type]["thumbnail"])
 		preview.scale = Vector2(0.7, 0.7) # Scale down preview para same size ng actual towers
-		preview.offset = Vector2(0, -35) # Offset the preview para kapag nag place ng towers, same sa tower's position
+		preview.offset = Vector2(0, -70) # Offset the preview para kapag nag place ng towers, same sa tower's position
 
 func cancel_selection() -> void:
 	place_tower = false
