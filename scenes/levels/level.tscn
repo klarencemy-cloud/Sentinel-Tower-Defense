@@ -618,6 +618,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_mq31s")
 shader_parameter/speed = Vector2(0.02, 0.01)
 
 [node name="Level" type="Node2D" unique_id=334341019]
+y_sort_enabled = true
 script = ExtResource("1_377w7")
 
 [node name="LevelManager" type="Node" parent="." unique_id=1094465286]
@@ -647,8 +648,7 @@ modulate = Color(1, 1, 1, 0.6862745)
 z_index = 2
 
 [node name="Towers" type="Node2D" parent="." unique_id=59664562]
-
-[node name="Sentinels" type="Node2D" parent="." unique_id=1328726913]
+y_sort_enabled = true
 
 [node name="Bullets" type="Node2D" parent="." unique_id=1114794130]
 
@@ -668,6 +668,7 @@ autoplay = true
 parameters/looping = true
 
 [node name="WeatherEffects" type="Node2D" parent="." unique_id=2129595724]
+z_index = 1
 
 [node name="DustParticles" type="GPUParticles2D" parent="WeatherEffects" unique_id=1637259662]
 visible = false

@@ -84,7 +84,7 @@ func _try_place_sentinel(cell_pos: Vector2i, world_pos: Vector2) -> void:
 
 	var sentinel = load(sentinel_scenes[selected_sentinel]).instantiate()
 	sentinel.position = world_pos
-	level_root.get_node("Sentinels").add_child(sentinel)
+	level_root.get_node("Towers").add_child(sentinel)
 	place_sentinel = false
 
 	match selected_sentinel:
