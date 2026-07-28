@@ -650,6 +650,8 @@ z_index = 2
 [node name="Towers" type="Node2D" parent="." unique_id=59664562]
 y_sort_enabled = true
 
+[node name="Sentinels" type="Node2D" parent="." unique_id=1328726913]
+
 [node name="Bullets" type="Node2D" parent="." unique_id=1114794130]
 
 [node name="UI" parent="." unique_id=1090151980 instance=ExtResource("6_d4w6o")]

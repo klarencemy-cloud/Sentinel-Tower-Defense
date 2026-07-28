@@ -123,14 +123,28 @@ func _try_place_current_building(cell_pos: Vector2i, world_pos: Vector2) -> void
 
 func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	var layer = level_manager.get_build_layer()
+	var asset_layer = level_manager.get_asset_layer()
 	if layer == null:
+		return
+	if asset_layer == null:
 		return
 
 	var tile_data = layer.get_cell_tile_data(cell_pos) as TileData
+	var asset_tile_data = asset_layer.get_cell_tile_data(cell_pos) as TileData
 	if cell_pos in used_cells:
 		return
+
 	if tile_data == null or not tile_data.get_custom_data("Usable"):
 		return
+
+	if not asset_tile_data == null:
+		if not asset_tile_data.get_custom_data("Usable") == null:
+			if not asset_tile_data.get_custom_data("Usable"):
+				return
+
+	# if (asset_tile_data == null or not asset_tile_data.get_custom_data("Usable")) and not tile_data.get_custom_data("Usable"):
+	# 	return
+
 
 	var cost = Data.TOWER_DATA[selected_tower]["cost"]
 	var using_free: bool = Data.free_towers.get(selected_tower, 0) > 0

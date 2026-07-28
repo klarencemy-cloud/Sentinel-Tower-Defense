@@ -3,7 +3,7 @@ extends Node
 @export var default_map_path: String
 @export var current_map_name: String
 @export var build_layer_path: NodePath = ("Pavement")
-
+@export var asset_layer_path: NodePath = ("Assets")
 
 var level_root: Node2D
 var current_map: Node
@@ -92,6 +92,17 @@ func get_build_layer() -> TileMapLayer:
 
 	return null
 
+func get_asset_layer() -> TileMapLayer:
+	if current_map:
+		var asset_layer = current_map.get_node_or_null(asset_layer_path)
+		if asset_layer is TileMapLayer:
+			return asset_layer
+
+	var fallback_layer = level_root.get_node_or_null("BG/TileMapLayer")
+	if fallback_layer is TileMapLayer:
+		return fallback_layer
+
+	return null
 
 func map_to_world(cell_pos: Vector2i) -> Vector2:
 	return Vector2(cell_pos * 16 + Vector2i(8, 8))
