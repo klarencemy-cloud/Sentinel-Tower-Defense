@@ -12,7 +12,7 @@ var spawning_wave: bool = false
 
 func _ready() -> void:
 	add_to_group("WaveManager")
-
+	change_weather()
 func setup(root: Control, map_manager: Node) -> void:
 	level_root = root
 	level_manager = map_manager
@@ -123,7 +123,43 @@ func start_wave() -> void:
 	if Data.current_wave == 51 and !Data.is_sandbox and !GameDialogueManager.is_level6_boss6_shown:
 		GameDialogueManager.show_dialogue_level6_boss6()
 
+	change_weather()
 
+	wave_active = true
+	spawning_wave = true
+
+	# FETCHS WAVE DATA FROM wave_data.gd(Global)
+	var wave_data = Wave.WAVE_DATA.get(Data.current_wave, null)
+
+	if wave_data != null:
+		await _spawn_predefined_wave(wave_data)
+	spawning_wave = false
+
+
+# Predefined wave spawning
+
+func _spawn_predefined_wave(wave_data: Dictionary) -> void:
+	var paths: Array[Path2D] = _get_paths()
+
+	var enemies_data: Dictionary = wave_data["enemies"]
+
+	for enemy_enum in enemies_data.keys():
+		var per_path_counts: Array = enemies_data[enemy_enum]
+
+		for path_index in range(per_path_counts.size()):
+			var count: int = per_path_counts[path_index]
+
+			if path_index >= paths.size():
+				push_warning("Wave %d: path index %d out of bounds (only %d paths)" % [Data.current_wave, path_index, paths.size()])
+				continue
+
+			var path: Path2D = paths[path_index]
+
+			for i in range(count):
+				_spawn_enemy_on_path(enemy_enum, path)
+				await get_tree().create_timer(0.5, false).timeout
+
+func change_weather() -> void:
 	match Data.current_wave:
 		6:
 			$'../WeatherEffects/DustParticles'.visible = false
@@ -162,42 +198,6 @@ func start_wave() -> void:
 			$'../WeatherEffects/RainParticles'.visible = true
 			$'../WeatherEffects/LightningEffects'.visible = true
 			$'../WeatherEffects/BloomParticles'.visible = false
-
-
-	wave_active = true
-	spawning_wave = true
-
-	# FETCHS WAVE DATA FROM wave_data.gd(Global)
-	var wave_data = Wave.WAVE_DATA.get(Data.current_wave, null)
-
-	if wave_data != null:
-		await _spawn_predefined_wave(wave_data)
-	spawning_wave = false
-
-
-# Predefined wave spawning
-
-func _spawn_predefined_wave(wave_data: Dictionary) -> void:
-	var paths: Array[Path2D] = _get_paths()
-
-	var enemies_data: Dictionary = wave_data["enemies"]
-
-	for enemy_enum in enemies_data.keys():
-		var per_path_counts: Array = enemies_data[enemy_enum]
-
-		for path_index in range(per_path_counts.size()):
-			var count: int = per_path_counts[path_index]
-
-			if path_index >= paths.size():
-				push_warning("Wave %d: path index %d out of bounds (only %d paths)" % [Data.current_wave, path_index, paths.size()])
-				continue
-
-			var path: Path2D = paths[path_index]
-
-			for i in range(count):
-				_spawn_enemy_on_path(enemy_enum, path)
-				await get_tree().create_timer(0.5, false).timeout
-
 
 func _spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D) -> void:
 	var path_follow = PathFollow2D.new()

@@ -559,8 +559,8 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_4ab0e"]
-_limits = [0.0, 30.0, 0.0, 1.0]
-_data = [Vector2(0, 13.285715), 0.0, 0.0, 0, 0, Vector2(0.22222222, 30), 0.0, 0.0, 0, 0, Vector2(1, 30), 0.0, 0.0, 0, 0]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 13.285715), 0.0, 0.0, 0, 0, Vector2(0.17021278, 87.64046), 0.0, 0.0, 0, 0, Vector2(1, 88.76405), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_p62il"]
@@ -578,8 +578,22 @@ particle_flag_disable_z = true
 emission_shape_offset = Vector3(0, -600, 0)
 emission_shape = 3
 emission_box_extents = Vector3(1920, 1080, 1)
-gravity = Vector3(0, 1000, 0)
+direction = Vector3(1, 1, 0)
+gravity = Vector3(0, 3000, 0)
+scale_min = 0.5
 scale_over_velocity_curve = SubResource("CurveXYZTexture_2honx")
+color = Color(1, 1, 1, 0.20392157)
+sub_emitter_mode = 1
+sub_emitter_frequency = 42.73
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mq31s"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1920, 1080, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 100, 0)
 
 [sub_resource type="Gradient" id="Gradient_xfk5q"]
 offsets = PackedFloat32Array(0, 0.5207878, 1)
@@ -701,9 +715,16 @@ visible = false
 light_mask = 7
 z_index = 1
 position = Vector2(1922, 1063)
-amount = 1000
+amount = 2000
 visibility_rect = Rect2(-1920, -1080, 3840, 2160)
 process_material = SubResource("ParticleProcessMaterial_c3o0d")
+
+[node name="Splash" type="GPUParticles2D" parent="WeatherEffects/RainParticles" unique_id=150778508]
+position = Vector2(2, 17)
+amount = 1000
+randomness = 1.0
+visibility_rect = Rect2(-1920, -1080, 3840, 2160)
+process_material = SubResource("ParticleProcessMaterial_mq31s")
 
 [node name="LightningEffects" type="DirectionalLight2D" parent="WeatherEffects" unique_id=596992054]
 visible = false

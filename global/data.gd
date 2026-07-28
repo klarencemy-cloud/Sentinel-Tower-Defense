@@ -43,7 +43,7 @@ var before_level_index: int
 var current_level_index: int = 0 # map count 0 = level 1
 
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 1 # wave count
+var current_wave: int = 6 # wave count
 var backup_server_placed := false
 var backup_server_invincible := false
 
