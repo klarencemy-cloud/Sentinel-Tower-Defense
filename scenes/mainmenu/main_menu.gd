@@ -30,3 +30,8 @@ func _on_settings_pressed() -> void:
 		$ButtonManager/Exit.visible = false
 		$ButtonManager/Config.visible = false
 		state = false
+
+
+func _on_timer_timeout() -> void:
+	$AnimationPlayer.play("opening")
+	$Timer.start()
