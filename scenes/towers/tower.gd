@@ -25,6 +25,10 @@ var spyware_immunity_sources: Dictionary = {}
 var botnet_immunity_sources: Dictionary = {}
 var original_reload_time := 0.0
 var stunned := false
+
+var is_ep_shoot: bool = false
+
+
 @onready var ad_button = $AdButton
 @onready var pay_button: TextureButton = $PayButton
 @onready var ads = [

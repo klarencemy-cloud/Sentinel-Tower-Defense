@@ -104,6 +104,9 @@ func create_bullet(pos, angle, bullet_enum, damage, tower_type, tower_id := -1, 
 					enemy_damage = int(round(damage * damage_multiplier))
 				enemy.hit(enemy_damage, tower_id)
 	
+				if tower_type == Data.Tower.ENDPOINT_PROTECTION:
+					enemy.toggle_ep_particles()
+	
 	var enemies = get_tree().get_first_node_in_group("Enemies")
 	enemies.emit_hit_particles(angle) # to set the angle of the hit particles
 

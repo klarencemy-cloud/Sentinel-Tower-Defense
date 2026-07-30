@@ -58,8 +58,6 @@ signal destroy_shield()
 var sentinel_security_deployed: bool = false
 var sentinel_malware_deployed: bool = false
 var sentinel_deception_deployed: bool = false
-
-
 var damage_reduction: float = 0
 
 

@@ -7,6 +7,15 @@
 [ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="5_hginv"]
 [ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="6_5ge8c"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_bhf25"]
+[ext_resource type="Shader" uid="uid://betoupj84mtmb" path="res://texture/shaders/radar_shader.gdshader" id="6_hginv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbesr"]
+resource_local_to_scene = true
+shader = ExtResource("6_hginv")
+shader_parameter/speed = 2.0
+shader_parameter/line_color = Color(1.8289685e-06, 0.7347474, 0.8008648, 0.8509804)
+shader_parameter/trail_color = Color(0, 1, 1, 0.2)
+shader_parameter/trail_length = 0.60000000894072
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_56y0f"]
 blend_mode = 1
@@ -84,6 +93,16 @@ light_mask = 16
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_hginv")
 offset = Vector2(0, -17.142868)
+
+[node name="ColorRect" type="ColorRect" parent="Base" index="0" unique_id=1439635008]
+z_index = -1
+material = SubResource("ShaderMaterial_dbesr")
+offset_left = -365.7143
+offset_top = -365.7143
+offset_right = 365.71423
+offset_bottom = 365.7143
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
 light_mask = 16

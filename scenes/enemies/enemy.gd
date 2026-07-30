@@ -130,6 +130,12 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$Boss4.visible = false
 	$Boss5.visible = false
 
+
+	if Data.ENEMY_DATA[type]['name'] == "boss1" or Data.ENEMY_DATA[type]['name'] == "boss2" or Data.ENEMY_DATA[type]['name'] == "boss3" or Data.ENEMY_DATA[type]['name'] == "boss4" or Data.ENEMY_DATA[type]['name'] == "boss5":
+		$EpParticles.scale = Vector2(2, 2)
+	else:
+		$EpParticles.scale = Vector2(1, 1)
+
 	match Data.ENEMY_DATA[type]['name']:
 		"spam":
 			$Spam.visible = true
@@ -348,7 +354,7 @@ func emit_hit_particles(angle: float):
 func hit(damage: int = 1, tower_id: int = -1):
 	if dead:
 		return
-	
+	print(tower_id)
 	hit_particles.restart()
 	hit_particles.emitting = true
 
@@ -865,3 +871,8 @@ func release_from_infect_trap() -> void:
 	is_trapped = false
 	if enemy_type and not is_frozen and not is_slowed:
 		enemy_type.modulate = NORMAL_TINT
+
+
+func toggle_ep_particles():
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("ep_particles")
