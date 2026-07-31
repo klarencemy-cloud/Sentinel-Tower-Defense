@@ -96,7 +96,7 @@ func _process(delta: float) -> void:
 func change_character(name: String):
 			match name:
 				"Mysterious Person":
-					$Balloon/Show/Character.texture = load("res://graphics/sentinels/placeholdersentinels/sentinel.png")
+					$Balloon/Show/Character.texture = load("res://graphics/character/pfp 3.png")
 				"Upgrade":
 					$Balloon/Show/Character.texture = load("res://graphics/icons/upgrade.png")
 				"TowerUpgrade":
@@ -107,6 +107,8 @@ func change_character(name: String):
 					$Balloon/Show/Character.texture = load("res://graphics/icons/level.png")
 				"Core":
 					$Balloon/Show/Character.texture = load("res://graphics/currency/core.png")
+				"Firewall":
+					$Balloon/Show/Character.texture = load("res://graphics/abilities/firewall.png")
 
 func _unhandled_input(_event: InputEvent) -> void:
 	# Only the balloon is allowed to handle input while it's showing
@@ -152,9 +154,9 @@ func apply_dialogue_line() -> void:
 	if !GameDialogueManager.is_override:
 		match character_label.text:
 			"Player":
-				$Balloon/Show/Character.texture = load("res://graphics/character/player 2.png")
+				$Balloon/Show/Character.texture = load("res://graphics/character/pfp 2.png")
 			"Odysseus":
-				$Balloon/Show/Character.texture = load("res://graphics/currency/experience.png")
+				$Balloon/Show/Character.texture = load("res://graphics/character/pfp 3.png")
 			"WORM":
 				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/worm2.png")
 			"SPYWARE":

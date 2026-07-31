@@ -1,6 +1,7 @@
 extends Button
 
-var id: Data.Tower = Data.Tower.BASIC
+# var id: Data.Tower = Data.Tower.BASIC
+var id: Data.Tower
 var cost: int
 var UpgradeUI = "res://scenes/upgrade/upgrade.tscn"
 signal press(tower_enum: Data.Tower)
@@ -13,9 +14,8 @@ func setup(new_id: Data.Tower):
 
 
 func _ready() -> void:
-	cost = Data.TOWER_DATA[Data.Tower.BASIC]['cost']
-
-
+	# cost = Data.TOWER_DATA[Data.Tower.BASIC]['cost']
+	pass
 func _on_pressed() -> void:
 	var upgrade_ui = get_parent().get_parent().get_parent().get_parent()
 	upgrade_ui.set_selected_tower(id)

@@ -135,7 +135,10 @@ Odysseus: Those are Virus. They are malicious software that can infect our defen
 
 ~ firewall
 Player: What is this?
+do GameDialogueManager.is_override=true
+do GameDialogueManager.show_character("Firewall")
 Odysseus: You've unlocked a new skill, the Firewall. Let's START the wave for you to know how it actually works.
+do GameDialogueManager.is_override=false
 do GameDialogueManager.start_wave()
 do GameDialogueManager.delay_dialogue(1)
 Player: Woah! They became faster!

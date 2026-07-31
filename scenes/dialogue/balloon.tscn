@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dsia4nbchfsjw" path="res://graphics/container/choices.png" id="6_2ww5d"]
 [ext_resource type="Texture2D" uid="uid://cnaho0dsi12qr" path="res://graphics/container/choice_active.png" id="7_f8dtn"]
 [ext_resource type="Texture2D" uid="uid://dwfvp3uf6sm5" path="res://graphics/container/show_container.png" id="8_0hms4"]
-[ext_resource type="Texture2D" uid="uid://dk0seu0hetqlc" path="res://graphics/character/player 2.png" id="9_0hms4"]
+[ext_resource type="Texture2D" uid="uid://clp2slsuta0o" path="res://graphics/character/pfp 2.png" id="9_0hms4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -275,10 +275,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Character" type="TextureRect" parent="Balloon/Show" unique_id=1142477465]
 layout_mode = 0
-offset_left = 51.964966
-offset_top = 12.0
-offset_right = 374.96497
-offset_bottom = 335.0
+offset_left = 46.964966
+offset_top = 14.0
+offset_right = 369.96497
+offset_bottom = 337.0
 texture = ExtResource("9_0hms4")
 stretch_mode = 3
 
