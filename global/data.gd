@@ -520,7 +520,7 @@ var TOWER_DATA = {
 		'thumbnail': "res://graphics/ui/tower thumbnails 2/DLP.png",
 		'scene': "res://scenes/towers/tower_data_loss_prevention.tscn",
 		'passive': "Increased Damage to Malwares by 20%",
-		'passive description': "Infects enemies and reduces their damage by 50%.",
+		'passive description': "Infects enemies and reduces their damage by 35%.",
 		'upgrade1': "Damage",
 		'upgrade1level': 0,
 		'upgrade1amount': 2,
@@ -529,8 +529,8 @@ var TOWER_DATA = {
 		'upgrade2level': 0,
 		'upgrade2amount': 0.1,
 		'upgrade2cost': [20, 30, 40],
-		'tier1ability': "Increased Damage+",
-		'tier1abilitydesc': "Increase total increase damage to 30%.",
+		'tier1ability': "Stronger Infection",
+		'tier1abilitydesc': "Increases damage reduction from 35% to 50%.",
 		'tier1abilityunlocked': false,
 		'upgrade3': "Attack Speed",
 		'upgrade3level': 0,
@@ -540,8 +540,8 @@ var TOWER_DATA = {
 		'upgrade4level': 0,
 		'upgrade4amount': 15,
 		'upgrade4cost': [50, 65, 80],
-		'tier2ability': "Increased Damage++",
-		'tier2abilitydesc': "Increase total increase damage to 40%.",
+		'tier2ability': "Quarantine Network",
+		'tier2abilitydesc': "When a debuffed enemy is hit by DLP again, the debuff spreads to 1 nearby enemy.",
 		'tier2abilityunlocked': false,
 		'upgrade5': "Damage",
 		'upgrade5level': 0,
@@ -551,8 +551,8 @@ var TOWER_DATA = {
 		'upgrade6level': 0,
 		'upgrade6amount': 25,
 		'upgrade6cost': [80, 100, 120],
-		'tier3ability': "Increased Damage+++",
-		'tier3abilitydesc': "Increase total increase damage to 50%.",
+		'tier3ability': "Kill Switch",
+		'tier3abilitydesc': "If a debuffed enemy falls below 20% HP, it has a 30% chance to be instantly deleted when hit by any bullet.",
 		'tier3abilityunlocked': false,
 		}
 	}
@@ -849,7 +849,7 @@ var ENEMY_DATA = {
 		'texture': "uid://bh62x426nayqs",
 		'speed': 100,
 		'name': "boss1",
-		'damage': 100,
+		'damage': 99999,
 		'atkspd': 1,
 		"exp": 100},
 	Enemy.BOSS2: { # CONFICKER
@@ -857,7 +857,7 @@ var ENEMY_DATA = {
 		'texture': "uid://btscyncy6p42a",
 		'speed': 100,
 		'name': "boss2",
-		'damage': 200,
+		'damage': 99999,
 		'atkspd': 1.2,
 		"exp": 145},
 	Enemy.BOSS3: { # WANNA CRY
@@ -865,7 +865,7 @@ var ENEMY_DATA = {
 		'texture': "uid://b7ojhou6ogpwf",
 		'speed': 100,
 		'name': "boss3",
-		'damage': 320,
+		'damage': 99999,
 		'atkspd': 1.5,
 		"exp": 200},
 	Enemy.BOSS4: { # NOT PETYA
@@ -873,7 +873,7 @@ var ENEMY_DATA = {
 		'texture': "uid://he2k33y4efo3",
 		'speed': 100,
 		'name': "boss4",
-		'damage': 200,
+		'damage': 99999,
 		'atkspd': 2,
 		"exp": 325},
 	Enemy.BOSS5: { # MY DOOM
@@ -881,7 +881,7 @@ var ENEMY_DATA = {
 		'texture': "uid://bsbw28l1xncts",
 		'speed': 100,
 		'name': "boss5",
-		'damage': 200,
+		'damage': 99999,
 		'atkspd': 2,
 		"exp": 450}
 }

@@ -4,7 +4,7 @@ var path_follow: PathFollow2D
 var health: int
 var speed: int
 var base_speed: int
-var dead := false
+var dead: bool = false
 var is_worm: bool = false
 var dmg_tween: Tween
 var enemy_tween: Tween
@@ -12,26 +12,27 @@ var damage: int
 var enemy_type: Node
 var enemy_type_stats: Data.Enemy
 
-var is_stunned := false
-var is_frozen := false
-var is_frozen_vulnerable := false
+var is_stunned: bool =false
+var is_frozen: bool = false
+var is_frozen_vulnerable: bool = false
 var stun_timer: Timer
-var is_slowed := false
+var is_slowed: bool = false
 var original_speed: int
 var pending_slow_duration: float = 0.0
 var invisible: bool = false
-var acs_in_range := false
-var acs_slow_multiplier := 1.0
-var acs_lockdown_remaining := 0.0
-var idps_slow_aura := false # For IDPS tier2 passive
-var idps_vulnerability_aura := false # For IDPS tier3 passive
-var vulnerability_multiplier := 1.0 # Damage multiplier for vulnerabilities
+var acs_in_range: bool = false
+var acs_slow_multiplier: float = 1.0
+var acs_lockdown_remaining: float = 0.0
+var idps_slow_aura: bool = false # For IDPS tier2 passive
+var idps_vulnerability_aura: bool = false # For IDPS tier3 passive
+var vulnerability_multiplier: float = 1.0 # Damage multiplier for vulnerabilities
 var damage_label_template: Label
-var blocked_by_firewall := false # Firewall blocking
-var is_trapped := false # Sandbox analyzer trap
+var blocked_by_firewall: bool = false # Firewall blocking
+var is_trapped: bool= false # Sandbox analyzer trap
 var trapped_by_tower = null
-var is_infected_trap := false
+var is_infected_trap: bool = false
 var infected_by_tower = null
+var dlp_damage_reduction: float = 1.0
 
 var previous_pos: Vector2
 
@@ -42,16 +43,16 @@ const FROZEN_TINT: Color = Color(0.1, 0.2, 0.6, 1.0)
 var rootkit_skill_used := false
 const ROOTKIT_PORTAL = preload("res://scenes/enemies/rootkit_skill.tscn")
 var worm_spawn_timer: Timer
-var worm_spawn_interval := 15.0
-var can_clone := true
-@export var spacing := 32
-var spyware_count := 0
+var worm_spawn_interval: float = 15.0
+var can_clone: bool = true
+@export var spacing: int = 32
+var spyware_count: float = 0
 
-var is_ddos_clone := false
-const DDOS_HEALTH_MULTIPLIER := 0.35 # 35% HP
+var is_ddos_clone: bool = false
+const DDOS_HEALTH_MULTIPLIER: float = 0.35 # 35% HP
 
-var hostile := false
-var hostile_count := 0
+var hostile: bool = false
+var hostile_count: int = 0
 
 
 @onready var hit_particles: GPUParticles2D = $HitParticles
@@ -77,6 +78,12 @@ func _ready() -> void:
 	if enemy_type_stats == Data.Enemy.WORM:
 		worm_spawn_timer.start()
 	
+
+func apply_dlp_damage_reduction(multiplier: float = 0.65) -> void:
+	# Applies the dmg reduction if the new reduction is higher than the applied one
+	if multiplier < dlp_damage_reduction:
+		dlp_damage_reduction = multiplier
+
 
 func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	enemy_type_stats = type # save enemy type
@@ -329,7 +336,7 @@ func _process(delta: float):
 
 	if path_follow.progress_ratio >= 0.99:
 		var processed_enemy_damage: float = 0.0
-		var raw_dmg = damage
+		var raw_dmg = int(damage * dlp_damage_reduction)
 		processed_enemy_damage = Defense._dmg_reduc_armor(raw_dmg) # sends dmg to defense_data.gd to reduc dmg based on armor
 		if !Data.backup_server_invincible:
 			Data.health -= processed_enemy_damage - (processed_enemy_damage * Data.damage_reduction) # in decimal so it can be reduce by sentinel
