@@ -12,7 +12,7 @@ var damage: int
 var enemy_type: Node
 var enemy_type_stats: Data.Enemy
 
-var is_stunned: bool =false
+var is_stunned: bool = false
 var is_frozen: bool = false
 var is_frozen_vulnerable: bool = false
 var stun_timer: Timer
@@ -28,7 +28,7 @@ var idps_vulnerability_aura: bool = false # For IDPS tier3 passive
 var vulnerability_multiplier: float = 1.0 # Damage multiplier for vulnerabilities
 var damage_label_template: Label
 var blocked_by_firewall: bool = false # Firewall blocking
-var is_trapped: bool= false # Sandbox analyzer trap
+var is_trapped: bool = false # Sandbox analyzer trap
 var trapped_by_tower = null
 var is_infected_trap: bool = false
 var infected_by_tower = null
@@ -340,7 +340,6 @@ func _process(delta: float):
 		processed_enemy_damage = Defense._dmg_reduc_armor(raw_dmg) # sends dmg to defense_data.gd to reduc dmg based on armor
 		if !Data.backup_server_invincible:
 			Data.health -= processed_enemy_damage - (processed_enemy_damage * Data.damage_reduction) # in decimal so it can be reduce by sentinel
-			print(processed_enemy_damage - (processed_enemy_damage * Data.damage_reduction))
 		_update_active_enemy_counter(enemy_type_stats, -1)
 		queue_free()
 	if enemy_type_stats == Data.Enemy.SPYWARE:
@@ -361,7 +360,6 @@ func emit_hit_particles(angle: float):
 func hit(damage: int = 1, tower_id: int = -1):
 	if dead:
 		return
-	print(tower_id)
 	hit_particles.restart()
 	hit_particles.emitting = true
 
