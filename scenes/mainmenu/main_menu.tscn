@@ -74,7 +74,7 @@ _data = {
 shader = ExtResource("8_otieh")
 shader_parameter/glow_color = Color(4.813075e-07, 0.4515856, 0.60352665, 1)
 shader_parameter/intensity = 0.9810000465975
-shader_parameter/spread = 1.13500005065262
+shader_parameter/spread = 0.70900003041762
 shader_parameter/pulse_speed = 4.654000221065
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_l3hwl"]
