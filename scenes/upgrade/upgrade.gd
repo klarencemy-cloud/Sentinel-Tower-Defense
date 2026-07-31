@@ -9,7 +9,7 @@ var upgrade4_level := 0
 var upgrade5_level := 0
 var upgrade6_level := 0
 
-var selected_tower: Data.Tower = Data.Tower.BASIC
+var selected_tower: Data.Tower
 
 
 func _ready() -> void:
@@ -52,10 +52,7 @@ func update_stat_label() -> void:
 	
 	$TextureRect/StatPanel/ScrollContainer/VBoxContainer/DamageContainer/DamagePic/DamageText.text = str(data['damage'])
 	$TextureRect/StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic/SpeedText.text = str(data['reload_time']) + "s"
-	if selected_tower == Data.Tower.MORTAR:
-		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = str(data['explosion_radius'])
-		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/Range.text = "Explosion Radius"
-	elif selected_tower == Data.Tower.QUARANTINE_CANNON:
+	if selected_tower == Data.Tower.QUARANTINE_CANNON:
 		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/RangeText.text = "%s / %s" % [str(data['range']), str(data['explosion_radius'])]
 		$TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic/Range.text = "Range / Radius"
 	else:
