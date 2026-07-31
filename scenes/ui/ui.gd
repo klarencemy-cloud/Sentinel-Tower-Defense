@@ -75,13 +75,7 @@ func _ready() -> void:
 		unli_health.button_pressed = true
 		$Control/HBoxContainer.position.y = 780
 
-	if Data.current_wave > 3:
-		Data.is_play_shown = true
-		
-	if !Data.is_play_shown and !Data.is_sandbox:
-		show_start(false)
-	else:
-		show_start(true)
+	
 	if Data.current_wave >= 5 or Data.is_sandbox:
 		toggle_skill_activation()
 	
@@ -116,9 +110,6 @@ func _ready() -> void:
 	else:
 		$Control/HBoxContainer/Skill1.disabled = false
 		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
-
-func show_start(state: bool) -> void:
-	$Control/TextureRect/HBoxContainer/WaveButton.visible = state
 
 func tower_select(tower_enum: Data.Tower):
 	place_tower.emit(tower_enum)

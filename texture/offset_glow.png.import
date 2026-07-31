@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnk165ckp3vsu"
-path="res://.godot/imported/player.png-056b69f604795d63852a0e8215ef8c7c.ctex"
+uid="uid://fv2nsp2ceytq"
+path="res://.godot/imported/offset_glow.png-190de210b48c50cc4ef3587dd2f96926.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/character/player.png"
-dest_files=["res://.godot/imported/player.png-056b69f604795d63852a0e8215ef8c7c.ctex"]
+source_file="res://texture/offset_glow.png"
+dest_files=["res://.godot/imported/offset_glow.png-190de210b48c50cc4ef3587dd2f96926.ctex"]
 
 [params]
 
