@@ -39,6 +39,7 @@ var previous_pos: Vector2
 const NORMAL_TINT: Color = Color(1, 1, 1, 1)
 const SLOWED_TINT: Color = Color(0.6, 0.8, 1.0, 1.0)
 const FROZEN_TINT: Color = Color(0.1, 0.2, 0.6, 1.0)
+const DLP_DEBUFF_TINT: Color = Color(0.4, 0.8, 0.4, 1.0)
 
 var rootkit_skill_used := false
 const ROOTKIT_PORTAL = preload("res://scenes/enemies/rootkit_skill.tscn")
@@ -83,6 +84,8 @@ func apply_dlp_damage_reduction(multiplier: float = 0.65) -> void:
 	# Applies the dmg reduction if the new reduction is higher than the applied one
 	if multiplier < dlp_damage_reduction:
 		dlp_damage_reduction = multiplier
+		if enemy_type:
+			enemy_type.modulate = DLP_DEBUFF_TINT
 
 
 func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
@@ -542,6 +545,23 @@ func update_hp_bar_position():
 				Data.Enemy.BOSS5
 			]:
 				$hpbar.position.y -= 70
+
+
+func flash_dlp_debuff() -> void:
+	if enemy_tween:
+		enemy_tween.kill()
+	
+	enemy_tween = create_tween()
+	# Flash bright green then settle to DLP_DEBUFF_TINT
+	enemy_tween.tween_property(enemy_type, "modulate", Color(0.2, 1.0, 0.2, 1.0), 0.1)
+	enemy_tween.tween_property(enemy_type, "modulate", DLP_DEBUFF_TINT, 0.2)
+	
+	# Also flash worm segments if applicable
+	if is_worm:
+		for segment in $WormSegments.get_children():
+			var seg_tween = create_tween()
+			seg_tween.tween_property(segment, "modulate", Color(0.2, 1.0, 0.2, 1.0), 0.1)
+			seg_tween.tween_property(segment, "modulate", DLP_DEBUFF_TINT, 0.2)
 
 func set_invisible(value: bool) -> void:
 	invisible = value

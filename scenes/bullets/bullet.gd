@@ -88,10 +88,6 @@ func _on_area_entered(area: Area2D) -> void:
 	area.hit(damage, tower_id)
 	hit_enemies.append(area) # Track this enemy as hit
 
-	# DLP debuff 50% dmg reduction on enemies
-	if owner_tower_type == Data.Tower.DATA_LOSS_PREVENTION:
-		area.apply_dlp_damage_reduction()
-
 	# sandbox analyzer traps enemy
 	if owner_tower_type == Data.Tower.SANDBOX_ANALYZER:
 		var tower = _get_owner_tower()
@@ -105,11 +101,15 @@ func _on_area_entered(area: Area2D) -> void:
 
 	if owner_tower_type == Data.Tower.DATA_LOSS_PREVENTION:
 		var tower = _get_owner_tower()
-		var dmg_mult = 0.65  # base reduction 35%
-		if tower != null and Data.TOWER_DATA[owner_tower_type].get("tier1abilityunlocked", false):
-			dmg_mult = 0.50  # tier 1 50%
-		area.apply_dlp_damage_reduction(dmg_mult)
+		if tower != null and tower.has_method("on_bullet_hit_enemy"):
+			tower.on_bullet_hit_enemy(area)
 
+	if Data.TOWER_DATA[Data.Tower.DATA_LOSS_PREVENTION].get("tier3abilityunlocked", false):
+		if area.health > 0 and area.dlp_damage_reduction < 1.0:
+			var max_hp = area.get_node("hpbar").max_value
+			if area.health <= max_hp * 0.2:
+				if randf() < 0.3:
+					area.hit(area.health, tower_id)
 
 func _get_owner_tower() -> Node:
 	var towers = get_tree().get_nodes_in_group("Towers")
