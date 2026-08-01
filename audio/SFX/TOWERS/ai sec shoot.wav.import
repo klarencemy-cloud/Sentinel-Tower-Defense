@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://45t2p1s72pa7"
+path="res://.godot/imported/ai sec shoot.wav-43686977be635c6406fcfcd28622718f.sample"
+
+[deps]
+
+source_file="res://audio/SFX/TOWERS/ai sec shoot.wav"
+dest_files=["res://.godot/imported/ai sec shoot.wav-43686977be635c6406fcfcd28622718f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

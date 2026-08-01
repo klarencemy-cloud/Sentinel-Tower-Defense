@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bqeqm1khl70h5" path="res://graphics/towers/ai sec/ai_sec_turret.png" id="4_kbeox"]
 [ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="5_ixafn"]
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_45hyi"]
-[ext_resource type="AudioStream" uid="uid://sicd08w0ce6c" path="res://audio/bullet.wav" id="6_kv0k2"]
+[ext_resource type="AudioStream" uid="uid://cl853fuwoh0os" path="res://audio/SFX/TOWERS/ai sec electricity.wav" id="7_45hyi"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_mfyuw"]
+[ext_resource type="AudioStream" uid="uid://45t2p1s72pa7" path="res://audio/SFX/TOWERS/ai sec shoot.wav" id="8_45hyi"]
 [ext_resource type="PackedScene" uid="uid://w1r41md2l3a3" path="res://scenes/bullets/laser.tscn" id="8_ixafn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ol7t1"]
@@ -64,6 +65,12 @@ texture = SubResource("GradientTexture2D_45hyi")
 [node name="LaserOrigin" type="Marker2D" parent="Turret" index="1" unique_id=778794618]
 position = Vector2(-1.2636185e-05, 144.28574)
 
+[node name="ElectricSound" type="AudioStreamPlayer2D" parent="Turret" index="2" unique_id=1135830337]
+stream = ExtResource("7_45hyi")
+volume_db = -25.811
+autoplay = true
+bus = &"Sounds"
+
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
 shape = SubResource("CircleShape2D_6ku0u")
 
@@ -77,7 +84,8 @@ offset_right = 29.0
 offset_bottom = -75.0
 
 [node name="ShootSound" parent="." index="7" unique_id=1474961134]
-stream = ExtResource("6_kv0k2")
+stream = ExtResource("8_45hyi")
+bus = &"Sounds"
 
 [node name="AdButton" type="TextureButton" parent="." index="8" unique_id=654513809]
 offset_left = -20.0

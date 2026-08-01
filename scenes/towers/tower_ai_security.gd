@@ -104,6 +104,7 @@ func _on_reload_timer_timeout() -> void:
 
 	$ShootSound.play()
 
+
 func _on_pay_button_pressed() -> void:
 	if Data.money < 5:
 		return

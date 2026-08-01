@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dc2gror542u6k" path="res://scenes/towers/tower_antivirus.gd" id="2_1oiqa"]
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="3_1oiqa"]
 [ext_resource type="Texture2D" uid="uid://bifttp0d8wd36" path="res://graphics/towers/anti virus/anti_virus_turret.png" id="4_npkv1"]
-[ext_resource type="AudioStream" uid="uid://sicd08w0ce6c" path="res://audio/bullet.wav" id="5_nyic2"]
+[ext_resource type="AudioStream" uid="uid://ty7tcwekayno" path="res://audio/SFX/TOWERS/ANTIVIRUS.wav" id="5_1oiqa"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_o0cti"]
 
 [sub_resource type="Gradient" id="Gradient_1oiqa"]
@@ -62,7 +62,9 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="ShootSound" parent="." index="7" unique_id=1474961134]
-stream = ExtResource("5_nyic2")
+stream = ExtResource("5_1oiqa")
+volume_db = 2.053
+bus = &"Sounds"
 
 [node name="AdButton" type="TextureButton" parent="." index="8" unique_id=1970184477]
 visible = false
