@@ -491,7 +491,7 @@ sources/0 = SubResource("TileSetAtlasSource_xb4v1")
 sources/1 = SubResource("TileSetAtlasSource_urvlt")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mq31s"]
-size = Vector2(138, 152)
+size = Vector2(172, 184)
 
 [sub_resource type="Gradient" id="Gradient_qogh7"]
 offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
@@ -679,7 +679,7 @@ collision_layer = 128
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BG/TowerPreview/TowerPlacement" unique_id=57135874]
-position = Vector2(3, 4)
+position = Vector2(2, 4)
 shape = SubResource("RectangleShape2D_mq31s")
 
 [node name="MapBoundary" type="Area2D" parent="BG" unique_id=1330440525]
@@ -687,7 +687,7 @@ collision_layer = 128
 collision_mask = 128
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BG/MapBoundary" unique_id=75601273]
-polygon = PackedVector2Array(0.012783051, -0.0434227, 3840, 0, 3840, 2112, -0.08187866, 2112.0537, 0, -384, -384, -384, -384, 2496, 4224, 2496, 4224, -384, 0, -384)
+polygon = PackedVector2Array(0.012783051, -0.0434227, 3840, 0, 3840, 2176, 0, 2176, 0, -384, -384, -384, -384, 2496, 4224, 2496, 4224, -384, 0, -384)
 
 [node name="Towers" type="Node2D" parent="." unique_id=59664562]
 y_sort_enabled = true
