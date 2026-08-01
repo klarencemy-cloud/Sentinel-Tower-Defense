@@ -13,6 +13,7 @@ func reveal():
 
 func _on_delete_button_pressed() -> void:
 	delete_press.emit()
+	Data.is_tower_placeable = true
 
 
 func _input(event: InputEvent) -> void:

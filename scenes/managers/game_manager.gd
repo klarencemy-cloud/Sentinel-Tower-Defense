@@ -10,7 +10,7 @@ extends Node2D
 func _ready() -> void:
 	randomize()
 	RenderingServer.set_default_clear_color("242a2f")
-
+	$BG/TowerPreview.hide()
 	level_manager.setup(self)
 	tower_manager.setup(self, level_manager)
 	ability_manager.setup(self, level_manager)
