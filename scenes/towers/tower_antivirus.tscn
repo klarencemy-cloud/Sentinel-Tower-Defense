@@ -63,6 +63,7 @@ grow_vertical = 1
 
 [node name="ShootSound" parent="." index="7" unique_id=1474961134]
 stream = ExtResource("5_1oiqa")
+volume_db = -4.617
 bus = &"Sounds"
 
 [node name="AdButton" type="TextureButton" parent="." index="8" unique_id=1970184477]

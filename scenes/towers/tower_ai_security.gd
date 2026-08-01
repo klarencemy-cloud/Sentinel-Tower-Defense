@@ -1,14 +1,21 @@
 extends Tower
 
+@onready var charge_sound: AudioStreamPlayer2D = $ChargeSound
+@onready var firing_sound: AudioStreamPlayer2D = $FiringSound
+
 var target: Area2D = null
 @onready var laser := $Laser
 var damage_multiplier := 1.0
 const MAX_DAMAGE_MULTIPLIER := 2.0
 
-const LASER_EXTEND_TIME := 0.5
+const LASER_SPEED: float = 600.0
+
+var laser_extend_time: float = 1.0
 var laser_progress := 0.0
 var laser_extending := false
 var laser_ready := false
+var charge_sound_played := false
+var firing_sound_playing := false
 
 @onready var lightning := $Turret/Particles/Lightning
 var mat: ShaderMaterial
@@ -22,6 +29,8 @@ func _ready():
 	laser.visible = false
 	laser.monitoring = false
 	$ReloadTimer.stop()
+	charge_sound_played = false
+	firing_sound_playing = false
 	
 func _process(_delta):
 	timer += _delta + .08
@@ -57,8 +66,19 @@ func _process(_delta):
 	$Turret.rotation -= PI / 2
 	laser.visible = true
 	laser.monitoring = true
+
+	# Play charge sound once at start
+	if not charge_sound_played:
+		charge_sound.play()
+		charge_sound_played = true
+
+	# Start firing sound once laser is fully extended and ready
+	if laser_ready and not firing_sound_playing:
+		firing_sound.play()
+		firing_sound_playing = true
+
 	if laser_extending:
-		laser_progress += _delta / LASER_EXTEND_TIME
+		laser_progress += _delta / laser_extend_time
 
 		if laser_progress >= 1.0:
 			laser_progress = 1.0
@@ -81,6 +101,13 @@ func acquire_target():
 			laser_progress = 0.0
 			laser_extending = true
 			laser_ready = false
+			charge_sound_played = false
+			firing_sound_playing = false
+
+			var distance = $Turret/LaserOrigin.global_position.distance_to(enemy.global_position)
+			laser_extend_time = distance / LASER_SPEED
+			if laser_extend_time < 0.05:
+				laser_extend_time = 0.05
 
 			$ReloadTimer.stop()
 			return
@@ -94,6 +121,14 @@ func clear_target():
 	laser_progress = 0.0
 	laser_extending = false
 	laser_ready = false
+	charge_sound_played = false
+	
+	# Stop firing sound when laser stops
+	if firing_sound_playing:
+		firing_sound.stop()
+		firing_sound_playing = false
+	
+	laser_extend_time = 1.0
 
 	$ReloadTimer.stop()
 	if laser.has_overlapping_areas():

@@ -8,8 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_45hyi"]
 [ext_resource type="AudioStream" uid="uid://cl853fuwoh0os" path="res://audio/SFX/TOWERS/ai sec electricity.wav" id="7_45hyi"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_mfyuw"]
-[ext_resource type="AudioStream" uid="uid://45t2p1s72pa7" path="res://audio/SFX/TOWERS/ai sec shoot.wav" id="8_45hyi"]
+[ext_resource type="AudioStream" uid="uid://cgd5ye5ynktfl" path="res://audio/SFX/TOWERS/ai sec shoot.wav" id="8_45hyi"]
 [ext_resource type="PackedScene" uid="uid://w1r41md2l3a3" path="res://scenes/bullets/laser.tscn" id="8_ixafn"]
+[ext_resource type="AudioStream" uid="uid://6ftpnstpva4d" path="res://audio/SFX/TOWERS/ai sec charge.wav" id="9_ol7t1"]
+[ext_resource type="AudioStream" uid="uid://cy5ltqcrask3h" path="res://audio/SFX/TOWERS/ai sec firing.wav" id="10_kv0k2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ol7t1"]
 shader = ExtResource("5_ixafn")
@@ -87,7 +89,20 @@ offset_bottom = -75.0
 stream = ExtResource("8_45hyi")
 bus = &"Sounds"
 
-[node name="AdButton" type="TextureButton" parent="." index="8" unique_id=654513809]
+[node name="ChargeSound" type="AudioStreamPlayer2D" parent="." index="8" unique_id=2069103925]
+position = Vector2(-0.8543231, -14.676173)
+rotation = 3.1415925
+scale = Vector2(0.99999976, 0.99999976)
+stream = ExtResource("9_ol7t1")
+bus = &"Sounds"
+
+[node name="FiringSound" type="AudioStreamPlayer2D" parent="." index="9" unique_id=1534537056]
+scale = Vector2(0.99999994, 0.99999994)
+stream = ExtResource("10_kv0k2")
+volume_db = -6.842
+bus = &"Sounds"
+
+[node name="AdButton" type="TextureButton" parent="." index="10" unique_id=654513809]
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
@@ -96,7 +111,7 @@ ignore_texture_size = true
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="PayButton" type="TextureButton" parent="." index="9" unique_id=1402831666]
+[node name="PayButton" type="TextureButton" parent="." index="11" unique_id=1402831666]
 visible = false
 offset_left = -31.0
 offset_top = -32.0
@@ -104,7 +119,7 @@ offset_right = 33.0
 offset_bottom = 32.0
 texture_normal = ExtResource("7_mfyuw")
 
-[node name="Laser" parent="." index="10" unique_id=1385636298 instance=ExtResource("8_ixafn")]
+[node name="Laser" parent="." index="12" unique_id=1385636298 instance=ExtResource("8_ixafn")]
 visible = false
 position = Vector2(0, -107)
 
