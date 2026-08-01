@@ -483,6 +483,7 @@ autoplay = "default"
 frame_progress = 0.77639115
 
 [node name="ServerlLevel6" type="AnimatedSprite2D" parent="." unique_id=450285722]
+visible = false
 texture_filter = 2
 position = Vector2(158, 56)
 sprite_frames = SubResource("SpriteFrames_375b0")

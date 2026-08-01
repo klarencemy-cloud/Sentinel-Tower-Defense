@@ -61,3 +61,11 @@ func _on_ui_start_wave() -> void:
 
 func _on_ui_spawn_sandbox_enemy(enemy_enum: Data.Enemy) -> void:
 	wave_manager.spawn_sandbox_enemy(enemy_enum)
+
+
+func _on_map_boundary_area_entered(area: Area2D) -> void:
+	Data.is_tower_placeable = false
+
+func _on_map_boundary_area_exited(area: Area2D) -> void:
+	if area.get_overlapping_areas().is_empty():
+		Data.is_tower_placeable = true

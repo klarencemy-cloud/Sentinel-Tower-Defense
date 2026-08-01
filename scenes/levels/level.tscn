@@ -682,6 +682,13 @@ collision_mask = 128
 position = Vector2(3, 4)
 shape = SubResource("RectangleShape2D_mq31s")
 
+[node name="MapBoundary" type="Area2D" parent="BG" unique_id=1330440525]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BG/MapBoundary" unique_id=75601273]
+polygon = PackedVector2Array(0.012783051, -0.0434227, 3840, 0, 3840, 2112, -0.08187866, 2112.0537, 0, -384, -384, -384, -384, 2496, 4224, 2496, 4224, -384, 0, -384)
+
 [node name="Towers" type="Node2D" parent="." unique_id=59664562]
 y_sort_enabled = true
 
@@ -768,14 +775,16 @@ process_material = SubResource("ParticleProcessMaterial_7pb6i")
 z_index = 2
 texture_repeat = 2
 material = SubResource("ShaderMaterial_mq31s")
-offset_left = -1.0
-offset_top = 1.0
-offset_right = 3839.0
-offset_bottom = 2161.0
+offset_left = -3.0
+offset_top = 166.0
+offset_right = 3837.0
+offset_bottom = 2326.0
 mouse_filter = 2
 color = Color(0.49837798, 0.8743902, 0.78778285, 0.24705882)
 metadata/_edit_use_anchors_ = true
 
+[connection signal="area_entered" from="BG/MapBoundary" to="." method="_on_map_boundary_area_entered"]
+[connection signal="area_exited" from="BG/MapBoundary" to="." method="_on_map_boundary_area_exited"]
 [connection signal="place_sentinel" from="UI" to="." method="_on_ui_place_sentinel"]
 [connection signal="place_tower" from="UI" to="." method="_on_ui_place_tower"]
 [connection signal="start_wave" from="UI" to="." method="_on_ui_start_wave"]
