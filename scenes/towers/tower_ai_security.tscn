@@ -29,18 +29,17 @@ fill_to = Vector2(0.8333333, 0.11111111)
 radius = 130.31117
 
 [node name="TowerBasic" unique_id=1033549676 instance=ExtResource("1_sw2vj")]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("2_sw2vj")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
 light_mask = 128
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_ixafn")
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
 light_mask = 128
 position = Vector2(-0.8543234, -14.676177)
 rotation = -3.1415927
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_kbeox")
 offset = Vector2(-1.2204638, 51.176895)
 flip_v = true

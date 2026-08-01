@@ -68,19 +68,18 @@ radius = 92.26592
 size = Vector2(94, 138)
 
 [node name="TowerQuarantineCannon" unique_id=525808216 instance=ExtResource("1_7a66m")]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("2_7a66m")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
 light_mask = 32
 position = Vector2(0, -0.99999803)
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_qhywc")
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
 light_mask = 32
 position = Vector2(0, -28.999998)
 rotation = 3.1415927
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_0hga0")
 flip_v = true
 

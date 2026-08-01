@@ -78,18 +78,16 @@ color = Color(0, 0.6996187, 0.6823587, 1)
 anim_speed_max = 1.0
 
 [node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_jnnmb")]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("2_jnnmb")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
 light_mask = 256
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_nnykp")
-offset = Vector2(0, -17.142868)
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
 light_mask = 256
 position = Vector2(0, -74.99999)
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_tm11s")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Turret" index="0" unique_id=1664912512]

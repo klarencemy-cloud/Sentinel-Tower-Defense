@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b7xwf0s7rktfd" path="res://audio/sound_placeholder.mp3" id="6_mbbpy"]
 [ext_resource type="Script" uid="uid://d3hyvmjtdxi5k" path="res://scenes/managers/sentinel_manager.gd" id="6_mq31s"]
 [ext_resource type="Script" uid="uid://1biiqhqmsago" path="res://scenes/managers/level_manager.gd" id="9_1phd1"]
+[ext_resource type="Script" uid="uid://c3jwwe6pt1e16" path="res://scenes/levels/color_rect.gd" id="9_5mi6g"]
 [ext_resource type="Script" uid="uid://dpqclxypode5g" path="res://scenes/managers/tower_manager.gd" id="10_g7lvq"]
 [ext_resource type="Script" uid="uid://dy1mk1bohkjnf" path="res://scenes/managers/wave_manager.gd" id="11_y8dwe"]
 [ext_resource type="Texture2D" uid="uid://c11wvcxprgq04" path="res://graphics/particles/glow.png" id="12_qogh7"]
@@ -489,6 +490,9 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_xb4v1")
 sources/1 = SubResource("TileSetAtlasSource_urvlt")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mq31s"]
+size = Vector2(138, 152)
+
 [sub_resource type="Gradient" id="Gradient_qogh7"]
 offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
@@ -659,7 +663,24 @@ tile_set = SubResource("TileSet_urvlt")
 
 [node name="TowerPreview" type="Sprite2D" parent="BG" unique_id=613422467]
 modulate = Color(1, 1, 1, 0.6862745)
-z_index = 2
+z_index = 3
+
+[node name="ColorRect" type="ColorRect" parent="BG/TowerPreview" unique_id=84144201]
+z_index = -1
+offset_left = -84.0
+offset_top = -88.0
+offset_right = 88.0
+offset_bottom = 96.0
+color = Color(0, 0.4392157, 0.22745098, 0.5647059)
+script = ExtResource("9_5mi6g")
+
+[node name="TowerPlacement" type="Area2D" parent="BG/TowerPreview" unique_id=12752620]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/TowerPreview/TowerPlacement" unique_id=57135874]
+position = Vector2(3, 4)
+shape = SubResource("RectangleShape2D_mq31s")
 
 [node name="Towers" type="Node2D" parent="." unique_id=59664562]
 y_sort_enabled = true

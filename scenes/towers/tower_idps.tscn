@@ -88,13 +88,14 @@ color = Color(0, 0.6996187, 0.6823587, 1)
 anim_speed_max = 1.0
 
 [node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_b2ii2")]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("2_b2ii2")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
 light_mask = 16
-scale = Vector2(0.7, 0.7)
+position = Vector2(-7.1054274e-15, -4.7683716e-07)
 texture = ExtResource("4_hginv")
-offset = Vector2(0, -17.142868)
+offset = Vector2(7.1054274e-15, -7.1525574e-06)
 
 [node name="ColorRect" type="ColorRect" parent="Base" index="0" unique_id=1439635008]
 z_index = -1
@@ -109,7 +110,6 @@ mouse_filter = 2
 [node name="Turret" parent="." index="1" unique_id=280637358]
 light_mask = 16
 position = Vector2(0, -74.99999)
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_56y0f")
 
 [node name="PointLight2D" type="PointLight2D" parent="Turret" index="0" unique_id=1482475935]

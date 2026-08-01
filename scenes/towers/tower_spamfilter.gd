@@ -31,7 +31,7 @@ func _on_reload_timer_timeout() -> void:
 			final_damage,
 			type,
 			tower_id,
-			enemies[0]   # <-- target
+			enemies[0] # <-- target
 		)
 		fire_animation()
 		$ShootSound.play()

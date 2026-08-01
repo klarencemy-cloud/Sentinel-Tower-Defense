@@ -61,6 +61,8 @@ var sentinel_deception_deployed: bool = false
 var damage_reduction: float = 0
 
 
+var is_tower_placeable: bool = true
+
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
 enum Tower {SPAM_FILTER, ANTIVIRUS, DATA_LOSS_PREVENTION, QUARANTINE_CANNON, IDPS, BACKUP_SERVER, SANDBOX_ANALYZER, AD_BLOCKER, ACCESS_CONTROL_SYSTEM, ENDPOINT_PROTECTION, AI_SECURITY}

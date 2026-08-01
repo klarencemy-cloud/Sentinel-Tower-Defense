@@ -46,16 +46,15 @@ fill_to = Vector2(0.6111111, 0.047008548)
 radius = 130.31117
 
 [node name="TowerBasic" unique_id=1033549676 instance=ExtResource("1_l7y1m")]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("2_d2kd5")
 
 [node name="Base" parent="." index="0" unique_id=230566731]
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_dmts7")
 
 [node name="Turret" parent="." index="1" unique_id=280637358]
 position = Vector2(-6.3948914e-14, -16.000002)
 rotation = -3.1415927
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_uin2q")
 offset = Vector2(0, 35)
 flip_v = true
@@ -113,6 +112,10 @@ offset_top = -32.0
 offset_right = 33.0
 offset_bottom = 32.0
 texture_normal = ExtResource("6_l7y1m")
+
+[node name="CollisionShape2D" parent="TowerPlacement" parent_id_path=PackedInt32Array(1018174449) index="0" unique_id=469974130]
+position = Vector2(-5.449566e-06, -1.7711094e-05)
+scale = Vector2(0.99999964, 0.99999964)
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]

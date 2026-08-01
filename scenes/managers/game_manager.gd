@@ -38,8 +38,8 @@ func next_map() -> void:
 
 func _process(_delta: float) -> void:
 	wave_manager.update_wave_state()
-
 	
+
 func _input(event: InputEvent) -> void:
 	tower_manager.handle_input(event)
 	ability_manager.handle_input(event)

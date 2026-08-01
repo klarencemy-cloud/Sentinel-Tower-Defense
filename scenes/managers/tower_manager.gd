@@ -65,7 +65,7 @@ func start_tower_placement(tower_type: Data.Tower) -> void:
 	if preview:
 		preview.texture = load(Data.TOWER_DATA[tower_type]["thumbnail"])
 		preview.scale = Vector2(0.7, 0.7) # Scale down preview para same size ng actual towers
-		preview.offset = Vector2(0, -70) # Offset the preview para kapag nag place ng towers, same sa tower's position
+		preview.offset = Vector2(0, -53) # Offset the preview para kapag nag place ng towers, same sa tower's position
 
 func cancel_selection() -> void:
 	place_tower = false
@@ -124,6 +124,7 @@ func _try_place_current_building(cell_pos: Vector2i, world_pos: Vector2) -> void
 	if current_placement_kind == "tower":
 		_try_place_tower(cell_pos, world_pos)
 
+
 func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	var layer = level_manager.get_build_layer()
 	var asset_layer = level_manager.get_asset_layer()
@@ -145,9 +146,8 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 			if not asset_tile_data.get_custom_data("Usable"):
 				return
 
-	# if (asset_tile_data == null or not asset_tile_data.get_custom_data("Usable")) and not tile_data.get_custom_data("Usable"):
-	# 	return
-
+	if not Data.is_tower_placeable:
+		return
 
 	var cost = Data.TOWER_DATA[selected_tower]["cost"]
 	var using_free: bool = Data.free_towers.get(selected_tower, 0) > 0

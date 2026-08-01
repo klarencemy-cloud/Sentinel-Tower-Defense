@@ -82,8 +82,12 @@ shader_parameter/Vanishing_Value = 0.86000004085
 shader_parameter/Speed = Vector2(0.055, 0)
 shader_parameter/Basic_Texture = ExtResource("6_s3ndn")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3ndn"]
+size = Vector2(160.00002, 182.85715)
+
 [node name="TowerBasic" type="Node2D" unique_id=1855858258 groups=["Towers"]]
 z_index = 2
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_4jq7i")
 
 [node name="Turret" type="Sprite2D" parent="." unique_id=34233293]
@@ -91,7 +95,6 @@ light_mask = 524288
 visibility_layer = 524288
 position = Vector2(0.13348395, -13.334874)
 rotation = -3.1415927
-scale = Vector2(0.69794554, 0.6979456)
 texture = ExtResource("3_frx7f")
 offset = Vector2(0, 35)
 flip_h = true
@@ -197,6 +200,14 @@ material = SubResource("ShaderMaterial_2cfld")
 points = PackedVector2Array(-43, -105, -53, -92, -57, -76, -56, -56, -42, -28)
 default_color = Color(0.4511093, 0.99999994, 0.99471456, 1)
 texture_mode = 2
+
+[node name="TowerPlacement" type="Area2D" parent="." unique_id=1164809671]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerPlacement" unique_id=1985553697]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_s3ndn")
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="delete_press" from="TowerMenu" to="." method="_on_tower_menu_delete_press"]

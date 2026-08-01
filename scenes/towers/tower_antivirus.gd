@@ -46,16 +46,16 @@ func _apply_antivirus_bonus(base_dmg: int, target_enemy: Area2D) -> int:
 	if not target_enemy.enemy_type_stats in MALWARE_TYPES:
 		return base_dmg
 	
-	var bonus_multiplier := 1.2  # passive: 20%
+	var bonus_multiplier := 1.2 # passive: 20%
 	
 	var tower_data = Data.TOWER_DATA.get(type, {})
 	
 	if tower_data.get("tier3abilityunlocked", false):
-		bonus_multiplier = 1.5  # T350%
+		bonus_multiplier = 1.5 # T350%
 	elif tower_data.get("tier2abilityunlocked", false):
-		bonus_multiplier = 1.4  # T2 40%
+		bonus_multiplier = 1.4 # T2 40%
 	elif tower_data.get("tier1abilityunlocked", false):
-		bonus_multiplier = 1.3  # T13 0%
+		bonus_multiplier = 1.3 # T13 0%
 	
 	return int(round(base_dmg * bonus_multiplier))
 
