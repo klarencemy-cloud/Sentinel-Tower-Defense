@@ -5,6 +5,11 @@ var target: Area2D = null
 var damage_multiplier := 1.0
 const MAX_DAMAGE_MULTIPLIER := 2.0
 
+const LASER_EXTEND_TIME := 0.5
+var laser_progress := 0.0
+var laser_extending := false
+var laser_ready := false
+
 @onready var lightning := $Turret/Particles/Lightning
 var mat: ShaderMaterial
 var timer: float = 0.0
@@ -16,6 +21,7 @@ func _ready():
 
 	laser.visible = false
 	laser.monitoring = false
+	$ReloadTimer.stop()
 	
 func _process(_delta):
 	timer += _delta + .08
@@ -51,15 +57,32 @@ func _process(_delta):
 	$Turret.rotation -= PI / 2
 	laser.visible = true
 	laser.monitoring = true
+	if laser_extending:
+		laser_progress += _delta / LASER_EXTEND_TIME
+
+		if laser_progress >= 1.0:
+			laser_progress = 1.0
+			laser_extending = false
+			laser_ready = true
+
+			$ReloadTimer.start()
+
 	laser.update_laser(
-	$Turret/LaserOrigin.global_position,
-	target.global_position
+		$Turret/LaserOrigin.global_position,
+   	 	target.global_position,
+		laser_progress
 )
 
 func acquire_target():
 	for enemy in enemies:
 		if is_instance_valid(enemy):
 			target = enemy
+
+			laser_progress = 0.0
+			laser_extending = true
+			laser_ready = false
+
+			$ReloadTimer.stop()
 			return
 
 func clear_target():
@@ -68,11 +91,17 @@ func clear_target():
 	laser.visible = false
 	laser.monitoring = false
 	laser.hide_particles()
+	laser_progress = 0.0
+	laser_extending = false
+	laser_ready = false
 
+	$ReloadTimer.stop()
 	if laser.has_overlapping_areas():
 		laser.monitoring = false
 	
 func _on_reload_timer_timeout() -> void:
+	if !laser_ready:
+		return
 	if stunned:
 		return
 	if disabled_by_ad or disabled_by_ransomware:
