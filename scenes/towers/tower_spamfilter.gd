@@ -1,4 +1,5 @@
 extends Tower
+@onready var sound_particles: AudioStreamPlayer2D = $Particles
 
 func _process(_delta: float) -> void:
 	if enemies.size() > 0:
@@ -48,3 +49,4 @@ func fire_animation():
 	for particles: GPUParticles2D in $Turret/Particles.get_children():
 		particles.restart()
 		particles.emitting = true
+		sound_particles.play()

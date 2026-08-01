@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://brxs5tnb0jebj"
-path="res://.godot/imported/SPAM_FILTER.png-1cfdd5b950fa0826d2e4e6f81a25a3a6.ctex"
+path="res://.godot/imported/spam_filter.png-c1252fba01001543c2067bf96a59a785.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/SPAM_FILTER.png"
-dest_files=["res://.godot/imported/SPAM_FILTER.png-1cfdd5b950fa0826d2e4e6f81a25a3a6.ctex"]
+source_file="res://graphics/ui/tower thumbnails/spam_filter.png"
+dest_files=["res://.godot/imported/spam_filter.png-c1252fba01001543c2067bf96a59a785.ctex"]
 
 [params]
 

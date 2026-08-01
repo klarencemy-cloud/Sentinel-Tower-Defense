@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://to6d1j5dni6t" path="res://scenes/towers/tower.tscn" id="1_l7y1m"]
 [ext_resource type="Script" uid="uid://017kd2s5kpw7" path="res://scenes/towers/tower_spamfilter.gd" id="2_d2kd5"]
 [ext_resource type="Texture2D" uid="uid://b00gbf4bkr8pr" path="res://graphics/towers/spam filter/spam_filter_turret.png" id="4_uin2q"]
-[ext_resource type="AudioStream" uid="uid://sicd08w0ce6c" path="res://audio/bullet.wav" id="5_81w6i"]
 [ext_resource type="Texture2D" uid="uid://bgijljt2l6qml" path="res://graphics/towers/spam filter/spam_filter_base.png" id="5_dmts7"]
 [ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="5_uin2q"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_l7y1m"]
+[ext_resource type="AudioStream" uid="uid://msdlyogcyfpv" path="res://audio/SFX/TOWERS/SPAM FILTERsss.wav" id="6_uin2q"]
+[ext_resource type="AudioStream" uid="uid://c2teiofo7hvjs" path="res://audio/SFX/TOWERS/Particles.wav" id="7_81w6i"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_81w6i"]
 blend_mode = 1
@@ -94,9 +95,17 @@ offset_right = 27.0
 offset_bottom = -60.0
 
 [node name="ShootSound" parent="." index="7" unique_id=1474961134]
-stream = ExtResource("5_81w6i")
+stream = ExtResource("6_uin2q")
+bus = &"Sounds"
 
-[node name="AdButton" type="TextureButton" parent="." index="8" unique_id=654513809]
+[node name="Particles" type="AudioStreamPlayer2D" parent="." index="8" unique_id=694501751]
+scale = Vector2(0.99999994, 0.99999994)
+stream = ExtResource("7_81w6i")
+volume_db = -12.395
+max_distance = 538.0
+bus = &"Sounds"
+
+[node name="AdButton" type="TextureButton" parent="." index="9" unique_id=654513809]
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
@@ -105,7 +114,7 @@ ignore_texture_size = true
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="PayButton" type="TextureButton" parent="." index="9" unique_id=1402831666]
+[node name="PayButton" type="TextureButton" parent="." index="10" unique_id=1402831666]
 visible = false
 offset_left = -31.0
 offset_top = -32.0
