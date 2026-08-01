@@ -10,12 +10,14 @@ func _ready():
 	default_width = shape.size.x
 	default_sprite_scale_x = sprite.scale.x
 	
-func update_laser(start_pos: Vector2, end_pos: Vector2):
+func update_laser(start_pos: Vector2, end_pos: Vector2, progress := 1.0):
 	global_position = start_pos
 	look_at(end_pos)
 	rotation -= PI / 2
-	var distance = start_pos.distance_to(end_pos)
-	$GPUParticles2D6.global_position = end_pos
+	var full_distance = start_pos.distance_to(end_pos)
+	var distance = full_distance * progress
+	var tip = start_pos.lerp(end_pos, progress)
+	$GPUParticles2D6.global_position = tip
 	$GPUParticles2D6.emitting = true
 	$GPUParticles2D5.emitting = true
 	# Stretch sprite
