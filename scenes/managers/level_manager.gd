@@ -134,3 +134,6 @@ func lightning() -> void:
 
 		await get_tree().create_timer(randf_range(.1, .3)).timeout
 		light_node.energy = 0.0
+		
+func world_to_map(world_pos: Vector2) -> Vector2i:
+	return Vector2i(floor(world_pos.x / 16.0), floor(world_pos.y / 16.0))

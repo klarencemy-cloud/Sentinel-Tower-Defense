@@ -12,7 +12,9 @@
 [ext_resource type="Script" uid="uid://c3jwwe6pt1e16" path="res://scenes/levels/color_rect.gd" id="9_5mi6g"]
 [ext_resource type="Shader" uid="uid://ff5s04aovju4" path="res://texture/shaders/indicator.gdshader" id="9_b8j7q"]
 [ext_resource type="Script" uid="uid://dpqclxypode5g" path="res://scenes/managers/tower_manager.gd" id="10_g7lvq"]
+[ext_resource type="Texture2D" uid="uid://dgpsq3wphkb4w" path="res://graphics/buttons/placetower.png" id="11_jyre1"]
 [ext_resource type="Script" uid="uid://dy1mk1bohkjnf" path="res://scenes/managers/wave_manager.gd" id="11_y8dwe"]
+[ext_resource type="Texture2D" uid="uid://k0oen0fxwhhb" path="res://graphics/buttons/cancelplace.png" id="12_lp2ca"]
 [ext_resource type="Texture2D" uid="uid://c11wvcxprgq04" path="res://graphics/particles/glow.png" id="12_qogh7"]
 [ext_resource type="Texture2D" uid="uid://vwau2jy3q805" path="res://graphics/map/dust.png" id="12_xfk5q"]
 [ext_resource type="Script" uid="uid://djmtfsuaukiga" path="res://scenes/levels/lightning_effects.gd" id="13_qogh7"]
@@ -691,6 +693,20 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BG/TowerPreview/TowerPlacement" unique_id=57135874]
 position = Vector2(2, 4)
 shape = SubResource("RectangleShape2D_mq31s")
+
+[node name="PlaceTower" type="TextureButton" parent="BG/TowerPreview" unique_id=463569342]
+offset_left = 114.0
+offset_top = -129.0
+offset_right = 194.0
+offset_bottom = -49.0
+texture_normal = ExtResource("11_jyre1")
+
+[node name="CancelPlace" type="TextureButton" parent="BG/TowerPreview" unique_id=2069271673]
+offset_left = 114.0
+offset_top = -28.0
+offset_right = 194.0
+offset_bottom = 52.0
+texture_normal = ExtResource("12_lp2ca")
 
 [node name="MapBoundary" type="Area2D" parent="BG" unique_id=1330440525]
 collision_layer = 128

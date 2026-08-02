@@ -46,7 +46,17 @@ func update_free_label():
 		free_label.text = str(amount)
 
 func _on_pressed() -> void:
+	for card in get_tree().get_nodes_in_group("TowerCard"):
+		card.set_selected(false)
+
+	set_selected(true)
 	press.emit(id)
 	
 func _on_server_load_changed():
 	toggle_active(Data.money)
+
+func set_selected(selected: bool) -> void:
+	if selected:
+		modulate = Color(0.6, 0.6, 0.6, 1.0)
+	else:
+		modulate = Color.WHITE

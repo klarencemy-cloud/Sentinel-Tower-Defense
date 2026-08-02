@@ -5,6 +5,8 @@ extends Camera2D
 @export var start_zoom: Vector2 = Vector2(1.0, 1.0)
 @export var min_zoom: Vector2 = Vector2(0.7, 0.7)
 @export var max_zoom: Vector2 = Vector2(2.0, 2.0)
+@export var edge_scroll_threshold: float = 40.0
+@export var edge_scroll_speed: float = 1200.0
 
 
 const WHEEL_ZOOM_STEP = 0.15
@@ -57,8 +59,11 @@ func shell_tremor(intensity: float):
 	shake_strength = intensity
 
 func _process(_delta: float) -> void:
-	if target:
+	if not Data.is_placing_tower and target:
 		position = target.position
+
+	if Data.is_placing_tower:
+		_position_edge_scroll(_delta)
 
 	if shake_strength > 0:
 		shake_strength = lerp(shake_strength, 0.0, shake_fade * _delta)
@@ -95,3 +100,21 @@ func _get_pinch_distance() -> float:
 
 	var points: Array = touch_points.values()
 	return points[0].distance_to(points[1])
+
+func _position_edge_scroll(_delta: float) -> void:
+	var viewport_size = get_viewport_rect().size
+	var mouse_pos = get_viewport().get_mouse_position()
+	var scroll_dir = Vector2.ZERO
+
+	if mouse_pos.x <= edge_scroll_threshold:
+		scroll_dir.x = -1
+	elif mouse_pos.x >= viewport_size.x - edge_scroll_threshold:
+		scroll_dir.x = 1
+
+	if mouse_pos.y <= edge_scroll_threshold:
+		scroll_dir.y = -1
+	elif mouse_pos.y >= viewport_size.y - edge_scroll_threshold:
+		scroll_dir.y = 1
+
+	if scroll_dir != Vector2.ZERO:
+		position += scroll_dir.normalized() * edge_scroll_speed * _delta

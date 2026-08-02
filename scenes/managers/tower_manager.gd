@@ -25,19 +25,12 @@ var current_placement_kind: String = ""
 var tower_menu: bool = false
 var next_tower_id: int = 1
 var used_cells: Array[Vector2i] = []
+var preview_initialized := false
 
 var place_tower: bool = false:
 	set(value):
 		place_tower = value
 		Data.is_placing_tower = value
-		if is_inside_tree():
-			var preview = _get_tower_preview()
-			if preview:
-				if value:
-					await get_tree().create_timer(.1).timeout
-					preview.visible = value
-				else:
-					preview.visible = value
 
 
 func setup(root: Node2D, map_manager: Node) -> void:
@@ -49,19 +42,29 @@ func handle_input(event: InputEvent) -> void:
 	var cell_pos = level_manager.mouse_to_map_position()
 	var world_pos = level_manager.map_to_world(cell_pos)
 
-	# Mouse release placement
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed and place_tower:
-		_try_place_current_building(cell_pos, world_pos)
+	# Move preview only while dragging with left mouse button
+	if place_tower:
+		if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			var preview = _get_tower_preview()
+			if preview:
+				if !preview.visible:
+					preview.show()
 
-	# Touch release placement
-	if event is InputEventScreenTouch and not event.pressed and place_tower:
-		_try_place_current_building(cell_pos, world_pos)
+				if !preview_initialized:
+					preview.show()
+					preview_initialized = true
 
-	# Update preview position while moving (mouse or touch drag)
-	if (event is InputEventMouseMotion or event is InputEventScreenDrag) and place_tower:
-		var preview = _get_tower_preview()
-		if preview:
-			preview.position = world_pos
+				preview.position = world_pos
+				_update_preview_buttons(cell_pos, preview)
+
+		elif event is InputEventScreenDrag:
+			var preview = _get_tower_preview()
+			if preview:
+				if !preview.visible:
+					preview.show()
+
+				preview.position = world_pos
+				_update_preview_buttons(cell_pos, preview)
 	if Input.is_action_just_pressed("exit"):
 		cancel_selection()
 
@@ -73,13 +76,37 @@ func start_tower_placement(tower_type: Data.Tower) -> void:
 
 	var preview = _get_tower_preview()
 	if preview:
+		preview.hide()
+		preview_initialized = false
+		preview.position = Vector2.ZERO
 		preview.texture = load(Data.TOWER_DATA[tower_type]["thumbnail"])
+		preview.modulate = Color.WHITE
 		preview.scale = Vector2(0.7, 0.7) # Scale down preview para same size ng actual towers
 		preview.offset = Vector2(0, -53) # Offset the preview para kapag nag place ng towers, same sa tower's position
-		preview.position = level_manager.map_to_world(level_manager.mouse_to_map_position())
+		var place_btn = preview.get_node("PlaceTower")
+		var cancel_btn = preview.get_node("CancelPlace")
+
+		place_btn.show()
+		cancel_btn.show()
+
+		if !place_btn.pressed.is_connected(confirm_current_placement):
+			place_btn.pressed.connect(confirm_current_placement)
+
+		if !cancel_btn.pressed.is_connected(cancel_current_placement):
+			cancel_btn.pressed.connect(cancel_current_placement)
 
 func cancel_selection() -> void:
 	place_tower = false
+	var preview = _get_tower_preview()
+	if preview:
+		preview.hide()
+
+		var place_btn = preview.get_node("PlaceTower")
+		var cancel_btn = preview.get_node("CancelPlace")
+
+		place_btn.hide()
+		cancel_btn.hide()
+		
 	current_placement_kind = ""
 	tower_menu = false
 	current_tower = null
@@ -87,6 +114,9 @@ func cancel_selection() -> void:
 	for tower in get_tree().get_nodes_in_group("Towers"):
 		tower.hide_ui()
 	Data.is_placing_tower = false
+	
+	for card in get_tree().get_nodes_in_group("TowerCard"):
+		card.set_selected(false)
 
 
 func create_bullet(pos, angle, bullet_enum, damage, tower_type, tower_id := -1, target = null):
@@ -167,11 +197,15 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	
 	if Data.currentserverload >= Data.maxserverload:
 		place_tower = false
+		for card in get_tree().get_nodes_in_group("TowerCard"):
+			card.set_selected(false)
 		return
 		
 	if !using_free:
 		if not Data.is_unli_money and Data.money < cost:
 			place_tower = false
+			for card in get_tree().get_nodes_in_group("TowerCard"):
+				card.set_selected(false)
 			return
 
 	used_cells.append(cell_pos)
@@ -193,6 +227,16 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		Data.backup_server_placed = true
 	
 	place_tower = false
+	for card in get_tree().get_nodes_in_group("TowerCard"):
+		card.set_selected(false)
+	var preview = _get_tower_preview()
+	if preview:
+		preview.hide()
+		preview.modulate = Color.WHITE
+		preview_initialized = false
+		preview.position = Vector2.ZERO
+		preview.get_node("PlaceTower").hide()
+		preview.get_node("CancelPlace").hide()
 	if using_free:
 		var remaining: int = Data.free_towers.get(selected_tower, 0)
 
@@ -241,12 +285,71 @@ func _get_bullet_parent() -> Node:
 	return level_root.get_node("Bullets")
 
 
-func _get_tower_preview() -> Sprite2D:
-	var preview = level_root.get_node_or_null("BG/TowerPreview")
-	return preview as Sprite2D
+func _get_tower_preview() -> Node2D:
+	return level_root.get_node_or_null("BG/TowerPreview") as Node2D
 
 
 func create_mortar_projectile(start_pos, target_enemy, damage, tower_type, tower_id):
 	var projectile = mortar_projectile_scene.instantiate()
 	projectile.setup(start_pos, target_enemy, damage, tower_type, tower_id)
 	_get_bullet_parent().add_child(projectile)
+	
+func confirm_current_placement() -> void:
+	if !place_tower:
+		return
+
+	var preview = _get_tower_preview()
+	if preview == null:
+		return
+
+	var world_pos = preview.position
+	var cell_pos = level_manager.world_to_map(world_pos)
+
+	_try_place_current_building(cell_pos, world_pos)
+
+func cancel_current_placement() -> void:
+	var preview = _get_tower_preview()
+
+	if preview:
+		preview.hide()
+		preview.modulate = Color.WHITE
+		preview_initialized = false
+		preview.position = Vector2.ZERO
+		var place_btn = preview.get_node("PlaceTower")
+		var cancel_btn = preview.get_node("CancelPlace")
+
+		place_btn.hide()
+		cancel_btn.hide()
+
+	cancel_selection()
+
+func _update_preview_buttons(cell_pos: Vector2i, preview: Node2D) -> void:
+	var place_btn = preview.get_node("PlaceTower")
+
+	var layer = level_manager.get_build_layer()
+	var asset_layer = level_manager.get_asset_layer()
+
+	var valid := true
+
+	if cell_pos in used_cells:
+		valid = false
+
+	var tile_data = layer.get_cell_tile_data(cell_pos)
+	if tile_data == null or !tile_data.get_custom_data("Usable"):
+		valid = false
+
+	if asset_layer:
+		var asset_tile = asset_layer.get_cell_tile_data(cell_pos)
+		if asset_tile != null:
+			if asset_tile.get_custom_data("Usable") != null and !asset_tile.get_custom_data("Usable"):
+				valid = false
+
+	if !Data.is_tower_placeable:
+		valid = false
+
+	place_btn.visible = valid
+
+	if valid:
+		preview.modulate = Color.WHITE
+	else:
+		preview.modulate = Color(1.0, 0.4, 0.4, 0.8) # red tint
