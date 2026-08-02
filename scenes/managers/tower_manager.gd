@@ -29,6 +29,7 @@ var used_cells: Array[Vector2i] = []
 var place_tower: bool = false:
 	set(value):
 		place_tower = value
+		Data.is_placing_tower = value
 		if is_inside_tree():
 			var preview = _get_tower_preview()
 			if preview:
@@ -48,10 +49,16 @@ func handle_input(event: InputEvent) -> void:
 	var cell_pos = level_manager.mouse_to_map_position()
 	var world_pos = level_manager.map_to_world(cell_pos)
 
-	if event is InputEventMouseButton and event.button_mask == 1 and place_tower:
+	# Mouse release placement
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed and place_tower:
 		_try_place_current_building(cell_pos, world_pos)
 
-	if event is InputEventMouseMotion and place_tower:
+	# Touch release placement
+	if event is InputEventScreenTouch and not event.pressed and place_tower:
+		_try_place_current_building(cell_pos, world_pos)
+
+	# Update preview position while moving (mouse or touch drag)
+	if (event is InputEventMouseMotion or event is InputEventScreenDrag) and place_tower:
 		var preview = _get_tower_preview()
 		if preview:
 			preview.position = world_pos
@@ -69,6 +76,7 @@ func start_tower_placement(tower_type: Data.Tower) -> void:
 		preview.texture = load(Data.TOWER_DATA[tower_type]["thumbnail"])
 		preview.scale = Vector2(0.7, 0.7) # Scale down preview para same size ng actual towers
 		preview.offset = Vector2(0, -53) # Offset the preview para kapag nag place ng towers, same sa tower's position
+		preview.position = level_manager.map_to_world(level_manager.mouse_to_map_position())
 
 func cancel_selection() -> void:
 	place_tower = false
@@ -78,6 +86,7 @@ func cancel_selection() -> void:
 
 	for tower in get_tree().get_nodes_in_group("Towers"):
 		tower.hide_ui()
+	Data.is_placing_tower = false
 
 
 func create_bullet(pos, angle, bullet_enum, damage, tower_type, tower_id := -1, target = null):

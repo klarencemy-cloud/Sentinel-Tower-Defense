@@ -18,6 +18,11 @@ func _ready() -> void:
 	zoom = start_zoom.clamp(min_zoom, max_zoom)
 
 func _unhandled_input(event: InputEvent) -> void:
+	# When placing a tower, disable camera panning/drag so placement is stable
+	if Data.is_placing_tower:
+		if event is InputEventScreenDrag or event is InputEventMouseButton or event is InputEventMouseMotion:
+			return
+
 	if event is InputEventScreenTouch:
 		_handle_screen_touch(event)
 		return

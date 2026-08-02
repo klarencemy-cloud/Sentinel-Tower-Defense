@@ -606,6 +606,15 @@ metadata/_edit_use_anchors_ = true
 process_mode = 3
 libraries/ = SubResource("AnimationLibrary_vnqvi")
 
+[node name="DragLayer" type="Control" parent="." unique_id=1197891165]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/SandboxSetting" to="." method="_on_sandbox_setting_pressed"]
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/TowerEnemiesButton" to="." method="_on_tower_enemies_button_pressed"]
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/WaveButton" to="." method="_on_wave_button_pressed"]

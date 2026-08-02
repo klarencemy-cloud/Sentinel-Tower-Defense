@@ -62,6 +62,7 @@ var damage_reduction: float = 0
 
 
 var is_tower_placeable: bool = true
+var is_placing_tower: bool = false
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
