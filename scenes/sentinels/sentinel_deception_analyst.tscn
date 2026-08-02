@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="3_hlxys"]
 [ext_resource type="Texture2D" uid="uid://dj56rn3t4lvwk" path="res://graphics/currency/gold_gain.png" id="4_ffoqp"]
 [ext_resource type="Texture2D" uid="uid://bhe1pw8va777g" path="res://texture/0001.png" id="5_ae7f8"]
+[ext_resource type="Script" uid="uid://drbocy3xkv6hu" path="res://scenes/sentinels/sentinel_collision.gd" id="6_3ihmr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ose5w"]
 atlas = ExtResource("2_3ihmr")
@@ -121,6 +122,9 @@ collision_bounce = 0.61
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3oo1d"]
 polygon = PackedVector2Array(-117, 44, 130, 44, 81.890625, 49.181023, 0, 58)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlxys"]
+size = Vector2(179.54398, 84.6577)
+
 [node name="SentinelDeceptionAnalyst" type="Node2D" unique_id=1163133944]
 z_index = 2
 script = ExtResource("1_ose5w")
@@ -207,6 +211,17 @@ theme_override_colors/default_color = Color(0, 0.50980395, 0.2901961, 1)
 bbcode_enabled = true
 fit_content = true
 
+[node name="SentinelCollision" type="Area2D" parent="." unique_id=1964610181]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("6_3ihmr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SentinelCollision" unique_id=1843352624]
+position = Vector2(-0.8235626, 10.67363)
+shape = SubResource("RectangleShape2D_hlxys")
+
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="delete_press" from="TowerMenu" to="." method="_on_tower_menu_delete_press"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="area_entered" from="SentinelCollision" to="SentinelCollision" method="_on_area_entered"]
+[connection signal="area_exited" from="SentinelCollision" to="SentinelCollision" method="_on_area_exited"]

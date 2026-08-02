@@ -97,5 +97,5 @@ func _is_on_path(world_pos: Vector2) -> bool:
 
 
 func _get_ability_preview() -> Sprite2D:
-	var preview = level_root.get_node_or_null("BG/TowerPreview")
+	var preview = level_root.get_node_or_null("BG/SkillPreview")
 	return preview as Sprite2D

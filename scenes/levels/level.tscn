@@ -492,11 +492,15 @@ sources/0 = SubResource("TileSetAtlasSource_xb4v1")
 sources/1 = SubResource("TileSetAtlasSource_urvlt")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qhnmj"]
+resource_local_to_scene = true
 shader = ExtResource("9_b8j7q")
-shader_parameter/corner_scale = 0.2430000115425
+shader_parameter/corner_scale = 0.0950000045125
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mq31s"]
 size = Vector2(172, 184)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8j7q"]
+size = Vector2(280, 127.65521)
 
 [sub_resource type="Gradient" id="Gradient_qogh7"]
 offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
@@ -694,6 +698,29 @@ collision_mask = 128
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BG/MapBoundary" unique_id=75601273]
 polygon = PackedVector2Array(0.012783051, -0.0434227, 3840, 0, 3840, 2176, 0, 2176, 0, -384, -384, -384, -384, 2496, 4224, 2496, 4224, -384, 0, -384)
+
+[node name="SkillPreview" type="Sprite2D" parent="BG" unique_id=1626711971]
+
+[node name="SentinelPreview" type="Sprite2D" parent="BG" unique_id=1358483307]
+z_index = 3
+
+[node name="SentinelCollision" type="Area2D" parent="BG/SentinelPreview" unique_id=1761731594]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/SentinelPreview/SentinelCollision" unique_id=217815377]
+position = Vector2(0, 16.172392)
+shape = SubResource("RectangleShape2D_b8j7q")
+
+[node name="ColorRect" type="ColorRect" parent="BG/SentinelPreview" unique_id=2054375140]
+z_index = -1
+material = SubResource("ShaderMaterial_qhnmj")
+offset_left = -140.0
+offset_top = -48.0
+offset_right = 140.0
+offset_bottom = 80.0
+color = Color(0, 0.4392157, 0.22745098, 0.5647059)
+script = ExtResource("9_5mi6g")
 
 [node name="Towers" type="Node2D" parent="." unique_id=59664562]
 y_sort_enabled = true

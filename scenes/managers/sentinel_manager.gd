@@ -57,7 +57,7 @@ func start_sentinel_placement(sentinel_type: Data.Sentinel) -> void:
 	if preview:
 		preview.texture = load(Data.SENTINEL_DATA[sentinel_type]["thumbnail"])
 		preview.scale = Vector2(0.65, 0.65)
-		preview.offset = Vector2(0, -126)
+		preview.offset = Vector2(0, -165)
 
 
 func cancel_selection() -> void:
@@ -79,6 +79,10 @@ func _try_place_sentinel(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		return
 	if tile_data == null or not tile_data.get_custom_data("Usable"):
 			return
+
+	
+	if not Data.is_tower_placeable:
+		return
 
 	used_cells.append(cell_pos)
 
@@ -109,5 +113,5 @@ func _try_place_sentinel(cell_pos: Vector2i, world_pos: Vector2) -> void:
 
 
 func _get_sentinel_preview() -> Sprite2D:
-	var preview = level_root.get_node_or_null("BG/TowerPreview")
+	var preview = level_root.get_node_or_null("BG/SentinelPreview")
 	return preview as Sprite2D

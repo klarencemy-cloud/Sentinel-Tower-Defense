@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://6oe8ltpqlwuy" path="res://scenes/sentinels/sentinel_intrusion_analyst.gd" id="1_jmlfw"]
 [ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="2_jmlfw"]
 [ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="3_p315v"]
+[ext_resource type="Script" uid="uid://drbocy3xkv6hu" path="res://scenes/sentinels/sentinel_collision.gd" id="4_hg3at"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5knr3"]
 atlas = ExtResource("2_jmlfw")
@@ -52,6 +53,9 @@ fill_to = Vector2(0.5769231, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my3uq"]
 size = Vector2(159, 224.25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmlfw"]
+size = Vector2(179.54398, 84.6577)
+
 [node name="SentinelIntrusionAnalyst" type="Node2D" unique_id=1163133944]
 light_mask = 8
 z_index = 2
@@ -90,6 +94,17 @@ offset_bottom = -185.0
 [node name="ReloadTimer" type="Timer" parent="." unique_id=164587640]
 autostart = true
 
+[node name="SentinelCollision" type="Area2D" parent="." unique_id=765754719]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("4_hg3at")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SentinelCollision" unique_id=1715162572]
+position = Vector2(-0.8235626, 10.67363)
+shape = SubResource("RectangleShape2D_jmlfw")
+
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="delete_press" from="TowerMenu" to="." method="_on_tower_menu_delete_press"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="area_entered" from="SentinelCollision" to="SentinelCollision" method="_on_area_entered"]
+[connection signal="area_exited" from="SentinelCollision" to="SentinelCollision" method="_on_area_exited"]
