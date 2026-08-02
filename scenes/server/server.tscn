@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://im6v0y8om2jb" path="res://scenes/server/server.gd" id="1_375b0"]
 [ext_resource type="Texture2D" uid="uid://donbx7hjhnewp" path="res://graphics/server/server.png" id="2_375b0"]
+[ext_resource type="Script" uid="uid://dosetib2o2nsc" path="res://scenes/server/server_collision.gd" id="3_kr8px"]
 [ext_resource type="Texture2D" uid="uid://cqmrdgmn3jcik" path="res://graphics/bullets/backup_server_pulse.png" id="4_hkcox"]
 [ext_resource type="Shader" uid="uid://x8rxsknxl2m2" path="res://texture/shaders/force_field.gdshader" id="5_kr8px"]
 [ext_resource type="Texture2D" uid="uid://dtcs5lbvewa8w" path="res://texture/polygon.jpg" id="6_rqijc"]
@@ -450,13 +451,31 @@ sprite_frames = SubResource("SpriteFrames_q1xj5")
 autoplay = "default"
 frame_progress = 0.4815703
 
+[node name="Area2D" type="Area2D" parent="ServerLevel1" unique_id=1446809979]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("3_kr8px")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ServerLevel1/Area2D" unique_id=1192040796]
+polygon = PackedVector2Array(-88, -34, -152, 29, -152, 66, -160, 66, -160, 136, -151, 145, -151, 193, -88, 256, 72, 256, 109, 219, 151, 219, 151, 155, 152, 155, 152, 111, 111, 111, 111, 108, 106, 108, 106, 30, 42, -34)
+
 [node name="ServerLevel2" type="AnimatedSprite2D" parent="." unique_id=1798290929]
 visible = false
 texture_filter = 2
 position = Vector2(174, 45)
 sprite_frames = SubResource("SpriteFrames_dgx73")
 autoplay = "default"
-frame_progress = 0.7114606
+frame_progress = 0.27199525
+
+[node name="Area2D" type="Area2D" parent="ServerLevel2" unique_id=669334490]
+collision_layer = 128
+collision_mask = 128
+monitoring = false
+monitorable = false
+script = ExtResource("3_kr8px")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ServerLevel2/Area2D" unique_id=867158251]
+polygon = PackedVector2Array(-70, -34, -88, -34, -151, 29, -151, 66, -160, 66, -160, 136, -151, 145, -151, 193, -88, 256, 72, 256, 106, 220, 150, 220, 150, 155, 152, 155, 152, 149, 149, 149, 149, 110, 111, 110, 111, 108, 105, 108, 105, 30, 42, -34, 41, -130, -23, -188, -93, -124, -93, -51)
 
 [node name="ServerLevel3" type="AnimatedSprite2D" parent="." unique_id=1859583404]
 visible = false
@@ -464,7 +483,17 @@ texture_filter = 2
 position = Vector2(174, 45)
 sprite_frames = SubResource("SpriteFrames_tc042")
 autoplay = "default"
-frame_progress = 0.98206884
+frame_progress = 0.8124098
+
+[node name="Area2D" type="Area2D" parent="ServerLevel3" unique_id=2144983698]
+collision_layer = 128
+collision_mask = 128
+monitoring = false
+monitorable = false
+script = ExtResource("3_kr8px")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ServerLevel3/Area2D" unique_id=1837681758]
+polygon = PackedVector2Array(-132, 10, -151, 29, -151, 66, -160, 66, -160, 136, -151, 145, -151, 193, -88, 256, 73, 256, 106, 220, 149, 220, 149, 155, 152, 155, 152, 149, 149, 149, 149, 110, 111, 110, 111, 107, 105, 107, 105, 29, 97, 21, 97, -250, -132, -250)
 
 [node name="ServerLevel4" type="AnimatedSprite2D" parent="." unique_id=1662128924]
 visible = false
@@ -474,6 +503,16 @@ sprite_frames = SubResource("SpriteFrames_fp0pw")
 autoplay = "default"
 frame_progress = 0.8368511
 
+[node name="Area2D" type="Area2D" parent="ServerLevel4" unique_id=236497641]
+collision_layer = 128
+collision_mask = 128
+monitoring = false
+monitorable = false
+script = ExtResource("3_kr8px")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ServerLevel4/Area2D" unique_id=345429293]
+polygon = PackedVector2Array(-125, 3, -151, 29, -151, 66, -160, 66, -160, 136, -151, 145, -151, 193, -88, 256, 73, 256, 109, 219, 150, 219, 150, 155, 152, 155, 152, 149, 149, 149, 149, 109, 111, 109, 111, 107, 105, 107, 105, 29, 78, 2, 78, -138, -23, -240, -125, -138)
+
 [node name="ServerLevel5" type="AnimatedSprite2D" parent="." unique_id=2120530066]
 visible = false
 texture_filter = 2
@@ -482,6 +521,17 @@ sprite_frames = SubResource("SpriteFrames_rxx8b")
 autoplay = "default"
 frame_progress = 0.77639115
 
+[node name="Area2D2" type="Area2D" parent="ServerLevel5" unique_id=1579346135]
+position = Vector2(2, 0)
+collision_layer = 128
+collision_mask = 128
+monitoring = false
+monitorable = false
+script = ExtResource("3_kr8px")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ServerLevel5/Area2D2" unique_id=2042606174]
+polygon = PackedVector2Array(-125, 3, -151, 29, -151, 66, -160, 66, -160, 136, -151, 145, -151, 193, -88, 256, 73, 256, 109, 219, 150, 219, 150, 155, 152, 155, 152, 149, 149, 149, 149, 109, 111, 109, 111, 107, 105, 107, 105, 29, 78, 2, 78, -138, -23, -240, -125, -138)
+
 [node name="ServerlLevel6" type="AnimatedSprite2D" parent="." unique_id=450285722]
 visible = false
 texture_filter = 2
@@ -489,6 +539,16 @@ position = Vector2(158, 56)
 sprite_frames = SubResource("SpriteFrames_375b0")
 autoplay = "default"
 frame_progress = 0.8144926
+
+[node name="Area2D" type="Area2D" parent="ServerlLevel6" unique_id=2124171830]
+collision_layer = 128
+collision_mask = 128
+monitoring = false
+monitorable = false
+script = ExtResource("3_kr8px")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ServerlLevel6/Area2D" unique_id=1863176585]
+polygon = PackedVector2Array(-109, -31, -185, -31, -185, 117, -194, 128, -194, 200, -190, 207, -178, 216, -173, 218, -118, 218, -110, 226, -110, 268, -106, 277, -98, 285, -88, 290, -79, 290, -67, 286, -60, 278, -55, 267, -55, 245, 89, 245, 123, 208, 165, 208, 165, 144, 168, 144, 168, 137, 165, 137, 165, 99, 127, 99, 127, 97, 121, 97, 121, 19, 94, -9, 94, -149, -8, -250, -109, -149)
 
 [node name="WhiteGlow" type="PointLight2D" parent="." unique_id=1804873689]
 visible = false
@@ -557,6 +617,18 @@ shape = SubResource("CircleShape2D_hkcox")
 debug_color = Color(1.0107458e-06, 0.4418136, 0.5191502, 0.41960785)
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="area_entered" from="ServerLevel1/Area2D" to="ServerLevel1/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="ServerLevel1/Area2D" to="ServerLevel1/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="ServerLevel2/Area2D" to="ServerLevel2/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="ServerLevel2/Area2D" to="ServerLevel2/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="ServerLevel3/Area2D" to="ServerLevel3/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="ServerLevel3/Area2D" to="ServerLevel3/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="ServerLevel4/Area2D" to="ServerLevel4/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="ServerLevel4/Area2D" to="ServerLevel4/Area2D" method="_on_area_exited"]
+[connection signal="area_entered" from="ServerLevel5/Area2D2" to="ServerLevel5/Area2D2" method="_on_area_entered"]
+[connection signal="area_exited" from="ServerLevel5/Area2D2" to="ServerLevel5/Area2D2" method="_on_area_exited"]
+[connection signal="area_entered" from="ServerlLevel6/Area2D" to="ServerlLevel6/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="ServerlLevel6/Area2D" to="ServerlLevel6/Area2D" method="_on_area_exited"]
 [connection signal="area_entered" from="PulseAnchor/BackupServerPulse" to="." method="_on_backup_server_pulse_area_entered"]
 [connection signal="area_entered" from="IntrusionShield/Shield" to="." method="_on_shield_area_entered"]
 [connection signal="area_exited" from="IntrusionShield/Shield" to="." method="_on_shield_area_exited"]
