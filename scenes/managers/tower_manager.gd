@@ -32,7 +32,11 @@ var place_tower: bool = false:
 		if is_inside_tree():
 			var preview = _get_tower_preview()
 			if preview:
-				preview.visible = value
+				if value:
+					await get_tree().create_timer(.1).timeout
+					preview.visible = value
+				else:
+					preview.visible = value
 
 
 func setup(root: Node2D, map_manager: Node) -> void:
@@ -51,7 +55,6 @@ func handle_input(event: InputEvent) -> void:
 		var preview = _get_tower_preview()
 		if preview:
 			preview.position = world_pos
-
 	if Input.is_action_just_pressed("exit"):
 		cancel_selection()
 
