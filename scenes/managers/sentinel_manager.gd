@@ -74,13 +74,18 @@ func _try_place_sentinel(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if layer == null:
 		return
 
-	var tile_data = layer.get_cell_tile_data(cell_pos) as TileData
-	if cell_pos in used_cells:
-		return
-	if tile_data == null or not tile_data.get_custom_data("Usable"):
-			return
 
-	
+	var tile_data = layer.get_cell_tile_data(cell_pos) as TileData
+	print(tile_data)
+	print(tile_data.get_custom_data("Usable"))
+	print(Data.is_tower_placeable)
+	print(layer == null)
+	# if cell_pos in used_cells:
+	# 	return
+	if tile_data == null or not tile_data.get_custom_data("Usable"):
+		return
+
+
 	if not Data.is_tower_placeable:
 		return
 

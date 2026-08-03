@@ -147,6 +147,7 @@ texture = SubResource("GradientTexture2D_3ihmr")
 [node name="ClickArea" type="Area2D" parent="." unique_id=1739627776]
 collision_layer = 8
 collision_mask = 0
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1301772262]
 position = Vector2(-0.5, -71.875)

@@ -341,13 +341,12 @@ func _process(delta: float):
 		var processed_enemy_damage: float = 0.0
 		var raw_dmg = int(damage * dlp_damage_reduction)
 		processed_enemy_damage = Defense._dmg_reduc_armor(raw_dmg) # sends dmg to defense_data.gd to reduc dmg based on armor
-		if !Data.backup_server_invincible:
+		if !Data.backup_server_invincible and !Data.is_sandbox:
 			Data.health -= processed_enemy_damage - (processed_enemy_damage * Data.damage_reduction) # in decimal so it can be reduce by sentinel
 		_update_active_enemy_counter(enemy_type_stats, -1)
 		queue_free()
 	if enemy_type_stats == Data.Enemy.SPYWARE:
 		pass # skip the spyware itself
-
 	if spyware_count > 0:
 		print(name, speed)
 

@@ -111,6 +111,9 @@ polygon = PackedVector2Array(-117, 44, 130, 44, 81.890625, 49.181023, 0, 58)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e32ag"]
 size = Vector2(179.54398, 84.6577)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ao5c7"]
+radius = 308.0065
+
 [node name="SentinelSecurityArchitect" type="Node2D" unique_id=1163133944]
 z_index = 2
 script = ExtResource("1_rk605")
@@ -139,6 +142,7 @@ texture = SubResource("GradientTexture2D_rk605")
 [node name="ClickArea" type="Area2D" parent="." unique_id=1739627776]
 collision_layer = 8
 collision_mask = 0
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1301772262]
 position = Vector2(-0.5, -71.875)
@@ -212,8 +216,18 @@ script = ExtResource("6_ao5c7")
 position = Vector2(-0.8235626, 10.67363)
 shape = SubResource("RectangleShape2D_e32ag")
 
+[node name="SentinelSkill" type="Area2D" parent="." unique_id=1160556960]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SentinelSkill" unique_id=64163565]
+shape = SubResource("CircleShape2D_ao5c7")
+
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="delete_press" from="TowerMenu" to="." method="_on_tower_menu_delete_press"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="area_entered" from="SentinelCollision" to="SentinelCollision" method="_on_area_entered"]
 [connection signal="area_exited" from="SentinelCollision" to="SentinelCollision" method="_on_area_exited"]
+[connection signal="area_entered" from="SentinelSkill" to="." method="_on_sentinel_skill_area_entered"]
+[connection signal="area_exited" from="SentinelSkill" to="." method="_on_sentinel_skill_area_exited"]

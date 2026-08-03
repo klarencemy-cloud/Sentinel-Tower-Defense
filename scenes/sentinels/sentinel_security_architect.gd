@@ -72,3 +72,23 @@ func toggle_gold_gain():
 	tween.tween_property($GoldGain, "position:y", -215, 1)
 	tween.parallel().tween_property($GoldGain, "modulate:a", 1, 1)
 	tween.tween_property($GoldGain, "modulate:a", 0, 1)
+
+func _on_sentinel_skill_area_entered(area: Area2D) -> void:
+	if area.name == "ClickArea":
+		var tower = area.get_parent() as Tower
+		var source_id = get_instance_id()
+		if not tower == null:
+			var shape = tower.get_node("EnemyDetectionArea/CollisionShape2D").shape as CircleShape2D
+			var range_buff = shape.radius * .20
+			shape.radius = max(shape.radius + range_buff, 10)
+			tower.reload_time = tower.original_reload_time - (tower.original_reload_time * .15)
+			tower.get_node("ReloadTimer").wait_time = tower.reload_time
+			print(tower.reload_time)
+
+func _on_sentinel_skill_area_exited(area: Area2D) -> void:
+	if area.name == "ClickArea":
+		var tower = area.get_parent() as Tower
+		var source_id = get_instance_id()
+		if not tower == null:
+				var shape = tower.get_node("EnemyDetectionArea/CollisionShape2D").shape as CircleShape2D
+				shape.radius = tower.range
