@@ -43,6 +43,13 @@ texture = SubResource("GradientTexture2D_shd4j")
 [node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(854437296) index="0" unique_id=435652351]
 shape = SubResource("CircleShape2D_6ku0u")
 
+[node name="TowerMenu" parent="." index="5" unique_id=489153716]
+visible = true
+offset_left = 58.571457
+offset_top = -62.857132
+offset_right = 58.571457
+offset_bottom = -62.857132
+
 [node name="ShootSound" parent="." index="7" unique_id=1474961134]
 stream = ExtResource("5_hmres")
 

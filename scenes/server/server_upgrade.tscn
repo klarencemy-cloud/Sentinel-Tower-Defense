@@ -2026,7 +2026,7 @@ texture_filter = 2
 position = Vector2(1313, 538)
 sprite_frames = SubResource("SpriteFrames_jrx1v")
 autoplay = "default"
-frame_progress = 0.40952682
+frame_progress = 0.70832133
 
 [node name="ServerPoints" type="TextureRect" parent="UIContainer/ServerUpdate" unique_id=1548057016]
 texture_filter = 2

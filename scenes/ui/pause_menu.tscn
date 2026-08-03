@@ -27,12 +27,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="quit" unique_id=1724176023]
 layout_mode = 0
-offset_left = 247.0
-offset_top = 43.0
-offset_right = 365.0
-offset_bottom = 124.0
+anchor_left = 0.41652614
+anchor_top = 0.22164948
+anchor_right = 0.61551434
+anchor_bottom = 0.63917524
 theme_override_font_sizes/font_size = 70
 text = "Exit"
+metadata/_edit_use_anchors_ = true
 
 [node name="resume" type="TextureButton" parent="." unique_id=1328112455]
 anchors_preset = -1
@@ -46,19 +47,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="resume" unique_id=1446474567]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -117.0
-offset_top = -40.5
-offset_right = 117.0
-offset_bottom = 40.5
+anchors_preset = -1
+anchor_left = 0.30269814
+anchor_top = 0.29123712
+anchor_right = 0.69730186
+anchor_bottom = 0.7087629
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
 text = "Resume"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="resume" to="." method="_on_resume_pressed"]

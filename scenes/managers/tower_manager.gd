@@ -76,9 +76,14 @@ func start_tower_placement(tower_type: Data.Tower) -> void:
 
 	var preview = _get_tower_preview()
 	if preview:
-		preview.hide()
+		preview.show()
 		preview_initialized = false
-		preview.position = Vector2.ZERO
+		# preview.position = Vector2.ZERO
+		var camera = get_tree().get_first_node_in_group("camera")
+		var cameraX = camera.position.x
+		var cameraY = camera.position.y
+		preview.position = Vector2(cameraX, cameraY)
+		print(preview.position)
 		preview.texture = load(Data.TOWER_DATA[tower_type]["thumbnail"])
 		preview.modulate = Color.WHITE
 		preview.scale = Vector2(0.7, 0.7) # Scale down preview para same size ng actual towers

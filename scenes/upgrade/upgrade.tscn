@@ -70,14 +70,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="TextureRect/UpgradeButton" unique_id=200488369]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 9.0
-offset_right = 263.0
-offset_bottom = 57.0
+anchor_left = 0.054545455
+anchor_top = 0.13043478
+anchor_right = 0.9563636
+anchor_bottom = 0.82608694
 theme_override_font_sizes/font_size = 32
 text = "UPGRADE"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="BigPic" type="TextureRect" parent="TextureRect" unique_id=858188508]
 unique_name_in_owner = true
