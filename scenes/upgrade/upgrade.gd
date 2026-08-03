@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var tower_card_scene = preload("res://scenes/ui/tower_card_for_upgrades.tscn")
+var sentinel_card_scene = preload("res://scenes/ui/sentinel_card.tscn")
 
 var upgrade1_level := 0
 var upgrade2_level := 0
@@ -10,7 +11,8 @@ var upgrade5_level := 0
 var upgrade6_level := 0
 
 var selected_tower: Data.Tower
-
+var sentinel_roll_thumbnails: Array = []
+var sentinel_roll_active := false
 
 func _ready() -> void:
 	update_money_display()
@@ -18,9 +20,16 @@ func _ready() -> void:
 		var tower_card = tower_card_scene.instantiate()
 		tower_card.setup(tower_enum)
 		%SentinelsContainer.add_child(tower_card)
+
+	for sentinel_enum in Data.Sentinel.values():
+		var sentinel_card = sentinel_card_scene.instantiate()
+		sentinel_card.setup(sentinel_enum)
+		$SentinelStuff/ScrollContainer/RealSentinelContainer.add_child(sentinel_card)
+	
+	sentinel_roll_thumbnails = _build_sentinel_roll_thumbnails()
+	$SentinelStuff/Rollbtn.connect("pressed", Callable(self, "_on_Rollbtn_pressed"))
 	update_tier_buttons()
 	
-
 func set_selected_tower(tower_enum: Data.Tower) -> void:
 	selected_tower = tower_enum
 
@@ -425,6 +434,45 @@ func update_ability_panel() -> void:
 		else:
 			label.text = unlock_text
 
+func _build_sentinel_roll_thumbnails() -> Array:
+	var textures: Array = []
+	for sentinel_data in Data.SENTINEL_DATA.values():
+		if sentinel_data.has("thumbnail"):
+			var thumbnail_path = sentinel_data["thumbnail"]
+			var texture = load(thumbnail_path)
+			if texture:
+				textures.append(texture)
+	return textures
+
+func _on_Rollbtn_pressed() -> void:
+	if sentinel_roll_active:
+		return
+	if sentinel_roll_thumbnails.size() == 0:
+		return
+
+	sentinel_roll_active = true
+	$SentinelStuff/Rollbtn.disabled = true
+	await _animate_sentinel_roll()
+	$SentinelStuff/Rollbtn.disabled = false
+	sentinel_roll_active = false
+
+func _animate_sentinel_roll() -> void:
+	var duration = 3.0
+	var interval = 0.08
+	var elapsed = 0.0
+	var sentinel_node = $SentinelStuff/SentinelRoll/Sentinel
+
+	sentinel_node.modulate = Color(0, 0, 0, 1)
+
+	while elapsed < duration:
+		var random_texture = sentinel_roll_thumbnails[randi() % sentinel_roll_thumbnails.size()]
+		sentinel_node.texture = random_texture
+		await get_tree().create_timer(interval).timeout
+		elapsed += interval
+
+	var final_texture = sentinel_roll_thumbnails[randi() % sentinel_roll_thumbnails.size()]
+	sentinel_node.texture = final_texture
+	sentinel_node.modulate = Color(1, 1, 1, 1)
 
 func _on_back_btn_pressed() -> void:
 	if %SentinelsContainer.visible == true:
@@ -441,3 +489,23 @@ func _on_back_btn_pressed() -> void:
 		$TextureRect/UpgradePanel.visible = false
 		$TextureRect/StatPanel/AbilityPanel.visible = false
 		$TextureRect/StatPanel/ScrollContainer/VBoxContainer.visible = true
+
+
+func _on_tower_btn_pressed() -> void:
+	$TextureRect/ScrollContainer.visible = true
+	$SentinelStuff.visible = false
+
+func _on_sentinel_btn_pressed() -> void:
+	$TextureRect/ScrollContainer.visible = false
+	$TextureRect/UpgradeButton.visible = false
+	%BigPic.visible = false
+	$TextureRect/BigTowerName.visible = false
+	$TextureRect/StatPanel.visible = false
+	$TextureRect/UpgradePanel.visible = false
+	$SentinelStuff.visible = true
+	$SentinelStuff/SentinelRoll.visible = true
+
+
+func _on_sentinel_list_pressed() -> void:
+	$SentinelStuff/SentinelRoll.visible = false
+	$SentinelStuff/ScrollContainer.visible = true

@@ -832,7 +832,6 @@ theme_override_font_sizes/font_size = 62
 text = "0"
 
 [node name="SentinelStuff" type="Control" parent="." unique_id=343666652]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 
@@ -864,14 +863,13 @@ offset_bottom = 1074.0
 mouse_filter = 2
 texture = ExtResource("17_dq7wj")
 
-[node name="Sentinel" type="TextureRect" parent="SentinelStuff/SentinelRoll" unique_id=1820762658]
+[node name="TextureRect" type="TextureRect" parent="SentinelStuff/SentinelRoll" unique_id=1820762658]
 layout_mode = 0
-offset_left = 936.0
-offset_top = 329.0
-offset_right = 1176.0
-offset_bottom = 685.0
+offset_left = 923.0
+offset_top = 304.0
+offset_right = 1179.0
+offset_bottom = 688.0
 texture = ExtResource("18_dq7wj")
-expand_mode = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SentinelStuff" unique_id=40535933]
 visible = false
