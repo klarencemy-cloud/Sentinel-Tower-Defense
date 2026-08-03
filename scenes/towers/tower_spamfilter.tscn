@@ -96,6 +96,7 @@ offset_bottom = -60.0
 
 [node name="ShootSound" parent="." index="7" unique_id=1474961134]
 stream = ExtResource("6_uin2q")
+stream_paused = true
 bus = &"Sounds"
 
 [node name="Particles" type="AudioStreamPlayer2D" parent="." index="8" unique_id=694501751]
