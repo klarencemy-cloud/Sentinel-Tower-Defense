@@ -99,7 +99,7 @@ bus = &"Sounds"
 [node name="FiringSound" type="AudioStreamPlayer2D" parent="." index="9" unique_id=1534537056]
 scale = Vector2(0.99999994, 0.99999994)
 stream = ExtResource("10_kv0k2")
-volume_db = -6.842
+volume_db = -8.21
 bus = &"Sounds"
 
 [node name="AdButton" type="TextureButton" parent="." index="10" unique_id=654513809]

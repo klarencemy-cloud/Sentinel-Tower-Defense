@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://decyie3x0j0su" path="res://graphics/ui/crosshair.png" id="4_0c3ac"]
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="4_qhywc"]
 [ext_resource type="Texture2D" uid="uid://bwj40wgb4ivd7" path="res://graphics/towers/mortar/mortar tower effect.png" id="5_qhywc"]
-[ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="6_hfdvg"]
+[ext_resource type="AudioStream" uid="uid://jfpfkfr44fx3" path="res://audio/SFX/TOWERS/quarantine cannon shoot.wav" id="7_0hga0"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_wqcay"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_872qs"]
@@ -129,7 +129,10 @@ offset_bottom = -61.0
 metadata/_edit_use_anchors_ = true
 
 [node name="ShootSound" parent="." index="8" unique_id=1474961134]
-stream = ExtResource("6_hfdvg")
+stream = ExtResource("7_0hga0")
+volume_db = -2.0
+attenuation = 3.8637452
+bus = &"Sounds"
 
 [node name="AdButton" type="TextureButton" parent="." index="9" unique_id=393847519]
 offset_left = -19.0
