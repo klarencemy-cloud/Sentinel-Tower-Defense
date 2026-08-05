@@ -327,14 +327,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Animation" type="Control" parent="." unique_id=1901643478]
 layout_mode = 1
-anchor_left = 0.09200001
-anchor_top = 0.30600002
-anchor_right = 0.09200001
-anchor_bottom = 0.30600002
-offset_left = 1195.667
-offset_top = -28.360016
-offset_right = 1593.667
-offset_bottom = 86.639984
+anchor_left = 0.4
+anchor_top = 0.28
+anchor_right = 0.4
+anchor_bottom = 0.28
+offset_left = 604.307
+offset_top = -0.27999878
+offset_right = 1002.307
+offset_bottom = 114.72
 grow_horizontal = 2
 grow_vertical = 2
 

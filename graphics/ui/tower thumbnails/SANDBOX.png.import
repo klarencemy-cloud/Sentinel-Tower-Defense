@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbea2rlv6prms"
-path="res://.godot/imported/sandbox.png-5b2af76f1a41405762743020ea5458ad.ctex"
+path="res://.godot/imported/SANDBOX.png-fa07adc9ad9397b050e64f749eb4a9c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/sandbox.png"
-dest_files=["res://.godot/imported/sandbox.png-5b2af76f1a41405762743020ea5458ad.ctex"]
+source_file="res://graphics/ui/tower thumbnails/SANDBOX.png"
+dest_files=["res://.godot/imported/SANDBOX.png-fa07adc9ad9397b050e64f749eb4a9c1.ctex"]
 
 [params]
 

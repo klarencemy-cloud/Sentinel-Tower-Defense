@@ -124,7 +124,7 @@ position = Vector2(0.12500429, -85.71876)
 scale = Vector2(0.6552735, 0.65527356)
 sprite_frames = SubResource("SpriteFrames_2ogf1")
 autoplay = "default"
-frame_progress = 0.2896146
+frame_progress = 0.5962502
 
 [node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D" unique_id=525947619]
 position = Vector2(-1.7168467, 119.368095)
@@ -154,8 +154,11 @@ offset_top = -161.0
 offset_right = 64.0
 offset_bottom = -161.0
 
-[node name="ReloadTimer" type="Timer" parent="." unique_id=164587640]
-autostart = true
+[node name="ReloadTimer" type="Timer" parent="." unique_id=1064330204]
+one_shot = true
+
+[node name="SkillDuration" type="Timer" parent="." unique_id=1046151844]
+one_shot = true
 
 [node name="CoinRain" type="GPUParticles2D" parent="." unique_id=578376079]
 texture_filter = 2
@@ -187,26 +190,6 @@ process_material = SubResource("ParticleProcessMaterial_e0uin")
 position = Vector2(0, -105)
 occluder = SubResource("OccluderPolygon2D_3oo1d")
 
-[node name="GoldGain" type="RichTextLabel" parent="." unique_id=1115932276]
-offset_left = 10.0
-offset_top = -196.0
-offset_right = 64.0
-offset_bottom = -177.0
-theme_override_colors/default_color = Color(1, 0.78431374, 0, 1)
-bbcode_enabled = true
-fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HealGain" type="RichTextLabel" parent="." unique_id=953336170]
-offset_left = -61.0
-offset_top = -193.01001
-offset_right = -21.0
-offset_bottom = -179.01001
-theme_override_colors/default_color = Color(0, 0.50980395, 0.2901961, 1)
-bbcode_enabled = true
-fit_content = true
-
 [node name="SentinelCollision" type="Area2D" parent="." unique_id=1688068845]
 collision_layer = 128
 collision_mask = 128
@@ -227,6 +210,7 @@ shape = SubResource("CircleShape2D_ao5c7")
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="delete_press" from="TowerMenu" to="." method="_on_tower_menu_delete_press"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="SkillDuration" to="." method="_on_skill_duration_timeout"]
 [connection signal="area_entered" from="SentinelCollision" to="SentinelCollision" method="_on_area_entered"]
 [connection signal="area_exited" from="SentinelCollision" to="SentinelCollision" method="_on_area_exited"]
 [connection signal="area_entered" from="SentinelSkill" to="." method="_on_sentinel_skill_area_entered"]
