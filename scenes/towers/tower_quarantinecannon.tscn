@@ -130,7 +130,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ShootSound" parent="." index="8" unique_id=1474961134]
 stream = ExtResource("7_0hga0")
-volume_db = -2.0
+volume_db = -3.0
 attenuation = 3.8637452
 bus = &"Sounds"
 
