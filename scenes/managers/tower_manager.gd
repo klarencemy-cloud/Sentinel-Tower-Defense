@@ -83,10 +83,13 @@ func start_tower_placement(tower_type: Data.Tower) -> void:
 		var cameraX = camera.position.x
 		var cameraY = camera.position.y
 		preview.position = Vector2(cameraX, cameraY)
+		var cell_pos = level_manager.world_to_map(preview.position)
+		_update_preview_buttons(cell_pos, preview)
 		preview.texture = load(Data.TOWER_DATA[tower_type]["thumbnail"])
 		preview.modulate = Color.WHITE
-		preview.scale = Vector2(0.7, 0.7) # Scale down preview para same size ng actual towers
-		preview.offset = Vector2(0, -53) # Offset the preview para kapag nag place ng towers, same sa tower's position
+		preview.scale = Vector2(0.7, 0.7)
+		preview.offset = Vector2(0, -53)
+
 		var place_btn = preview.get_node("PlaceTower")
 		var cancel_btn = preview.get_node("CancelPlace")
 

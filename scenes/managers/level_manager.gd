@@ -61,15 +61,23 @@ func load_map(map_path: String) -> Node:
 
 	current_map = map_scene.instantiate()
 	current_map.name = current_map_name
+
 	if current_map is CanvasItem:
 		current_map.z_index = -1
+
 	level_root.add_child(current_map)
 	level_root.move_child(current_map, 0)
+
+	# Set the camera limits from the current map's WorldBoundary
+	var camera = get_tree().get_first_node_in_group("camera")
+	if camera:
+		var boundary = current_map.get_node_or_null("WorldBoundary")
+		if boundary:
+			camera.set_world_bounds(boundary)
 
 	_enemy_container()
 
 	return current_map
-
 
 func _enemy_container() -> void: # Puts enemies from multiple paths from multiple container
 	var container = level_root.get_node_or_null("EnemyContainer")
