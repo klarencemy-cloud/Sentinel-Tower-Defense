@@ -677,8 +677,9 @@ func _on_spyware_ability_area_entered(area: Area2D) -> void:
 		tower.spyware_count += 1
 
 		if tower.spyware_count == 1:
-			var shape = tower.get_node("EnemyDetectionArea/CollisionShape2D").shape as CircleShape2D
-			shape.radius = max(shape.radius - 50, 10)
+			if tower.type != Data.Tower.BACKUP_SERVER:
+				var shape = tower.get_node("EnemyDetectionArea/CollisionShape2D").shape as CircleShape2D
+				shape.radius = max(shape.radius - 50, 10)
 
 func _on_spyware_ability_area_exited(area: Area2D) -> void:
 	if area.name == "ClickArea":
@@ -696,8 +697,9 @@ func _on_spyware_ability_area_exited(area: Area2D) -> void:
 		tower.spyware_count = max(tower.spyware_count - 1, 0)
 
 		if tower.spyware_count == 0:
-			var shape := tower.get_node("EnemyDetectionArea/CollisionShape2D").shape as CircleShape2D
-			shape.radius = tower.range
+			if tower.type != Data.Tower.BACKUP_SERVER:
+				var shape := tower.get_node("EnemyDetectionArea/CollisionShape2D").shape as CircleShape2D
+				shape.radius = tower.range
 
 func update_spyware_buff():
 	for area in $SpywareAbility.get_overlapping_areas():

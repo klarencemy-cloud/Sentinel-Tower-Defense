@@ -32,7 +32,7 @@ func update_laser(start_pos: Vector2, end_pos: Vector2, progress := 1.0):
 	var width := default_width
 
 	if Data.TOWER_DATA[Data.Tower.AI_SECURITY].get("tier1abilityunlocked", false):
-		width *= 1.25
+		width *= 5
 
 	shape.size.x = width
 	sprite.scale.x = default_sprite_scale_x * (width / default_width)

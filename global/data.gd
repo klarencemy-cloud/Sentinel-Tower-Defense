@@ -485,7 +485,7 @@ var TOWER_DATA = {
 		'upgrade2amount': 25,
 		'upgrade2cost': [70, 105, 140],
 		'tier1ability': "Beam Amplification",
-		'tier1abilitydesc': "Increase the laser width by 25%.",
+		'tier1abilitydesc': "Increase the laser width by 5x.",
 		'tier1abilityunlocked': false,
 		'upgrade3': "Damage",
 		'upgrade3level': 0,
