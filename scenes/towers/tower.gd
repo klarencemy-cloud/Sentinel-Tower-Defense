@@ -50,6 +50,9 @@ func _ready() -> void:
 	original_reload_time = reload_time
 	create_range_indicator()
 
+func _process(delta: float) -> void:
+	Data.is_tower_placeable = $TowerPlacement.get_overlapping_areas()
+
 
 func create_range_indicator() -> void:
 	if range_indicator:

@@ -653,7 +653,8 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.SECURITY: {
 		'name': 'Security Architect',
-		'cooldown': 30,
+		'cooldown': 15,
+		'duration': 10,
 		'range': 1000,
 		'thumbnail': "res://graphics/sentinels/thumbnail/SECURITYARCHITECT.png",
 		'scene': "res://scenes/sentinels/sentinel_security_architect.tscn",

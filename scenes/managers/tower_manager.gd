@@ -24,7 +24,7 @@ var current_tower: Tower
 var current_placement_kind: String = ""
 var tower_menu: bool = false
 var next_tower_id: int = 1
-var used_cells: Array[Vector2i] = []
+
 var preview_initialized := false
 
 var place_tower: bool = false:
@@ -184,8 +184,6 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 
 	var tile_data = layer.get_cell_tile_data(cell_pos) as TileData
 	var asset_tile_data = asset_layer.get_cell_tile_data(cell_pos) as TileData
-	if cell_pos in used_cells:
-		return
 
 	if tile_data == null or not tile_data.get_custom_data("Usable"):
 		return
@@ -215,7 +213,6 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 				card.set_selected(false)
 			return
 
-	used_cells.append(cell_pos)
 
 	var tower = load(tower_scenes[selected_tower]).instantiate()
 	tower.tower_id = next_tower_id
@@ -276,10 +273,6 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	
 
 func _on_tower_removed(cell_pos: Vector2i) -> void:
-	if cell_pos in used_cells:
-		used_cells.erase(cell_pos)
-	
-	
 	if current_tower and current_tower.cell_pos == cell_pos:
 		current_tower = null
 
@@ -338,8 +331,6 @@ func _update_preview_buttons(cell_pos: Vector2i, preview: Node2D) -> void:
 
 	var valid := true
 
-	if cell_pos in used_cells:
-		valid = false
 
 	var tile_data = layer.get_cell_tile_data(cell_pos)
 	if tile_data == null or !tile_data.get_custom_data("Usable"):

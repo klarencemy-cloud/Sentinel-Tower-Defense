@@ -67,9 +67,9 @@ var SENTINEL_DATA = {
 		'irl_desc': "An Intrusion Analyst is responsible for detecting, analyzing, and responding to cybersecurity threats or unauthorized access within an organization's computer networks. They monitor network traffic, investigate security incidents, and use specialized tools to identify potential breaches or vulnerabilities. Their work helps prevent data loss and protects sensitive information by quickly addressing and mitigating cyber threats. Additionally, they often collaborate with other IT and security teams to improve overall security posture and may assist in developing security policies and response plans."
 	},
 		Sentinel.SECURITY: {
-		'special_ability': "Increases nearby towers' range by 20% and attack speed by 15% for 10 seconds.",
+		'special_ability': "Increases nearby towers' attack speed by 15% for 10 seconds.",
 		'cooldown': "15 seconds",
-		'passive_ability': "Nearby towers permanently gain an additional 5% range. ",
+		'passive_ability': "Nearby towers gain an additional 25% range. ",
 		'irl_desc': "Security Architects design, develop, and implement systems that prevent the infiltration of malware and other hacker-related intrusions across the IT network, thereby helping organisations to continue their activities without encouraging costly and damaging situations."
 	},
 		Sentinel.MALWARE: {

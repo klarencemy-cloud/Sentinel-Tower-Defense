@@ -4,9 +4,10 @@
 [ext_resource type="Script" uid="uid://dmr578a3brmte" path="res://scenes/towers/tower_sandbox_analyzer.gd" id="2_5wat8"]
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="3_cvoqq"]
 [ext_resource type="Texture2D" uid="uid://c1vemq5lm01p0" path="res://graphics/towers/sandbox/sandbox_turret.png" id="4_ovk42"]
-[ext_resource type="AudioStream" uid="uid://sicd08w0ce6c" path="res://audio/bullet.wav" id="5_i40e1"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_nmxp2"]
 [ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="7_cvoqq"]
+[ext_resource type="AudioStream" uid="uid://b58r811baqisf" path="res://audio/SFX/TOWERS/sandbox shoot.wav" id="7_ovk42"]
+[ext_resource type="AudioStream" uid="uid://dmh1t4q4nua1l" path="res://audio/SFX/TOWERS/sandbox electric.wav" id="8_i40e1"]
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="8_ovk42"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i40e1"]
@@ -124,9 +125,17 @@ offset_right = 50.0
 offset_bottom = -104.285736
 
 [node name="ShootSound" parent="." index="7" unique_id=1474961134]
-stream = ExtResource("5_i40e1")
+stream = ExtResource("7_ovk42")
+bus = &"Sounds"
 
-[node name="AdButton" type="TextureButton" parent="." index="8" unique_id=1970184477]
+[node name="ElectricSound" type="AudioStreamPlayer2D" parent="." index="8" unique_id=2117706305]
+scale = Vector2(0.99999994, 0.99999994)
+stream = ExtResource("8_i40e1")
+volume_db = -18.0
+autoplay = true
+bus = &"Sounds"
+
+[node name="AdButton" type="TextureButton" parent="." index="9" unique_id=1970184477]
 visible = false
 offset_left = -20.0
 offset_top = -20.0
@@ -135,7 +144,7 @@ offset_bottom = 20.0
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="PayButton" type="TextureButton" parent="." index="9" unique_id=1594040382]
+[node name="PayButton" type="TextureButton" parent="." index="10" unique_id=1594040382]
 visible = false
 offset_left = -31.0
 offset_top = -32.0

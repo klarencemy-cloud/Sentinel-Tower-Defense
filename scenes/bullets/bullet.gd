@@ -59,6 +59,8 @@ func setup(pos, angle, _bullet_enum, _damage, _tower_type, _tower_id, _target = 
 			$Sprite2D.texture = load("res://graphics/bullets/anti_virus_bullet.png")
 		Data.Tower.SANDBOX_ANALYZER:
 			$Sprite2D.texture = load("res://graphics/bullets/sandbox_bullet.png")
+		Data.Tower.DATA_LOSS_PREVENTION:
+			$Sprite2D.texture = load("res://graphics/bullets/dlp_bullet.png")
 		_:
 			$Sprite2D.texture = load("res://graphics/bullets/default.png")
 	z_index = -1

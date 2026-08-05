@@ -8,9 +8,10 @@
 [ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="5_8d7iw"]
 [ext_resource type="Shader" uid="uid://tsbpejfyq5fc" path="res://texture/shaders/glow_shader.gdshader" id="5_p6w5a"]
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_l7jje"]
-[ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="6_su0h8"]
 [ext_resource type="Script" uid="uid://cu22lxqgx5hh0" path="res://scenes/enemies/lightning_1.gd" id="7_8d7iw"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_l7jje"]
+[ext_resource type="AudioStream" uid="uid://dl2075wa6u4tc" path="res://audio/SFX/TOWERS/adblocker shoot.wav" id="10_su0h8"]
+[ext_resource type="AudioStream" uid="uid://dmh1t4q4nua1l" path="res://audio/SFX/TOWERS/sandbox electric.wav" id="11_su0h8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjk60"]
 shader = ExtResource("5_8d7iw")
@@ -160,9 +161,17 @@ offset_right = 28.0
 offset_bottom = -90.0
 
 [node name="ShootSound" parent="." index="8" unique_id=1474961134]
-stream = ExtResource("6_su0h8")
+stream = ExtResource("10_su0h8")
+volume_db = 2.5
+bus = &"Sounds"
 
-[node name="AdButton" type="TextureButton" parent="." index="9" unique_id=298330297]
+[node name="ElectricSound" type="AudioStreamPlayer2D" parent="." index="9" unique_id=852462100]
+scale = Vector2(0.99999994, 0.99999994)
+stream = ExtResource("11_su0h8")
+volume_db = -18.0
+autoplay = true
+
+[node name="AdButton" type="TextureButton" parent="." index="10" unique_id=298330297]
 visible = false
 offset_left = -20.0
 offset_top = -20.0
@@ -171,7 +180,7 @@ offset_bottom = 20.0
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="PayButton" type="TextureButton" parent="." index="10" unique_id=11286891]
+[node name="PayButton" type="TextureButton" parent="." index="11" unique_id=11286891]
 visible = false
 offset_left = -31.0
 offset_top = -32.0
