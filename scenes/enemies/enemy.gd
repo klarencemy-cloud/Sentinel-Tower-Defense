@@ -612,6 +612,9 @@ func set_invisible(value: bool) -> void:
 		$CollisionShape2D.disabled = invisible
 
 func show_damage(damage: int):
+	if damage <= 0:
+		return
+		
 	var label = damage_label_template.duplicate() as Label
 	label.name = "DamageLabelPopup"
 	print("SHOW DAMAGE:", damage)

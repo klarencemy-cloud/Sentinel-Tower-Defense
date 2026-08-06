@@ -66,7 +66,7 @@ var is_placing_tower: bool = false
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
-enum Tower {SPAM_FILTER, ANTIVIRUS, DATA_LOSS_PREVENTION, QUARANTINE_CANNON, IDPS, BACKUP_SERVER, SANDBOX_ANALYZER, AD_BLOCKER, ACCESS_CONTROL_SYSTEM, ENDPOINT_PROTECTION, AI_SECURITY}
+enum Tower {SPAM_FILTER, ANTIVIRUS, AD_BLOCKER, DATA_LOSS_PREVENTION,IDPS, QUARANTINE_CANNON, ACCESS_CONTROL_SYSTEM, AI_SECURITY, BACKUP_SERVER, ENDPOINT_PROTECTION,  SANDBOX_ANALYZER }
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION, LASER}
 enum Sentinel {ETHICAL, SYSAD, INTRUSION, SECURITY, MALWARE, DECEPTION}
 enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2, BOSS3, BOSS4, BOSS5}
@@ -123,7 +123,7 @@ var TOWER_DATA = {
 		'name': 'Quarantine Cannon',
 		'cost': 60,
 		'server_load': 30,
-		'damage': 1,
+		'damage': 100,
 		'reload_time': 2,
 		'range': 1000,
 		'crit rate': 0,
@@ -136,7 +136,7 @@ var TOWER_DATA = {
 		'passive description': "Freeze enemies on hit for 1s.",
 		'upgrade1': "Damage",
 		'upgrade1level': 0,
-		'upgrade1amount': 1,
+		'upgrade1amount': 15,
 		'upgrade1cost': [35, 55, 70],
 		'upgrade2': "Attack Speed",
 		'upgrade2level': 0,
@@ -158,7 +158,7 @@ var TOWER_DATA = {
 		'tier2abilityunlocked': false,
 		'upgrade5': "Damage",
 		'upgrade5level': 0,
-		'upgrade5amount': 1,
+		'upgrade5amount': 35,
 		'upgrade5cost': [115, 160, 195],
 		'upgrade6': "Explosion Radius",
 		'upgrade6level': 0,
