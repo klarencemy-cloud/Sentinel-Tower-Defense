@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="5_6gdv8"]
 [ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="5_frx7f"]
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_s3ndn"]
+[ext_resource type="AudioStream" uid="uid://dq1828lqw2k8r" path="res://audio/SFX/TOWERS/backup electricity.wav" id="7_s3ndn"]
 
 [sub_resource type="Gradient" id="Gradient_frx7f"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -208,6 +209,12 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerPlacement" unique_id=1985553697]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_s3ndn")
+
+[node name="ElectricitySound" type="AudioStreamPlayer2D" parent="." unique_id=1179873151]
+stream = ExtResource("7_s3ndn")
+volume_db = -18.0
+autoplay = true
+bus = &"Sounds"
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="delete_press" from="TowerMenu" to="." method="_on_tower_menu_delete_press"]

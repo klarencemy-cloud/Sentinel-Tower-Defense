@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dntcfnl7af217"
-path="res://.godot/imported/DLP.png-17fd3dc5d866fd087d3a56a50fc5b94d.ctex"
+path="res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/tower thumbnails/DLP.png"
-dest_files=["res://.godot/imported/DLP.png-17fd3dc5d866fd087d3a56a50fc5b94d.ctex"]
+source_file="res://graphics/ui/tower thumbnails/dlp.png"
+dest_files=["res://.godot/imported/dlp.png-7d2e1fb22e959b68fd93d9a5a322df45.ctex"]
 
 [params]
 

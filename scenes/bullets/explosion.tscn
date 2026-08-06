@@ -108,3 +108,4 @@ script = ExtResource("2_npy6q")
 libraries/ = SubResource("AnimationLibrary_fy5vt")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Explosion" unique_id=392630249]
+bus = &"Sounds"

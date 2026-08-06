@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cbae7vfa786ej" path="res://scenes/towers/tower_data_loss_prevention.gd" id="2_shd4j"]
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="3_gbk4y"]
 [ext_resource type="Texture2D" uid="uid://c5kgnafqu803o" path="res://graphics/towers/dlp/dlp_turret.png" id="4_1r1eg"]
-[ext_resource type="AudioStream" uid="uid://sicd08w0ce6c" path="res://audio/bullet.wav" id="5_hmres"]
+[ext_resource type="AudioStream" uid="uid://msdlyogcyfpv" path="res://audio/SFX/TOWERS/SPAM FILTERsss.wav" id="5_shd4j"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_kebbf"]
 
 [sub_resource type="Gradient" id="Gradient_56y0f"]
@@ -50,7 +50,8 @@ offset_right = 58.571457
 offset_bottom = -62.857132
 
 [node name="ShootSound" parent="." index="7" unique_id=1474961134]
-stream = ExtResource("5_hmres")
+stream = ExtResource("5_shd4j")
+pitch_scale = 1.95
 bus = &"Sounds"
 
 [node name="AdButton" type="TextureButton" parent="." index="8" unique_id=1970184477]

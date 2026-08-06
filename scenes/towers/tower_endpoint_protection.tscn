@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="3_nnykp"]
 [ext_resource type="Texture2D" uid="uid://dlttoqphiwucv" path="res://graphics/towers/end point/end_point_turret.png" id="4_tm11s"]
 [ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="5_i1106"]
-[ext_resource type="AudioStream" uid="uid://bwljxijrlthqk" path="res://audio/fire.wav" id="6_blkop"]
+[ext_resource type="AudioStream" uid="uid://b7rxapjdaua38" path="res://audio/SFX/TOWERS/endpoint shoot.wav" id="6_tm11s"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_n7ldt"]
+[ext_resource type="AudioStream" uid="uid://dycloyp48gjme" path="res://audio/SFX/TOWERS/fire ambience.wav" id="7_nnykp"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_56y0f"]
 blend_mode = 1
@@ -131,9 +132,17 @@ offset_right = 28.0
 offset_bottom = -91.0
 
 [node name="ShootSound" parent="." index="8" unique_id=1474961134]
-stream = ExtResource("6_blkop")
+stream = ExtResource("6_tm11s")
+bus = &"Sounds"
 
-[node name="AdButton" type="TextureButton" parent="." index="9" unique_id=298330297]
+[node name="FireSound" type="AudioStreamPlayer2D" parent="." index="9" unique_id=964024398]
+scale = Vector2(0.99999994, 0.99999994)
+stream = ExtResource("7_nnykp")
+volume_db = -15.0
+autoplay = true
+bus = &"Sounds"
+
+[node name="AdButton" type="TextureButton" parent="." index="10" unique_id=298330297]
 visible = false
 offset_left = -20.0
 offset_top = -20.0
@@ -142,7 +151,7 @@ offset_bottom = 20.0
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="PayButton" type="TextureButton" parent="." index="10" unique_id=11286891]
+[node name="PayButton" type="TextureButton" parent="." index="11" unique_id=11286891]
 visible = false
 offset_left = -31.0
 offset_top = -32.0
