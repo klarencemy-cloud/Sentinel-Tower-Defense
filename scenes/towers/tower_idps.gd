@@ -1,4 +1,6 @@
 extends Tower
+var malware_analyst_damage_buff: float = 0.0
+var malware_analyst_crit_buff: int = 0
 
 func _process(_delta: float) -> void:
 	var idps_towers := []
@@ -33,7 +35,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_reload_timer_timeout() -> void:
-	if stunned: 
+	if stunned:
 		return
 	if disabled_by_ad or disabled_by_ransomware:
 		return
@@ -48,8 +50,8 @@ func _on_reload_timer_timeout() -> void:
 	
 	if valid_enemies > 0:
 		fire_animation()
-		var base_damage = Data.TOWER_DATA[type]["damage"]
-		var final_damage = Data.calculate_crit_damage(type, base_damage)
+		var base_damage = Data.TOWER_DATA[type]["damage"] + (Data.TOWER_DATA[type]["damage"] * malware_analyst_damage_buff)
+		var final_damage = Data.calculate_crit_damage(type, base_damage, malware_analyst_crit_buff)
 		shoot.emit(position, 0, bullet_type, final_damage, type, tower_id)
 		$ShootSound.play()
 
@@ -68,3 +70,7 @@ func _on_pay_button_pressed() -> void:
 
 	Data.money -= 5
 	remove_ransomware()
+
+
+func toggle_damage_buff(state: bool) -> void:
+	$Particles/DamageBuff.visible = state

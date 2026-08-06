@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_l7y1m"]
 [ext_resource type="AudioStream" uid="uid://msdlyogcyfpv" path="res://audio/SFX/TOWERS/SPAM FILTERsss.wav" id="6_uin2q"]
 [ext_resource type="AudioStream" uid="uid://c2teiofo7hvjs" path="res://audio/SFX/TOWERS/Particles.wav" id="7_81w6i"]
+[ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="9_dmts7"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_81w6i"]
 blend_mode = 1
@@ -45,6 +46,26 @@ fill_to = Vector2(0.6111111, 0.047008548)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ku0u"]
 radius = 130.31117
+
+[sub_resource type="Gradient" id="Gradient_gbq2t"]
+offsets = PackedFloat32Array(0.2777778, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c7tgf"]
+gradient = SubResource("Gradient_gbq2t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7vrtr"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(70, 50, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.59999996
+color = Color(0.6427446, 0.91073745, 0.9034458, 1)
+color_ramp = SubResource("GradientTexture1D_c7tgf")
 
 [node name="TowerBasic" unique_id=1033549676 instance=ExtResource("1_l7y1m")]
 scale = Vector2(0.7, 0.7)
@@ -96,10 +117,9 @@ offset_bottom = -60.0
 
 [node name="ShootSound" parent="." index="7" unique_id=1474961134]
 stream = ExtResource("6_uin2q")
-stream_paused = true
 bus = &"Sounds"
 
-[node name="Particles" type="AudioStreamPlayer2D" parent="." index="8" unique_id=694501751]
+[node name="Particle" type="AudioStreamPlayer2D" parent="." index="8" unique_id=694501751]
 scale = Vector2(0.99999994, 0.99999994)
 stream = ExtResource("7_81w6i")
 volume_db = -12.395
@@ -126,6 +146,15 @@ texture_normal = ExtResource("6_l7y1m")
 [node name="CollisionShape2D" parent="TowerPlacement" parent_id_path=PackedInt32Array(1018174449) index="0" unique_id=469974130]
 position = Vector2(-5.449566e-06, -1.7711094e-05)
 scale = Vector2(0.99999964, 0.99999964)
+
+[node name="Particles" type="Node2D" parent="." index="12" unique_id=1418117265]
+
+[node name="DamageBuff" type="GPUParticles2D" parent="Particles" index="0" unique_id=1455466262]
+visible = false
+position = Vector2(-7.1525574e-07, 24.28571)
+amount = 10
+texture = ExtResource("9_dmts7")
+process_material = SubResource("ParticleProcessMaterial_7vrtr")
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]

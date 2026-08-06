@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_l7jje"]
 [ext_resource type="Script" uid="uid://cu22lxqgx5hh0" path="res://scenes/enemies/lightning_1.gd" id="7_8d7iw"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_l7jje"]
+[ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="10_l7jje"]
 [ext_resource type="AudioStream" uid="uid://dl2075wa6u4tc" path="res://audio/SFX/TOWERS/adblocker shoot.wav" id="10_su0h8"]
 [ext_resource type="AudioStream" uid="uid://dmh1t4q4nua1l" path="res://audio/SFX/TOWERS/sandbox electric.wav" id="11_su0h8"]
 
@@ -62,21 +63,21 @@ shader_parameter/glow_color = Color(0, 0.76984626, 0.6135378, 1)
 offsets = PackedFloat32Array(0.0069204154, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.3019608)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ohmc7"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l7jje"]
 gradient = SubResource("Gradient_p6w5a")
 
 [sub_resource type="Gradient" id="Gradient_ahwdj"]
 offsets = PackedFloat32Array(0.30795848, 0.48096886, 0.6401384)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.25882354)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_p6w5a"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nm51x"]
 gradient = SubResource("Gradient_ahwdj")
 
 [sub_resource type="Curve" id="Curve_ahwdj"]
 _data = [Vector2(0.006349206, 0), 0.0, 0.0, 0, 0, Vector2(0.23492062, 0.4098063), -0.079139695, -0.079139695, 0, 0, Vector2(0.71746033, 0.41135204), 0.0, 0.0, 0, 0, Vector2(1, 0.41135204), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_p6w5a"]
+[sub_resource type="CurveTexture" id="CurveTexture_xjk60"]
 curve = SubResource("Curve_ahwdj")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c5o44"]
@@ -84,10 +85,30 @@ particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
 scale_min = 5.0
 scale_max = 5.0
-scale_curve = SubResource("CurveTexture_p6w5a")
-color_ramp = SubResource("GradientTexture1D_p6w5a")
-color_initial_ramp = SubResource("GradientTexture1D_ohmc7")
+scale_curve = SubResource("CurveTexture_xjk60")
+color_ramp = SubResource("GradientTexture1D_nm51x")
+color_initial_ramp = SubResource("GradientTexture1D_l7jje")
 turbulence_noise_speed_random = 0.0
+
+[sub_resource type="Gradient" id="Gradient_nm51x"]
+offsets = PackedFloat32Array(0.2777778, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kanff"]
+gradient = SubResource("Gradient_nm51x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xjk60"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(70, 50, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.59999996
+color = Color(0.6427446, 0.91073745, 0.9034458, 1)
+color_ramp = SubResource("GradientTexture1D_kanff")
 
 [node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_ahwdj")]
 scale = Vector2(0.7, 0.7)
@@ -150,6 +171,13 @@ amount = 1
 texture = ExtResource("4_p6w5a")
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_c5o44")
+
+[node name="DamageBuff" type="GPUParticles2D" parent="Particles" index="1" unique_id=1012101585]
+visible = false
+position = Vector2(-7.1525574e-07, 24.28571)
+amount = 10
+texture = ExtResource("10_l7jje")
+process_material = SubResource("ParticleProcessMaterial_xjk60")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
 position = Vector2(0, -40.25)

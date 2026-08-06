@@ -1,16 +1,17 @@
 extends Tower
-
+var malware_analyst_damage_buff: float = 0.0
+var malware_analyst_crit_buff: int = 0
 var trapped_enemy: Node = null
 var is_trapping: bool = false
 
 var infected_enemies: Array = []
 var max_infected: int = 2
-const TIER1_MAX_INFECTED: int = 2  
-const TIER3_MAX_INFECTED: int = 5   
+const TIER1_MAX_INFECTED: int = 2
+const TIER3_MAX_INFECTED: int = 5
 var infection_check_timer: Timer
 var infection_radius: float = 200.0
 
-const TIER2_DEBUFF_MULTIPLIER: float = 1.2  
+const TIER2_DEBUFF_MULTIPLIER: float = 1.2
 
 var boss_types: Array = [
 	Data.Enemy.BOSS1,
@@ -93,8 +94,8 @@ func _on_reload_timer_timeout() -> void:
 
 		var dir = Vector2.DOWN.rotated(fire_rotation).normalized()
 
-		var base_damage = damage
-		var final_damage = Data.calculate_crit_damage(type, base_damage)
+		var base_damage = damage + (damage * malware_analyst_damage_buff)
+		var final_damage = Data.calculate_crit_damage(type, base_damage, malware_analyst_crit_buff)
 		shoot.emit(
 			position + dir * 16,
 			fire_rotation,
@@ -242,3 +243,7 @@ func _on_pay_button_pressed() -> void:
 
 	Data.money -= 5
 	remove_ransomware()
+
+
+func toggle_damage_buff(state: bool) -> void:
+	$Particles/DamageBuff.visible = state

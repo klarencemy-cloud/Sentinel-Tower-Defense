@@ -1,5 +1,6 @@
 extends Tower
-
+var malware_analyst_damage_buff: float = 0.0
+var malware_analyst_crit_buff: int = 0
 const MALWARE_TYPES = [Data.Enemy.VIRUS, Data.Enemy.WORM, Data.Enemy.TROJAN]
 
 func _process(_delta: float) -> void:
@@ -23,8 +24,8 @@ func _on_reload_timer_timeout() -> void:
 
 		var dir = Vector2.DOWN.rotated(fire_rotation).normalized()
 
-		var base_damage = damage
-		var final_damage = Data.calculate_crit_damage(type, base_damage)
+		var base_damage = damage + (damage * malware_analyst_damage_buff)
+		var final_damage = Data.calculate_crit_damage(type, base_damage, malware_analyst_crit_buff)
 		
 		final_damage = _apply_antivirus_bonus(final_damage, enemies[0])
 		
@@ -71,3 +72,7 @@ func _on_pay_button_pressed() -> void:
 
 	Data.money -= 50
 	remove_ransomware()
+
+	
+func toggle_damage_buff(state: bool) -> void:
+	$Particles/DamageBuff.visible = state
