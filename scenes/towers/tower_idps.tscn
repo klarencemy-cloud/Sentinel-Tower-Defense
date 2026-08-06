@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://fv2nsp2ceytq" path="res://texture/offset_glow.png" id="6_dbesr"]
 [ext_resource type="Shader" uid="uid://betoupj84mtmb" path="res://texture/shaders/radar_shader.gdshader" id="6_hginv"]
 [ext_resource type="AudioStream" uid="uid://bqovvu4y00vxj" path="res://audio/SFX/TOWERS/idps shoot.wav" id="8_dbesr"]
+[ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="8_u1lur"]
 [ext_resource type="AudioStream" uid="uid://bktf276m6cpty" path="res://audio/SFX/TOWERS/idps air.wav" id="9_dbesr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbesr"]
@@ -88,6 +89,26 @@ gravity = Vector3(0, -20, 0)
 color = Color(0, 0.6996187, 0.6823587, 1)
 anim_speed_max = 1.0
 
+[sub_resource type="Gradient" id="Gradient_jofp6"]
+offsets = PackedFloat32Array(0.2777778, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4mah1"]
+gradient = SubResource("Gradient_jofp6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ducxq"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(70, 50, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.59999996
+color = Color(0.6427446, 0.91073745, 0.9034458, 1)
+color_ramp = SubResource("GradientTexture1D_4mah1")
+
 [node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_b2ii2")]
 scale = Vector2(0.7, 0.7)
 script = ExtResource("2_b2ii2")
@@ -146,12 +167,18 @@ texture = ExtResource("6_5ge8c")
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_dbesr")
 
+[node name="DamageBuff" type="GPUParticles2D" parent="Particles" index="1" unique_id=112246656]
+visible = false
+position = Vector2(-7.1525574e-07, 24.28571)
+amount = 10
+texture = ExtResource("8_u1lur")
+process_material = SubResource("ParticleProcessMaterial_ducxq")
+
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
 visible = false
 position = Vector2(0, -40.25)
 
 [node name="TowerMenu" parent="." index="6" unique_id=489153716]
-visible = true
 offset_left = 46.142857
 offset_top = -90.0
 offset_right = 46.142857

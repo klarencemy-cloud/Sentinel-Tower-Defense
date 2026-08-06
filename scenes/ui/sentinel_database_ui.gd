@@ -75,7 +75,7 @@ var SENTINEL_DATA = {
 		Sentinel.MALWARE: {
 		'special_ability': "Examines detected threats, reveals their weaknesses, and instead of directly attacking enemies, it improves the effectiveness of other nearby defense towers' damage by 30% for 15 seconds.",
 		'cooldown': "25 seconds",
-		'passive_ability': "Nearby towers gain an additional 10% damage.  ",
+		'passive_ability': "Nearby towers gain an additional 10% crit chance.  ",
 		'irl_desc': "A malware analyst examines malicious files and applications to comprehend how malware operates and how it can be prevented or countered. Their perspectives assist cybersecurity teams in identifying, examining, and protecting against cyber threats. They provide information on malicious software, revealing its function, what it aims for, and how actors utilize it. Additionally, they are also combating malicious software."
 	},
 		Sentinel.DECEPTION: {

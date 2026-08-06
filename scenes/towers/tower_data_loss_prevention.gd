@@ -1,5 +1,6 @@
 extends Tower
-
+var malware_analyst_damage_buff: float = 0.0
+var malware_analyst_crit_buff: int = 0
 func get_damage_reduction_multiplier() -> float:
 	if Data.TOWER_DATA[type].get("tier1abilityunlocked", false):
 		return 0.50
@@ -60,8 +61,8 @@ func _on_reload_timer_timeout() -> void:
 		if botnet_count > 0:
 			fire_rotation += deg_to_rad(randf_range(-20.0, 20.0))
 
-		var base_damage = damage
-		var final_damage = Data.calculate_crit_damage(type, base_damage)
+		var base_damage = damage + (damage * malware_analyst_damage_buff)
+		var final_damage = Data.calculate_crit_damage(type, base_damage, malware_analyst_crit_buff)
 		shoot.emit(
 			position + dir * 16,
 			fire_rotation,
@@ -83,3 +84,7 @@ func _on_pay_button_pressed() -> void:
 
 	Data.money -= 5
 	remove_ransomware()
+
+	
+func toggle_damage_buff(state: bool) -> void:
+	$Particles/DamageBuff.visible = state

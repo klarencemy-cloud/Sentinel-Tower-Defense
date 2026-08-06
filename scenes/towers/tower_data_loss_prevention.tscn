@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c5kgnafqu803o" path="res://graphics/towers/dlp/dlp_turret.png" id="4_1r1eg"]
 [ext_resource type="AudioStream" uid="uid://msdlyogcyfpv" path="res://audio/SFX/TOWERS/SPAM FILTERsss.wav" id="5_shd4j"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_kebbf"]
+[ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="9_kebbf"]
 
 [sub_resource type="Gradient" id="Gradient_56y0f"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -18,6 +19,26 @@ fill_to = Vector2(0.75213677, 0.081196584)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ku0u"]
 radius = 100.0
+
+[sub_resource type="Gradient" id="Gradient_qe78t"]
+offsets = PackedFloat32Array(0.2777778, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p7d8f"]
+gradient = SubResource("Gradient_qe78t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pmiot"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(70, 50, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.59999996
+color = Color(0.6427446, 0.91073745, 0.9034458, 1)
+color_ramp = SubResource("GradientTexture1D_p7d8f")
 
 [node name="TowerDataLossPrevention" unique_id=2039509527 instance=ExtResource("1_shd4j")]
 scale = Vector2(0.7, 0.7)
@@ -70,6 +91,15 @@ offset_top = -32.0
 offset_right = 33.0
 offset_bottom = 32.0
 texture_normal = ExtResource("6_kebbf")
+
+[node name="Particles" type="Node2D" parent="." index="11" unique_id=390928527]
+
+[node name="DamageBuff" type="GPUParticles2D" parent="Particles" index="0" unique_id=1458767618]
+visible = false
+position = Vector2(-7.1525574e-07, 24.28571)
+amount = 10
+texture = ExtResource("9_kebbf")
+process_material = SubResource("ParticleProcessMaterial_pmiot")
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]

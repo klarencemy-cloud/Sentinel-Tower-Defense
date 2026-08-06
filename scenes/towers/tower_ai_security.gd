@@ -1,5 +1,6 @@
 extends Tower
-
+var malware_analyst_damage_buff: float = 0.0
+var malware_analyst_crit_buff: int = 0
 @onready var charge_sound: AudioStreamPlayer2D = $ChargeSound
 @onready var firing_sound: AudioStreamPlayer2D = $FiringSound
 
@@ -147,7 +148,7 @@ func _on_reload_timer_timeout() -> void:
 	if !is_instance_valid(target):
 		return
 
-	var base_damage = Data.TOWER_DATA[type]["damage"]
+	var base_damage = Data.TOWER_DATA[type]["damage"] + (Data.TOWER_DATA[type]["damage"] * malware_analyst_damage_buff)
 
 	if Data.TOWER_DATA[type].get("tier3abilityunlocked", false):
 		damage_multiplier = min(
@@ -157,7 +158,7 @@ func _on_reload_timer_timeout() -> void:
 
 	base_damage = int(base_damage * damage_multiplier)
 
-	var final_damage = Data.calculate_crit_damage(type, base_damage)
+	var final_damage = Data.calculate_crit_damage(type, base_damage, malware_analyst_crit_buff)
 	var enemy_max_hp = Data.ENEMY_DATA[target.enemy_type_stats]["health"]
 
 	if Data.TOWER_DATA[type].get("tier2abilityunlocked", false):
@@ -175,3 +176,10 @@ func _on_pay_button_pressed() -> void:
 
 	Data.money -= 5
 	remove_ransomware()
+
+
+func toggle_damage_buff(state: bool) -> void:
+	$Particles/DamageBuff.visible = state
+
+func toggle_swift_buff(state: bool) -> void:
+	$Particles/SwiftBuff.visible = state

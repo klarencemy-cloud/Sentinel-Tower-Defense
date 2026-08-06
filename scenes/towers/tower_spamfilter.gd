@@ -1,6 +1,7 @@
 extends Tower
-@onready var sound_particles: AudioStreamPlayer2D = $Particles
-
+@onready var sound_particles: AudioStreamPlayer2D = $Particle
+var malware_analyst_damage_buff: float = 0.0
+var malware_analyst_crit_buff: int = 0
 func _process(_delta: float) -> void:
 	if enemies.size() > 0:
 		$Turret.look_at(enemies[0].global_position)
@@ -22,8 +23,8 @@ func _on_reload_timer_timeout() -> void:
 
 		var dir = Vector2.DOWN.rotated(fire_rotation).normalized()
 
-		var base_damage = Data.TOWER_DATA[type]["damage"]
-		var final_damage = Data.calculate_crit_damage(type, base_damage)
+		var base_damage = Data.TOWER_DATA[type]["damage"] + (Data.TOWER_DATA[type]["damage"] * malware_analyst_damage_buff)
+		var final_damage = Data.calculate_crit_damage(type, base_damage, malware_analyst_crit_buff)
 
 		shoot.emit(
 			position + dir * 16,
@@ -50,3 +51,7 @@ func fire_animation():
 		particles.restart()
 		particles.emitting = true
 		sound_particles.play()
+
+
+func toggle_damage_buff(state: bool) -> void:
+	$Particles/DamageBuff.visible = state
