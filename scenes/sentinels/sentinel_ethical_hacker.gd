@@ -42,3 +42,13 @@ func hide_ui():
 
 func _on_reload_timer_timeout() -> void:
 	pass
+
+
+func _on_sentinel_skill_area_exited(area: Area2D) -> void:
+	if area.name == "Enemy":
+		area.ethical_hacker_slow = true
+		
+
+func _on_sentinel_skill_area_entered(area: Area2D) -> void:
+	if area.name == "Enemy":
+		area.ethical_hacker_slow = false

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dwmskfb3hjo3k" path="res://scenes/sentinels/sentinel_ethical_hacker.gd" id="1_wt8kl"]
 [ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="2_wt8kl"]
 [ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="3_m2n11"]
-[ext_resource type="Texture2D" uid="uid://dj56rn3t4lvwk" path="res://graphics/currency/gold_gain.png" id="4_qy1i3"]
 [ext_resource type="Texture2D" uid="uid://bhe1pw8va777g" path="res://texture/0001.png" id="5_rxhxj"]
 [ext_resource type="Script" uid="uid://drbocy3xkv6hu" path="res://scenes/sentinels/sentinel_collision.gd" id="6_xgh1i"]
 
@@ -55,33 +54,6 @@ fill_to = Vector2(0.5769231, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my3uq"]
 size = Vector2(159, 224.25)
 
-[sub_resource type="Gradient" id="Gradient_ikqs0"]
-offsets = PackedFloat32Array(0.7361111, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_m3g65"]
-gradient = SubResource("Gradient_ikqs0")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3oo1d"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 1.76
-direction = Vector3(1, -40, 0)
-spread = 17.143
-initial_velocity_min = 67.0
-initial_velocity_max = 67.0
-gravity = Vector3(0, 70, 0)
-radial_accel_min = -2.2351742e-06
-radial_accel_max = 25.679996
-scale_min = 1.1
-scale_max = 1.1
-color_ramp = SubResource("GradientTexture1D_m3g65")
-turbulence_noise_strength = 0.0
-turbulence_noise_scale = 0.0
-collision_mode = 1
-collision_friction = 0.0
-collision_bounce = 0.64
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e0uin"]
 blend_mode = 1
 particles_animation = true
@@ -110,6 +82,9 @@ polygon = PackedVector2Array(-117, 44, 130, 44, 81.890625, 49.181023, 0, 58)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wt8kl"]
 size = Vector2(179.54398, 84.6577)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wt8kl"]
+radius = 308.0065
 
 [node name="SentinelEthicalHacker" type="Node2D" unique_id=1163133944]
 z_index = 2
@@ -160,19 +135,6 @@ metadata/_edit_use_anchors_ = true
 [node name="ReloadTimer" type="Timer" parent="." unique_id=164587640]
 autostart = true
 
-[node name="CoinRain" type="GPUParticles2D" parent="." unique_id=578376079]
-texture_filter = 2
-position = Vector2(0, -176)
-emitting = false
-amount = 5
-texture = ExtResource("4_qy1i3")
-lifetime = 4.0
-one_shot = true
-speed_scale = 4.09
-explosiveness = 0.42
-visibility_rect = Rect2(-75, -100, 150, 200)
-process_material = SubResource("ParticleProcessMaterial_3oo1d")
-
 [node name="Glow" type="GPUParticles2D" parent="." unique_id=330118410]
 z_index = 1
 material = SubResource("CanvasItemMaterial_e0uin")
@@ -190,26 +152,6 @@ process_material = SubResource("ParticleProcessMaterial_e0uin")
 position = Vector2(0, -105)
 occluder = SubResource("OccluderPolygon2D_3oo1d")
 
-[node name="GoldGain" type="RichTextLabel" parent="." unique_id=1115932276]
-offset_left = 10.0
-offset_top = -196.0
-offset_right = 64.0
-offset_bottom = -177.0
-theme_override_colors/default_color = Color(1, 0.78431374, 0, 1)
-bbcode_enabled = true
-fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HealGain" type="RichTextLabel" parent="." unique_id=953336170]
-offset_left = -61.0
-offset_top = -193.01001
-offset_right = -21.0
-offset_bottom = -179.01001
-theme_override_colors/default_color = Color(0, 0.50980395, 0.2901961, 1)
-bbcode_enabled = true
-fit_content = true
-
 [node name="SentinelCollision" type="Area2D" parent="." unique_id=94780750]
 collision_layer = 128
 collision_mask = 128
@@ -219,8 +161,16 @@ script = ExtResource("6_xgh1i")
 position = Vector2(-0.8235626, 10.67363)
 shape = SubResource("RectangleShape2D_wt8kl")
 
+[node name="SentinelSkill" type="Area2D" parent="." unique_id=1102808366]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SentinelSkill" unique_id=1028051111]
+shape = SubResource("CircleShape2D_wt8kl")
+
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="delete_press" from="TowerMenu" to="." method="_on_tower_menu_delete_press"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="area_entered" from="SentinelCollision" to="SentinelCollision" method="_on_area_entered"]
 [connection signal="area_exited" from="SentinelCollision" to="SentinelCollision" method="_on_area_exited"]
+[connection signal="area_entered" from="SentinelSkill" to="." method="_on_sentinel_skill_area_entered"]
+[connection signal="area_exited" from="SentinelSkill" to="." method="_on_sentinel_skill_area_exited"]
