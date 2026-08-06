@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://msdlyogcyfpv" path="res://audio/SFX/TOWERS/SPAM FILTERsss.wav" id="6_uin2q"]
 [ext_resource type="AudioStream" uid="uid://c2teiofo7hvjs" path="res://audio/SFX/TOWERS/Particles.wav" id="7_81w6i"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="9_dmts7"]
+[ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="10_gbq2t"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_81w6i"]
 blend_mode = 1
@@ -64,8 +65,26 @@ initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.59999996
-color = Color(0.6427446, 0.91073745, 0.9034458, 1)
+color = Color(1, 0.72080785, 0.73349756, 1)
 color_ramp = SubResource("GradientTexture1D_c7tgf")
+
+[sub_resource type="Gradient" id="Gradient_tapj7"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jrmhc"]
+gradient = SubResource("Gradient_tapj7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mp6je"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(70, 50, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_jrmhc")
 
 [node name="TowerBasic" unique_id=1033549676 instance=ExtResource("1_l7y1m")]
 scale = Vector2(0.7, 0.7)
@@ -149,12 +168,18 @@ scale = Vector2(0.99999964, 0.99999964)
 
 [node name="Particles" type="Node2D" parent="." index="12" unique_id=1418117265]
 
-[node name="DamageBuff" type="GPUParticles2D" parent="Particles" index="0" unique_id=1455466262]
+[node name="DamageBuff" type="GPUParticles2D" parent="Particles" index="0" unique_id=1674194033]
 visible = false
 position = Vector2(-7.1525574e-07, 24.28571)
 amount = 10
 texture = ExtResource("9_dmts7")
 process_material = SubResource("ParticleProcessMaterial_7vrtr")
+
+[node name="SwiftBuff" type="GPUParticles2D" parent="Particles" index="1" unique_id=1751190386]
+visible = false
+amount = 5
+texture = ExtResource("10_gbq2t")
+process_material = SubResource("ParticleProcessMaterial_mp6je")
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]

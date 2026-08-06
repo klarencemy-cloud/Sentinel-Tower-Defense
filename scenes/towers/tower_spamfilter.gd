@@ -55,3 +55,6 @@ func fire_animation():
 
 func toggle_damage_buff(state: bool) -> void:
 	$Particles/DamageBuff.visible = state
+
+func toggle_swift_buff(state: bool) -> void:
+	$Particles/SwiftBuff.visible = state

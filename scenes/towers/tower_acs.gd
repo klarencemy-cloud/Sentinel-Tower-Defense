@@ -69,3 +69,6 @@ func _on_pay_button_pressed() -> void:
 
 func toggle_damage_buff(state: bool) -> void:
 	$Particles/DamageBuff.visible = state
+
+func toggle_swift_buff(state: bool) -> void:
+	$Particles/SwiftBuff.visible = state
