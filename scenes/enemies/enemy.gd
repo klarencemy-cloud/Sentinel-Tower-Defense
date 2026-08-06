@@ -272,7 +272,26 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	]:
 		var ui = get_tree().get_first_node_in_group("UI")
 		if ui:
-			ui.update_boss_hp(enemy_type_stats, health, health)
+			var boss_name := ""
+
+			match enemy_type_stats:
+				Data.Enemy.BOSS1:
+					boss_name = "ILOVEYOU VIRUS"
+				Data.Enemy.BOSS2:
+					boss_name = "Conficker"
+				Data.Enemy.BOSS3:
+					boss_name = "WannaCry"
+				Data.Enemy.BOSS4:
+					boss_name = "NotPeyta"
+				Data.Enemy.BOSS5:
+					boss_name = "MyDoom"
+
+			ui.register_boss(
+				get_instance_id(),
+				boss_name,
+				health,
+				health
+			)
 		
 
 func _process(delta: float):
@@ -343,6 +362,30 @@ func _process(delta: float):
 		processed_enemy_damage = Defense._dmg_reduc_armor(raw_dmg) # sends dmg to defense_data.gd to reduc dmg based on armor
 		if !Data.backup_server_invincible and !Data.is_sandbox:
 			Data.health -= processed_enemy_damage - (processed_enemy_damage * Data.damage_reduction) # in decimal so it can be reduce by sentinel
+		
+		# If Backup Server is active and this is a boss,
+		# knock it back instead of destroying it.
+	if Data.backup_server_invincible and enemy_type_stats in [
+		Data.Enemy.BOSS1,
+		Data.Enemy.BOSS2,
+		Data.Enemy.BOSS3,
+		Data.Enemy.BOSS4,
+		Data.Enemy.BOSS5
+		]:
+		backup_server_knockback()
+		return
+		
+		if enemy_type_stats in [
+			Data.Enemy.BOSS1,
+			Data.Enemy.BOSS2,
+			Data.Enemy.BOSS3,
+			Data.Enemy.BOSS4,
+			Data.Enemy.BOSS5
+		]:
+			var ui = get_tree().get_first_node_in_group("UI")
+			if ui:
+				ui.unregister_boss(get_instance_id())
+
 		_update_active_enemy_counter(enemy_type_stats, -1)
 		queue_free()
 	if enemy_type_stats == Data.Enemy.SPYWARE:
@@ -388,8 +431,8 @@ func hit(damage: int = 1, tower_id: int = -1):
 	]:
 		var ui = get_tree().get_first_node_in_group("UI")
 		if ui:
-			ui.update_boss_hp(
-				enemy_type_stats,
+			ui.update_boss_bar(
+				get_instance_id(),
 				health,
 				Data.ENEMY_DATA[enemy_type_stats]["health"]
 			)
@@ -485,7 +528,8 @@ func hit(damage: int = 1, tower_id: int = -1):
 				path_follow.progress
 			)
 	dead = true
-	Data.money += int(round(10 * Economy.gold_multiplier)) # update money
+	Data.money += int(round(10 * Economy.gold_multiplier))
+
 	if enemy_type_stats in [
 		Data.Enemy.BOSS1,
 		Data.Enemy.BOSS2,
@@ -495,8 +539,9 @@ func hit(damage: int = 1, tower_id: int = -1):
 	]:
 		var ui = get_tree().get_first_node_in_group("UI")
 		if ui:
-			ui.boss_hp_bar.visible = false
-	Data.experience += Data.ENEMY_DATA[enemy_type_stats]["exp"] * Economy.exp_multiplier # update exp points
+			ui.unregister_boss(get_instance_id())
+
+	Data.experience += Data.ENEMY_DATA[enemy_type_stats]["exp"] * Economy.exp_multiplier
 	await get_tree().create_timer(0.1).timeout
 	queue_free()
 	

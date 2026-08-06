@@ -14,6 +14,18 @@ extends CanvasLayer
 @onready var boss_hp_amount = $Control/bosshpbar/hpamount
 @onready var boss_name = $Control/bosshpbar/bossname
 @onready var skill1_button: TextureButton = $Control/HBoxContainer/Skill1
+@onready var boss_bars := [
+	$Control/bosshpbar,
+	$Control/smallhpbar1,
+	$Control/smallhpbar2,
+	$Control/smallhpbar3,
+	$Control/smallhpbar4,
+	$Control/smallhpbar5,
+	$Control/smallhpbar6
+]
+
+var boss_bar_assignments := {} # boss_id -> ProgressBar
+
 
 signal place_tower(tower_type: Data.Tower)
 signal place_sentinel(sentinel_type: Data.Sentinel)
@@ -110,6 +122,9 @@ func _ready() -> void:
 	else:
 		$Control/HBoxContainer/Skill1.disabled = false
 		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
+	
+	for bar in boss_bars:
+		bar.visible = false
 
 func tower_select(tower_enum: Data.Tower):
 	place_tower.emit(tower_enum)
@@ -395,10 +410,79 @@ func update_boss_hp(enemy: Data.Enemy, current_hp: int, max_hp: int):
 		Data.Enemy.BOSS3:
 			boss_name.text = "WannaCry"
 		Data.Enemy.BOSS4:
-			boss_name.text = "NotPetya"
+			boss_name.text = "NotPeyta"
 		Data.Enemy.BOSS5:
-			boss_name.text = "MyDOOM"
+			boss_name.text = "MyDoom"
 
 
 func _on_server_health_upgraded(new_max_health: float) -> void:
 	update_stats(Data.money, Data.health)
+	
+func register_boss(boss_id:int, boss_name_text:String, current_hp:int, max_hp:int):
+	# already assigned
+	if boss_bar_assignments.has(boss_id):
+		return
+
+	# first free bar
+	for bar in boss_bars:
+		if bar.visible:
+			continue
+
+		bar.visible = true
+		bar.max_value = max_hp
+		bar.value = current_hp
+		bar.get_node("bossname").text = boss_name_text
+		bar.get_node("hpamount").text = "%d/%d" % [current_hp, max_hp]
+
+		boss_bar_assignments[boss_id] = bar
+		return
+		
+func update_boss_bar(boss_id:int,current_hp:int,max_hp:int):
+	if !boss_bar_assignments.has(boss_id):
+		return
+
+	var bar = boss_bar_assignments[boss_id]
+
+	bar.max_value = max_hp
+	bar.value = current_hp
+	bar.get_node("hpamount").text = "%d/%d" % [current_hp,max_hp]
+
+func unregister_boss(boss_id:int):
+	if !boss_bar_assignments.has(boss_id):
+		return
+
+	var bar = boss_bar_assignments[boss_id]
+	bar.visible = false
+
+	boss_bar_assignments.erase(boss_id)
+
+	_reorder_boss_bars()
+
+func _reorder_boss_bars():
+	var remaining := []
+
+	for id in boss_bar_assignments:
+		remaining.append({
+			"id": id,
+			"bar": boss_bar_assignments[id]
+		})
+
+	# hide all bars
+	for bar in boss_bars:
+		bar.visible = false
+
+	boss_bar_assignments.clear()
+
+	# reuse bars from top
+	for i in remaining.size():
+		var old_bar = remaining[i]["bar"]
+		var new_bar = boss_bars[i]
+
+		new_bar.visible = true
+		new_bar.max_value = old_bar.max_value
+		new_bar.value = old_bar.value
+
+		new_bar.get_node("bossname").text = old_bar.get_node("bossname").text
+		new_bar.get_node("hpamount").text = old_bar.get_node("hpamount").text
+
+		boss_bar_assignments[remaining[i]["id"]] = new_bar

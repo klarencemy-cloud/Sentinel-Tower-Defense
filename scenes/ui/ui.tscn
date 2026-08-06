@@ -563,6 +563,180 @@ offset_bottom = 34.0
 theme_override_font_sizes/font_size = 23
 text = "Boss Name"
 
+[node name="smallhpbar1" type="TextureProgressBar" parent="Control" unique_id=1301150721]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 172.0
+offset_right = 972.0
+offset_bottom = 253.0
+scale = Vector2(0.8, 0.8)
+texture_under = ExtResource("27_vnqvi")
+texture_progress = ExtResource("28_7ygsn")
+
+[node name="hpamount" type="Label" parent="Control/smallhpbar1" unique_id=797922160]
+texture_filter = 2
+layout_mode = 0
+offset_left = 402.49994
+offset_top = 5.000004
+offset_right = 466.49994
+offset_bottom = 24.000004
+text = "100/100"
+
+[node name="bossname" type="Label" parent="Control/smallhpbar1" unique_id=189242440]
+texture_filter = 2
+layout_mode = 0
+offset_left = 2.5000155
+offset_top = -3.7500033
+offset_right = 108.500015
+offset_bottom = 29.249996
+theme_override_font_sizes/font_size = 23
+text = "Boss Name"
+
+[node name="smallhpbar2" type="TextureProgressBar" parent="Control" unique_id=995560531]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 219.0
+offset_right = 972.0
+offset_bottom = 300.0
+scale = Vector2(0.8, 0.8)
+texture_under = ExtResource("27_vnqvi")
+texture_progress = ExtResource("28_7ygsn")
+
+[node name="hpamount" type="Label" parent="Control/smallhpbar2" unique_id=258913973]
+texture_filter = 2
+layout_mode = 0
+offset_left = 402.49994
+offset_top = 5.000004
+offset_right = 466.49994
+offset_bottom = 24.000004
+text = "100/100"
+
+[node name="bossname" type="Label" parent="Control/smallhpbar2" unique_id=1790764645]
+texture_filter = 2
+layout_mode = 0
+offset_left = 2.5000155
+offset_top = -3.7500033
+offset_right = 108.500015
+offset_bottom = 29.249996
+theme_override_font_sizes/font_size = 23
+text = "Boss Name"
+
+[node name="smallhpbar3" type="TextureProgressBar" parent="Control" unique_id=2108898015]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 267.0
+offset_right = 972.0
+offset_bottom = 348.0
+scale = Vector2(0.8, 0.8)
+texture_under = ExtResource("27_vnqvi")
+texture_progress = ExtResource("28_7ygsn")
+
+[node name="hpamount" type="Label" parent="Control/smallhpbar3" unique_id=266765158]
+texture_filter = 2
+layout_mode = 0
+offset_left = 402.49994
+offset_top = 5.000004
+offset_right = 466.49994
+offset_bottom = 24.000004
+text = "100/100"
+
+[node name="bossname" type="Label" parent="Control/smallhpbar3" unique_id=198824429]
+texture_filter = 2
+layout_mode = 0
+offset_left = 2.5000155
+offset_top = -3.7500033
+offset_right = 108.500015
+offset_bottom = 29.249996
+theme_override_font_sizes/font_size = 23
+text = "Boss Name"
+
+[node name="smallhpbar4" type="TextureProgressBar" parent="Control" unique_id=1218767449]
+layout_mode = 0
+offset_left = 927.0
+offset_top = 171.0
+offset_right = 1414.0
+offset_bottom = 252.0
+scale = Vector2(0.8, 0.8)
+texture_under = ExtResource("27_vnqvi")
+texture_progress = ExtResource("28_7ygsn")
+
+[node name="hpamount" type="Label" parent="Control/smallhpbar4" unique_id=288788875]
+texture_filter = 2
+layout_mode = 0
+offset_left = 402.49994
+offset_top = 5.000004
+offset_right = 466.49994
+offset_bottom = 24.000004
+text = "100/100"
+
+[node name="bossname" type="Label" parent="Control/smallhpbar4" unique_id=1896283110]
+texture_filter = 2
+layout_mode = 0
+offset_left = 2.5000155
+offset_top = -3.7500033
+offset_right = 108.500015
+offset_bottom = 29.249996
+theme_override_font_sizes/font_size = 23
+text = "Boss Name"
+
+[node name="smallhpbar5" type="TextureProgressBar" parent="Control" unique_id=1821812861]
+layout_mode = 0
+offset_left = 928.0
+offset_top = 218.0
+offset_right = 1415.0
+offset_bottom = 299.0
+scale = Vector2(0.8, 0.8)
+texture_under = ExtResource("27_vnqvi")
+texture_progress = ExtResource("28_7ygsn")
+
+[node name="hpamount" type="Label" parent="Control/smallhpbar5" unique_id=53319558]
+texture_filter = 2
+layout_mode = 0
+offset_left = 402.49994
+offset_top = 5.000004
+offset_right = 466.49994
+offset_bottom = 24.000004
+text = "100/100"
+
+[node name="bossname" type="Label" parent="Control/smallhpbar5" unique_id=153235045]
+texture_filter = 2
+layout_mode = 0
+offset_left = 2.5000155
+offset_top = -3.7500033
+offset_right = 108.500015
+offset_bottom = 29.249996
+theme_override_font_sizes/font_size = 23
+text = "Boss Name"
+
+[node name="smallhpbar6" type="TextureProgressBar" parent="Control" unique_id=297670005]
+layout_mode = 0
+offset_left = 929.0
+offset_top = 266.0
+offset_right = 1416.0
+offset_bottom = 347.0
+scale = Vector2(0.8, 0.8)
+texture_under = ExtResource("27_vnqvi")
+texture_progress = ExtResource("28_7ygsn")
+
+[node name="hpamount" type="Label" parent="Control/smallhpbar6" unique_id=1088983608]
+texture_filter = 2
+layout_mode = 0
+offset_left = 402.49994
+offset_top = 5.000004
+offset_right = 466.49994
+offset_bottom = 24.000004
+text = "100/100"
+
+[node name="bossname" type="Label" parent="Control/smallhpbar6" unique_id=489895567]
+texture_filter = 2
+layout_mode = 0
+offset_left = 2.5000155
+offset_top = -3.7500033
+offset_right = 108.500015
+offset_bottom = 29.249996
+theme_override_font_sizes/font_size = 23
+text = "Boss Name"
+
 [node name="StatsCounterButton" type="Button" parent="." unique_id=88214555]
 anchors_preset = -1
 anchor_left = 0.88072914
@@ -593,6 +767,10 @@ z_index = 4
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1734.0
+offset_top = -311.0
+offset_right = 1734.0
+offset_bottom = -311.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -608,6 +786,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1209.0
+offset_top = 362.0
+offset_right = 1209.0
+offset_bottom = 362.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
