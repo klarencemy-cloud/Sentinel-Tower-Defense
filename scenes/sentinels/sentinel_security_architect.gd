@@ -64,6 +64,7 @@ func apply_tower_buff(area: Area2D):
 		shape.radius = max(shape.radius + range_buff, 10)
 		tower.reload_time = tower.original_reload_time - (tower.original_reload_time * .15)
 		tower.get_node("ReloadTimer").wait_time = tower.reload_time
+		tower.toggle_swift_buff(true)
 
 func remove_tower_buff(area: Area2D):
 	ability_cooldown()
@@ -74,6 +75,7 @@ func remove_tower_buff(area: Area2D):
 		shape.radius = tower.range
 		tower.reload_time = tower.original_reload_time
 		tower.get_node("ReloadTimer").wait_time = tower.reload_time
+		tower.toggle_swift_buff(false)
 
 
 func _on_skill_duration_timeout() -> void:

@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dmh1t4q4nua1l" path="res://audio/SFX/TOWERS/sandbox electric.wav" id="8_i40e1"]
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="8_ovk42"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="10_i40e1"]
+[ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="11_nmxp2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i40e1"]
 shader = ExtResource("7_cvoqq")
@@ -64,8 +65,26 @@ initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.59999996
-color = Color(0.6427446, 0.91073745, 0.9034458, 1)
+color = Color(1, 0.72080785, 0.73349756, 1)
 color_ramp = SubResource("GradientTexture1D_j7off")
+
+[sub_resource type="Gradient" id="Gradient_5cw44"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y8uo1"]
+gradient = SubResource("Gradient_5cw44")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eeue0"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(70, 50, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_y8uo1")
 
 [node name="SandboxAnalyzer" unique_id=2039509527 instance=ExtResource("1_5wat8")]
 scale = Vector2(0.7, 0.7)
@@ -175,12 +194,18 @@ texture_normal = ExtResource("6_nmxp2")
 
 [node name="Particles" type="Node2D" parent="." index="12" unique_id=2038998318]
 
-[node name="DamageBuff" type="GPUParticles2D" parent="Particles" index="0" unique_id=1254184033]
+[node name="DamageBuff" type="GPUParticles2D" parent="Particles" index="0" unique_id=1778165205]
 visible = false
 position = Vector2(-7.1525574e-07, 24.28571)
 amount = 10
 texture = ExtResource("10_i40e1")
 process_material = SubResource("ParticleProcessMaterial_pncd0")
+
+[node name="SwiftBuff" type="GPUParticles2D" parent="Particles" index="1" unique_id=119386146]
+visible = false
+amount = 5
+texture = ExtResource("11_nmxp2")
+process_material = SubResource("ParticleProcessMaterial_eeue0")
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]

@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bqovvu4y00vxj" path="res://audio/SFX/TOWERS/idps shoot.wav" id="8_dbesr"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="8_u1lur"]
 [ext_resource type="AudioStream" uid="uid://bktf276m6cpty" path="res://audio/SFX/TOWERS/idps air.wav" id="9_dbesr"]
+[ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="9_jofp6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbesr"]
 resource_local_to_scene = true
@@ -106,8 +107,26 @@ initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.59999996
-color = Color(0.6427446, 0.91073745, 0.9034458, 1)
+color = Color(1, 0.72080785, 0.73349756, 1)
 color_ramp = SubResource("GradientTexture1D_4mah1")
+
+[sub_resource type="Gradient" id="Gradient_5vypm"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_elfbs"]
+gradient = SubResource("Gradient_5vypm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hn5v6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(70, 50, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_elfbs")
 
 [node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_b2ii2")]
 scale = Vector2(0.7, 0.7)
@@ -167,12 +186,18 @@ texture = ExtResource("6_5ge8c")
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_dbesr")
 
-[node name="DamageBuff" type="GPUParticles2D" parent="Particles" index="1" unique_id=112246656]
+[node name="DamageBuff" type="GPUParticles2D" parent="Particles" index="1" unique_id=59833843]
 visible = false
 position = Vector2(-7.1525574e-07, 24.28571)
 amount = 10
 texture = ExtResource("8_u1lur")
 process_material = SubResource("ParticleProcessMaterial_ducxq")
+
+[node name="SwiftBuff" type="GPUParticles2D" parent="Particles" index="2" unique_id=1081979317]
+visible = false
+amount = 5
+texture = ExtResource("9_jofp6")
+process_material = SubResource("ParticleProcessMaterial_hn5v6")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
 visible = false

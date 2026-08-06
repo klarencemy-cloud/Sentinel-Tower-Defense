@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="5_yw1f8"]
 [ext_resource type="AudioStream" uid="uid://do4lx8recvkag" path="res://audio/SFX/TOWERS/acs shoot.wav" id="6_qdga5"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="6_jhwlm"]
+[ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="7_n7eo6"]
 [ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_t2bbv"]
 
 [sub_resource type="Gradient" id="Gradient_qdga5"]
@@ -44,7 +45,7 @@ anim_speed_max = 1.0
 offsets = PackedFloat32Array(0.2777778, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jhwlm"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n7eo6"]
 gradient = SubResource("Gradient_jhwlm")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n7eo6"]
@@ -57,8 +58,26 @@ initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.59999996
-color = Color(0.6427446, 0.91073745, 0.9034458, 1)
-color_ramp = SubResource("GradientTexture1D_jhwlm")
+color = Color(1, 0.72080785, 0.73349756, 1)
+color_ramp = SubResource("GradientTexture1D_n7eo6")
+
+[sub_resource type="Gradient" id="Gradient_n7eo6"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ppui0"]
+gradient = SubResource("Gradient_n7eo6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jhwlm"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(70, 50, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_ppui0")
 
 [node name="TowerBlaster" unique_id=1603194509 instance=ExtResource("1_qdga5")]
 scale = Vector2(0.7, 0.7)
@@ -77,6 +96,12 @@ texture = ExtResource("4_jhwlm")
 position = Vector2(-5.722046e-06, -37.142853)
 scale = Vector2(1.5625, 1)
 energy = 0.84
+range_item_cull_mask = 64
+texture = SubResource("GradientTexture2D_jhwlm")
+
+[node name="PointLight2D" type="PointLight2D" parent="Turret/PointLight2D" index="0" unique_id=225142844]
+position = Vector2(3.8146973e-06, 90.42855)
+scale = Vector2(0.6857143, 0.76339376)
 range_item_cull_mask = 64
 texture = SubResource("GradientTexture2D_jhwlm")
 
@@ -103,6 +128,12 @@ position = Vector2(-7.1525574e-07, 24.28571)
 amount = 10
 texture = ExtResource("6_jhwlm")
 process_material = SubResource("ParticleProcessMaterial_n7eo6")
+
+[node name="SwiftBuff" type="GPUParticles2D" parent="Particles" index="2" unique_id=726841462]
+visible = false
+amount = 5
+texture = ExtResource("7_n7eo6")
+process_material = SubResource("ParticleProcessMaterial_jhwlm")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1507995253) index="0" unique_id=1535168098]
 position = Vector2(0, -40.25)
