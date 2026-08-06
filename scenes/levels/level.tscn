@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ghhcjvotf1su" path="res://graphics/icons/CancelPlace.png" id="12_lp2ca"]
 [ext_resource type="Texture2D" uid="uid://c11wvcxprgq04" path="res://graphics/particles/glow.png" id="12_qogh7"]
 [ext_resource type="Texture2D" uid="uid://vwau2jy3q805" path="res://graphics/map/dust.png" id="12_xfk5q"]
+[ext_resource type="Script" uid="uid://c3hjlymhbui53" path="res://scenes/levels/color_rect2.gd" id="13_lp2ca"]
 [ext_resource type="Script" uid="uid://djmtfsuaukiga" path="res://scenes/levels/lightning_effects.gd" id="13_qogh7"]
 [ext_resource type="Shader" uid="uid://cxvfcab5jmldp" path="res://scenes/levels/fog.gdshader" id="14_8iyoh"]
 
@@ -764,7 +765,7 @@ offset_top = -48.0
 offset_right = 140.0
 offset_bottom = 80.0
 color = Color(0, 0.4392157, 0.22745098, 0.5647059)
-script = ExtResource("9_5mi6g")
+script = ExtResource("13_lp2ca")
 
 [node name="PlaceTower" type="TextureButton" parent="BG/SentinelPreview" unique_id=699276239]
 visible = false

@@ -277,7 +277,6 @@ func apply_boss3_stun(duration: float):
 
 func _on_tower_placement_area_entered(area: Area2D) -> void:
 	Data.is_tower_placeable = false
-	print(area)
 
 
 func _on_tower_placement_area_exited(area: Area2D) -> void:
