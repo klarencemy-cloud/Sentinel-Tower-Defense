@@ -681,7 +681,8 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.MALWARE: {
 		'name': 'Malware Analyst',
-		'cooldown': 3,
+		'cooldown': 25,
+		'duration': 15,
 		'range': 1000,
 		'thumbnail': "res://graphics/sentinels/thumbnail/MALWAREANALYST.png",
 		'scene': "res://scenes/sentinels/sentinel_malware_analyst.tscn",

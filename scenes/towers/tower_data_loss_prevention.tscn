@@ -44,7 +44,6 @@ texture = SubResource("GradientTexture2D_shd4j")
 shape = SubResource("CircleShape2D_6ku0u")
 
 [node name="TowerMenu" parent="." index="5" unique_id=489153716]
-visible = true
 offset_left = 58.571457
 offset_top = -62.857132
 offset_right = 58.571457
