@@ -34,6 +34,7 @@ DialogueManager="*uid://c3rodes2l3gxb"
 GameDialogueManager="*uid://cq0d4xcdugoxl"
 Economy="*uid://c3yec3hxkdfch"
 Wave="*uid://bb03viokakrym"
+UISound="*uid://clky4si525ptd"
 
 [dialogue_manager]
 
