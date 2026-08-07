@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ghhcjvotf1su" path="res://graphics/icons/CancelPlace.png" id="12_lp2ca"]
 [ext_resource type="Texture2D" uid="uid://c11wvcxprgq04" path="res://graphics/particles/glow.png" id="12_qogh7"]
 [ext_resource type="Texture2D" uid="uid://vwau2jy3q805" path="res://graphics/map/dust.png" id="12_xfk5q"]
+[ext_resource type="Script" uid="uid://c3hjlymhbui53" path="res://scenes/levels/color_rect2.gd" id="13_lp2ca"]
 [ext_resource type="Script" uid="uid://djmtfsuaukiga" path="res://scenes/levels/lightning_effects.gd" id="13_qogh7"]
 [ext_resource type="Shader" uid="uid://cxvfcab5jmldp" path="res://scenes/levels/fog.gdshader" id="14_8iyoh"]
 
@@ -716,7 +717,8 @@ stretch_mode = 0
 
 [node name="MapBoundary" type="Area2D" parent="BG" unique_id=1330440525]
 collision_layer = 128
-collision_mask = 128
+collision_mask = 0
+monitoring = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BG/MapBoundary" unique_id=75601273]
 polygon = PackedVector2Array(0.012783051, -0.0434227, 3840, 0, 3840, 2176, 0, 2176, 0, -384, -384, -384, -384, 2496, 4224, 2496, 4224, -384, 0, -384)
@@ -749,6 +751,7 @@ z_index = 3
 [node name="SentinelCollision" type="Area2D" parent="BG/SentinelPreview" unique_id=1761731594]
 collision_layer = 128
 collision_mask = 128
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BG/SentinelPreview/SentinelCollision" unique_id=217815377]
 position = Vector2(0, 16.172392)
@@ -762,7 +765,7 @@ offset_top = -48.0
 offset_right = 140.0
 offset_bottom = 80.0
 color = Color(0, 0.4392157, 0.22745098, 0.5647059)
-script = ExtResource("9_5mi6g")
+script = ExtResource("13_lp2ca")
 
 [node name="PlaceTower" type="TextureButton" parent="BG/SentinelPreview" unique_id=699276239]
 visible = false
@@ -870,16 +873,21 @@ process_material = SubResource("ParticleProcessMaterial_7pb6i")
 z_index = 2
 texture_repeat = 2
 material = SubResource("ShaderMaterial_mq31s")
-offset_left = -3.0
-offset_top = 166.0
-offset_right = 3837.0
-offset_bottom = 2326.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -388.0
+offset_right = 3840.0
+offset_bottom = 2175.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-color = Color(0.49837798, 0.8743902, 0.78778285, 0.24705882)
-metadata/_edit_use_anchors_ = true
+color = Color(0.4959, 0.87, 0.78271, 0.48235294)
 
-[connection signal="area_entered" from="BG/MapBoundary" to="." method="_on_map_boundary_area_entered"]
-[connection signal="area_exited" from="BG/MapBoundary" to="." method="_on_map_boundary_area_exited"]
+[connection signal="area_entered" from="BG/TowerPreview/TowerPlacement" to="." method="_on_tower_placement_area_entered"]
+[connection signal="area_exited" from="BG/TowerPreview/TowerPlacement" to="." method="_on_tower_placement_area_exited"]
+[connection signal="area_entered" from="BG/SentinelPreview/SentinelCollision" to="." method="_on_sentinel_collision_area_entered"]
+[connection signal="area_exited" from="BG/SentinelPreview/SentinelCollision" to="." method="_on_sentinel_collision_area_exited"]
 [connection signal="place_sentinel" from="UI" to="." method="_on_ui_place_sentinel"]
 [connection signal="place_tower" from="UI" to="." method="_on_ui_place_tower"]
 [connection signal="start_wave" from="UI" to="." method="_on_ui_start_wave"]

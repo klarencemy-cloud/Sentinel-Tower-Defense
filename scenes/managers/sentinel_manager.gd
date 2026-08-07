@@ -83,8 +83,8 @@ func start_sentinel_placement(sentinel_type: Data.Sentinel) -> void:
 		_update_preview_buttons(cell_pos, preview)
 
 		preview.texture = load(Data.SENTINEL_DATA[sentinel_type]["thumbnail"])
-		preview.scale = Vector2(0.65,0.65)
-		preview.offset = Vector2(0,-165)
+		preview.scale = Vector2(0.65, 0.65)
+		preview.offset = Vector2(0, -165)
 		preview.modulate = Color.WHITE
 
 		var place_btn = preview.get_node("PlaceTower")
@@ -137,7 +137,7 @@ func _try_place_sentinel(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		return
 
 
-	if not Data.is_tower_placeable:
+	if not Data.is_sentinel_placeable:
 		return
 
 	used_cells.append(cell_pos)
@@ -214,7 +214,7 @@ func _update_preview_buttons(cell_pos: Vector2i, preview: Sprite2D):
 	elif !tile.get_custom_data("Usable"):
 		valid = false
 
-	if !Data.is_tower_placeable:
+	if !Data.is_sentinel_placeable:
 		valid = false
 
 	place_btn.visible = valid
@@ -222,4 +222,4 @@ func _update_preview_buttons(cell_pos: Vector2i, preview: Sprite2D):
 	if valid:
 		preview.modulate = Color.WHITE
 	else:
-		preview.modulate = Color(1.0,0.4,0.4,0.8)
+		preview.modulate = Color(1.0, 0.4, 0.4, 0.8)

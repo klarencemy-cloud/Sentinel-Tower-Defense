@@ -420,7 +420,7 @@ func update_boss_hp(enemy: Data.Enemy, current_hp: int, max_hp: int):
 func _on_server_health_upgraded(new_max_health: float) -> void:
 	update_stats(Data.money, Data.health)
 	
-func register_boss(boss_id:int, boss_name_text:String, current_hp:int, max_hp:int):
+func register_boss(boss_id: int, boss_name_text: String, current_hp: int, max_hp: int):
 	# already assigned
 	if boss_bar_assignments.has(boss_id):
 		return
@@ -439,7 +439,7 @@ func register_boss(boss_id:int, boss_name_text:String, current_hp:int, max_hp:in
 		boss_bar_assignments[boss_id] = bar
 		return
 		
-func update_boss_bar(boss_id:int,current_hp:int,max_hp:int):
+func update_boss_bar(boss_id: int, current_hp: int, max_hp: int):
 	if !boss_bar_assignments.has(boss_id):
 		return
 
@@ -447,9 +447,9 @@ func update_boss_bar(boss_id:int,current_hp:int,max_hp:int):
 
 	bar.max_value = max_hp
 	bar.value = current_hp
-	bar.get_node("hpamount").text = "%d/%d" % [current_hp,max_hp]
+	bar.get_node("hpamount").text = "%d/%d" % [current_hp, max_hp]
 
-func unregister_boss(boss_id:int):
+func unregister_boss(boss_id: int):
 	if !boss_bar_assignments.has(boss_id):
 		return
 

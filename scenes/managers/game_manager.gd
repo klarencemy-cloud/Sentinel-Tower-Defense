@@ -7,6 +7,7 @@ extends Node2D
 @onready var sentinel_manager = $SentinelManager
 @onready var victory_overlay = $UI/VictoryOverlay
 
+
 func _ready() -> void:
 	randomize()
 	RenderingServer.set_default_clear_color("242a2f")
@@ -39,7 +40,10 @@ func next_map() -> void:
 
 func _process(_delta: float) -> void:
 	wave_manager.update_wave_state()
-	
+	if $BG/TowerPreview/TowerPlacement.get_overlapping_areas():
+		Data.is_tower_placeable = false
+	if $BG/SentinelPreview/SentinelCollision.get_overlapping_areas():
+		Data.is_sentinel_placeable = false
 
 func _input(event: InputEvent) -> void:
 	tower_manager.handle_input(event)
@@ -64,9 +68,16 @@ func _on_ui_spawn_sandbox_enemy(enemy_enum: Data.Enemy) -> void:
 	wave_manager.spawn_sandbox_enemy(enemy_enum)
 
 
-func _on_map_boundary_area_entered(area: Area2D) -> void:
+func _on_tower_placement_area_exited(area: Area2D) -> void:
+	Data.is_tower_placeable = true
+
+
+func _on_tower_placement_area_entered(area: Area2D) -> void:
 	Data.is_tower_placeable = false
 
-func _on_map_boundary_area_exited(area: Area2D) -> void:
-	if area.get_overlapping_areas().is_empty():
-		Data.is_tower_placeable = true
+
+func _on_sentinel_collision_area_exited(area: Area2D) -> void:
+	Data.is_sentinel_placeable = true
+
+func _on_sentinel_collision_area_entered(area: Area2D) -> void:
+	Data.is_sentinel_placeable = false

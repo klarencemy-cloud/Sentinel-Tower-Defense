@@ -34,6 +34,9 @@ var is_infected_trap: bool = false
 var infected_by_tower = null
 var dlp_damage_reduction: float = 1.0
 
+var ethical_hacker_slow: bool = false
+var ethical_hacker_freeze: bool = false
+
 var previous_pos: Vector2
 
 const NORMAL_TINT: Color = Color(1, 1, 1, 1)
@@ -303,16 +306,28 @@ func _process(delta: float):
 		acs_lockdown_remaining = max(acs_lockdown_remaining - delta, 0.0)
 	
 	# Apply the strongest passive slow affecting this enemy.
+	
 	if acs_lockdown_remaining > 0.0:
 		current_speed = int(speed * 0.4)
 	elif acs_slow_multiplier < 1.0:
 		current_speed = int(speed * acs_slow_multiplier)
 	elif idps_slow_aura:
 		current_speed = int(speed * 0.85)
+	elif ethical_hacker_slow:
+		current_speed = int(speed * 0.85)
+		print(int(speed * 0.85))
+		print("slow applied")
+	
 	# Apply regular slow effect
 	elif is_slowed:
 		current_speed = int(speed * 0.5) # 50% speed when slowed
-		
+
+	if ethical_hacker_freeze:
+		current_speed = 0
+	elif not ethical_hacker_freeze:
+		current_speed = speed
+
+
 	path_follow.progress += current_speed * delta
 	
 	if enemy_type_stats == Data.Enemy.ROOTKIT and !rootkit_skill_used:

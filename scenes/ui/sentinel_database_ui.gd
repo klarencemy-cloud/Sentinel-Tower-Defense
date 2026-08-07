@@ -49,9 +49,9 @@ enum Sentinel {ETHICAL, SYSAD, INTRUSION, SECURITY, MALWARE, DECEPTION}
 
 var SENTINEL_DATA = {
 	Sentinel.ETHICAL: {
-		'special_ability': "Unlocks Sandbox Mode, no combat features.",
-		'cooldown': 'N/A',
-		'passive_ability': "Reveal enemy statistics.",
+		'special_ability': "Freezes all the enemies on the field for 3 seconds.",
+		'cooldown': '30 seconds',
+		'passive_ability': "Slows nearby enemies by 15% of their movement speed.",
 		'irl_desc': "This is a cybersecurity expert who lawfully intrudes on a computer or network. They have the permission and approval to hack into a certain computing device. Lastly, they usually provide a security assessment to provide a comprehensive way to further improve a system."
 	},
 		Sentinel.SYSAD: {
