@@ -48,8 +48,6 @@ var ransomware_timer := Timer.new()
 	preload("res://graphics/buttons/ad2.png")
 ]
 func _ready() -> void:
-	UISound.play_bg()
-
 	Defense.server_health_upgraded.connect(_on_server_health_upgraded)
 	boss_hp_bar.visible = false
 	Data.ads_visible = false

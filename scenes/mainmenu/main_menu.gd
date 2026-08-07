@@ -3,11 +3,11 @@ extends Node
 
 func _ready() -> void:
 	$AnimationPlayer.play("opening")
+	await UISound.play_bg()
 
 
 func _on_start_game_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/game mode/gamemode.tscn")
-
 
 
 func _on_database_pressed() -> void:
