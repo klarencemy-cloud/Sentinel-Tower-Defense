@@ -29,6 +29,14 @@ var place_sentinel: bool = false:
 				preview.visible = value
 
 
+func _process(delta: float) -> void:
+	var preview = _get_sentinel_preview()
+	var place_btn = preview.get_node("PlaceTower")
+	if Data.is_sentinel_placeable:
+		place_btn.show()
+	else:
+		place_btn.hide()
+
 func setup(root: Node2D, map_manager: Node) -> void:
 	level_root = root
 	level_manager = map_manager

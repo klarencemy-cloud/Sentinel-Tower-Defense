@@ -9,13 +9,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
-func _on_area_exited(area: Area2D) -> void:
-	if area.get_overlapping_areas().is_empty():
-		Data.is_tower_placeable = true
-
-func _on_area_entered(area: Area2D) -> void:
-	Data.is_tower_placeable = false
-	print(area.name)
-	print(Data.is_tower_placeable)

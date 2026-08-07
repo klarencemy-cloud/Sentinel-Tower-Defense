@@ -575,6 +575,7 @@ var SENTINEL_DATA = {
 	Sentinel.ETHICAL: {
 		'name': 'Ethical Hacker',
 		'cooldown': 3,
+		'duration': 3,
 		'range': 1000,
 		'thumbnail': "res://graphics/sentinels/thumbnail/ETHICALHACKER.png",
 		'scene': "res://scenes/sentinels/sentinel_ethical_hacker.tscn",

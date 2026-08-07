@@ -38,6 +38,14 @@ func setup(root: Node2D, map_manager: Node) -> void:
 	level_manager = map_manager
 
 
+func _process(delta: float) -> void:
+	var preview = _get_tower_preview()
+	var place_btn = preview.get_node("PlaceTower")
+	if Data.is_tower_placeable:
+		place_btn.show()
+	else:
+		place_btn.hide()
+		
 func handle_input(event: InputEvent) -> void:
 	var cell_pos = level_manager.mouse_to_map_position()
 	var world_pos = level_manager.map_to_world(cell_pos)

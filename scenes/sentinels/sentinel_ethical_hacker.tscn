@@ -133,7 +133,10 @@ grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=164587640]
-autostart = true
+one_shot = true
+
+[node name="SkillDuration" type="Timer" parent="." unique_id=1769846915]
+one_shot = true
 
 [node name="Glow" type="GPUParticles2D" parent="." unique_id=330118410]
 z_index = 1
@@ -170,6 +173,7 @@ shape = SubResource("CircleShape2D_wt8kl")
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="delete_press" from="TowerMenu" to="." method="_on_tower_menu_delete_press"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="SkillDuration" to="." method="_on_skill_duration_timeout"]
 [connection signal="area_entered" from="SentinelCollision" to="SentinelCollision" method="_on_area_entered"]
 [connection signal="area_exited" from="SentinelCollision" to="SentinelCollision" method="_on_area_exited"]
 [connection signal="area_entered" from="SentinelSkill" to="." method="_on_sentinel_skill_area_entered"]

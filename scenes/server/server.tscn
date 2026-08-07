@@ -453,8 +453,8 @@ frame_progress = 0.4815703
 
 [node name="Area2D" type="Area2D" parent="ServerLevel1" unique_id=1446809979]
 collision_layer = 128
-collision_mask = 128
-monitorable = false
+collision_mask = 0
+monitoring = false
 script = ExtResource("3_kr8px")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ServerLevel1/Area2D" unique_id=1192040796]
@@ -470,7 +470,7 @@ frame_progress = 0.27199525
 
 [node name="Area2D" type="Area2D" parent="ServerLevel2" unique_id=669334490]
 collision_layer = 128
-collision_mask = 128
+collision_mask = 0
 monitoring = false
 monitorable = false
 script = ExtResource("3_kr8px")
@@ -488,7 +488,7 @@ frame_progress = 0.8124098
 
 [node name="Area2D" type="Area2D" parent="ServerLevel3" unique_id=2144983698]
 collision_layer = 128
-collision_mask = 128
+collision_mask = 0
 monitoring = false
 monitorable = false
 script = ExtResource("3_kr8px")
@@ -506,7 +506,7 @@ frame_progress = 0.8368511
 
 [node name="Area2D" type="Area2D" parent="ServerLevel4" unique_id=236497641]
 collision_layer = 128
-collision_mask = 128
+collision_mask = 0
 monitoring = false
 monitorable = false
 script = ExtResource("3_kr8px")
@@ -525,7 +525,7 @@ frame_progress = 0.77639115
 [node name="Area2D2" type="Area2D" parent="ServerLevel5" unique_id=1579346135]
 position = Vector2(2, 0)
 collision_layer = 128
-collision_mask = 128
+collision_mask = 0
 monitoring = false
 monitorable = false
 script = ExtResource("3_kr8px")
@@ -543,7 +543,7 @@ frame_progress = 0.8144926
 
 [node name="Area2D" type="Area2D" parent="ServerlLevel6" unique_id=2124171830]
 collision_layer = 128
-collision_mask = 128
+collision_mask = 0
 monitoring = false
 monitorable = false
 script = ExtResource("3_kr8px")
@@ -618,18 +618,6 @@ shape = SubResource("CircleShape2D_hkcox")
 debug_color = Color(1.0107458e-06, 0.4418136, 0.5191502, 0.41960785)
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
-[connection signal="area_entered" from="ServerLevel1/Area2D" to="ServerLevel1/Area2D" method="_on_area_entered"]
-[connection signal="area_exited" from="ServerLevel1/Area2D" to="ServerLevel1/Area2D" method="_on_area_exited"]
-[connection signal="area_entered" from="ServerLevel2/Area2D" to="ServerLevel2/Area2D" method="_on_area_entered"]
-[connection signal="area_exited" from="ServerLevel2/Area2D" to="ServerLevel2/Area2D" method="_on_area_exited"]
-[connection signal="area_entered" from="ServerLevel3/Area2D" to="ServerLevel3/Area2D" method="_on_area_entered"]
-[connection signal="area_exited" from="ServerLevel3/Area2D" to="ServerLevel3/Area2D" method="_on_area_exited"]
-[connection signal="area_entered" from="ServerLevel4/Area2D" to="ServerLevel4/Area2D" method="_on_area_entered"]
-[connection signal="area_exited" from="ServerLevel4/Area2D" to="ServerLevel4/Area2D" method="_on_area_exited"]
-[connection signal="area_entered" from="ServerLevel5/Area2D2" to="ServerLevel5/Area2D2" method="_on_area_entered"]
-[connection signal="area_exited" from="ServerLevel5/Area2D2" to="ServerLevel5/Area2D2" method="_on_area_exited"]
-[connection signal="area_entered" from="ServerlLevel6/Area2D" to="ServerlLevel6/Area2D" method="_on_area_entered"]
-[connection signal="area_exited" from="ServerlLevel6/Area2D" to="ServerlLevel6/Area2D" method="_on_area_exited"]
 [connection signal="area_entered" from="PulseAnchor/BackupServerPulse" to="." method="_on_backup_server_pulse_area_entered"]
 [connection signal="area_entered" from="IntrusionShield/Shield" to="." method="_on_shield_area_entered"]
 [connection signal="area_exited" from="IntrusionShield/Shield" to="." method="_on_shield_area_exited"]
