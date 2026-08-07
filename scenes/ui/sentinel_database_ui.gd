@@ -94,6 +94,7 @@ var SENTINEL_DATA = {
 @onready var animation: AnimatedSprite2D = $Databasebg/AnimatedSprite2D
 
 func _on_sentinel_6_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = sentinel_name[5]
 	desc_sp.text = "Ability: %s"%SENTINEL_DATA[5]["special_ability"]
 	desc_cd.text = "Cooldown: %s"%SENTINEL_DATA[5]["cooldown"]
@@ -102,6 +103,7 @@ func _on_sentinel_6_pressed() -> void:
 	animation.play("DeceptionAnalyst")
 
 func _on_sentinel_5_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = sentinel_name[4]
 	desc_sp.text = "Ability: %s"%SENTINEL_DATA[4]["special_ability"]
 	desc_cd.text = "Cooldown: %s"%SENTINEL_DATA[4]["cooldown"]
@@ -110,6 +112,7 @@ func _on_sentinel_5_pressed() -> void:
 	animation.play("MalwareAnalyst")
 
 func _on_sentinel_4_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = sentinel_name[3]
 	desc_sp.text = "Ability: %s"%SENTINEL_DATA[3]["special_ability"]
 	desc_cd.text = "Cooldown: %s"%SENTINEL_DATA[3]["cooldown"]
@@ -119,6 +122,7 @@ func _on_sentinel_4_pressed() -> void:
 
 
 func _on_sentinel_3_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = sentinel_name[2]
 	desc_sp.text = "Ability: %s"%SENTINEL_DATA[2]["special_ability"]
 	desc_cd.text = "Cooldown: %s"%SENTINEL_DATA[2]["cooldown"]
@@ -128,6 +132,7 @@ func _on_sentinel_3_pressed() -> void:
 
 
 func _on_sentinel_2_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = sentinel_name[1]
 	desc_sp.text = "Ability: %s"%SENTINEL_DATA[1]["special_ability"]
 	desc_cd.text = "Cooldown: %s"%SENTINEL_DATA[1]["cooldown"]
@@ -136,6 +141,7 @@ func _on_sentinel_2_pressed() -> void:
 	animation.play("SystemAdmin")
 
 func _on_sentinel_1_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = sentinel_name[0]
 	desc_sp.text = "Ability: %s"%SENTINEL_DATA[0]["special_ability"]
 	desc_cd.text = "Cooldown: %s"%SENTINEL_DATA[0]["cooldown"]

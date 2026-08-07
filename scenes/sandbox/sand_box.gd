@@ -27,6 +27,7 @@ func _exit_tree() -> void:
 
 
 func _on_sandbox_setting_pressed() -> void:
+	UISound.play_click()
 	if sandbox_setting:
 		sandbox_setting = false
 		$Level/UI/Control/TextureRect/PlayerCurrentStats.visible = true
@@ -38,6 +39,7 @@ func _on_sandbox_setting_pressed() -> void:
 
 
 func _on_tower_enemies_button_pressed() -> void:
+	UISound.play_click()
 	if tower_cards_showing:
 		$Level/UI/Control/TextureRect/ScrollContainer/TowerCardsContainer.visible = false
 		$Level/UI/Control/TextureRect/ScrollContainer/EnemyCardsContainer.visible = true

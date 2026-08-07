@@ -8,15 +8,16 @@ func _ready() -> void:
 
 func _on_start_game_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/game mode/gamemode.tscn")
+	UISound.play_click()
 
 
 func _on_database_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/database/database.tscn")
-
+	UISound.play_click()
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
-
+	UISound.play_click()
 
 var state: bool = false
 func _on_settings_pressed() -> void:
@@ -28,6 +29,7 @@ func _on_settings_pressed() -> void:
 		$ButtonManager/Exit.visible = false
 		$ButtonManager/Config.visible = false
 		state = false
+	UISound.play_click()
 
 
 func _on_timer_timeout() -> void:

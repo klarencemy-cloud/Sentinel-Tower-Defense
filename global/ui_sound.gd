@@ -2,10 +2,12 @@ extends Node
 
 @onready var click: AudioStreamPlayer = $Click
 @onready var uibackground_music: AudioStreamPlayer = $UIBackgroundMusic
+@onready var game_background_music: AudioStreamPlayer = $GameBackgroundMusic
 
 func play_click():
 	click.play()
 
+# Main Menu UI Background Music
 func play_bg():
 	if !uibackground_music.playing:
 		await get_tree().create_timer(0.5).timeout
@@ -16,3 +18,24 @@ func play_bg():
 		
 		var tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 		tween.tween_property(uibackground_music, "volume_db", target_volume, 2.0)
+
+
+# Stop Main Menu UI Background Music
+func stop_bg():
+	if uibackground_music.playing:
+		var tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+		tween.tween_property(uibackground_music, "volume_db", -80.0, 2.0)
+		await tween.finished
+		uibackground_music.stop()
+
+
+func play_game_bg():
+	if !game_background_music.playing:
+		await get_tree().create_timer(0.5).timeout
+		
+		var target_volume = game_background_music.volume_db
+		game_background_music.volume_db = -80.0 
+		game_background_music.play()
+		
+		var tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		tween.tween_property(game_background_music, "volume_db", target_volume, 2.0)

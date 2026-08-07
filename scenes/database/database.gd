@@ -13,9 +13,11 @@ func _process(delta: float) -> void:
 
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/mainmenu/main_menu.tscn")
+	UISound.play_click()
 
 
 func _on_threats_pressed() -> void:
+	UISound.play_click()
 	$TowerDatabaseUi.visible = false
 	$ThreatDatabaseUi.visible = true
 	$SentinelDatabaseUi.visible= false
@@ -23,8 +25,10 @@ func _on_threats_pressed() -> void:
 	$ButtonManager/Towers.texture_normal = preload("res://graphics/buttons/parallelogram.png")
 	$ButtonManager/Threats.texture_normal = preload("res://graphics/buttons/active_parallelogram.png")
 	$ButtonManager/Sentinels.texture_normal = preload("res://graphics/buttons/trapezoid_right.png")
+	
 
 func _on_towers_pressed() -> void:
+	UISound.play_click()
 	$TowerDatabaseUi.visible = true
 	$ThreatDatabaseUi.visible = false
 	$SentinelDatabaseUi.visible= false
@@ -34,6 +38,7 @@ func _on_towers_pressed() -> void:
 	$ButtonManager/Sentinels.texture_normal = preload("res://graphics/buttons/trapezoid_right.png")
 
 func _on_sentinels_pressed() -> void:
+	UISound.play_click()
 	$TowerDatabaseUi.visible = false
 	$ThreatDatabaseUi.visible = false
 	$SentinelDatabaseUi.visible= true

@@ -66,6 +66,8 @@ func _on_card_container_gui_input(event: InputEvent) -> void:
 func _on_threat_1_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $ThreatContainer/CardContainer.get_children():
@@ -83,6 +85,8 @@ func _on_threat_1_gui_input(event: InputEvent) -> void:
 func _on_threat_2_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $ThreatContainer/CardContainer.get_children():
@@ -100,6 +104,8 @@ func _on_threat_2_gui_input(event: InputEvent) -> void:
 func _on_threat_3_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $ThreatContainer/CardContainer.get_children():
@@ -117,6 +123,8 @@ func _on_threat_3_gui_input(event: InputEvent) -> void:
 func _on_threat_4_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $ThreatContainer/CardContainer.get_children():
@@ -134,6 +142,8 @@ func _on_threat_4_gui_input(event: InputEvent) -> void:
 func _on_threat_5_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $ThreatContainer/CardContainer.get_children():
@@ -151,6 +161,8 @@ func _on_threat_5_gui_input(event: InputEvent) -> void:
 func _on_threat_6_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $ThreatContainer/CardContainer.get_children():
@@ -168,6 +180,8 @@ func _on_threat_6_gui_input(event: InputEvent) -> void:
 func _on_threat_7_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $ThreatContainer/CardContainer.get_children():
@@ -185,6 +199,8 @@ func _on_threat_7_gui_input(event: InputEvent) -> void:
 func _on_threat_8_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $ThreatContainer/CardContainer.get_children():
@@ -202,6 +218,8 @@ func _on_threat_8_gui_input(event: InputEvent) -> void:
 func _on_threat_9_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $ThreatContainer/CardContainer.get_children():
@@ -219,6 +237,8 @@ func _on_threat_9_gui_input(event: InputEvent) -> void:
 func _on_threat_10_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $ThreatContainer/CardContainer.get_children():

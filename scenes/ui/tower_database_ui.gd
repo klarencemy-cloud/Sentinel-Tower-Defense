@@ -337,6 +337,7 @@ var TOWER_DATA = {
 @onready var desc_desc: Label = $Databasebg/Special/RealLifeDesc/Description
 
 func _on_tower_1_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = tower_name[0]
 	desc_damage.text = str(TOWER_DATA[0]['damage'])
 	desc_speed.text = str(TOWER_DATA[0]['atk_speed'])
@@ -346,6 +347,7 @@ func _on_tower_1_pressed() -> void:
 	$Databasebg/AnimatedSprite2D.play("spam")
 
 func _on_tower_2_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = tower_name[1]
 	desc_damage.text = str(TOWER_DATA[1]['damage'])
 	desc_speed.text = str(TOWER_DATA[1]['atk_speed'])
@@ -356,6 +358,7 @@ func _on_tower_2_pressed() -> void:
 
 
 func _on_tower_3_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = tower_name[2]
 	desc_damage.text = str(TOWER_DATA[2]['damage'])
 	desc_speed.text = str(TOWER_DATA[2]['atk_speed'])
@@ -366,6 +369,7 @@ func _on_tower_3_pressed() -> void:
 
 
 func _on_tower_4_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = tower_name[3]
 	desc_damage.text = str(TOWER_DATA[3]['damage'])
 	desc_speed.text = str(TOWER_DATA[3]['atk_speed'])
@@ -375,6 +379,7 @@ func _on_tower_4_pressed() -> void:
 	$Databasebg/AnimatedSprite2D.play("dlp")
 
 func _on_tower_5_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = tower_name[4]
 	desc_damage.text = str(TOWER_DATA[4]['damage'])
 	desc_speed.text = str(TOWER_DATA[4]['atk_speed'])
@@ -385,6 +390,7 @@ func _on_tower_5_pressed() -> void:
 
 
 func _on_tower_6_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = tower_name[5]
 	desc_damage.text = str(TOWER_DATA[5]['damage'])
 	desc_speed.text = str(TOWER_DATA[5]['atk_speed'])
@@ -395,6 +401,7 @@ func _on_tower_6_pressed() -> void:
 
 
 func _on_tower_7_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = tower_name[6]
 	desc_damage.text = str(TOWER_DATA[6]['damage'])
 	desc_speed.text = str(TOWER_DATA[6]['atk_speed'])
@@ -405,6 +412,7 @@ func _on_tower_7_pressed() -> void:
 
 
 func _on_tower_8_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = tower_name[7]
 	desc_damage.text = str(TOWER_DATA[7]['damage'])
 	desc_speed.text = str(TOWER_DATA[7]['atk_speed'])
@@ -415,6 +423,7 @@ func _on_tower_8_pressed() -> void:
 
 
 func _on_tower_9_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = tower_name[8]
 	desc_damage.text = str(TOWER_DATA[8]['damage'])
 	desc_speed.text = str(TOWER_DATA[8]['atk_speed'])
@@ -424,6 +433,7 @@ func _on_tower_9_pressed() -> void:
 	$Databasebg/AnimatedSprite2D.play("epprotection")
 
 func _on_tower_10_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = tower_name[9]
 	desc_damage.text = str(TOWER_DATA[9]['damage'])
 	desc_speed.text = str(TOWER_DATA[9]['atk_speed'])
@@ -434,6 +444,7 @@ func _on_tower_10_pressed() -> void:
 
 
 func _on_tower_11_pressed() -> void:
+	UISound.play_click()
 	desc_name.text = tower_name[10]
 	desc_damage.text = str(TOWER_DATA[10]['damage'])
 	desc_speed.text = str(TOWER_DATA[10]['atk_speed'])

@@ -245,7 +245,6 @@ position = Vector2(551, 538)
 script = ExtResource("10_yyxhe")
 is_vm = NodePath("..")
 opacity_strength = 1.0
-smoothing_speed = 4.0
 follow_button_focus = true
 position_offset_node = NodePath("Control")
 metadata/_custom_type_script = "uid://cyrxvelj6b5co"

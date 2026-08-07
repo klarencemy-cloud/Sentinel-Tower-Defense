@@ -12,10 +12,12 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_main_menu_pressed() -> void:
+	UISound.play_click()
 	get_tree().change_scene_to_file("res://scenes/mainmenu/main_menu.tscn")
 	Data.is_vmmode = false
 
 func _on_main_story_pressed() -> void:
+	UISound.play_click()
 	$MainStoryUI.visible = true;
 	$VirtualMachineUI.visible = false;
 	$SandBoxUI.visible = false
@@ -26,6 +28,7 @@ func _on_main_story_pressed() -> void:
 	$ButtonManager/SandBoxMode.texture_normal = preload("res://graphics/buttons/parallelogram.png")
 
 func _on_vm_mode_pressed() -> void:
+	UISound.play_click()
 	$MainStoryUI.visible = false;
 	$VirtualMachineUI.visible = true;
 	$SandBoxUI.visible = false
@@ -35,6 +38,7 @@ func _on_vm_mode_pressed() -> void:
 	$ButtonManager/SandBoxMode.texture_normal = preload("res://graphics/buttons/parallelogram.png")
 
 func _on_sand_box_mode_pressed() -> void:
+	UISound.play_click()
 	$MainStoryUI.visible = false;
 	$VirtualMachineUI.visible = false;
 	$SandBoxUI.visible = true

@@ -1,28 +1,33 @@
 [gd_scene format=3 uid="uid://clky4si525ptd"]
 
-[ext_resource type="AudioStream" uid="uid://dhdxxju7la3un" path="res://audio/UI/Modern1.wav" id="1_20b5a"]
 [ext_resource type="Script" uid="uid://c7rydvs250hl2" path="res://global/ui_sound.gd" id="1_n4w8n"]
-[ext_resource type="AudioStream" uid="uid://du0lcifnr08tv" path="res://audio/UI/Modern2.wav" id="2_n4w8n"]
-[ext_resource type="AudioStream" uid="uid://87y2cm3ik3r3" path="res://audio/UI/Modern3.wav" id="3_n3jip"]
-[ext_resource type="AudioStream" uid="uid://dr8q0b5gjd8ct" path="res://audio/UI/Modern4.wav" id="4_2couo"]
+[ext_resource type="AudioStream" uid="uid://cs136dtqqluav" path="res://audio/UI/click 1.wav" id="2_5sf5e"]
+[ext_resource type="AudioStream" uid="uid://ce2y043yxor75" path="res://audio/UI/click 2.wav" id="3_vdeji"]
+[ext_resource type="AudioStream" uid="uid://buvmg5n25xu4r" path="res://audio/UI/click 3.wav" id="4_2lhnp"]
 [ext_resource type="AudioStream" uid="uid://dn8qbh86cpowd" path="res://audio/MUSIC/Epic_Variations_Battle.wav" id="6_5sf5e"]
+[ext_resource type="AudioStream" uid="uid://to2ie3j5v1h3" path="res://audio/MUSIC/Vilain-Theme-Medieval.wav" id="7_vdeji"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_71trb"]
-streams_count = 4
-stream_0/stream = ExtResource("1_20b5a")
-stream_1/stream = ExtResource("2_n4w8n")
-stream_2/stream = ExtResource("3_n3jip")
-stream_3/stream = ExtResource("4_2couo")
+streams_count = 3
+stream_0/stream = ExtResource("2_5sf5e")
+stream_1/stream = ExtResource("3_vdeji")
+stream_2/stream = ExtResource("4_2lhnp")
 
 [node name="UISound" type="Node" unique_id=134395415]
 script = ExtResource("1_n4w8n")
 
 [node name="Click" type="AudioStreamPlayer" parent="." unique_id=807617012]
 stream = SubResource("AudioStreamRandomizer_71trb")
+volume_db = -5.0
 bus = &"Sounds"
 
 [node name="UIBackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1808766913]
 stream = ExtResource("6_5sf5e")
 pitch_scale = 0.8
-autoplay = true
+bus = &"Music"
+
+[node name="GameBackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=2126396392]
+stream = ExtResource("7_vdeji")
+volume_db = -5.0
+pitch_scale = 0.9
 bus = &"Music"

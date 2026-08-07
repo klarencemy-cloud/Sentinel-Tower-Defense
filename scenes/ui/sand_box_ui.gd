@@ -12,6 +12,7 @@ extends Control
 var selected_map: String
 
 func _on_start_game_pressed() -> void:
+	UISound.play_click()
 	var selected_carousel_node = $CarouselContainer.position_offset_node.get_child($CarouselContainer.selected_index)
 
 	selected_map = selected_carousel_node.name
@@ -42,8 +43,10 @@ func _on_start_game_pressed() -> void:
 
 
 func _on_right_btn_pressed() -> void:
+	UISound.play_click()
 	$CarouselContainer._right()
 
 
 func _on_left_btn_pressed() -> void:
+	UISound.play_click()
 	$CarouselContainer._left()

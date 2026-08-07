@@ -43,6 +43,7 @@ func _on_map_gui_input(event: InputEvent) -> void:
 
 var toggleMap = false;
 func _on_map_btn_pressed() -> void:
+	UISound.play_click()
 	if !toggleMap:
 		$MapContainer.visible = true
 		$ButtonManager/MapBtn/ToggleLabel.text = "ZOOM"
@@ -62,6 +63,8 @@ func _on_map_btn_pressed() -> void:
 func _on_final_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -78,6 +81,8 @@ func _on_final_gui_input(event: InputEvent) -> void:
 func _on_final_2_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -94,6 +99,8 @@ func _on_final_2_gui_input(event: InputEvent) -> void:
 func _on_final_3_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -110,6 +117,8 @@ func _on_final_3_gui_input(event: InputEvent) -> void:
 func _on_final_4_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -126,6 +135,8 @@ func _on_final_4_gui_input(event: InputEvent) -> void:
 func _on_final_5_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -142,6 +153,8 @@ func _on_final_5_gui_input(event: InputEvent) -> void:
 func _on_final_6_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -158,6 +171,8 @@ func _on_final_6_gui_input(event: InputEvent) -> void:
 func _on_final_7_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -172,39 +187,50 @@ func _on_final_7_gui_input(event: InputEvent) -> void:
 
 
 func _on_left_btn_pressed() -> void:
+	UISound.play_click()
 	$CarouselContainer._left()
 
 
 func _on_right_btn_pressed() -> void:
+	UISound.play_click()
 	$CarouselContainer._right()
 
 
 func _on_challenge_9_pressed() -> void:
+	UISound.play_click()
 	Data.change_challenge.emit(8)
 	_toggle_tween(9)
 
 func _on_challenge_8_pressed() -> void:
+	UISound.play_click()
 	Data.change_challenge.emit(7)
 	_toggle_tween(8)
 func _on_challenge_7_pressed() -> void:
+	UISound.play_click()
 	Data.change_challenge.emit(6)
 	_toggle_tween(7)
 func _on_challenge_6_pressed() -> void:
+	UISound.play_click()
 	Data.change_challenge.emit(5)
 	_toggle_tween(6)
 func _on_challenge_5_pressed() -> void:
+	UISound.play_click()
 	Data.change_challenge.emit(4)
 	_toggle_tween(5)
 func _on_challenge_4_pressed() -> void:
+	UISound.play_click()
 	Data.change_challenge.emit(3)
 	_toggle_tween(4)
 func _on_challenge_3_pressed() -> void:
+	UISound.play_click()
 	Data.change_challenge.emit(2)
 	_toggle_tween(3)
 func _on_challenge_2_pressed() -> void:
+	UISound.play_click()
 	Data.change_challenge.emit(1)
 	_toggle_tween(2)
 func _on_challenge_1_pressed() -> void:
+	UISound.play_click()
 	Data.change_challenge.emit(0)
 	_toggle_tween(1)
 
