@@ -93,10 +93,15 @@ func start_tower_placement(tower_type: Data.Tower) -> void:
 		preview.position = Vector2(cameraX, cameraY)
 		var cell_pos = level_manager.world_to_map(preview.position)
 		_update_preview_buttons(cell_pos, preview)
+		_update_preview_range(preview)
+		
 		preview.texture = load(Data.TOWER_DATA[tower_type]["thumbnail"])
 		preview.modulate = Color.WHITE
 		preview.scale = Vector2(0.7, 0.7)
 		preview.offset = Vector2(0, -53)
+
+		
+
 
 		var place_btn = preview.get_node("PlaceTower")
 		var cancel_btn = preview.get_node("CancelPlace")
@@ -115,6 +120,7 @@ func cancel_selection() -> void:
 	var preview = _get_tower_preview()
 	if preview:
 		preview.hide()
+		preview.get_node("RangeIndicator").hide()
 
 		var place_btn = preview.get_node("PlaceTower")
 		var cancel_btn = preview.get_node("CancelPlace")
@@ -245,6 +251,7 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if preview:
 		preview.hide()
 		preview.modulate = Color.WHITE
+		preview.get_node("RangeIndicator").hide()
 		preview_initialized = false
 		preview.position = Vector2.ZERO
 		preview.get_node("PlaceTower").hide()
@@ -355,7 +362,42 @@ func _update_preview_buttons(cell_pos: Vector2i, preview: Node2D) -> void:
 
 	place_btn.visible = valid
 
+	var range_indicator = preview.get_node_or_null("RangeIndicator") as Line2D
+
 	if valid:
 		preview.modulate = Color.WHITE
+		
+		if range_indicator:
+			range_indicator.default_color = Color(1, 1, 1, 0.7)
 	else:
-		preview.modulate = Color(1.0, 0.4, 0.4, 0.8) # red tint
+		preview.modulate = Color(1.0, 0.4, 0.4, 0.8)
+		
+		if range_indicator:
+			range_indicator.default_color = Color(1.0, 0.2, 0.2, 0.8)
+		
+func _update_preview_range(preview: Node2D) -> void:
+	var range_indicator = preview.get_node_or_null("RangeIndicator") as Line2D
+
+	if range_indicator == null:
+		return
+
+	var tower_data = Data.TOWER_DATA.get(selected_tower, {})
+	var tower_range: float = float(tower_data.get("range", 0))
+
+	if tower_range <= 0:
+		range_indicator.visible = false
+		return
+
+	var points := PackedVector2Array()
+	var segments := 100
+
+	for i in range(segments + 1):
+		var angle = TAU * i / segments
+		points.append(Vector2(cos(angle), sin(angle)) * tower_range)
+
+	range_indicator.points = points
+
+	# Counteract TowerPreview's 0.7 scale
+	range_indicator.scale = Vector2.ONE / preview.scale
+
+	range_indicator.visible = true

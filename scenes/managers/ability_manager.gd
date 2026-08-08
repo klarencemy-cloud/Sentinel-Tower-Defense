@@ -181,8 +181,15 @@ func _update_preview_buttons(world_pos: Vector2, preview: Sprite2D):
 
 	place_btn.visible = valid
 
+	var range_indicator = preview.get_node_or_null("RangeIndicator") as Line2D
+
 	if valid:
 		preview.modulate = Color.WHITE
+
+		if range_indicator:
+			range_indicator.default_color = Color(1, 1, 1, 0.7)
 	else:
-		preview.modulate = Color(1.0,0.4,0.4,0.8)
-			
+		preview.modulate = Color(1.0, 0.4, 0.4, 0.8)
+
+		if range_indicator:
+			range_indicator.default_color = Color(1.0, 0.2, 0.2, 0.8)
