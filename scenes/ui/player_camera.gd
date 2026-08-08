@@ -168,14 +168,13 @@ func _clamp_camera() -> void:
 		return
 
 	var vp_size: Vector2 = get_viewport_rect().size
-	var half: Vector2 = (vp_size * 0.5) * zoom
+
 
 	var min_x = world_min.x + half.x
 	var max_x = world_max.x - half.x
 	var min_y = world_min.y + half.y
 	var max_y = world_max.y - half.y
 
-	# if bounds smaller than viewport, center camera inside bounds
 	if min_x > max_x:
 		position.x = (world_min.x + world_max.x) * 0.5
 	else:
@@ -185,7 +184,6 @@ func _clamp_camera() -> void:
 		position.y = (world_min.y + world_max.y) * 0.5
 	else:
 		position.y = clamp(position.y, min_y, max_y)
-
 
 func _recursive_find(node: Node, name: String) -> Node:
 	if node.name == name:
