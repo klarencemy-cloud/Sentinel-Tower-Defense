@@ -57,7 +57,7 @@ const DDOS_HEALTH_MULTIPLIER: float = 0.35 # 35% HP
 
 var hostile: bool = false
 var hostile_count: int = 0
-
+var backup_server_recently_knocked_back: bool = false
 
 @onready var hit_particles: GPUParticles2D = $HitParticles
 
@@ -97,6 +97,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$hpbar.max_value = Data.ENEMY_DATA[type]['health']
 	$hpbar.value = Data.ENEMY_DATA[type]['health']
 	path_follow = new_path_follow
+	path_follow.loop = false
 	previous_pos = path_follow.global_position
 	path_follow.rotation = 0.0
 	
@@ -301,6 +302,14 @@ func _process(delta: float):
 	if is_stunned or blocked_by_firewall or is_trapped:
 		return
 	
+	if backup_server_recently_knocked_back:
+		if path_follow.progress_ratio < 0.99:
+			backup_server_recently_knocked_back = false
+		else:
+			backup_server_recently_knocked_back = false
+			backup_server_knockback()
+			return
+
 	var current_speed = speed
 	if acs_lockdown_remaining > 0.0:
 		acs_lockdown_remaining = max(acs_lockdown_remaining - delta, 0.0)
@@ -367,24 +376,37 @@ func _process(delta: float):
 	
 
 	if path_follow.progress_ratio >= 0.99:
+		# Backup Server protects against bosses reaching the end
+		if Data.backup_server_invincible and enemy_type_stats in [
+			Data.Enemy.BOSS1,
+			Data.Enemy.BOSS2,
+			Data.Enemy.BOSS3,
+			Data.Enemy.BOSS4,
+			Data.Enemy.BOSS5
+		]:
+			backup_server_knockback()
+			return
+
+		if Data.backup_server_placed and enemy_type_stats in [
+			Data.Enemy.BOSS1,
+			Data.Enemy.BOSS2,
+			Data.Enemy.BOSS3,
+			Data.Enemy.BOSS4,
+			Data.Enemy.BOSS5
+		]:
+			Data.activate_backup_server()
+			return
+
+		# Normal enemy end-of-path behavior
 		var processed_enemy_damage: float = 0.0
 		var raw_dmg = int(damage * dlp_damage_reduction)
-		processed_enemy_damage = Defense._dmg_reduc_armor(raw_dmg) # sends dmg to defense_data.gd to reduc dmg based on armor
+		processed_enemy_damage = Defense._dmg_reduc_armor(raw_dmg)
+
 		if !Data.backup_server_invincible and !Data.is_sandbox:
-			Data.health -= processed_enemy_damage - (processed_enemy_damage * Data.damage_reduction) # in decimal so it can be reduce by sentinel
-		
-		# If Backup Server is active and this is a boss,
-		# knock it back instead of destroying it.
-	if Data.backup_server_invincible and enemy_type_stats in [
-		Data.Enemy.BOSS1,
-		Data.Enemy.BOSS2,
-		Data.Enemy.BOSS3,
-		Data.Enemy.BOSS4,
-		Data.Enemy.BOSS5
-		]:
-		backup_server_knockback()
-		return
-		
+			Data.health -= processed_enemy_damage - (
+				processed_enemy_damage * Data.damage_reduction
+			)
+
 		if enemy_type_stats in [
 			Data.Enemy.BOSS1,
 			Data.Enemy.BOSS2,
@@ -398,6 +420,7 @@ func _process(delta: float):
 
 		_update_active_enemy_counter(enemy_type_stats, -1)
 		queue_free()
+	
 	if enemy_type_stats == Data.Enemy.SPYWARE:
 		pass # skip the spyware itself
 	if spyware_count > 0:
@@ -925,9 +948,21 @@ func backup_server_knockback():
 	if dead:
 		return
 
-	path_follow.progress_ratio = max(path_follow.progress_ratio - 0.2, 0.0)
-	previous_pos = path_follow.global_position
+	backup_server_recently_knocked_back = true
 
+	var path := path_follow.get_parent() as Path2D
+
+	if path and path.curve:
+		var path_length := path.curve.get_baked_length()
+		var knockback_distance := path_length * 0.2
+
+		path_follow.progress = max(
+			path_follow.progress - knockback_distance,
+			0.0
+		)
+
+		previous_pos = path_follow.global_position
+		
 # Sandbox traps enemies and realease after death
 func trap(tower = null) -> void:
 	is_trapped = true

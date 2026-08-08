@@ -535,6 +535,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="bosshpbar" type="TextureProgressBar" parent="Control" unique_id=257423371]
+visible = false
 layout_mode = 0
 offset_left = 479.0
 offset_top = 26.0
@@ -564,6 +565,7 @@ theme_override_font_sizes/font_size = 23
 text = "Boss Name"
 
 [node name="smallhpbar1" type="TextureProgressBar" parent="Control" unique_id=1301150721]
+visible = false
 layout_mode = 0
 offset_left = 485.0
 offset_top = 172.0
@@ -593,6 +595,7 @@ theme_override_font_sizes/font_size = 23
 text = "Boss Name"
 
 [node name="smallhpbar2" type="TextureProgressBar" parent="Control" unique_id=995560531]
+visible = false
 layout_mode = 0
 offset_left = 485.0
 offset_top = 219.0
@@ -622,6 +625,7 @@ theme_override_font_sizes/font_size = 23
 text = "Boss Name"
 
 [node name="smallhpbar3" type="TextureProgressBar" parent="Control" unique_id=2108898015]
+visible = false
 layout_mode = 0
 offset_left = 485.0
 offset_top = 267.0
@@ -651,6 +655,7 @@ theme_override_font_sizes/font_size = 23
 text = "Boss Name"
 
 [node name="smallhpbar4" type="TextureProgressBar" parent="Control" unique_id=1218767449]
+visible = false
 layout_mode = 0
 offset_left = 927.0
 offset_top = 171.0
@@ -680,6 +685,7 @@ theme_override_font_sizes/font_size = 23
 text = "Boss Name"
 
 [node name="smallhpbar5" type="TextureProgressBar" parent="Control" unique_id=1821812861]
+visible = false
 layout_mode = 0
 offset_left = 928.0
 offset_top = 218.0
@@ -709,6 +715,7 @@ theme_override_font_sizes/font_size = 23
 text = "Boss Name"
 
 [node name="smallhpbar6" type="TextureProgressBar" parent="Control" unique_id=297670005]
+visible = false
 layout_mode = 0
 offset_left = 929.0
 offset_top = 266.0
