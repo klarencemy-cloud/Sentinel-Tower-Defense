@@ -169,6 +169,7 @@ func _clamp_camera() -> void:
 
 	var vp_size: Vector2 = get_viewport_rect().size
 
+	var half: Vector2 = (vp_size * 0.5) / zoom
 
 	var min_x = world_min.x + half.x
 	var max_x = world_max.x - half.x
