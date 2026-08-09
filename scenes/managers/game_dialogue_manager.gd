@@ -76,6 +76,10 @@ func penalty(type: String, value: float):
 		elif Data.money < value:
 			Data.money = 0
 
+func reward(type: String, value: float):
+	if type == "money":
+		Data.money += value
+
 func _disable_auto() -> void:
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
@@ -157,6 +161,12 @@ func show_dialogue_firewall_activated(): # used in ability manager
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "firewall_activated")
 	is_firewall_activated_shown = true
 
+var is_question_1_shown: bool = false
+func show_dialogue_question1(): # used in wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "question1")
+	is_question_1_shown = true
+
 func show_dialogue_server_upgrade_2(): # used in wave manager
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "server_upgrade2")
@@ -203,12 +213,16 @@ func show_dialogue_boss1_defeated2(): # used in enemy
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1_defeated2")
 	is_boss1_defeated2 = true
 
-
 func show_dialogue_level2_start(): # used in loading
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "start")
 	is_level2_start_shown = true
 
+var is_question_2_shown
+func show_dialogue_question2(): # used in wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "question2")
+	is_question_2_shown = true
 
 var is_level2_worm_shown: bool = false # used in wave manager
 func show_dialogue_level2_worm():
@@ -221,6 +235,12 @@ func show_dialogue_level2_worm2():
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "worms2")
 	is_level2_worm2_shown = true
+
+var is_question_3_shown
+func show_dialogue_question3(): # used in wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "question3")
+	is_question_3_shown = true
 
 var is_level2_spyware_shown: bool = false
 func show_dialogue_level2_spyware(): # used in wave manager
@@ -283,6 +303,12 @@ func show_dialogue_level3_start(): # used in loading
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "start")
 	is_level3_start_shown = true
 
+var is_question_4_shown: bool = false
+func show_dialogue_question4(): # used in wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "question4")
+	is_question_4_shown = true
+
 var is_level3_credential_shown: bool = false
 func show_dialogue_level3_credential(): # used in wave manager
 	_disable_auto()
@@ -306,6 +332,13 @@ func show_dialogue_level3_trojan2_horse(): # used in popup
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "trojan_horse2")
 	is_level3_trojan_horse2_shown = true
+
+
+var is_question_5_shown: bool = false
+func show_dialogue_question5(): # used in wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level3.dialogue"), "question5")
+	is_question_5_shown = true
 
 var is_quiz1_shown: bool = false
 func show_dialogue_level3_quiz1(): # used wave manager
@@ -350,6 +383,12 @@ func show_dialogue_level4_start(): # used loading
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "start")
 	is_level4_start_shown = true
 
+var is_question_6_shown: bool = false
+func show_dialogue_question6(): # used in wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "question6")
+	is_question_6_shown = true
+
 var is_level4_rootkit_shown: bool = false
 func show_dialogue_level4_rootkit(): # used wave manager
 	_disable_auto()
@@ -373,6 +412,12 @@ func show_dialogue_level4_ddos(): # used wave manager
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "ddos")
 	is_level4_ddos_shown = true
+
+var is_question_7_shown: bool = false
+func show_dialogue_question7(): # used in wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level4.dialogue"), "question7")
+	is_question_7_shown = true
 
 var is_strange_discovery_shown: bool = false
 func show_dialogue_level4_strange_discovery(): # used wave manager
@@ -441,11 +486,23 @@ func show_dialogue_level5_zero_day2(): # used in popup
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "zero_day2")
 	is_zero_day_shown2 = true
 
+var is_question_8_shown: bool = false
+func show_dialogue_question8(): # used in wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "question8")
+	is_question_8_shown = true
+
 var is_level5_quiz3_shown: bool = false
 func show_dialogue_level5_quiz3(): # used in wave manager
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "quiz3")
 	is_level5_quiz3_shown = true
+
+var is_question_9_shown: bool = false
+func show_dialogue_question9(): # used in wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "question9")
+	is_question_9_shown = true
 
 var is_level5_hidden_archive_shown: bool = false
 func show_dialogue_level5_hidden_archive(): # used in wave manager

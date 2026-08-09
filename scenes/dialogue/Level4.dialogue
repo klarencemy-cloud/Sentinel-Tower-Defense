@@ -9,6 +9,29 @@ Odysseus: I don’t know.
 Odysseus:  But I have a feeling we’re missing something.
 => END
 
+~ wrong_question6
+System:  Wrong answer! WannaCry is a Ransomware attack.
+do GameDialogueManager.penalty("money", 500) 
+System: Ransomware demanded 500 Gold!
+do GameDialogueManager.pause_game(false)
+=> END
+
+~ question6
+do GameDialogueManager.pause_game(true)
+System: What type of cyberattack is WannaCry known for?
+- Ransomware attack
+	System: Correct! You gained 1000 Gold.
+	do GameDialogueManager.reward("money", 1000)
+-  Phishing attack  
+	=>< wrong_question6
+- DDoS attack
+	=>< wrong_question6
+- Spyware attack
+	=>< wrong_question6
+do GameDialogueManager.pause_game(false)
+=> END
+
+
 ~ rootkit
 do GameDialogueManager.pause_game(true)
 #[The ground of the battlefield cracked suddenly]
@@ -69,6 +92,28 @@ Odysseus: So they group to be overwhelming.
 DDoS: We are one
 do GameDialogueManager.show_enemy("ddos", 11)
 #function to activate DDOS pop-up card
+=> END
+
+~ wrong_question7
+System:  Wrong answer! It was a DDoS attack.
+do GameDialogueManager.penalty("money", 2500) 
+System: Ransomware demanded 2500 Gold!
+do GameDialogueManager.pause_game(false)
+=> END
+
+~ question7
+do GameDialogueManager.pause_game(true)
+System: An online banking website becomes unavailable after receiving millions of connection requests from thousands of compromised devices. Which cyber threat does this best describe?
+- Botnet Attack
+	=>< wrong_question7
+- Worm  
+	=>< wrong_question7
+- DDoS attack
+	System: Correct! You gained 3000 Gold.
+	do GameDialogueManager.reward("money", 3000)
+- SQL Injection
+	=>< wrong_question7
+do GameDialogueManager.pause_game(false)
 => END
 
 ~ strange_discovery

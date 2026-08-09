@@ -149,6 +149,29 @@ Odysseus: Quick! Deploy the Firewall!
 Odysseus: Firewall prevents unauthorized traffic from entering the system while maintaining a connection with authorized traffic. It slows down the enemies, giving our defenses more time to eliminate them before reaching the SERVER.
 => END
 
+
+~ wrong_question1
+System: Wrong answer! Spam emails may contain phishing links, scams, or malware that can spread through the network.
+do GameDialogueManager.penalty("money", 100) 
+System: Ransomware demanded 100 Gold!
+do GameDialogueManager.pause_game(false)
+=> END
+
+~ question1
+do GameDialogueManager.pause_game(true)
+System: Why can spam emails become a cybersecurity threat?
+- They damage computer hardware by sending bulk emails. 
+	=>< wrong_question1
+- They slow down the internet speed by flooding emails.   
+	=>< wrong_question1
+- They may contain phishing links, scams, or malware that can spread through the network. 
+	System: Correct! You gained 500 Gold.
+	do GameDialogueManager.reward("money", 500)
+- They automatically encrypt files, making them inaccessible to users.
+	=>< wrong_question1
+do GameDialogueManager.pause_game(false)
+=> END
+
 ~ server_upgrade2
 Odysseus: There is a S.E.R.V.E.R. update now.
 do Data.toggle_server_scene.emit()

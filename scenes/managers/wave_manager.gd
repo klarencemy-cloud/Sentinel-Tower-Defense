@@ -82,26 +82,38 @@ func start_wave() -> void:
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.update_wave_label()
+	if Data.current_wave == 6 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_question_1_shown:
+			GameDialogueManager.show_dialogue_question1()
 	if Data.current_wave == 8 and !Data.is_sandbox and !GameDialogueManager.is_adware_shown:
 		GameDialogueManager.show_dialogue_adware()
 	if Data.current_wave == 10 and !Data.is_sandbox and !GameDialogueManager.is_boss1_shown:
 		GameDialogueManager.show_dialogue_boss1()
+	if Data.current_wave == 11 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_question_2_shown:
+			GameDialogueManager.show_dialogue_question2()
 	if Data.current_wave == 12 and !Data.is_sandbox and !GameDialogueManager.is_level2_worm_shown:
 		GameDialogueManager.show_dialogue_level2_worm()
+	if Data.current_wave == 15 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_question_3_shown:
+			GameDialogueManager.show_dialogue_question3()
 	if Data.current_wave == 16 and !Data.is_sandbox and !GameDialogueManager.is_level2_spyware_shown:
 		GameDialogueManager.show_dialogue_level2_spyware()
 	if Data.current_wave == 19 and !Data.is_sandbox and !GameDialogueManager.is_level2_botnet_shown:
 		GameDialogueManager.show_dialogue_level2_botnet()
 	if Data.current_wave == 20 and !Data.is_sandbox and !GameDialogueManager.is_level2_boss2_shown:
 		GameDialogueManager.show_dialogue_level2_boss2()
+	if Data.current_wave == 21 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_question_4_shown:
+			GameDialogueManager.show_dialogue_question4()
 	if Data.current_wave == 22 and !Data.is_sandbox and !GameDialogueManager.is_level3_credential_shown:
 		GameDialogueManager.show_dialogue_level3_credential()
 	if Data.current_wave == 24 and !Data.is_sandbox and !GameDialogueManager.is_level3_trojan_horse_shown:
 		GameDialogueManager.show_dialogue_level3_trojan_horse()
+	if Data.current_wave == 25 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_question_5_shown:
+			GameDialogueManager.show_dialogue_question5()
 	if Data.current_wave == 28 and !Data.is_sandbox and !GameDialogueManager.is_quiz1_shown:
 		GameDialogueManager.show_dialogue_level3_quiz1()
 	if Data.current_wave == 30 and !Data.is_sandbox and !GameDialogueManager.is_boss3_shown:
 		GameDialogueManager.show_dialogue_level3_boss3()
+	if Data.current_wave == 31 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_question_6_shown:
+			GameDialogueManager.show_dialogue_question6()
 	if Data.current_wave == 32 and !Data.is_sandbox and !GameDialogueManager.is_level4_rootkit_shown:
 		GameDialogueManager.show_dialogue_level4_rootkit()
 	if Data.current_wave == 34 and !Data.is_sandbox and !GameDialogueManager.is_level4_sql_shown:
@@ -110,14 +122,20 @@ func start_wave() -> void:
 		GameDialogueManager.show_dialogue_level4_quiz2()
 	if Data.current_wave == 36 and !Data.is_sandbox and !GameDialogueManager.is_level4_ddos_shown:
 		GameDialogueManager.show_dialogue_level4_ddos()
+	if Data.current_wave == 37 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_question_7_shown:
+			GameDialogueManager.show_dialogue_question7()
 	if Data.current_wave == 38 and !Data.is_sandbox and !GameDialogueManager.is_level4_ransomware_shown:
 		GameDialogueManager.show_dialogue_level4_ransomware()
 	if Data.current_wave == 40 and !Data.is_sandbox and !GameDialogueManager.is_boss4_shown:
 		GameDialogueManager.show_dialogue_level4_boss4()
+	if Data.current_wave == 41 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_question_8_shown:
+			GameDialogueManager.show_dialogue_question8()
 	if Data.current_wave == 43 and !Data.is_sandbox and !GameDialogueManager.is_zero_day_shown:
 		GameDialogueManager.show_dialogue_level5_zero_day()
 	if Data.current_wave == 45 and !Data.is_sandbox and !GameDialogueManager.is_level5_quiz3_shown:
 		GameDialogueManager.show_dialogue_level5_quiz3()
+	if Data.current_wave == 46 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_question_9_shown:
+			GameDialogueManager.show_dialogue_question9()
 	if Data.current_wave == 50 and !Data.is_sandbox and !GameDialogueManager.is_level5_boss5_shown:
 		GameDialogueManager.show_dialogue_level5_boss5()
 	if Data.current_wave == 51 and !Data.is_sandbox and !GameDialogueManager.is_level6_boss6_shown:

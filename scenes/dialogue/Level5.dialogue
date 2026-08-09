@@ -15,6 +15,29 @@ Odysseus: It is incomplete.
 Odysseus: Maybe we'll find additional hints along the way.
 => END
 
+~ wrong_question8
+System:  Wrong answer! NotPetya primarily aims to cause widespread destruction rather than to earn ransom payments.
+do GameDialogueManager.penalty("money", 4000) 
+System: Ransomware demanded 4000 Gold!
+do GameDialogueManager.pause_game(false)
+=> END
+
+~ question8
+do GameDialogueManager.pause_game(true)
+System: Which characteristic best differentiates NotPetya from most ransomware?
+- It encrypts files to generate crypto profit.
+	=>< wrong_question8
+- It disguises itself as legitimate software and then installs malicious software.
+	=>< wrong_question8
+- It primarily aims to cause widespread destruction rather than to earn ransom payments.
+	System: Correct! You gained 5000 Gold.
+	do GameDialogueManager.reward("money", 5000)
+- It only infects personal computers from private users.
+	=>< wrong_question8
+do GameDialogueManager.pause_game(false)
+=> END
+
+
 ~ zero_day
 do GameDialogueManager.pause_game(true)
 ZERO-DAY: I am the flaw that is never found.
@@ -28,6 +51,28 @@ do GameDialogueManager.show_enemy("zero", 13)
 ~ zero_day2
 Player: How do we stop it?
 Odysseus: Deploy Patch Management System.
+=> END
+
+~ wrong_question9
+System:  Wrong answer! NotPetya primarily aims to cause widespread destruction rather than to earn ransom payments.
+do GameDialogueManager.penalty("money", 5000) 
+System: Ransomware demanded 5000 Gold!
+do GameDialogueManager.pause_game(false)
+=> END
+
+~ question9
+do GameDialogueManager.pause_game(true)
+System: What do you call a software vulnerability that is discovered by attackers before developers are aware of it or before they have released a patch?
+- Rootkit
+	=>< wrong_question9
+- SQL Injection
+	=>< wrong_question9
+- Trojan Horse
+	=>< wrong_question9
+- Zero-Day
+	System: Correct! You gained 7000 Gold.
+	do GameDialogueManager.reward("money", 7000)
+do GameDialogueManager.pause_game(false)
 => END
 
 ~ wrong_ans3

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bhe1pw8va777g" path="res://texture/0001.png" id="5_rxhxj"]
 [ext_resource type="Texture2D" uid="uid://fv2nsp2ceytq" path="res://texture/offset_glow.png" id="6_m2n11"]
 [ext_resource type="Script" uid="uid://drbocy3xkv6hu" path="res://scenes/sentinels/sentinel_collision.gd" id="6_xgh1i"]
+[ext_resource type="Shader" uid="uid://dhx7g5gfbc4ih" path="res://scenes/sentinels/slow.gdshader" id="7_m2n11"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xgh1i"]
 atlas = ExtResource("2_wt8kl")
@@ -128,6 +129,19 @@ scale_curve = SubResource("CurveTexture_hn5v6")
 color = Color(0, 0.8586417, 0.94868547, 1)
 color_ramp = SubResource("GradientTexture1D_5vypm")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qy1i3"]
+shader = ExtResource("7_m2n11")
+shader_parameter/spiral_type = 1
+shader_parameter/color = Color(0.5294118, 1, 0.94509804, 0.11372549)
+shader_parameter/rays = 6.0
+shader_parameter/speed = 0.10000000149012
+shader_parameter/fade = 0.51999998837696
+shader_parameter/thickness = 0.0
+shader_parameter/clockwise = false
+shader_parameter/tiers = 20.0
+shader_parameter/stretch = 10.0
+shader_parameter/s5color2 = Color(0, 0, 0, 1)
+
 [node name="SentinelEthicalHacker" type="Node2D" unique_id=1163133944]
 z_index = 2
 script = ExtResource("1_wt8kl")
@@ -227,9 +241,19 @@ position = Vector2(0, -1.2857208)
 emitting = false
 amount = 100
 texture = ExtResource("6_m2n11")
-lifetime = 3.0
+lifetime = 2.0
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_0xckt")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1388145114]
+z_index = -3
+material = SubResource("ShaderMaterial_qy1i3")
+offset_left = -436.0
+offset_top = -436.0
+offset_right = 436.0
+offset_bottom = 436.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="delete_press" from="TowerMenu" to="." method="_on_tower_menu_delete_press"]

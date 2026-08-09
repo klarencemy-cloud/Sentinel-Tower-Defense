@@ -4,6 +4,28 @@ Player: So that’s the end of it?
 Odysseus: Stay alert. This may be over for now, but our next visitors are already coming.
 => END
 
+~ wrong_question2
+System: Wrong answer! ILoveYou Virus used deception, a harmless-looking message, to trick users into opening it. 
+do GameDialogueManager.penalty("money", 200) 
+System: Ransomware demanded 200 Gold!
+do GameDialogueManager.pause_game(false)
+=> END
+
+~ question2
+do GameDialogueManager.pause_game(true)
+System: Why was the "ILoveYou" Virus so effective and cost millions in damage?
+- It easily destroys hardware.
+	=>< wrong_question2
+- It spread through Wi-Fi alone.
+	=>< wrong_question2
+- It used a deception, a harmless-looking message, to trick users into opening it. 
+	System: Correct! You gained 600 Gold.
+	do GameDialogueManager.reward("money", 600)
+- It shut downs the computer permanently.
+	=>< wrong_question2
+do GameDialogueManager.pause_game(false)
+=> END
+
 ~ worms
 #Player: I was wondering for a while now. I receive these blue cores every time I level up – what are these for?
 #Odysseus: That is for the Sentinels. Do you remember the analyst room?
@@ -20,6 +42,29 @@ Player: Those things just multiplied!
 Odysseus: Yes, that’s their natural ability. Those are standalone systems that replicate themselves; they spread across networks, often leading to crashes and data theft.
 #do GameDialogueManager.pause_game(false)
 => END
+
+~ wrong_question3
+System: Wrong answer! Worms spread rapidly across networks, consuming resources and infecting many devices.
+do GameDialogueManager.penalty("money", 250) 
+System: Ransomware demanded 250 Gold!
+do GameDialogueManager.pause_game(false)
+=> END
+
+~ question3
+do GameDialogueManager.pause_game(true)
+System: Why are computer worms considered dangerous?
+- They slow down a single computer until it is not usable.
+	=>< wrong_question3
+- They permanently destroy computer hardware.
+	=>< wrong_question3
+- They slow down the internet connection.
+	=>< wrong_question3
+- They spread rapidly across networks, consuming resources and infecting many devices.
+	System: Correct! You gained 650 Gold.
+	do GameDialogueManager.reward("money", 650)
+do GameDialogueManager.pause_game(false)
+=> END
+
 
 ~ spyware
 do GameDialogueManager.pause_game(true)
