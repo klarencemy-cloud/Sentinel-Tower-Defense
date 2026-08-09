@@ -10,6 +10,7 @@ var range_indicator: Line2D
 var heal_percentage: float = .03
 var cooldown = Data.SENTINEL_DATA[3]["cooldown"]
 var duration = Data.SENTINEL_DATA[3]["duration"]
+var range = Data.SENTINEL_DATA[3]['range']
 
 func ability_cooldown():
 	$ReloadTimer.wait_time = cooldown
@@ -18,12 +19,18 @@ func skill_duration():
 	$SkillDuration.wait_time = duration
 
 func _ready() -> void:
+	$AnimatedSprite2D/Cooldown.hide()
+	$SentinelSkill/CollisionShape2D.shape.radius = float(range)
 	ability_cooldown()
 	skill_duration()
 	$SkillDuration.start()
 	$SentinelSkill.monitoring = true
 	create_range_indicator()
 	
+
+func _process(delta: float) -> void:
+	$AnimatedSprite2D/Cooldown.text = str(int($ReloadTimer.time_left))
+
 func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if placed:
@@ -83,12 +90,13 @@ func remove_tower_buff(area: Area2D):
 func _on_skill_duration_timeout() -> void:
 	$SentinelSkill.monitoring = false
 	$ReloadTimer.start()
+	$AnimatedSprite2D/Cooldown.show()
 	
 
 func _on_reload_timer_timeout() -> void:
 	$SentinelSkill.monitoring = true
 	$SkillDuration.start()
-
+	$AnimatedSprite2D/Cooldown.hide()
 func create_range_indicator() -> void:
 	if range_indicator:
 		return

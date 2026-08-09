@@ -38,21 +38,21 @@ _limits = [-360.0, 360.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 278.3308), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_4mah1"]
+[sub_resource type="CurveTexture" id="CurveTexture_jofp6"]
 curve = SubResource("Curve_jofp6")
 
 [sub_resource type="Gradient" id="Gradient_ducxq"]
 offsets = PackedFloat32Array(0.51605994, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_5vypm"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ducxq"]
 gradient = SubResource("Gradient_ducxq")
 
 [sub_resource type="Curve" id="Curve_elfbs"]
 _data = [Vector2(0, 0.5166919), 0.0, 0.0, 0, 0, Vector2(0.5618661, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.48216993), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_hn5v6"]
+[sub_resource type="CurveTexture" id="CurveTexture_5vypm"]
 curve = SubResource("Curve_elfbs")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jke85"]
@@ -61,13 +61,13 @@ angle_min = 1.0728835e-05
 angle_max = 360.00003
 angular_velocity_min = 0.9999839
 angular_velocity_max = 0.9999839
-angular_velocity_curve = SubResource("CurveTexture_4mah1")
+angular_velocity_curve = SubResource("CurveTexture_jofp6")
 gravity = Vector3(0, -200, 0)
 scale_min = 0.5
 scale_max = 0.5
-scale_curve = SubResource("CurveTexture_hn5v6")
+scale_curve = SubResource("CurveTexture_5vypm")
 color = Color(0, 0.8586417, 0.94868547, 1)
-color_ramp = SubResource("GradientTexture1D_5vypm")
+color_ramp = SubResource("GradientTexture1D_ducxq")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56y0f"]
 radius = 64.50775

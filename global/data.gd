@@ -574,9 +574,9 @@ func calculate_crit_damage(tower_type: int, base_damage: int, crit_chance_buff: 
 var SENTINEL_DATA = {
 	Sentinel.ETHICAL: {
 		'name': 'Ethical Hacker',
-		'cooldown': 3,
-		'duration': 30,
-		'range': 1000,
+		'cooldown': 15,
+		'duration': 3,
+		'range': 500,
 		'thumbnail': "res://graphics/sentinels/thumbnail/ETHICALHACKER.png",
 		'scene': "res://scenes/sentinels/sentinel_ethical_hacker.tscn",
 		'upgrade1': "Damage",
@@ -603,7 +603,7 @@ var SENTINEL_DATA = {
 	Sentinel.SYSAD: {
 		'name': 'System Administrator',
 		'cooldown': 60,
-		'range': 1000,
+		'range': 0,
 		'thumbnail': "res://graphics/sentinels/thumbnail/SYSTEMADMIN.png",
 		'scene': "res://scenes/sentinels/sentinel_system_administrator.tscn",
 		'upgrade1': "Damage",
@@ -630,7 +630,7 @@ var SENTINEL_DATA = {
 	Sentinel.INTRUSION: {
 		'name': 'Intrusion Analyst',
 		'cooldown': 30,
-		'range': 1000,
+		'range': 0,
 		'thumbnail': "res://graphics/sentinels/thumbnail/INTRUSIONANALYST.png",
 		'scene': "res://scenes/sentinels/sentinel_intrusion_analyst.tscn",
 		'upgrade1': "Damage",
@@ -658,7 +658,7 @@ var SENTINEL_DATA = {
 		'name': 'Security Architect',
 		'cooldown': 15,
 		'duration': 10,
-		'range': 1000,
+		'range': 500,
 		'thumbnail': "res://graphics/sentinels/thumbnail/SECURITYARCHITECT.png",
 		'scene': "res://scenes/sentinels/sentinel_security_architect.tscn",
 		'upgrade1': "Damage",
@@ -686,7 +686,7 @@ var SENTINEL_DATA = {
 		'name': 'Malware Analyst',
 		'cooldown': 25,
 		'duration': 15,
-		'range': 1000,
+		'range': 500,
 		'thumbnail': "res://graphics/sentinels/thumbnail/MALWAREANALYST.png",
 		'scene': "res://scenes/sentinels/sentinel_malware_analyst.tscn",
 		'upgrade1': "Damage",
@@ -713,7 +713,7 @@ var SENTINEL_DATA = {
 	Sentinel.DECEPTION: {
 		'name': 'Deception Analyst',
 		'cooldown': 3,
-		'range': 1000,
+		'range': 500,
 		'thumbnail': "res://graphics/sentinels/thumbnail/DECEPTIONANALYST.png",
 		'scene': "res://scenes/sentinels/sentinel_deception_analyst.tscn",
 		'upgrade1': "Damage",

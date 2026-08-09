@@ -15,7 +15,12 @@ func ability_cooldown():
 
 func _ready() -> void:
 	ability_cooldown()
+	$ReloadTimer.start()
 	create_range_indicator()
+
+
+func _process(delta: float) -> void:
+	$AnimatedSprite2D/Cooldown.text = str(int($ReloadTimer.time_left))
 	
 func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -56,6 +61,8 @@ func _on_reload_timer_timeout() -> void:
 	$CoinRain.emitting = true
 	$Glow.emitting = true
 	ability_cooldown()
+	$ReloadTimer.start()
+
 
 func toggle_heal_gain():
 	if tween:

@@ -309,7 +309,7 @@ func _process(delta: float):
 			backup_server_recently_knocked_back = false
 			backup_server_knockback()
 			return
-
+	enemy_type.modulate = NORMAL_TINT
 	var current_speed = speed
 	if acs_lockdown_remaining > 0.0:
 		acs_lockdown_remaining = max(acs_lockdown_remaining - delta, 0.0)
@@ -317,6 +317,7 @@ func _process(delta: float):
 	# Apply the strongest passive slow affecting this enemy.
 	if ethical_hacker_freeze:
 		current_speed = 0
+		enemy_type.modulate = FROZEN_TINT
 	elif acs_lockdown_remaining > 0.0:
 		current_speed = int(speed * 0.4)
 	elif acs_slow_multiplier < 1.0:
