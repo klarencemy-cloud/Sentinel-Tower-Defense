@@ -32,14 +32,20 @@ var place_sentinel: bool = false:
 func _process(delta: float) -> void:
 	var preview = _get_sentinel_preview()
 	var place_btn = preview.get_node("PlaceTower")
+	var range_indicator = preview.get_node_or_null("RangeIndicator") as Line2D
 	if Data.is_sentinel_placeable:
 		place_btn.show()
+		preview.modulate = Color.WHITE
+		range_indicator.default_color = Color(1, 1, 1, 0.7)
 	else:
 		place_btn.hide()
+		preview.modulate = Color(1.0, 0.4, 0.4, 0.8)
+		range_indicator.default_color = Color(1.0, 0.2, 0.2, 0.8)
 
 func setup(root: Node2D, map_manager: Node) -> void:
 	level_root = root
 	level_manager = map_manager
+	
 	
 func handle_input(event: InputEvent) -> void:
 	var cell_pos = level_manager.mouse_to_map_position()

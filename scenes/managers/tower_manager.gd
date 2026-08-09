@@ -41,10 +41,17 @@ func setup(root: Node2D, map_manager: Node) -> void:
 func _process(delta: float) -> void:
 	var preview = _get_tower_preview()
 	var place_btn = preview.get_node("PlaceTower")
+	var range_indicator = preview.get_node_or_null("RangeIndicator") as Line2D
 	if Data.is_tower_placeable:
 		place_btn.show()
+		preview.modulate = Color.WHITE
+		range_indicator.default_color = Color(1, 1, 1, 0.7)
+			
 	else:
 		place_btn.hide()
+		preview.modulate = Color(1.0, 0.4, 0.4, 0.8)
+		range_indicator.default_color = Color(1.0, 0.2, 0.2, 0.8)
+		
 		
 func handle_input(event: InputEvent) -> void:
 	var cell_pos = level_manager.mouse_to_map_position()
@@ -101,8 +108,6 @@ func start_tower_placement(tower_type: Data.Tower) -> void:
 		preview.offset = Vector2(0, -53)
 
 		
-
-
 		var place_btn = preview.get_node("PlaceTower")
 		var cancel_btn = preview.get_node("CancelPlace")
 
