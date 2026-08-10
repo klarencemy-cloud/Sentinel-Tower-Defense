@@ -298,6 +298,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			)
 		
 
+var direction = 1
 func _process(delta: float):
 	if is_stunned or blocked_by_firewall or is_trapped:
 		return
@@ -333,7 +334,7 @@ func _process(delta: float):
 		current_speed = int(speed * 0.5) # 50% speed when slowed
 	
 
-	path_follow.progress += current_speed * delta
+	path_follow.progress += (current_speed * delta) * direction
 	
 	if enemy_type_stats == Data.Enemy.ROOTKIT and !rootkit_skill_used:
 		if path_follow.progress_ratio >= randf_range(0.2, 0.3):
@@ -433,6 +434,14 @@ func _process(delta: float):
 ## RESPONSIBLE FOR DOUBLE DAMAGE BUG (I THINK)
 
 
+func teleport_back() -> void:
+	direction = -1
+	$DeceptionDebuff.start()
+	
+func _on_deception_debuff_timeout() -> void:
+	direction = 1
+
+	
 func emit_hit_particles(angle: float):
 	hit_particles.rotation = angle
 

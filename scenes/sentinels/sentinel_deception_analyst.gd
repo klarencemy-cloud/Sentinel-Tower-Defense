@@ -6,17 +6,29 @@ var cell_pos: Vector2i = Vector2i.ZERO
 var tween: Tween
 
 var placed = false
-
-var heal_percentage: float = .03
-var cooldown = Data.SENTINEL_DATA[5]["cooldown"]
 var range_indicator: Line2D
+
+
+var cooldown = Data.SENTINEL_DATA[5]["cooldown"]
+var duration = Data.SENTINEL_DATA[5]["duration"]
+var range = Data.SENTINEL_DATA[5]['range']
+
 
 func ability_cooldown():
 	$ReloadTimer.wait_time = cooldown
 
+func skill_duration():
+	$SkillDuration.wait_time = duration
+
 func _ready() -> void:
+	# $SentinelSkill/CollisionShape2D.shape.radius = float(range)
 	ability_cooldown()
+	skill_duration()
+	$ReloadTimer.start()
 	create_range_indicator()
+
+func _process(delta: float) -> void:
+	$AnimatedSprite2D/Cooldown.text = str(int($ReloadTimer.time_left))
 	
 func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -35,6 +47,7 @@ func _on_tower_menu_delete_press() -> void:
 		ui.refresh_tower_cards()
 	Data.sentinel_deception_deployed = false
 	Data.deactivate.emit()
+	Data.deploy_deception.emit(false)
 
 func hide_ui():
 	$TowerMenu.hide()
@@ -42,40 +55,18 @@ func hide_ui():
 
 
 func _on_reload_timer_timeout() -> void:
-	if Data.health < Data.default_health:
-		var heal_amount = Data.health * heal_percentage
-		Data.health += heal_amount
-		$HealGain.position.y = -193.01
-		$HealGain.text = "[img]res://graphics/icons/heal.png[/img] " + str(round(heal_amount))
-
-	$GoldGain.position.y = -193.01
-	var gold_amoumt: int = randi_range(50, 100)
-	$GoldGain.text = "[img]res://graphics/currency/gold_gain.png[/img] " + str(gold_amoumt)
-	Data.money += gold_amoumt
-
-	toggle_heal_gain()
-	toggle_gold_gain()
-	$CoinRain.emitting = true
-	$Glow.emitting = true
+	Data.deploy_deception.emit(true)
+	skill_duration()
+	$SkillDuration.start()
+	$AnimatedSprite2D/Cooldown.hide()
+	
+func _on_skill_duration_timeout() -> void:
+	Data.deploy_deception.emit(false)
 	ability_cooldown()
+	$ReloadTimer.start()
+	$AnimatedSprite2D/Cooldown.show()
 
-func toggle_heal_gain():
-	if tween:
-		tween.kill()
-	tween = create_tween()
-	tween.tween_property($HealGain, "position:y", -215, 1)
-	tween.parallel().tween_property($HealGain, "modulate:a", 1, 1)
-	tween.tween_property($HealGain, "modulate:a", 0, 1)
 
-	
-func toggle_gold_gain():
-	if tween:
-		tween.kill()
-	tween = create_tween()
-	tween.tween_property($GoldGain, "position:y", -215, 1)
-	tween.parallel().tween_property($GoldGain, "modulate:a", 1, 1)
-	tween.tween_property($GoldGain, "modulate:a", 0, 1)
-	
 func create_range_indicator() -> void:
 	if range_indicator:
 		return

@@ -58,6 +58,9 @@ signal destroy_shield()
 var sentinel_security_deployed: bool = false
 var sentinel_malware_deployed: bool = false
 var sentinel_deception_deployed: bool = false
+ # for the deception debuff
+signal deploy_deception(state: bool)
+
 var damage_reduction: float = 0
 
 
@@ -712,7 +715,8 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.DECEPTION: {
 		'name': 'Deception Analyst',
-		'cooldown': 3,
+		'cooldown': 30,
+		'duration': 15,
 		'range': 500,
 		'thumbnail': "res://graphics/sentinels/thumbnail/DECEPTIONANALYST.png",
 		'scene': "res://scenes/sentinels/sentinel_deception_analyst.tscn",

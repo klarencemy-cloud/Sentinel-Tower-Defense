@@ -12,6 +12,7 @@ func _ready() -> void:
 	max_health = health
 	Data.deploy_shield.connect(deploy_shield)
 	Data.destroy_shield.connect(destroy_shield)
+	Data.deploy_deception.connect(deception_active)
 
 func deploy_shield():
 	$IntrusionShield/Shield.monitoring = true
@@ -136,3 +137,15 @@ func _on_shield_area_exited(area: Area2D) -> void:
 func destroy_shield():
 	$IntrusionShield/Shield.monitoring = false
 	$IntrusionShield.hide()
+
+
+func _on_deception_portal_area_entered(area: Area2D) -> void:
+	if area.name == "Enemy":
+		var enemies = get_tree().get_nodes_in_group("Enemies")
+		if enemies:
+			for enemy in enemies:
+				enemy.teleport_back()
+
+func deception_active(state: bool) -> void:
+	$DeceptionDebuff.monitoring = state
+	$DeceptionDebuff.visible = state
