@@ -187,12 +187,12 @@ func _on_final_7_gui_input(event: InputEvent) -> void:
 
 
 func _on_left_btn_pressed() -> void:
-	UISound.play_click()
+	UISound.play_carousel()
 	$CarouselContainer._left()
 
 
 func _on_right_btn_pressed() -> void:
-	UISound.play_click()
+	UISound.play_carousel()
 	$CarouselContainer._right()
 
 

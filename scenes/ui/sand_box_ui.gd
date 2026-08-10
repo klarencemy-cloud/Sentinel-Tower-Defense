@@ -43,10 +43,10 @@ func _on_start_game_pressed() -> void:
 
 
 func _on_right_btn_pressed() -> void:
-	UISound.play_click()
+	UISound.play_carousel()
 	$CarouselContainer._right()
 
 
 func _on_left_btn_pressed() -> void:
-	UISound.play_click()
+	UISound.play_carousel()
 	$CarouselContainer._left()

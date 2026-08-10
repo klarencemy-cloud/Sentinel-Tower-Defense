@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_main_menu_pressed() -> void:
-	UISound.play_click()
+	UISound.play_close()
 	get_tree().change_scene_to_file("res://scenes/mainmenu/main_menu.tscn")
 	Data.is_vmmode = false
 

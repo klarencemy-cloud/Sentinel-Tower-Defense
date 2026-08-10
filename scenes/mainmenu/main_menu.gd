@@ -3,6 +3,7 @@ extends Node
 
 func _ready() -> void:
 	$AnimationPlayer.play("opening")
+	UISound.stop_game_bg()
 	await UISound.play_bg()
 
 
