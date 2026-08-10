@@ -1760,7 +1760,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 libraries/ = SubResource("AnimationLibrary_x3klb")
 
 [node name="DeceptionDebuff" type="Timer" parent="." unique_id=1149249286]
-wait_time = 10.0
+wait_time = 15.0
 one_shot = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

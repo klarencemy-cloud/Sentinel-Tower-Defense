@@ -141,10 +141,7 @@ func destroy_shield():
 
 func _on_deception_portal_area_entered(area: Area2D) -> void:
 	if area.name == "Enemy":
-		var enemies = get_tree().get_nodes_in_group("Enemies")
-		if enemies:
-			for enemy in enemies:
-				enemy.teleport_back()
+		area.teleport_back()
 
 func deception_active(state: bool) -> void:
 	$DeceptionDebuff.monitoring = state

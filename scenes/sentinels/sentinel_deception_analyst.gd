@@ -26,6 +26,7 @@ func _ready() -> void:
 	skill_duration()
 	$ReloadTimer.start()
 	create_range_indicator()
+	damage_reduction(true)
 
 func _process(delta: float) -> void:
 	$AnimatedSprite2D/Cooldown.text = str(int($ReloadTimer.time_left))
@@ -48,6 +49,7 @@ func _on_tower_menu_delete_press() -> void:
 	Data.sentinel_deception_deployed = false
 	Data.deactivate.emit()
 	Data.deploy_deception.emit(false)
+	damage_reduction(false)
 
 func hide_ui():
 	$TowerMenu.hide()
@@ -66,6 +68,11 @@ func _on_skill_duration_timeout() -> void:
 	$ReloadTimer.start()
 	$AnimatedSprite2D/Cooldown.show()
 
+func damage_reduction(state: bool) -> void:
+	if state:
+		Data.damage_reduction += .05
+	if not state:
+		Data.damage_reduction -= .05
 
 func create_range_indicator() -> void:
 	if range_indicator:
