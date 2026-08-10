@@ -203,6 +203,7 @@ Player: That name again..
 => END
 
 ~ Boss4_defeated
+do GameDialogueManager.pause_game(true)
 NOTPETYA: OPERATION..
 NOTPETYA: SUCCESSFUL..
 Player: Successful?
@@ -210,7 +211,6 @@ Odysseus: Ignore it, don’t let it distract you.
 System: Boss Remnant recovered.
 System: Scripture IV obtained.
 #insert function to show scripture
-do GameDialogueManager.pause_game(true)
 do GameDialogueManager.show_script(3)
 => END
 
@@ -229,5 +229,6 @@ Player: Then everything has been leading us to one final threat.
 Odysseus: Which means we don’t have much time left.
 Odysseus: Let’s recover the remaining fragments.
 Odysseus: That’s where we will find it.
+do GameDialogueManager.pause_game(false)
 => END
 

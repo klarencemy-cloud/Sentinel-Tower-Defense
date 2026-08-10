@@ -175,13 +175,13 @@ WANNACRY: NETWORK ACQUIRED.
 => END
 
 ~ Boss3_defeated
+do GameDialogueManager.pause_game(true)
 WANNACRY: Encryption Failedd..
 Player: Conficker.. WannaCry.. They both seem connected somehow.
 Odysseus: Maybe they are serving the same purpose.
 System: Boss Remnant recovered.
 System: Scripture III obtained.
 #insert function to show scripture
-do GameDialogueManager.pause_game(true)
 do GameDialogueManager.show_script(2)
 => END
 
@@ -190,5 +190,6 @@ do GameDialogueManager.pause_game(true)
 Player: The Project Sentinel again.. Every scripture keeps pointing back to it.
 Odysseus: Perhaps, It’s more important than we thought.
 Player: Whatever it is, something tells me I’m getting closer to the answer.
+do GameDialogueManager.pause_game(false)
 => END
 

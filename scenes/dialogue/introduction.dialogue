@@ -240,6 +240,7 @@ Odysseus: Precisely.
 => END
 
 ~ Boss1_defeated
+do GameDialogueManager.pause_game(true)
 Player: Pheww. It’s finally over.
 Odysseus: Only for now.
 System: Boss Remnant recovered.
@@ -247,7 +248,6 @@ Odysseus: Looks like you got the remnant of the Virus.
 System: Scriptures of the Past unlocked.
 System: Scripture I obtained.
 #insert function to show scripture
-do GameDialogueManager.pause_game(true)
 do GameDialogueManager.show_script(0)
 => END
 
@@ -255,4 +255,5 @@ do GameDialogueManager.show_script(0)
 do GameDialogueManager.pause_game(true)
 Player: It looks like we have recovered historical data.
 Odysseus: Yes, every High-Threat you defeat drops Remnants containing Scriptures. Some Scriptures can also be recovered as you progress.
+do GameDialogueManager.pause_game(false)
 => END

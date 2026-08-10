@@ -135,11 +135,11 @@ do GameDialogueManager.pause_game(false)
 => END
 
 ~ Boss2_defeated
+do GameDialogueManager.pause_game(true)
 CONFICKER: You nev--r asked who se– me... 
 System: Boss Remnant recovered.
 System: Scripture II obtained.
 #insert function to show scripture
-do GameDialogueManager.pause_game(true)
 do GameDialogueManager.show_script(1)
 => END
 
@@ -149,4 +149,5 @@ Player: It seemed to say something.
 Odysseus: Whatever it said, threats can’t be trusted, especially from those high-threats. 
 Player: Anyways, looks like it’s another remnant.
 Odysseus: Then let’s see what untold stories history is willing to share.
+do GameDialogueManager.pause_game(false)
 => END

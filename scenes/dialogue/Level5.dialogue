@@ -10,6 +10,11 @@ Player: The system recovered a fragment of the hidden archive.
 System: hidden archive fragment 01 restored.
 Player: It’s an audio log.
 #[Audio Log begins]
+Unknown Voice: Something terrible has gone wrong.
+Unknown Voice: __________________________________
+Unknown Voice: _______________________________________
+Unknown Voice: ___________________________________
+Unknown Voice: I no longer trust my partner.
 Player: Partner.
 Odysseus: It is incomplete.
 Odysseus: Maybe we'll find additional hints along the way.
@@ -103,9 +108,16 @@ System: Hidden archive fragment recovered.
 Player: Another one of the fragments.
 System: hidden archive fragment 02 restored.
 #[Audio Log begins]
+Unknown Voice: He believes artificial intelligence should inherit the Earth.
+Unknown Voice: I believed it should protect it.
+Unknown Voice: We created the same technology.
+Unknown Voice: But not the same future.
+Unknown Voice: I no longer trust my partner.
 Player: It’s the same person from the 4th Scripture.
 Odysseus: It seems so
 #[Audio Log continue]
+Unknown Voice: If you’re hearing this…
+Unknown Voice: then that fool is still alive.
 #[Audio Log ended]
 Player: he is still alive.
 Odysseus: …
@@ -116,9 +128,14 @@ Odysseus: …
 System: Hidden archive fragment recovered.
 System: hidden archive fragment 03 restored.
 #[Audio Log begins]
+Unknown Voice: My partner always admired one threat above all others.
+Unknown Voice: He called it the perfect deception.
+Unknown Voice: A threat capable of earning trust before revealing its true purpose.
 Player: That.. sounds familiar.
-
+Unknown Voice: He based his own identity upon it.
+Unknown Voice: He chose to become…
 #[Audio Log ended]
+System: STATIC
 Odysseus: Look like the archive is still corrupted
 Player: “The perfect deception…”
 Player: “I don’t think we’re just fighting cyberthreats anymore.”
@@ -133,7 +150,13 @@ System: Hidden archive fragment recovered.
 System: hidden archive fully restored.
 Player: Its.. the final fragment.
 #[Audio Log begins]
+Unknown Voice: If you are hearing this... then I have failed.
+Unknown Voice:The one responsible for everything... 
+Unknown Voice: has almost reached the S.E.R.V.E.R.
+Unknown Voice:Do not allow it... to awaken... The codename is..."
 #[Audio Log ends]
+System: STATIC
+System: ....DOOM..
 Player: Doom?
 Player: That confirms it. MyDoom.
 Odysseus: ...
@@ -166,7 +189,7 @@ Odysseus: Don't let it surround us.
 MYDOOM: MASS_INFECTION_INITIATED.
 Player: So it was you all along.
 #function to commence battle
-do GameDialogueManager.show_enemy("mydoom", "18")
+do GameDialogueManager.show_enemy("mydoom", 18)
 => END
 
 ~ Boss5_2
@@ -323,6 +346,7 @@ TROJAN: Let’s see if humanity’s last guardian can truly stop me.
 => END
 
 ~ Boss6_defeated
+do GameDialogueManager.pause_game(true)
 #[All hostile threats began to disappear]
 TROJAN: I–Impossible.
 TROJAN: You were supposed to forget.. Forever.
@@ -342,7 +366,6 @@ Player: It is.
 System: Artificial Magnetic Field Stabilized
 System: Earth Integrity restored.
 System: Final Scripture obtained.
-do GameDialogueManager.pause_game(true)
 do GameDialogueManager.show_script(4)
 => END
 

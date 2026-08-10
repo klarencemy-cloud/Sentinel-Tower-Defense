@@ -68,7 +68,7 @@ func _on_info_gui_input(event: InputEvent) -> void:
 				GameDialogueManager.start_wave()
 
 
-enum Enemies_Name {SPAM, VIRUS, ADWARE, WORM, SPYWARE, BOTNET, CREDS, TROJAN_HORSE, INSIDER, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, ILOVEYOU, CONFICKER, WANNACRY, NOTPEYTA, DOOM, TROJAN}
+enum Enemies_Name {SPAM, VIRUS, ADWARE, WORM, SPYWARE, BOTNET, CREDS, TROJAN_HORSE, INSIDER, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, ILOVEYOU, CONFICKER, WANNACRY, NOTPETYA, DOOM, TROJAN}
 
 var ENEMIES = {
 	Enemies_Name.SPAM: {
@@ -211,7 +211,7 @@ var ENEMIES = {
 		'damage': 320,
 		'speed': 100
 	},
-	Enemies_Name.NOTPEYTA: {
+	Enemies_Name.NOTPETYA: {
 		'name': "NOTPEYTA",
 		'InG_desc': " Unlike traditional ransomware, NotPetya was never created only to extort its victims. It is feared not because it seeks power, but because it seeks the extinction of the S.E.R.V.E.R. defenses. It wanders the S.E.R.V.E.R. as a false savior, projecting holographic ransom messages that promise hope to desperate defenders. Displays a fake ransom message offering server health recovery in exchange for payment. If the player chooses to pay, the malware intensifies its attack, moves faster, and gives the tower an actual health so it can be destroyed. If ignored, it continues to spread and damage the system normally.",
 		'RL_desc': "NotPetya is a destructive malware variant that appeared in June 2017, initially targeting Ukraine before spreading globally. It masquerades as ransomware but was built primarily to destroy data rather than generate ransom payments. Even when victims paid, recovery was effectively impossible because NotPetya's encryption routine does not preserve the information needed for decryption.",
