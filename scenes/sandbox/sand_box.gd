@@ -1,7 +1,10 @@
 extends Node2D
 
 var sandbox_setting: bool # sandbox menu toggle
-var tower_cards_showing: bool = true # toggles between tower and enemy cards in sandbox menu
+const CARD_TOWER := 0
+const CARD_SENTINEL := 1
+const CARD_ENEMY := 2
+var tower_cards_showing: int = CARD_TOWER # 0 tower, 1 sentinel, 2 enemy
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,13 +43,23 @@ func _on_sandbox_setting_pressed() -> void:
 
 func _on_tower_enemies_button_pressed() -> void:
 	UISound.play_click()
-	if tower_cards_showing:
+	if tower_cards_showing == CARD_TOWER:
 		$Level/UI/Control/TextureRect/ScrollContainer/TowerCardsContainer.visible = false
-		$Level/UI/Control/TextureRect/ScrollContainer/EnemyCardsContainer.visible = true
-		$Level/UI/Control/TextureRect/HBoxContainer/TowerEnemiesButton.texture_normal = load("res://graphics/ui/tower_card_button.png")
-		tower_cards_showing = false
+		$Level/UI/Control/TextureRect/ScrollContainer/SentinelCardsContainer.visible = true
+		$Level/UI/Control/TextureRect/HBoxContainer/TowerEnemiesButton.texture_normal = load("res://graphics/ui/sentinel_card_button.png")
+		tower_cards_showing = CARD_SENTINEL
+	elif tower_cards_showing == CARD_SENTINEL:
+		$Level/UI/Control/TextureRect/ScrollContainer/SentinelCardsContainer.visible = false
+		if Data.is_sandbox:
+			$Level/UI/Control/TextureRect/ScrollContainer/EnemyCardsContainer.visible = true
+			$Level/UI/Control/TextureRect/HBoxContainer/TowerEnemiesButton.texture_normal = load("res://graphics/ui/tower_card_button.png")
+			tower_cards_showing = CARD_ENEMY
+		else:
+			$Level/UI/Control/TextureRect/ScrollContainer/TowerCardsContainer.visible = true
+			$Level/UI/Control/TextureRect/HBoxContainer/TowerEnemiesButton.texture_normal = load("res://graphics/ui/sentinel_card_button.png")
+			tower_cards_showing = CARD_TOWER
 	else:
-		$Level/UI/Control/TextureRect/ScrollContainer/TowerCardsContainer.visible = true
 		$Level/UI/Control/TextureRect/ScrollContainer/EnemyCardsContainer.visible = false
-		$Level/UI/Control/TextureRect/HBoxContainer/TowerEnemiesButton.texture_normal = load("res://graphics/ui/enemy_card_button.png")
-		tower_cards_showing = true
+		$Level/UI/Control/TextureRect/ScrollContainer/TowerCardsContainer.visible = true
+		$Level/UI/Control/TextureRect/HBoxContainer/TowerEnemiesButton.texture_normal = load("res://graphics/ui/sentinel_card_button.png")
+		tower_cards_showing = CARD_TOWER

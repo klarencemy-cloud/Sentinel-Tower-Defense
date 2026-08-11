@@ -172,6 +172,10 @@ vertical_scroll_mode = 0
 layout_mode = 2
 theme_override_constants/separation = 22
 
+[node name="SentinelCardsContainer" type="HBoxContainer" parent="Control/TextureRect/ScrollContainer" unique_id=2112751017]
+layout_mode = 2
+theme_override_constants/separation = 22
+
 [node name="EnemyCardsContainer" type="HBoxContainer" parent="Control/TextureRect/ScrollContainer" unique_id=102221009]
 layout_mode = 2
 theme_override_constants/separation = 22
@@ -199,7 +203,6 @@ size_flags_horizontal = 2
 texture_normal = ExtResource("5_0i47d")
 
 [node name="TowerEnemiesButton" type="TextureButton" parent="Control/TextureRect/HBoxContainer" unique_id=1920265275]
-visible = false
 visibility_layer = 3
 z_index = 1
 layout_mode = 2
@@ -360,11 +363,12 @@ text = "Unlimited Server Load"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1732841883]
 texture_filter = 2
-layout_mode = 0
-anchor_left = 0.63177085
-anchor_top = 0.81296295
-anchor_right = 0.76458335
-anchor_bottom = 0.8842593
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7369792
+anchor_top = 0.73055553
+anchor_right = 0.8697917
+anchor_bottom = 0.80185187
 mouse_filter = 2
 theme_override_constants/separation = 12
 metadata/_edit_use_anchors_ = true
@@ -774,6 +778,10 @@ z_index = 4
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2000.0
+offset_top = 102.0
+offset_right = 2000.0
+offset_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

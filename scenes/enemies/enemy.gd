@@ -310,7 +310,10 @@ func _process(delta: float):
 			backup_server_recently_knocked_back = false
 			backup_server_knockback()
 			return
-	enemy_type.modulate = NORMAL_TINT
+	if invisible:
+		enemy_type.modulate = Color(1, 1, 1, 0.7)
+	else:
+		enemy_type.modulate = NORMAL_TINT
 	var current_speed = speed
 	if acs_lockdown_remaining > 0.0:
 		acs_lockdown_remaining = max(acs_lockdown_remaining - delta, 0.0)
