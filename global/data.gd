@@ -68,6 +68,9 @@ var is_tower_placeable: bool = true
 var is_sentinel_placeable: bool = true
 var is_placing_tower: bool = false
 
+signal cancel_tower_placement()
+signal cancel_sentinel_placement()
+
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
 enum Tower {SPAM_FILTER, ANTIVIRUS, AD_BLOCKER, DATA_LOSS_PREVENTION, IDPS, QUARANTINE_CANNON, ACCESS_CONTROL_SYSTEM, AI_SECURITY, BACKUP_SERVER, ENDPOINT_PROTECTION, SANDBOX_ANALYZER}

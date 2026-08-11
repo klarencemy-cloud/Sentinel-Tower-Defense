@@ -37,6 +37,8 @@ func setup(root: Node2D, map_manager: Node) -> void:
 	level_root = root
 	level_manager = map_manager
 
+func _ready() -> void:
+	Data.cancel_tower_placement.connect(cancel_selection)
 
 func _process(delta: float) -> void:
 	var preview = _get_tower_preview()
@@ -56,7 +58,6 @@ func _process(delta: float) -> void:
 func handle_input(event: InputEvent) -> void:
 	var cell_pos = level_manager.mouse_to_map_position()
 	var world_pos = level_manager.map_to_world(cell_pos)
-
 	# Move preview only while dragging with left mouse button
 	if place_tower:
 		if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -85,6 +86,7 @@ func handle_input(event: InputEvent) -> void:
 
 
 func start_tower_placement(tower_type: Data.Tower) -> void:
+	Data.cancel_sentinel_placement.emit()
 	place_tower = true
 	current_placement_kind = "tower"
 	selected_tower = tower_type
