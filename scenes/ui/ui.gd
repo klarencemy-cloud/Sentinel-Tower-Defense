@@ -44,8 +44,6 @@ var sentinel_card_button_texture = preload("res://graphics/ui/sentinel_card_butt
 var enemy_card_button_texture = preload("res://graphics/ui/enemy_card_button.png")
 
 enum CardCategory { TOWER, SENTINEL, ENEMY }
-var current_card_category: int = CardCategory.TOWER
-
 var fade_tween: Tween
 
 var ad_timer := Timer.new()
@@ -164,34 +162,62 @@ func move_camera(coords: Vector2):
 	# camera.position = coords
 
 func show_card_category(category: int) -> void:
-	if category == CardCategory.ENEMY and not Data.is_sandbox:
+	# Hide all containers first
+	tower_cards_container.visible = false
+	sentinel_cards_container.visible = false
+	enemy_cards_container.visible = false
+
+	# Non-sandbox: only Tower and Sentinel
+	if not Data.is_sandbox and category == CardCategory.ENEMY:
 		category = CardCategory.TOWER
 
-	tower_cards_container.visible = category == CardCategory.TOWER
-	sentinel_cards_container.visible = category == CardCategory.SENTINEL
-	enemy_cards_container.visible = category == CardCategory.ENEMY and Data.is_sandbox
-	current_card_category = category
-	update_cards_button_texture()
+	# Set the selected container and button texture
+	var button_texture: Texture2D
 
-func update_cards_button_texture() -> void:
-	match current_card_category:
+	match category:
 		CardCategory.TOWER:
-			tower_enemies_button.texture_normal = tower_card_button_texture
+			tower_cards_container.visible = true
+			button_texture = tower_card_button_texture
+
 		CardCategory.SENTINEL:
-			tower_enemies_button.texture_normal = sentinel_card_button_texture
+			sentinel_cards_container.visible = true
+			button_texture = sentinel_card_button_texture
+
 		CardCategory.ENEMY:
-			tower_enemies_button.texture_normal = enemy_card_button_texture
+			if Data.is_sandbox:
+				enemy_cards_container.visible = true
+				button_texture = enemy_card_button_texture
+			else:
+				tower_cards_container.visible = true
+				button_texture = tower_card_button_texture
+
+	# Force every TextureButton state to use the selected texture
+	tower_enemies_button.texture_normal = button_texture
+	tower_enemies_button.texture_hover = button_texture
+	tower_enemies_button.texture_pressed = button_texture
+	tower_enemies_button.texture_disabled = button_texture
 
 func _on_tower_enemies_button_pressed() -> void:
-	if current_card_category == CardCategory.TOWER:
-		show_card_category(CardCategory.SENTINEL)
-	elif current_card_category == CardCategory.SENTINEL:
-		if Data.is_sandbox:
+	if Data.is_sandbox:
+		# TOWER → SENTINEL → ENEMY → TOWER
+		if tower_cards_container.visible:
+			show_card_category(CardCategory.SENTINEL)
+
+		elif sentinel_cards_container.visible:
 			show_card_category(CardCategory.ENEMY)
-		else:
+
+		elif enemy_cards_container.visible:
 			show_card_category(CardCategory.TOWER)
+
 	else:
-		show_card_category(CardCategory.TOWER)
+		# TOWER → SENTINEL → TOWER
+		if tower_cards_container.visible:
+			show_card_category(CardCategory.SENTINEL)
+
+		elif sentinel_cards_container.visible:
+			show_card_category(CardCategory.TOWER)
+
+
 
 #sandbox
 func sandbox_spawn_enemy(enemy_enum: Data.Enemy):
