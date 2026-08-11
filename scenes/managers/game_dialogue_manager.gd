@@ -572,3 +572,56 @@ func show_dialogue_story_ends(): # used in scripture
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "ending")
 	is_story_ends = true
+
+
+signal show_balloon_messages(state: bool)
+func show_messages(state: bool) -> void:
+	show_balloon_messages.emit(state)
+
+signal load_message_choices(texture1: String)
+enum Messages {SAMPLE1, SAMPLE2, SAMPLE3, SAMPLE4, SAMPLE5}
+
+var MESSAGE_DATA = {
+	Messages.SAMPLE1: {
+		"option1": false,
+		"option2": true,
+		"message1": "res://graphics/enemies/notpetya_messages/fake1.png"
+	},
+	Messages.SAMPLE2: {
+		"option1": true,
+		"option2": false,
+		"message1": "res://graphics/enemies/notpetya_messages/legit1.png"
+	},
+	Messages.SAMPLE4: {
+		"option1": false,
+		"option2": true,
+		"message1": "res://graphics/enemies/notpetya_messages/fake2.png"
+	},
+	Messages.SAMPLE5: {
+		"option1": true,
+		"option2": false,
+		"message1": "res://graphics/enemies/notpetya_messages/legit3.png"
+	},
+}
+var ARCHIVED_DATA = {}
+
+var current_option
+var message1_texture
+var option1_answer: bool
+var option2_answer: bool
+
+func choose_notpetya_dialogue() -> void:
+	current_option = MESSAGE_DATA.keys().pick_random()
+	ARCHIVED_DATA[current_option] = MESSAGE_DATA[current_option]
+	message1_texture = MESSAGE_DATA[current_option]["message1"]
+	option1_answer = MESSAGE_DATA[current_option]["option1"]
+	option2_answer = MESSAGE_DATA[current_option]["option2"]
+	MESSAGE_DATA.erase(current_option)
+	load_message_choices.emit(message1_texture)
+
+# func _ready() -> void:
+# 	activate_notpetya_dialogue()
+
+
+func activate_notpetya_dialogue() -> void:
+	DialogueManager.show_dialogue_balloon(load("res://Notpetya.dialogue"), "SkillActivate")

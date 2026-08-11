@@ -37,9 +37,9 @@ metadata/_edit_use_anchors_ = true
 [node name="MapDetails" type="Control" parent="." unique_id=972504179]
 layout_mode = 1
 anchor_left = 0.5026042
-anchor_top = 0.2824074
+anchor_top = 0.2324074
 anchor_right = 0.94739586
-anchor_bottom = 0.67314816
+anchor_bottom = 0.62314814
 metadata/_edit_use_anchors_ = true
 
 [node name="sbName" type="Label" parent="MapDetails" unique_id=1022964517]
@@ -99,7 +99,7 @@ offset_top = 39.0
 offset_right = 787.0
 offset_bottom = 220.0
 theme_override_fonts/font = ExtResource("5_q7ead")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 18
 text = "After the collapse of Earth’s Core, several facilities were converted into rehabilitation centers. The Treatment Area became a refuge for the survivors, where the remaining humans continue to support the artificial magnetic field. However, its direct connection to the S.E.R.V.E.R., or the Secret Enigmatic Regent Vanguard of Earth's Remnant, eventually attracted the attention of cyber threats, as they see it as the next source of immense power after Earth's Core was destroyed. What is now once built to heal becomes a battlefield against cyber threats. 
 "
 horizontal_alignment = 3

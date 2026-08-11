@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://djdyr541ixakt"
+path="res://.godot/imported/Notpetya.dialogue-639c557d60662832c7119c828257c117.tres"
+
+[deps]
+
+source_file="res://Notpetya.dialogue"
+dest_files=["res://.godot/imported/Notpetya.dialogue-639c557d60662832c7119c828257c117.tres"]
+
+[params]
+
+defaults=true

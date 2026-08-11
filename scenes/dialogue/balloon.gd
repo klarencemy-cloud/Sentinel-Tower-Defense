@@ -72,7 +72,9 @@ var mutation_cooldown: Timer = Timer.new()
 
 
 func _ready() -> void:
+	GameDialogueManager.show_balloon_messages.connect(show_balloon_messages)
 	GameDialogueManager.show_char.connect(change_character)
+	GameDialogueManager.load_message_choices.connect(load_message_options)
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
@@ -87,6 +89,12 @@ func _ready() -> void:
 		if not is_instance_valid(dialogue_resource):
 			assert(false, DMConstants.get_error_message(DMConstants.ERR_MISSING_RESOURCE_FOR_AUTOSTART))
 		start()
+
+func show_balloon_messages(state: bool) -> void:
+	$Balloon/Message1.visible = state
+
+func load_message_options(texture1: String) -> void:
+	$Balloon/Message1/Pic1.texture = load(texture1)
 
 
 func _process(delta: float) -> void:

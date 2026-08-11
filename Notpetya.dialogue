@@ -1,0 +1,31 @@
+~ wrong_answer
+do GameDialogueManager.show_messages(false)
+NOTPETYA: You really are a foolish one!
+NOTPETYA: HA! HA! HA! HA!
+=> END
+
+~ correct_answer
+do GameDialogueManager.show_messages(false)
+Odysseus: Great going!
+NOTPETYA: You really think this is the END!
+=> END
+
+~ SkillActivate
+do GameDialogueManager.choose_notpetya_dialogue()
+NOTPETYA: You are not getting away from me!.
+
+Odysseus: Quick! Is this a legitimate message?.
+do GameDialogueManager.show_messages(true)
+- Legitimate Email
+	if GameDialogueManager.option1_answer == true
+		=>< correct_answer
+	elif GameDialogueManager.option1_answer == false
+		=>< wrong_answer
+- Fake One
+	if GameDialogueManager.option2_answer == true
+		=>< correct_answer
+	elif GameDialogueManager.option2_answer == false
+		=>< wrong_answer
+do GameDialogueManager.show_messages(false)
+=> END
+
