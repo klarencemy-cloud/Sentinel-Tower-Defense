@@ -63,6 +63,14 @@ func _process(_delta):
 		clear_target()
 		return
 
+	# Check if target is still within tower range
+	var tower_range = Data.TOWER_DATA[type]["range"]
+	var distance_to_target = global_position.distance_to(target.global_position)
+
+	if distance_to_target > tower_range:
+		clear_target()
+		return
+
 	$Turret.look_at(target.global_position)
 	$Turret.rotation -= PI / 2
 	laser.visible = true
@@ -116,25 +124,32 @@ func acquire_target():
 func clear_target():
 	target = null
 	damage_multiplier = 1.0
-	laser.visible = false
-	laser.monitoring = false
-	laser.hide_particles()
+
 	laser_progress = 0.0
 	laser_extending = false
 	laser_ready = false
 	charge_sound_played = false
-	
-	# Stop firing sound when laser stops
+
 	if firing_sound_playing:
 		firing_sound.stop()
 		firing_sound_playing = false
-	
+
 	laser_extend_time = 1.0
 
 	$ReloadTimer.stop()
-	if laser.has_overlapping_areas():
-		laser.monitoring = false
+
+	# Reset laser geometry to the tower
+	var laser_origin = $Turret/LaserOrigin.global_position
+	laser.update_laser(laser_origin, laser_origin, 0.0)
+
+	# Stop and clear particles
+	laser.hide_particles()
+
+	# Hide and disable laser
+	laser.visible = false
+	laser.monitoring = false
 	
+		
 func _on_reload_timer_timeout() -> void:
 	if !laser_ready:
 		return
