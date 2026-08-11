@@ -29,6 +29,10 @@ var place_sentinel: bool = false:
 			if preview:
 				preview.visible = value
 
+
+func _ready() -> void:
+	Data.cancel_sentinel_placement.connect(cancel_selection)
+
 func _process(delta: float) -> void:
 	var preview = _get_sentinel_preview()
 	var place_btn = preview.get_node("PlaceTower")
@@ -80,6 +84,7 @@ func handle_input(event: InputEvent) -> void:
 		cancel_selection()
 
 func start_sentinel_placement(sentinel_type: Data.Sentinel) -> void:
+	Data.cancel_tower_placement.emit()
 	place_sentinel = true
 	current_placement_kind = "sentinel"
 	selected_sentinel = sentinel_type
