@@ -14,6 +14,14 @@ var selected_tower: Data.Tower
 var sentinel_roll_thumbnails: Array = []
 var sentinel_roll_active := false
 
+# Scroll dragging
+var scroll_dragging := false
+var scroll_drag_start := Vector2.ZERO
+var scroll_start_position := Vector2.ZERO
+var active_scroll: ScrollContainer = null
+
+const DRAG_THRESHOLD := 10.0
+
 func _ready() -> void:
 	update_money_display()
 	for tower_enum in Data.Tower.values():
@@ -47,7 +55,57 @@ func set_selected_tower(tower_enum: Data.Tower) -> void:
 	update_tier_buttons()
 	_set_tier_view(1)
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index != MOUSE_BUTTON_LEFT:
+			return
 
+		if event.pressed:
+			var mouse_pos := get_viewport().get_mouse_position()
+
+			var tower_scroll := $TextureRect/ScrollContainer
+			var sentinel_scroll := $SentinelStuff/ScrollContainer
+
+			if tower_scroll.visible and tower_scroll.get_global_rect().has_point(mouse_pos):
+				active_scroll = tower_scroll
+			elif sentinel_scroll.visible and sentinel_scroll.get_global_rect().has_point(mouse_pos):
+				active_scroll = sentinel_scroll
+			else:
+				active_scroll = null
+
+			if active_scroll:
+				scroll_dragging = false
+				scroll_drag_start = mouse_pos
+				scroll_start_position = Vector2(
+					active_scroll.scroll_horizontal,
+					active_scroll.scroll_vertical
+				)
+
+		else:
+			scroll_dragging = false
+			active_scroll = null
+
+	elif event is InputEventMouseMotion:
+		if active_scroll == null:
+			return
+
+		var mouse_pos := get_viewport().get_mouse_position()
+		var delta := mouse_pos - scroll_drag_start
+
+		if !scroll_dragging:
+			if delta.length() < DRAG_THRESHOLD:
+				return
+
+			scroll_dragging = true
+
+		active_scroll.scroll_horizontal = int(
+			scroll_start_position.x - delta.x
+		)
+
+		active_scroll.scroll_vertical = int(
+			scroll_start_position.y - delta.y
+		)
+		
 func update_stat_label() -> void:
 	var data = Data.TOWER_DATA[selected_tower]
 	if !data.has("upgrade1"):
@@ -449,7 +507,8 @@ func _on_Rollbtn_pressed() -> void:
 		return
 	if sentinel_roll_thumbnails.size() == 0:
 		return
-
+	
+	$SentinelStuff/SentinelRoll/Sentinel.visible = true
 	sentinel_roll_active = true
 	$SentinelStuff/Rollbtn.disabled = true
 	await _animate_sentinel_roll()
@@ -475,20 +534,31 @@ func _animate_sentinel_roll() -> void:
 	sentinel_node.modulate = Color(1, 1, 1, 1)
 
 func _on_back_btn_pressed() -> void:
-	if %SentinelsContainer.visible == true:
-		get_tree().paused = false
-		visible = false
+	if $SentinelStuff/ScrollContainer.visible == true:
+		$SentinelStuff/ScrollContainer.visible = false
+		$SentinelStuff/Rollbtn.visible = true
+		$SentinelStuff/SentinelList.visible = true
+		$SentinelStuff/SentinelRoll.visible = true
 	else:
-		%SentinelsContainer.visible = true
+		if %SentinelsContainer.visible == true:
+			get_tree().paused = false
+			visible = false
+		else:
+			%SentinelsContainer.visible = true
 
-		%BigPic.position.x += 340
-		$TextureRect/BigTowerName.visible = true
-		$TextureRect/UpgradeButton.visible = true
+			%BigPic.position.x += 340
+			$TextureRect/BigTowerName.visible = true
+			$TextureRect/UpgradeButton.visible = true
 
-		$TextureRect/StatPanel.visible = false
-		$TextureRect/UpgradePanel.visible = false
-		$TextureRect/StatPanel/AbilityPanel.visible = false
-		$TextureRect/StatPanel/ScrollContainer/VBoxContainer.visible = true
+			$TextureRect/StatPanel.visible = false
+			$TextureRect/UpgradePanel.visible = false
+			$TextureRect/StatPanel/AbilityPanel.visible = false
+			$TextureRect/StatPanel/ScrollContainer/VBoxContainer.visible = true
+		
+		if $SentinelStuff/ScrollContainer.visible == true:
+			$SentinelStuff/ScrollContainer.visible = false
+			$SentinelStuff/Rollbtn.visible = true
+			$SentinelStuff/SentinelList.visible = true
 
 
 func _on_tower_btn_pressed() -> void:
@@ -509,3 +579,5 @@ func _on_sentinel_btn_pressed() -> void:
 func _on_sentinel_list_pressed() -> void:
 	$SentinelStuff/SentinelRoll.visible = false
 	$SentinelStuff/ScrollContainer.visible = true
+	$SentinelStuff/Rollbtn.visible = false
+	$SentinelStuff/SentinelList.visible = false

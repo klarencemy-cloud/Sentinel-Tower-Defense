@@ -46,6 +46,7 @@ offset_top = 233.0
 offset_right = 892.0
 offset_bottom = 732.0
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
 [node name="SentinelsContainer" type="GridContainer" parent="TextureRect/ScrollContainer" unique_id=390548765]
 unique_name_in_owner = true
@@ -865,6 +866,7 @@ mouse_filter = 2
 texture = ExtResource("17_dq7wj")
 
 [node name="Sentinel" type="TextureRect" parent="SentinelStuff/SentinelRoll" unique_id=1820762658]
+visible = false
 layout_mode = 0
 offset_left = 936.0
 offset_top = 329.0
