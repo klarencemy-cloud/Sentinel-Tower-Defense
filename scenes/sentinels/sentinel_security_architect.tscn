@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vdifa7foqxra" path="res://scenes/sentinels/sentinel_security_architect.gd" id="1_rk605"]
 [ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="2_rk605"]
+[ext_resource type="Texture2D" uid="uid://c36bhr1jjwq0m" path="res://graphics/icons/buff_and_debuff.png" id="3_5i8g6"]
 [ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="3_e32ag"]
 [ext_resource type="Texture2D" uid="uid://dj56rn3t4lvwk" path="res://graphics/currency/gold_gain.png" id="4_5i8g6"]
 [ext_resource type="Texture2D" uid="uid://bhe1pw8va777g" path="res://texture/0001.png" id="5_wye6e"]
@@ -51,6 +52,10 @@ gradient = SubResource("Gradient_rk605")
 fill = 1
 fill_from = Vector2(0.50427353, 0.5)
 fill_to = Vector2(0.5769231, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j55s"]
+atlas = ExtResource("3_5i8g6")
+region = Rect2(192, 0, 192, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my3uq"]
 size = Vector2(159, 224.25)
@@ -147,6 +152,23 @@ offset_bottom = -139.30246
 theme_override_font_sizes/normal_font_size = 30
 text = "15"
 horizontal_alignment = 1
+
+[node name="SkillIcon" type="TextureRect" parent="AnimatedSprite2D" unique_id=344798966]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.3927329
+anchor_top = -0.033364534
+anchor_right = 0.60733837
+anchor_bottom = 0.10970577
+offset_left = -128.0
+offset_top = -192.0
+offset_right = -128.0
+offset_bottom = -192.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_5j55s")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ClickArea" type="Area2D" parent="." unique_id=1739627776]
 collision_layer = 8

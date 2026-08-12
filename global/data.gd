@@ -1031,8 +1031,6 @@ var experience: int = 0:
 				experience = int(default_level_pool)
 				break
 
-			print("level_pool", default_level_pool)
-		
 		if ui:
 			ui.update_experience(experience, player_level, default_level_pool)
 			

@@ -94,8 +94,6 @@ func apply_dlp_damage_reduction(multiplier: float = 0.65) -> void:
 func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	enemy_type_stats = type # save enemy type
 
-	$hpbar.max_value = Data.ENEMY_DATA[type]['health']
-	$hpbar.value = Data.ENEMY_DATA[type]['health']
 	path_follow = new_path_follow
 	path_follow.loop = false
 	previous_pos = path_follow.global_position
@@ -107,6 +105,8 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	Data.incremental_enemy_damage_bonus = Data.current_wave * .01
 	health = Data.ENEMY_DATA[type]['health'] + (Data.incremental_enemy_health_bonus * Data.ENEMY_DATA[type]['health'])
 	speed = Data.ENEMY_DATA[type]['speed'] + (Data.incremental_enemy_movespeed_bonus * Data.ENEMY_DATA[type]['speed'])
+	$hpbar.max_value = health
+	$hpbar.value = health
 	base_speed = speed
 	damage = Data.ENEMY_DATA[type]['damage'] + (Data.incremental_enemy_damage_bonus * Data.ENEMY_DATA[type]['damage'])
 	is_worm = false

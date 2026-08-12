@@ -55,6 +55,7 @@ func hide_ui():
 	hide_range()
 
 func _on_reload_timer_timeout() -> void:
+	toggle_skill_icon()
 	$GPUParticles2D.restart()
 	$GPUParticles2D.emitting = true
 	var enemies = get_tree().get_nodes_in_group("Enemies")
@@ -121,3 +122,13 @@ func show_range() -> void:
 func hide_range() -> void:
 	if range_indicator:
 		range_indicator.visible = false
+
+
+func toggle_skill_icon():
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property($AnimatedSprite2D/SkillIcon, "position:y", -215, 1)
+	tween.parallel().tween_property($AnimatedSprite2D/SkillIcon, "modulate:a", 1, 1)
+	tween.tween_property($AnimatedSprite2D/SkillIcon, "modulate:a", 0, 1)
+	tween.tween_property($AnimatedSprite2D/SkillIcon, "position:y", -193.812, 0)
