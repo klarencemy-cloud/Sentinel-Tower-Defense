@@ -15,9 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://dme0d0pdsfgpo" path="res://graphics/buttons/3rdTierUnclicked.png" id="13_86m51"]
 [ext_resource type="Texture2D" uid="uid://dwu3dv78jklkp" path="res://graphics/buttons/UpgradeButtonPanel.png" id="14_aprt0"]
 [ext_resource type="Texture2D" uid="uid://dmtujmh840v6" path="res://graphics/upgrade/NotUpgraded.png" id="15_lg71s"]
-[ext_resource type="Texture2D" uid="uid://5qqai7od37tk" path="res://graphics/container/SentinelRoll.png" id="17_dq7wj"]
+[ext_resource type="Texture2D" uid="uid://bg144y74pe5wb" path="res://graphics/container/sentinel_room_bg.png" id="17_pafe5"]
 [ext_resource type="Texture2D" uid="uid://v6nn418cpr87" path="res://graphics/currency/gold.png" id="17_qujrc"]
 [ext_resource type="Texture2D" uid="uid://cwdjmra2f5hj2" path="res://graphics/sentinels/thumbnail/DECEPTIONANALYST.png" id="18_dq7wj"]
+[ext_resource type="Texture2D" uid="uid://5phvhu808has" path="res://graphics/currency/sentinel_core2.png" id="19_pafe5"]
 
 [sub_resource type="Gradient" id="Gradient_lg71s"]
 
@@ -179,11 +180,18 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="TextureRect/BackBtn" unique_id=1667750649]
-layout_mode = 0
-offset_left = 72.0
-offset_top = 8.0
-offset_right = 142.0
-offset_bottom = 48.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -20.0
+offset_right = 35.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 34
 text = "Back"
 
@@ -834,46 +842,66 @@ text = "0"
 
 [node name="SentinelStuff" type="Control" parent="." unique_id=343666652]
 visible = false
+texture_filter = 2
 layout_mode = 3
-anchors_preset = 0
-
-[node name="SentinelList" type="TextureButton" parent="SentinelStuff" unique_id=1654829362]
-layout_mode = 0
-offset_left = 1596.0
-offset_top = 776.0
-offset_right = 1825.0
-offset_bottom = 864.0
-texture_normal = ExtResource("5_gvuwm")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="SentinelStuff/SentinelList" unique_id=904380179]
-layout_mode = 0
-offset_left = 55.0
-offset_top = 19.0
-offset_right = 182.0
-offset_bottom = 112.0
-theme_override_font_sizes/font_size = 38
-text = "Owned
-"
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SentinelRoll" type="TextureRect" parent="SentinelStuff" unique_id=1000312447]
-layout_mode = 0
-offset_top = 10.0
-offset_right = 1920.0
-offset_bottom = 1074.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("17_dq7wj")
+texture = ExtResource("17_pafe5")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sentinel" type="TextureRect" parent="SentinelStuff/SentinelRoll" unique_id=1820762658]
 visible = false
 layout_mode = 0
-offset_left = 936.0
-offset_top = 329.0
-offset_right = 1176.0
-offset_bottom = 685.0
+anchor_left = 0.43385416
+anchor_top = 0.30462962
+anchor_right = 0.55885416
+anchor_bottom = 0.6342593
 texture = ExtResource("18_dq7wj")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SentinelList" type="TextureButton" parent="SentinelStuff" unique_id=1654829362]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.84479165
+anchor_top = 0.5083333
+anchor_right = 0.9348958
+anchor_bottom = 0.55925924
+texture_normal = ExtResource("5_gvuwm")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="SentinelStuff/SentinelList" unique_id=904380179]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -22.5
+offset_right = 63.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Show Owned"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SentinelStuff" unique_id=40535933]
 visible = false
@@ -893,24 +921,70 @@ theme_override_constants/v_separation = 10
 columns = 3
 
 [node name="Rollbtn" type="TextureButton" parent="SentinelStuff" unique_id=1908177838]
-layout_mode = 0
-offset_left = 248.0
-offset_top = 668.0
-offset_right = 514.0
-offset_bottom = 758.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7473958
+anchor_top = 0.5083333
+anchor_right = 0.8375
+anchor_bottom = 0.55925936
 texture_normal = ExtResource("5_gvuwm")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="SentinelStuff/Rollbtn" unique_id=1438964111]
-layout_mode = 0
-offset_left = 85.0
-offset_top = 6.0
-offset_right = 182.0
-offset_bottom = 145.0
-theme_override_font_sizes/font_size = 59
-text = "Roll
-"
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.5
+offset_top = -20.5
+offset_right = 55.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Roll Sentinel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Core" type="TextureRect" parent="SentinelStuff" unique_id=909481002]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.68333334
+anchor_top = 0.35092592
+anchor_right = 0.734375
+anchor_bottom = 0.4675926
+texture = ExtResource("19_pafe5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CoreInventory" type="Label" parent="SentinelStuff/Core" unique_id=1574428632]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.214286
+anchor_top = 0.12698422
+anchor_right = 5.123377
+anchor_bottom = 0.857143
+theme_override_colors/font_color = Color(0.29411766, 0.5176471, 0.6627451, 1)
+theme_override_font_sizes/font_size = 80
+text = "5 CORES"
+metadata/_edit_use_anchors_ = true
+
+[node name="CoreRequirement" type="Label" parent="SentinelStuff/Core" unique_id=599656638]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.244898
+anchor_top = 0.86507934
+anchor_right = 3.4795918
+anchor_bottom = 1.1031746
+theme_override_colors/font_color = Color(0.8352941, 0.5686275, 0.19607843, 1)
+theme_override_font_sizes/font_size = 26
+text = "Core Per Roll: 1 Core"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="TextureRect/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="TextureRect/TowerSentinelBG/TowerBtn" to="." method="_on_tower_btn_pressed"]

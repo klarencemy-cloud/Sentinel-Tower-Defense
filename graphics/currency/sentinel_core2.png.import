@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgpsq3wphkb4w"
-path="res://.godot/imported/placetower.png-fdf045c1682314ae0cd03bdf31b9163d.ctex"
+uid="uid://5phvhu808has"
+path="res://.godot/imported/sentinel_core2.png-6e02fd3d42dbdf62c28d3de862bb4091.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/buttons/placetower.png"
-dest_files=["res://.godot/imported/placetower.png-fdf045c1682314ae0cd03bdf31b9163d.ctex"]
+source_file="res://graphics/currency/sentinel_core2.png"
+dest_files=["res://.godot/imported/sentinel_core2.png-6e02fd3d42dbdf62c28d3de862bb4091.ctex"]
 
 [params]
 

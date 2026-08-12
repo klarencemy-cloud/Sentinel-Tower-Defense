@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k0oen0fxwhhb"
-path="res://.godot/imported/cancelplace.png-07083ef2b8691ef8e13adf25889d6f39.ctex"
+uid="uid://bg144y74pe5wb"
+path="res://.godot/imported/sentinel_room_bg.png-19e884dc0b8cf9fa0a48a72b9305ff32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/buttons/cancelplace.png"
-dest_files=["res://.godot/imported/cancelplace.png-07083ef2b8691ef8e13adf25889d6f39.ctex"]
+source_file="res://graphics/container/sentinel_room_bg.png"
+dest_files=["res://.godot/imported/sentinel_room_bg.png-19e884dc0b8cf9fa0a48a72b9305ff32.ctex"]
 
 [params]
 
