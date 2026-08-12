@@ -41,9 +41,13 @@ var wave_started: bool = false
 
 var before_level_index: int
 var current_level_index: int = 0 # map count 0 = level 1
-
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 28 # wave count
+var current_wave: int = 51 # wave count
+
+var incremental_enemy_health_bonus: float = current_wave * .02
+var incremental_enemy_movespeed_bonus: float = current_wave * .01
+var incremental_enemy_damage_bonus: float = current_wave * .01
+
 var backup_server_placed := false
 var backup_server_invincible := false
 
@@ -70,6 +74,7 @@ var is_placing_tower: bool = false
 
 signal cancel_tower_placement()
 signal cancel_sentinel_placement()
+
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
