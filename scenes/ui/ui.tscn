@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://c06sbymdntwef" path="res://graphics/ui/StartWaveButton.png" id="4_y220t"]
 [ext_resource type="Texture2D" uid="uid://bb6cvffm5145y" path="res://graphics/ui/sandbox_setting_button.png" id="5_0i47d"]
 [ext_resource type="PackedScene" uid="uid://b4xw080momfhv" path="res://scenes/ui/victory_overlay.tscn" id="5_4w2x3"]
-[ext_resource type="Texture2D" uid="uid://d0tvbvnfugwl5" path="res://graphics/ui/enemy_card_button.png" id="6_mgwkc"]
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="7_hl07w"]
 [ext_resource type="PackedScene" uid="uid://n0x1dg8naleh" path="res://scenes/ui/pause_menu.tscn" id="7_jcn1r"]
 [ext_resource type="PackedScene" uid="uid://cyglh5x7ci5ra" path="res://scenes/server/server_upgrade.tscn" id="8_fv78h"]
@@ -207,7 +206,6 @@ visibility_layer = 3
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 6
-texture_normal = ExtResource("6_mgwkc")
 
 [node name="WaveButton" type="TextureButton" parent="Control/TextureRect/HBoxContainer" unique_id=1517084409]
 visibility_layer = 3

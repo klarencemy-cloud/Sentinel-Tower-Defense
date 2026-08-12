@@ -32,6 +32,7 @@ func take_map_level() -> void:
 
 func _reset_map_level() -> void:
 	Data.current_level_index = 0
+	Data.clear_notpetya_enemy_speed_effect()
 	default_map_path = levels[Data.current_level_index]
 	current_map_name = ("Level" + str(Data.current_level_index + 1))
 	get_tree().change_scene_to_file("uid://h7qi8y7uyyai") # Loading screen

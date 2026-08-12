@@ -98,28 +98,28 @@ func start_sentinel_placement(sentinel_type: Data.Sentinel) -> void:
 		var camera = get_tree().get_first_node_in_group("camera")
 
 		preview.position = camera.position
-		var cell_pos = level_manager.world_to_map(preview.position)
-		_update_preview_buttons(cell_pos, preview)
-		preview.texture = load(Data.SENTINEL_DATA[sentinel_type]["thumbnail"])
+
+		# Set the preview scale BEFORE calculating the range
 		preview.scale = Vector2(0.65, 0.65)
+
+		preview.texture = load(Data.SENTINEL_DATA[sentinel_type]["thumbnail"])
 		preview.offset = Vector2(0, -165)
 		preview.modulate = Color.WHITE
-		
-		# Create/update the range indicator first
+
+		# Create/get the range indicator
 		create_range_indicator(preview)
-		_update_preview_buttons(cell_pos, preview)
+
+		# Get the sentinel's actual range from Data.gd
 		var sentinel_data = Data.SENTINEL_DATA.get(sentinel_type, {})
 		var sentinel_range: float = float(sentinel_data.get("range", 0))
 
 		if sentinel_range > 0:
 			update_range_indicator(preview, sentinel_range)
-		else:
-			if range_indicator:
-				range_indicator.visible = false
+		elif range_indicator:
+			range_indicator.visible = false
 
-		var world_pos = level_manager.map_to_world(cell_pos)
+		var cell_pos = level_manager.world_to_map(preview.position)
 
-		preview.position = world_pos
 		_update_preview_buttons(cell_pos, preview)
 
 		var place_btn = preview.get_node("PlaceTower")
@@ -133,6 +133,7 @@ func start_sentinel_placement(sentinel_type: Data.Sentinel) -> void:
 
 		if not cancel_btn.pressed.is_connected(cancel_current_placement):
 			cancel_btn.pressed.connect(cancel_current_placement)
+			
 			
 
 func cancel_selection() -> void:
@@ -293,12 +294,12 @@ func update_range_indicator(preview: Sprite2D, radius: float) -> void:
 	var segments := 100
 
 	for i in range(segments + 1):
-		var angle = TAU * i / segments
+		var angle := TAU * i / segments
 		points.append(Vector2(cos(angle), sin(angle)) * radius)
 
 	range_indicator.points = points
 
-	# Counteract the SentinelPreview's scale
+	# Counteract the SentinelPreview scale
 	range_indicator.scale = Vector2.ONE / preview.scale
 
 	range_indicator.visible = true

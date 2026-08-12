@@ -255,6 +255,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			enemy_type = $Boss4
 			$Boss4.material = $Boss4.material.duplicate()
 			$hpbar.visible = false
+			call_deferred("_boss4_dialogue_loop")
 		"boss5":
 			$Boss5.visible = true
 			enemy_type = $Boss5
@@ -335,7 +336,8 @@ func _process(delta: float):
 	# Apply regular slow effect
 	elif is_slowed:
 		current_speed = int(speed * 0.5) # 50% speed when slowed
-	
+
+	current_speed = int(round(float(current_speed) * Data.notpetya_enemy_speed_multiplier))
 
 	path_follow.progress += (current_speed * delta) * direction
 	
@@ -945,6 +947,26 @@ func _boss3_stun_loop() -> void:
 		var tower = towers.pick_random()
 		if !tower.stunned:
 			tower.apply_boss3_stun(5.0)
+
+func _boss4_dialogue_loop() -> void:
+	if enemy_type_stats != Data.Enemy.BOSS4:
+		return
+
+	await get_tree().create_timer(10.0).timeout
+	if dead or is_queued_for_deletion() or enemy_type_stats != Data.Enemy.BOSS4:
+		return
+
+	GameDialogueManager.activate_notpetya_dialogue()
+	await GameDialogueManager.wait_for_notpetya_dialogue_end()
+
+	while !dead and enemy_type_stats == Data.Enemy.BOSS4:
+		await get_tree().create_timer(10.0).timeout
+
+		if dead or is_queued_for_deletion():
+			break
+
+		GameDialogueManager.activate_notpetya_dialogue()
+		await GameDialogueManager.wait_for_notpetya_dialogue_end()
 
 func _boss5_spawn_loop():
 	while !dead and enemy_type_stats == Data.Enemy.BOSS5:

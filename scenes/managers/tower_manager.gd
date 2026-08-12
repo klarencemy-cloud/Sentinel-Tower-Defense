@@ -95,21 +95,25 @@ func start_tower_placement(tower_type: Data.Tower) -> void:
 	if preview:
 		preview.show()
 		preview_initialized = false
-		# preview.position = Vector2.ZERO
+
 		var camera = get_tree().get_first_node_in_group("camera")
 		var cameraX = camera.position.x
 		var cameraY = camera.position.y
 		preview.position = Vector2(cameraX, cameraY)
+
+		# Set the preview scale FIRST
+		preview.scale = Vector2(0.7, 0.7)
+
 		var cell_pos = level_manager.world_to_map(preview.position)
 		_update_preview_buttons(cell_pos, preview)
+
+		# THEN calculate the range
 		_update_preview_range(preview)
-		
+
 		preview.texture = load(Data.TOWER_DATA[tower_type]["thumbnail"])
 		preview.modulate = Color.WHITE
-		preview.scale = Vector2(0.7, 0.7)
 		preview.offset = Vector2(0, -53)
 
-		
 		var place_btn = preview.get_node("PlaceTower")
 		var cancel_btn = preview.get_node("CancelPlace")
 

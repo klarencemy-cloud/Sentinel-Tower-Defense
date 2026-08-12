@@ -80,6 +80,52 @@ func reward(type: String, value: float):
 	if type == "money":
 		Data.money += value
 
+func stun_all_towers(duration: float) -> void:
+	var towers: Array = []
+	for group_name in ["Towers", "towers"]:
+		towers.append_array(get_tree().get_nodes_in_group(group_name))
+
+	for tower in towers:
+		if tower and tower.has_method("apply_boss3_stun"):
+			tower.apply_boss3_stun(duration)
+
+func damage_boss4_by_percent(percent: float) -> void:
+	for enemy in get_tree().get_nodes_in_group("Enemies"):
+		if not is_instance_valid(enemy):
+			continue
+		if enemy.get("enemy_type") == enemy.get_node_or_null("Boss4"):
+			var damage_amount = max(1, int(round(enemy.health * percent)))
+			enemy.hit(damage_amount, -1)
+			print("NotPetya effect: Boss4 hit for ", damage_amount, " damage (", int(percent * 100), "% of HP)")
+			return
+	print("NotPetya effect: no active Boss4 found to damage")
+
+func apply_notpetya_wrong_answer() -> void:
+	var roll = randi() % 3
+
+	match roll:
+		0:
+			var heal_amount = Data.max_health * 0.25
+			Data.health = min(Data.max_health, Data.health + heal_amount)
+			print("NotPetya wrong answer: +25% HP heal (", heal_amount, ")")
+		1:
+			Data.apply_notpetya_enemy_speed_effect(1.15)
+			print("NotPetya wrong answer: +15% enemy movement speed")
+		2:
+			stun_all_towers(5.0)
+			print("NotPetya wrong answer: all towers stunned for 5s")
+
+func apply_notpetya_correct_answer() -> void:
+	var roll = randi() % 2
+
+	match roll:
+		0:
+			damage_boss4_by_percent(0.15)
+			print("NotPetya correct answer: Boss4 loses 15% HP")
+		1:
+			Data.apply_notpetya_enemy_speed_effect(0.85)
+			print("NotPetya correct answer: -15% enemy movement speed")
+
 func _disable_auto() -> void:
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
@@ -611,6 +657,17 @@ var option1_answer: bool
 var option2_answer: bool
 
 func choose_notpetya_dialogue() -> void:
+	if MESSAGE_DATA.is_empty():
+		MESSAGE_DATA = ARCHIVED_DATA.duplicate(true)
+		ARCHIVED_DATA.clear()
+
+	if MESSAGE_DATA.is_empty():
+		message1_texture = "res://graphics/enemies/notpetya_messages/legit1.png"
+		option1_answer = true
+		option2_answer = false
+		load_message_choices.emit(message1_texture)
+		return
+
 	current_option = MESSAGE_DATA.keys().pick_random()
 	ARCHIVED_DATA[current_option] = MESSAGE_DATA[current_option]
 	message1_texture = MESSAGE_DATA[current_option]["message1"]
@@ -623,5 +680,24 @@ func choose_notpetya_dialogue() -> void:
 # 	activate_notpetya_dialogue()
 
 
+var is_notpetya_dialogue_open: bool = false
+
+func _on_dialogue_ended(_resource) -> void:
+	is_notpetya_dialogue_open = false
+	if get_tree():
+		get_tree().paused = false
+
+func wait_for_notpetya_dialogue_end() -> void:
+	if not is_notpetya_dialogue_open:
+		return
+	await DialogueManager.dialogue_ended
+
 func activate_notpetya_dialogue() -> void:
+	if is_notpetya_dialogue_open:
+		return
+
+	is_notpetya_dialogue_open = true
+	if get_tree():
+		get_tree().paused = true
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended, CONNECT_ONE_SHOT)
 	DialogueManager.show_dialogue_balloon(load("res://Notpetya.dialogue"), "SkillActivate")

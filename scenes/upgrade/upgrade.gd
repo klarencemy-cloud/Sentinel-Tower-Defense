@@ -564,6 +564,9 @@ func _on_back_btn_pressed() -> void:
 func _on_tower_btn_pressed() -> void:
 	$TextureRect/ScrollContainer.visible = true
 	$SentinelStuff.visible = false
+	%BigPic.visible = true
+	%BigPic.texture = null
+	
 
 func _on_sentinel_btn_pressed() -> void:
 	$TextureRect/ScrollContainer.visible = false

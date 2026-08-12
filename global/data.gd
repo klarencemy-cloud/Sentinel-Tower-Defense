@@ -974,8 +974,17 @@ func reset_game():
 	currentserverload = 0
 	max_health = default_health
 	health = default_health
+	clear_notpetya_enemy_speed_effect()
 
 var multiplier: int = 1
+var notpetya_enemy_speed_multiplier: float = 1.0
+
+func clear_notpetya_enemy_speed_effect() -> void:
+	notpetya_enemy_speed_multiplier = 1.0
+
+func apply_notpetya_enemy_speed_effect(multiplier: float) -> void:
+	notpetya_enemy_speed_multiplier = multiplier
+
 var server_points: int = 1:
 	set(value):
 		server_points = value
