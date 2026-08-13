@@ -86,6 +86,7 @@ enum Ability {FIREWALL}
 var TOWER_DATA = {
 	Tower.SPAM_FILTER: {
 		'name': 'Spam Filter',
+		'isUnlocked' : true,
 		'cost': 45,
 		'server_load': 15,
 		'damage': 10,
@@ -133,6 +134,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.QUARANTINE_CANNON: {
 		'name': 'Quarantine Cannon',
+		'isUnlocked' : false,
 		'cost': 60,
 		'server_load': 30,
 		'damage': 100,
@@ -181,6 +183,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.IDPS: {
 		'name': 'IDPS',
+		'isUnlocked' : false,
 		'cost': 30,
 		'damage': 0,
 		'reload_time': 2.5,
@@ -226,6 +229,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.BACKUP_SERVER: {
 		'name': "Backup Server",
+		'isUnlocked' : false,
 		'cost': 550,
 		'damage': 5000,
 		'server_load': 65,
@@ -236,6 +240,7 @@ var TOWER_DATA = {
 		},
 	Tower.AD_BLOCKER: {
 		'name': 'Ad Blocker',
+		'isUnlocked' : false,
 		'cost': 75,
 		'server_load': 20,
 		'damage': 25,
@@ -284,6 +289,7 @@ var TOWER_DATA = {
 		},
 	Tower.ANTIVIRUS: {
 		'name': 'Antivirus',
+		'isUnlocked' : false,
 		'cost': 50,
 		'server_load': 20,
 		'damage': 30,
@@ -332,6 +338,7 @@ var TOWER_DATA = {
 		},
 		Tower.ACCESS_CONTROL_SYSTEM: {
 		'name': 'Access Control System',
+		'isUnlocked' : false,
 		'cost': 225,
 		'server_load': 35,
 		'damage': 120,
@@ -380,6 +387,7 @@ var TOWER_DATA = {
 		},
 		Tower.ENDPOINT_PROTECTION: {
 		'name': 'Endpoint Protection',
+		'isUnlocked' : false,
 		'cost': 350,
 		'server_load': 45,
 		'damage': 180,
@@ -428,6 +436,7 @@ var TOWER_DATA = {
 		},
 		Tower.SANDBOX_ANALYZER: {
 		'name': 'Sandbox Analyzer',
+		'isUnlocked' : false,
 		'cost': 150,
 		'server_load': 55,
 		'damage': 220,
@@ -476,6 +485,7 @@ var TOWER_DATA = {
 		},
 		Tower.AI_SECURITY: {
 		'name': 'AI Security',
+		'isUnlocked' : false,
 		'cost': 275,
 		'server_load': 40,
 		'damage': 130,
@@ -524,6 +534,7 @@ var TOWER_DATA = {
 		},
 		Tower.DATA_LOSS_PREVENTION: {
 		'name': 'DLP',
+		'isUnlocked' : false,
 		'cost': 50,
 		'server_load': 25,
 		'damage': 0,
@@ -585,6 +596,7 @@ func calculate_crit_damage(tower_type: int, base_damage: int, crit_chance_buff: 
 var SENTINEL_DATA = {
 	Sentinel.ETHICAL: {
 		'name': 'Ethical Hacker',
+		'isUnlocked' : false,
 		'cooldown': 15,
 		'duration': 3,
 		'range': 500,
@@ -613,6 +625,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.SYSAD: {
 		'name': 'System Administrator',
+		'isUnlocked' : false,
 		'cooldown': 60,
 		'range': 0,
 		'thumbnail': "res://graphics/sentinels/thumbnail/SYSTEMADMIN.png",
@@ -640,6 +653,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.INTRUSION: {
 		'name': 'Intrusion Analyst',
+		'isUnlocked' : false,
 		'cooldown': 30,
 		'range': 0,
 		'thumbnail': "res://graphics/sentinels/thumbnail/INTRUSIONANALYST.png",
@@ -667,6 +681,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.SECURITY: {
 		'name': 'Security Architect',
+		'isUnlocked' : false,
 		'cooldown': 15,
 		'duration': 10,
 		'range': 500,
@@ -695,6 +710,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.MALWARE: {
 		'name': 'Malware Analyst',
+		'isUnlocked' : false,
 		'cooldown': 25,
 		'duration': 15,
 		'range': 500,
@@ -723,6 +739,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.DECEPTION: {
 		'name': 'Deception Analyst',
+		'isUnlocked' : false,
 		'cooldown': 30,
 		'duration': 15,
 		'range': 500,

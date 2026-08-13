@@ -43,8 +43,18 @@ func set_selected_tower(tower_enum: Data.Tower) -> void:
 
 	$TextureRect/BigTowerName.text = Data.TOWER_DATA[tower_enum]['name']
 	%BigPic.texture = load(Data.TOWER_DATA[tower_enum]['thumbnail'])
-
-	$TextureRect/UpgradeButton.visible = true
+	
+	# Black out BigPic if tower is locked
+	if not Data.TOWER_DATA[tower_enum].get("isUnlocked", true):
+		%BigPic.modulate = Color(0, 0, 0, 0.5)
+		$TextureRect/BigTowerName.text = "???"
+		$TextureRect/UpgradeButton.visible = false
+		$TextureRect/Unlock.visible = true
+	else:
+		%BigPic.modulate = Color(1, 1, 1, 1)
+		$TextureRect/UpgradeButton.visible = true
+		$TextureRect/Unlock.visible = false
+		
 	var upgradeable: bool = bool(Data.TOWER_DATA[tower_enum].get("upgradeable", true))
 	if upgradeable:
 		$TextureRect/UpgradeButton/Label.text = "Upgrade"
@@ -584,3 +594,27 @@ func _on_sentinel_list_pressed() -> void:
 	$SentinelStuff/ScrollContainer.visible = true
 	$SentinelStuff/Rollbtn.visible = false
 	$SentinelStuff/SentinelList.visible = false
+
+
+func _on_unlock_pressed() -> void:
+	Data.TOWER_DATA[selected_tower]["isUnlocked"] = true
+	
+	# Restore the BigPic
+	%BigPic.modulate = Color(1, 1, 1, 1)
+	
+	# Restore the tower name
+	$TextureRect/BigTowerName.text = Data.TOWER_DATA[selected_tower]["name"]
+	
+	# Update the main UI tower card
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.unlock_tower_card(selected_tower)
+		
+	# Update the corresponding tower card
+	for tower_card in %SentinelsContainer.get_children():
+		if tower_card.id == selected_tower:
+			tower_card.update_unlock_status()
+			break
+	
+	$TextureRect/UpgradeButton.visible = true
+	$TextureRect/Unlock.visible = false

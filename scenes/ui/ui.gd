@@ -97,12 +97,18 @@ func _ready() -> void:
 		toggle_skill_activation()
 	
 	for tower_enum in Data.Tower.values():
-		var tower_card = tower_card_scene.instantiate()
-		tower_card.setup(tower_enum)
-		$Control/TextureRect/ScrollContainer/TowerCardsContainer.add_child(tower_card)
-		tower_card.connect('press', tower_select)
+		if not Data.TOWER_DATA[tower_enum].isUnlocked:
+			continue
+	
+		unlock_tower_card(tower_enum)
+
 
 	for sentinel_enum in Data.Sentinel.values():
+		var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
+		
+		if not sentinel_data.isUnlocked:
+			continue
+			
 		var sentinel_card = sentinel_card_scene.instantiate()
 		sentinel_card.setup(sentinel_enum)
 		$Control/TextureRect/ScrollContainer/SentinelCardsContainer.add_child(sentinel_card)
@@ -530,3 +536,24 @@ func update_tower_enemies_button_texture() -> void:
 		tower_enemies_button.texture_normal = sentinel_card_button_texture
 	elif enemy_cards_container.visible:
 		tower_enemies_button.texture_normal = enemy_card_button_texture
+		
+func unlock_tower_card(tower_enum: Data.Tower) -> void:
+	# Don't create a duplicate card
+	for card in tower_cards_container.get_children():
+		if card.id == tower_enum:
+			return
+
+	var tower_card = tower_card_scene.instantiate()
+	tower_card.setup(tower_enum)
+
+	# Find the correct position based on Data.Tower enum order
+	var insert_index := 0
+
+	for card in tower_cards_container.get_children():
+		if card.id < tower_enum:
+			insert_index += 1
+
+	tower_cards_container.add_child(tower_card)
+	tower_cards_container.move_child(tower_card, insert_index)
+
+	tower_card.connect("press", tower_select)
