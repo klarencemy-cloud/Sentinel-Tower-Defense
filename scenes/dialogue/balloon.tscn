@@ -297,11 +297,13 @@ stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Pic1" type="TextureRect" parent="Balloon/Message1" unique_id=314697088]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.06376648
-anchor_top = 0.16368128
+anchor_top = 0.16676962
 anchor_right = 0.93524164
-anchor_bottom = 0.8863496
+anchor_bottom = 0.889438
+grow_vertical = 2
 texture = ExtResource("11_skbq4")
 metadata/_edit_use_anchors_ = true
 

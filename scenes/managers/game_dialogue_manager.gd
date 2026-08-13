@@ -625,7 +625,7 @@ func show_messages(state: bool) -> void:
 	show_balloon_messages.emit(state)
 
 signal load_message_choices(texture1: String)
-enum Messages {SAMPLE1, SAMPLE2, SAMPLE3, SAMPLE4, SAMPLE5}
+enum Messages {SAMPLE1, SAMPLE2, SAMPLE3, SAMPLE4, SAMPLE5, SAMPLE6, SAMPLE7, SAMPLE8, SAMPLE9, SAMPLE10}
 
 var MESSAGE_DATA = {
 	Messages.SAMPLE1: {
@@ -638,6 +638,11 @@ var MESSAGE_DATA = {
 		"option2": false,
 		"message1": "res://graphics/enemies/notpetya_messages/legit1.png"
 	},
+	Messages.SAMPLE3: {
+		"option1": true,
+		"option2": false,
+		"message1": "res://graphics/enemies/notpetya_messages/legit2.png"
+	},
 	Messages.SAMPLE4: {
 		"option1": false,
 		"option2": true,
@@ -648,6 +653,31 @@ var MESSAGE_DATA = {
 		"option2": false,
 		"message1": "res://graphics/enemies/notpetya_messages/legit3.png"
 	},
+	Messages.SAMPLE6: {
+		"option1": false,
+		"option2": true,
+		"message1": "res://graphics/enemies/notpetya_messages/fake3.png"
+	},
+	Messages.SAMPLE7: {
+		"option1": true,
+		"option2": false,
+		"message1": "res://graphics/enemies/notpetya_messages/legit4.png"
+	},
+	Messages.SAMPLE8: {
+		"option1": false,
+		"option2": true,
+		"message1": "res://graphics/enemies/notpetya_messages/fake4.png"
+	},
+	Messages.SAMPLE9: {
+		"option1": true,
+		"option2": false,
+		"message1": "res://graphics/enemies/notpetya_messages/legit5.png"
+	},
+	Messages.SAMPLE10: {
+		"option1": false,
+		"option2": true,
+		"message1": "res://graphics/enemies/notpetya_messages/fake5.png"
+	}
 }
 var ARCHIVED_DATA = {}
 
