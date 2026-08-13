@@ -557,3 +557,24 @@ func unlock_tower_card(tower_enum: Data.Tower) -> void:
 	tower_cards_container.move_child(tower_card, insert_index)
 
 	tower_card.connect("press", tower_select)
+
+func unlock_sentinel_card(sentinel_enum: Data.Sentinel) -> void:
+	# Don't create a duplicate card
+	for card in sentinel_cards_container.get_children():
+		if card.id == sentinel_enum:
+			return
+
+	var sentinel_card = sentinel_card_scene.instantiate()
+	sentinel_card.setup(sentinel_enum)
+
+	# Find the correct position based on Data.Sentinel enum order
+	var insert_index := 0
+
+	for card in sentinel_cards_container.get_children():
+		if card.id < sentinel_enum:
+			insert_index += 1
+
+	sentinel_cards_container.add_child(sentinel_card)
+	sentinel_cards_container.move_child(sentinel_card, insert_index)
+
+	sentinel_card.connect("press", sentinel_select)

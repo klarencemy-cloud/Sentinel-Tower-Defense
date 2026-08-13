@@ -32,6 +32,31 @@ func _ready() -> void:
 	for sentinel_enum in Data.Sentinel.values():
 		var sentinel_card = sentinel_card_scene.instantiate()
 		sentinel_card.setup(sentinel_enum)
+
+		var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
+		var is_unlocked: bool = sentinel_data.get("isUnlocked", false)
+
+		var image = sentinel_card.get_node("TextureRect/TextureRect")
+		var locked_image = sentinel_card.get_node("TextureRect/locked")
+		var label = sentinel_card.get_node("TextureRect/Label")
+
+		if not is_unlocked:
+			# Show locked overlay
+			locked_image.visible = true
+			
+			# Black out the sentinel image
+			image.modulate = Color(0, 0, 0, 1)
+			
+			# Hide the actual name
+			label.text = "???"
+		else:
+			# Normal appearance
+			locked_image.visible = false
+			image.modulate = Color(1, 1, 1, 1)
+			
+			# Show the sentinel's actual name
+			label.text = sentinel_data.get("name", "")
+
 		$SentinelStuff/ScrollContainer/RealSentinelContainer.add_child(sentinel_card)
 	
 	sentinel_roll_thumbnails = _build_sentinel_roll_thumbnails()
@@ -503,52 +528,128 @@ func update_ability_panel() -> void:
 			label.text = unlock_text
 
 func _build_sentinel_roll_thumbnails() -> Array:
-	var textures: Array = []
-	for sentinel_data in Data.SENTINEL_DATA.values():
+	# ALL sentinels are included in the animation.
+	# This means already-unlocked sentinels can still appear
+	# while the roll is spinning.
+	sentinel_roll_thumbnails.clear()
+
+	for sentinel_enum in Data.Sentinel.values():
+		var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
+
 		if sentinel_data.has("thumbnail"):
-			var thumbnail_path = sentinel_data["thumbnail"]
-			var texture = load(thumbnail_path)
+			var texture = load(sentinel_data["thumbnail"])
+
 			if texture:
-				textures.append(texture)
-	return textures
+				sentinel_roll_thumbnails.append(texture)
+
+	return sentinel_roll_thumbnails
+
+
+func _get_locked_sentinels() -> Array:
+	var locked_sentinels: Array = []
+
+	for sentinel_enum in Data.Sentinel.values():
+		var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
+
+		if not sentinel_data.get("isUnlocked", false):
+			locked_sentinels.append(sentinel_enum)
+
+	return locked_sentinels
+
 
 func _on_Rollbtn_pressed() -> void:
 	if sentinel_roll_active:
 		return
-	if sentinel_roll_thumbnails.size() == 0:
+
+	var locked_sentinels = _get_locked_sentinels()
+
+	# All sentinels have already been unlocked
+	if locked_sentinels.is_empty():
 		return
-	
+
+	if sentinel_roll_thumbnails.is_empty():
+		return
+
 	$SentinelStuff/SentinelRoll/Sentinel.visible = true
 	sentinel_roll_active = true
 	$SentinelStuff/Rollbtn.disabled = true
-	await _animate_sentinel_roll()
+
+	await _animate_sentinel_roll(locked_sentinels)
+
 	$SentinelStuff/Rollbtn.disabled = false
 	sentinel_roll_active = false
 
-func _animate_sentinel_roll() -> void:
-	var duration = 3.0
-	var interval = 0.08
-	var elapsed = 0.0
-	var sentinel_node = $SentinelStuff/SentinelRoll/Sentinel
 
+func _animate_sentinel_roll(locked_sentinels: Array) -> void:
+	var duration := 3.0
+	var interval := 0.08
+	var elapsed := 0.0
+
+	var sentinel_node: TextureRect = $SentinelStuff/SentinelRoll/Sentinel
+
+	# Start black
 	sentinel_node.modulate = Color(0, 0, 0, 1)
 
+
+	# ROLLING ANIMATION
+
+	# ALL sentinels appears during animation
 	while elapsed < duration:
-		var random_texture = sentinel_roll_thumbnails[randi() % sentinel_roll_thumbnails.size()]
-		sentinel_node.texture = random_texture
+		var random_index := randi() % sentinel_roll_thumbnails.size()
+		sentinel_node.texture = sentinel_roll_thumbnails[random_index]
+
 		await get_tree().create_timer(interval).timeout
 		elapsed += interval
 
-	var final_texture = sentinel_roll_thumbnails[randi() % sentinel_roll_thumbnails.size()]
-	sentinel_node.texture = final_texture
+
+	# FINAL RESULT
+	
+	# Only choose from currently LOCKED sentinels.
+	var chosen_index := randi() % locked_sentinels.size()
+	var chosen_enum: Data.Sentinel = locked_sentinels[chosen_index]
+
+	var chosen_data = Data.SENTINEL_DATA[chosen_enum]
+	var chosen_texture = load(chosen_data["thumbnail"])
+
+	# Show the winning sentinel
+	sentinel_node.texture = chosen_texture
 	sentinel_node.modulate = Color(1, 1, 1, 1)
 
+	#unlocks sentinel
+	Data.SENTINEL_DATA[chosen_enum]["isUnlocked"] = true
+	_update_sentinel_card_visual(chosen_enum)
+	
+	# Add the newly unlocked sentinel to the main game UI
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.unlock_sentinel_card(chosen_enum)
+
+	# Rebuild the animation list.
+	# All sentinels are still allowed to appear while rolling.
+	sentinel_roll_thumbnails = _build_sentinel_roll_thumbnails()
+	
+func _update_sentinel_card_visual(sentinel_enum: Data.Sentinel) -> void:
+	var container = $SentinelStuff/ScrollContainer/RealSentinelContainer
+
+	for card in container.get_children():
+		if card.id == sentinel_enum:
+			var image: TextureRect = card.get_node("TextureRect/TextureRect")
+			var locked_image: TextureRect = card.get_node("TextureRect/locked")
+			var label: Label = card.get_node("TextureRect/Label")
+
+			locked_image.visible = false
+			image.modulate = Color.WHITE
+			label.text = Data.SENTINEL_DATA[sentinel_enum].get("name", "")
+
+			break
+			
 func _on_back_btn_pressed() -> void:
 	if $SentinelStuff/ScrollContainer.visible == true:
 		$SentinelStuff/ScrollContainer.visible = false
 		$SentinelStuff/Rollbtn.visible = true
 		$SentinelStuff/SentinelList.visible = true
 		$SentinelStuff/SentinelRoll.visible = true
+		$SentinelStuff/Core.visible = true
 	else:
 		if %SentinelsContainer.visible == true:
 			get_tree().paused = false
@@ -587,14 +688,16 @@ func _on_sentinel_btn_pressed() -> void:
 	$TextureRect/UpgradePanel.visible = false
 	$SentinelStuff.visible = true
 	$SentinelStuff/SentinelRoll.visible = true
-
-
+	$SentinelStuff/ScrollContainer.visible = false
+	$SentinelStuff/SentinelList.visible = true
+	$SentinelStuff/Rollbtn.visible = true
+	
 func _on_sentinel_list_pressed() -> void:
 	$SentinelStuff/SentinelRoll.visible = false
 	$SentinelStuff/ScrollContainer.visible = true
 	$SentinelStuff/Rollbtn.visible = false
 	$SentinelStuff/SentinelList.visible = false
-
+	$SentinelStuff/Core.visible = false
 
 func _on_unlock_pressed() -> void:
 	Data.TOWER_DATA[selected_tower]["isUnlocked"] = true
