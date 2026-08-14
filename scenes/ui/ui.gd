@@ -43,7 +43,7 @@ var tower_card_button_texture = preload("res://graphics/ui/tower_card_button.png
 var sentinel_card_button_texture = preload("res://graphics/ui/sentinel_card_button.png")
 var enemy_card_button_texture = preload("res://graphics/ui/enemy_card_button.png")
 
-enum CardCategory { TOWER, SENTINEL, ENEMY }
+enum CardCategory {TOWER, SENTINEL, ENEMY}
 var fade_tween: Tween
 
 var ad_timer := Timer.new()
@@ -89,7 +89,7 @@ func _ready() -> void:
 		Data.before_owned_towers = Data.owned_towers.duplicate()
 		Data.owned_towers.clear()
 		# Backup and reset tower upgrades for sandbox mode
-		Data._initialize_base_tower_stats()  # Ensure base stats are captured before backing up
+		Data._initialize_base_tower_stats() # Ensure base stats are captured before backing up
 		Data._backup_tower_upgrades()
 		Data._reset_tower_upgrades_to_base()
 		Offense._sandbox_mode()
@@ -437,6 +437,14 @@ func hide_pop(state: bool):
 
 func hide_pop2(state: bool):
 	$Scripture.visible = state
+
+func hide_pop3(state: bool):
+	$SentinelPop.visible = state
+
+func play_sentinel_pop(sentinel: String):
+	$SentinelPop.play_animation(sentinel)
+	$SentinelPop/Info/TextureRect/AnimatedSprite2D.play(sentinel)
+
 
 func play_scene(scene: String):
 	$Cutscene.visible = true

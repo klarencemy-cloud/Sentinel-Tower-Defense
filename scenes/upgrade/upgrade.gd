@@ -626,12 +626,17 @@ func _animate_sentinel_roll(locked_sentinels: Array) -> void:
 
 	#unlocks sentinel
 	Data.SENTINEL_DATA[chosen_enum]["isUnlocked"] = true
+	
+	
 	_update_sentinel_card_visual(chosen_enum)
 	
 	# Add the newly unlocked sentinel to the main game UI
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.unlock_sentinel_card(chosen_enum)
+		#show sentinel popup animation
+		ui.play_sentinel_pop(Data.SENTINEL_DATA[chosen_enum]["name"])
+	
 
 	# Rebuild the animation list.
 	# All sentinels are still allowed to appear while rolling.
@@ -659,9 +664,15 @@ func _on_back_btn_pressed() -> void:
 		$SentinelStuff/SentinelRoll.visible = true
 		$SentinelStuff/Core.visible = true
 		if Data.is_sandbox:
-			$SentinelStuff/Rollbtn.visible =false
+			$SentinelStuff/Rollbtn.visible = false
 		else:
 			$SentinelStuff/Rollbtn.visible = true
+
+	elif $SentinelStuff.visible:
+		$SentinelStuff.hide()
+		$TextureRect/ScrollContainer.visible = true
+		$SentinelStuff.visible = false
+		%BigPic.visible = true
 	else:
 		if %SentinelsContainer.visible == true:
 			get_tree().paused = false
@@ -692,6 +703,8 @@ func _on_tower_btn_pressed() -> void:
 	
 
 func _on_sentinel_btn_pressed() -> void:
+	$TextureRect/Unlock.hide()
+	$SentinelStuff/Core.show()
 	$TextureRect/ScrollContainer.visible = false
 	$TextureRect/UpgradeButton.visible = false
 	%BigPic.visible = false
@@ -704,7 +717,7 @@ func _on_sentinel_btn_pressed() -> void:
 	$SentinelStuff/SentinelList.visible = true
 	
 	if Data.is_sandbox:
-		$SentinelStuff/Rollbtn.visible =false
+		$SentinelStuff/Rollbtn.visible = false
 	else:
 		$SentinelStuff/Rollbtn.visible = true
 	

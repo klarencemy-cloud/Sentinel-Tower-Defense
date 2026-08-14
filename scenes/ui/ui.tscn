@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://1qgvsuhf841g" path="res://graphics/ui/enemyhpbar1.png" id="27_vnqvi"]
 [ext_resource type="Texture2D" uid="uid://ba1dyadxb3f65" path="res://graphics/ui/enemyhpbar2.png" id="28_7ygsn"]
 [ext_resource type="PackedScene" uid="uid://qimt0w5cnppk" path="res://scenes/dialogue/scripture.tscn" id="31_272wc"]
+[ext_resource type="PackedScene" uid="uid://b246c4s7bkq30" path="res://scenes/sentinels/sentinel_popup.tscn" id="31_knhlc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vp6q"]
 texture = ExtResource("2_g5kmx")
@@ -764,6 +765,10 @@ visible = false
 layer = 2
 visible = false
 
+[node name="SentinelPop" parent="." unique_id=57344608 instance=ExtResource("31_knhlc")]
+layer = 5
+visible = false
+
 [node name="Cutscene" parent="." unique_id=1233131737 instance=ExtResource("2_khplb")]
 process_mode = 3
 visible = false
@@ -776,10 +781,6 @@ z_index = 4
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2000.0
-offset_top = 102.0
-offset_right = 2000.0
-offset_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

@@ -132,7 +132,7 @@ fill = 1
 fill_from = Vector2(0.50427353, 0.50427353)
 fill_to = Vector2(0.8504273, 0.15384616)
 
-[node name="Scripture" type="CanvasLayer" unique_id=317540891 groups=["animate2"]]
+[node name="Scripture2" type="CanvasLayer" unique_id=317540891 groups=["animate2"]]
 process_mode = 3
 script = ExtResource("1_c0ukr")
 
@@ -299,15 +299,6 @@ anchor_top = 0.05204408
 anchor_right = 0.6646375
 anchor_bottom = 0.9490574
 texture = ExtResource("11_e305x")
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect" type="ColorRect" parent="Info/TextureRect" unique_id=831120842]
-layout_mode = 0
-anchor_left = 0.7196575
-anchor_top = 0.03266927
-anchor_right = 0.92824894
-anchor_bottom = 0.9680514
-color = Color(0.009799991, 0.8829801, 0.98, 0.047058824)
 metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="Info/TextureRect" unique_id=1175543820]
