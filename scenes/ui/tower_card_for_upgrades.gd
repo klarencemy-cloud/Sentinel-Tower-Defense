@@ -23,11 +23,12 @@ func _on_pressed() -> void:
 	upgrade_ui.set_selected_tower(id)
 
 func update_unlock_status() -> void:
-	if Data.TOWER_DATA[id]["isUnlocked"]:
-		$TextureRect/TextureRect.modulate = Color(1, 1, 1, 1)
-		$TextureRect/Label.text = Data.TOWER_DATA[id]["name"]
-		$TextureRect/towerlocked.visible = false
-	else:
-		$TextureRect/TextureRect.modulate = Color(0, 0, 0, 1)
-		$TextureRect/Label.text = "???"
-		$TextureRect/towerlocked.visible = true
+	if not Data.is_sandbox:
+		if Data.TOWER_DATA[id]["isUnlocked"]:
+			$TextureRect/TextureRect.modulate = Color(1, 1, 1, 1)
+			$TextureRect/Label.text = Data.TOWER_DATA[id]["name"]
+			$TextureRect/towerlocked.visible = false
+		else:
+			$TextureRect/TextureRect.modulate = Color(0, 0, 0, 1)
+			$TextureRect/Label.text = "???"
+			$TextureRect/towerlocked.visible = true

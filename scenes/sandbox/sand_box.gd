@@ -22,6 +22,7 @@ func _exit_tree() -> void:
 	Data.current_level_index = Data.before_level_index
 	Data.owned_towers = Data.before_owned_towers.duplicate() # restore owned towers after sandbox
 	Data.server_points = Data.before_server_points # restore server points after sandbox
+	Data._restore_tower_upgrades() # restore tower upgrades after sandbox
 	Offense._restore_original_server_stats() # restore server upgrade stats after sandbox
 	Defense._restore_original_server_stats()
 	Economy._restore_original_server_stats()

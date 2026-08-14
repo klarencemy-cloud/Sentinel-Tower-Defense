@@ -88,6 +88,13 @@ func _ready() -> void:
 		wave_button.disabled = true # disable start wave button
 		Data.before_owned_towers = Data.owned_towers.duplicate()
 		Data.owned_towers.clear()
+		# Backup and reset tower upgrades for sandbox mode
+		Data._initialize_base_tower_stats()  # Ensure base stats are captured before backing up
+		Data._backup_tower_upgrades()
+		Data._reset_tower_upgrades_to_base()
+		Offense._sandbox_mode()
+		Defense._sandbox_mode()
+		Economy._sandbox_mode()
 		unli_money.button_pressed = true
 		unli_health.button_pressed = true
 		$Control/HBoxContainer.position.y = 780
@@ -97,17 +104,18 @@ func _ready() -> void:
 		toggle_skill_activation()
 	
 	for tower_enum in Data.Tower.values():
-		if not Data.TOWER_DATA[tower_enum].isUnlocked:
-			continue
-	
+		if not Data.is_sandbox:
+			if not Data.TOWER_DATA[tower_enum].isUnlocked:
+				continue
 		unlock_tower_card(tower_enum)
 
 
 	for sentinel_enum in Data.Sentinel.values():
 		var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
 		
-		if not sentinel_data.isUnlocked:
-			continue
+		if not Data.is_sandbox:
+			if not sentinel_data.isUnlocked:
+				continue
 			
 		var sentinel_card = sentinel_card_scene.instantiate()
 		sentinel_card.setup(sentinel_enum)
