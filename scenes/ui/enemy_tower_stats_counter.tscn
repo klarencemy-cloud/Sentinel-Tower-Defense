@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d3umplddt2630" path="res://graphics/container/bottom_counter.png" id="3_rmd3k"]
 [ext_resource type="Texture2D" uid="uid://bihllc5d7x1nr" path="res://graphics/ui/progress_bar.png" id="4_q31yk"]
 [ext_resource type="Texture2D" uid="uid://cpxjgsotcj2t6" path="res://graphics/container/counter_button.png" id="6_go7qu"]
-[ext_resource type="Texture2D" uid="uid://s8xhvy48k726" path="res://graphics/bosses/virus.png" id="6_h6p2n"]
+[ext_resource type="Texture2D" uid="uid://c6j3u1ewdc7ry" path="res://graphics/enemies/enemies thumbnail/virus.png" id="6_h6p2n"]
 
 [node name="EnemyTowerStatsCounter" type="CanvasLayer" unique_id=1729359607]
 script = ExtResource("1_go7qu")
