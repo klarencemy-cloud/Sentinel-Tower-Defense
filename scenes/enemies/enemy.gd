@@ -290,7 +290,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 				Data.Enemy.BOSS3:
 					boss_name = "WannaCry"
 				Data.Enemy.BOSS4:
-					boss_name = "NotPeyta"
+					boss_name = "NotPetya"
 				Data.Enemy.BOSS5:
 					boss_name = "MyDoom"
 

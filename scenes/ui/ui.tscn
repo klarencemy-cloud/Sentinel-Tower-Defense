@@ -28,8 +28,10 @@
 [ext_resource type="Texture2D" uid="uid://bubyrkehmuahc" path="res://graphics/ui/progress-bg.png" id="19_ygedu"]
 [ext_resource type="FontFile" uid="uid://cqus3kybakmf8" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraBold.ttf" id="21_oopc8"]
 [ext_resource type="Texture2D" uid="uid://csv6mnj4uo2vr" path="res://graphics/currency/small_gold.png" id="22_272wc"]
+[ext_resource type="Texture2D" uid="uid://i5c8je4b0012" path="res://graphics/ui/long_bar.png" id="27_knhlc"]
 [ext_resource type="Texture2D" uid="uid://1qgvsuhf841g" path="res://graphics/ui/enemyhpbar1.png" id="27_vnqvi"]
 [ext_resource type="Texture2D" uid="uid://ba1dyadxb3f65" path="res://graphics/ui/enemyhpbar2.png" id="28_7ygsn"]
+[ext_resource type="Texture2D" uid="uid://cqbkavk1yoxm4" path="res://graphics/ui/long_bar_red.png" id="28_o2sfg"]
 [ext_resource type="PackedScene" uid="uid://qimt0w5cnppk" path="res://scenes/dialogue/scripture.tscn" id="31_272wc"]
 [ext_resource type="PackedScene" uid="uid://b246c4s7bkq30" path="res://scenes/sentinels/sentinel_popup.tscn" id="31_knhlc"]
 
@@ -540,43 +542,54 @@ vertical_alignment = 1
 [node name="bosshpbar" type="TextureProgressBar" parent="Control" unique_id=257423371]
 visible = false
 layout_mode = 0
-offset_left = 479.0
-offset_top = 26.0
-offset_right = 970.5
-offset_bottom = 107.0
+anchor_left = 0.25416666
+anchor_top = 0.08148148
+anchor_right = 0.76666665
+anchor_bottom = 0.12407407
+offset_right = -492.0
+offset_bottom = -23.0
 scale = Vector2(2, 2)
-texture_under = ExtResource("27_vnqvi")
-texture_progress = ExtResource("28_7ygsn")
+texture_under = ExtResource("27_knhlc")
+texture_progress = ExtResource("28_o2sfg")
+metadata/_edit_use_anchors_ = true
 
 [node name="hpamount" type="Label" parent="Control/bosshpbar" unique_id=890304568]
 texture_filter = 2
-layout_mode = 0
-offset_left = 4.0
-offset_top = 50.0
-offset_right = 80.0
-offset_bottom = 69.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8699187
+anchor_top = -1.0
+anchor_right = 1.0
+anchor_bottom = -0.17391305
+grow_horizontal = 0
 text = "100/100"
+metadata/_edit_use_anchors_ = true
 
 [node name="bossname" type="Label" parent="Control/bosshpbar" unique_id=1939673303]
 texture_filter = 2
 layout_mode = 0
-offset_left = 190.0
-offset_top = 1.0
-offset_right = 296.0
-offset_bottom = 34.0
+anchor_left = 0.38617885
+anchor_top = -1.4565217
+anchor_right = 0.60162604
+anchor_bottom = -0.02173913
 theme_override_font_sizes/font_size = 23
 text = "Boss Name"
+metadata/_edit_use_anchors_ = true
 
 [node name="smallhpbar1" type="TextureProgressBar" parent="Control" unique_id=1301150721]
 visible = false
-layout_mode = 0
-offset_left = 485.0
-offset_top = 172.0
-offset_right = 972.0
-offset_bottom = 253.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25572917
+anchor_top = 0.17407407
+anchor_right = 0.45864582
+anchor_bottom = 0.23407407
+offset_right = 97.400024
+offset_bottom = 16.199997
 scale = Vector2(0.8, 0.8)
 texture_under = ExtResource("27_vnqvi")
 texture_progress = ExtResource("28_7ygsn")
+metadata/_edit_use_anchors_ = true
 
 [node name="hpamount" type="Label" parent="Control/smallhpbar1" unique_id=797922160]
 texture_filter = 2
@@ -600,13 +613,16 @@ text = "Boss Name"
 [node name="smallhpbar2" type="TextureProgressBar" parent="Control" unique_id=995560531]
 visible = false
 layout_mode = 0
-offset_left = 485.0
-offset_top = 219.0
-offset_right = 972.0
-offset_bottom = 300.0
+anchor_left = 0.25572917
+anchor_top = 0.2175926
+anchor_right = 0.45864582
+anchor_bottom = 0.27759257
+offset_right = 97.400024
+offset_bottom = 16.200012
 scale = Vector2(0.8, 0.8)
 texture_under = ExtResource("27_vnqvi")
 texture_progress = ExtResource("28_7ygsn")
+metadata/_edit_use_anchors_ = true
 
 [node name="hpamount" type="Label" parent="Control/smallhpbar2" unique_id=258913973]
 texture_filter = 2
@@ -630,13 +646,16 @@ text = "Boss Name"
 [node name="smallhpbar3" type="TextureProgressBar" parent="Control" unique_id=2108898015]
 visible = false
 layout_mode = 0
-offset_left = 485.0
-offset_top = 267.0
-offset_right = 972.0
-offset_bottom = 348.0
+anchor_left = 0.25572917
+anchor_top = 0.26203704
+anchor_right = 0.45864582
+anchor_bottom = 0.322037
+offset_right = 97.400024
+offset_bottom = 16.200043
 scale = Vector2(0.8, 0.8)
 texture_under = ExtResource("27_vnqvi")
 texture_progress = ExtResource("28_7ygsn")
+metadata/_edit_use_anchors_ = true
 
 [node name="hpamount" type="Label" parent="Control/smallhpbar3" unique_id=266765158]
 texture_filter = 2
@@ -660,13 +679,16 @@ text = "Boss Name"
 [node name="smallhpbar4" type="TextureProgressBar" parent="Control" unique_id=1218767449]
 visible = false
 layout_mode = 0
-offset_left = 927.0
-offset_top = 171.0
-offset_right = 1414.0
-offset_bottom = 252.0
+anchor_left = 0.4859375
+anchor_top = 0.17314816
+anchor_right = 0.68885416
+anchor_bottom = 0.23314816
+offset_right = 97.400024
+offset_bottom = 16.199997
 scale = Vector2(0.8, 0.8)
 texture_under = ExtResource("27_vnqvi")
 texture_progress = ExtResource("28_7ygsn")
+metadata/_edit_use_anchors_ = true
 
 [node name="hpamount" type="Label" parent="Control/smallhpbar4" unique_id=288788875]
 texture_filter = 2
@@ -690,13 +712,16 @@ text = "Boss Name"
 [node name="smallhpbar5" type="TextureProgressBar" parent="Control" unique_id=1821812861]
 visible = false
 layout_mode = 0
-offset_left = 928.0
-offset_top = 218.0
-offset_right = 1415.0
-offset_bottom = 299.0
+anchor_left = 0.48645833
+anchor_top = 0.21666667
+anchor_right = 0.689375
+anchor_bottom = 0.27666664
+offset_right = 97.400024
+offset_bottom = 16.200012
 scale = Vector2(0.8, 0.8)
 texture_under = ExtResource("27_vnqvi")
 texture_progress = ExtResource("28_7ygsn")
+metadata/_edit_use_anchors_ = true
 
 [node name="hpamount" type="Label" parent="Control/smallhpbar5" unique_id=53319558]
 texture_filter = 2
@@ -720,13 +745,16 @@ text = "Boss Name"
 [node name="smallhpbar6" type="TextureProgressBar" parent="Control" unique_id=297670005]
 visible = false
 layout_mode = 0
-offset_left = 929.0
-offset_top = 266.0
-offset_right = 1416.0
-offset_bottom = 347.0
+anchor_left = 0.48697916
+anchor_top = 0.2611111
+anchor_right = 0.6898958
+anchor_bottom = 0.3211111
+offset_right = 97.400024
+offset_bottom = 16.200012
 scale = Vector2(0.8, 0.8)
 texture_under = ExtResource("27_vnqvi")
 texture_progress = ExtResource("28_7ygsn")
+metadata/_edit_use_anchors_ = true
 
 [node name="hpamount" type="Label" parent="Control/smallhpbar6" unique_id=1088983608]
 texture_filter = 2

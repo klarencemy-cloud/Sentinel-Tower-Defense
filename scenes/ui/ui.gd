@@ -468,7 +468,7 @@ func update_boss_hp(enemy: Data.Enemy, current_hp: int, max_hp: int):
 		Data.Enemy.BOSS3:
 			boss_name.text = "WannaCry"
 		Data.Enemy.BOSS4:
-			boss_name.text = "NotPeyta"
+			boss_name.text = "NotPetya"
 		Data.Enemy.BOSS5:
 			boss_name.text = "MyDoom"
 
