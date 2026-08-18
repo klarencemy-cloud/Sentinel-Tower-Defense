@@ -1759,6 +1759,10 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=75007288]
 libraries/ = SubResource("AnimationLibrary_x3klb")
 
+[node name="DeceptionDebuff" type="Timer" parent="." unique_id=1149249286]
+wait_time = 15.0
+one_shot = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Boss1/SpawnVirusTimer" to="." method="_on_spawn_virus_timer_timeout"]
 [connection signal="timeout" from="Boss2/SpawnBotnetTimer" to="." method="_on_spawn_virus_timer_timeout"]
@@ -1768,3 +1772,4 @@ libraries/ = SubResource("AnimationLibrary_x3klb")
 [connection signal="area_exited" from="BotnetAbility" to="." method="_on_bot_net_ability_area_exited"]
 [connection signal="area_entered" from="VirusAbility" to="." method="_on_virus_ability_area_entered"]
 [connection signal="area_exited" from="VirusAbility" to="." method="_on_virus_ability_area_exited"]
+[connection signal="timeout" from="DeceptionDebuff" to="." method="_on_deception_debuff_timeout"]

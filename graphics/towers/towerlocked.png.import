@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3k0r3etcd08f"
-path="res://.godot/imported/dollar.png-8f18e55f43a9eda380be293512b96e0c.ctex"
+uid="uid://w1nj12ldkm8a"
+path="res://.godot/imported/towerlocked.png-c099c6ee057e5227e1114a4136d0d644.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/ui/dollar.png"
-dest_files=["res://.godot/imported/dollar.png-8f18e55f43a9eda380be293512b96e0c.ctex"]
+source_file="res://graphics/towers/towerlocked.png"
+dest_files=["res://.godot/imported/towerlocked.png-c099c6ee057e5227e1114a4136d0d644.ctex"]
 
 [params]
 

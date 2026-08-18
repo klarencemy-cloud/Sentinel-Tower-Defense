@@ -19,6 +19,7 @@ func skill_duration():
 	$SkillDuration.wait_time = duration
 
 func _ready() -> void:
+	toggle_skill_icon()
 	$AnimatedSprite2D/Cooldown.hide()
 	$SentinelSkill/CollisionShape2D.shape.radius = float(range)
 	ability_cooldown()
@@ -94,6 +95,7 @@ func _on_skill_duration_timeout() -> void:
 	
 
 func _on_reload_timer_timeout() -> void:
+	toggle_skill_icon()
 	$SentinelSkill.monitoring = true
 	$SkillDuration.start()
 	$AnimatedSprite2D/Cooldown.hide()
@@ -137,3 +139,12 @@ func show_range() -> void:
 func hide_range() -> void:
 	if range_indicator:
 		range_indicator.visible = false
+
+func toggle_skill_icon():
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property($AnimatedSprite2D/SkillIcon, "position:y", -226, 1)
+	tween.parallel().tween_property($AnimatedSprite2D/SkillIcon, "modulate:a", 1, 1)
+	tween.tween_property($AnimatedSprite2D/SkillIcon, "modulate:a", 0, 1)
+	tween.tween_property($AnimatedSprite2D/SkillIcon, "position:y", -204.812, 0)

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dwmskfb3hjo3k" path="res://scenes/sentinels/sentinel_ethical_hacker.gd" id="1_wt8kl"]
 [ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="2_wt8kl"]
 [ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="3_m2n11"]
+[ext_resource type="Texture2D" uid="uid://c36bhr1jjwq0m" path="res://graphics/icons/buff_and_debuff.png" id="3_qy1i3"]
 [ext_resource type="Texture2D" uid="uid://bhe1pw8va777g" path="res://texture/0001.png" id="5_rxhxj"]
 [ext_resource type="Texture2D" uid="uid://fv2nsp2ceytq" path="res://texture/offset_glow.png" id="6_m2n11"]
 [ext_resource type="Script" uid="uid://drbocy3xkv6hu" path="res://scenes/sentinels/sentinel_collision.gd" id="6_xgh1i"]
@@ -52,6 +53,10 @@ gradient = SubResource("Gradient_wt8kl")
 fill = 1
 fill_from = Vector2(0.50427353, 0.5)
 fill_to = Vector2(0.5769231, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1qjn"]
+atlas = ExtResource("3_qy1i3")
+region = Rect2(0, 0, 192, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my3uq"]
 size = Vector2(159, 224.25)
@@ -131,15 +136,15 @@ color_ramp = SubResource("GradientTexture1D_5vypm")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qy1i3"]
 shader = ExtResource("7_m2n11")
-shader_parameter/spiral_type = 1
+shader_parameter/spiral_type = 5
 shader_parameter/color = Color(0.5294118, 1, 0.94509804, 0.11372549)
 shader_parameter/rays = 6.0
-shader_parameter/speed = 0.10000000149012
-shader_parameter/fade = 0.51999998837696
-shader_parameter/thickness = 0.0
-shader_parameter/clockwise = false
-shader_parameter/tiers = 20.0
-shader_parameter/stretch = 10.0
+shader_parameter/speed = 0.20999999530608
+shader_parameter/fade = 0.8499999810008
+shader_parameter/thickness = 0.3
+shader_parameter/clockwise = true
+shader_parameter/tiers = 4.0
+shader_parameter/stretch = 6.28
 shader_parameter/s5color2 = Color(0, 0, 0, 1)
 
 [node name="SentinelEthicalHacker" type="Node2D" unique_id=1163133944]
@@ -172,6 +177,23 @@ offset_bottom = -139.30247
 theme_override_font_sizes/normal_font_size = 30
 text = "15"
 horizontal_alignment = 1
+
+[node name="SkillIcon" type="TextureRect" parent="AnimatedSprite2D" unique_id=76490566]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.3926992
+anchor_top = 0.06738394
+anchor_right = 0.60730445
+anchor_bottom = 0.19001548
+offset_left = -128.0
+offset_top = -224.0
+offset_right = -128.0
+offset_bottom = -224.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_n1qjn")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ClickArea" type="Area2D" parent="." unique_id=1739627776]
 collision_layer = 8

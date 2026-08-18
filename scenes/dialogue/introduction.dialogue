@@ -249,6 +249,7 @@ System: Scriptures of the Past unlocked.
 System: Scripture I obtained.
 #insert function to show scripture
 do GameDialogueManager.show_script(0)
+do GameDialogueManager.pause_game(false)
 => END
 
 ~ Boss1_defeated2

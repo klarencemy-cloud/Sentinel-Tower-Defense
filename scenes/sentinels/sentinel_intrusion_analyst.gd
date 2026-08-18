@@ -56,9 +56,9 @@ func _on_reload_timer_timeout() -> void:
 
 func damage_reduction(state: bool) -> void:
 	if state:
-		Data.damage_reduction = .05
+		Data.damage_reduction += .05
 	if not state:
-		Data.damage_reduction = 0
+		Data.damage_reduction -= .05
 
 func create_range_indicator() -> void:
 	if range_indicator:

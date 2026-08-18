@@ -33,6 +33,10 @@ var before_server_points: int
 var before_player_level: int
 var before_total_experience: int
 
+# Backup for tower upgrade data to keep sandbox and non-sandbox separate
+var before_tower_upgrades: Dictionary = {}  # Stores backup of all tower upgrade levels and modified stats
+var base_tower_stats: Dictionary = {}  # Stores original base stats for all towers (set once at startup)
+
 
 var bullet_angle: Vector2
 
@@ -41,9 +45,13 @@ var wave_started: bool = false
 
 var before_level_index: int
 var current_level_index: int = 0 # map count 0 = level 1
-
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 1 # wave count
+var current_wave: int = 51 # wave count
+
+var incremental_enemy_health_bonus: float = current_wave * .02
+var incremental_enemy_movespeed_bonus: float = current_wave * .01
+var incremental_enemy_damage_bonus: float = current_wave * .01
+
 var backup_server_placed := false
 var backup_server_invincible := false
 
@@ -58,12 +66,19 @@ signal destroy_shield()
 var sentinel_security_deployed: bool = false
 var sentinel_malware_deployed: bool = false
 var sentinel_deception_deployed: bool = false
+ # for the deception debuff
+signal deploy_deception(state: bool)
+
 var damage_reduction: float = 0
 
 
 var is_tower_placeable: bool = true
 var is_sentinel_placeable: bool = true
 var is_placing_tower: bool = false
+
+signal cancel_tower_placement()
+signal cancel_sentinel_placement()
+
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
@@ -75,6 +90,7 @@ enum Ability {FIREWALL}
 var TOWER_DATA = {
 	Tower.SPAM_FILTER: {
 		'name': 'Spam Filter',
+		'isUnlocked' : true,
 		'cost': 45,
 		'server_load': 15,
 		'damage': 10,
@@ -122,6 +138,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.QUARANTINE_CANNON: {
 		'name': 'Quarantine Cannon',
+		'isUnlocked' : false,
 		'cost': 60,
 		'server_load': 30,
 		'damage': 100,
@@ -170,6 +187,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.IDPS: {
 		'name': 'IDPS',
+		'isUnlocked' : false,
 		'cost': 30,
 		'damage': 0,
 		'reload_time': 2.5,
@@ -215,6 +233,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.BACKUP_SERVER: {
 		'name': "Backup Server",
+		'isUnlocked' : false,
 		'cost': 550,
 		'damage': 5000,
 		'server_load': 65,
@@ -225,6 +244,7 @@ var TOWER_DATA = {
 		},
 	Tower.AD_BLOCKER: {
 		'name': 'Ad Blocker',
+		'isUnlocked' : false,
 		'cost': 75,
 		'server_load': 20,
 		'damage': 25,
@@ -273,6 +293,7 @@ var TOWER_DATA = {
 		},
 	Tower.ANTIVIRUS: {
 		'name': 'Antivirus',
+		'isUnlocked' : false,
 		'cost': 50,
 		'server_load': 20,
 		'damage': 30,
@@ -321,6 +342,7 @@ var TOWER_DATA = {
 		},
 		Tower.ACCESS_CONTROL_SYSTEM: {
 		'name': 'Access Control System',
+		'isUnlocked' : false,
 		'cost': 225,
 		'server_load': 35,
 		'damage': 120,
@@ -369,6 +391,7 @@ var TOWER_DATA = {
 		},
 		Tower.ENDPOINT_PROTECTION: {
 		'name': 'Endpoint Protection',
+		'isUnlocked' : false,
 		'cost': 350,
 		'server_load': 45,
 		'damage': 180,
@@ -417,6 +440,7 @@ var TOWER_DATA = {
 		},
 		Tower.SANDBOX_ANALYZER: {
 		'name': 'Sandbox Analyzer',
+		'isUnlocked' : false,
 		'cost': 150,
 		'server_load': 55,
 		'damage': 220,
@@ -465,6 +489,7 @@ var TOWER_DATA = {
 		},
 		Tower.AI_SECURITY: {
 		'name': 'AI Security',
+		'isUnlocked' : false,
 		'cost': 275,
 		'server_load': 40,
 		'damage': 130,
@@ -513,6 +538,7 @@ var TOWER_DATA = {
 		},
 		Tower.DATA_LOSS_PREVENTION: {
 		'name': 'DLP',
+		'isUnlocked' : false,
 		'cost': 50,
 		'server_load': 25,
 		'damage': 0,
@@ -574,6 +600,7 @@ func calculate_crit_damage(tower_type: int, base_damage: int, crit_chance_buff: 
 var SENTINEL_DATA = {
 	Sentinel.ETHICAL: {
 		'name': 'Ethical Hacker',
+		'isUnlocked' : false,
 		'cooldown': 15,
 		'duration': 3,
 		'range': 500,
@@ -602,6 +629,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.SYSAD: {
 		'name': 'System Administrator',
+		'isUnlocked' : false,
 		'cooldown': 60,
 		'range': 0,
 		'thumbnail': "res://graphics/sentinels/thumbnail/SYSTEMADMIN.png",
@@ -629,6 +657,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.INTRUSION: {
 		'name': 'Intrusion Analyst',
+		'isUnlocked' : false,
 		'cooldown': 30,
 		'range': 0,
 		'thumbnail': "res://graphics/sentinels/thumbnail/INTRUSIONANALYST.png",
@@ -656,6 +685,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.SECURITY: {
 		'name': 'Security Architect',
+		'isUnlocked' : false,
 		'cooldown': 15,
 		'duration': 10,
 		'range': 500,
@@ -684,6 +714,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.MALWARE: {
 		'name': 'Malware Analyst',
+		'isUnlocked' : false,
 		'cooldown': 25,
 		'duration': 15,
 		'range': 500,
@@ -712,7 +743,9 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.DECEPTION: {
 		'name': 'Deception Analyst',
-		'cooldown': 3,
+		'isUnlocked' : false,
+		'cooldown': 30,
+		'duration': 15,
 		'range': 500,
 		'thumbnail': "res://graphics/sentinels/thumbnail/DECEPTIONANALYST.png",
 		'scene': "res://scenes/sentinels/sentinel_deception_analyst.tscn",
@@ -967,8 +1000,118 @@ func reset_game():
 	currentserverload = 0
 	max_health = default_health
 	health = default_health
+	clear_notpetya_enemy_speed_effect()
+
+
+
+func _initialize_base_tower_stats() -> void:
+	#Store the original base stats for all towers
+	if not base_tower_stats.is_empty():
+		return  # Already initialized
+	
+	for tower_enum in Tower.values():
+		var tower_data = TOWER_DATA[tower_enum]
+		base_tower_stats[tower_enum] = {
+			'damage': tower_data.get('damage', 0),
+			'reload_time': tower_data.get('reload_time', 0),
+			'range': tower_data.get('range', 0),
+			'crit rate': tower_data.get('crit rate', 0),
+			'crit damage': tower_data.get('crit damage', 0),
+			'explosion_radius': tower_data.get('explosion_radius', 0),
+		}
+
+
+func _backup_tower_upgrades() -> void:
+	# Always update the backup 
+	before_tower_upgrades.clear()
+	
+	for tower_enum in Tower.values():
+		var tower_data = TOWER_DATA[tower_enum]
+		before_tower_upgrades[tower_enum] = {
+			'upgrade1level': tower_data.get('upgrade1level', 0),
+			'upgrade2level': tower_data.get('upgrade2level', 0),
+			'upgrade3level': tower_data.get('upgrade3level', 0),
+			'upgrade4level': tower_data.get('upgrade4level', 0),
+			'upgrade5level': tower_data.get('upgrade5level', 0),
+			'upgrade6level': tower_data.get('upgrade6level', 0),
+			'damage': tower_data.get('damage', 0),
+			'reload_time': tower_data.get('reload_time', 0),
+			'range': tower_data.get('range', 0),
+			'crit rate': tower_data.get('crit rate', 0),
+			'crit damage': tower_data.get('crit damage', 0),
+			'explosion_radius': tower_data.get('explosion_radius', 0),
+		}
+
+
+func _reset_tower_upgrades_to_base() -> void:
+	#Reset all tower upgrades to base values,called when entering sandbox mode or when resetting the game
+	
+	for tower_enum in Tower.values():
+		var tower_data = TOWER_DATA[tower_enum]
+		# Reset all upgrade levels to 0
+		tower_data['upgrade1level'] = 0
+		tower_data['upgrade2level'] = 0
+		tower_data['upgrade3level'] = 0
+		tower_data['upgrade4level'] = 0
+		tower_data['upgrade5level'] = 0
+		tower_data['upgrade6level'] = 0
+		
+		_reset_tower_to_base(tower_enum)
+
+
+func _reset_tower_to_base(tower_enum: int) -> void:
+	"""Reset a specific tower to its base stats using stored base stats"""
+	# Initialize base stats if not already done
+	if base_tower_stats.is_empty():
+		_initialize_base_tower_stats()
+	
+	var tower_data = TOWER_DATA[tower_enum]
+	var base = base_tower_stats.get(tower_enum, {})
+	
+	tower_data['damage'] = base.get('damage', tower_data.get('damage', 0))
+	tower_data['reload_time'] = base.get('reload_time', tower_data.get('reload_time', 0))
+	tower_data['range'] = base.get('range', tower_data.get('range', 0))
+	tower_data['crit rate'] = base.get('crit rate', tower_data.get('crit rate', 0))
+	tower_data['crit damage'] = base.get('crit damage', tower_data.get('crit damage', 0))
+	if base.has('explosion_radius'):
+		tower_data['explosion_radius'] = base['explosion_radius']
+
+
+func _restore_tower_upgrades() -> void:
+	#Restore tower upgrades from backup when exiting sandbox mode
+	if before_tower_upgrades.is_empty():
+		return
+	
+	for tower_enum in Tower.values():
+		if not before_tower_upgrades.has(tower_enum):
+			continue
+		
+		var backup = before_tower_upgrades[tower_enum]
+		var tower_data = TOWER_DATA[tower_enum]
+		
+		tower_data['upgrade1level'] = backup.get('upgrade1level', 0)
+		tower_data['upgrade2level'] = backup.get('upgrade2level', 0)
+		tower_data['upgrade3level'] = backup.get('upgrade3level', 0)
+		tower_data['upgrade4level'] = backup.get('upgrade4level', 0)
+		tower_data['upgrade5level'] = backup.get('upgrade5level', 0)
+		tower_data['upgrade6level'] = backup.get('upgrade6level', 0)
+		tower_data['damage'] = backup.get('damage', 0)
+		tower_data['reload_time'] = backup.get('reload_time', 0)
+		tower_data['range'] = backup.get('range', 0)
+		tower_data['crit rate'] = backup.get('crit rate', 0)
+		tower_data['crit damage'] = backup.get('crit damage', 0)
+		if backup.has('explosion_radius'):
+			tower_data['explosion_radius'] = backup['explosion_radius']
 
 var multiplier: int = 1
+var notpetya_enemy_speed_multiplier: float = 1.0
+
+func clear_notpetya_enemy_speed_effect() -> void:
+	notpetya_enemy_speed_multiplier = 1.0
+
+func apply_notpetya_enemy_speed_effect(multiplier: float) -> void:
+	notpetya_enemy_speed_multiplier = multiplier
+
 var server_points: int = 1:
 	set(value):
 		server_points = value
@@ -1010,8 +1153,6 @@ var experience: int = 0:
 				experience = int(default_level_pool)
 				break
 
-			print("level_pool", default_level_pool)
-		
 		if ui:
 			ui.update_experience(experience, player_level, default_level_pool)
 			

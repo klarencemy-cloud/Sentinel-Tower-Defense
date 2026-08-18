@@ -20,7 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://donbx7hjhnewp" path="res://graphics/server/server.png" id="16_8gxmg"]
 [ext_resource type="Texture2D" uid="uid://ddd7xwdcjl3kj" path="res://graphics/container/threat.png" id="16_os83h"]
 [ext_resource type="Texture2D" uid="uid://ba2uc2d500ugn" path="res://graphics/container/top.png" id="19_e7k8m"]
+[ext_resource type="Shader" uid="uid://b6pr0w1cdugp2" path="res://texture/shaders/enemy_core.gdshader" id="19_jrx1v"]
 [ext_resource type="Texture2D" uid="uid://bt2rniu1b4s48" path="res://graphics/icons/warning.png" id="20_1xtuu"]
+[ext_resource type="Shader" uid="uid://c14lpku8ufc4n" path="res://texture/shaders/inner_core.gdshader" id="20_7grxi"]
 [ext_resource type="Texture2D" uid="uid://bjc3vsugkb5mo" path="res://graphics/container/mid.png" id="20_8gxmg"]
 [ext_resource type="Texture2D" uid="uid://bbttm34xh0eft" path="res://graphics/container/bottom.png" id="21_jrx1v"]
 
@@ -365,6 +367,30 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jrx1v"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jrx1v"]
+noise = SubResource("FastNoiseLite_jrx1v")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7grxi"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_womid"]
+noise = SubResource("FastNoiseLite_7grxi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7grxi"]
+shader = ExtResource("19_jrx1v")
+shader_parameter/noise = SubResource("NoiseTexture2D_jrx1v")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_womid")
+shader_parameter/brightness = 2.5
+shader_parameter/time_scale = 1.24
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_womid"]
+shader = ExtResource("20_7grxi")
+shader_parameter/speed = 0.6490000308275
+shader_parameter/glow_strength = 1.34400006384
+shader_parameter/edge_softness = 0.4010000190475
+shader_parameter/color = Color(1, 0.100000024, 0, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pydqt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_57avo"]
@@ -535,9 +561,9 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="UIContainer/ServerUpdate" unique_id=1636088480]
 layout_mode = 0
-offset_left = 1068.0
+offset_left = 1083.0
 offset_top = 208.0
-offset_right = 1487.0
+offset_right = 1502.0
 offset_bottom = 278.0
 theme_override_font_sizes/font_size = 60
 text = "SERVER UPDATE"
@@ -2026,7 +2052,6 @@ texture_filter = 2
 position = Vector2(1313, 538)
 sprite_frames = SubResource("SpriteFrames_jrx1v")
 autoplay = "default"
-frame_progress = 0.70832133
 
 [node name="ServerPoints" type="TextureRect" parent="UIContainer/ServerUpdate" unique_id=1548057016]
 texture_filter = 2
@@ -2064,20 +2089,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="UIContainer/CyberthreatUpdate" unique_id=1812724349]
+[node name="Container" type="TextureRect" parent="UIContainer/CyberthreatUpdate" unique_id=1812724349]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.143
-anchor_top = 0.208
-anchor_right = 0.143
-anchor_bottom = 0.208
-offset_left = 533.44
-offset_top = -25.64
-offset_right = 1243.1216
-offset_bottom = 682.36
+anchor_left = 0.35052082
+anchor_top = 0.18148148
+anchor_right = 0.7201467
+anchor_bottom = 0.837037
 texture = ExtResource("16_os83h")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemyCore" type="ColorRect" parent="UIContainer/CyberthreatUpdate/Container" unique_id=1399878853]
+material = SubResource("ShaderMaterial_7grxi")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11413568
+anchor_top = 0.09039548
+anchor_right = 0.9201309
+anchor_bottom = 0.89830524
+color = Color(0.9968435, 0, 0.024830462, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="InnerCore" type="ColorRect" parent="UIContainer/CyberthreatUpdate/Container/EnemyCore" unique_id=8596887]
+material = SubResource("ShaderMaterial_womid")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.31118882
+anchor_top = 0.312937
+anchor_right = 0.6870629
+anchor_bottom = 0.68881094
 metadata/_edit_use_anchors_ = true
 
 [node name="ThreatContainer" type="Control" parent="UIContainer/CyberthreatUpdate" unique_id=324974440]
@@ -2094,24 +2136,21 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.074215055
-anchor_top = 0.10725961
-anchor_right = 0.074215055
-anchor_bottom = 0.10725961
-offset_left = 6.9999886
-offset_top = 0.00031280518
-offset_right = 881.0
-offset_bottom = 325.0003
+anchor_left = 0.120892935
+anchor_top = 0.1665099
+anchor_right = 1.5128449
+anchor_bottom = 0.49540955
 texture = ExtResource("19_e7k8m")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ThreatStat1" type="Label" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats1" unique_id=789625440]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.025976704
-anchor_top = 0.09230769
-anchor_right = 0.36911282
-anchor_bottom = 0.20307693
+anchor_left = 0.030719971
+anchor_top = 0.1286765
+anchor_right = 0.3738561
+anchor_bottom = 0.26102945
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("10_po80p")
 theme_override_font_sizes/font_size = 31
@@ -2125,54 +2164,59 @@ metadata/_edit_use_anchors_ = true
 [node name="Stat_Desc1" type="Label" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats1" unique_id=1074549443]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.02826504
-anchor_top = 0.24000002
-anchor_right = 0.3044079
-anchor_bottom = 0.29846156
+anchor_left = 0.033008307
+anchor_top = 0.27636886
+anchor_right = 0.3091511
+anchor_bottom = 0.34622177
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("11_e7k8m")
 theme_override_font_sizes/font_size = 15
-text = "Grants Tower  +2% Damage"
+text = "Enemies has +2% Damage"
 horizontal_alignment = 3
 vertical_alignment = 3
 autowrap_mode = 1
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
-[node name="Warning" type="Sprite2D" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats1" unique_id=1535048563]
+[node name="Warning" type="TextureRect" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats1" unique_id=1931738783]
 texture_filter = 2
-position = Vector2(352, 108.999695)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33558524
+anchor_top = 0.13235295
+anchor_right = 0.4330583
+anchor_bottom = 0.35661766
+offset_right = 18.701294
+offset_bottom = 16.0
 scale = Vector2(0.79220784, 0.7922078)
 texture = ExtResource("20_1xtuu")
+metadata/_edit_use_anchors_ = true
 
 [node name="Stats2" type="TextureRect" parent="UIContainer/CyberthreatUpdate/ThreatContainer" unique_id=1955625492]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.09900001
-anchor_top = 0.113000005
-anchor_right = 0.09900001
-anchor_bottom = 0.113000005
-offset_left = -52.024506
-offset_top = 259.25272
-offset_right = 777.9755
-offset_bottom = 423.25275
+anchor_left = 1.5889629
+anchor_top = 0.3974652
+anchor_right = 3.0618458
+anchor_bottom = 0.5957724
 grow_vertical = 2
 texture = ExtResource("20_8gxmg")
-stretch_mode = 2
+expand_mode = 1
+flip_h = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ThreatStat2" type="Label" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats2" unique_id=1003705573]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.025976704
-anchor_top = 0.09230769
-anchor_right = 0.36911282
-anchor_bottom = 0.20307693
+anchor_left = 0.54698795
+anchor_top = 0.2926829
+anchor_right = 0.8901241
+anchor_bottom = 0.5121951
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("10_po80p")
 theme_override_font_sizes/font_size = 31
-text = "Armor"
+text = "Damage"
 horizontal_alignment = 3
 vertical_alignment = 3
 autowrap_mode = 2
@@ -2182,48 +2226,53 @@ metadata/_edit_use_anchors_ = true
 [node name="Stat_Desc2" type="Label" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats2" unique_id=140597218]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.028641364
-anchor_top = 0.35185197
-anchor_right = 0.30478424
-anchor_bottom = 0.4677056
+anchor_left = 0.54965264
+anchor_top = 0.5522272
+anchor_right = 0.82579553
+anchor_bottom = 0.66808087
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("11_e7k8m")
 theme_override_font_sizes/font_size = 15
-text = "Grants Tower  +2% Damage"
+text = "Enemies has  +2% Damage"
 horizontal_alignment = 3
 vertical_alignment = 3
 autowrap_mode = 1
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
-[node name="Warning" type="Sprite2D" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats2" unique_id=1689512628]
+[node name="Warning" type="TextureRect" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats2" unique_id=1599591913]
 texture_filter = 2
-position = Vector2(354.99997, 112)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.85271317
+anchor_top = 0.31097558
+anchor_right = 0.94483036
+anchor_bottom = 0.6829268
+offset_right = 18.701294
+offset_bottom = 15.999992
 scale = Vector2(0.79220784, 0.7922078)
 texture = ExtResource("20_1xtuu")
+metadata/_edit_use_anchors_ = true
 
 [node name="Stats3" type="TextureRect" parent="UIContainer/CyberthreatUpdate/ThreatContainer" unique_id=772997725]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.08800001
-anchor_top = 0.11100001
-anchor_right = 0.08800001
-anchor_bottom = 0.11100001
-offset_left = -0.24399567
-offset_top = 376.90668
-offset_right = 873.756
-offset_bottom = 701.9067
+anchor_left = -0.12940055
+anchor_top = 0.5147566
+anchor_right = 1.5337774
+anchor_bottom = 0.90774333
+offset_top = -3.0517578e-05
 texture = ExtResource("21_jrx1v")
 metadata/_edit_use_anchors_ = true
 
 [node name="ThreatStat3" type="Label" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats3" unique_id=1912795901]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.018730631
-anchor_top = 0.5476923
-anchor_right = 0.36186674
-anchor_bottom = 0.6584615
+anchor_left = 0.03203661
+anchor_top = 0.6492307
+anchor_right = 0.37517273
+anchor_bottom = 0.76
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("10_po80p")
 theme_override_font_sizes/font_size = 31
@@ -2237,25 +2286,33 @@ metadata/_edit_use_anchors_ = true
 [node name="Stat_Desc3" type="Label" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats3" unique_id=394122505]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.021018967
-anchor_top = 0.6953846
-anchor_right = 0.29716182
-anchor_bottom = 0.75384617
+anchor_left = 0.034324944
+anchor_top = 0.7969231
+anchor_right = 0.31046778
+anchor_bottom = 0.8553846
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("11_e7k8m")
 theme_override_font_sizes/font_size = 15
-text = "Grants Tower  +2% Damage"
+text = "Enemies has  +2% Movespeed"
 horizontal_alignment = 3
 vertical_alignment = 3
 autowrap_mode = 1
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
-[node name="Warning" type="Sprite2D" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats3" unique_id=1998721760]
+[node name="Warning" type="TextureRect" parent="UIContainer/CyberthreatUpdate/ThreatContainer/Stats3" unique_id=302200586]
 texture_filter = 2
-position = Vector2(351.99997, 275)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3340961
+anchor_top = 0.65538454
+anchor_right = 0.41567358
+anchor_bottom = 0.84307694
+offset_right = 18.701294
+offset_bottom = 16.0
 scale = Vector2(0.79220784, 0.7922078)
 texture = ExtResource("20_1xtuu")
+metadata/_edit_use_anchors_ = true
 
 [node name="BackBtn" type="TextureButton" parent="UIContainer" unique_id=2132492385]
 process_mode = 3
@@ -2306,7 +2363,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_57avo")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0aqx7")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_d1glr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o627u")
-text = "Cyber Threats"
+text = "Cyber Core"
 alignment = 2
 metadata/_edit_use_anchors_ = true
 

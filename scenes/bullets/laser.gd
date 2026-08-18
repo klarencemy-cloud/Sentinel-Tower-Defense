@@ -14,21 +14,33 @@ func update_laser(start_pos: Vector2, end_pos: Vector2, progress := 1.0):
 	global_position = start_pos
 	look_at(end_pos)
 	rotation -= PI / 2
+
 	var full_distance = start_pos.distance_to(end_pos)
 	var distance = full_distance * progress
 	var tip = start_pos.lerp(end_pos, progress)
+
+	# Move tip particle
 	$GPUParticles2D6.global_position = tip
-	$GPUParticles2D6.emitting = true
-	$GPUParticles2D5.emitting = true
+
+	# Only emit particles while the laser is actually extending/active
+	if progress > 0.0:
+		$GPUParticles2D6.emitting = true
+		$GPUParticles2D5.emitting = true
+	else:
+		$GPUParticles2D6.emitting = false
+		$GPUParticles2D5.emitting = false
+
 	# Stretch sprite
-	sprite.scale.y = distance / sprite.texture.get_height()
-	
+	if sprite.texture:
+		sprite.scale.y = distance / sprite.texture.get_height()
+
 	# Move sprite so its base stays on the tower
 	sprite.position.y = distance / 2
 
 	# Stretch collision
 	var shape := collision.shape as RectangleShape2D
 	shape.size.y = distance
+
 	var width := default_width
 
 	if Data.TOWER_DATA[Data.Tower.AI_SECURITY].get("tier1abilityunlocked", false):
@@ -46,7 +58,8 @@ func damage_enemies(damage, tower_id):
 			enemy.hit(damage, tower_id)
 
 func hide_particles():
-	$GPUParticles2D5.restart()
 	$GPUParticles2D5.emitting = false
-	$GPUParticles2D6.restart()
+	$GPUParticles2D5.restart()
+
 	$GPUParticles2D6.emitting = false
+	$GPUParticles2D6.restart()

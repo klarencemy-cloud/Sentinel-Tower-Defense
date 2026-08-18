@@ -1,0 +1,592 @@
+[gd_scene format=3 uid="uid://b246c4s7bkq30"]
+
+[ext_resource type="Script" uid="uid://ctuirlweh57x1" path="res://scenes/sentinels/sentinel_popup.gd" id="1_xa5ah"]
+[ext_resource type="Script" uid="uid://dqdvklaaj7s16" path="res://scenes/sentinels/animation.gd" id="2_qaign"]
+[ext_resource type="Texture2D" uid="uid://co5olt0y80ugy" path="res://graphics/container/upper_blue.png" id="3_r1dit"]
+[ext_resource type="Texture2D" uid="uid://du4nha0nlcege" path="res://graphics/container/lower_blue.png" id="4_00dmt"]
+[ext_resource type="FontFile" uid="uid://cxqairacw6y1n" path="res://font/Libre_Franklin/static/LibreFranklin-ThinItalic.ttf" id="5_in6l3"]
+[ext_resource type="Texture2D" uid="uid://dxpj7ubvxif7n" path="res://graphics/sentinels/sentinel2.png" id="5_qaign"]
+[ext_resource type="Texture2D" uid="uid://d3qehybo27ftk" path="res://graphics/container/scripture.png" id="6_btuek"]
+[ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="6_ui5hr"]
+[ext_resource type="FontFile" uid="uid://8pl0pe2glt3g" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraLight.ttf" id="12_c7l58"]
+[ext_resource type="Texture2D" uid="uid://ug1gbumqunav" path="res://graphics/ui/healthbar1.png" id="13_ut0qw"]
+[ext_resource type="Texture2D" uid="uid://ddayndvqnoild" path="res://graphics/ui/expprogressbar.png" id="14_mj0j6"]
+
+[sub_resource type="Gradient" id="Gradient_ysedr"]
+colors = PackedColorArray(0.13725491, 0.22352941, 0.2784314, 0.6784314, 0.13725491, 0.22352941, 0.2784314, 0.47058824)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0uhmu"]
+gradient = SubResource("Gradient_ysedr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qy835"]
+particle_flag_disable_z = true
+radial_velocity_min = 413.21997
+radial_velocity_max = 580.51996
+scale_max = 8.21
+hue_variation_min = -0.050000023
+hue_variation_max = 0.059999976
+
+[sub_resource type="Animation" id="Animation_ult64"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UpperDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LowerDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 507)]
+}
+
+[sub_resource type="Animation" id="Animation_d2eyq"]
+resource_name = "pop_script"
+length = 0.8667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UpperDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -507), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LowerDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1080), Vector2(0, 507)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RedPop:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333335, 0.47886848, 0.6666667, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, 2), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ult64"]
+_data = {
+&"RESET": SubResource("Animation_ult64"),
+&"pop_script": SubResource("Animation_d2eyq")
+}
+
+[sub_resource type="Animation" id="Animation_c0ukr"]
+resource_name = "pop_info"
+length = 0.2333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333333, 0.19999999, 0.23333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ebn4j"]
+_data = {
+&"pop_info": SubResource("Animation_c0ukr")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fad81"]
+atlas = ExtResource("5_qaign")
+region = Rect2(0, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehavp"]
+atlas = ExtResource("5_qaign")
+region = Rect2(256, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgrqy"]
+atlas = ExtResource("5_qaign")
+region = Rect2(512, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gabr"]
+atlas = ExtResource("5_qaign")
+region = Rect2(768, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uau6v"]
+atlas = ExtResource("5_qaign")
+region = Rect2(512, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb62y"]
+atlas = ExtResource("5_qaign")
+region = Rect2(256, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28umu"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(768, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmupk"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(1024, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt08x"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(1280, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqaay"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(1024, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hpra"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(0, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbmms"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(256, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecg4n"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(512, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf6ih"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(256, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn3v6"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(1280, 448, 320, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kapyg"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(1600, 448, 320, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgeb6"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(960, 448, 320, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whjda"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(1600, 448, 320, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hdf1"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(512, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne5hk"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(256, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yqf2"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(0, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bodw"]
+atlas = ExtResource("6_ui5hr")
+region = Rect2(256, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drxg4"]
+atlas = ExtResource("5_qaign")
+region = Rect2(0, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wju6l"]
+atlas = ExtResource("5_qaign")
+region = Rect2(256, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88qim"]
+atlas = ExtResource("5_qaign")
+region = Rect2(512, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12rfo"]
+atlas = ExtResource("5_qaign")
+region = Rect2(256, 448, 256, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ctvfx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fad81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehavp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgrqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gabr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uau6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb62y")
+}],
+"loop": true,
+"name": &"Deception Analyst",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28umu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmupk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt08x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqaay")
+}],
+"loop": true,
+"name": &"Ethical Hacker",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hpra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbmms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecg4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rf6ih")
+}],
+"loop": true,
+"name": &"Intrusion Analyst",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn3v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kapyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgeb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whjda")
+}],
+"loop": true,
+"name": &"Malware Analyst",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hdf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne5hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yqf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bodw")
+}],
+"loop": true,
+"name": &"Security Architect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drxg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wju6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88qim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12rfo")
+}],
+"loop": true,
+"name": &"System Administrator",
+"speed": 5.0
+}]
+
+[node name="SentinelPop" type="CanvasLayer" unique_id=317540891 groups=["animate2"]]
+process_mode = 3
+script = ExtResource("1_xa5ah")
+
+[node name="Pop" type="Control" parent="." unique_id=1841151167]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Pop" unique_id=923263835]
+top_level = true
+z_index = 1
+position = Vector2(2136, -121)
+color = Color(0.8392791, 0.925866, 1, 1)
+energy = 0.0
+range_layer_max = 1
+
+[node name="Overlay" type="TextureRect" parent="Pop" unique_id=1559103559]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_0uhmu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Animation" type="Control" parent="Pop/Overlay" unique_id=299120814]
+z_index = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 498)
+script = ExtResource("2_qaign")
+metadata/_edit_use_anchors_ = true
+
+[node name="UpperDoor" type="TextureRect" parent="Pop/Overlay/Animation" unique_id=1024090940]
+light_mask = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.46944445
+texture = ExtResource("3_r1dit")
+metadata/_edit_use_anchors_ = true
+
+[node name="LowerDoor" type="TextureRect" parent="Pop/Overlay/Animation" unique_id=1210099816]
+light_mask = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.46944445
+anchor_right = 1.0
+anchor_bottom = 1.0000011
+texture = ExtResource("4_00dmt")
+metadata/_edit_use_anchors_ = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Pop/Overlay/Animation" unique_id=1545577099]
+position = Vector2(967, 486)
+emitting = false
+amount = 50
+visibility_rect = Rect2(-250, -250, 500, 500)
+process_material = SubResource("ParticleProcessMaterial_qy835")
+
+[node name="RedPop" type="RichTextLabel" parent="Pop/Overlay/Animation" unique_id=1232198484]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.31474546
+anchor_top = 0.38396665
+anchor_right = 0.6933591
+anchor_bottom = 0.5385523
+offset_left = 27.53717
+offset_top = 7.588745
+offset_right = -27.53711
+offset_bottom = -7.588745
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[wave]DEPLOYING[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Pop/Overlay/Animation" unique_id=74128809]
+layout_mode = 0
+offset_left = 1447.0
+offset_top = 1018.0
+offset_right = 1858.0
+offset_bottom = 1057.0
+theme_override_fonts/font = ExtResource("5_in6l3")
+theme_override_font_sizes/font_size = 32
+text = "SENTINEL UNLOCKED"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pop/Overlay/Animation" unique_id=397421522]
+libraries/ = SubResource("AnimationLibrary_ult64")
+speed_scale = 1.505
+
+[node name="Info" type="Control" parent="." unique_id=1078619580]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Info" unique_id=1991104597]
+libraries/ = SubResource("AnimationLibrary_ebn4j")
+autoplay = &"pop_info"
+
+[node name="TextureRect" type="TextureRect" parent="Info" unique_id=177073091]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0429835
+anchor_top = 0.048032243
+anchor_right = 0.94030374
+anchor_bottom = 0.94710636
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(861.4274, 485.50006)
+texture = ExtResource("6_btuek")
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Info/TextureRect" unique_id=2017673046]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.4107614
+anchor_right = -4.2285056
+anchor_bottom = 0.050463814
+offset_left = 7708.3315
+offset_top = 223.62486
+offset_right = 7708.3315
+offset_bottom = 223.62482
+theme_override_colors/font_color = Color(0.011764706, 0.88235295, 0.9764706, 1)
+theme_override_font_sizes/font_size = 42
+text = "ETHICAL HACKER"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Info/TextureRect" unique_id=1271087630]
+light_mask = 2
+texture_filter = 2
+position = Vector2(885.6846, 450.36877)
+scale = Vector2(1.8536682, 1.8536683)
+sprite_frames = SubResource("SpriteFrames_ctvfx")
+animation = &"System Administrator"
+autoplay = "Ethical Hacker"
+
+[node name="Code" type="Label" parent="Info/TextureRect" unique_id=1175543820]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06340056
+anchor_top = 0.29168448
+anchor_right = 0.33097973
+anchor_bottom = 0.3277298
+theme_override_colors/font_color = Color(0.0036999965, 0.33337003, 0.37, 1)
+theme_override_font_sizes/font_size = 30
+text = "Prototype: SENTINEL 2311"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Ability" type="Label" parent="Info/TextureRect/Code" unique_id=1785319688]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 2.4338107
+anchor_right = 1.1967684
+anchor_bottom = 3.1195252
+theme_override_colors/font_color = Color(0.011764706, 0.88235295, 0.9764706, 1)
+theme_override_fonts/font = ExtResource("12_c7l58")
+theme_override_font_sizes/font_size = 19
+text = "Ability: Freezes all the enemies on the field for 3 seconds"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Cooldown" type="Label" parent="Info/TextureRect/Code/Ability" unique_id=1013520643]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 20.833427
+offset_right = 149.0
+offset_bottom = 39.833427
+text = "Cooldown: 15 seconds"
+metadata/_edit_use_anchors_ = true
+
+[node name="Passive" type="Label" parent="Info/TextureRect/Code/Ability/Cooldown" unique_id=1299594191]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 16.486145
+offset_right = 539.18506
+offset_bottom = 67.486145
+theme_override_colors/font_color = Color(0.90588236, 0.6784314, 0, 1)
+theme_override_fonts/font = ExtResource("12_c7l58")
+theme_override_font_sizes/font_size = 19
+text = "Passive: Slows nearby enemies by 25% of their movement speed."
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="RealWorldDesc" type="Label" parent="Info/TextureRect" unique_id=1127728152]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7081833
+anchor_top = 0.2303038
+anchor_right = 0.9479017
+anchor_bottom = 0.28076723
+theme_override_colors/font_color = Color(0.011764706, 0.88235295, 0.9764706, 1)
+theme_override_font_sizes/font_size = 42
+text = "Real World Description"
+metadata/_edit_use_anchors_ = true
+
+[node name="Desc" type="Label" parent="Info/TextureRect/RealWorldDesc" unique_id=1248093361]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.5170918
+anchor_right = 1.0
+anchor_bottom = 5.6171026
+theme_override_colors/font_color = Color(0.011764706, 0.88235295, 0.9764706, 1)
+theme_override_fonts/font = ExtResource("12_c7l58")
+theme_override_font_sizes/font_size = 19
+text = "This is a cybersecurity expert who lawfully intrudes on a computer or network. They have the permission and approval to hack into a certain computing device. Lastly, they usually provide a security assessment to  provide a comprehensive way to further improve a system."
+horizontal_alignment = 3
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Info/TextureRect/RealWorldDesc/Desc" unique_id=509350532]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.2959658
+anchor_right = 1.0
+anchor_bottom = 1.3522272
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.5
+nine_patch_stretch = true
+texture_under = ExtResource("13_ut0qw")
+texture_progress = ExtResource("14_mj0j6")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="gui_input" from="Pop/Overlay/Animation" to="Pop/Overlay/Animation" method="_on_gui_input"]
+[connection signal="animation_finished" from="Pop/Overlay/Animation/AnimationPlayer" to="Pop/Overlay/Animation" method="_on_animation_player_animation_finished"]
+[connection signal="gui_input" from="Info" to="." method="_on_info_gui_input"]
+[connection signal="animation_finished" from="Info/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

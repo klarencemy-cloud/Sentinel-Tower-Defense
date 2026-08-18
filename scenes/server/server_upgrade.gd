@@ -23,7 +23,9 @@ func _process(delta: float) -> void:
 	_refresh_server_pts()
 	if Data.current_wave == 7:
 		$UIContainer/CyberBtn.visible = true
-
+	$UIContainer/CyberthreatUpdate/ThreatContainer/Stats1/Stat_Desc1.text = "Enemies has +%s%% Health" % int(Data.incremental_enemy_health_bonus * 100)
+	$UIContainer/CyberthreatUpdate/ThreatContainer/Stats2/Stat_Desc2.text = "Enemies has +%s%% Damage" % int(Data.incremental_enemy_damage_bonus * 100)
+	$UIContainer/CyberthreatUpdate/ThreatContainer/Stats3/Stat_Desc3.text = "Enemies has +%s%% MS" % int(Data.incremental_enemy_movespeed_bonus * 100)
 func _refresh_server_pts() -> void:
 	if Data.is_maxed_lvl:
 		Data.server_points = 99999

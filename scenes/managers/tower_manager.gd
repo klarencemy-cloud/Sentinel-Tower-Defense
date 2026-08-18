@@ -37,6 +37,8 @@ func setup(root: Node2D, map_manager: Node) -> void:
 	level_root = root
 	level_manager = map_manager
 
+func _ready() -> void:
+	Data.cancel_tower_placement.connect(cancel_selection)
 
 func _process(delta: float) -> void:
 	var preview = _get_tower_preview()
@@ -56,7 +58,6 @@ func _process(delta: float) -> void:
 func handle_input(event: InputEvent) -> void:
 	var cell_pos = level_manager.mouse_to_map_position()
 	var world_pos = level_manager.map_to_world(cell_pos)
-
 	# Move preview only while dragging with left mouse button
 	if place_tower:
 		if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -85,6 +86,7 @@ func handle_input(event: InputEvent) -> void:
 
 
 func start_tower_placement(tower_type: Data.Tower) -> void:
+	Data.cancel_sentinel_placement.emit()
 	place_tower = true
 	current_placement_kind = "tower"
 	selected_tower = tower_type
@@ -93,21 +95,25 @@ func start_tower_placement(tower_type: Data.Tower) -> void:
 	if preview:
 		preview.show()
 		preview_initialized = false
-		# preview.position = Vector2.ZERO
+
 		var camera = get_tree().get_first_node_in_group("camera")
 		var cameraX = camera.position.x
 		var cameraY = camera.position.y
 		preview.position = Vector2(cameraX, cameraY)
+
+		# Set the preview scale FIRST
+		preview.scale = Vector2(0.7, 0.7)
+
 		var cell_pos = level_manager.world_to_map(preview.position)
 		_update_preview_buttons(cell_pos, preview)
+
+		# THEN calculate the range
 		_update_preview_range(preview)
-		
+
 		preview.texture = load(Data.TOWER_DATA[tower_type]["thumbnail"])
 		preview.modulate = Color.WHITE
-		preview.scale = Vector2(0.7, 0.7)
 		preview.offset = Vector2(0, -53)
 
-		
 		var place_btn = preview.get_node("PlaceTower")
 		var cancel_btn = preview.get_node("CancelPlace")
 

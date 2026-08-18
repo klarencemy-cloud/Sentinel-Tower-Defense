@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k0oen0fxwhhb"
-path="res://.godot/imported/cancelplace.png-07083ef2b8691ef8e13adf25889d6f39.ctex"
+uid="uid://dj4boflk5ayyj"
+path="res://.godot/imported/message_container.png-0b1bdf6e8e1a3f35eb119f4cae9d1259.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/buttons/cancelplace.png"
-dest_files=["res://.godot/imported/cancelplace.png-07083ef2b8691ef8e13adf25889d6f39.ctex"]
+source_file="res://graphics/container/message_container.png"
+dest_files=["res://.godot/imported/message_container.png-0b1bdf6e8e1a3f35eb119f4cae9d1259.ctex"]
 
 [params]
 

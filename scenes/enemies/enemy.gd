@@ -94,18 +94,21 @@ func apply_dlp_damage_reduction(multiplier: float = 0.65) -> void:
 func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	enemy_type_stats = type # save enemy type
 
-	$hpbar.max_value = Data.ENEMY_DATA[type]['health']
-	$hpbar.value = Data.ENEMY_DATA[type]['health']
 	path_follow = new_path_follow
 	path_follow.loop = false
 	previous_pos = path_follow.global_position
 	path_follow.rotation = 0.0
 	
 
-	health = Data.ENEMY_DATA[type]['health']
-	speed = Data.ENEMY_DATA[type]['speed']
+	Data.incremental_enemy_health_bonus = Data.current_wave * .02
+	Data.incremental_enemy_movespeed_bonus = Data.current_wave * .01
+	Data.incremental_enemy_damage_bonus = Data.current_wave * .01
+	health = Data.ENEMY_DATA[type]['health'] + (Data.incremental_enemy_health_bonus * Data.ENEMY_DATA[type]['health'])
+	speed = Data.ENEMY_DATA[type]['speed'] + (Data.incremental_enemy_movespeed_bonus * Data.ENEMY_DATA[type]['speed'])
+	$hpbar.max_value = health
+	$hpbar.value = health
 	base_speed = speed
-	damage = Data.ENEMY_DATA[type]['damage']
+	damage = Data.ENEMY_DATA[type]['damage'] + (Data.incremental_enemy_damage_bonus * Data.ENEMY_DATA[type]['damage'])
 	is_worm = false
 	
 	$SpywareAbility.monitoring = false
@@ -255,6 +258,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			enemy_type = $Boss4
 			$Boss4.material = $Boss4.material.duplicate()
 			$hpbar.visible = false
+			call_deferred("_boss4_dialogue_loop")
 		"boss5":
 			$Boss5.visible = true
 			enemy_type = $Boss5
@@ -286,7 +290,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 				Data.Enemy.BOSS3:
 					boss_name = "WannaCry"
 				Data.Enemy.BOSS4:
-					boss_name = "NotPeyta"
+					boss_name = "NotPetya"
 				Data.Enemy.BOSS5:
 					boss_name = "MyDoom"
 
@@ -298,6 +302,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			)
 		
 
+var direction = 1
 func _process(delta: float):
 	if is_stunned or blocked_by_firewall or is_trapped:
 		return
@@ -309,7 +314,10 @@ func _process(delta: float):
 			backup_server_recently_knocked_back = false
 			backup_server_knockback()
 			return
-	enemy_type.modulate = NORMAL_TINT
+	if invisible:
+		enemy_type.modulate = Color(1, 1, 1, 0.7)
+	else:
+		enemy_type.modulate = NORMAL_TINT
 	var current_speed = speed
 	if acs_lockdown_remaining > 0.0:
 		acs_lockdown_remaining = max(acs_lockdown_remaining - delta, 0.0)
@@ -331,9 +339,10 @@ func _process(delta: float):
 	# Apply regular slow effect
 	elif is_slowed:
 		current_speed = int(speed * 0.5) # 50% speed when slowed
-	
 
-	path_follow.progress += current_speed * delta
+	current_speed = int(round(float(current_speed) * Data.notpetya_enemy_speed_multiplier))
+
+	path_follow.progress += (current_speed * delta) * direction
 	
 	if enemy_type_stats == Data.Enemy.ROOTKIT and !rootkit_skill_used:
 		if path_follow.progress_ratio >= randf_range(0.2, 0.3):
@@ -433,6 +442,14 @@ func _process(delta: float):
 ## RESPONSIBLE FOR DOUBLE DAMAGE BUG (I THINK)
 
 
+func teleport_back() -> void:
+	direction = -1
+	$DeceptionDebuff.start()
+	
+func _on_deception_debuff_timeout() -> void:
+	direction = 1
+
+	
 func emit_hit_particles(angle: float):
 	hit_particles.rotation = angle
 
@@ -933,6 +950,26 @@ func _boss3_stun_loop() -> void:
 		var tower = towers.pick_random()
 		if !tower.stunned:
 			tower.apply_boss3_stun(5.0)
+
+func _boss4_dialogue_loop() -> void:
+	if enemy_type_stats != Data.Enemy.BOSS4:
+		return
+
+	await get_tree().create_timer(10.0).timeout
+	if dead or is_queued_for_deletion() or enemy_type_stats != Data.Enemy.BOSS4:
+		return
+
+	GameDialogueManager.activate_notpetya_dialogue()
+	await GameDialogueManager.wait_for_notpetya_dialogue_end()
+
+	while !dead and enemy_type_stats == Data.Enemy.BOSS4:
+		await get_tree().create_timer(10.0).timeout
+
+		if dead or is_queued_for_deletion():
+			break
+
+		GameDialogueManager.activate_notpetya_dialogue()
+		await GameDialogueManager.wait_for_notpetya_dialogue_end()
 
 func _boss5_spawn_loop():
 	while !dead and enemy_type_stats == Data.Enemy.BOSS5:

@@ -79,9 +79,9 @@ var SENTINEL_DATA = {
 		'irl_desc': "A malware analyst examines malicious files and applications to comprehend how malware operates and how it can be prevented or countered. Their perspectives assist cybersecurity teams in identifying, examining, and protecting against cyber threats. They provide information on malicious software, revealing its function, what it aims for, and how actors utilize it. Additionally, they are also combating malicious software."
 	},
 		Sentinel.DECEPTION: {
-		'special_ability': "Makes the Server invisible for 5 seconds, causing enemies near the Server to change direction.",
+		'special_ability': "Disorient enemies upon approaching the Server for 15 seconds, causing enemies near the Server to change direction.",
 		'cooldown': "30 seconds",
-		'passive_ability': "Slows down enemies near the server ",
+		'passive_ability': "Reduce damage to the server by 5%.",
 		'irl_desc': "The Deception Specialist handles deception technology,  which is a strategy to attract cyber criminals away from an enterprise's true assets and divert them to a decoy or trap. The decoy mimics legitimate servers, applications, and data so that the criminal is tricked into believing that they have infiltrated and gained access to the enterprise's most important assets when in reality they have not. The strategy is employed to minimize damage and protect an organization's true assets."
 	},
 }

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cqmrdgmn3jcik" path="res://graphics/bullets/backup_server_pulse.png" id="4_hkcox"]
 [ext_resource type="Shader" uid="uid://x8rxsknxl2m2" path="res://texture/shaders/force_field.gdshader" id="5_kr8px"]
 [ext_resource type="Texture2D" uid="uid://dtcs5lbvewa8w" path="res://texture/polygon.jpg" id="6_rqijc"]
+[ext_resource type="Shader" uid="uid://dxcox5p5xcmv8" path="res://scenes/server/DeceptionShader.gdshader" id="7_rqijc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_375b0"]
 
@@ -431,6 +432,23 @@ radius = 56.435802
 [sub_resource type="CircleShape2D" id="CircleShape2D_hkcox"]
 radius = 284.91
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rqijc"]
+radius = 257.9399
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1xj5"]
+resource_local_to_scene = true
+shader = ExtResource("7_rqijc")
+shader_parameter/spiral_type = 2
+shader_parameter/color = Color(0.66581625, 0.7125873, 0.99533767, 1)
+shader_parameter/rays = 6.0
+shader_parameter/speed = 2.249999949708
+shader_parameter/fade = 0.35999999195328
+shader_parameter/thickness = 0.10999999754128
+shader_parameter/clockwise = false
+shader_parameter/tiers = 4.0
+shader_parameter/stretch = 6.28
+shader_parameter/s5color2 = Color(0, 0, 0, 1)
+
 [node name="Server" type="Button" unique_id=580628515 groups=["server"]]
 process_mode = 3
 offset_left = -156.0
@@ -617,7 +635,30 @@ monitoring = false
 shape = SubResource("CircleShape2D_hkcox")
 debug_color = Color(1.0107458e-06, 0.4418136, 0.5191502, 0.41960785)
 
+[node name="DeceptionDebuff" type="Area2D" parent="." unique_id=2108959697]
+visible = false
+collision_layer = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeceptionDebuff" unique_id=490187816]
+visible = false
+position = Vector2(157, 156)
+shape = SubResource("CircleShape2D_rqijc")
+
+[node name="ColorRect" type="ColorRect" parent="DeceptionDebuff" unique_id=605863607]
+z_index = -2
+material = SubResource("ShaderMaterial_q1xj5")
+offset_left = -88.0
+offset_top = -89.0
+offset_right = 402.0
+offset_bottom = 401.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.6218215, 0.82154363, 0.6590477, 1)
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="area_entered" from="PulseAnchor/BackupServerPulse" to="." method="_on_backup_server_pulse_area_entered"]
 [connection signal="area_entered" from="IntrusionShield/Shield" to="." method="_on_shield_area_entered"]
 [connection signal="area_exited" from="IntrusionShield/Shield" to="." method="_on_shield_area_exited"]
+[connection signal="area_entered" from="DeceptionDebuff" to="." method="_on_deception_portal_area_entered"]

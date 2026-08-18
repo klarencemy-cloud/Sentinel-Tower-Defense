@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bvl5xpumcxg4t" path="res://scenes/ui/tower_card_for_upgrades.gd" id="1_ogj4p"]
 [ext_resource type="FontFile" uid="uid://bqm53gushpubk" path="res://graphics/ui/Digitalt.otf" id="2_ogj4p"]
 [ext_resource type="Texture2D" uid="uid://ftkgg8wg17u" path="res://graphics/ui/tower thumbnails/basic.png" id="3_fndv8"]
+[ext_resource type="Texture2D" uid="uid://w1nj12ldkm8a" path="res://graphics/towers/towerlocked.png" id="6_npt2e"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fndv8"]
 texture = ExtResource("1_fndv8")
@@ -44,9 +45,9 @@ autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="TextureRect" unique_id=1622100548]
 layout_mode = 0
-offset_left = 6.0
+offset_left = 4.0
 offset_top = 8.0
-offset_right = 179.0
+offset_right = 177.0
 offset_bottom = 33.0
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("2_ogj4p")
@@ -68,5 +69,12 @@ grow_vertical = 2
 texture = ExtResource("3_fndv8")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="towerlocked" type="TextureRect" parent="TextureRect" unique_id=883559969]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_npt2e")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

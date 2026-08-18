@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bqm53gushpubk" path="res://graphics/ui/Digitalt.otf" id="2_gnafq"]
 [ext_resource type="Texture2D" uid="uid://cpbtkxcm7r5g1" path="res://graphics/database/sentinel_container2.png" id="3_ebigs"]
 [ext_resource type="Texture2D" uid="uid://ftkgg8wg17u" path="res://graphics/ui/tower thumbnails/basic.png" id="3_mekj6"]
+[ext_resource type="Texture2D" uid="uid://w1nj12ldkm8a" path="res://graphics/towers/towerlocked.png" id="6_ebigs"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ebigs"]
 texture = ExtResource("1_mekj6")
@@ -61,5 +62,13 @@ grow_vertical = 2
 texture = ExtResource("3_mekj6")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="locked" type="TextureRect" parent="TextureRect" unique_id=370619910]
+visible = false
+layout_mode = 0
+offset_top = 0.5
+offset_right = 40.0
+offset_bottom = 40.5
+texture = ExtResource("6_ebigs")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

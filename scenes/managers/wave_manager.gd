@@ -78,6 +78,7 @@ func update_wave_state() -> void:
 func start_wave() -> void:
 	if wave_active or spawning_wave:
 		return
+	Data.clear_notpetya_enemy_speed_effect()
 	Data.wave_started = true
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:

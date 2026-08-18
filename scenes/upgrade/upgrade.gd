@@ -14,6 +14,14 @@ var selected_tower: Data.Tower
 var sentinel_roll_thumbnails: Array = []
 var sentinel_roll_active := false
 
+# Scroll dragging
+var scroll_dragging := false
+var scroll_drag_start := Vector2.ZERO
+var scroll_start_position := Vector2.ZERO
+var active_scroll: ScrollContainer = null
+
+const DRAG_THRESHOLD := 10.0
+
 func _ready() -> void:
 	update_money_display()
 	for tower_enum in Data.Tower.values():
@@ -24,6 +32,31 @@ func _ready() -> void:
 	for sentinel_enum in Data.Sentinel.values():
 		var sentinel_card = sentinel_card_scene.instantiate()
 		sentinel_card.setup(sentinel_enum)
+
+		var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
+
+		var image: TextureRect = sentinel_card.get_node("TextureRect/TextureRect")
+		var locked_image: TextureRect = sentinel_card.get_node("TextureRect/locked")
+		var label: Label = sentinel_card.get_node("TextureRect/Label")
+
+		if Data.is_sandbox:
+			# Sandbox: all sentinels are treated as unlocked
+			locked_image.visible = false
+			image.modulate = Color.WHITE
+			label.text = sentinel_data.get("name", "")
+		else:
+			# Normal mode: use the actual unlock status
+			var is_unlocked: bool = sentinel_data.get("isUnlocked", false)
+
+			if is_unlocked:
+				locked_image.visible = false
+				image.modulate = Color.WHITE
+				label.text = sentinel_data.get("name", "")
+			else:
+				locked_image.visible = true
+				image.modulate = Color.BLACK
+				label.text = "???"
+
 		$SentinelStuff/ScrollContainer/RealSentinelContainer.add_child(sentinel_card)
 	
 	sentinel_roll_thumbnails = _build_sentinel_roll_thumbnails()
@@ -35,8 +68,27 @@ func set_selected_tower(tower_enum: Data.Tower) -> void:
 
 	$TextureRect/BigTowerName.text = Data.TOWER_DATA[tower_enum]['name']
 	%BigPic.texture = load(Data.TOWER_DATA[tower_enum]['thumbnail'])
-
-	$TextureRect/UpgradeButton.visible = true
+	
+	if Data.is_sandbox:
+		# Sandbox: everything is unlocked
+		%BigPic.modulate = Color(1, 1, 1, 1)
+		$TextureRect/BigTowerName.text = Data.TOWER_DATA[tower_enum]["name"]
+		$TextureRect/UpgradeButton.visible = true
+		$TextureRect/Unlock.visible = false
+		$SentinelStuff/Rollbtn.visible = false
+	else:
+		# Normal mode: check whether tower is unlocked
+		if not Data.TOWER_DATA[tower_enum].get("isUnlocked", true):
+			%BigPic.modulate = Color(0, 0, 0, 0.5)
+			$TextureRect/BigTowerName.text = "???"
+			$TextureRect/UpgradeButton.visible = false
+			$TextureRect/Unlock.visible = true
+		else:
+			%BigPic.modulate = Color(1, 1, 1, 1)
+			$TextureRect/BigTowerName.text = Data.TOWER_DATA[tower_enum]["name"]
+			$TextureRect/UpgradeButton.visible = true
+			$TextureRect/Unlock.visible = false
+		
 	var upgradeable: bool = bool(Data.TOWER_DATA[tower_enum].get("upgradeable", true))
 	if upgradeable:
 		$TextureRect/UpgradeButton/Label.text = "Upgrade"
@@ -47,7 +99,57 @@ func set_selected_tower(tower_enum: Data.Tower) -> void:
 	update_tier_buttons()
 	_set_tier_view(1)
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index != MOUSE_BUTTON_LEFT:
+			return
 
+		if event.pressed:
+			var mouse_pos := get_viewport().get_mouse_position()
+
+			var tower_scroll := $TextureRect/ScrollContainer
+			var sentinel_scroll := $SentinelStuff/ScrollContainer
+
+			if tower_scroll.visible and tower_scroll.get_global_rect().has_point(mouse_pos):
+				active_scroll = tower_scroll
+			elif sentinel_scroll.visible and sentinel_scroll.get_global_rect().has_point(mouse_pos):
+				active_scroll = sentinel_scroll
+			else:
+				active_scroll = null
+
+			if active_scroll:
+				scroll_dragging = false
+				scroll_drag_start = mouse_pos
+				scroll_start_position = Vector2(
+					active_scroll.scroll_horizontal,
+					active_scroll.scroll_vertical
+				)
+
+		else:
+			scroll_dragging = false
+			active_scroll = null
+
+	elif event is InputEventMouseMotion:
+		if active_scroll == null:
+			return
+
+		var mouse_pos := get_viewport().get_mouse_position()
+		var delta := mouse_pos - scroll_drag_start
+
+		if !scroll_dragging:
+			if delta.length() < DRAG_THRESHOLD:
+				return
+
+			scroll_dragging = true
+
+		active_scroll.scroll_horizontal = int(
+			scroll_start_position.x - delta.x
+		)
+
+		active_scroll.scroll_vertical = int(
+			scroll_start_position.y - delta.y
+		)
+		
 func update_stat_label() -> void:
 	var data = Data.TOWER_DATA[selected_tower]
 	if !data.has("upgrade1"):
@@ -435,67 +537,174 @@ func update_ability_panel() -> void:
 			label.text = unlock_text
 
 func _build_sentinel_roll_thumbnails() -> Array:
-	var textures: Array = []
-	for sentinel_data in Data.SENTINEL_DATA.values():
+	# ALL sentinels are included in the animation.
+	# This means already-unlocked sentinels can still appear
+	# while the roll is spinning.
+	sentinel_roll_thumbnails.clear()
+
+	for sentinel_enum in Data.Sentinel.values():
+		var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
+
 		if sentinel_data.has("thumbnail"):
-			var thumbnail_path = sentinel_data["thumbnail"]
-			var texture = load(thumbnail_path)
+			var texture = load(sentinel_data["thumbnail"])
+
 			if texture:
-				textures.append(texture)
-	return textures
+				sentinel_roll_thumbnails.append(texture)
+
+	return sentinel_roll_thumbnails
+
+
+func _get_locked_sentinels() -> Array:
+	var locked_sentinels: Array = []
+
+	for sentinel_enum in Data.Sentinel.values():
+		var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
+
+		if not sentinel_data.get("isUnlocked", false):
+			locked_sentinels.append(sentinel_enum)
+
+	return locked_sentinels
+
 
 func _on_Rollbtn_pressed() -> void:
 	if sentinel_roll_active:
 		return
-	if sentinel_roll_thumbnails.size() == 0:
+
+	var locked_sentinels = _get_locked_sentinels()
+
+	# All sentinels have already been unlocked
+	if locked_sentinels.is_empty():
 		return
 
+	if sentinel_roll_thumbnails.is_empty():
+		return
+
+	$SentinelStuff/SentinelRoll/Sentinel.visible = true
 	sentinel_roll_active = true
 	$SentinelStuff/Rollbtn.disabled = true
-	await _animate_sentinel_roll()
+
+	await _animate_sentinel_roll(locked_sentinels)
+
 	$SentinelStuff/Rollbtn.disabled = false
 	sentinel_roll_active = false
 
-func _animate_sentinel_roll() -> void:
-	var duration = 3.0
-	var interval = 0.08
-	var elapsed = 0.0
-	var sentinel_node = $SentinelStuff/SentinelRoll/Sentinel
 
+func _animate_sentinel_roll(locked_sentinels: Array) -> void:
+	var duration := 3.0
+	var interval := 0.08
+	var elapsed := 0.0
+
+	var sentinel_node: TextureRect = $SentinelStuff/SentinelRoll/Sentinel
+
+	# Start black
 	sentinel_node.modulate = Color(0, 0, 0, 1)
 
+
+	# ROLLING ANIMATION
+
+	# ALL sentinels appears during animation
 	while elapsed < duration:
-		var random_texture = sentinel_roll_thumbnails[randi() % sentinel_roll_thumbnails.size()]
-		sentinel_node.texture = random_texture
+		var random_index := randi() % sentinel_roll_thumbnails.size()
+		sentinel_node.texture = sentinel_roll_thumbnails[random_index]
+
 		await get_tree().create_timer(interval).timeout
 		elapsed += interval
 
-	var final_texture = sentinel_roll_thumbnails[randi() % sentinel_roll_thumbnails.size()]
-	sentinel_node.texture = final_texture
+
+	# FINAL RESULT
+	
+	# Only choose from currently LOCKED sentinels.
+	var chosen_index := randi() % locked_sentinels.size()
+	var chosen_enum: Data.Sentinel = locked_sentinels[chosen_index]
+
+	var chosen_data = Data.SENTINEL_DATA[chosen_enum]
+	var chosen_texture = load(chosen_data["thumbnail"])
+
+	# Show the winning sentinel
+	sentinel_node.texture = chosen_texture
 	sentinel_node.modulate = Color(1, 1, 1, 1)
 
+	#unlocks sentinel
+	Data.SENTINEL_DATA[chosen_enum]["isUnlocked"] = true
+	
+	
+	_update_sentinel_card_visual(chosen_enum)
+	
+	# Add the newly unlocked sentinel to the main game UI
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.unlock_sentinel_card(chosen_enum)
+		#show sentinel popup animation
+		ui.play_sentinel_pop(Data.SENTINEL_DATA[chosen_enum]["name"])
+	
+
+	# Rebuild the animation list.
+	# All sentinels are still allowed to appear while rolling.
+	sentinel_roll_thumbnails = _build_sentinel_roll_thumbnails()
+	
+func _update_sentinel_card_visual(sentinel_enum: Data.Sentinel) -> void:
+	var container = $SentinelStuff/ScrollContainer/RealSentinelContainer
+
+	for card in container.get_children():
+		if card.id == sentinel_enum:
+			var image: TextureRect = card.get_node("TextureRect/TextureRect")
+			var locked_image: TextureRect = card.get_node("TextureRect/locked")
+			var label: Label = card.get_node("TextureRect/Label")
+
+			locked_image.visible = false
+			image.modulate = Color.WHITE
+			label.text = Data.SENTINEL_DATA[sentinel_enum].get("name", "")
+
+			break
+			
 func _on_back_btn_pressed() -> void:
-	if %SentinelsContainer.visible == true:
-		get_tree().paused = false
-		visible = false
+	if $SentinelStuff/ScrollContainer.visible == true:
+		$SentinelStuff/ScrollContainer.visible = false
+		$SentinelStuff/SentinelList.visible = true
+		$SentinelStuff/SentinelRoll.visible = true
+		$SentinelStuff/Core.visible = true
+		if Data.is_sandbox:
+			$SentinelStuff/Rollbtn.visible = false
+		else:
+			$SentinelStuff/Rollbtn.visible = true
+
+	elif $SentinelStuff.visible:
+		$SentinelStuff.hide()
+		$TextureRect/ScrollContainer.visible = true
+		$SentinelStuff.visible = false
+		%BigPic.visible = true
 	else:
-		%SentinelsContainer.visible = true
+		if %SentinelsContainer.visible == true:
+			get_tree().paused = false
+			visible = false
+		else:
+			%SentinelsContainer.visible = true
 
-		%BigPic.position.x += 340
-		$TextureRect/BigTowerName.visible = true
-		$TextureRect/UpgradeButton.visible = true
+			%BigPic.position.x += 340
+			$TextureRect/BigTowerName.visible = true
+			$TextureRect/UpgradeButton.visible = true
 
-		$TextureRect/StatPanel.visible = false
-		$TextureRect/UpgradePanel.visible = false
-		$TextureRect/StatPanel/AbilityPanel.visible = false
-		$TextureRect/StatPanel/ScrollContainer/VBoxContainer.visible = true
+			$TextureRect/StatPanel.visible = false
+			$TextureRect/UpgradePanel.visible = false
+			$TextureRect/StatPanel/AbilityPanel.visible = false
+			$TextureRect/StatPanel/ScrollContainer/VBoxContainer.visible = true
+		
+		if $SentinelStuff/ScrollContainer.visible == true:
+			$SentinelStuff/ScrollContainer.visible = false
+			$SentinelStuff/Rollbtn.visible = true
+			$SentinelStuff/SentinelList.visible = true
 
 
 func _on_tower_btn_pressed() -> void:
 	$TextureRect/ScrollContainer.visible = true
 	$SentinelStuff.visible = false
+	%BigPic.visible = true
+	%BigPic.texture = null
+	
 
 func _on_sentinel_btn_pressed() -> void:
+	$TextureRect/Unlock.hide()
+	$SentinelStuff/Core.show()
 	$TextureRect/ScrollContainer.visible = false
 	$TextureRect/UpgradeButton.visible = false
 	%BigPic.visible = false
@@ -504,8 +713,40 @@ func _on_sentinel_btn_pressed() -> void:
 	$TextureRect/UpgradePanel.visible = false
 	$SentinelStuff.visible = true
 	$SentinelStuff/SentinelRoll.visible = true
-
-
+	$SentinelStuff/ScrollContainer.visible = false
+	$SentinelStuff/SentinelList.visible = true
+	
+	if Data.is_sandbox:
+		$SentinelStuff/Rollbtn.visible = false
+	else:
+		$SentinelStuff/Rollbtn.visible = true
+	
 func _on_sentinel_list_pressed() -> void:
 	$SentinelStuff/SentinelRoll.visible = false
 	$SentinelStuff/ScrollContainer.visible = true
+	$SentinelStuff/Rollbtn.visible = false
+	$SentinelStuff/SentinelList.visible = false
+	$SentinelStuff/Core.visible = false
+
+func _on_unlock_pressed() -> void:
+	Data.TOWER_DATA[selected_tower]["isUnlocked"] = true
+	
+	# Restore the BigPic
+	%BigPic.modulate = Color(1, 1, 1, 1)
+	
+	# Restore the tower name
+	$TextureRect/BigTowerName.text = Data.TOWER_DATA[selected_tower]["name"]
+	
+	# Update the main UI tower card
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.unlock_tower_card(selected_tower)
+		
+	# Update the corresponding tower card
+	for tower_card in %SentinelsContainer.get_children():
+		if tower_card.id == selected_tower:
+			tower_card.update_unlock_status()
+			break
+	
+	$TextureRect/UpgradeButton.visible = true
+	$TextureRect/Unlock.visible = false

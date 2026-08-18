@@ -80,6 +80,52 @@ func reward(type: String, value: float):
 	if type == "money":
 		Data.money += value
 
+func stun_all_towers(duration: float) -> void:
+	var towers: Array = []
+	for group_name in ["Towers", "towers"]:
+		towers.append_array(get_tree().get_nodes_in_group(group_name))
+
+	for tower in towers:
+		if tower and tower.has_method("apply_boss3_stun"):
+			tower.apply_boss3_stun(duration)
+
+func damage_boss4_by_percent(percent: float) -> void:
+	for enemy in get_tree().get_nodes_in_group("Enemies"):
+		if not is_instance_valid(enemy):
+			continue
+		if enemy.get("enemy_type") == enemy.get_node_or_null("Boss4"):
+			var damage_amount = max(1, int(round(enemy.health * percent)))
+			enemy.hit(damage_amount, -1)
+			print("NotPetya effect: Boss4 hit for ", damage_amount, " damage (", int(percent * 100), "% of HP)")
+			return
+	print("NotPetya effect: no active Boss4 found to damage")
+
+func apply_notpetya_wrong_answer() -> void:
+	var roll = randi() % 3
+
+	match roll:
+		0:
+			var heal_amount = Data.max_health * 0.25
+			Data.health = min(Data.max_health, Data.health + heal_amount)
+			print("NotPetya wrong answer: +25% HP heal (", heal_amount, ")")
+		1:
+			Data.apply_notpetya_enemy_speed_effect(1.15)
+			print("NotPetya wrong answer: +15% enemy movement speed")
+		2:
+			stun_all_towers(5.0)
+			print("NotPetya wrong answer: all towers stunned for 5s")
+
+func apply_notpetya_correct_answer() -> void:
+	var roll = randi() % 2
+
+	match roll:
+		0:
+			damage_boss4_by_percent(0.15)
+			print("NotPetya correct answer: Boss4 loses 15% HP")
+		1:
+			Data.apply_notpetya_enemy_speed_effect(0.85)
+			print("NotPetya correct answer: -15% enemy movement speed")
+
 func _disable_auto() -> void:
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
@@ -572,3 +618,116 @@ func show_dialogue_story_ends(): # used in scripture
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "ending")
 	is_story_ends = true
+
+
+signal show_balloon_messages(state: bool)
+func show_messages(state: bool) -> void:
+	show_balloon_messages.emit(state)
+
+signal load_message_choices(texture1: String)
+enum Messages {SAMPLE1, SAMPLE2, SAMPLE3, SAMPLE4, SAMPLE5, SAMPLE6, SAMPLE7, SAMPLE8, SAMPLE9, SAMPLE10}
+
+var MESSAGE_DATA = {
+	Messages.SAMPLE1: {
+		"option1": false,
+		"option2": true,
+		"message1": "res://graphics/enemies/notpetya_messages/fake1.png"
+	},
+	Messages.SAMPLE2: {
+		"option1": true,
+		"option2": false,
+		"message1": "res://graphics/enemies/notpetya_messages/legit1.png"
+	},
+	Messages.SAMPLE3: {
+		"option1": true,
+		"option2": false,
+		"message1": "res://graphics/enemies/notpetya_messages/legit2.png"
+	},
+	Messages.SAMPLE4: {
+		"option1": false,
+		"option2": true,
+		"message1": "res://graphics/enemies/notpetya_messages/fake2.png"
+	},
+	Messages.SAMPLE5: {
+		"option1": true,
+		"option2": false,
+		"message1": "res://graphics/enemies/notpetya_messages/legit3.png"
+	},
+	Messages.SAMPLE6: {
+		"option1": false,
+		"option2": true,
+		"message1": "res://graphics/enemies/notpetya_messages/fake3.png"
+	},
+	Messages.SAMPLE7: {
+		"option1": true,
+		"option2": false,
+		"message1": "res://graphics/enemies/notpetya_messages/legit4.png"
+	},
+	Messages.SAMPLE8: {
+		"option1": false,
+		"option2": true,
+		"message1": "res://graphics/enemies/notpetya_messages/fake4.png"
+	},
+	Messages.SAMPLE9: {
+		"option1": true,
+		"option2": false,
+		"message1": "res://graphics/enemies/notpetya_messages/legit5.png"
+	},
+	Messages.SAMPLE10: {
+		"option1": false,
+		"option2": true,
+		"message1": "res://graphics/enemies/notpetya_messages/fake5.png"
+	}
+}
+var ARCHIVED_DATA = {}
+
+var current_option
+var message1_texture
+var option1_answer: bool
+var option2_answer: bool
+
+func choose_notpetya_dialogue() -> void:
+	if MESSAGE_DATA.is_empty():
+		MESSAGE_DATA = ARCHIVED_DATA.duplicate(true)
+		ARCHIVED_DATA.clear()
+
+	if MESSAGE_DATA.is_empty():
+		message1_texture = "res://graphics/enemies/notpetya_messages/legit1.png"
+		option1_answer = true
+		option2_answer = false
+		load_message_choices.emit(message1_texture)
+		return
+
+	current_option = MESSAGE_DATA.keys().pick_random()
+	ARCHIVED_DATA[current_option] = MESSAGE_DATA[current_option]
+	message1_texture = MESSAGE_DATA[current_option]["message1"]
+	option1_answer = MESSAGE_DATA[current_option]["option1"]
+	option2_answer = MESSAGE_DATA[current_option]["option2"]
+	MESSAGE_DATA.erase(current_option)
+	load_message_choices.emit(message1_texture)
+
+# func _ready() -> void:
+# 	activate_notpetya_dialogue()
+
+
+var is_notpetya_dialogue_open: bool = false
+
+func _on_dialogue_ended(_resource) -> void:
+	is_notpetya_dialogue_open = false
+	if get_tree():
+		get_tree().paused = false
+
+func wait_for_notpetya_dialogue_end() -> void:
+	if not is_notpetya_dialogue_open:
+		return
+	await DialogueManager.dialogue_ended
+
+func activate_notpetya_dialogue() -> void:
+	if is_notpetya_dialogue_open:
+		return
+
+	is_notpetya_dialogue_open = true
+	if get_tree():
+		get_tree().paused = true
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended, CONNECT_ONE_SHOT)
+	DialogueManager.show_dialogue_balloon(load("res://Notpetya.dialogue"), "SkillActivate")

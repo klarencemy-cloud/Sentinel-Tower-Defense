@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var wave_button: TextureButton = $Control/TextureRect/HBoxContainer/WaveButton
 @onready var sandbox_setting: TextureButton = $Control/TextureRect/HBoxContainer/SandboxSetting
 @onready var tower_cards_container: HBoxContainer = $Control/TextureRect/ScrollContainer/TowerCardsContainer
+@onready var sentinel_cards_container: HBoxContainer = $Control/TextureRect/ScrollContainer/SentinelCardsContainer
 @onready var enemy_cards_container: HBoxContainer = $Control/TextureRect/ScrollContainer/EnemyCardsContainer
 @onready var unli_money: CheckBox = $Control/TextureRect/SandboxMenuContainer/UnliMoney
 @onready var unli_health: CheckBox = $Control/TextureRect/SandboxMenuContainer/UnliHealth
@@ -38,7 +39,11 @@ var tower_card_scene = preload("res://scenes/ui/tower_card.tscn")
 var enemy_card_scene = preload("res://scenes/ui/enemy_card.tscn")
 var sentinel_card_scene = preload("res://scenes/ui/sentinel_card.tscn")
 
+var tower_card_button_texture = preload("res://graphics/ui/tower_card_button.png")
+var sentinel_card_button_texture = preload("res://graphics/ui/sentinel_card_button.png")
+var enemy_card_button_texture = preload("res://graphics/ui/enemy_card_button.png")
 
+enum CardCategory {TOWER, SENTINEL, ENEMY}
 var fade_tween: Tween
 
 var ad_timer := Timer.new()
@@ -67,11 +72,8 @@ func _ready() -> void:
 	ransomware_timer.one_shot = true
 	ransomware_timer.timeout.connect(_spawn_random_ransomware)
 	
-	tower_cards_container.visible = true
-	enemy_cards_container.visible = false
+	show_card_category(CardCategory.TOWER)
 	Data.server_load_changed.connect(update_server_load)
-	$Control/TextureRect/ScrollContainer/TowerCardsContainer.visible = true
-	$Control/TextureRect/ScrollContainer/EnemyCardsContainer.visible = false
 	
 
 	Data.toggle_server_scene.connect(_show_server_upgrade)
@@ -86,6 +88,13 @@ func _ready() -> void:
 		wave_button.disabled = true # disable start wave button
 		Data.before_owned_towers = Data.owned_towers.duplicate()
 		Data.owned_towers.clear()
+		# Backup and reset tower upgrades for sandbox mode
+		Data._initialize_base_tower_stats() # Ensure base stats are captured before backing up
+		Data._backup_tower_upgrades()
+		Data._reset_tower_upgrades_to_base()
+		Offense._sandbox_mode()
+		Defense._sandbox_mode()
+		Economy._sandbox_mode()
 		unli_money.button_pressed = true
 		unli_health.button_pressed = true
 		$Control/HBoxContainer.position.y = 780
@@ -95,15 +104,22 @@ func _ready() -> void:
 		toggle_skill_activation()
 	
 	for tower_enum in Data.Tower.values():
-		var tower_card = tower_card_scene.instantiate()
-		tower_card.setup(tower_enum)
-		$Control/TextureRect/ScrollContainer/TowerCardsContainer.add_child(tower_card)
-		tower_card.connect('press', tower_select)
+		if not Data.is_sandbox:
+			if not Data.TOWER_DATA[tower_enum].isUnlocked:
+				continue
+		unlock_tower_card(tower_enum)
+
 
 	for sentinel_enum in Data.Sentinel.values():
+		var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
+		
+		if not Data.is_sandbox:
+			if not sentinel_data.isUnlocked:
+				continue
+			
 		var sentinel_card = sentinel_card_scene.instantiate()
 		sentinel_card.setup(sentinel_enum)
-		$Control/TextureRect/ScrollContainer/TowerCardsContainer.add_child(sentinel_card)
+		$Control/TextureRect/ScrollContainer/SentinelCardsContainer.add_child(sentinel_card)
 		sentinel_card.connect('press', sentinel_select)
 
 
@@ -158,6 +174,37 @@ func move_camera(coords: Vector2):
 	camera_tween.tween_property(camera, "position", coords, 1)
 
 	# camera.position = coords
+func show_card_category(category: int) -> void:
+	# Non-sandbox cannot access Enemy
+	if not Data.is_sandbox and category == CardCategory.ENEMY:
+		category = CardCategory.TOWER
+
+	# Set visibility
+	tower_cards_container.visible = category == CardCategory.TOWER
+	sentinel_cards_container.visible = category == CardCategory.SENTINEL
+	enemy_cards_container.visible = category == CardCategory.ENEMY and Data.is_sandbox
+
+	# Update button based on which container is actually visible
+	update_tower_enemies_button_texture()
+
+func _on_tower_enemies_button_pressed() -> void:
+	if Data.is_sandbox:
+		if tower_cards_container.visible:
+			show_card_category(CardCategory.SENTINEL)
+
+		elif sentinel_cards_container.visible:
+			show_card_category(CardCategory.ENEMY)
+
+		elif enemy_cards_container.visible:
+			show_card_category(CardCategory.TOWER)
+
+	else:
+		if tower_cards_container.visible:
+			show_card_category(CardCategory.SENTINEL)
+
+		elif sentinel_cards_container.visible:
+			show_card_category(CardCategory.TOWER)
+
 
 #sandbox
 func sandbox_spawn_enemy(enemy_enum: Data.Enemy):
@@ -391,6 +438,14 @@ func hide_pop(state: bool):
 func hide_pop2(state: bool):
 	$Scripture.visible = state
 
+func hide_pop3(state: bool):
+	$SentinelPop.visible = state
+
+func play_sentinel_pop(sentinel: String):
+	$SentinelPop.play_animation(sentinel)
+	$SentinelPop/Info/TextureRect/AnimatedSprite2D.play(sentinel)
+
+
 func play_scene(scene: String):
 	$Cutscene.visible = true
 	$Cutscene/Control/AnimationPlayer.play(scene)
@@ -413,7 +468,7 @@ func update_boss_hp(enemy: Data.Enemy, current_hp: int, max_hp: int):
 		Data.Enemy.BOSS3:
 			boss_name.text = "WannaCry"
 		Data.Enemy.BOSS4:
-			boss_name.text = "NotPeyta"
+			boss_name.text = "NotPetya"
 		Data.Enemy.BOSS5:
 			boss_name.text = "MyDoom"
 
@@ -489,3 +544,53 @@ func _reorder_boss_bars():
 		new_bar.get_node("hpamount").text = old_bar.get_node("hpamount").text
 
 		boss_bar_assignments[remaining[i]["id"]] = new_bar
+		
+func update_tower_enemies_button_texture() -> void:
+	if tower_cards_container.visible:
+		tower_enemies_button.texture_normal = tower_card_button_texture
+	elif sentinel_cards_container.visible:
+		tower_enemies_button.texture_normal = sentinel_card_button_texture
+	elif enemy_cards_container.visible:
+		tower_enemies_button.texture_normal = enemy_card_button_texture
+		
+func unlock_tower_card(tower_enum: Data.Tower) -> void:
+	# Don't create a duplicate card
+	for card in tower_cards_container.get_children():
+		if card.id == tower_enum:
+			return
+
+	var tower_card = tower_card_scene.instantiate()
+	tower_card.setup(tower_enum)
+
+	# Find the correct position based on Data.Tower enum order
+	var insert_index := 0
+
+	for card in tower_cards_container.get_children():
+		if card.id < tower_enum:
+			insert_index += 1
+
+	tower_cards_container.add_child(tower_card)
+	tower_cards_container.move_child(tower_card, insert_index)
+
+	tower_card.connect("press", tower_select)
+
+func unlock_sentinel_card(sentinel_enum: Data.Sentinel) -> void:
+	# Don't create a duplicate card
+	for card in sentinel_cards_container.get_children():
+		if card.id == sentinel_enum:
+			return
+
+	var sentinel_card = sentinel_card_scene.instantiate()
+	sentinel_card.setup(sentinel_enum)
+
+	# Find the correct position based on Data.Sentinel enum order
+	var insert_index := 0
+
+	for card in sentinel_cards_container.get_children():
+		if card.id < sentinel_enum:
+			insert_index += 1
+
+	sentinel_cards_container.add_child(sentinel_card)
+	sentinel_cards_container.move_child(sentinel_card, insert_index)
+
+	sentinel_card.connect("press", sentinel_select)
