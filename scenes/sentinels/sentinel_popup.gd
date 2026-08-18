@@ -6,6 +6,7 @@ var is_skippable: bool = false
 # 	play_animation(1)
 
 func _on_info_gui_input(event: InputEvent) -> void:
+	UISound.play_click()
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and is_skippable:
 			$Info/AnimationPlayer.play_backwards("pop_info")

@@ -19,6 +19,7 @@ func _ready() -> void:
 	
 
 func _on_pressed() -> void:
+	UISound.play_click()
 	press.emit(id)
 
 func toggle_active():

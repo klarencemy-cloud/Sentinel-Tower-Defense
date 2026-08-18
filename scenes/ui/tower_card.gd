@@ -46,6 +46,7 @@ func update_free_label():
 		free_label.text = str(amount)
 
 func _on_pressed() -> void:
+	
 	for card in get_tree().get_nodes_in_group("TowerCard"):
 		card.set_selected(false)
 

@@ -13,4 +13,5 @@ func setup(new_id: Data.Enemy) -> void:
 
 
 func _on_pressed() -> void:
+	UISound.play_click()
 	press.emit(id)

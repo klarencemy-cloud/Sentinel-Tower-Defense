@@ -12,5 +12,6 @@ func _process(delta: float) -> void:
 
 func _on_pressed() -> void:
  # Replace with function body.
+	UISound.play_click()
 	get_tree().paused = true
 	%Upgrade.visible = true
