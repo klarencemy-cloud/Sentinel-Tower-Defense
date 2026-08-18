@@ -258,6 +258,7 @@ func _on_wave_button_pressed() -> void:
 
 
 func _on_pause_button_pressed() -> void:
+	UISound.play_click()
 	$PauseMenu.visible = true
 	get_tree().paused = true
 
@@ -285,6 +286,7 @@ func refresh_tower_cards():
 
 
 func _on_stats_counter_button_pressed() -> void:
+	UISound.play_click()
 	if $EnemyTowerStatsCounter.visible == false:
 		$EnemyTowerStatsCounter.visible = true
 	else:

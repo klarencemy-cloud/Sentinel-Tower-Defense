@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://fcvwvg4v222j" path="res://scenes/managers/ability_manager.gd" id="4_qogh7"]
 [ext_resource type="PackedScene" uid="uid://k2uh63vandnx" path="res://scenes/ui/player_camera.tscn" id="5_urvlt"]
 [ext_resource type="PackedScene" uid="uid://4e4dveqj5cpq" path="res://scenes/ui/ui.tscn" id="6_d4w6o"]
-[ext_resource type="AudioStream" uid="uid://b7xwf0s7rktfd" path="res://audio/sound_placeholder.mp3" id="6_mbbpy"]
 [ext_resource type="Script" uid="uid://d3hyvmjtdxi5k" path="res://scenes/managers/sentinel_manager.gd" id="6_mq31s"]
 [ext_resource type="Script" uid="uid://1biiqhqmsago" path="res://scenes/managers/level_manager.gd" id="9_1phd1"]
 [ext_resource type="Script" uid="uid://c3jwwe6pt1e16" path="res://scenes/levels/color_rect.gd" id="9_5mi6g"]
@@ -20,6 +19,7 @@
 [ext_resource type="Script" uid="uid://c3hjlymhbui53" path="res://scenes/levels/color_rect2.gd" id="13_lp2ca"]
 [ext_resource type="Script" uid="uid://djmtfsuaukiga" path="res://scenes/levels/lightning_effects.gd" id="13_qogh7"]
 [ext_resource type="Shader" uid="uid://cxvfcab5jmldp" path="res://scenes/levels/fog.gdshader" id="14_8iyoh"]
+[ext_resource type="AudioStream" uid="uid://cwfyy8xbqspec" path="res://audio/UI/rain.wav" id="16_lp2ca"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xb4v1"]
 texture = ExtResource("2_b2cq8")
@@ -821,10 +821,10 @@ max_shake = 100.0
 shake_fade = 5.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=752247016]
-stream = ExtResource("6_mbbpy")
-volume_db = -80.0
+stream = ExtResource("16_lp2ca")
+volume_db = -11.119
 autoplay = true
-parameters/looping = true
+bus = &"Sounds"
 
 [node name="WeatherEffects" type="Node2D" parent="." unique_id=2129595724]
 z_index = 1
@@ -854,7 +854,6 @@ trail_lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_jyre1")
 
 [node name="RainParticles" type="GPUParticles2D" parent="WeatherEffects" unique_id=1895260683]
-visible = false
 light_mask = 7
 z_index = 1
 position = Vector2(1922, 1063)

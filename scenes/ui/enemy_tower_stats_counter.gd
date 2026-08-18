@@ -180,12 +180,14 @@ func _refresh_enemy_entries() -> void:
 
 
 func _on_kill_button_pressed() -> void:
+	UISound.play_click()
 	scroll_container.visible = false
 	scroll_container_2.visible = true
 	kill_button.texture_normal = preload("res://graphics/ui/tmid_counter_enemy.png")
 	tower_button.texture_normal = preload("res://graphics/ui/tmid_counter_button_tower.png")
 
 func _on_tower_button_pressed() -> void:
+	UISound.play_click()
 	scroll_container.visible = true
 	scroll_container_2.visible = false
 	kill_button.texture_normal = preload("res://graphics/ui/tmid_counter_button.png")

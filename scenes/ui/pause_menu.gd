@@ -9,11 +9,12 @@ func _process(delta: float) -> void:
 	pass # void of emptiness and nothingness just like my wallet
 
 func _on_resume_pressed() -> void:
+	UISound.play_click()
 	get_tree().paused = false # unfreezes game, pag kase cinlick pause button ipapause nya game
 	visible = false # go poof
 
 func _on_quit_pressed() -> void:
-	
+	UISound.play_close()
 	get_tree().paused = false # unfreezes game #2
 	Data.wave_started = false
 	visible = false # go poof #2

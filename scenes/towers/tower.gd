@@ -133,7 +133,9 @@ func _on_enemy_detection_area_area_exited(area: Area2D) -> void:
 			area.speed = area.base_speed
 
 func _on_click_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		UISound.play_click()
 		var delay_timer := get_node_or_null("DelayTimer")
 
 		if delay_timer == null or delay_timer.time_left <= 0.0:
