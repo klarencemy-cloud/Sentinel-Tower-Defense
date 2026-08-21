@@ -408,7 +408,6 @@ func _update_preview_range(preview: Node2D) -> void:
 
 	range_indicator.points = points
 
-	# Counteract TowerPreview's 0.7 scale
-	range_indicator.scale = Vector2.ONE / preview.scale
+	range_indicator.scale = Vector2.ONE
 
 	range_indicator.visible = true

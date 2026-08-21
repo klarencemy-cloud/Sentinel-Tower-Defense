@@ -299,7 +299,6 @@ func update_range_indicator(preview: Sprite2D, radius: float) -> void:
 
 	range_indicator.points = points
 
-	# Counteract the SentinelPreview scale
-	range_indicator.scale = Vector2.ONE / preview.scale
+	range_indicator.scale = Vector2.ONE
 
 	range_indicator.visible = true
