@@ -955,7 +955,7 @@ func _boss4_dialogue_loop() -> void:
 	if enemy_type_stats != Data.Enemy.BOSS4:
 		return
 
-	await get_tree().create_timer(10.0).timeout
+	await get_tree().create_timer(10.0, false).timeout
 	if dead or is_queued_for_deletion() or enemy_type_stats != Data.Enemy.BOSS4:
 		return
 
@@ -963,7 +963,7 @@ func _boss4_dialogue_loop() -> void:
 	await GameDialogueManager.wait_for_notpetya_dialogue_end()
 
 	while !dead and enemy_type_stats == Data.Enemy.BOSS4:
-		await get_tree().create_timer(10.0).timeout
+		await get_tree().create_timer(10.0, false).timeout
 
 		if dead or is_queued_for_deletion():
 			break
