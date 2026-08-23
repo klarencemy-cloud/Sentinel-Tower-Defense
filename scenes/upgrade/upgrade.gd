@@ -341,6 +341,7 @@ func _on_sentinel_pressed() -> void:
 
 
 func _on_upgrade_button_pressed() -> void:
+	UISound.play_click()
 	update_stat_label()
 	if !Data.TOWER_DATA[selected_tower].has("upgrade1"):
 		return
@@ -364,33 +365,41 @@ func _on_upgrade_button_pressed() -> void:
 	update_ability_panel()
 
 func _on_stat_panel_left_pressed() -> void:
+	UISound.play_click()
 	$TextureRect/StatPanel/AbilityPanel.visible = false
 	$TextureRect/StatPanel/ScrollContainer/VBoxContainer.visible = true
 
 func _on_stat_panel_right_pressed() -> void:
+	UISound.play_click()
 	$TextureRect/StatPanel/AbilityPanel.visible = true
 	$TextureRect/StatPanel/ScrollContainer/VBoxContainer.visible = false
 
 func _on_upgrade_1_pressed() -> void:
+	UISound.play_click()
 	_try_purchase_upgrade(1)
 
 
 func _on_upgrade_2_pressed() -> void:
+	UISound.play_click()
 	_try_purchase_upgrade(2)
 
 
 func _on_upgrade_3_pressed() -> void:
+	UISound.play_click()
 	_try_purchase_upgrade(3)
 
 func _on_upgrade_4_pressed() -> void:
+	UISound.play_click()
 	_try_purchase_upgrade(4)
 
 
 func _on_upgrade_5_pressed() -> void:
+	UISound.play_click()
 	_try_purchase_upgrade(5)
 
 
 func _on_upgrade_6_pressed() -> void:
+	UISound.play_click()
 	_try_purchase_upgrade(6)
 
 
@@ -453,16 +462,19 @@ func _set_tier_view(tier: int) -> void:
 	panel.get_node("Tier3Btn").texture_normal = load("res://graphics/buttons/3rdTier%s.png" % ("Clicked" if tier == 3 else "Unclicked"))
 
 func _on_tier_1_btn_pressed() -> void:
+	UISound.play_click()
 	_set_tier_view(1)
 
 func _on_tier_2_btn_pressed() -> void:
 	if $TextureRect/UpgradePanel/Tier2Btn.disabled:
 		return
+	UISound.play_click()
 	_set_tier_view(2)
 
 func _on_tier_3_btn_pressed() -> void:
 	if $TextureRect/UpgradePanel/Tier3Btn.disabled:
 		return
+	UISound.play_click()
 	_set_tier_view(3)
 
 func update_tier_buttons():
@@ -658,6 +670,7 @@ func _update_sentinel_card_visual(sentinel_enum: Data.Sentinel) -> void:
 			break
 			
 func _on_back_btn_pressed() -> void:
+	UISound.play_close()
 	if $SentinelStuff/ScrollContainer.visible == true:
 		$SentinelStuff/ScrollContainer.visible = false
 		$SentinelStuff/SentinelList.visible = true
@@ -696,6 +709,7 @@ func _on_back_btn_pressed() -> void:
 
 
 func _on_tower_btn_pressed() -> void:
+	UISound.play_click()
 	$TextureRect/ScrollContainer.visible = true
 	$SentinelStuff.visible = false
 	%BigPic.visible = true
@@ -703,6 +717,7 @@ func _on_tower_btn_pressed() -> void:
 	
 
 func _on_sentinel_btn_pressed() -> void:
+	UISound.play_click()
 	$TextureRect/Unlock.hide()
 	$SentinelStuff/Core.show()
 	$TextureRect/ScrollContainer.visible = false
@@ -722,6 +737,7 @@ func _on_sentinel_btn_pressed() -> void:
 		$SentinelStuff/Rollbtn.visible = true
 	
 func _on_sentinel_list_pressed() -> void:
+	UISound.play_click()
 	$SentinelStuff/SentinelRoll.visible = false
 	$SentinelStuff/ScrollContainer.visible = true
 	$SentinelStuff/Rollbtn.visible = false
@@ -750,3 +766,8 @@ func _on_unlock_pressed() -> void:
 	
 	$TextureRect/UpgradeButton.visible = true
 	$TextureRect/Unlock.visible = false
+
+
+func _on_rollbtn_toggled(toggled_on: bool) -> void:
+	UISound.play_click()
+	pass # Replace with function body.

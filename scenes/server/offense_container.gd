@@ -94,14 +94,17 @@ func _update_upgrades() -> void:
 
 
 func _on_offense_upgrade_1_pressed() -> void:
+	UISound.play_click()
 	_upgrade(0)
 
 
 func _on_offense_upgrade_2_pressed() -> void:
+	UISound.play_click()
 	_upgrade(1)
 
 
 func _on_offense_upgrade_3_pressed() -> void:
+	UISound.play_click()
 	_upgrade(2)
 
 

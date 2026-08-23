@@ -382,6 +382,7 @@ func _spawn_random_ransomware():
 # SANDBOX MODE TO NANDITO NAKAKALITO NILIPAT KO SA PINAKA BABA CODES NG SANDBOX
 func _on_maxed_lvl_toggled(toggled_on: bool) -> void:
 	if toggled_on:
+		UISound.play_click()
 		Data.is_maxed_lvl = true
 		Data.before_player_level = Data.player_level
 		Data.before_total_experience = Data.experience
@@ -390,6 +391,7 @@ func _on_maxed_lvl_toggled(toggled_on: bool) -> void:
 		update_experience(Data.experience, Data.player_level, Data.default_level_pool)
 		server_pts_label.text = "∞"
 	else:
+		UISound.play_close()
 		Data.is_maxed_lvl = false
 		Data.player_level = Data.before_player_level
 		Data.experience = Data.before_total_experience
@@ -422,12 +424,14 @@ func _on_unli_health_toggled(toggled_on: bool) -> void:
  
 func _on_unli_senti_cap_toggled(toggled_on: bool) -> void: # UNLI SERVER CAPACITY TO
 	if toggled_on:
+		UISound.play_click()
 		Data.is_unli_senti_cap = true
 		Data.before_max_server_load = Data.maxserverload
 
 		Data.maxserverload = 999999
 
 	else:
+		UISound.play_close()
 		Data.is_unli_senti_cap = false
 		Data.maxserverload = Data.before_max_server_load
 	
