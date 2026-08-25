@@ -26,6 +26,7 @@ buses/default_bus_layout="uid://d0dmqaswylifk"
 [autoload]
 
 Data="*res://global/data.gd"
+Save="*res://global/save.gd"
 EnemyTower="*uid://mpoy2nivk3lo"
 EnemyStats="*uid://c0kaghc034tq0"
 Defense="*uid://bsaw3m0wic5sd"

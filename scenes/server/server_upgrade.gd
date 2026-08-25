@@ -7,17 +7,18 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	offense_container.refresh_pts.connect(_refresh_server_pts)
-	defense_container.refresh_pts.connect(_refresh_server_pts)
-	economy_container.refresh_pts.connect(_refresh_server_pts)
+	offense_container.refresh_pts.connect(_on_upgrade_purchased)
+	defense_container.refresh_pts.connect(_on_upgrade_purchased)
+	economy_container.refresh_pts.connect(_on_upgrade_purchased)
+
 	Data.open_server_cyber.connect(toggle_open_server_cyber)
 
 	if Data.is_sandbox:
-		Data.before_server_points = Data.server_points # save server points before sandbox
-		Data.server_points = Data.default_server_points # reset server points for sandbox
+		Data.before_server_points = Data.server_points
+		Data.server_points = Data.default_server_points
 		$UIContainer/CyberBtn.visible = true
-	_refresh_server_pts()
 
+	_refresh_server_pts()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_refresh_server_pts()
@@ -86,3 +87,7 @@ func _on_economy_pressed() -> void:
 	$UIContainer/ServerUpdate/OffenseContainer.visible = false
 	$UIContainer/ServerUpdate/DefenseContainer.visible = false
 	$UIContainer/ServerUpdate/EconomyContainer.visible = true
+
+func _on_upgrade_purchased() -> void:
+	_refresh_server_pts()
+	Save.save_game()

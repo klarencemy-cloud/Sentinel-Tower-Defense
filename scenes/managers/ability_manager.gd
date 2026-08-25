@@ -17,6 +17,9 @@ var place_ability: bool = false:
 			if preview:
 				preview.visible = value
 
+func _ready() -> void:
+	add_to_group("AbilityManager")
+
 func setup(root: Node2D, map_manager: Node) -> void:
 	level_root = root
 	level_manager = map_manager
@@ -116,7 +119,13 @@ func _try_place_firewall(world_pos: Vector2) -> void:
 
 	var firewall_instance = firewall_scene.instantiate()
 	firewall_instance.position = world_pos
+	firewall_instance.add_to_group("Abilities")
 	firewall_parent.add_child(firewall_instance)
+
+	# Save immediately after placing ability
+	var save_system = get_tree().get_first_node_in_group("save")
+	if save_system:
+		save_system.save_game()
 
 	cancel_selection()
 	current_placement_kind = ""
@@ -193,3 +202,17 @@ func _update_preview_buttons(world_pos: Vector2, preview: Sprite2D):
 
 		if range_indicator:
 			range_indicator.default_color = Color(1.0, 0.2, 0.2, 0.8)
+
+func restore_ability(ability_type: String, position: Vector2) -> void:
+	if ability_type == "firewall":
+		var firewall_parent = level_root.get_node_or_null("Abilities")
+
+		if firewall_parent == null:
+			firewall_parent = Node2D.new()
+			firewall_parent.name = "Abilities"
+			level_root.add_child(firewall_parent)
+
+		var firewall_instance = firewall_scene.instantiate()
+		firewall_instance.position = position
+		firewall_instance.add_to_group("Abilities")
+		firewall_parent.add_child(firewall_instance)

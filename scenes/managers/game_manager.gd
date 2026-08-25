@@ -13,10 +13,15 @@ func _ready() -> void:
 	RenderingServer.set_default_clear_color("242a2f")
 	$BG/TowerPreview.hide()
 	$BG/SentinelPreview.hide()
+
 	level_manager.setup(self)
+
 	tower_manager.setup(self, level_manager)
 	ability_manager.setup(self, level_manager)
 	sentinel_manager.setup(self, level_manager)
+
+	tower_manager.restore_saved_towers()
+
 	wave_manager.setup(level_manager.current_map, level_manager)
 
 	wave_manager.level_completed.connect(level_completed)
@@ -36,6 +41,7 @@ func level_completed() -> void:
 
 func next_map() -> void:
 	Data.current_level_index += 1
+	Save.save_game()
 
 
 func _process(_delta: float) -> void:

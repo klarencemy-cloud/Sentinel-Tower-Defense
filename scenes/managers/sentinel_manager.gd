@@ -32,6 +32,7 @@ var place_sentinel: bool = false:
 
 func _ready() -> void:
 	Data.cancel_sentinel_placement.connect(cancel_selection)
+	add_to_group("AbilityManager")
 
 func _process(delta: float) -> void:
 	var preview = _get_sentinel_preview()
@@ -182,7 +183,16 @@ func _try_place_sentinel(cell_pos: Vector2i, world_pos: Vector2) -> void:
 
 	var sentinel = load(sentinel_scenes[selected_sentinel]).instantiate()
 	sentinel.position = world_pos
+	sentinel.cell_pos = cell_pos
+	sentinel.set_meta("sentinel_type", int(selected_sentinel))
+	sentinel.add_to_group("Sentinels")
 	level_root.get_node("Towers").add_child(sentinel)
+
+	# Save immediately after placing sentinel
+	var save_system = get_tree().get_first_node_in_group("save")
+	if save_system:
+		save_system.save_game()
+
 	cancel_selection()
 
 	match selected_sentinel:
@@ -302,3 +312,39 @@ func update_range_indicator(preview: Sprite2D, radius: float) -> void:
 	range_indicator.scale = Vector2.ONE
 
 	range_indicator.visible = true
+
+func restore_sentinel(sentinel_type: Data.Sentinel, cell_pos: Vector2i) -> void:
+	var layer = level_manager.get_build_layer()
+	if layer == null:
+		return
+
+	var world_pos = level_manager.map_to_world(cell_pos)
+
+	var sentinel_scene_path = sentinel_scenes.get(sentinel_type, "")
+	if sentinel_scene_path == "":
+		return
+
+	var sentinel = load(sentinel_scene_path).instantiate()
+
+	sentinel.position = world_pos
+	sentinel.cell_pos = cell_pos
+	sentinel.set_meta("sentinel_type", int(sentinel_type))
+	sentinel.add_to_group("Sentinels")
+
+	level_root.get_node("Towers").add_child(sentinel)
+
+	used_cells.append(cell_pos)
+
+	match sentinel_type:
+		Data.Sentinel.ETHICAL:
+			Data.sentinel_ethical_deployed = true
+		Data.Sentinel.SYSAD:
+			Data.sentinel_sysad_deployed = true
+		Data.Sentinel.INTRUSION:
+			Data.sentinel_intrusion_deployed = true
+		Data.Sentinel.SECURITY:
+			Data.sentinel_security_deployed = true
+		Data.Sentinel.MALWARE:
+			Data.sentinel_malware_deployed = true
+		Data.Sentinel.DECEPTION:
+			Data.sentinel_deception_deployed = true

@@ -1,4 +1,5 @@
 extends Node
+
 signal active_adware_changed
 signal active_ransomware_changed
 var default_health: float = 100.0
@@ -79,6 +80,10 @@ var is_placing_tower: bool = false
 signal cancel_tower_placement()
 signal cancel_sentinel_placement()
 
+
+var saved_tower_placements: Array = []
+var saved_sentinel_placements: Array = []
+var saved_ability_placements: Array = []
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
@@ -1155,7 +1160,8 @@ var experience: int = 0:
 
 		if ui:
 			ui.update_experience(experience, player_level, default_level_pool)
-			
+
+
 func activate_backup_server():
 	backup_server_placed = false
 	for card in get_tree().get_nodes_in_group("TowerCard"):

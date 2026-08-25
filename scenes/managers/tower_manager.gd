@@ -281,6 +281,7 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		# Only buying permanently increases ownership
 		Data.owned_towers[selected_tower] = Data.owned_towers.get(selected_tower, 0) + 1
 	Data.currentserverload += systemload
+	
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.refresh_tower_cards()
@@ -290,6 +291,8 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 
 		if Data.active_ransomware > 0:
 			ui._schedule_next_ransomware()
+	
+	Save.save_game()
 
 	if Data.TOWER_DATA[selected_tower]["name"] == "Spam Filter" and !GameDialogueManager.is_introduction_spam_filter and !Data.is_sandbox and (Data.current_wave == 0 or Data.current_wave == 1):
 		GameDialogueManager.show_dialogue_spam_filter()
@@ -411,3 +414,54 @@ func _update_preview_range(preview: Node2D) -> void:
 	range_indicator.scale = Vector2.ONE
 
 	range_indicator.visible = true
+
+func restore_saved_towers() -> void:
+	if Data.saved_tower_placements.is_empty():
+		return
+
+	for saved_tower in Data.saved_tower_placements:
+		var tower_type := int(saved_tower.get("type", -1))
+		var pos_data: Array = saved_tower.get("cell_pos", [])
+
+		if tower_type == -1:
+			continue
+
+		if pos_data.size() < 2:
+			continue
+
+		if not tower_scenes.has(tower_type):
+			continue
+
+		var cell_pos := Vector2i(
+			int(pos_data[0]),
+			int(pos_data[1])
+		)
+
+		var world_pos: Vector2 = level_manager.map_to_world(cell_pos)
+
+		var tower = load(tower_scenes[tower_type]).instantiate()
+
+		tower.tower_id = next_tower_id
+		next_tower_id += 1
+
+		tower.position = world_pos
+		tower.setup(tower_type)
+		tower.cell_pos = cell_pos
+
+		tower.connect("shoot", create_bullet)
+		tower.connect("shoot_mortar", create_mortar_projectile)
+		tower.connect("select", tower_selection)
+		tower.connect("removed", _on_tower_removed)
+
+		_get_tower_parent().add_child(tower)
+
+		EnemyTower.register_tower(tower.tower_id, tower_type)
+
+		if tower_type == Data.Tower.BACKUP_SERVER:
+			Data.backup_server_placed = true
+
+		Data.currentserverload += Data.TOWER_DATA[tower_type]["server_load"]
+
+	Data.saved_tower_placements.clear()
+
+	
