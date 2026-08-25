@@ -107,18 +107,22 @@ func _update_cost_label(index: int) -> void:
 
 
 func _on_defense_upgrade_1_pressed() -> void: # Armor
+	UISound.play_click()
 	_upgrade(0)
 
 
 func _on_defense_upgrade_2_pressed() -> void: # Skill Slot
+	UISound.play_click()
 	_upgrade(1)
 
 
 func _on_defense_upgrade_3_pressed() -> void: # Skill CD
+	UISound.play_click()
 	_upgrade(2)
 
 
 func _on_defense_upgrade_4_pressed() -> void: # Sentinel Deployed
+	UISound.play_click()
 	_upgrade(3)
 
 

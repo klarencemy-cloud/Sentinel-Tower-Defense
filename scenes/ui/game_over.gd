@@ -16,6 +16,7 @@ func _on_visibility_changed() -> void:
 		update_display()
 
 func _on_btn_checkpoint_pressed() -> void:
+	UISound.play_click()
 	if Data.checkpoint_wave <= 0:
 		return
 
@@ -27,6 +28,7 @@ func _on_btn_checkpoint_pressed() -> void:
 	
 
 func _on_btn_quit_pressed() -> void:
+	UISound.play_close()
 	visible = false
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/mainmenu/main_menu.tscn")
@@ -34,6 +36,7 @@ func _on_btn_quit_pressed() -> void:
 	
 
 func _on_btn_retry_pressed() -> void:
+	UISound.play_click()
 	get_tree().paused = false
 	_reset_game_stats()
 	Offense._reset_multipliers() # reset multipliers

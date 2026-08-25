@@ -38,6 +38,7 @@ func toggle_open_server_cyber():
 	$UIContainer/CyberBtn.pressed.emit()
 
 func _on_back_btn_pressed() -> void:
+	UISound.play_close()
 	get_tree().paused = false
 	Data.toggle_server_scene.emit()
 	if Data.current_wave == 3 and !GameDialogueManager.is_wave3_defeated and !Data.is_sandbox:
@@ -45,6 +46,7 @@ func _on_back_btn_pressed() -> void:
 
 # Uprade category toggles
 func _on_cyber_btn_pressed() -> void:
+	UISound.play_click()
 	$UIContainer/ServerBtn.add_theme_color_override("font_color", Color(0.176, 0.337, 0.451))
 	$UIContainer/CyberBtn.add_theme_color_override("font_color", Color(0.827, 0.2, 0.2))
 	$UIContainer/ServerBtn.add_theme_font_size_override("font_size", 30)
@@ -53,7 +55,9 @@ func _on_cyber_btn_pressed() -> void:
 	$UIContainer/CyberthreatUpdate.visible = true
 	if !GameDialogueManager.is_server_cyber_shown and !Data.is_sandbox:
 		GameDialogueManager.show_dialogue_server_cyber()
+
 func _on_server_btn_pressed() -> void:
+	UISound.play_click()
 	$UIContainer/ServerBtn.add_theme_color_override("font_color", Color(0.314, 0.655, 0.871))
 	$UIContainer/CyberBtn.add_theme_color_override("font_color", Color(0.361, 0.161, 0.192))
 	$UIContainer/ServerBtn.add_theme_font_size_override("font_size", 40)
@@ -63,6 +67,7 @@ func _on_server_btn_pressed() -> void:
 
 
 func _on_offense_pressed() -> void:
+	UISound.play_click()
 	$UIContainer/ServerUpdate/Offense.texture_normal = load("res://graphics/buttons/active_parallelogram.png")
 	$UIContainer/ServerUpdate/Defense.texture_normal = load("res://graphics/buttons/parallelogram.png")
 	$UIContainer/ServerUpdate/Economy.texture_normal = load("res://graphics/buttons/trapezoid_right.png")
@@ -72,6 +77,7 @@ func _on_offense_pressed() -> void:
 
 
 func _on_defense_pressed() -> void:
+	UISound.play_click()
 	$UIContainer/ServerUpdate/Offense.texture_normal = load("res://graphics/buttons/parallelogram.png")
 	$UIContainer/ServerUpdate/Defense.texture_normal = load("res://graphics/buttons/active_parallelogram.png")
 	$UIContainer/ServerUpdate/Economy.texture_normal = load("res://graphics/buttons/trapezoid_right.png")
@@ -81,6 +87,7 @@ func _on_defense_pressed() -> void:
 
 
 func _on_economy_pressed() -> void:
+	UISound.play_click()
 	$UIContainer/ServerUpdate/Offense.texture_normal = load("res://graphics/buttons/parallelogram.png")
 	$UIContainer/ServerUpdate/Defense.texture_normal = load("res://graphics/buttons/parallelogram.png")
 	$UIContainer/ServerUpdate/Economy.texture_normal = load("res://graphics/buttons/active_trapezoid_right.png")
