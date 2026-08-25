@@ -240,6 +240,8 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 
 
 	var tower = load(tower_scenes[selected_tower]).instantiate()
+	tower.add_to_group("Towers")
+
 	tower.tower_id = next_tower_id
 	next_tower_id += 1
 	tower.position = world_pos

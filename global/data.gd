@@ -47,7 +47,7 @@ var wave_started: bool = false
 var before_level_index: int
 var current_level_index: int = 0 # map count 0 = level 1
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 51 # wave count
+var current_wave: int = 1 # wave count
 
 var incremental_enemy_health_bonus: float = current_wave * .02
 var incremental_enemy_movespeed_bonus: float = current_wave * .01
