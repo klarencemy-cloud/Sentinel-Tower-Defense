@@ -26,7 +26,6 @@ buses/default_bus_layout="uid://d0dmqaswylifk"
 [autoload]
 
 Data="*res://global/data.gd"
-Save="*res://global/save.gd"
 EnemyTower="*uid://mpoy2nivk3lo"
 EnemyStats="*uid://c0kaghc034tq0"
 Defense="*uid://bsaw3m0wic5sd"
@@ -36,6 +35,7 @@ GameDialogueManager="*uid://cq0d4xcdugoxl"
 Economy="*uid://c3yec3hxkdfch"
 Wave="*uid://bb03viokakrym"
 UISound="*uid://clky4si525ptd"
+Save="*res://global/save.gd"
 
 [dialogue_manager]
 
@@ -45,6 +45,7 @@ runtime/balloon_path="res://scenes/dialogue/balloon.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

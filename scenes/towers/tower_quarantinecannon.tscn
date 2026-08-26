@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="4_qhywc"]
 [ext_resource type="Texture2D" uid="uid://bwj40wgb4ivd7" path="res://graphics/towers/mortar/mortar tower effect.png" id="5_qhywc"]
 [ext_resource type="AudioStream" uid="uid://jfpfkfr44fx3" path="res://audio/SFX/TOWERS/quarantine cannon shoot.wav" id="7_0hga0"]
-[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_wqcay"]
+[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/currency/gold.png" id="7_wqcay"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="9_0c3ac"]
 [ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="10_qhywc"]
 

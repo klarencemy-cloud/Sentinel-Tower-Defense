@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://chefrr3etmbm7" path="res://graphics/towers/idps/idps_turret.png" id="3_56y0f"]
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="4_hginv"]
 [ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="6_5ge8c"]
-[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="6_bhf25"]
+[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/currency/gold.png" id="6_bhf25"]
 [ext_resource type="Texture2D" uid="uid://fv2nsp2ceytq" path="res://texture/offset_glow.png" id="6_dbesr"]
 [ext_resource type="Shader" uid="uid://betoupj84mtmb" path="res://texture/shaders/radar_shader.gdshader" id="6_hginv"]
 [ext_resource type="AudioStream" uid="uid://bqovvu4y00vxj" path="res://audio/SFX/TOWERS/idps shoot.wav" id="8_dbesr"]
