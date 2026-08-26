@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://by21bbit8igg0" path="res://scenes/towers/tower_backup_server.gd" id="1_4jq7i"]
 [ext_resource type="Texture2D" uid="uid://bgijljt2l6qml" path="res://graphics/towers/spam filter/spam_filter_base.png" id="1_jrsj1"]
 [ext_resource type="Texture2D" uid="uid://b00gbf4bkr8pr" path="res://graphics/towers/spam filter/spam_filter_turret.png" id="2_4jq7i"]
-[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="3_6gdv8"]
+[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/currency/gold.png" id="3_6gdv8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frx7f"]
 size = Vector2(100, 161)

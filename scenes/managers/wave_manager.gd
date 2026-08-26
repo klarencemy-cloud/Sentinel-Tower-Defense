@@ -41,6 +41,8 @@ func update_wave_state() -> void:
 		if Data.wave_started:
 			Data.wave_started = false
 			Data.current_wave += 1
+
+			Save.save_game()
 			if ui:
 				ui.update_wave_label()
 

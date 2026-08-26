@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://do4lx8recvkag" path="res://audio/SFX/TOWERS/acs shoot.wav" id="6_qdga5"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="6_jhwlm"]
 [ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="7_n7eo6"]
-[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_t2bbv"]
+[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/currency/gold.png" id="7_t2bbv"]
 
 [sub_resource type="Gradient" id="Gradient_qdga5"]
 offsets = PackedFloat32Array(0.38687783, 1)

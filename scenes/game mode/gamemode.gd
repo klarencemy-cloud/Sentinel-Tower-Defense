@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_main_menu_pressed() -> void:
 	UISound.play_close()
+	get_node("/root/Save").save_game()
 	get_tree().change_scene_to_file("res://scenes/mainmenu/main_menu.tscn")
 	Data.is_vmmode = false
 

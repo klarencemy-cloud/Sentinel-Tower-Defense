@@ -26,7 +26,7 @@
 gradient = SubResource("Gradient_lg71s")
 fill_from = Vector2(0.8034188, 0.7777778)
 
-[node name="Upgrade" type="CanvasLayer" unique_id=1877158934]
+[node name="Upgrade" type="CanvasLayer" unique_id=1877158934 groups=["Towers"]]
 process_mode = 3
 layer = 4
 script = ExtResource("1_6bmsu")

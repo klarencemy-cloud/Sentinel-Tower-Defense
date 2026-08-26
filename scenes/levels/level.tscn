@@ -854,6 +854,7 @@ trail_lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_jyre1")
 
 [node name="RainParticles" type="GPUParticles2D" parent="WeatherEffects" unique_id=1895260683]
+visible = false
 light_mask = 7
 z_index = 1
 position = Vector2(1922, 1063)

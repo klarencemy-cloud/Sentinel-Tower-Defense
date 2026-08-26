@@ -328,7 +328,9 @@ func _try_purchase_upgrade(slot_index: int) -> void:
 	update_tier_buttons()
 	update_ability_panel()
 	update_money_display()
-
+	var save = get_tree().get_first_node_in_group("save")
+	if save:
+		save.save_game()
 
 func _on_towers_pressed() -> void:
 	$TowerUpgradeUi.visible = true

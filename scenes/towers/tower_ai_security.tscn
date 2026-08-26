@@ -7,7 +7,7 @@
 [ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="5_ixafn"]
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_45hyi"]
 [ext_resource type="AudioStream" uid="uid://cl853fuwoh0os" path="res://audio/SFX/TOWERS/ai sec electricity.wav" id="7_45hyi"]
-[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_mfyuw"]
+[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/currency/gold.png" id="7_mfyuw"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="7_vwohs"]
 [ext_resource type="AudioStream" uid="uid://cgd5ye5ynktfl" path="res://audio/SFX/TOWERS/ai sec shoot.wav" id="8_45hyi"]
 [ext_resource type="PackedScene" uid="uid://w1r41md2l3a3" path="res://scenes/bullets/laser.tscn" id="8_ixafn"]

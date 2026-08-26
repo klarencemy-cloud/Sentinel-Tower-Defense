@@ -1,4 +1,5 @@
 extends Node
+
 signal active_adware_changed
 signal active_ransomware_changed
 var default_health: float = 100.0
@@ -34,8 +35,8 @@ var before_player_level: int
 var before_total_experience: int
 
 # Backup for tower upgrade data to keep sandbox and non-sandbox separate
-var before_tower_upgrades: Dictionary = {}  # Stores backup of all tower upgrade levels and modified stats
-var base_tower_stats: Dictionary = {}  # Stores original base stats for all towers (set once at startup)
+var before_tower_upgrades: Dictionary = {} # Stores backup of all tower upgrade levels and modified stats
+var base_tower_stats: Dictionary = {} # Stores original base stats for all towers (set once at startup)
 
 
 var bullet_angle: Vector2
@@ -46,7 +47,7 @@ var wave_started: bool = false
 var before_level_index: int
 var current_level_index: int = 0 # map count 0 = level 1
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 51 # wave count
+var current_wave: int = 1 # wave count
 
 var incremental_enemy_health_bonus: float = current_wave * .02
 var incremental_enemy_movespeed_bonus: float = current_wave * .01
@@ -80,6 +81,10 @@ signal cancel_tower_placement()
 signal cancel_sentinel_placement()
 
 
+var saved_tower_placements: Array = []
+var saved_sentinel_placements: Array = []
+var saved_ability_placements: Array = []
+
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
 enum Tower {SPAM_FILTER, ANTIVIRUS, AD_BLOCKER, DATA_LOSS_PREVENTION, IDPS, QUARANTINE_CANNON, ACCESS_CONTROL_SYSTEM, AI_SECURITY, BACKUP_SERVER, ENDPOINT_PROTECTION, SANDBOX_ANALYZER}
@@ -90,7 +95,7 @@ enum Ability {FIREWALL}
 var TOWER_DATA = {
 	Tower.SPAM_FILTER: {
 		'name': 'Spam Filter',
-		'isUnlocked' : true,
+		'isUnlocked': true,
 		'cost': 45,
 		'server_load': 15,
 		'damage': 10,
@@ -138,7 +143,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.QUARANTINE_CANNON: {
 		'name': 'Quarantine Cannon',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cost': 60,
 		'server_load': 30,
 		'damage': 100,
@@ -187,7 +192,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.IDPS: {
 		'name': 'IDPS',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cost': 30,
 		'damage': 0,
 		'reload_time': 2.5,
@@ -233,7 +238,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.BACKUP_SERVER: {
 		'name': "Backup Server",
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cost': 550,
 		'damage': 5000,
 		'server_load': 65,
@@ -244,7 +249,7 @@ var TOWER_DATA = {
 		},
 	Tower.AD_BLOCKER: {
 		'name': 'Ad Blocker',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cost': 75,
 		'server_load': 20,
 		'damage': 25,
@@ -293,7 +298,7 @@ var TOWER_DATA = {
 		},
 	Tower.ANTIVIRUS: {
 		'name': 'Antivirus',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cost': 50,
 		'server_load': 20,
 		'damage': 30,
@@ -342,7 +347,7 @@ var TOWER_DATA = {
 		},
 		Tower.ACCESS_CONTROL_SYSTEM: {
 		'name': 'Access Control System',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cost': 225,
 		'server_load': 35,
 		'damage': 120,
@@ -391,7 +396,7 @@ var TOWER_DATA = {
 		},
 		Tower.ENDPOINT_PROTECTION: {
 		'name': 'Endpoint Protection',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cost': 350,
 		'server_load': 45,
 		'damage': 180,
@@ -440,7 +445,7 @@ var TOWER_DATA = {
 		},
 		Tower.SANDBOX_ANALYZER: {
 		'name': 'Sandbox Analyzer',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cost': 150,
 		'server_load': 55,
 		'damage': 220,
@@ -489,7 +494,7 @@ var TOWER_DATA = {
 		},
 		Tower.AI_SECURITY: {
 		'name': 'AI Security',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cost': 275,
 		'server_load': 40,
 		'damage': 130,
@@ -538,7 +543,7 @@ var TOWER_DATA = {
 		},
 		Tower.DATA_LOSS_PREVENTION: {
 		'name': 'DLP',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cost': 50,
 		'server_load': 25,
 		'damage': 0,
@@ -600,7 +605,7 @@ func calculate_crit_damage(tower_type: int, base_damage: int, crit_chance_buff: 
 var SENTINEL_DATA = {
 	Sentinel.ETHICAL: {
 		'name': 'Ethical Hacker',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cooldown': 15,
 		'duration': 3,
 		'range': 500,
@@ -629,7 +634,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.SYSAD: {
 		'name': 'System Administrator',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cooldown': 60,
 		'range': 0,
 		'thumbnail': "res://graphics/sentinels/thumbnail/SYSTEMADMIN.png",
@@ -657,7 +662,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.INTRUSION: {
 		'name': 'Intrusion Analyst',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cooldown': 30,
 		'range': 0,
 		'thumbnail': "res://graphics/sentinels/thumbnail/INTRUSIONANALYST.png",
@@ -685,7 +690,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.SECURITY: {
 		'name': 'Security Architect',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cooldown': 15,
 		'duration': 10,
 		'range': 500,
@@ -714,7 +719,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.MALWARE: {
 		'name': 'Malware Analyst',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cooldown': 25,
 		'duration': 15,
 		'range': 500,
@@ -743,7 +748,7 @@ var SENTINEL_DATA = {
 		'tier3abilityunlocked': false, },
 	Sentinel.DECEPTION: {
 		'name': 'Deception Analyst',
-		'isUnlocked' : false,
+		'isUnlocked': false,
 		'cooldown': 30,
 		'duration': 15,
 		'range': 500,
@@ -1003,11 +1008,10 @@ func reset_game():
 	clear_notpetya_enemy_speed_effect()
 
 
-
 func _initialize_base_tower_stats() -> void:
 	#Store the original base stats for all towers
 	if not base_tower_stats.is_empty():
-		return  # Already initialized
+		return # Already initialized
 	
 	for tower_enum in Tower.values():
 		var tower_data = TOWER_DATA[tower_enum]
@@ -1045,7 +1049,6 @@ func _backup_tower_upgrades() -> void:
 
 func _reset_tower_upgrades_to_base() -> void:
 	#Reset all tower upgrades to base values,called when entering sandbox mode or when resetting the game
-	
 	for tower_enum in Tower.values():
 		var tower_data = TOWER_DATA[tower_enum]
 		# Reset all upgrade levels to 0
@@ -1136,7 +1139,7 @@ var experience: int = 0:
 				ui.update_experience(experience, player_level, default_level_pool)
 			return
 		
-		if player_level == 3 and GameDialogueManager.is_level_3 and !Data.is_sandbox and !Data.current_wave > 3:
+		if player_level == 3 and GameDialogueManager.is_level_3 and !Data.is_sandbox and Data.current_wave == 3:
 			GameDialogueManager.show_dialogue_server_upgrade()
 		
 		while experience >= default_level_pool:
@@ -1155,7 +1158,8 @@ var experience: int = 0:
 
 		if ui:
 			ui.update_experience(experience, player_level, default_level_pool)
-			
+
+
 func activate_backup_server():
 	backup_server_placed = false
 	for card in get_tree().get_nodes_in_group("TowerCard"):

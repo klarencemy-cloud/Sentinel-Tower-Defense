@@ -17,6 +17,7 @@ func _on_database_pressed() -> void:
 	UISound.play_click()
 
 func _on_exit_pressed() -> void:
+	get_node("/root/Save").save_game()
 	get_tree().quit()
 	UISound.play_click()
 

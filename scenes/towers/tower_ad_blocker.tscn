@@ -9,7 +9,7 @@
 [ext_resource type="Shader" uid="uid://tsbpejfyq5fc" path="res://texture/shaders/glow_shader.gdshader" id="5_p6w5a"]
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_l7jje"]
 [ext_resource type="Script" uid="uid://cu22lxqgx5hh0" path="res://scenes/enemies/lightning_1.gd" id="7_8d7iw"]
-[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/ui/dollar.png" id="7_l7jje"]
+[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/currency/gold.png" id="7_l7jje"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="10_l7jje"]
 [ext_resource type="AudioStream" uid="uid://dl2075wa6u4tc" path="res://audio/SFX/TOWERS/adblocker shoot.wav" id="10_su0h8"]
 [ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="11_nm51x"]
