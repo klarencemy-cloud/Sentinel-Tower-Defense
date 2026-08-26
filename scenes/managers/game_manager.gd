@@ -39,10 +39,22 @@ func level_completed() -> void:
 	victory_overlay._fade_continue_label(1, 2)
 
 
+# func next_map() -> void:
+# 	Data.current_level_index += 1
+# 	Save.save_game()
+
+
 func next_map() -> void:
+	for saved_tower in Data.saved_tower_placements:
+		var tower_type := int(saved_tower.get("type", -1))
+		
+		if tower_type != -1:
+			Data.free_towers[tower_type] = Data.free_towers.get(tower_type, 0) + 1
+
+	Data.saved_tower_placements.clear()
+
 	Data.current_level_index += 1
 	Save.save_game()
-
 
 func _process(_delta: float) -> void:
 	wave_manager.update_wave_state()

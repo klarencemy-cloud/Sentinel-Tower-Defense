@@ -23,7 +23,6 @@ func _on_main_story_pressed() -> void:
 	$VirtualMachineUI.visible = false;
 	$SandBoxUI.visible = false
 	Data.is_vmmode = false
-	
 	$ButtonManager/MainStory.texture_normal = preload("res://graphics/buttons/active_parallelogram.png")
 	$ButtonManager/VmMode.texture_normal = preload("res://graphics/buttons/parallelogram.png")
 	$ButtonManager/SandBoxMode.texture_normal = preload("res://graphics/buttons/parallelogram.png")

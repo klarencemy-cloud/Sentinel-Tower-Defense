@@ -112,4 +112,5 @@ func _ready() -> void:
 		wave.text = "Wave " + str(max(1, wave_num))
 func _on_start_game_pressed() -> void:
 	UISound.play_click()
+	Save._load_game()
 	get_tree().change_scene_to_file("res://scenes/loading/loading.tscn") # Replace with function body.

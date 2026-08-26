@@ -24,4 +24,3 @@ func _on_quit_pressed() -> void:
 	Data.sentinel_malware_deployed = false
 	Data.sentinel_deception_deployed = false
 	get_tree().change_scene_to_file("res://scenes/mainmenu/main_menu.tscn") # goes back to main menu
-

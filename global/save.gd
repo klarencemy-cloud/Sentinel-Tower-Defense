@@ -37,7 +37,8 @@ func save_game() -> void:
 				"type": int(tower.type),
 				"cell_pos": [tower.cell_pos.x, tower.cell_pos.y]
 			})
-	
+	# print(placed_towers)
+	# print(Data.saved_tower_placements)
 	var placed_sentinels: Array = []
 
 	for sentinel in get_tree().get_nodes_in_group("Sentinels"):
@@ -106,6 +107,7 @@ func _load_game() -> void:
 		return
 
 	Data.saved_tower_placements = parsed.get("placed_towers", [])
+
 	Data.saved_sentinel_placements = parsed.get("placed_sentinels", [])
 	Data.saved_ability_placements = parsed.get("placed_abilities", [])
 	Data.current_level_index = int(parsed.get("current_level_index", Data.current_level_index))
