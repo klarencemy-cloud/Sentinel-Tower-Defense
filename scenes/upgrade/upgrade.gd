@@ -768,6 +768,10 @@ func _on_unlock_pressed() -> void:
 	
 	$TextureRect/UpgradeButton.visible = true
 	$TextureRect/Unlock.visible = false
+	
+	var save = get_tree().get_first_node_in_group("save")
+	if save:
+		save.save_game()
 
 
 func _on_rollbtn_toggled(toggled_on: bool) -> void:

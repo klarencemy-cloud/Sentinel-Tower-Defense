@@ -61,6 +61,12 @@ func save_game() -> void:
 		var sentinel_data: Dictionary = Data.SENTINEL_DATA[sentinel_enum]
 		sentinel_unlocks[str(sentinel_enum)] = sentinel_data.get("isUnlocked", false)
 		
+	var tower_unlocks := {}
+
+	for tower_enum in Data.Tower.values():
+		var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
+		tower_unlocks[str(tower_enum)] = tower_data.get("isUnlocked", false)
+	
 	var save_data := {
 		"version": SAVE_VERSION,
 		"current_level_index": Data.current_level_index, "checkpoint_wave": Data.checkpoint_wave,
@@ -71,6 +77,7 @@ func save_game() -> void:
 		"placed_towers": placed_towers,
 		"placed_sentinels": placed_sentinels,
 		"placed_abilities": placed_abilities,
+		"tower_unlocks": tower_unlocks,
 		"sentinel_unlocks": sentinel_unlocks,
 		"sentinels": [Data.sentinel_ethical_deployed, Data.sentinel_sysad_deployed,
 			Data.sentinel_intrusion_deployed, Data.sentinel_security_deployed,
@@ -115,7 +122,15 @@ func _load_game() -> void:
 	Data.owned_towers.clear()
 	for tower_key in saved_owned_towers:
 		Data.owned_towers[int(tower_key)] = int(saved_owned_towers[tower_key])
+	
+	var tower_unlocks: Dictionary = parsed.get("tower_unlocks", {})
 
+	for tower_key in tower_unlocks:
+		var tower_enum := int(tower_key)
+
+		if Data.TOWER_DATA.has(tower_enum):
+			Data.TOWER_DATA[tower_enum]["isUnlocked"] = bool(tower_unlocks[tower_key])
+		
 	var sentinels: Array = parsed.get("sentinels", [])
 	if sentinels.size() >= 6:
 		Data.sentinel_ethical_deployed = bool(sentinels[0])
