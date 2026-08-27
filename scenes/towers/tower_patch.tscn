@@ -50,6 +50,15 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_mxeue"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8w3ie"]
+gradient = SubResource("Gradient_mxeue")
+fill = 1
+fill_from = Vector2(0.50869566, 0.47826087)
+fill_to = Vector2(0.4869565, 1)
+
 [sub_resource type="Gradient" id="Gradient_ex7hn"]
 offsets = PackedFloat32Array(0.2777778, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -88,6 +97,9 @@ gravity = Vector3(0, 0, 0)
 scale_max = 1.5
 color_ramp = SubResource("GradientTexture1D_jrmhc")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mxeue"]
+radius = 449.8798
+
 [node name="TowerPatch" unique_id=855770893 instance=ExtResource("1_kjens")]
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_anjns")
@@ -99,7 +111,12 @@ texture = null
 position = Vector2(0, -45.714268)
 sprite_frames = SubResource("SpriteFrames_8w3ie")
 autoplay = "default"
-frame_progress = 0.1416795
+frame_progress = 0.1722479
+
+[node name="PointLight2D" type="PointLight2D" parent="Turret2" index="0" unique_id=551611886]
+position = Vector2(5.9604645e-08, -2.8571634)
+scale = Vector2(1.1830357, 0.62499994)
+texture = SubResource("GradientTexture2D_8w3ie")
 
 [node name="TowerMenu" parent="." index="6" unique_id=489153716]
 offset_left = 42.857124
@@ -140,6 +157,18 @@ offset_right = 33.0
 offset_bottom = 32.0
 texture_normal = ExtResource("7_acynd")
 
+[node name="PatchArea" type="Area2D" parent="." index="13" unique_id=1767519900]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatchArea" index="0" unique_id=1044734489]
+shape = SubResource("CircleShape2D_mxeue")
+
+[node name="PatchPoint" parent="." index="14" unique_id=295225124]
+collision_layer = 0
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]
 [connection signal="pressed" from="PayButton" to="." method="_on_pay_button_pressed"]
+[connection signal="area_entered" from="PatchArea" to="." method="_on_patch_area_area_entered"]
+[connection signal="area_exited" from="PatchArea" to="." method="_on_patch_area_area_exited"]

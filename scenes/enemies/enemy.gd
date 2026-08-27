@@ -59,6 +59,8 @@ var hostile: bool = false
 var hostile_count: int = 0
 var backup_server_recently_knocked_back: bool = false
 
+var is_patch_applied: bool = false
+
 @onready var hit_particles: GPUParticles2D = $HitParticles
 
 func _ready() -> void:
@@ -468,6 +470,9 @@ func hit(damage: int = 1, tower_id: int = -1):
 	
 	# Apply vulnerability multiplier (e.g., IDPS tier3)
 	actual_damage = int(actual_damage * vulnerability_multiplier)
+
+	if enemy_type == $Zero and not is_patch_applied:
+		actual_damage = int(actual_damage * .20)
 
 	flash()
 	health -= actual_damage

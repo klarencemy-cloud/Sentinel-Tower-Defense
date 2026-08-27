@@ -13,6 +13,9 @@ size = Vector2(100, 161)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uksqa"]
 size = Vector2(160.00002, 182.85715)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_uksqa"]
+radius = 104.47966
+
 [node name="Tower" type="Node2D" unique_id=855770893 groups=["Towers"]]
 z_index = 2
 script = ExtResource("1_by3tn")
@@ -54,6 +57,22 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerPlacement" unique_id=469974130]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_uksqa")
+
+[node name="PatchPoint" type="Area2D" parent="." unique_id=295225124]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatchPoint" unique_id=814467946]
+shape = SubResource("CircleShape2D_uksqa")
+
+[node name="Patch" type="Label" parent="." unique_id=144739736]
+modulate = Color(1, 1, 1, 0)
+offset_left = -57.0
+offset_top = -193.812
+offset_right = 62.0
+offset_bottom = -174.812
+text = "PATCH UPDATED!"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="area_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_area_entered"]
 [connection signal="area_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_area_exited"]

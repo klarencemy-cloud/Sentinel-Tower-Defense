@@ -29,6 +29,8 @@ var stunned := false
 var is_ep_shoot: bool = false
 
 
+var is_tower_patch_applied: bool = false
+
 @onready var ad_button = $AdButton
 @onready var pay_button: TextureButton = $PayButton
 @onready var ads = [
@@ -122,7 +124,10 @@ func _on_enemy_detection_area_area_entered(area: Area2D) -> void:
 		area.hostile_count += 1
 		area.speed = area.base_speed + 150
 
-
+	if is_tower_patch_applied:
+		if area.enemy_type_stats == Data.Enemy.ZERO:
+			area.is_patch_applied = true
+		
 func _on_enemy_detection_area_area_exited(area: Area2D) -> void:
 	if !("enemy_type_stats" in area):
 		return
@@ -135,9 +140,11 @@ func _on_enemy_detection_area_area_exited(area: Area2D) -> void:
 
 		if area.hostile_count == 0:
 			area.speed = area.base_speed
+	
+		if area.enemy_type_stats == Data.Enemy.ZERO:
+			area.is_patch_applied = false
 
 func _on_click_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		UISound.play_click()
 		var delay_timer := get_node_or_null("DelayTimer")
@@ -295,3 +302,15 @@ func _on_tower_placement_area_entered(area: Area2D) -> void:
 func _on_tower_placement_area_exited(area: Area2D) -> void:
 	if area.get_overlapping_areas().is_empty():
 		Data.is_tower_placeable = true
+
+
+var tween: Tween
+
+func show_patch_update() -> void:
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property($Patch, "position:y", -200, 1)
+	tween.parallel().tween_property($Patch, "modulate:a", 1, 1)
+	tween.tween_property($Patch, "modulate:a", 0, 1)
+	tween.tween_property($Patch, "position:y", -193.812, 0)
