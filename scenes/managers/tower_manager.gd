@@ -294,7 +294,7 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		if Data.active_ransomware > 0:
 			ui._schedule_next_ransomware()
 	
-	if !Data.is_sandbox_mode:
+	if !Data.is_sandbox:
 		Save.save_game()
 
 	if Data.TOWER_DATA[selected_tower]["name"] == "Spam Filter" and !GameDialogueManager.is_introduction_spam_filter and !Data.is_sandbox and (Data.current_wave == 0 or Data.current_wave == 1):

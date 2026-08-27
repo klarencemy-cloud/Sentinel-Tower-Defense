@@ -107,7 +107,7 @@ func _try_place_ability(world_pos: Vector2) -> void:
 		_try_place_firewall(world_pos)
 	
 	
-	if !Data.is_sandbox_mode:
+	if !Data.is_sandbox:
 		Save.save_game()
 
 
@@ -127,7 +127,7 @@ func _try_place_firewall(world_pos: Vector2) -> void:
 	firewall_parent.add_child(firewall_instance)
 
 	# Save immediately after placing ability
-	if !Data.is_sandbox_mode:
+	if !Data.is_sandbox:
 		var save = get_tree().get_first_node_in_group("save")
 		if save:
 			save.save_game()

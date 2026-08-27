@@ -190,7 +190,7 @@ func _try_place_sentinel(cell_pos: Vector2i, world_pos: Vector2) -> void:
 
 	# Save immediately after placing sentinel
 	var save= get_tree().get_first_node_in_group("save")
-	if 	if !Data.is_sandbox_mode:
+	if !Data.is_sandbox:
 		if save:
 			save.save_game()
 

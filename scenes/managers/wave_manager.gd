@@ -42,7 +42,7 @@ func update_wave_state() -> void:
 			Data.wave_started = false
 			Data.current_wave += 1
 
-			if !Data.is_sandbox_mode:
+			if !Data.is_sandbox:
 				Save.save_game()
 			if ui:
 				ui.update_wave_label()

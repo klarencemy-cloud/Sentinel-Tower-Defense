@@ -54,7 +54,7 @@ func next_map() -> void:
 	Data.saved_tower_placements.clear()
 
 	Data.current_level_index += 1
-	if !Data.is_sandbox_mode:
+	if !Data.is_sandbox:
 		Save.save_game()
 
 func _process(_delta: float) -> void:
