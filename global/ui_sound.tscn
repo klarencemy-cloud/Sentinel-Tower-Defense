@@ -38,10 +38,12 @@ script = ExtResource("1_n4w8n")
 
 [node name="ClickOpen" type="AudioStreamPlayer" parent="." unique_id=807617012]
 stream = ExtResource("8_oed1j")
+volume_db = -3.0
 bus = &"Sounds"
 
 [node name="ClickClose" type="AudioStreamPlayer" parent="." unique_id=2042576880]
 stream = SubResource("AudioStreamRandomizer_q17wm")
+volume_db = -3.0
 
 [node name="ClickCarousel" type="AudioStreamPlayer" parent="." unique_id=1209734964]
 stream = SubResource("AudioStreamRandomizer_yt6xl")
