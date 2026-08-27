@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="3_1oiqa"]
 [ext_resource type="Texture2D" uid="uid://bifttp0d8wd36" path="res://graphics/towers/anti virus/anti_virus_turret.png" id="4_npkv1"]
 [ext_resource type="AudioStream" uid="uid://bbdok7p0et6m5" path="res://audio/SFX/TOWERS/ANTIVIRUS.wav" id="5_1oiqa"]
-[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/currency/gold.png" id="6_o0cti"]
+[ext_resource type="Texture2D" uid="uid://c5mv5ldsp1675" path="res://graphics/currency/small_gold_glow.png" id="6_0imjx"]
 [ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="8_0imjx"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="9_o0cti"]
 
@@ -121,7 +121,7 @@ offset_left = -31.0
 offset_top = -32.0
 offset_right = 33.0
 offset_bottom = 32.0
-texture_normal = ExtResource("6_o0cti")
+texture_normal = ExtResource("6_0imjx")
 
 [node name="Particles" type="Node2D" parent="." index="11" unique_id=2015856582]
 

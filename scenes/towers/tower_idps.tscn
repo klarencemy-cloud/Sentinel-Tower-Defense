@@ -5,13 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://chefrr3etmbm7" path="res://graphics/towers/idps/idps_turret.png" id="3_56y0f"]
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="4_hginv"]
 [ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="6_5ge8c"]
-[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/currency/gold.png" id="6_bhf25"]
 [ext_resource type="Texture2D" uid="uid://fv2nsp2ceytq" path="res://texture/offset_glow.png" id="6_dbesr"]
 [ext_resource type="Shader" uid="uid://betoupj84mtmb" path="res://texture/shaders/radar_shader.gdshader" id="6_hginv"]
 [ext_resource type="AudioStream" uid="uid://bqovvu4y00vxj" path="res://audio/SFX/TOWERS/idps shoot.wav" id="8_dbesr"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="8_u1lur"]
 [ext_resource type="AudioStream" uid="uid://bktf276m6cpty" path="res://audio/SFX/TOWERS/idps air.wav" id="9_dbesr"]
 [ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="9_jofp6"]
+[ext_resource type="Texture2D" uid="uid://c5mv5ldsp1675" path="res://graphics/currency/small_gold_glow.png" id="12_jofp6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbesr"]
 resource_local_to_scene = true
@@ -234,7 +234,7 @@ offset_left = -31.0
 offset_top = -32.0
 offset_right = 33.0
 offset_bottom = 32.0
-texture_normal = ExtResource("6_bhf25")
+texture_normal = ExtResource("12_jofp6")
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="pressed" from="AdButton" to="." method="_on_ad_button_pressed"]

@@ -7,12 +7,12 @@
 [ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="5_ixafn"]
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_45hyi"]
 [ext_resource type="AudioStream" uid="uid://cl853fuwoh0os" path="res://audio/SFX/TOWERS/ai sec electricity.wav" id="7_45hyi"]
-[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/currency/gold.png" id="7_mfyuw"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="7_vwohs"]
 [ext_resource type="AudioStream" uid="uid://cgd5ye5ynktfl" path="res://audio/SFX/TOWERS/ai sec shoot.wav" id="8_45hyi"]
 [ext_resource type="PackedScene" uid="uid://w1r41md2l3a3" path="res://scenes/bullets/laser.tscn" id="8_ixafn"]
 [ext_resource type="AudioStream" uid="uid://6ftpnstpva4d" path="res://audio/SFX/TOWERS/ai sec charge.wav" id="9_ol7t1"]
 [ext_resource type="AudioStream" uid="uid://cy5ltqcrask3h" path="res://audio/SFX/TOWERS/ai sec firing.wav" id="10_kv0k2"]
+[ext_resource type="Texture2D" uid="uid://c5mv5ldsp1675" path="res://graphics/currency/small_gold_glow.png" id="11_vwohs"]
 [ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="14_vwohs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ol7t1"]
@@ -143,6 +143,7 @@ volume_db = -8.21
 bus = &"Sounds"
 
 [node name="AdButton" type="TextureButton" parent="." index="10" unique_id=654513809]
+visible = false
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
@@ -157,7 +158,7 @@ offset_left = -31.0
 offset_top = -32.0
 offset_right = 33.0
 offset_bottom = 32.0
-texture_normal = ExtResource("7_mfyuw")
+texture_normal = ExtResource("11_vwohs")
 
 [node name="Laser" parent="." index="12" unique_id=1385636298 instance=ExtResource("8_ixafn")]
 visible = false

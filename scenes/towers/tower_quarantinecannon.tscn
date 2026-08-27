@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="4_qhywc"]
 [ext_resource type="Texture2D" uid="uid://bwj40wgb4ivd7" path="res://graphics/towers/mortar/mortar tower effect.png" id="5_qhywc"]
 [ext_resource type="AudioStream" uid="uid://jfpfkfr44fx3" path="res://audio/SFX/TOWERS/quarantine cannon shoot.wav" id="7_0hga0"]
-[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/currency/gold.png" id="7_wqcay"]
+[ext_resource type="Texture2D" uid="uid://c5mv5ldsp1675" path="res://graphics/currency/small_gold_glow.png" id="8_qhywc"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="9_0c3ac"]
 [ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="10_qhywc"]
 
@@ -175,6 +175,7 @@ attenuation = 3.8637452
 bus = &"Sounds"
 
 [node name="AdButton" type="TextureButton" parent="." index="9" unique_id=393847519]
+visible = false
 offset_left = -19.0
 offset_top = -20.0
 offset_right = 21.0
@@ -188,7 +189,7 @@ offset_left = -31.0
 offset_top = -32.0
 offset_right = 33.0
 offset_bottom = 32.0
-texture_normal = ExtResource("7_wqcay")
+texture_normal = ExtResource("8_qhywc")
 
 [node name="Particles" type="Node2D" parent="." index="12" unique_id=725639415]
 

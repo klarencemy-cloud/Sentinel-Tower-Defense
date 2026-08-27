@@ -126,6 +126,7 @@ text = "15"
 horizontal_alignment = 1
 
 [node name="ClickArea" type="Area2D" parent="." unique_id=1739627776]
+position = Vector2(2, 1)
 collision_layer = 8
 collision_mask = 0
 monitorable = false
