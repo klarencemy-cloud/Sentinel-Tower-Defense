@@ -1015,7 +1015,7 @@ theme_override_font_sizes/font_size = 62
 text = "0"
 
 [connection signal="pressed" from="SentinelStuff/SentinelList" to="." method="_on_sentinel_list_pressed"]
-[connection signal="toggled" from="SentinelStuff/Rollbtn" to="." method="_on_rollbtn_toggled"]
+[connection signal="pressed" from="SentinelStuff/Rollbtn" to="." method="_on_rollbtn_pressed"]
 [connection signal="pressed" from="TextureRect/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="TextureRect/Unlock" to="." method="_on_unlock_pressed"]
 [connection signal="pressed" from="TextureRect/TowerSentinelBG/TowerBtn" to="." method="_on_tower_btn_pressed"]

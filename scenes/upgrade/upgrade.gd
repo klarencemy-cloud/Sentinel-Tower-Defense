@@ -29,8 +29,6 @@ func _ready() -> void:
 			var tower_card = tower_card_scene.instantiate()
 			tower_card.setup(tower_enum)
 			%SentinelsContainer.add_child(tower_card)
-		else:
-			return
 
 	for sentinel_enum in Data.Sentinel.values():
 		var sentinel_card = sentinel_card_scene.instantiate()
@@ -585,26 +583,7 @@ func _get_locked_sentinels() -> Array:
 
 
 func _on_Rollbtn_pressed() -> void:
-	if sentinel_roll_active:
-		return
-
-	var locked_sentinels = _get_locked_sentinels()
-
-	# All sentinels have already been unlocked
-	if locked_sentinels.is_empty():
-		return
-
-	if sentinel_roll_thumbnails.is_empty():
-		return
-
-	$SentinelStuff/SentinelRoll/Sentinel.visible = true
-	sentinel_roll_active = true
-	$SentinelStuff/Rollbtn.disabled = true
-
-	await _animate_sentinel_roll(locked_sentinels)
-
-	$SentinelStuff/Rollbtn.disabled = false
-	sentinel_roll_active = false
+	print("Roll")
 
 
 func _animate_sentinel_roll(locked_sentinels: Array) -> void:
@@ -779,6 +758,25 @@ func _on_unlock_pressed() -> void:
 			save.save_game()
 
 
-func _on_rollbtn_toggled(toggled_on: bool) -> void:
+func _on_rollbtn_pressed() -> void:
 	UISound.play_click()
-	pass # Replace with function body.
+	if sentinel_roll_active:
+		return
+
+	var locked_sentinels = _get_locked_sentinels()
+
+	# All sentinels have already been unlocked
+	if locked_sentinels.is_empty():
+		return
+
+	if sentinel_roll_thumbnails.is_empty():
+		return
+
+	$SentinelStuff/SentinelRoll/Sentinel.visible = true
+	sentinel_roll_active = true
+	$SentinelStuff/Rollbtn.disabled = true
+
+	await _animate_sentinel_roll(locked_sentinels)
+
+	$SentinelStuff/Rollbtn.disabled = false
+	sentinel_roll_active = false
