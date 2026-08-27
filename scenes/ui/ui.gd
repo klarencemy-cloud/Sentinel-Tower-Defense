@@ -15,6 +15,7 @@ extends CanvasLayer
 @onready var boss_hp_amount = $Control/bosshpbar/hpamount
 @onready var boss_name = $Control/bosshpbar/bossname
 @onready var skill1_button: TextureButton = $Control/HBoxContainer/Skill1
+@onready var skill2_button: TextureButton = $Control/HBoxContainer/Skill2
 @onready var boss_bars := [
 	$Control/bosshpbar,
 	$Control/smallhpbar1,
@@ -80,6 +81,10 @@ func _ready() -> void:
 	skill1_button.texture_normal = preload("res://graphics/ui/firewallbutton.png")
 	skill1_button.pressed.connect(_on_skill1_pressed)
 
+
+	skill2_button.texture_normal = preload("res://graphics/ui/patch.png")
+
+
 	if Data.is_sandbox:
 		$Control/TextureRect/HBoxContainer/WaveButton.visible = true
 		sandbox_setting.visible = true
@@ -144,6 +149,10 @@ func _ready() -> void:
 	
 	for bar in boss_bars:
 		bar.visible = false
+
+
+func _on_skill_2_pressed() -> void:
+	tower_select(11)
 
 func tower_select(tower_enum: Data.Tower):
 	place_tower.emit(tower_enum)

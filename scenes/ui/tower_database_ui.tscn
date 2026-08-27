@@ -53,10 +53,6 @@ region = Rect2(1152, 0, 192, 256)
 atlas = ExtResource("7_p434n")
 region = Rect2(1344, 0, 192, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cj7r2"]
-atlas = ExtResource("7_p434n")
-region = Rect2(1728, 0, 192, 256)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_rqft4"]
 atlas = ExtResource("7_p434n")
 region = Rect2(960, 0, 192, 256)
@@ -674,46 +670,6 @@ offset_bottom = 179.667
 texture = SubResource("AtlasTexture_vcypq")
 expand_mode = 1
 
-[node name="Tower11" type="TextureButton" parent="TowerContainer/CardContainer" unique_id=469410091]
-texture_filter = 2
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8229722
-anchor_right = 0.44230768
-anchor_bottom = 0.9662522
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("2_fj7kb")
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="Tower_Name_10" type="Label" parent="TowerContainer/CardContainer/Tower11" unique_id=535806681]
-texture_filter = 2
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.36714977
-anchor_top = 0.80991733
-anchor_right = 0.87439615
-anchor_bottom = 0.90909094
-theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
-theme_override_fonts/font = ExtResource("6_72m6s")
-theme_override_font_sizes/font_size = 20
-text = "SOAR"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-justification_flags = 42
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="TowerContainer/CardContainer/Tower11" unique_id=880485106]
-layout_mode = 0
-offset_left = 53.0
-offset_top = 42.0
-offset_right = 157.0
-offset_bottom = 180.667
-texture = SubResource("AtlasTexture_cj7r2")
-expand_mode = 1
-
 [node name="Databasebg" type="TextureRect" parent="." unique_id=167259212]
 texture_filter = 2
 layout_mode = 1
@@ -905,5 +861,3 @@ autoplay = "spam"
 [connection signal="pressed" from="TowerContainer/CardContainer/Tower9" to="." method="_on_tower_9_pressed"]
 [connection signal="gui_input" from="TowerContainer/CardContainer/Tower10" to="." method="_on_tower_10_gui_input"]
 [connection signal="pressed" from="TowerContainer/CardContainer/Tower10" to="." method="_on_tower_10_pressed"]
-[connection signal="gui_input" from="TowerContainer/CardContainer/Tower11" to="." method="_on_tower_10_gui_input"]
-[connection signal="pressed" from="TowerContainer/CardContainer/Tower11" to="." method="_on_tower_11_pressed"]

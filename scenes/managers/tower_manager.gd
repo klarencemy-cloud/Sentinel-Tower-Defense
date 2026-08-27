@@ -11,7 +11,8 @@ var tower_scenes = {
 	Data.Tower.AD_BLOCKER: "res://scenes/towers/tower_ad_blocker.tscn",
 	Data.Tower.ACCESS_CONTROL_SYSTEM: "res://scenes/towers/tower_acs.tscn",
 	Data.Tower.ENDPOINT_PROTECTION: "res://scenes/towers/tower_endpoint_protection.tscn",
-	Data.Tower.AI_SECURITY: "res://scenes/towers/tower_ai_security.tscn"
+	Data.Tower.AI_SECURITY: "res://scenes/towers/tower_ai_security.tscn",
+	Data.Tower.PATCH: "res://scenes/towers/tower_patch.tscn"
 }
 
 var bullet_scene = preload("res://scenes/bullets/bullet.tscn")
@@ -466,5 +467,3 @@ func restore_saved_towers() -> void:
 		Data.currentserverload += Data.TOWER_DATA[tower_type]["server_load"]
 
 	Data.saved_tower_placements.clear()
-
-	

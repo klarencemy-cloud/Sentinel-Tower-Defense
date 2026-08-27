@@ -25,9 +25,12 @@ const DRAG_THRESHOLD := 10.0
 func _ready() -> void:
 	update_money_display()
 	for tower_enum in Data.Tower.values():
-		var tower_card = tower_card_scene.instantiate()
-		tower_card.setup(tower_enum)
-		%SentinelsContainer.add_child(tower_card)
+		if not Data.TOWER_DATA[tower_enum]["name"] == "PATCH":
+			var tower_card = tower_card_scene.instantiate()
+			tower_card.setup(tower_enum)
+			%SentinelsContainer.add_child(tower_card)
+		else:
+			return
 
 	for sentinel_enum in Data.Sentinel.values():
 		var sentinel_card = sentinel_card_scene.instantiate()

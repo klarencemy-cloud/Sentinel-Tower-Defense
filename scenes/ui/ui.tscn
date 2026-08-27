@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://ddayndvqnoild" path="res://graphics/ui/expprogressbar.png" id="19_qhbcy"]
 [ext_resource type="Texture2D" uid="uid://b2ivf813gi1aa" path="res://graphics/ui/progress-circle.png" id="19_svq4k"]
 [ext_resource type="Texture2D" uid="uid://bubyrkehmuahc" path="res://graphics/ui/progress-bg.png" id="19_ygedu"]
+[ext_resource type="Texture2D" uid="uid://clsup5ti6o6u8" path="res://graphics/ui/patch.png" id="19_yy7ol"]
 [ext_resource type="FontFile" uid="uid://cqus3kybakmf8" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraBold.ttf" id="21_oopc8"]
 [ext_resource type="Texture2D" uid="uid://csv6mnj4uo2vr" path="res://graphics/currency/small_gold.png" id="22_272wc"]
 [ext_resource type="Texture2D" uid="uid://i5c8je4b0012" path="res://graphics/ui/long_bar.png" id="27_knhlc"]
@@ -384,7 +385,7 @@ stretch_mode = 0
 [node name="Skill2" type="TextureButton" parent="Control/HBoxContainer" unique_id=1811858695]
 custom_minimum_size = Vector2(77, 77)
 layout_mode = 2
-texture_normal = ExtResource("19_o71gb")
+texture_normal = ExtResource("19_yy7ol")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -827,5 +828,6 @@ libraries/ = SubResource("AnimationLibrary_vnqvi")
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliMoney" to="." method="_on_unli_money_toggled"]
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliHealth" to="." method="_on_unli_health_toggled"]
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliSentiCap" to="." method="_on_unli_senti_cap_toggled"]
+[connection signal="pressed" from="Control/HBoxContainer/Skill2" to="." method="_on_skill_2_pressed"]
 [connection signal="pressed" from="Control/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="StatsCounterButton" to="." method="_on_stats_counter_button_pressed"]
