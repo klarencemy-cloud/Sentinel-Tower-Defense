@@ -221,7 +221,10 @@ func apply_dialogue_line() -> void:
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():
 		dialogue_label.type_out()
-		await dialogue_label.finished_typing
+		while dialogue_label.is_typing:
+			UISound.play_dialogue_typing()
+			await get_tree().create_timer(0.06).timeout
+		UISound.stop_dialogue_typing()
 
 	# Wait for next line
 	if dialogue_line.has_tag("voice"):
@@ -280,8 +283,10 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		UISound.play_click()
 		next(dialogue_line.next_id)
 	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
+		UISound.play_click()
 		next(dialogue_line.next_id)
 
 

@@ -5,6 +5,7 @@ extends Node
 @onready var click_carousel: AudioStreamPlayer = $ClickCarousel
 @onready var uibackground_music: AudioStreamPlayer = $UIBackgroundMusic
 @onready var game_background_music: AudioStreamPlayer = $GameBackgroundMusic
+@onready var dialogue_typing: AudioStreamPlayer = $DialogueTyping
 
 var _ui_bg_tween: Tween
 var _game_bg_tween: Tween
@@ -23,6 +24,12 @@ func play_close():
 
 func play_carousel():
 	click_carousel.play()
+
+func play_dialogue_typing():
+	dialogue_typing.play()
+
+func stop_dialogue_typing():
+	dialogue_typing.stop()
 
 # UI BG Music
 func play_bg():
