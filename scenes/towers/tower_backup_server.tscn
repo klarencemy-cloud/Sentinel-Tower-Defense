@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ckw2r5sxu2dft"]
 
 [ext_resource type="Script" uid="uid://by21bbit8igg0" path="res://scenes/towers/tower_backup_server.gd" id="1_4jq7i"]
-[ext_resource type="Texture2D" uid="uid://b3k0r3etcd08f" path="res://graphics/currency/gold.png" id="3_6gdv8"]
 [ext_resource type="Texture2D" uid="uid://c843o7m2bk3s1" path="res://graphics/ui/tower thumbnails 2/BACKUP.png" id="3_frx7f"]
+[ext_resource type="Texture2D" uid="uid://c5mv5ldsp1675" path="res://graphics/currency/small_gold_glow.png" id="3_s3ndn"]
 [ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="5_6gdv8"]
 [ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="5_frx7f"]
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_s3ndn"]
@@ -116,6 +116,7 @@ position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_frx7f")
 
 [node name="AdButton" type="TextureButton" parent="." unique_id=268705646]
+visible = false
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
@@ -130,7 +131,7 @@ offset_left = -31.0
 offset_top = -32.0
 offset_right = 33.0
 offset_bottom = 32.0
-texture_normal = ExtResource("3_6gdv8")
+texture_normal = ExtResource("3_s3ndn")
 
 [node name="TowerMenu" parent="." unique_id=872359436 instance=ExtResource("5_6gdv8")]
 offset_left = 33.0
