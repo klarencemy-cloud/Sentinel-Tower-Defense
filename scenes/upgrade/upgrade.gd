@@ -329,8 +329,9 @@ func _try_purchase_upgrade(slot_index: int) -> void:
 	update_ability_panel()
 	update_money_display()
 	var save = get_tree().get_first_node_in_group("save")
-	if save:
-		save.save_game()
+	if !Data.is_sandbox_mode:
+		if save:
+			save.save_game()
 
 func _on_towers_pressed() -> void:
 	$TowerUpgradeUi.visible = true
@@ -770,8 +771,9 @@ func _on_unlock_pressed() -> void:
 	$TextureRect/Unlock.visible = false
 	
 	var save = get_tree().get_first_node_in_group("save")
-	if save:
-		save.save_game()
+	if !Data.is_sandbox_mode:
+		if save:
+			save.save_game()
 
 
 func _on_rollbtn_toggled(toggled_on: bool) -> void:

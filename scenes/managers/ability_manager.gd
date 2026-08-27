@@ -105,6 +105,10 @@ func cancel_selection() -> void:
 func _try_place_ability(world_pos: Vector2) -> void:
 	if current_placement_kind == "ability":
 		_try_place_firewall(world_pos)
+	
+	
+	if !Data.is_sandbox_mode:
+		Save.save_game()
 
 
 func _try_place_firewall(world_pos: Vector2) -> void:
@@ -123,14 +127,16 @@ func _try_place_firewall(world_pos: Vector2) -> void:
 	firewall_parent.add_child(firewall_instance)
 
 	# Save immediately after placing ability
-	var save_system = get_tree().get_first_node_in_group("save")
-	if save_system:
-		save_system.save_game()
+	if !Data.is_sandbox_mode:
+		var save = get_tree().get_first_node_in_group("save")
+		if save:
+			save.save_game()
 
 	cancel_selection()
 	current_placement_kind = ""
 	if Data.current_wave == 5 and !Data.is_sandbox and !GameDialogueManager.is_firewall_activated_shown:
 		GameDialogueManager.show_dialogue_firewall_activated()
+	
 
 func _is_on_path(world_pos: Vector2) -> bool:
 	var path_nodes: Array[Node] = []

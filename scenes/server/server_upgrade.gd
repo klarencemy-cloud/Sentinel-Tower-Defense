@@ -97,4 +97,5 @@ func _on_economy_pressed() -> void:
 
 func _on_upgrade_purchased() -> void:
 	_refresh_server_pts()
-	Save.save_game()
+	if !Data.is_sandbox_mode:
+		Save.save_game()

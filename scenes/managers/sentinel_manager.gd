@@ -189,9 +189,10 @@ func _try_place_sentinel(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	level_root.get_node("Towers").add_child(sentinel)
 
 	# Save immediately after placing sentinel
-	var save_system = get_tree().get_first_node_in_group("save")
-	if save_system:
-		save_system.save_game()
+	var save= get_tree().get_first_node_in_group("save")
+	if 	if !Data.is_sandbox_mode:
+		if save:
+			save.save_game()
 
 	cancel_selection()
 

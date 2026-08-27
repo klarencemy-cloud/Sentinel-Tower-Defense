@@ -54,7 +54,8 @@ func next_map() -> void:
 	Data.saved_tower_placements.clear()
 
 	Data.current_level_index += 1
-	Save.save_game()
+	if !Data.is_sandbox_mode:
+		Save.save_game()
 
 func _process(_delta: float) -> void:
 	wave_manager.update_wave_state()
