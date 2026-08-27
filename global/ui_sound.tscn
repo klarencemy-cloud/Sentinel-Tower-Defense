@@ -9,6 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://diic0o5xh6i63" path="res://audio/UI/UI click 3.wav" id="7_q17wm"]
 [ext_resource type="AudioStream" uid="uid://to2ie3j5v1h3" path="res://audio/MUSIC/Vilain-Theme-Medieval.wav" id="7_vdeji"]
 [ext_resource type="AudioStream" uid="uid://dllrcuqy5pyrt" path="res://audio/UI/UI carousel.wav" id="8_oed1j"]
+[ext_resource type="AudioStream" uid="uid://dxa6cg5dupkc4" path="res://audio/UI/dialogue1.wav" id="10_n4s08"]
+[ext_resource type="AudioStream" uid="uid://eesl3yy5xgq3" path="res://audio/UI/dialogue2.wav" id="11_0u66a"]
+[ext_resource type="AudioStream" uid="uid://cfy4kq7why6ue" path="res://audio/UI/dialogue3.wav" id="12_73dq3"]
+[ext_resource type="AudioStream" uid="uid://cqiwp5ed8lvq" path="res://audio/UI/dialogue4.wav" id="13_h1od4"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q17wm"]
 streams_count = 3
@@ -20,6 +24,14 @@ stream_2/stream = ExtResource("7_q17wm")
 streams_count = 2
 stream_0/stream = ExtResource("2_5sf5e")
 stream_1/stream = ExtResource("3_vdeji")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7g3sw"]
+random_pitch = 1.0879282
+streams_count = 4
+stream_0/stream = ExtResource("10_n4s08")
+stream_1/stream = ExtResource("11_0u66a")
+stream_2/stream = ExtResource("12_73dq3")
+stream_3/stream = ExtResource("13_h1od4")
 
 [node name="UISound" type="Node" unique_id=134395415]
 script = ExtResource("1_n4w8n")
@@ -44,3 +56,8 @@ stream = ExtResource("7_vdeji")
 volume_db = -5.0
 pitch_scale = 0.9
 bus = &"Music"
+
+[node name="DialogueTyping" type="AudioStreamPlayer" parent="." unique_id=1332762566]
+stream = SubResource("AudioStreamRandomizer_7g3sw")
+volume_db = -15.053
+bus = &"Sounds"

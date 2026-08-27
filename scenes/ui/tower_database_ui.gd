@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	)
 	$TowerContainer/CardContainer.position.y = clamp(
 		$TowerContainer/CardContainer.position.y,
-		-823,
+		-545,
 		11
 	)
 
@@ -243,10 +243,9 @@ var tower_name: Array = [
 	"AI Security",
 	"Endpoint Protection",
 	"Sandbox Analyzer",
-	"SOAR "
 	]
 
-enum Tower {SPAM, ANTIVIRUS, ADBLOCKER, DLP, IDPS, QUARANTINE_CANNON, ACS, AI_SECURITY, ENDPOINT, SANDBOX, SOAR}
+enum Tower {SPAM, ANTIVIRUS, ADBLOCKER, DLP, IDPS, QUARANTINE_CANNON, ACS, AI_SECURITY, ENDPOINT, SANDBOX}
 
 var TOWER_DATA = {
 	Tower.SPAM: {
@@ -318,13 +317,6 @@ var TOWER_DATA = {
 		'type': "Bullet",
 		'special_ability': "Traps one enemy in a force cage until it dies, but it cannot target another enemy while occupied. Nearby enemies become infected as well. ",
 		'irl_desc': "Suspicious files or links execute safely within this isolated virtual environment without risking production infrastructure. The environment records internal process behaviors, keeping an eye out for registry modifications, hidden logic bombs, and sleeper malware, flagging the file if malicious actions are observed, which provides analysts with highly detailed threat intelligence about completely unclassified zero-day exploits before they ever touch physical hard drives. "
-	},
-	Tower.SOAR: {
-		'damage': 300,
-		'atk_speed': 1.50,
-		'type': "Area",
-		'special_ability': "It copies the special ability of the selected tower and enhances it by 50% effectiveness",
-		'irl_desc': "Security orchestration, automation and response (SOAR) technology helps coordinate, execute and automate tasks between various people and tools all within a single platform. This allows organizations to not only quickly respond to cybersecurity attacks but also observe, understand and prevent future incidents, thus improving their overall security posture. "
 	},
 }
 
@@ -441,14 +433,3 @@ func _on_tower_10_pressed() -> void:
 	desc_sp.text = str(TOWER_DATA[9]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[9]['irl_desc'])
 	$Databasebg/AnimatedSprite2D.play("sbanalyzer")
-
-
-func _on_tower_11_pressed() -> void:
-	UISound.play_click()
-	desc_name.text = tower_name[10]
-	desc_damage.text = str(TOWER_DATA[10]['damage'])
-	desc_speed.text = str(TOWER_DATA[10]['atk_speed'])
-	desc_type.text = str(TOWER_DATA[10]['type'])
-	desc_sp.text = str(TOWER_DATA[10]['special_ability'])
-	desc_desc.text = str(TOWER_DATA[10]['irl_desc'])
-	$Databasebg/AnimatedSprite2D.play("soar")
