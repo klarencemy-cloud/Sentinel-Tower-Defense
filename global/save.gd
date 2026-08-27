@@ -14,182 +14,184 @@ func _notification(what: int) -> void:
 		get_tree().quit()
 
 func save_game() -> void:
-	var tower_upgrades := {}
-	for tower_enum in Data.Tower.values():
-		var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
-		tower_upgrades[str(tower_enum)] = {
-			"levels": [
-				tower_data.get("upgrade1level", 0), tower_data.get("upgrade2level", 0),
-				tower_data.get("upgrade3level", 0), tower_data.get("upgrade4level", 0),
-				tower_data.get("upgrade5level", 0), tower_data.get("upgrade6level", 0),
-			],
-			"stats": {
-				"damage": tower_data.get("damage", 0), "reload_time": tower_data.get("reload_time", 0),
-				"range": tower_data.get("range", 0), "crit rate": tower_data.get("crit rate", 0),
-				"crit damage": tower_data.get("crit damage", 0), "explosion_radius": tower_data.get("explosion_radius", 0),
+	if !Data.is_sandbox:
+		var tower_upgrades := {}
+		for tower_enum in Data.Tower.values():
+			var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
+			tower_upgrades[str(tower_enum)] = {
+				"levels": [
+					tower_data.get("upgrade1level", 0), tower_data.get("upgrade2level", 0),
+					tower_data.get("upgrade3level", 0), tower_data.get("upgrade4level", 0),
+					tower_data.get("upgrade5level", 0), tower_data.get("upgrade6level", 0),
+				],
+				"stats": {
+					"damage": tower_data.get("damage", 0), "reload_time": tower_data.get("reload_time", 0),
+					"range": tower_data.get("range", 0), "crit rate": tower_data.get("crit rate", 0),
+					"crit damage": tower_data.get("crit damage", 0), "explosion_radius": tower_data.get("explosion_radius", 0),
+				}
 			}
-		}
-	var placed_towers: Array = []
+		var placed_towers: Array = []
 
-	for tower in get_tree().get_nodes_in_group("Towers"):
-		if tower is Tower:
-			placed_towers.append({
-				"type": int(tower.type),
-				"cell_pos": [tower.cell_pos.x, tower.cell_pos.y]
+		for tower in get_tree().get_nodes_in_group("Towers"):
+			if tower is Tower:
+				placed_towers.append({
+					"type": int(tower.type),
+					"cell_pos": [tower.cell_pos.x, tower.cell_pos.y]
+				})
+		# print(placed_towers)
+		# print(Data.saved_tower_placements)
+		var placed_sentinels: Array = []
+
+		for sentinel in get_tree().get_nodes_in_group("Sentinels"):
+			if sentinel.has_meta("sentinel_type"):
+				placed_sentinels.append({
+					"type": int(sentinel.get_meta("sentinel_type")),
+					"cell_pos": [sentinel.cell_pos.x, sentinel.cell_pos.y]
+				})
+
+		var placed_abilities: Array = []
+
+		for ability in get_tree().get_nodes_in_group("Abilities"):
+			placed_abilities.append({
+				"type": "firewall",
+				"position": [ability.position.x, ability.position.y]
 			})
-	# print(placed_towers)
-	# print(Data.saved_tower_placements)
-	var placed_sentinels: Array = []
 
-	for sentinel in get_tree().get_nodes_in_group("Sentinels"):
-		if sentinel.has_meta("sentinel_type"):
-			placed_sentinels.append({
-				"type": int(sentinel.get_meta("sentinel_type")),
-				"cell_pos": [sentinel.cell_pos.x, sentinel.cell_pos.y]
-			})
+		var sentinel_unlocks := {}
 
-	var placed_abilities: Array = []
+		for sentinel_enum in Data.Sentinel.values():
+			var sentinel_data: Dictionary = Data.SENTINEL_DATA[sentinel_enum]
+			sentinel_unlocks[str(sentinel_enum)] = sentinel_data.get("isUnlocked", false)
+			
+		var tower_unlocks := {}
 
-	for ability in get_tree().get_nodes_in_group("Abilities"):
-		placed_abilities.append({
-			"type": "firewall",
-			"position": [ability.position.x, ability.position.y]
-		})
-
-	var sentinel_unlocks := {}
-
-	for sentinel_enum in Data.Sentinel.values():
-		var sentinel_data: Dictionary = Data.SENTINEL_DATA[sentinel_enum]
-		sentinel_unlocks[str(sentinel_enum)] = sentinel_data.get("isUnlocked", false)
+		for tower_enum in Data.Tower.values():
+			var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
+			tower_unlocks[str(tower_enum)] = tower_data.get("isUnlocked", false)
 		
-	var tower_unlocks := {}
+		var save_data := {
+			"version": SAVE_VERSION,
+			"current_level_index": Data.current_level_index, "checkpoint_wave": Data.checkpoint_wave,
+			"current_wave": Data.current_wave, "money": Data.money, "max_health": Data.max_health,
+			"maxserverload": Data.maxserverload, "server_points": Data.server_points,
+			"player_level": Data.player_level, "experience": Data.experience,
+			"owned_towers": Data.owned_towers,
+			"placed_towers": placed_towers,
+			"placed_sentinels": placed_sentinels,
+			"placed_abilities": placed_abilities,
+			"tower_unlocks": tower_unlocks,
+			"sentinel_unlocks": sentinel_unlocks,
+			"sentinels": [Data.sentinel_ethical_deployed, Data.sentinel_sysad_deployed,
+				Data.sentinel_intrusion_deployed, Data.sentinel_security_deployed,
+				Data.sentinel_malware_deployed, Data.sentinel_deception_deployed],
+			"tower_upgrades": tower_upgrades,
+			"offense_levels": Offense.offense_levels, "offense_maxed": Offense.maxed,
+			"offense_stats": [Offense.multiplied_total_dmg, Offense.multiplied_atk_speed, Offense.multiplied_crit_chance],
+			"defense_levels": Defense.defense_levels, "defense_maxed": Defense.maxed,
+			"defense_stats": [Defense.total_armor, Defense.total_server_health, Defense.total_skill_cooldown, Defense.total_sentinel_deployed],
+			"economy_levels": Economy.economy_levels, "economy_maxed": Economy.maxed,
+			"economy_stats": [Economy.gold_multiplier, Economy.exp_multiplier],
+		}
 
-	for tower_enum in Data.Tower.values():
-		var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
-		tower_unlocks[str(tower_enum)] = tower_data.get("isUnlocked", false)
-	
-	var save_data := {
-		"version": SAVE_VERSION,
-		"current_level_index": Data.current_level_index, "checkpoint_wave": Data.checkpoint_wave,
-		"current_wave": Data.current_wave, "money": Data.money, "max_health": Data.max_health,
-		"maxserverload": Data.maxserverload, "server_points": Data.server_points,
-		"player_level": Data.player_level, "experience": Data.experience,
-		"owned_towers": Data.owned_towers,
-		"placed_towers": placed_towers,
-		"placed_sentinels": placed_sentinels,
-		"placed_abilities": placed_abilities,
-		"tower_unlocks": tower_unlocks,
-		"sentinel_unlocks": sentinel_unlocks,
-		"sentinels": [Data.sentinel_ethical_deployed, Data.sentinel_sysad_deployed,
-			Data.sentinel_intrusion_deployed, Data.sentinel_security_deployed,
-			Data.sentinel_malware_deployed, Data.sentinel_deception_deployed],
-		"tower_upgrades": tower_upgrades,
-		"offense_levels": Offense.offense_levels, "offense_maxed": Offense.maxed,
-		"offense_stats": [Offense.multiplied_total_dmg, Offense.multiplied_atk_speed, Offense.multiplied_crit_chance],
-		"defense_levels": Defense.defense_levels, "defense_maxed": Defense.maxed,
-		"defense_stats": [Defense.total_armor, Defense.total_server_health, Defense.total_skill_cooldown, Defense.total_sentinel_deployed],
-		"economy_levels": Economy.economy_levels, "economy_maxed": Economy.maxed,
-		"economy_stats": [Economy.gold_multiplier, Economy.exp_multiplier],
-	}
-
-	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	if file:
-		file.store_string(JSON.stringify(save_data))
+		var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+		if file:
+			file.store_string(JSON.stringify(save_data))
 
 func _load_game() -> void:
-	if not FileAccess.file_exists(SAVE_PATH):
-		return
-	var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
-	if not file:
-		return
-	var parsed = JSON.parse_string(file.get_as_text())
-	if not parsed is Dictionary or parsed.get("version", 0) != SAVE_VERSION:
-		return
+	if !Data.is_sandbox:
+		if not FileAccess.file_exists(SAVE_PATH):
+			return
+		var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
+		if not file:
+			return
+		var parsed = JSON.parse_string(file.get_as_text())
+		if not parsed is Dictionary or parsed.get("version", 0) != SAVE_VERSION:
+			return
 
-	Data.saved_tower_placements = parsed.get("placed_towers", [])
+		Data.saved_tower_placements = parsed.get("placed_towers", [])
 
-	Data.saved_sentinel_placements = parsed.get("placed_sentinels", [])
-	Data.saved_ability_placements = parsed.get("placed_abilities", [])
-	Data.current_level_index = int(parsed.get("current_level_index", Data.current_level_index))
-	Data.checkpoint_wave = int(parsed.get("checkpoint_wave", Data.checkpoint_wave))
-	Data.current_wave = int(parsed.get("current_wave", Data.current_wave))
-	Data.money = int(parsed.get("money", Data.money))
-	Data.max_health = float(parsed.get("max_health", Data.max_health))
-	Data.maxserverload = int(parsed.get("maxserverload", Data.maxserverload))
-	Data.server_points = int(parsed.get("server_points", Data.server_points))
-	Data.player_level = int(parsed.get("player_level", Data.player_level))
-	Data.experience = int(parsed.get("experience", Data.experience))
+		Data.saved_sentinel_placements = parsed.get("placed_sentinels", [])
+		Data.saved_ability_placements = parsed.get("placed_abilities", [])
+		Data.current_level_index = int(parsed.get("current_level_index", Data.current_level_index))
+		Data.checkpoint_wave = int(parsed.get("checkpoint_wave", Data.checkpoint_wave))
+		Data.current_wave = int(parsed.get("current_wave", Data.current_wave))
+		Data.money = int(parsed.get("money", Data.money))
+		Data.max_health = float(parsed.get("max_health", Data.max_health))
+		Data.maxserverload = int(parsed.get("maxserverload", Data.maxserverload))
+		Data.server_points = int(parsed.get("server_points", Data.server_points))
+		Data.player_level = int(parsed.get("player_level", Data.player_level))
+		Data.experience = int(parsed.get("experience", Data.experience))
 
-	var saved_owned_towers: Dictionary = parsed.get("owned_towers", {})
-	Data.owned_towers.clear()
-	for tower_key in saved_owned_towers:
-		Data.owned_towers[int(tower_key)] = int(saved_owned_towers[tower_key])
-	
-	var tower_unlocks: Dictionary = parsed.get("tower_unlocks", {})
-
-	for tower_key in tower_unlocks:
-		var tower_enum := int(tower_key)
-
-		if Data.TOWER_DATA.has(tower_enum):
-			Data.TOWER_DATA[tower_enum]["isUnlocked"] = bool(tower_unlocks[tower_key])
+		var saved_owned_towers: Dictionary = parsed.get("owned_towers", {})
+		Data.owned_towers.clear()
+		for tower_key in saved_owned_towers:
+			Data.owned_towers[int(tower_key)] = int(saved_owned_towers[tower_key])
 		
-	var sentinels: Array = parsed.get("sentinels", [])
-	if sentinels.size() >= 6:
-		Data.sentinel_ethical_deployed = bool(sentinels[0])
-		Data.sentinel_sysad_deployed = bool(sentinels[1])
-		Data.sentinel_intrusion_deployed = bool(sentinels[2])
-		Data.sentinel_security_deployed = bool(sentinels[3])
-		Data.sentinel_malware_deployed = bool(sentinels[4])
-		Data.sentinel_deception_deployed = bool(sentinels[5])
+		var tower_unlocks: Dictionary = parsed.get("tower_unlocks", {})
 
-	var sentinel_unlocks: Dictionary = parsed.get("sentinel_unlocks", {})
+		for tower_key in tower_unlocks:
+			var tower_enum := int(tower_key)
 
-	for sentinel_key in sentinel_unlocks:
-		var sentinel_enum := int(sentinel_key)
+			if Data.TOWER_DATA.has(tower_enum):
+				Data.TOWER_DATA[tower_enum]["isUnlocked"] = bool(tower_unlocks[tower_key])
+			
+		var sentinels: Array = parsed.get("sentinels", [])
+		if sentinels.size() >= 6:
+			Data.sentinel_ethical_deployed = bool(sentinels[0])
+			Data.sentinel_sysad_deployed = bool(sentinels[1])
+			Data.sentinel_intrusion_deployed = bool(sentinels[2])
+			Data.sentinel_security_deployed = bool(sentinels[3])
+			Data.sentinel_malware_deployed = bool(sentinels[4])
+			Data.sentinel_deception_deployed = bool(sentinels[5])
 
-		if Data.SENTINEL_DATA.has(sentinel_enum):
-			Data.SENTINEL_DATA[sentinel_enum]["isUnlocked"] = bool(sentinel_unlocks[sentinel_key])
+		var sentinel_unlocks: Dictionary = parsed.get("sentinel_unlocks", {})
+
+		for sentinel_key in sentinel_unlocks:
+			var sentinel_enum := int(sentinel_key)
+
+			if Data.SENTINEL_DATA.has(sentinel_enum):
+				Data.SENTINEL_DATA[sentinel_enum]["isUnlocked"] = bool(sentinel_unlocks[sentinel_key])
 
 
-	var tower_upgrades: Dictionary = parsed.get("tower_upgrades", {})
-	for tower_key in tower_upgrades:
-		var tower_enum := int(tower_key)
-		if not Data.TOWER_DATA.has(tower_enum):
-			continue
-		var saved_tower: Dictionary = tower_upgrades[tower_key]
-		var levels: Array = saved_tower.get("levels", [])
-		var stats: Dictionary = saved_tower.get("stats", {})
-		var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
-		for index in mini(levels.size(), 6):
-			tower_data["upgrade%dlevel" % (index + 1)] = int(levels[index])
-		for stat_name in stats:
-			tower_data[stat_name] = stats[stat_name]
+		var tower_upgrades: Dictionary = parsed.get("tower_upgrades", {})
+		for tower_key in tower_upgrades:
+			var tower_enum := int(tower_key)
+			if not Data.TOWER_DATA.has(tower_enum):
+				continue
+			var saved_tower: Dictionary = tower_upgrades[tower_key]
+			var levels: Array = saved_tower.get("levels", [])
+			var stats: Dictionary = saved_tower.get("stats", {})
+			var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
+			for index in mini(levels.size(), 6):
+				tower_data["upgrade%dlevel" % (index + 1)] = int(levels[index])
+			for stat_name in stats:
+				tower_data[stat_name] = stats[stat_name]
 
-	var offense_stats: Array = parsed.get("offense_stats", [])
-	Offense.offense_levels = Array(parsed.get("offense_levels", Offense.offense_levels), TYPE_INT, &"", null)
-	Offense.maxed = Array(parsed.get("offense_maxed", Offense.maxed), TYPE_BOOL, &"", null)
-	if offense_stats.size() >= 3:
-		Offense.multiplied_total_dmg = float(offense_stats[0])
-		Offense.multiplied_atk_speed = float(offense_stats[1])
-		Offense.multiplied_crit_chance = float(offense_stats[2])
+		var offense_stats: Array = parsed.get("offense_stats", [])
+		Offense.offense_levels = Array(parsed.get("offense_levels", Offense.offense_levels), TYPE_INT, &"", null)
+		Offense.maxed = Array(parsed.get("offense_maxed", Offense.maxed), TYPE_BOOL, &"", null)
+		if offense_stats.size() >= 3:
+			Offense.multiplied_total_dmg = float(offense_stats[0])
+			Offense.multiplied_atk_speed = float(offense_stats[1])
+			Offense.multiplied_crit_chance = float(offense_stats[2])
 
-	var defense_stats: Array = parsed.get("defense_stats", [])
-	Defense.defense_levels = Array(parsed.get("defense_levels", Defense.defense_levels), TYPE_INT, &"", null)
-	Defense.maxed = Array(parsed.get("defense_maxed", Defense.maxed), TYPE_BOOL, &"", null)
-	if defense_stats.size() >= 4:
-		Defense.total_armor = float(defense_stats[0])
-		Defense.total_server_health = int(defense_stats[1])
-		Defense.total_skill_cooldown = float(defense_stats[2])
-		Defense.total_sentinel_deployed = int(defense_stats[3])
+		var defense_stats: Array = parsed.get("defense_stats", [])
+		Defense.defense_levels = Array(parsed.get("defense_levels", Defense.defense_levels), TYPE_INT, &"", null)
+		Defense.maxed = Array(parsed.get("defense_maxed", Defense.maxed), TYPE_BOOL, &"", null)
+		if defense_stats.size() >= 4:
+			Defense.total_armor = float(defense_stats[0])
+			Defense.total_server_health = int(defense_stats[1])
+			Defense.total_skill_cooldown = float(defense_stats[2])
+			Defense.total_sentinel_deployed = int(defense_stats[3])
 
-	var economy_stats: Array = parsed.get("economy_stats", [])
-	Economy.economy_levels = Array(parsed.get("economy_levels", Economy.economy_levels), TYPE_INT, &"", null)
-	Economy.maxed = Array(parsed.get("economy_maxed", Economy.maxed), TYPE_BOOL, &"", null)
-	if economy_stats.size() >= 2:
-		Economy.gold_multiplier = float(economy_stats[0])
-		Economy.exp_multiplier = float(economy_stats[1])
+		var economy_stats: Array = parsed.get("economy_stats", [])
+		Economy.economy_levels = Array(parsed.get("economy_levels", Economy.economy_levels), TYPE_INT, &"", null)
+		Economy.maxed = Array(parsed.get("economy_maxed", Economy.maxed), TYPE_BOOL, &"", null)
+		if economy_stats.size() >= 2:
+			Economy.gold_multiplier = float(economy_stats[0])
+			Economy.exp_multiplier = float(economy_stats[1])
 
-	call_deferred("_restore_saved_objects")
+		call_deferred("_restore_saved_objects")
 
 func _restore_saved_objects() -> void:
 	await get_tree().process_frame

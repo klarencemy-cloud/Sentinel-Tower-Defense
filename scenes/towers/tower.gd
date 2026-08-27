@@ -48,6 +48,10 @@ var range_indicator: Line2D
 func _ready() -> void:
 	add_to_group("towers")
 	original_reload_time = reload_time
+
+	pay_button.visible = false
+	pay_button.disabled = true
+
 	create_range_indicator()
 
 
@@ -222,17 +226,24 @@ func ransomware_effect():
 
 	ransomware_active = true
 	disabled_by_ransomware = true
+
 	pay_button.visible = true
+	pay_button.disabled = false
 
 func remove_ransomware():
+	if not ransomware_active:
+		return
+
 	ransomware_active = false
 	disabled_by_ransomware = false
+
 	pay_button.visible = false
+	pay_button.disabled = true
 
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui._schedule_next_ransomware()
-
+		
 func clear_debuffs_from_endpoint() -> void:
 	for source_id in spyware_sources:
 		spyware_immunity_sources[source_id] = true
