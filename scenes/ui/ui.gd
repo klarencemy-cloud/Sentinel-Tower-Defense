@@ -192,6 +192,7 @@ func _on_skill1_pressed() -> void:
 func _on_firewall_cooldown_finished() -> void:
 	firewall_on_cooldown = false
 	skill1_button.disabled = false
+	skill1_cooldown.visible = false
 
 func start_firewall_cooldown() -> void:
 	if firewall_on_cooldown:
@@ -205,6 +206,7 @@ func start_firewall_cooldown() -> void:
 	skill1_cooldown.value = firewall_cooldown
 
 	firewall_timer.start()
+	skill1_cooldown.visible = true
 	
 	
 func trigger_shake():

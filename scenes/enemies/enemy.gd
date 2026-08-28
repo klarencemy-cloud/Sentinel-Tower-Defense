@@ -43,6 +43,7 @@ const NORMAL_TINT: Color = Color(1, 1, 1, 1)
 const SLOWED_TINT: Color = Color(0.6, 0.8, 1.0, 1.0)
 const FROZEN_TINT: Color = Color(0.1, 0.2, 0.6, 1.0)
 const DLP_DEBUFF_TINT: Color = Color(0.4, 0.8, 0.4, 1.0)
+const INVISIBLE_TINT: Color = Color(1, 1, 1, 0.3)
 
 var rootkit_skill_used := false
 const ROOTKIT_PORTAL = preload("res://scenes/enemies/rootkit_skill.tscn")
@@ -317,7 +318,7 @@ func _process(delta: float):
 			backup_server_knockback()
 			return
 	if invisible:
-		enemy_type.modulate = Color(1, 1, 1, 0.7)
+		enemy_type.modulate = INVISIBLE_TINT
 	else:
 		enemy_type.modulate = NORMAL_TINT
 	var current_speed = speed
@@ -437,6 +438,11 @@ func _process(delta: float):
 		pass # skip the spyware itself
 	if spyware_count > 0:
 		print(name, speed)
+		
+	if invisible:
+		enemy_type.modulate = INVISIBLE_TINT
+	else:
+		enemy_type.modulate = NORMAL_TINT
 
 ##func _on_area_entered(bullet: Area2D) -> void:
 ##	bullet.queue_free()
@@ -663,8 +669,13 @@ func flash_dlp_debuff() -> void:
 
 func set_invisible(value: bool) -> void:
 	invisible = value
+
 	if enemy_type_stats == Data.Enemy.INSIDERTHREAT and enemy_type:
-		enemy_type.modulate.a = 0.3 if invisible else 1.0
+		if invisible:
+			enemy_type.modulate = INVISIBLE_TINT
+		else:
+			enemy_type.modulate = NORMAL_TINT
+
 		$CollisionShape2D.disabled = invisible
 
 func show_damage(damage: int):

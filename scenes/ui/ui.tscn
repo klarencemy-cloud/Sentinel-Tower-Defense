@@ -384,6 +384,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="cooldown" type="TextureProgressBar" parent="Control/HBoxContainer/Skill1" unique_id=1323867577]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
