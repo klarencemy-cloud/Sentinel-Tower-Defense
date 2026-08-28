@@ -694,6 +694,8 @@ func show_damage(damage: int):
 	label.queue_free()
 	
 func stun(duration: float = 0.5, vulnerable: bool = false):
+	if invisible:
+		return
 	is_stunned = true
 	is_frozen = true
 	is_frozen_vulnerable = vulnerable
