@@ -283,6 +283,7 @@ stretch_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="Message1" type="TextureButton" parent="Balloon" unique_id=1832396488]
+visible = false
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1

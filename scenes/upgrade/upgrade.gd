@@ -77,19 +77,24 @@ func set_selected_tower(tower_enum: Data.Tower) -> void:
 		%BigPic.modulate = Color(1, 1, 1, 1)
 		$TextureRect/BigTowerName.text = Data.TOWER_DATA[tower_enum]["name"]
 		$TextureRect/UpgradeButton.visible = true
+		$TextureRect/BigTowerName.visible = true
+		%BigPic.visible = true
 		$TextureRect/Unlock.visible = false
 		$SentinelStuff/Rollbtn.visible = false
 	else:
 		# Normal mode: check whether tower is unlocked
 		if not Data.TOWER_DATA[tower_enum].get("isUnlocked", true):
 			%BigPic.modulate = Color(0, 0, 0, 0.5)
+			%BigPic.visible = true
 			$TextureRect/BigTowerName.text = "???"
 			$TextureRect/UpgradeButton.visible = false
 			$TextureRect/Unlock.visible = true
 		else:
+			%BigPic.visible = true
 			%BigPic.modulate = Color(1, 1, 1, 1)
 			$TextureRect/BigTowerName.text = Data.TOWER_DATA[tower_enum]["name"]
 			$TextureRect/UpgradeButton.visible = true
+			$TextureRect/BigTowerName.visible = true
 			$TextureRect/Unlock.visible = false
 		
 	var upgradeable: bool = bool(Data.TOWER_DATA[tower_enum].get("upgradeable", true))
@@ -674,16 +679,16 @@ func _on_back_btn_pressed() -> void:
 		$SentinelStuff.hide()
 		$TextureRect/ScrollContainer.visible = true
 		$SentinelStuff.visible = false
-		%BigPic.visible = true
+		%BigPic.visible = false
 
 	else:
 		if %SentinelsContainer.visible == true:
 			get_tree().paused = false
+			%BigPic.visible = false
 			visible = false
 
 		else:
 			%SentinelsContainer.visible = true
-
 			%BigPic.position.x += 340
 			$TextureRect/BigTowerName.visible = true
 			$TextureRect/UpgradeButton.visible = true
@@ -723,6 +728,7 @@ func _on_sentinel_btn_pressed() -> void:
 	$SentinelStuff/ScrollContainer.visible = false
 	$SentinelStuff/SentinelList.visible = true
 	$SentinelStuff/Databasebg.visible = false
+	
 	
 	if Data.is_sandbox:
 		$SentinelStuff/Rollbtn.visible = false
