@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://wwyemyf8s3x7" path="res://graphics/container/skillcontainer.png" id="19_o71gb"]
 [ext_resource type="Texture2D" uid="uid://ddayndvqnoild" path="res://graphics/ui/expprogressbar.png" id="19_qhbcy"]
 [ext_resource type="Texture2D" uid="uid://b2ivf813gi1aa" path="res://graphics/ui/progress-circle.png" id="19_svq4k"]
+[ext_resource type="Texture2D" uid="uid://dtjdnfyfg17xh" path="res://graphics/ui/abilitycd.png" id="19_ydrdt"]
 [ext_resource type="Texture2D" uid="uid://bubyrkehmuahc" path="res://graphics/ui/progress-bg.png" id="19_ygedu"]
 [ext_resource type="Texture2D" uid="uid://clsup5ti6o6u8" path="res://graphics/ui/patch.png" id="19_yy7ol"]
 [ext_resource type="FontFile" uid="uid://cqus3kybakmf8" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraBold.ttf" id="21_oopc8"]
@@ -381,6 +382,14 @@ layout_mode = 2
 texture_normal = ExtResource("19_272wc")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="cooldown" type="TextureProgressBar" parent="Control/HBoxContainer/Skill1" unique_id=1323867577]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("19_ydrdt")
 
 [node name="Skill2" type="TextureButton" parent="Control/HBoxContainer" unique_id=1811858695]
 custom_minimum_size = Vector2(77, 77)

@@ -16,6 +16,7 @@ extends CanvasLayer
 @onready var boss_name = $Control/bosshpbar/bossname
 @onready var skill1_button: TextureButton = $Control/HBoxContainer/Skill1
 @onready var skill2_button: TextureButton = $Control/HBoxContainer/Skill2
+@onready var skill1_cooldown: TextureProgressBar = $Control/HBoxContainer/Skill1/cooldown
 @onready var boss_bars := [
 	$Control/bosshpbar,
 	$Control/smallhpbar1,
@@ -49,6 +50,11 @@ var fade_tween: Tween
 
 var ad_timer := Timer.new()
 var ransomware_timer := Timer.new()
+
+var firewall_cooldown := 15.0
+var firewall_on_cooldown := false
+var firewall_timer := Timer.new()
+
 @onready var ad_textures := [
 	preload("res://graphics/buttons/ad1.png"),
 	preload("res://graphics/buttons/ad2.png")
@@ -83,6 +89,14 @@ func _ready() -> void:
 
 
 	skill2_button.texture_normal = preload("res://graphics/ui/patch.png")
+	
+	add_child(firewall_timer)
+	firewall_timer.one_shot = true
+	firewall_timer.wait_time = firewall_cooldown
+	firewall_timer.timeout.connect(_on_firewall_cooldown_finished)
+	
+	skill1_cooldown.visible = false
+	skill1_cooldown.value = 0
 
 
 	if Data.is_sandbox:
@@ -150,7 +164,10 @@ func _ready() -> void:
 	for bar in boss_bars:
 		bar.visible = false
 
-
+func _process(_delta: float) -> void:
+	if firewall_on_cooldown:
+		skill1_cooldown.value = firewall_timer.time_left
+		
 func _on_skill_2_pressed() -> void:
 	tower_select(11)
 
@@ -167,8 +184,29 @@ func toggle_skill_activation():
 	$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
 
 func _on_skill1_pressed() -> void:
+	if firewall_on_cooldown:
+		return
+
 	place_ability.emit(Data.Ability.FIREWALL)
 
+func _on_firewall_cooldown_finished() -> void:
+	firewall_on_cooldown = false
+	skill1_button.disabled = false
+
+func start_firewall_cooldown() -> void:
+	if firewall_on_cooldown:
+		return
+
+	firewall_on_cooldown = true
+	skill1_button.disabled = true
+
+	skill1_cooldown.visible = true
+	skill1_cooldown.max_value = firewall_cooldown
+	skill1_cooldown.value = firewall_cooldown
+
+	firewall_timer.start()
+	
+	
 func trigger_shake():
 	var camera = get_tree().get_first_node_in_group("camera")
 	camera.trigger_shake()

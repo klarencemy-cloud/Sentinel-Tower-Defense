@@ -132,8 +132,14 @@ func _try_place_firewall(world_pos: Vector2) -> void:
 		if save:
 			save.save_game()
 
+	# Placement was successful, so start the cooldown
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.start_firewall_cooldown()
+
 	cancel_selection()
 	current_placement_kind = ""
+
 	if Data.current_wave == 5 and !Data.is_sandbox and !GameDialogueManager.is_firewall_activated_shown:
 		GameDialogueManager.show_dialogue_firewall_activated()
 	
