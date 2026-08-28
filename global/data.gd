@@ -147,7 +147,7 @@ var TOWER_DATA = {
 		'cost': 60,
 		'server_load': 30,
 		'damage': 100,
-		'reload_time': 2,
+		'reload_time': 3,
 		'range': 1000,
 		'crit rate': 0,
 		'crit damage': 50,
