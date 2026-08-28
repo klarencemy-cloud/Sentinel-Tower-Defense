@@ -21,7 +21,7 @@ func _ready() -> void:
 	sentinel_manager.setup(self, level_manager)
 
 	tower_manager.restore_saved_towers()
-
+	Save._restore_saved_objects()
 	wave_manager.setup(level_manager.current_map, level_manager)
 
 	wave_manager.level_completed.connect(level_completed)
