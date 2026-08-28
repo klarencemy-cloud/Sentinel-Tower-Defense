@@ -45,15 +45,18 @@ func level_completed() -> void:
 
 
 func next_map() -> void:
-	for saved_tower in Data.saved_tower_placements:
-		var tower_type := int(saved_tower.get("type", -1))
-		
-		if tower_type != -1:
+	# Convert all currently placed towers into free towers
+	for tower in get_tree().get_nodes_in_group("Towers"):
+		if tower is Tower:
+			var tower_type := int(tower.type)
 			Data.free_towers[tower_type] = Data.free_towers.get(tower_type, 0) + 1
 
-	Data.saved_tower_placements.clear()
+			# Remove the tower from the current map
+			tower.queue_free()
 
+	# Move to the next map
 	Data.current_level_index += 1
+
 	if !Data.is_sandbox:
 		Save.save_game()
 
