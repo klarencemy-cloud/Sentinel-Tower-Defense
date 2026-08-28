@@ -53,6 +53,16 @@ func next_map() -> void:
 
 			# Remove the tower from the current map
 			tower.queue_free()
+	
+	for sentinel in get_tree().get_nodes_in_group("Sentinels"):
+		sentinel.queue_free()
+	for ability in get_tree().get_nodes_in_group("Abilities"): 
+		ability.queue_free()
+		
+	# Clear saved placements so they aren't restored on the next map
+	Data.saved_tower_placements.clear()
+	Data.saved_sentinel_placements.clear()
+	Data.saved_ability_placements.clear()
 
 	# Move to the next map
 	Data.current_level_index += 1
