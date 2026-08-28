@@ -22,6 +22,7 @@ func _on_pressed() -> void:
 	UISound.play_click()
 	press.emit(id)
 
+
 func toggle_active():
 	match id:
 		Data.Sentinel.ETHICAL:

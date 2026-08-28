@@ -30,8 +30,10 @@ func _ready() -> void:
 			tower_card.setup(tower_enum)
 			%SentinelsContainer.add_child(tower_card)
 
+
 	for sentinel_enum in Data.Sentinel.values():
 		var sentinel_card = sentinel_card_scene.instantiate()
+
 		sentinel_card.setup(sentinel_enum)
 
 		var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
@@ -59,11 +61,11 @@ func _ready() -> void:
 				label.text = "???"
 
 		$SentinelStuff/ScrollContainer/RealSentinelContainer.add_child(sentinel_card)
-	
+		sentinel_card.press.connect(change_info)
 	sentinel_roll_thumbnails = _build_sentinel_roll_thumbnails()
 	$SentinelStuff/Rollbtn.connect("pressed", Callable(self, "_on_Rollbtn_pressed"))
 	update_tier_buttons()
-	
+
 func set_selected_tower(tower_enum: Data.Tower) -> void:
 	selected_tower = tower_enum
 
@@ -661,6 +663,8 @@ func _on_back_btn_pressed() -> void:
 		$SentinelStuff/SentinelList.visible = true
 		$SentinelStuff/SentinelRoll.visible = true
 		$SentinelStuff/Core.visible = true
+		$SentinelStuff/Databasebg.visible = false
+
 		if Data.is_sandbox:
 			$SentinelStuff/Rollbtn.visible = false
 		else:
@@ -671,10 +675,12 @@ func _on_back_btn_pressed() -> void:
 		$TextureRect/ScrollContainer.visible = true
 		$SentinelStuff.visible = false
 		%BigPic.visible = true
+
 	else:
 		if %SentinelsContainer.visible == true:
 			get_tree().paused = false
 			visible = false
+
 		else:
 			%SentinelsContainer.visible = true
 
@@ -691,7 +697,7 @@ func _on_back_btn_pressed() -> void:
 			$SentinelStuff/ScrollContainer.visible = false
 			$SentinelStuff/Rollbtn.visible = true
 			$SentinelStuff/SentinelList.visible = true
-
+	$SentinelStuff/Databasebg.hide()
 
 func _on_tower_btn_pressed() -> void:
 	UISound.play_click()
@@ -699,6 +705,7 @@ func _on_tower_btn_pressed() -> void:
 	$SentinelStuff.visible = false
 	%BigPic.visible = true
 	%BigPic.texture = null
+	$SentinelStuff/Databasebg.visible = false
 	
 
 func _on_sentinel_btn_pressed() -> void:
@@ -715,6 +722,7 @@ func _on_sentinel_btn_pressed() -> void:
 	$SentinelStuff/SentinelRoll.visible = true
 	$SentinelStuff/ScrollContainer.visible = false
 	$SentinelStuff/SentinelList.visible = true
+	$SentinelStuff/Databasebg.visible = false
 	
 	if Data.is_sandbox:
 		$SentinelStuff/Rollbtn.visible = false
@@ -728,6 +736,7 @@ func _on_sentinel_list_pressed() -> void:
 	$SentinelStuff/Rollbtn.visible = false
 	$SentinelStuff/SentinelList.visible = false
 	$SentinelStuff/Core.visible = false
+
 
 func _on_unlock_pressed() -> void:
 	Data.TOWER_DATA[selected_tower]["isUnlocked"] = true
@@ -780,3 +789,108 @@ func _on_rollbtn_pressed() -> void:
 
 	$SentinelStuff/Rollbtn.disabled = false
 	sentinel_roll_active = false
+
+
+var sentinel_name: Array = [
+	"Ethical Hacker",
+	"System Administrator",
+	"Intrusion Analyst",
+	"Security Architect",
+	"Malware Analyst",
+	"Deception Specialist",
+	]
+
+	
+enum Sentinel {ETHICAL, SYSAD, INTRUSION, SECURITY, MALWARE, DECEPTION}
+
+var SENTINEL_DATA = {
+	Sentinel.ETHICAL: {
+		'special_ability': "Freezes all the enemies on the field for 3 seconds.",
+		'cooldown': '15 seconds',
+		'passive_ability': "Slows nearby enemies by 25% of their movement speed.",
+		'irl_desc': "This is a cybersecurity expert who lawfully intrudes on a computer or network. They have the permission and approval to hack into a certain computing device. Lastly, they usually provide a security assessment to provide a comprehensive way to further improve a system."
+	},
+		Sentinel.SYSAD: {
+		'special_ability': "Repair server health by 3%.",
+		'cooldown': "1 minute and 30 seconds",
+		'passive_ability': "Generates gold and EXP periodically for the player.",
+		'irl_desc': "Their main role is to provide support, troubleshoot problems, and ensure that the computer infrastructure, such as servers and the network, is functioning."
+	},
+		Sentinel.INTRUSION: {
+		'special_ability': "Deploys a shield with 1500 hit points around the Server that reflects damage to attackers.",
+		'cooldown': "30 seconds",
+		'passive_ability': "Reduce damage to the server by 5%.",
+		'irl_desc': "An Intrusion Analyst is responsible for detecting, analyzing, and responding to cybersecurity threats or unauthorized access within an organization's computer networks. They monitor network traffic, investigate security incidents, and use specialized tools to identify potential breaches or vulnerabilities. Their work helps prevent data loss and protects sensitive information by quickly addressing and mitigating cyber threats. Additionally, they often collaborate with other IT and security teams to improve overall security posture and may assist in developing security policies and response plans."
+	},
+		Sentinel.SECURITY: {
+		'special_ability': "Increases nearby towers' attack speed by 15% for 10 seconds.",
+		'cooldown': "15 seconds",
+		'passive_ability': "Nearby towers gain an additional 25% range. ",
+		'irl_desc': "Security Architects design, develop, and implement systems that prevent the infiltration of malware and other hacker-related intrusions across the IT network, thereby helping organisations to continue their activities without encouraging costly and damaging situations."
+	},
+		Sentinel.MALWARE: {
+		'special_ability': "Examines detected threats, reveals their weaknesses, and instead of directly attacking enemies, it improves the effectiveness of other nearby defense towers' damage by 30% for 15 seconds.",
+		'cooldown': "25 seconds",
+		'passive_ability': "Nearby towers gain an additional 10% crit chance.  ",
+		'irl_desc': "A malware analyst examines malicious files and applications to comprehend how malware operates and how it can be prevented or countered. Their perspectives assist cybersecurity teams in identifying, examining, and protecting against cyber threats. They provide information on malicious software, revealing its function, what it aims for, and how actors utilize it. Additionally, they are also combating malicious software."
+	},
+		Sentinel.DECEPTION: {
+		'special_ability': "Disorient enemies upon approaching the Server for 15 seconds, causing enemies near the Server to change direction.",
+		'cooldown': "30 seconds",
+		'passive_ability': "Reduce damage to the server by 5%.",
+		'irl_desc': "The Deception Specialist handles deception technology,  which is a strategy to attract cyber criminals away from an enterprise's true assets and divert them to a decoy or trap. The decoy mimics legitimate servers, applications, and data so that the criminal is tricked into believing that they have infiltrated and gained access to the enterprise's most important assets when in reality they have not. The strategy is employed to minimize damage and protect an organization's true assets."
+	},
+}
+
+@onready var sentinel_name_card = $SentinelStuff/Databasebg/Name
+@onready var sentinel_special_card = $SentinelStuff/Databasebg/Special
+@onready var sentinel_cooldown_card = $SentinelStuff/Databasebg/Special/Cooldown
+@onready var sentinel_passive_card = $SentinelStuff/Databasebg/Special/Cooldown/Passive
+@onready var sentinel_irldesc_card = $SentinelStuff/Databasebg/Special/Cooldown/Passive/RealLifeDesc/Description
+@onready var animation: AnimatedSprite2D = $SentinelStuff/Databasebg/AnimatedSprite2D
+
+func change_info(id: Data.Sentinel):
+	match id:
+		0:
+			sentinel_name_card.text = sentinel_name[id]
+			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+			animation.play("EthicalHacker")
+		1:
+			sentinel_name_card.text = sentinel_name[id]
+			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+			animation.play("SystemAdmin")
+		2:
+			sentinel_name_card.text = sentinel_name[id]
+			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+			animation.play("IntrusionAnalyst")
+		3:
+			sentinel_name_card.text = sentinel_name[id]
+			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+			animation.play("SecurityArchitect")
+		4:
+			sentinel_name_card.text = sentinel_name[id]
+			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+			animation.play("MalwareAnalyst")
+		5:
+			sentinel_name_card.text = sentinel_name[id]
+			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+			animation.play("DeceptionAnalyst")
+	$SentinelStuff/Databasebg.show()

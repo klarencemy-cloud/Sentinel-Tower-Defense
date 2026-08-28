@@ -664,9 +664,8 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(771, 237)
 scale = Vector2(0.6113281, 0.6113281)
 sprite_frames = SubResource("SpriteFrames_drxg4")
-animation = &"SecurityArchitect"
+animation = &"EthicalHacker"
 autoplay = "EthicalHacker"
-frame_progress = 0.5456689
 
 [connection signal="gui_input" from="ScrollBarContainer/Bar/Scroll" to="." method="_on_scroll_gui_input"]
 [connection signal="gui_input" from="SentinelContainer/CardContainer/Sentinel1" to="." method="_on_sentinel_1_gui_input"]
