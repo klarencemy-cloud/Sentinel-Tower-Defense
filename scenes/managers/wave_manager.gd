@@ -41,6 +41,7 @@ func update_wave_state() -> void:
 		if Data.wave_started:
 			Data.wave_started = false
 			Data.current_wave += 1
+			Data.update_wave_unlocks()
 
 			if !Data.is_sandbox:
 				Save.save_game()

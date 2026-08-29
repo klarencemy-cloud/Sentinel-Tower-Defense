@@ -17,6 +17,7 @@ extends CanvasLayer
 @onready var skill1_button: TextureButton = $Control/HBoxContainer/Skill1
 @onready var skill2_button: TextureButton = $Control/HBoxContainer/Skill2
 @onready var skill1_cooldown: TextureProgressBar = $Control/HBoxContainer/Skill1/cooldown
+@onready var skill2_cooldown: TextureProgressBar = $Control/HBoxContainer/Skill2/cooldown
 @onready var boss_bars := [
 	$Control/bosshpbar,
 	$Control/smallhpbar1,
@@ -54,6 +55,11 @@ var ransomware_timer := Timer.new()
 var firewall_cooldown := 15.0
 var firewall_on_cooldown := false
 var firewall_timer := Timer.new()
+
+var patch_cooldown := 15.0
+var patch_on_cooldown := false
+var patch_timer := Timer.new()
+
 
 @onready var ad_textures := [
 	preload("res://graphics/buttons/ad1.png"),
@@ -97,6 +103,14 @@ func _ready() -> void:
 	
 	skill1_cooldown.visible = false
 	skill1_cooldown.value = 0
+	
+	add_child(patch_timer)
+	patch_timer.one_shot = true
+	patch_timer.wait_time = patch_cooldown
+	patch_timer.timeout.connect(_on_patch_cooldown_finished)
+	
+	skill2_cooldown.visible = false
+	skill2_cooldown.value = 0
 
 
 	if Data.is_sandbox:
@@ -167,8 +181,13 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if firewall_on_cooldown:
 		skill1_cooldown.value = firewall_timer.time_left
+	
+	if patch_on_cooldown:
+		skill2_cooldown.value = patch_timer.time_left
 		
 func _on_skill_2_pressed() -> void:
+	if patch_on_cooldown:
+		return
 	tower_select(11)
 
 func tower_select(tower_enum: Data.Tower):
@@ -208,6 +227,22 @@ func start_firewall_cooldown() -> void:
 	firewall_timer.start()
 	skill1_cooldown.visible = true
 	
+func _on_patch_cooldown_finished() -> void:
+	patch_on_cooldown = false
+	skill2_button.disabled = false
+
+func start_patch_cooldown() -> void:
+	if patch_on_cooldown:
+		return
+
+	patch_on_cooldown = true
+	skill2_button.disabled = true
+
+	skill2_cooldown.visible = true
+	skill2_cooldown.max_value = patch_cooldown
+	skill2_cooldown.value = patch_cooldown
+
+	patch_timer.start()
 	
 func trigger_shake():
 	var camera = get_tree().get_first_node_in_group("camera")

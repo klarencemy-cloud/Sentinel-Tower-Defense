@@ -144,6 +144,8 @@ var TOWER_DATA = {
 	Tower.QUARANTINE_CANNON: {
 		'name': 'Quarantine Cannon',
 		'isUnlocked': false,
+		'waveUnlocked': 19,
+		'unlockable': false,
 		'cost': 60,
 		'server_load': 30,
 		'damage': 100,
@@ -193,6 +195,8 @@ var TOWER_DATA = {
 	Tower.IDPS: {
 		'name': 'IDPS',
 		'isUnlocked': false,
+		'waveUnlocked': 16,
+		'unlockable': false,
 		'cost': 30,
 		'damage': 0,
 		'reload_time': 2.5,
@@ -239,6 +243,8 @@ var TOWER_DATA = {
 	Tower.BACKUP_SERVER: {
 		'name': "Backup Server",
 		'isUnlocked': false,
+		'waveUnlocked': 40,
+		'unlockable': false,
 		'cost': 550,
 		'damage': 5000,
 		'server_load': 65,
@@ -250,6 +256,8 @@ var TOWER_DATA = {
 	Tower.AD_BLOCKER: {
 		'name': 'Ad Blocker',
 		'isUnlocked': false,
+		'waveUnlocked': 8,
+		'unlockable': false,
 		'cost': 75,
 		'server_load': 20,
 		'damage': 25,
@@ -299,6 +307,8 @@ var TOWER_DATA = {
 	Tower.ANTIVIRUS: {
 		'name': 'Antivirus',
 		'isUnlocked': false,
+		'waveUnlocked': 4,
+		'unlockable': false,
 		'cost': 50,
 		'server_load': 20,
 		'damage': 30,
@@ -348,6 +358,8 @@ var TOWER_DATA = {
 		Tower.ACCESS_CONTROL_SYSTEM: {
 		'name': 'Access Control System',
 		'isUnlocked': false,
+		'waveUnlocked': 22,
+		'unlockable': false,
 		'cost': 225,
 		'server_load': 35,
 		'damage': 120,
@@ -397,6 +409,8 @@ var TOWER_DATA = {
 		Tower.ENDPOINT_PROTECTION: {
 		'name': 'Endpoint Protection',
 		'isUnlocked': false,
+		'waveUnlocked': 32,
+		'unlockable': false,
 		'cost': 350,
 		'server_load': 45,
 		'damage': 180,
@@ -446,6 +460,8 @@ var TOWER_DATA = {
 		Tower.SANDBOX_ANALYZER: {
 		'name': 'Sandbox Analyzer',
 		'isUnlocked': false,
+		'waveUnlocked': 36,
+		'unlockable': false,
 		'cost': 150,
 		'server_load': 55,
 		'damage': 220,
@@ -495,6 +511,8 @@ var TOWER_DATA = {
 		Tower.AI_SECURITY: {
 		'name': 'AI Security',
 		'isUnlocked': false,
+		'waveUnlocked': 28,
+		'unlockable': false,
 		'cost': 275,
 		'server_load': 40,
 		'damage': 130,
@@ -544,6 +562,8 @@ var TOWER_DATA = {
 		Tower.DATA_LOSS_PREVENTION: {
 		'name': 'DLP',
 		'isUnlocked': false,
+		'waveUnlocked': 12,
+		'unlockable': false,
 		'cost': 50,
 		'server_load': 25,
 		'damage': 0,
@@ -1070,3 +1090,11 @@ func activate_backup_server():
 	var server = get_tree().get_first_node_in_group("server")
 	if server:
 		server.activate_backup_server()
+
+func update_wave_unlocks() -> void:
+	for tower_enum in Tower.values():
+		var tower_data = TOWER_DATA[tower_enum]
+
+		if tower_data.has("waveUnlocked") and tower_data.has("unlockable"):
+			if current_wave >= tower_data["waveUnlocked"]:
+				tower_data["unlockable"] = true

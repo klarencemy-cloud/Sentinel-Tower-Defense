@@ -406,6 +406,15 @@ texture_normal = ExtResource("19_yy7ol")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="cooldown" type="TextureProgressBar" parent="Control/HBoxContainer/Skill2" unique_id=2099663605]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("19_ydrdt")
+
 [node name="Skill3" type="TextureButton" parent="Control/HBoxContainer" unique_id=1922029326]
 custom_minimum_size = Vector2(77, 77)
 layout_mode = 2

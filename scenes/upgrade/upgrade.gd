@@ -69,39 +69,51 @@ func _ready() -> void:
 func set_selected_tower(tower_enum: Data.Tower) -> void:
 	selected_tower = tower_enum
 
-	$TextureRect/BigTowerName.text = Data.TOWER_DATA[tower_enum]['name']
-	%BigPic.texture = load(Data.TOWER_DATA[tower_enum]['thumbnail'])
-	
+	var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
+
+	$TextureRect/BigTowerName.text = tower_data["name"]
+	%BigPic.texture = load(tower_data["thumbnail"])
+
 	if Data.is_sandbox:
 		# Sandbox: everything is unlocked
 		%BigPic.modulate = Color(1, 1, 1, 1)
-		$TextureRect/BigTowerName.text = Data.TOWER_DATA[tower_enum]["name"]
+		$TextureRect/BigTowerName.text = tower_data["name"]
 		$TextureRect/UpgradeButton.visible = true
 		$TextureRect/BigTowerName.visible = true
 		%BigPic.visible = true
 		$TextureRect/Unlock.visible = false
 		$SentinelStuff/Rollbtn.visible = false
+
 	else:
-		# Normal mode: check whether tower is unlocked
-		if not Data.TOWER_DATA[tower_enum].get("isUnlocked", true):
+		# Normal mode
+		var is_unlocked: bool = bool(tower_data.get("isUnlocked", false))
+
+		if !is_unlocked:
+			# LOCKED
 			%BigPic.modulate = Color(0, 0, 0, 0.5)
 			%BigPic.visible = true
 			$TextureRect/BigTowerName.text = "???"
 			$TextureRect/UpgradeButton.visible = false
-			$TextureRect/Unlock.visible = true
+			$TextureRect/BigTowerName.visible = true
+
+			_update_unlock_button()
+
 		else:
+			# UNLOCKED
 			%BigPic.visible = true
 			%BigPic.modulate = Color(1, 1, 1, 1)
-			$TextureRect/BigTowerName.text = Data.TOWER_DATA[tower_enum]["name"]
+			$TextureRect/BigTowerName.text = tower_data["name"]
 			$TextureRect/UpgradeButton.visible = true
 			$TextureRect/BigTowerName.visible = true
 			$TextureRect/Unlock.visible = false
-		
-	var upgradeable: bool = bool(Data.TOWER_DATA[tower_enum].get("upgradeable", true))
+
+	var upgradeable: bool = bool(tower_data.get("upgradeable", true))
+
 	if upgradeable:
 		$TextureRect/UpgradeButton/Label.text = "Upgrade"
 	else:
 		$TextureRect/UpgradeButton/Label.text = "Not Upgradeable"
+
 	update_stat_label()
 	update_upgrade_ui()
 	update_tier_buttons()
@@ -745,33 +757,73 @@ func _on_sentinel_list_pressed() -> void:
 
 
 func _on_unlock_pressed() -> void:
-	Data.TOWER_DATA[selected_tower]["isUnlocked"] = true
-	
-	# Restore the BigPic
+	if selected_tower == null:
+		return
+
+	if Data.is_sandbox:
+		return
+
+	var tower_data: Dictionary = Data.TOWER_DATA[selected_tower]
+
+	# ==========================================
+	# CHECK IF TOWER IS ALLOWED TO BE UNLOCKED
+	# ==========================================
+	var is_unlockable: bool = bool(tower_data.get("unlockable", false))
+
+	if not is_unlockable:
+		print("Tower is not unlockable: ", tower_data.get("name", "Unknown"))
+		return
+
+	# Already unlocked
+	if bool(tower_data.get("isUnlocked", false)):
+		return
+
+	# Check wave requirement
+	var required_wave: int = int(tower_data.get("waveUnlocked", 0))
+
+	if required_wave > 0 and Data.current_wave < required_wave:
+		print("Cannot unlock tower.")
+		print("Required Wave: ", required_wave)
+		print("Current Wave: ", Data.current_wave)
+		return
+
+	# ==========================================
+	# UNLOCK TOWER
+	# ==========================================
+	tower_data["isUnlocked"] = true
+
+	print("Tower unlocked: ", tower_data.get("name", "Unknown"))
+
+	# Restore BigPic
 	%BigPic.modulate = Color(1, 1, 1, 1)
-	
-	# Restore the tower name
-	$TextureRect/BigTowerName.text = Data.TOWER_DATA[selected_tower]["name"]
-	
-	# Update the main UI tower card
+
+	# Restore tower name
+	$TextureRect/BigTowerName.text = tower_data["name"]
+
+	# Update main game UI tower card
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.unlock_tower_card(selected_tower)
-		
-	# Update the corresponding tower card
+
+	# Update corresponding tower card
 	for tower_card in %SentinelsContainer.get_children():
 		if tower_card.id == selected_tower:
 			tower_card.update_unlock_status()
 			break
-	
+
+	# Update upgrade UI
 	$TextureRect/UpgradeButton.visible = true
 	$TextureRect/Unlock.visible = false
-	
-	var save = get_tree().get_first_node_in_group("save")
-	if !Data.is_sandbox:
-		if save:
-			save.save_game()
 
+	update_stat_label()
+	update_upgrade_ui()
+	update_tier_buttons()
+
+	# Save unlock
+	var save = get_tree().get_first_node_in_group("save")
+	if save:
+		save.save_game()
+		
 
 func _on_rollbtn_pressed() -> void:
 	UISound.play_click()
@@ -900,3 +952,31 @@ func change_info(id: Data.Sentinel):
 			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
 			animation.play("DeceptionAnalyst")
 	$SentinelStuff/Databasebg.show()
+
+func _update_unlock_button() -> void:
+	if selected_tower == null:
+		return
+
+	var tower_data: Dictionary = Data.TOWER_DATA[selected_tower]
+
+	# Sandbox: everything is automatically unlocked
+	if Data.is_sandbox:
+		$TextureRect/Unlock.visible = false
+		return
+
+	var is_unlocked: bool = bool(tower_data.get("isUnlocked", false))
+
+	if is_unlocked:
+		$TextureRect/Unlock.visible = false
+		return
+
+	# Tower is locked
+	$TextureRect/Unlock.visible = true
+
+	var required_wave: int = int(tower_data.get("waveUnlocked", 0))
+
+	if required_wave > 0:
+		$TextureRect/Unlock/Label.text = "Unlock (Wave %d)" % required_wave
+	else:
+		$TextureRect/Unlock/Label.text = "Unlock"
+		

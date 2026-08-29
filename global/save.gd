@@ -69,7 +69,11 @@ func save_game() -> void:
 
 		for tower_enum in Data.Tower.values():
 			var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
-			tower_unlocks[str(tower_enum)] = tower_data.get("isUnlocked", false)
+
+			tower_unlocks[str(tower_enum)] = {
+				"isUnlocked": tower_data.get("isUnlocked", false),
+				"unlockable": tower_data.get("unlockable", false)
+			}
 		
 		print("SAVED TOWERS: ", placed_towers)
 		print("SAVED SENTINELS: ", placed_sentinels)
@@ -139,7 +143,15 @@ func _load_game() -> void:
 			var tower_enum := int(tower_key)
 
 			if Data.TOWER_DATA.has(tower_enum):
-				Data.TOWER_DATA[tower_enum]["isUnlocked"] = bool(tower_unlocks[tower_key])
+				var saved_unlock: Dictionary = tower_unlocks[tower_key]
+
+				Data.TOWER_DATA[tower_enum]["isUnlocked"] = bool(
+					saved_unlock.get("isUnlocked", false)
+				)
+
+				Data.TOWER_DATA[tower_enum]["unlockable"] = bool(
+					saved_unlock.get("unlockable", false)
+				)
 			
 		var sentinels: Array = parsed.get("sentinels", [])
 		if sentinels.size() >= 6:
