@@ -4,7 +4,7 @@ signal active_adware_changed
 signal active_ransomware_changed
 var default_health: float = 100.0
 var max_health: float = default_health
-var default_money: int = 3000
+var default_money: int = 90
 var default_system_load: int = 200
 const default_server_points: int = 0
 var is_sandbox: bool = false
