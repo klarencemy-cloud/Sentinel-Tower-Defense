@@ -107,6 +107,7 @@ func start_wave() -> void:
 		GameDialogueManager.show_dialogue_level2_boss2()
 	if Data.current_wave == 21 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_question_4_shown:
 			GameDialogueManager.show_dialogue_question4()
+			GameDialogueManager.is_question_4_shown = true
 	if Data.current_wave == 22 and !Data.is_sandbox and !GameDialogueManager.is_level3_credential_shown:
 		GameDialogueManager.show_dialogue_level3_credential()
 	if Data.current_wave == 24 and !Data.is_sandbox and !GameDialogueManager.is_level3_trojan_horse_shown:
