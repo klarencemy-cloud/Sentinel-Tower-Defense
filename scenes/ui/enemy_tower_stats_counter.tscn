@@ -83,6 +83,7 @@ draw_focus_border = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer" unique_id=1686777449]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="TowerEntry" type="Panel" parent="Container/Content/DmgCounterBg/ScrollContainer/VBoxContainer" unique_id=1266439271]
 self_modulate = Color(1, 1, 1, 0.80784315)
@@ -142,12 +143,10 @@ tint_progress = Color(0.17923622, 0.39151636, 0.51584375, 1)
 [node name="ScrollContainer2" type="ScrollContainer" parent="Container/Content/DmgCounterBg" unique_id=682034770]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.897
-offset_left = 0.20117188
-offset_top = 6.400238
-offset_right = 0.20117188
-offset_bottom = -9.15686
+anchor_left = 0.00062051544
+anchor_top = 0.012011561
+anchor_right = 1.0006205
+anchor_bottom = 0.879815
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
@@ -156,18 +155,22 @@ draw_focus_border = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2" unique_id=1716134405]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 20.0
 
 [node name="EnemyEntry" type="Panel" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer" unique_id=1834477436]
 self_modulate = Color(1, 1, 1, 0.7529412)
 custom_minimum_size = Vector2(315.205, 107.61)
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 6
 
 [node name="BgCtn" type="VBoxContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/EnemyEntry" unique_id=2142196951]
-layout_mode = 0
-offset_left = 0.20117188
-offset_right = 316.20117
-offset_bottom = 110.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0006382255
+anchor_right = 0.9999879
+anchor_bottom = 1.0222099
+metadata/_edit_use_anchors_ = true
 
 [node name="MCtn" type="MarginContainer" parent="Container/Content/DmgCounterBg/ScrollContainer2/VBoxContainer/EnemyEntry/BgCtn" unique_id=1909197252]
 layout_mode = 2
