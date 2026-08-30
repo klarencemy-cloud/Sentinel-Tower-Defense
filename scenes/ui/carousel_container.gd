@@ -71,6 +71,29 @@ var vm_map_desc_paragraph: Array = [
 ]
 
 
+func _vm_field(index: int, field: String, fallback):
+	var map_number := index + 1
+	if Data.VM_MAP_DATA.has(map_number):
+		return Data.VM_MAP_DATA[map_number].get(field, fallback)
+	return fallback
+
+
+func _vm_title(index: int) -> String:
+	return _vm_field(index, 'title', vm_title_array[index])
+
+
+func _vm_desc(index: int) -> String:
+	return _vm_field(index, 'desc', vm_map_desc_paragraph[index])
+
+
+func _vm_recommended(index: int) -> String:
+	return str(_vm_field(index, 'recommended_wave', recommended[index]))
+
+
+func _vm_difficulty(index: int) -> String:
+	return _vm_field(index, 'difficulty', vm_difficulty[index])
+
+
 var count: int = 0
 
 
@@ -130,13 +153,13 @@ func _left():
 		return
 
 	if Data.is_vmmode:
-		vm_title.text = vm_title_array[count]
-		vm_description.text = vm_map_desc_paragraph[count]
-		level_recommendation.text = recommended[count]
-		vm_difficulty_label.text = vm_difficulty[count]
+		vm_title.text = _vm_title(count)
+		vm_description.text = _vm_desc(count)
+		level_recommendation.text = _vm_recommended(count)
+		vm_difficulty_label.text = _vm_difficulty(count)
 		toggle_tween.emit(count + 1)
 
-		match vm_difficulty[count]:
+		match _vm_difficulty(count):
 			"Easy":
 				vm_difficulty_label.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
 			"Moderate":
@@ -162,7 +185,7 @@ func _left():
 				path.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
 			"4":
 					path.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
-		
+
 
 func _right():
 	selected_index += 1
@@ -176,13 +199,13 @@ func _right():
 		if count == 9:
 			count = 8
 			return
-		vm_title.text = vm_title_array[count]
-		vm_description.text = vm_map_desc_paragraph[count]
-		level_recommendation.text = recommended[count]
-		vm_difficulty_label.text = vm_difficulty[count]
+		vm_title.text = _vm_title(count)
+		vm_description.text = _vm_desc(count)
+		level_recommendation.text = _vm_recommended(count)
+		vm_difficulty_label.text = _vm_difficulty(count)
 		toggle_tween.emit(count + 1)
 
-		match vm_difficulty[count]:
+		match _vm_difficulty(count):
 			"Easy":
 				vm_difficulty_label.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
 			"Moderate":
@@ -218,13 +241,13 @@ func _change_challenge(index: int) -> void:
 	if is_vm:
 		selected_index = index
 		count = index
-		vm_title.text = vm_title_array[count]
-		vm_description.text = vm_map_desc_paragraph[count]
-		level_recommendation.text = recommended[count]
-		vm_difficulty_label.text = vm_difficulty[count]
-	
+		vm_title.text = _vm_title(count)
+		vm_description.text = _vm_desc(count)
+		level_recommendation.text = _vm_recommended(count)
+		vm_difficulty_label.text = _vm_difficulty(count)
 
-		match vm_difficulty[count]:
+
+		match _vm_difficulty(count):
 			"Easy":
 				vm_difficulty_label.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
 			"Moderate":

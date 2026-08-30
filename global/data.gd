@@ -40,8 +40,28 @@ var before_total_experience: int
 var before_tower_upgrades: Dictionary = {} # Stores backup of all tower upgrade levels and modified stats
 var base_tower_stats: Dictionary = {} # Stores original base stats for all towers (set once at startup)
 var vmmode_map_number: int = 1
-var vmmode_resume_kills: int = 0
-var vmmode_resume_health: float = -1.0
+var vmmode_resume_progress: Dictionary = {}
+
+const VM_MAP_DATA := {
+	1: {
+		'title': "Ticking Bomb",
+		'scene': "res://scenes/virtualmachinemode/maps/vm_map_1.tscn",
+		'terrain_level_index': 0,
+		'difficulty': "Easy",
+		'recommended_wave': 5,
+		'unlock_wave': 0,
+		'desc': "The S.E.R.V.E.R. malfunctions; it loses health every 5 seconds. Defeat 200 virus enemies before the S.E.R.V.E.R. health reaches 0.",
+	},
+	2: {
+		'title': "Swarm Overload",
+		'scene': "res://scenes/virtualmachinemode/maps/vm_map_2.tscn",
+		'terrain_level_index': 0,
+		'difficulty': "Moderate",
+		'recommended_wave': 10,
+		'unlock_wave': 10,
+		'desc': "A massive outbreak of Worms and Spam floods the path. Defeat 1,000 enemies without taking any damage.",
+	},
+}
 
 
 var bullet_angle: Vector2
@@ -898,14 +918,17 @@ var money := default_money:
 				node.toggle_active(money)
 var health: float = default_health:
 	set(value):
+		var previous_health := health
 		if Data.is_unli_health:
 			health = value
 		else:
 			health = clamp(value, 0, max_health)
-		
+
 		var ui = get_tree().get_first_node_in_group('UI')
 		if ui:
 			ui.update_stats(money, health)
+		if Data.is_vmmode and health < previous_health:
+			get_tree().call_group("vmmode_session", "_on_server_damaged", previous_health - health)
 		if health <= 0:
 			if backup_server_placed:
 				activate_backup_server()

@@ -1,22 +1,17 @@
 extends Node2D
+class_name VMChallenge
 
-const VIRUS_TARGET := 200
-const SPAWN_INTERVAL := 2.0
-const DRAIN_INTERVAL := 5.0
-const DRAIN_AMOUNT := 1.0
 const VM_SAVE_INTERVAL := 5.0
 
-var virus_kills: int = 0
 var session_active: bool = false
 var session_ended: bool = false
+var _scripted_drain_guard: bool = false
 
-var spawn_timer: Timer
-var drain_timer: Timer
 var vm_save_timer: Timer
 
 var ui_node: Node
-var virus_num_label: Label
 var wave_button: TextureButton
+var progress_label: Label
 
 var end_overlay: CanvasLayer
 
@@ -27,8 +22,8 @@ func _ready() -> void:
 	ui_node = $Level/UI
 	var wave_num_label: Label = ui_node.get_node("Control/TextureRect/PlayerCurrentStats/WaveNum")
 	wave_num_label.visible = false
-	virus_num_label = ui_node.get_node("Control/TextureRect/PlayerCurrentStats/VirusNum")
-	virus_num_label.visible = true
+	progress_label = ui_node.get_node("Control/TextureRect/PlayerCurrentStats/VirusNum")
+	progress_label.visible = true
 	wave_button = ui_node.get_node("Control/TextureRect/HBoxContainer/WaveButton")
 
 	var auto_label = ui_node.get_node_or_null("Control/AutoLabel")
@@ -36,29 +31,18 @@ func _ready() -> void:
 		auto_label.visible = false
 
 	Data.current_wave = 1
-	Data.health = Data.max_health if Data.vmmode_resume_health < 0 else Data.vmmode_resume_health
-
-	virus_kills = Data.vmmode_resume_kills
 	session_active = false
 
-	_refresh_progress_label()
-
-	EnemyStats.enemy_killed.connect(_on_enemy_killed)
-
-	spawn_timer = Timer.new()
-	spawn_timer.wait_time = SPAWN_INTERVAL
-	spawn_timer.timeout.connect(_on_spawn_tick)
-	add_child(spawn_timer)
-
-	drain_timer = Timer.new()
-	drain_timer.wait_time = DRAIN_INTERVAL
-	drain_timer.timeout.connect(_on_drain_tick)
-	add_child(drain_timer)
+	EnemyStats.enemy_killed.connect(_on_challenge_enemy_killed)
 
 	vm_save_timer = Timer.new()
 	vm_save_timer.wait_time = VM_SAVE_INTERVAL
 	vm_save_timer.timeout.connect(_on_vm_save_tick)
 	add_child(vm_save_timer)
+
+	_challenge_setup()
+	_restore_progress(Data.vmmode_resume_progress)
+	_refresh_progress_label()
 
 	_build_end_overlay()
 
@@ -66,8 +50,8 @@ func _ready() -> void:
 
 
 func _exit_tree() -> void:
-	if EnemyStats.enemy_killed.is_connected(_on_enemy_killed):
-		EnemyStats.enemy_killed.disconnect(_on_enemy_killed)
+	if EnemyStats.enemy_killed.is_connected(_on_challenge_enemy_killed):
+		EnemyStats.enemy_killed.disconnect(_on_challenge_enemy_killed)
 
 
 func _on_wave_button_pressed() -> void:
@@ -75,23 +59,8 @@ func _on_wave_button_pressed() -> void:
 		return
 	session_active = true
 	wave_button.visible = false
-	spawn_timer.start()
-	drain_timer.start()
 	vm_save_timer.start()
-
-
-func _on_spawn_tick() -> void:
-	if not session_active:
-		return
-	var wave_manager = $Level/WaveManager
-	if wave_manager:
-		wave_manager.spawn_sandbox_enemy(Data.Enemy.VIRUS)
-
-
-func _on_drain_tick() -> void:
-	if not session_active:
-		return
-	Data.health -= DRAIN_AMOUNT
+	_on_session_started()
 
 
 func _on_vm_save_tick() -> void:
@@ -99,22 +68,16 @@ func _on_vm_save_tick() -> void:
 		VMSave.save_game()
 
 
-func _on_enemy_killed(enemy_type: Data.Enemy, _new_count: int) -> void:
-	if not session_active:
+func _apply_scripted_drain(amount: float) -> void:
+	_scripted_drain_guard = true
+	Data.health -= amount
+	_scripted_drain_guard = false
+
+
+func _on_server_damaged(_amount: float) -> void:
+	if not session_active or _scripted_drain_guard:
 		return
-	if enemy_type != Data.Enemy.VIRUS:
-		return
-
-	virus_kills += 1
-	_refresh_progress_label()
-
-	if virus_kills >= VIRUS_TARGET:
-		_end_session(true)
-
-
-func _refresh_progress_label() -> void:
-	if virus_num_label:
-		virus_num_label.text = "Virus %d/%d" % [virus_kills, VIRUS_TARGET]
+	_on_challenge_server_damaged(_amount)
 
 
 func _on_server_health_depleted() -> void:
@@ -126,13 +89,17 @@ func _on_server_health_depleted() -> void:
 func _end_session(won: bool) -> void:
 	session_active = false
 	session_ended = true
-	spawn_timer.stop()
-	drain_timer.stop()
 	vm_save_timer.stop()
-	VMSave.clear_save()
+	_on_session_ended()
+	VMSave.clear_save(Data.vmmode_map_number)
 
-	end_overlay.show_result(won, virus_kills, VIRUS_TARGET)
+	end_overlay.show_result(won, _result_text(won))
 	get_tree().paused = true
+
+
+func _refresh_progress_label() -> void:
+	if progress_label:
+		progress_label.text = _progress_text()
 
 
 func _restore_backed_up_state() -> void:
@@ -155,10 +122,9 @@ func _restore_backed_up_state() -> void:
 func _on_retry_pressed() -> void:
 	UISound.play_click()
 	get_tree().paused = false
-	VMSave.clear_save()
+	VMSave.clear_save(Data.vmmode_map_number)
 	Data.currentserverload = 0
-	Data.vmmode_resume_kills = 0
-	Data.vmmode_resume_health = -1.0
+	Data.vmmode_resume_progress = {}
 	get_tree().change_scene_to_file("res://scenes/loading/loading.tscn")
 
 
@@ -177,3 +143,39 @@ func _build_end_overlay() -> void:
 	add_child(end_overlay)
 	end_overlay.retry_pressed.connect(_on_retry_pressed)
 	end_overlay.quit_pressed.connect(_on_quit_pressed)
+
+
+func _challenge_setup() -> void:
+	pass
+
+
+func _on_session_started() -> void:
+	pass
+
+
+func _on_session_ended() -> void:
+	pass
+
+
+func _on_challenge_enemy_killed(_enemy_type: Data.Enemy, _new_count: int) -> void:
+	pass
+
+
+func _on_challenge_server_damaged(_amount: float) -> void:
+	pass
+
+
+func _progress_text() -> String:
+	return ""
+
+
+func _serialize_progress() -> Dictionary:
+	return {}
+
+
+func _restore_progress(_progress: Dictionary) -> void:
+	pass
+
+
+func _result_text(_won: bool) -> String:
+	return ""

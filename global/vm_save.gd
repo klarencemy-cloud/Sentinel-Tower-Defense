@@ -1,7 +1,25 @@
 extends Node
 
 const SAVE_PATH := "user://vm_savegame.json"
-const SAVE_VERSION := 1
+const SAVE_VERSION := 2
+
+
+func _read_all() -> Dictionary:
+	if not FileAccess.file_exists(SAVE_PATH):
+		return {}
+	var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
+	if not file:
+		return {}
+	var parsed = JSON.parse_string(file.get_as_text())
+	if not parsed is Dictionary or parsed.get("version", 0) != SAVE_VERSION:
+		return {}
+	return parsed
+
+
+func _write_all(data: Dictionary) -> void:
+	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(data))
 
 
 func save_game() -> void:
@@ -33,45 +51,56 @@ func save_game() -> void:
 
 	var vmmode_node = get_tree().get_first_node_in_group("vmmode_session")
 
-	var save_data := {
-		"version": SAVE_VERSION,
-		"map_number": Data.vmmode_map_number,
-		"virus_kills": vmmode_node.virus_kills if vmmode_node else 0,
+	var all_data := _read_all()
+	if all_data.is_empty():
+		all_data = {"version": SAVE_VERSION, "maps": {}}
+	if not all_data.has("maps"):
+		all_data["maps"] = {}
+
+	all_data["maps"][str(Data.vmmode_map_number)] = {
+		"progress": vmmode_node._serialize_progress() if vmmode_node else {},
 		"health": Data.health,
 		"placed_towers": placed_towers,
 		"placed_sentinels": placed_sentinels,
 		"placed_abilities": placed_abilities,
 	}
 
-	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	if file:
-		file.store_string(JSON.stringify(save_data))
+	_write_all(all_data)
 
 
-func has_save() -> bool:
-	return FileAccess.file_exists(SAVE_PATH)
+func has_save(map_number: int) -> bool:
+	var all_data := _read_all()
+	return all_data.get("maps", {}).has(str(map_number))
 
 
-func load_into_data() -> Dictionary:
-	if not FileAccess.file_exists(SAVE_PATH):
-		return {}
-	var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
-	if not file:
-		return {}
-	var parsed = JSON.parse_string(file.get_as_text())
-	if not parsed is Dictionary or parsed.get("version", 0) != SAVE_VERSION:
+func load_into_data(map_number: int) -> Dictionary:
+	var all_data := _read_all()
+	var slot: Dictionary = all_data.get("maps", {}).get(str(map_number), {})
+	if slot.is_empty():
 		return {}
 
-	Data.saved_tower_placements = parsed.get("placed_towers", [])
-	Data.saved_sentinel_placements = parsed.get("placed_sentinels", [])
-	Data.saved_ability_placements = parsed.get("placed_abilities", [])
+	Data.saved_tower_placements = slot.get("placed_towers", [])
+	Data.saved_sentinel_placements = slot.get("placed_sentinels", [])
+	Data.saved_ability_placements = slot.get("placed_abilities", [])
 
-	return parsed
+	var progress: Dictionary = slot.get("progress", {}).duplicate()
+	if slot.has("health"):
+		progress["health"] = slot["health"]
+	return progress
 
 
-func clear_save() -> void:
+func clear_save(map_number: int) -> void:
 	Data.saved_tower_placements.clear()
 	Data.saved_sentinel_placements.clear()
 	Data.saved_ability_placements.clear()
-	if FileAccess.file_exists(SAVE_PATH):
-		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
+
+	var all_data := _read_all()
+	var maps: Dictionary = all_data.get("maps", {})
+	maps.erase(str(map_number))
+
+	if maps.is_empty():
+		if FileAccess.file_exists(SAVE_PATH):
+			DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
+	else:
+		all_data["maps"] = maps
+		_write_all(all_data)

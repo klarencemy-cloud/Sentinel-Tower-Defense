@@ -8,9 +8,9 @@ func _ready() -> void:
 	visible = false
 
 
-func show_result(won: bool, virus_kills: int, virus_target: int) -> void:
+func show_result(won: bool, result_text: String) -> void:
 	%txtScore.text = "SERVER SECURED!" if won else "SERVER LOST!"
-	%txtKills.text = "Defeated %d / %d viruses" % [virus_kills, virus_target]
+	%txtKills.text = result_text
 	visible = true
 
 

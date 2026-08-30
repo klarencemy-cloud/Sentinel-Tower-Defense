@@ -3,7 +3,6 @@ extends Control
 @onready var progress_bar: ProgressBar = $ProgressBar
 @export var next_scene_path1: String = "res://scenes/levels/level.tscn"
 @export var next_scene_path2: String = "res://scenes/sandbox/sand_box.tscn"
-@export var next_scene_path3: String = "res://scenes/virtualmachinemode/virtual_machine.tscn"
 var next_scene_path: String
 var progress: Array[float] = []
 
@@ -47,7 +46,7 @@ func _ready() -> void:
 	var index: int = randi_range(0, 11)
 	$Facts/Details.text = tips[index]
 	if Data.is_vmmode:
-		next_scene_path = next_scene_path3
+		next_scene_path = Data.VM_MAP_DATA[Data.vmmode_map_number]['scene']
 	elif Data.is_sandbox:
 		next_scene_path = next_scene_path2
 	else:

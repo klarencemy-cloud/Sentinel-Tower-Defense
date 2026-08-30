@@ -181,10 +181,9 @@ func _on_start_game_pressed() -> void:
 	UISound.play_click()
 	var selected_carousel_node = $CarouselContainer.position_offset_node.get_child($CarouselContainer.selected_index)
 
-	if selected_carousel_node.name != "Map1":
-		return
-
 	var map_number := int(selected_carousel_node.name.trim_prefix("Map"))
+	if not Data.VM_MAP_DATA.has(map_number):
+		return
 	Data.before_level_index = Data.current_level_index
 	Data.before_current_wave = Data.current_wave
 	Data.before_total_health = Data.health
@@ -213,15 +212,12 @@ func _on_start_game_pressed() -> void:
 	Data.saved_ability_placements.clear()
 
 	Data.vmmode_map_number = map_number
-	Data.vmmode_resume_kills = 0
-	Data.vmmode_resume_health = -1.0
+	Data.vmmode_resume_progress = {}
 
-	if VMSave.has_save():
-		var resumed := VMSave.load_into_data()
-		Data.vmmode_resume_kills = int(resumed.get("virus_kills", 0))
-		Data.vmmode_resume_health = float(resumed.get("health", -1.0))
+	if VMSave.has_save(map_number):
+		Data.vmmode_resume_progress = VMSave.load_into_data(map_number)
 
-	Data.current_level_index = 0
+	Data.current_level_index = Data.VM_MAP_DATA[map_number]['terrain_level_index']
 	Data.current_wave = 1
 	Data.is_vmmode = true
 	get_tree().change_scene_to_file("res://scenes/loading/loading.tscn")
