@@ -3,7 +3,9 @@ extends Tower
 var malware_analyst_damage_buff: float = 0.0
 var malware_analyst_crit_buff: int = 0
 
-
+func _ready() -> void:
+	is_tower_patch_applied = true
+	$PatchArea/CollisionShape2D.shape.radius = Data.TOWER_DATA[type]["range"]
 func _process(_delta: float) -> void:
 	if enemies.size() > 0:
 		$Turret.look_at(enemies[0].global_position)
@@ -58,3 +60,10 @@ func toggle_damage_buff(state: bool) -> void:
 
 func toggle_swift_buff(state: bool) -> void:
 	$Particles/SwiftBuff.visible = state
+
+
+func _on_patch_area_area_exited(area: Area2D) -> void:
+	area.get_parent().is_tower_patch_applied = false
+func _on_patch_area_area_entered(area: Area2D) -> void:
+	area.get_parent().is_tower_patch_applied = true
+	area.get_parent().show_patch_update()

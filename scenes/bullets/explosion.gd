@@ -6,7 +6,7 @@ var explosionrange: float = 100
 var tower_type = null
 
 func setup(pos: Vector2, new_damage: int, _tower_type = null, _tower_id: int = -1):
-	position = pos
+	global_position = pos
 	damage = new_damage
 	tower_id = _tower_id
 	tower_type = _tower_type

@@ -21,7 +21,7 @@ func _ready() -> void:
 	sentinel_manager.setup(self, level_manager)
 
 	tower_manager.restore_saved_towers()
-
+	Save._restore_saved_objects()
 	wave_manager.setup(level_manager.current_map, level_manager)
 
 	wave_manager.level_completed.connect(level_completed)
@@ -45,15 +45,28 @@ func level_completed() -> void:
 
 
 func next_map() -> void:
-	for saved_tower in Data.saved_tower_placements:
-		var tower_type := int(saved_tower.get("type", -1))
-		
-		if tower_type != -1:
+	# Convert all currently placed towers into free towers
+	for tower in get_tree().get_nodes_in_group("Towers"):
+		if tower is Tower:
+			var tower_type := int(tower.type)
 			Data.free_towers[tower_type] = Data.free_towers.get(tower_type, 0) + 1
 
+			# Remove the tower from the current map
+			tower.queue_free()
+	
+	for sentinel in get_tree().get_nodes_in_group("Sentinels"):
+		sentinel.queue_free()
+	for ability in get_tree().get_nodes_in_group("Abilities"): 
+		ability.queue_free()
+		
+	# Clear saved placements so they aren't restored on the next map
 	Data.saved_tower_placements.clear()
+	Data.saved_sentinel_placements.clear()
+	Data.saved_ability_placements.clear()
 
+	# Move to the next map
 	Data.current_level_index += 1
+
 	if !Data.is_sandbox:
 		Save.save_game()
 

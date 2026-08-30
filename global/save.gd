@@ -7,13 +7,15 @@ func _ready() -> void:
 	add_to_group("save")
 	_load_game()
 
-
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		save_game()
-		get_tree().quit()
-
 func save_game() -> void:
+	print("========== SAVE GAME ==========")
+	print("SAVE LOCATION: ", ProjectSettings.globalize_path(SAVE_PATH))
+	print("Sandbox: ", Data.is_sandbox)
+	print("Current level: ", Data.current_level_index)
+	print("Towers found: ", get_tree().get_nodes_in_group("Towers").size())
+	print("Sentinels found: ", get_tree().get_nodes_in_group("Sentinels").size())
+	print("Abilities found: ", get_tree().get_nodes_in_group("Abilities").size())
+	
 	if !Data.is_sandbox:
 		var tower_upgrades := {}
 		for tower_enum in Data.Tower.values():
@@ -67,8 +69,16 @@ func save_game() -> void:
 
 		for tower_enum in Data.Tower.values():
 			var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
-			tower_unlocks[str(tower_enum)] = tower_data.get("isUnlocked", false)
+
+			tower_unlocks[str(tower_enum)] = {
+				"isUnlocked": tower_data.get("isUnlocked", false),
+				"unlockable": tower_data.get("unlockable", false)
+			}
 		
+		print("SAVED TOWERS: ", placed_towers)
+		print("SAVED SENTINELS: ", placed_sentinels)
+		print("SAVED ABILITIES: ", placed_abilities)
+		print("==============================")
 		var save_data := {
 			"version": SAVE_VERSION,
 			"current_level_index": Data.current_level_index, "checkpoint_wave": Data.checkpoint_wave,
@@ -133,7 +143,15 @@ func _load_game() -> void:
 			var tower_enum := int(tower_key)
 
 			if Data.TOWER_DATA.has(tower_enum):
-				Data.TOWER_DATA[tower_enum]["isUnlocked"] = bool(tower_unlocks[tower_key])
+				var saved_unlock: Dictionary = tower_unlocks[tower_key]
+
+				Data.TOWER_DATA[tower_enum]["isUnlocked"] = bool(
+					saved_unlock.get("isUnlocked", false)
+				)
+
+				Data.TOWER_DATA[tower_enum]["unlockable"] = bool(
+					saved_unlock.get("unlockable", false)
+				)
 			
 		var sentinels: Array = parsed.get("sentinels", [])
 		if sentinels.size() >= 6:
@@ -191,11 +209,8 @@ func _load_game() -> void:
 			Economy.gold_multiplier = float(economy_stats[0])
 			Economy.exp_multiplier = float(economy_stats[1])
 
-		call_deferred("_restore_saved_objects")
 
 func _restore_saved_objects() -> void:
-	await get_tree().process_frame
-
 	_restore_saved_sentinels()
 	_restore_saved_abilities()
 

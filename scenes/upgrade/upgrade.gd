@@ -29,11 +29,11 @@ func _ready() -> void:
 			var tower_card = tower_card_scene.instantiate()
 			tower_card.setup(tower_enum)
 			%SentinelsContainer.add_child(tower_card)
-		else:
-			return
+
 
 	for sentinel_enum in Data.Sentinel.values():
 		var sentinel_card = sentinel_card_scene.instantiate()
+
 		sentinel_card.setup(sentinel_enum)
 
 		var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
@@ -61,42 +61,59 @@ func _ready() -> void:
 				label.text = "???"
 
 		$SentinelStuff/ScrollContainer/RealSentinelContainer.add_child(sentinel_card)
-	
+		sentinel_card.press.connect(change_info)
 	sentinel_roll_thumbnails = _build_sentinel_roll_thumbnails()
 	$SentinelStuff/Rollbtn.connect("pressed", Callable(self, "_on_Rollbtn_pressed"))
 	update_tier_buttons()
-	
+
 func set_selected_tower(tower_enum: Data.Tower) -> void:
 	selected_tower = tower_enum
 
-	$TextureRect/BigTowerName.text = Data.TOWER_DATA[tower_enum]['name']
-	%BigPic.texture = load(Data.TOWER_DATA[tower_enum]['thumbnail'])
-	
+	var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
+
+	$TextureRect/BigTowerName.text = tower_data["name"]
+	%BigPic.texture = load(tower_data["thumbnail"])
+
 	if Data.is_sandbox:
 		# Sandbox: everything is unlocked
 		%BigPic.modulate = Color(1, 1, 1, 1)
-		$TextureRect/BigTowerName.text = Data.TOWER_DATA[tower_enum]["name"]
+		$TextureRect/BigTowerName.text = tower_data["name"]
 		$TextureRect/UpgradeButton.visible = true
+		$TextureRect/BigTowerName.visible = true
+		%BigPic.visible = true
 		$TextureRect/Unlock.visible = false
 		$SentinelStuff/Rollbtn.visible = false
+
 	else:
-		# Normal mode: check whether tower is unlocked
-		if not Data.TOWER_DATA[tower_enum].get("isUnlocked", true):
+		# Normal mode
+		var is_unlocked: bool = bool(tower_data.get("isUnlocked", false))
+
+		if !is_unlocked:
+			# LOCKED
 			%BigPic.modulate = Color(0, 0, 0, 0.5)
+			%BigPic.visible = true
 			$TextureRect/BigTowerName.text = "???"
 			$TextureRect/UpgradeButton.visible = false
-			$TextureRect/Unlock.visible = true
+			$TextureRect/BigTowerName.visible = true
+
+			_update_unlock_button()
+
 		else:
+			# UNLOCKED
+			%BigPic.visible = true
 			%BigPic.modulate = Color(1, 1, 1, 1)
-			$TextureRect/BigTowerName.text = Data.TOWER_DATA[tower_enum]["name"]
+			$TextureRect/BigTowerName.text = tower_data["name"]
 			$TextureRect/UpgradeButton.visible = true
+			$TextureRect/BigTowerName.visible = true
 			$TextureRect/Unlock.visible = false
-		
-	var upgradeable: bool = bool(Data.TOWER_DATA[tower_enum].get("upgradeable", true))
+
+	var upgradeable: bool = bool(tower_data.get("upgradeable", true))
+
 	if upgradeable:
 		$TextureRect/UpgradeButton/Label.text = "Upgrade"
 	else:
 		$TextureRect/UpgradeButton/Label.text = "Not Upgradeable"
+
 	update_stat_label()
 	update_upgrade_ui()
 	update_tier_buttons()
@@ -585,26 +602,7 @@ func _get_locked_sentinels() -> Array:
 
 
 func _on_Rollbtn_pressed() -> void:
-	if sentinel_roll_active:
-		return
-
-	var locked_sentinels = _get_locked_sentinels()
-
-	# All sentinels have already been unlocked
-	if locked_sentinels.is_empty():
-		return
-
-	if sentinel_roll_thumbnails.is_empty():
-		return
-
-	$SentinelStuff/SentinelRoll/Sentinel.visible = true
-	sentinel_roll_active = true
-	$SentinelStuff/Rollbtn.disabled = true
-
-	await _animate_sentinel_roll(locked_sentinels)
-
-	$SentinelStuff/Rollbtn.disabled = false
-	sentinel_roll_active = false
+	print("Roll")
 
 
 func _animate_sentinel_roll(locked_sentinels: Array) -> void:
@@ -682,6 +680,8 @@ func _on_back_btn_pressed() -> void:
 		$SentinelStuff/SentinelList.visible = true
 		$SentinelStuff/SentinelRoll.visible = true
 		$SentinelStuff/Core.visible = true
+		$SentinelStuff/Databasebg.visible = false
+
 		if Data.is_sandbox:
 			$SentinelStuff/Rollbtn.visible = false
 		else:
@@ -691,14 +691,16 @@ func _on_back_btn_pressed() -> void:
 		$SentinelStuff.hide()
 		$TextureRect/ScrollContainer.visible = true
 		$SentinelStuff.visible = false
-		%BigPic.visible = true
+		%BigPic.visible = false
+
 	else:
 		if %SentinelsContainer.visible == true:
 			get_tree().paused = false
+			%BigPic.visible = false
 			visible = false
+
 		else:
 			%SentinelsContainer.visible = true
-
 			%BigPic.position.x += 340
 			$TextureRect/BigTowerName.visible = true
 			$TextureRect/UpgradeButton.visible = true
@@ -712,7 +714,7 @@ func _on_back_btn_pressed() -> void:
 			$SentinelStuff/ScrollContainer.visible = false
 			$SentinelStuff/Rollbtn.visible = true
 			$SentinelStuff/SentinelList.visible = true
-
+	$SentinelStuff/Databasebg.hide()
 
 func _on_tower_btn_pressed() -> void:
 	UISound.play_click()
@@ -720,6 +722,7 @@ func _on_tower_btn_pressed() -> void:
 	$SentinelStuff.visible = false
 	%BigPic.visible = true
 	%BigPic.texture = null
+	$SentinelStuff/Databasebg.visible = false
 	
 
 func _on_sentinel_btn_pressed() -> void:
@@ -736,6 +739,8 @@ func _on_sentinel_btn_pressed() -> void:
 	$SentinelStuff/SentinelRoll.visible = true
 	$SentinelStuff/ScrollContainer.visible = false
 	$SentinelStuff/SentinelList.visible = true
+	$SentinelStuff/Databasebg.visible = false
+	
 	
 	if Data.is_sandbox:
 		$SentinelStuff/Rollbtn.visible = false
@@ -750,35 +755,228 @@ func _on_sentinel_list_pressed() -> void:
 	$SentinelStuff/SentinelList.visible = false
 	$SentinelStuff/Core.visible = false
 
+
 func _on_unlock_pressed() -> void:
-	Data.TOWER_DATA[selected_tower]["isUnlocked"] = true
-	
-	# Restore the BigPic
+	if selected_tower == null:
+		return
+
+	if Data.is_sandbox:
+		return
+
+	var tower_data: Dictionary = Data.TOWER_DATA[selected_tower]
+
+	# ==========================================
+	# CHECK IF TOWER IS ALLOWED TO BE UNLOCKED
+	# ==========================================
+	var is_unlockable: bool = bool(tower_data.get("unlockable", false))
+
+	if not is_unlockable:
+		print("Tower is not unlockable: ", tower_data.get("name", "Unknown"))
+		return
+
+	# Already unlocked
+	if bool(tower_data.get("isUnlocked", false)):
+		return
+
+	# Check wave requirement
+	var required_wave: int = int(tower_data.get("waveUnlocked", 0))
+
+	if required_wave > 0 and Data.current_wave < required_wave:
+		print("Cannot unlock tower.")
+		print("Required Wave: ", required_wave)
+		print("Current Wave: ", Data.current_wave)
+		return
+
+	# ==========================================
+	# UNLOCK TOWER
+	# ==========================================
+	tower_data["isUnlocked"] = true
+
+	print("Tower unlocked: ", tower_data.get("name", "Unknown"))
+
+	# Restore BigPic
 	%BigPic.modulate = Color(1, 1, 1, 1)
-	
-	# Restore the tower name
-	$TextureRect/BigTowerName.text = Data.TOWER_DATA[selected_tower]["name"]
-	
-	# Update the main UI tower card
+
+	# Restore tower name
+	$TextureRect/BigTowerName.text = tower_data["name"]
+
+	# Update main game UI tower card
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.unlock_tower_card(selected_tower)
-		
-	# Update the corresponding tower card
+
+	# Update corresponding tower card
 	for tower_card in %SentinelsContainer.get_children():
 		if tower_card.id == selected_tower:
 			tower_card.update_unlock_status()
 			break
-	
+
+	# Update upgrade UI
 	$TextureRect/UpgradeButton.visible = true
 	$TextureRect/Unlock.visible = false
-	
+
+	update_stat_label()
+	update_upgrade_ui()
+	update_tier_buttons()
+
+	# Save unlock
 	var save = get_tree().get_first_node_in_group("save")
-	if !Data.is_sandbox:
-		if save:
-			save.save_game()
+	if save:
+		save.save_game()
+		
 
-
-func _on_rollbtn_toggled(toggled_on: bool) -> void:
+func _on_rollbtn_pressed() -> void:
 	UISound.play_click()
-	pass # Replace with function body.
+	if sentinel_roll_active:
+		return
+
+	var locked_sentinels = _get_locked_sentinels()
+
+	# All sentinels have already been unlocked
+	if locked_sentinels.is_empty():
+		return
+
+	if sentinel_roll_thumbnails.is_empty():
+		return
+
+	$SentinelStuff/SentinelRoll/Sentinel.visible = true
+	sentinel_roll_active = true
+	$SentinelStuff/Rollbtn.disabled = true
+
+	await _animate_sentinel_roll(locked_sentinels)
+
+	$SentinelStuff/Rollbtn.disabled = false
+	sentinel_roll_active = false
+
+
+var sentinel_name: Array = [
+	"Ethical Hacker",
+	"System Administrator",
+	"Intrusion Analyst",
+	"Security Architect",
+	"Malware Analyst",
+	"Deception Specialist",
+	]
+
+	
+enum Sentinel {ETHICAL, SYSAD, INTRUSION, SECURITY, MALWARE, DECEPTION}
+
+var SENTINEL_DATA = {
+	Sentinel.ETHICAL: {
+		'special_ability': "Freezes all the enemies on the field for 3 seconds.",
+		'cooldown': '15 seconds',
+		'passive_ability': "Slows nearby enemies by 25% of their movement speed.",
+		'irl_desc': "This is a cybersecurity expert who lawfully intrudes on a computer or network. They have the permission and approval to hack into a certain computing device. Lastly, they usually provide a security assessment to provide a comprehensive way to further improve a system."
+	},
+		Sentinel.SYSAD: {
+		'special_ability': "Repair server health by 3%.",
+		'cooldown': "1 minute and 30 seconds",
+		'passive_ability': "Generates gold and EXP periodically for the player.",
+		'irl_desc': "Their main role is to provide support, troubleshoot problems, and ensure that the computer infrastructure, such as servers and the network, is functioning."
+	},
+		Sentinel.INTRUSION: {
+		'special_ability': "Deploys a shield with 1500 hit points around the Server that reflects damage to attackers.",
+		'cooldown': "30 seconds",
+		'passive_ability': "Reduce damage to the server by 5%.",
+		'irl_desc': "An Intrusion Analyst is responsible for detecting, analyzing, and responding to cybersecurity threats or unauthorized access within an organization's computer networks. They monitor network traffic, investigate security incidents, and use specialized tools to identify potential breaches or vulnerabilities. Their work helps prevent data loss and protects sensitive information by quickly addressing and mitigating cyber threats. Additionally, they often collaborate with other IT and security teams to improve overall security posture and may assist in developing security policies and response plans."
+	},
+		Sentinel.SECURITY: {
+		'special_ability': "Increases nearby towers' attack speed by 15% for 10 seconds.",
+		'cooldown': "15 seconds",
+		'passive_ability': "Nearby towers gain an additional 25% range. ",
+		'irl_desc': "Security Architects design, develop, and implement systems that prevent the infiltration of malware and other hacker-related intrusions across the IT network, thereby helping organisations to continue their activities without encouraging costly and damaging situations."
+	},
+		Sentinel.MALWARE: {
+		'special_ability': "Examines detected threats, reveals their weaknesses, and instead of directly attacking enemies, it improves the effectiveness of other nearby defense towers' damage by 30% for 15 seconds.",
+		'cooldown': "25 seconds",
+		'passive_ability': "Nearby towers gain an additional 10% crit chance.  ",
+		'irl_desc': "A malware analyst examines malicious files and applications to comprehend how malware operates and how it can be prevented or countered. Their perspectives assist cybersecurity teams in identifying, examining, and protecting against cyber threats. They provide information on malicious software, revealing its function, what it aims for, and how actors utilize it. Additionally, they are also combating malicious software."
+	},
+		Sentinel.DECEPTION: {
+		'special_ability': "Disorient enemies upon approaching the Server for 15 seconds, causing enemies near the Server to change direction.",
+		'cooldown': "30 seconds",
+		'passive_ability': "Reduce damage to the server by 5%.",
+		'irl_desc': "The Deception Specialist handles deception technology,  which is a strategy to attract cyber criminals away from an enterprise's true assets and divert them to a decoy or trap. The decoy mimics legitimate servers, applications, and data so that the criminal is tricked into believing that they have infiltrated and gained access to the enterprise's most important assets when in reality they have not. The strategy is employed to minimize damage and protect an organization's true assets."
+	},
+}
+
+@onready var sentinel_name_card = $SentinelStuff/Databasebg/Name
+@onready var sentinel_special_card = $SentinelStuff/Databasebg/Special
+@onready var sentinel_cooldown_card = $SentinelStuff/Databasebg/Special/Cooldown
+@onready var sentinel_passive_card = $SentinelStuff/Databasebg/Special/Cooldown/Passive
+@onready var sentinel_irldesc_card = $SentinelStuff/Databasebg/Special/Cooldown/Passive/RealLifeDesc/Description
+@onready var animation: AnimatedSprite2D = $SentinelStuff/Databasebg/AnimatedSprite2D
+
+func change_info(id: Data.Sentinel):
+	match id:
+		0:
+			sentinel_name_card.text = sentinel_name[id]
+			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+			animation.play("EthicalHacker")
+		1:
+			sentinel_name_card.text = sentinel_name[id]
+			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+			animation.play("SystemAdmin")
+		2:
+			sentinel_name_card.text = sentinel_name[id]
+			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+			animation.play("IntrusionAnalyst")
+		3:
+			sentinel_name_card.text = sentinel_name[id]
+			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+			animation.play("SecurityArchitect")
+		4:
+			sentinel_name_card.text = sentinel_name[id]
+			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+			animation.play("MalwareAnalyst")
+		5:
+			sentinel_name_card.text = sentinel_name[id]
+			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+			animation.play("DeceptionAnalyst")
+	$SentinelStuff/Databasebg.show()
+
+func _update_unlock_button() -> void:
+	if selected_tower == null:
+		return
+
+	var tower_data: Dictionary = Data.TOWER_DATA[selected_tower]
+
+	# Sandbox: everything is automatically unlocked
+	if Data.is_sandbox:
+		$TextureRect/Unlock.visible = false
+		return
+
+	var is_unlocked: bool = bool(tower_data.get("isUnlocked", false))
+
+	if is_unlocked:
+		$TextureRect/Unlock.visible = false
+		return
+
+	# Tower is locked
+	$TextureRect/Unlock.visible = true
+
+	var required_wave: int = int(tower_data.get("waveUnlocked", 0))
+
+	if required_wave > 0:
+		$TextureRect/Unlock/Label.text = "Unlock (Wave %d)" % required_wave
+	else:
+		$TextureRect/Unlock/Label.text = "Unlock"
+		

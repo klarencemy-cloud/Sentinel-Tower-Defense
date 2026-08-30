@@ -16,7 +16,7 @@ Player: What? Wait, where are we?
 do GameDialogueManager.move_camera(240,135,1.5)
 Odysseus: Save the chatter for later! See those? Ohh, Spams! They come unwelcome, unsolicited, and in large quantities. So be ready!
 do GameDialogueManager.show_enemy("spam", 0)
-do GameDialogueManager.start_wave()
+
 => END
 
 #~ server_health

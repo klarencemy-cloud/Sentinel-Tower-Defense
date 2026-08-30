@@ -92,6 +92,10 @@ func _ready() -> void:
 
 func show_balloon_messages(state: bool) -> void:
 	$Balloon/Message1.visible = state
+	if state:
+		%ResponsesMenu.position.y = 497
+	else:
+		%ResponsesMenu.position.y = 408
 
 func load_message_options(texture1: String) -> void:
 	$Balloon/Message1/Pic1.texture = load(texture1)

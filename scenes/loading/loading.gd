@@ -31,17 +31,17 @@ func _ready() -> void:
 	Data.sentinel_malware_deployed = false
 	Data.sentinel_deception_deployed = false
 	if Data.current_wave <= 10:
-		$Animation/AnimatedSprite2D.play("boss1")
+		$Databasebg/Animation/AnimatedSprite2D.play("boss1")
 	elif Data.current_wave <= 20 and Data.current_wave > 10:
-		$Animation/AnimatedSprite2D.play("boss2")
+		$Databasebg/Animation/AnimatedSprite2D.play("boss2")
 	elif Data.current_wave <= 30 and Data.current_wave > 20:
-		$Animation/AnimatedSprite2D.play("boss3")
+		$Databasebg/Animation/AnimatedSprite2D.play("boss3")
 	elif Data.current_wave <= 40 and Data.current_wave > 30:
-		$Animation/AnimatedSprite2D.play("boss4")
+		$Databasebg/Animation/AnimatedSprite2D.play("boss4")
 	elif Data.current_wave <= 50 and Data.current_wave > 40:
-		$Animation/AnimatedSprite2D.play("boss5")
+		$Databasebg/Animation/AnimatedSprite2D.play("boss5")
 	else:
-		$Animation/AnimatedSprite2D.play("boss6")
+		$Databasebg/Animation/AnimatedSprite2D.play("boss6")
 	randomize()
 	var index: int = randi_range(0, 11)
 	$Facts/Details.text = tips[index]

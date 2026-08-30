@@ -5,7 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://dn30hv2mjhygn" path="res://graphics/buttons/upgradebg.png" id="4_01d24"]
 [ext_resource type="Texture2D" uid="uid://ml3kegt85f83" path="res://graphics/towers/placeholdertowers/tower1.png" id="5_gukx4"]
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="5_gvuwm"]
+[ext_resource type="Texture2D" uid="uid://cdpfmjb5ui3he" path="res://graphics/backgrounds/databasebg.png" id="6_woq4y"]
 [ext_resource type="Texture2D" uid="uid://dxmkoip2h3t7j" path="res://graphics/sentinels/placeholdersentinels/sentinel.png" id="6_x71o2"]
+[ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="7_a1sfb"]
+[ext_resource type="Texture2D" uid="uid://dxpj7ubvxif7n" path="res://graphics/sentinels/sentinel2.png" id="8_m0kj8"]
+[ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="9_8qfsx"]
 [ext_resource type="Texture2D" uid="uid://bglyuypj0sahq" path="res://graphics/ui/sword.png" id="9_cfr7g"]
 [ext_resource type="Texture2D" uid="uid://b82cq14jn2r1" path="res://graphics/buttons/UpgradeBtn.png" id="9_x71o2"]
 [ext_resource type="FontFile" uid="uid://le60lmnqi5fk" path="res://font/Libre_Franklin/static/LibreFranklin-Thin.ttf" id="10_86m51"]
@@ -19,6 +23,221 @@
 [ext_resource type="Texture2D" uid="uid://v6nn418cpr87" path="res://graphics/currency/gold.png" id="17_qujrc"]
 [ext_resource type="Texture2D" uid="uid://cwdjmra2f5hj2" path="res://graphics/sentinels/thumbnail/DECEPTIONANALYST.png" id="18_dq7wj"]
 [ext_resource type="Texture2D" uid="uid://5phvhu808has" path="res://graphics/currency/sentinel_core2.png" id="19_pafe5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fad81"]
+atlas = ExtResource("8_m0kj8")
+region = Rect2(0, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehavp"]
+atlas = ExtResource("8_m0kj8")
+region = Rect2(256, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgrqy"]
+atlas = ExtResource("8_m0kj8")
+region = Rect2(512, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gabr"]
+atlas = ExtResource("8_m0kj8")
+region = Rect2(768, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uau6v"]
+atlas = ExtResource("8_m0kj8")
+region = Rect2(512, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb62y"]
+atlas = ExtResource("8_m0kj8")
+region = Rect2(256, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28umu"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(768, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmupk"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(1024, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt08x"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(1280, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqaay"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(1024, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hpra"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(0, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbmms"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(256, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecg4n"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(512, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf6ih"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(256, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn3v6"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(1280, 448, 320, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kapyg"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(1600, 448, 320, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgeb6"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(960, 448, 320, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whjda"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(1600, 448, 320, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hdf1"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(512, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne5hk"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(256, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yqf2"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(0, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bodw"]
+atlas = ExtResource("9_8qfsx")
+region = Rect2(256, 0, 256, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drxg4"]
+atlas = ExtResource("8_m0kj8")
+region = Rect2(0, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wju6l"]
+atlas = ExtResource("8_m0kj8")
+region = Rect2(256, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88qim"]
+atlas = ExtResource("8_m0kj8")
+region = Rect2(512, 448, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12rfo"]
+atlas = ExtResource("8_m0kj8")
+region = Rect2(256, 448, 256, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_676yw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fad81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehavp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgrqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gabr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uau6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb62y")
+}],
+"loop": true,
+"name": &"DeceptionAnalyst",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28umu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmupk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt08x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqaay")
+}],
+"loop": true,
+"name": &"EthicalHacker",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hpra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbmms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecg4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rf6ih")
+}],
+"loop": true,
+"name": &"IntrusionAnalyst",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn3v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kapyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgeb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whjda")
+}],
+"loop": true,
+"name": &"MalwareAnalyst",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hdf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne5hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yqf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bodw")
+}],
+"loop": true,
+"name": &"SecurityArchitect",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drxg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wju6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88qim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12rfo")
+}],
+"loop": true,
+"name": &"SystemAdmin",
+"speed": 5.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_lg71s"]
 
@@ -96,13 +315,13 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SentinelStuff" unique_id=40535933]
-visible = false
 layout_mode = 0
-offset_left = 397.0
-offset_top = 233.0
-offset_right = 892.0
-offset_bottom = 732.0
+anchor_left = 0.13541667
+anchor_top = 0.21574074
+anchor_right = 0.39322916
+anchor_bottom = 0.67777777
 horizontal_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="RealSentinelContainer" type="GridContainer" parent="SentinelStuff/ScrollContainer" unique_id=1463301632]
 layout_mode = 2
@@ -177,6 +396,129 @@ theme_override_colors/font_color = Color(0.8352941, 0.5686275, 0.19607843, 1)
 theme_override_font_sizes/font_size = 26
 text = "Core Per Roll: 1 Core"
 metadata/_edit_use_anchors_ = true
+
+[node name="Databasebg" type="TextureRect" parent="SentinelStuff" unique_id=358125009]
+visible = false
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.439
+anchor_top = 0.73800004
+anchor_right = 0.439
+anchor_bottom = 0.73800004
+offset_left = -0.8800049
+offset_top = -621.0401
+offset_right = 932.12
+offset_bottom = -0.039978027
+texture = ExtResource("6_woq4y")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="SentinelStuff/Databasebg" unique_id=382377347]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11146838
+anchor_top = 0.19425444
+anchor_right = 0.834941
+anchor_bottom = 0.26832852
+theme_override_font_sizes/font_size = 40
+text = "Ethical Hacker"
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Special" type="Label" parent="SentinelStuff/Databasebg" unique_id=767124323]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.113612
+anchor_top = 0.32694942
+anchor_right = 0.6216506
+anchor_bottom = 0.35704517
+theme_override_colors/font_color = Color(0.13725491, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_a1sfb")
+theme_override_font_sizes/font_size = 14
+text = "Ability: Freezes all the enemies on the field for 3 seconds."
+horizontal_alignment = 3
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Cooldown" type="Label" parent="SentinelStuff/Databasebg/Special" unique_id=461726894]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.374
+anchor_top = 1.0
+anchor_right = 0.374
+anchor_bottom = 1.0
+offset_left = -177.01938
+offset_top = 7.6426907
+offset_right = 176.98062
+offset_bottom = 25.642693
+theme_override_colors/font_color = Color(0.13725491, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_a1sfb")
+theme_override_font_sizes/font_size = 14
+text = "Cooldown: 30 seconds"
+horizontal_alignment = 3
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="Passive" type="Label" parent="SentinelStuff/Databasebg/Special/Cooldown" unique_id=1677081397]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003
+anchor_top = 1.0
+anchor_right = 0.003
+anchor_bottom = 1.0
+offset_left = -0.062000036
+offset_top = 20.970556
+offset_right = 756.938
+offset_bottom = 38.97056
+theme_override_colors/font_color = Color(0.90683234, 0.677051, 0, 1)
+theme_override_fonts/font = ExtResource("7_a1sfb")
+theme_override_font_sizes/font_size = 14
+text = "Passive: Slows nearby enemies by 25% of their movement speed."
+horizontal_alignment = 3
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="RealLifeDesc" type="Label" parent="SentinelStuff/Databasebg/Special/Cooldown/Passive" unique_id=912240010]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.080000006
+anchor_top = 1.0
+anchor_right = 0.080000006
+anchor_bottom = 1.0
+offset_left = -63.560005
+offset_top = 40.244682
+offset_right = 448.221
+offset_bottom = 70.24468
+theme_override_font_sizes/font_size = 26
+text = "Real World Description"
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" type="Label" parent="SentinelStuff/Databasebg/Special/Cooldown/Passive/RealLifeDesc" unique_id=1754526204]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.3
+anchor_right = 1.490872
+anchor_bottom = 3.3
+theme_override_fonts/font = ExtResource("7_a1sfb")
+theme_override_font_sizes/font_size = 14
+text = "This is a cybersecurity expert who lawfully intrudes on a computer or network. They have the permission and approval to hack into a certain computing device. Lastly, they usually provide a security assessment to provide a comprehensive way to further improve a system."
+horizontal_alignment = 3
+autowrap_mode = 3
+justification_flags = 42
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SentinelStuff/Databasebg" unique_id=484471900]
+position = Vector2(766, 189)
+scale = Vector2(0.6113281, 0.6113281)
+sprite_frames = SubResource("SpriteFrames_676yw")
+animation = &"DeceptionAnalyst"
+autoplay = "EthicalHacker"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1917108759]
 anchors_preset = 15
@@ -1015,7 +1357,7 @@ theme_override_font_sizes/font_size = 62
 text = "0"
 
 [connection signal="pressed" from="SentinelStuff/SentinelList" to="." method="_on_sentinel_list_pressed"]
-[connection signal="toggled" from="SentinelStuff/Rollbtn" to="." method="_on_rollbtn_toggled"]
+[connection signal="pressed" from="SentinelStuff/Rollbtn" to="." method="_on_rollbtn_pressed"]
 [connection signal="pressed" from="TextureRect/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="TextureRect/Unlock" to="." method="_on_unlock_pressed"]
 [connection signal="pressed" from="TextureRect/TowerSentinelBG/TowerBtn" to="." method="_on_tower_btn_pressed"]

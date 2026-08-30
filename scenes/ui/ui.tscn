@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://wwyemyf8s3x7" path="res://graphics/container/skillcontainer.png" id="19_o71gb"]
 [ext_resource type="Texture2D" uid="uid://ddayndvqnoild" path="res://graphics/ui/expprogressbar.png" id="19_qhbcy"]
 [ext_resource type="Texture2D" uid="uid://b2ivf813gi1aa" path="res://graphics/ui/progress-circle.png" id="19_svq4k"]
+[ext_resource type="Texture2D" uid="uid://dtjdnfyfg17xh" path="res://graphics/ui/abilitycd.png" id="19_ydrdt"]
 [ext_resource type="Texture2D" uid="uid://bubyrkehmuahc" path="res://graphics/ui/progress-bg.png" id="19_ygedu"]
 [ext_resource type="Texture2D" uid="uid://clsup5ti6o6u8" path="res://graphics/ui/patch.png" id="19_yy7ol"]
 [ext_resource type="FontFile" uid="uid://cqus3kybakmf8" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraBold.ttf" id="21_oopc8"]
@@ -276,10 +277,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 30.4
 anchor_top = 2.749999
-anchor_right = 34.9
-anchor_bottom = 3.1500008
-offset_right = -118.77551
-offset_bottom = -10.557869
+anchor_right = 30.4
+anchor_bottom = 2.749999
+offset_right = 61.224487
+offset_bottom = 5.4421997
 scale = Vector2(2.94, 2.94)
 value = 100.0
 rounded = true
@@ -289,11 +290,15 @@ texture_progress = ExtResource("18_qhbcy")
 metadata/_edit_use_anchors_ = true
 
 [node name="LabelHP" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=2140871254]
-layout_mode = 0
-anchor_left = 34.125
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 30.524002
 anchor_top = 2.075
-anchor_right = 34.9
-anchor_bottom = 2.575
+anchor_right = 30.524002
+anchor_bottom = 2.075
+offset_left = 144.03992
+offset_right = 175.03992
+offset_bottom = 20.0
 theme_override_fonts/font = ExtResource("18_fqqne")
 theme_override_font_sizes/font_size = 16
 text = "100"
@@ -302,11 +307,14 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="Control/TextureRect/PlayerCurrentStats" unique_id=1912802674]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 35.8
 anchor_top = 2.75
-anchor_right = 40.3
-anchor_bottom = 3.15
+anchor_right = 35.8
+anchor_bottom = 2.75
+offset_right = 180.0
+offset_bottom = 16.0
 nine_patch_stretch = true
 texture_under = ExtResource("16_o71gb")
 texture_progress = ExtResource("19_qhbcy")
@@ -382,12 +390,30 @@ texture_normal = ExtResource("19_272wc")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="cooldown" type="TextureProgressBar" parent="Control/HBoxContainer/Skill1" unique_id=1323867577]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("19_ydrdt")
+
 [node name="Skill2" type="TextureButton" parent="Control/HBoxContainer" unique_id=1811858695]
 custom_minimum_size = Vector2(77, 77)
 layout_mode = 2
 texture_normal = ExtResource("19_yy7ol")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="cooldown" type="TextureProgressBar" parent="Control/HBoxContainer/Skill2" unique_id=2099663605]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("19_ydrdt")
 
 [node name="Skill3" type="TextureButton" parent="Control/HBoxContainer" unique_id=1922029326]
 custom_minimum_size = Vector2(77, 77)
@@ -550,6 +576,7 @@ anchor_bottom = 0.12407407
 offset_right = -492.0
 offset_bottom = -23.0
 scale = Vector2(2, 2)
+nine_patch_stretch = true
 texture_under = ExtResource("27_knhlc")
 texture_progress = ExtResource("28_o2sfg")
 metadata/_edit_use_anchors_ = true
@@ -558,21 +585,28 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.8699187
-anchor_top = -1.0
+anchor_left = 1.0
+anchor_top = -0.17391305
 anchor_right = 1.0
 anchor_bottom = -0.17391305
+offset_left = -64.0
+offset_top = -19.0
 grow_horizontal = 0
 text = "100/100"
 metadata/_edit_use_anchors_ = true
 
 [node name="bossname" type="Label" parent="Control/bosshpbar" unique_id=1939673303]
 texture_filter = 2
-layout_mode = 0
-anchor_left = 0.38617885
-anchor_top = -1.4565217
-anchor_right = 0.60162604
-anchor_bottom = -0.02173913
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49400002
+anchor_top = -0.022000002
+anchor_right = 0.49400002
+anchor_bottom = -0.022000002
+offset_left = -53.048004
+offset_top = -32.994
+offset_right = 52.951996
+offset_bottom = 0.006000042
 theme_override_font_sizes/font_size = 23
 text = "Boss Name"
 metadata/_edit_use_anchors_ = true

@@ -32,7 +32,7 @@ var place_sentinel: bool = false:
 
 func _ready() -> void:
 	Data.cancel_sentinel_placement.connect(cancel_selection)
-	add_to_group("AbilityManager")
+	add_to_group("SentinelManager")
 
 func _process(delta: float) -> void:
 	var preview = _get_sentinel_preview()

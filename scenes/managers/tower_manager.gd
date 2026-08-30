@@ -253,6 +253,12 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	tower.connect("select", tower_selection)
 	tower.connect("removed", _on_tower_removed)
 	_get_tower_parent().add_child(tower)
+	
+	if selected_tower == Data.Tower.PATCH:
+		var ui = get_tree().get_first_node_in_group("UI")
+		if ui:
+			ui.start_patch_cooldown()
+		
 	EnemyTower.register_tower(tower.tower_id, selected_tower)
 	
 	if selected_tower == Data.Tower.BACKUP_SERVER:
@@ -339,6 +345,8 @@ func confirm_current_placement() -> void:
 	var cell_pos = level_manager.world_to_map(world_pos)
 
 	_try_place_current_building(cell_pos, world_pos)
+	
+	
 
 func cancel_current_placement() -> void:
 	var preview = _get_tower_preview()

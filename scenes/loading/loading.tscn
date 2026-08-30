@@ -283,6 +283,24 @@ theme_override_fonts/font = ExtResource("4_2asxc")
 theme_override_font_sizes/font_size = 150
 text = "Loading"
 
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Loading" unique_id=425497961]
+position = Vector2(563.03906, 76.5199)
+scale = Vector2(0.66145825, 0.66884935)
+sprite_frames = SubResource("SpriteFrames_8njb0")
+frame_progress = 0.98632264
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Loading" unique_id=1744335285]
+position = Vector2(668.4142, 74.56273)
+scale = Vector2(0.68880224, 0.6964988)
+sprite_frames = SubResource("SpriteFrames_8njb0")
+frame_progress = 0.34254503
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Loading" unique_id=344418891]
+position = Vector2(779.03906, 71.642525)
+scale = Vector2(0.723958, 0.7320475)
+sprite_frames = SubResource("SpriteFrames_8njb0")
+frame_progress = 0.1825446
+
 [node name="Facts" type="Label" parent="." unique_id=81825721]
 layout_mode = 1
 anchors_preset = -1
@@ -325,41 +343,24 @@ scale = Vector2(0.6429547, 0.64295477)
 texture = ExtResource("7_l0cve")
 metadata/_edit_use_anchors_ = true
 
-[node name="Animation" type="Control" parent="." unique_id=1901643478]
+[node name="Animation" type="Control" parent="Databasebg" unique_id=1901643478]
 layout_mode = 1
-anchor_left = 0.4
-anchor_top = 0.28
-anchor_right = 0.4
-anchor_bottom = 0.28
-offset_left = 604.307
-offset_top = -0.27999878
-offset_right = 1002.307
-offset_bottom = 114.72
+anchor_left = 0.50600004
+anchor_top = 1.0
+anchor_right = 0.50600004
+anchor_bottom = 1.0
+offset_left = -459.6555
+offset_top = -715.4468
+offset_right = 459.5383
+offset_bottom = -3.1104736
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Animation" unique_id=1622320455]
-position = Vector2(51.19287, 42.39995)
-scale = Vector2(0.66145825, 0.66884935)
-sprite_frames = SubResource("SpriteFrames_8njb0")
-frame_progress = 0.98632264
-
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Animation" unique_id=1343061686]
-position = Vector2(156.568, 40.44278)
-scale = Vector2(0.68880224, 0.6964988)
-sprite_frames = SubResource("SpriteFrames_8njb0")
-frame_progress = 0.34254503
-
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Animation" unique_id=204396013]
-position = Vector2(267.19287, 37.522583)
-scale = Vector2(0.723958, 0.7320475)
-sprite_frames = SubResource("SpriteFrames_8njb0")
-frame_progress = 0.1825446
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animation" unique_id=1249662821]
-position = Vector2(-891.307, 188.88)
-scale = Vector2(1.3554688, 1.3554688)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Databasebg/Animation" unique_id=1249662821]
+position = Vector2(491.4809, 318.84045)
+scale = Vector2(2.1115444, 2.1115444)
 sprite_frames = SubResource("SpriteFrames_w33o8")
 animation = &"boss1"
 autoplay = "boss1"
-frame_progress = 0.9716946
+frame_progress = 0.4276866
