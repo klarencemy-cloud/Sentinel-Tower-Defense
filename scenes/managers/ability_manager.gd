@@ -140,7 +140,7 @@ func _try_place_firewall(world_pos: Vector2) -> void:
 	cancel_selection()
 	current_placement_kind = ""
 
-	if Data.current_wave == 5 and !Data.is_sandbox and !GameDialogueManager.is_firewall_activated_shown:
+	if Data.current_wave == 5 and !Data.is_sandbox and !Data.is_vmmode and !GameDialogueManager.is_firewall_activated_shown:
 		GameDialogueManager.show_dialogue_firewall_activated()
 	
 

@@ -308,6 +308,8 @@ func _set_upgrade_amount_label(slot_index: int, upgrade_name: String, amount: Va
 
 
 func _try_purchase_upgrade(slot_index: int) -> void:
+	if Data.is_vmmode:
+		return
 	var tower_data = Data.TOWER_DATA[selected_tower]
 	if !tower_data.has("upgrade1"):
 		return

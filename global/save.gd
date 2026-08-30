@@ -8,6 +8,8 @@ func _ready() -> void:
 	_load_game()
 
 func save_game() -> void:
+	if Data.is_vmmode:
+		return 
 	print("========== SAVE GAME ==========")
 	print("SAVE LOCATION: ", ProjectSettings.globalize_path(SAVE_PATH))
 	print("Sandbox: ", Data.is_sandbox)
@@ -108,6 +110,8 @@ func save_game() -> void:
 			file.store_string(JSON.stringify(save_data))
 
 func _load_game() -> void:
+	if Data.is_vmmode:
+		return
 	if !Data.is_sandbox:
 		if not FileAccess.file_exists(SAVE_PATH):
 			return

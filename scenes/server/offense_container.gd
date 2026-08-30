@@ -109,6 +109,8 @@ func _on_offense_upgrade_3_pressed() -> void:
 
 
 func _upgrade(index: int) -> void:
+	if Data.is_vmmode:
+		return
 	var level = Offense.offense_levels[index]
 	var count = counts[index]
 	

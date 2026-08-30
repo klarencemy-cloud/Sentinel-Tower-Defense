@@ -36,6 +36,7 @@ Economy="*uid://c3yec3hxkdfch"
 Wave="*uid://bb03viokakrym"
 UISound="*uid://clky4si525ptd"
 Save="*res://global/save.gd"
+VMSave="*res://global/vm_save.gd"
 
 [dialogue_manager]
 

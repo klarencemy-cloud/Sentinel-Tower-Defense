@@ -127,6 +127,8 @@ func _on_defense_upgrade_4_pressed() -> void: # Sentinel Deployed
 
 
 func _upgrade(index: int) -> void:
+	if Data.is_vmmode:
+		return
 	var level = Defense.defense_levels[index]
 	var count = counts[index]
 	

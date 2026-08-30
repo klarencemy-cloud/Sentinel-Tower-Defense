@@ -304,10 +304,10 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if !Data.is_sandbox:
 		Save.save_game()
 
-	if Data.TOWER_DATA[selected_tower]["name"] == "Spam Filter" and !GameDialogueManager.is_introduction_spam_filter and !Data.is_sandbox and (Data.current_wave == 0 or Data.current_wave == 1):
+	if Data.TOWER_DATA[selected_tower]["name"] == "Spam Filter" and !GameDialogueManager.is_introduction_spam_filter and !Data.is_sandbox and !Data.is_vmmode and (Data.current_wave == 0 or Data.current_wave == 1):
 		GameDialogueManager.show_dialogue_spam_filter()
 
-	if ((Data.maxserverload - Data.currentserverload) < 15 or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and Data.current_wave == 4:
+	if ((Data.maxserverload - Data.currentserverload) < 15 or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and !Data.is_vmmode and Data.current_wave == 4:
 		GameDialogueManager.show_dialogue_preparation_end()
 	
 

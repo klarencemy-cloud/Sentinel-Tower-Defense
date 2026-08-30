@@ -1,0 +1,160 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scenes/virtualmachinemode/vm_game_over.gd" id="1_vmgo1"]
+[ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="2_vmgo1"]
+[ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="3_vmgo1"]
+[ext_resource type="Texture2D" uid="uid://ds225f3jg8tik" path="res://graphics/enemies/enemies.png" id="4_vmgo1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmgo1"]
+atlas = ExtResource("4_vmgo1")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmgo2"]
+atlas = ExtResource("4_vmgo1")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmgo3"]
+atlas = ExtResource("4_vmgo1")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vmgo1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmgo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmgo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmgo3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="VMGameOver" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_vmgo1")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vmgo1")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -449.0
+offset_top = -891.0
+offset_right = 455.0
+offset_bottom = -191.0
+
+[node name="Label" type="Label" parent="ColorRect/TextureRect"]
+layout_mode = 0
+anchor_left = 0.03982301
+anchor_top = 0.12142857
+anchor_right = 0.50884956
+anchor_bottom = 0.26142856
+theme_override_colors/font_color = Color(1, 0.3254902, 0.3019608, 1)
+theme_override_font_sizes/font_size = 60
+text = "Virtual Mode"
+metadata/_edit_use_anchors_ = true
+
+[node name="txtScore" type="Label" parent="ColorRect/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.045353983
+anchor_top = 0.27857143
+anchor_right = 0.7
+anchor_bottom = 0.3557143
+theme_override_font_sizes/font_size = 40
+text = "SERVER SECURED!"
+metadata/_edit_use_anchors_ = true
+
+[node name="txtKills" type="Label" parent="ColorRect/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.045353983
+anchor_top = 0.36
+anchor_right = 0.7
+anchor_bottom = 0.44
+theme_override_font_sizes/font_size = 26
+text = "Defeated 0 / 200 viruses"
+metadata/_edit_use_anchors_ = true
+
+[node name="btnRetry" type="TextureButton" parent="ColorRect/TextureRect"]
+layout_mode = 0
+anchor_left = 0.045353983
+anchor_top = 0.55285716
+anchor_right = 0.3130531
+anchor_bottom = 0.69857144
+texture_normal = ExtResource("3_vmgo1")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect/TextureRect/btnRetry"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -22.5
+offset_right = 45.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 38
+text = "Retry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnQuit" type="TextureButton" parent="ColorRect/TextureRect"]
+layout_mode = 0
+anchor_left = 0.6825221
+anchor_top = 0.55285716
+anchor_right = 0.94800884
+anchor_bottom = 0.69857144
+texture_normal = ExtResource("3_vmgo1")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect/TextureRect/btnQuit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -22.5
+offset_right = 32.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 38
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect/TextureRect"]
+position = Vector2(585, 171)
+sprite_frames = SubResource("SpriteFrames_vmgo1")
+autoplay = "default"
+
+[connection signal="pressed" from="ColorRect/TextureRect/btnRetry" to="." method="_on_btn_retry_pressed"]
+[connection signal="pressed" from="ColorRect/TextureRect/btnQuit" to="." method="_on_btn_quit_pressed"]

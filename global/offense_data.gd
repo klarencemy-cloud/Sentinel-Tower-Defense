@@ -63,3 +63,14 @@ func _reset_multipliers() -> void:
 func _reset_levels() -> void:
 	offense_levels = [0, 0, 0]
 	maxed = [false, false, false]
+
+const VMMODE_LEVEL_CAPS: Array[int] = [8, 8, 8]
+
+
+func _apply_vmmode_fixed_levels(map_number: int) -> void:
+	for i in range(mini(map_number, VMMODE_LEVEL_CAPS[0])):
+		_inc_dmg()
+	for i in range(mini(map_number, VMMODE_LEVEL_CAPS[1])):
+		_tower_speed()
+	for i in range(mini(map_number, VMMODE_LEVEL_CAPS[2])):
+		_crit_chance()

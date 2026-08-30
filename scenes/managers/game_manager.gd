@@ -67,7 +67,7 @@ func next_map() -> void:
 	# Move to the next map
 	Data.current_level_index += 1
 
-	if !Data.is_sandbox:
+	if !Data.is_sandbox and !Data.is_vmmode:
 		Save.save_game()
 
 func _process(_delta: float) -> void:
@@ -93,7 +93,10 @@ func _on_ui_place_sentinel(sentinel_type: Data.Sentinel) -> void:
 	sentinel_manager.start_sentinel_placement(sentinel_type)
 
 func _on_ui_start_wave() -> void:
-	wave_manager.start_wave()
+	if Data.is_vmmode:
+		get_tree().call_group("vmmode_session", "_on_wave_button_pressed")
+	else:
+		wave_manager.start_wave()
 
 
 func _on_ui_spawn_sandbox_enemy(enemy_enum: Data.Enemy) -> void:

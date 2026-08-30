@@ -1,6 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+CLAUDE.md
+.mcp.json
 .vscode/settings.json
 .vscode/settings.json
 graphics/bosses/Virus.png.import

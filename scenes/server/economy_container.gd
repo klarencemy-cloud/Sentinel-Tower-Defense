@@ -111,6 +111,8 @@ func _on_economy_upgrade_3_pressed() -> void:
 
 
 func _upgrade(index: int) -> void:
+	if Data.is_vmmode:
+		return
 	var level = Economy.economy_levels[index]
 	var count = counts[index]
 	

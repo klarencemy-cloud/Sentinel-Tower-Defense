@@ -88,3 +88,16 @@ func _reset_multipliers() -> void:
 func _reset_levels() -> void:
 	defense_levels = [0, 0, 0, 0]
 	maxed = [false, false, false, false]
+
+const VMMODE_LEVEL_CAPS: Array[int] = [8, 8, 3, 3]
+
+
+func _apply_vmmode_fixed_levels(map_number: int) -> void:
+	for i in range(mini(map_number, VMMODE_LEVEL_CAPS[0])):
+		_armor_damage_reduction()
+	for i in range(mini(map_number, VMMODE_LEVEL_CAPS[1])):
+		_server_health()
+	for i in range(mini(map_number, VMMODE_LEVEL_CAPS[2])):
+		_skill_cooldown_reduction()
+	for i in range(mini(map_number, VMMODE_LEVEL_CAPS[3])):
+		_sentinel_deployed_add()

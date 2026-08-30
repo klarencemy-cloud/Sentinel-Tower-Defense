@@ -3,6 +3,7 @@ extends Control
 @onready var progress_bar: ProgressBar = $ProgressBar
 @export var next_scene_path1: String = "res://scenes/levels/level.tscn"
 @export var next_scene_path2: String = "res://scenes/sandbox/sand_box.tscn"
+@export var next_scene_path3: String = "res://scenes/virtualmachinemode/virtual_machine.tscn"
 var next_scene_path: String
 var progress: Array[float] = []
 
@@ -45,7 +46,9 @@ func _ready() -> void:
 	randomize()
 	var index: int = randi_range(0, 11)
 	$Facts/Details.text = tips[index]
-	if Data.is_sandbox:
+	if Data.is_vmmode:
+		next_scene_path = next_scene_path3
+	elif Data.is_sandbox:
 		next_scene_path = next_scene_path2
 	else:
 		next_scene_path = next_scene_path1
@@ -63,13 +66,13 @@ func _process(delta: float) -> void:
 		ResourceLoader.THREAD_LOAD_LOADED:
 			var scene = ResourceLoader.load_threaded_get(next_scene_path)
 			get_tree().change_scene_to_packed(scene)
-			if !Data.is_sandbox and Data.current_wave == 1 and !GameDialogueManager.is_introduction_shown:
+			if !Data.is_sandbox and !Data.is_vmmode and Data.current_wave == 1 and !GameDialogueManager.is_introduction_shown:
 				GameDialogueManager.show_dialogue_introduction()
-			if !Data.is_sandbox and Data.current_wave == 11 and !GameDialogueManager.is_level2_start_shown:
+			if !Data.is_sandbox and !Data.is_vmmode and Data.current_wave == 11 and !GameDialogueManager.is_level2_start_shown:
 				GameDialogueManager.show_dialogue_level2_start()
-			if !Data.is_sandbox and Data.current_wave == 21 and !GameDialogueManager.is_level3_start_shown:
+			if !Data.is_sandbox and !Data.is_vmmode and Data.current_wave == 21 and !GameDialogueManager.is_level3_start_shown:
 				GameDialogueManager.show_dialogue_level3_start()
-			if !Data.is_sandbox and Data.current_wave == 31 and !GameDialogueManager.is_level4_start_shown:
+			if !Data.is_sandbox and !Data.is_vmmode and Data.current_wave == 31 and !GameDialogueManager.is_level4_start_shown:
 				GameDialogueManager.show_dialogue_level4_start()
-			if !Data.is_sandbox and Data.current_wave == 41 and !GameDialogueManager.is_level5_start_shown:
+			if !Data.is_sandbox and !Data.is_vmmode and Data.current_wave == 41 and !GameDialogueManager.is_level5_start_shown:
 				GameDialogueManager.show_dialogue_level5_start()

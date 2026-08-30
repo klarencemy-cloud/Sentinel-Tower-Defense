@@ -30,7 +30,7 @@ func update_wave_state() -> void:
 			Data.checkpoint_wave = Data.current_wave
 
 		if Data.current_wave % 10 == 0:
-			if !Data.is_sandbox:
+			if !Data.is_sandbox and !Data.is_vmmode:
 				if ui:
 					ui.disable_auto()
 				level_completed.emit()
@@ -43,7 +43,7 @@ func update_wave_state() -> void:
 			Data.current_wave += 1
 			Data.update_wave_unlocks()
 
-			if !Data.is_sandbox:
+			if !Data.is_sandbox and !Data.is_vmmode:
 				Save.save_game()
 			if ui:
 				ui.update_wave_label()
@@ -80,6 +80,8 @@ func update_wave_state() -> void:
 
 
 func start_wave() -> void:
+	if Data.is_vmmode:
+		return # VM mode own spawning, independent of Wave.WAVE_DATA
 	if wave_active or spawning_wave:
 		return
 	Data.clear_notpetya_enemy_speed_effect()

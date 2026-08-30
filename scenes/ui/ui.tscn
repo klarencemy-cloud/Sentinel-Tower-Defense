@@ -247,6 +247,19 @@ theme_override_font_sizes/font_size = 41
 text = "Wave 1/50"
 metadata/_edit_use_anchors_ = true
 
+[node name="VirusNum" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=1994024870]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 41.775
+anchor_top = 2.075
+anchor_right = 46.7
+anchor_bottom = 3.275
+theme_override_font_sizes/font_size = 41
+text = "Virus 0/200"
+metadata/_edit_use_anchors_ = true
+
 [node name="ServerHealth" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=1597613385]
 layout_mode = 0
 anchor_left = 30.4

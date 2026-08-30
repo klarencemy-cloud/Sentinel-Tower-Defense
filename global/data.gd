@@ -28,7 +28,9 @@ signal deactivate(selected_sentinel: Data.Sentinel) # for sentinel
 # "before" variables to store the original values before entering sandbox mode
 var before_total_money: int
 var before_total_health: float
+var before_max_health: float
 var before_max_server_load: int
+var before_current_server_load: int
 var before_owned_towers: Dictionary
 var before_server_points: int
 var before_player_level: int
@@ -37,6 +39,9 @@ var before_total_experience: int
 # Backup for tower upgrade data to keep sandbox and non-sandbox separate
 var before_tower_upgrades: Dictionary = {} # Stores backup of all tower upgrade levels and modified stats
 var base_tower_stats: Dictionary = {} # Stores original base stats for all towers (set once at startup)
+var vmmode_map_number: int = 1
+var vmmode_resume_kills: int = 0
+var vmmode_resume_health: float = -1.0
 
 
 var bullet_angle: Vector2
@@ -45,6 +50,7 @@ var wave_started: bool = false
 
 
 var before_level_index: int
+var before_current_wave: int
 var current_level_index: int = 0 # map count 0 = level 1
 var checkpoint_wave: int = 0 # checkpoint count
 var current_wave: int = 1 # wave count
@@ -903,6 +909,8 @@ var health: float = default_health:
 		if health <= 0:
 			if backup_server_placed:
 				activate_backup_server()
+			elif Data.is_vmmode:
+				get_tree().call_group("vmmode_session", "_on_server_health_depleted")
 			else:
 				ui.get_node("GameOver").visible = true
 				get_tree().paused = true
@@ -1020,6 +1028,49 @@ func _restore_tower_upgrades() -> void:
 		if backup.has('explosion_radius'):
 			tower_data['explosion_radius'] = backup['explosion_radius']
 
+
+func _apply_vmmode_fixed_tower_upgrades(map_number: int) -> void:
+	for tower_enum in Tower.values():
+		var tower_data: Dictionary = TOWER_DATA[tower_enum]
+		if not tower_data.has("upgrade1"):
+			continue
+		for slot_index in range(1, 7):
+			var upgrade_key := "upgrade%d" % slot_index
+			if not tower_data.has(upgrade_key):
+				continue
+			var cost_key := "upgrade%dcost" % slot_index
+			var cap: int = tower_data.get(cost_key, []).size()
+			if cap <= 0:
+				continue
+			_apply_tower_upgrade_slot_to_level(tower_enum, slot_index, mini(map_number, cap))
+
+
+func _apply_tower_upgrade_slot_to_level(tower_enum: int, slot_index: int, target_level: int) -> void:
+	var tower_data: Dictionary = TOWER_DATA[tower_enum]
+	var upgrade_name: String = tower_data.get("upgrade%d" % slot_index, "")
+	var amount_def = tower_data.get("upgrade%damount" % slot_index, 0)
+
+	for level in range(1, target_level + 1):
+		var amount = amount_def
+		if typeof(amount_def) == TYPE_ARRAY:
+			amount = amount_def[clampi(level - 1, 0, amount_def.size() - 1)]
+
+		match upgrade_name:
+			"Damage":
+				tower_data["damage"] += amount
+			"Attack Speed":
+				tower_data["reload_time"] = max(0.1, tower_data["reload_time"] - amount)
+			"Range":
+				tower_data["range"] += amount
+			"Explosion Radius":
+				tower_data["explosion_radius"] += amount
+			"Crit Rate":
+				tower_data["crit rate"] += amount
+			"Crit Damage":
+				tower_data["crit damage"] += amount
+
+	tower_data["upgrade%dlevel" % slot_index] = target_level
+
 var multiplier: int = 1
 var notpetya_enemy_speed_multiplier: float = 1.0
 
@@ -1053,7 +1104,7 @@ var experience: int = 0:
 				ui.update_experience(experience, player_level, default_level_pool)
 			return
 		
-		if player_level == 3 and GameDialogueManager.is_level_3 and !Data.is_sandbox and Data.current_wave == 3:
+		if player_level == 3 and GameDialogueManager.is_level_3 and !Data.is_sandbox and !Data.is_vmmode and Data.current_wave == 3:
 			GameDialogueManager.show_dialogue_server_upgrade()
 		
 		while experience >= default_level_pool:

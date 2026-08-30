@@ -191,6 +191,56 @@ func _on_left_btn_pressed() -> void:
 	$CarouselContainer._left()
 
 
+func _on_start_game_pressed() -> void:
+	UISound.play_click()
+	var selected_carousel_node = $CarouselContainer.position_offset_node.get_child($CarouselContainer.selected_index)
+
+	if selected_carousel_node.name != "Map1":
+		return
+
+	var map_number := int(selected_carousel_node.name.trim_prefix("Map"))
+	Data.before_level_index = Data.current_level_index
+	Data.before_current_wave = Data.current_wave
+	Data.before_total_health = Data.health
+	Data.before_max_health = Data.max_health
+	Data.before_max_server_load = Data.maxserverload
+	Data.before_current_server_load = Data.currentserverload
+	Data.before_server_points = Data.server_points
+	Data.server_points = Data.default_server_points
+	Data.currentserverload = 0 # 
+
+	Data._initialize_base_tower_stats()
+	Data._backup_tower_upgrades()
+	Data._reset_tower_upgrades_to_base()
+	Data._apply_vmmode_fixed_tower_upgrades(map_number)
+
+	Offense._sandbox_mode()
+	Defense._sandbox_mode()
+	Economy._sandbox_mode()
+	Data.max_health = Data.default_health
+	Data.maxserverload = Data.default_system_load
+	Offense._apply_vmmode_fixed_levels(map_number)
+	Defense._apply_vmmode_fixed_levels(map_number)
+	Economy._apply_vmmode_fixed_levels(map_number)
+	Data.saved_tower_placements.clear()
+	Data.saved_sentinel_placements.clear()
+	Data.saved_ability_placements.clear()
+
+	Data.vmmode_map_number = map_number
+	Data.vmmode_resume_kills = 0
+	Data.vmmode_resume_health = -1.0
+
+	if VMSave.has_save():
+		var resumed := VMSave.load_into_data()
+		Data.vmmode_resume_kills = int(resumed.get("virus_kills", 0))
+		Data.vmmode_resume_health = float(resumed.get("health", -1.0))
+
+	Data.current_level_index = 0
+	Data.current_wave = 1
+	Data.is_vmmode = true
+	get_tree().change_scene_to_file("res://scenes/loading/loading.tscn")
+
+
 func _on_right_btn_pressed() -> void:
 	UISound.play_carousel()
 	$CarouselContainer._right()

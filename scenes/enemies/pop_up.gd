@@ -23,6 +23,10 @@ func _on_info_gui_input(event: InputEvent) -> void:
 			$Pop/Animation.visible = true
 			$Pop/Info.visible = false
 			GameDialogueManager.clicked = 0
+			if Data.is_vmmode:
+				await get_tree().create_timer(1).timeout
+				get_tree().paused = false
+				return
 			if Data.current_wave == 1:
 				GameDialogueManager.start_wave()
 			if !GameDialogueManager.is_virus_shown and Data.current_wave == 4:

@@ -762,3 +762,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="ButtonManager/MapBtn" to="." method="_on_map_btn_pressed"]
 [connection signal="pressed" from="ButtonManager/RightBtn" to="." method="_on_right_btn_pressed"]
 [connection signal="pressed" from="ButtonManager/LeftBtn" to="." method="_on_left_btn_pressed"]
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]

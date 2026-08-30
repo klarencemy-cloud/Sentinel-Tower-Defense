@@ -16,8 +16,13 @@ func _on_resume_pressed() -> void:
 func _on_quit_pressed() -> void:
 	UISound.play_close()
 	get_tree().paused = false # unfreezes game #2
-	Data.wave_started = false
 	visible = false # go poof #2
+
+	if Data.is_vmmode:
+		get_tree().call_group("vmmode_session", "_on_quit_pressed")
+		return
+
+	Data.wave_started = false
 	Data.sentinel_sysad_deployed = false
 	Data.sentinel_intrusion_deployed = false
 	Data.sentinel_security_deployed = false
