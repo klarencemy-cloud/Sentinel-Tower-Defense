@@ -63,8 +63,6 @@ func _on_map_btn_pressed() -> void:
 func _on_final_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -81,8 +79,6 @@ func _on_final_gui_input(event: InputEvent) -> void:
 func _on_final_2_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -99,8 +95,6 @@ func _on_final_2_gui_input(event: InputEvent) -> void:
 func _on_final_3_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -117,8 +111,6 @@ func _on_final_3_gui_input(event: InputEvent) -> void:
 func _on_final_4_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -135,8 +127,6 @@ func _on_final_4_gui_input(event: InputEvent) -> void:
 func _on_final_5_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -153,8 +143,6 @@ func _on_final_5_gui_input(event: InputEvent) -> void:
 func _on_final_6_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -171,8 +159,6 @@ func _on_final_6_gui_input(event: InputEvent) -> void:
 func _on_final_7_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				UISound.play_click()
 			dragging = event.pressed
 			if event.pressed == false:
 				for child in $MapContainer/Map.get_children():
@@ -253,6 +239,7 @@ func _on_challenge_9_pressed() -> void:
 
 func _on_challenge_8_pressed() -> void:
 	UISound.play_click()
+	print("8")
 	Data.change_challenge.emit(7)
 	_toggle_tween(8)
 func _on_challenge_7_pressed() -> void:
