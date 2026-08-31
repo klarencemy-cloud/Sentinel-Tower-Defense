@@ -58,7 +58,7 @@ var vm_title_array: Array = ["Ticking Bomb", "Swarm Overload", "Malware Interrup
 var recommended: Array = ["5", "10", "16", "25", "30", "35", "40", "45", "51"]
 var vm_difficulty: Array = ["Easy", "Moderate", "Hard", "Hard", "Hard", "Hard", "Extreme", "Extreme", "Survival"]
 var vm_map_desc_paragraph: Array = [
-	"The S.E.R.V.E.R. malfunctions; it loses health every 5 seconds. Defeat 300 virus enemies before the S.E.R.V.E.R. health reaches 0.",
+	"The S.E.R.V.E.R. malfunctions; it loses health every 5 seconds. Defeat 200 virus enemies before the S.E.R.V.E.R. health reaches 0.",
 	"A massive outbreak of Worms and Spam floods the paths. Defeat 1,000 enemies without taking any damage.",
 	"The S.E.R.V.E.R. has only 1 HP left. Win the game without taking any damage from malware enemies for 7 waves. A single damage will cost the player everything. The player must defend the S.E.R.V.E.R. at any cost.",
 	"Inspired by a real-world exploit, a large number of Botnet drone that mainly compromise low-power devices swarms fast to attack the S.E.R.V.E.R., but are fragile as individuals. Win 7 waves to win the challenge.",

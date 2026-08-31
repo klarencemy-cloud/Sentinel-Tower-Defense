@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://spkch0xigt7p"]
+
+[ext_resource type="Texture2D" uid="uid://c507xxnt0mfeq" path="res://graphics/map/challenge1.png" id="1_bt7my"]
+[ext_resource type="Script" uid="uid://dr8sqdqc4bj7x" path="res://scenes/virtualmachinemode/vm_desc_overlay.gd" id="1_xvmui"]
+[ext_resource type="FontFile" uid="uid://tujnohddqv1k" path="res://font/Libre_Franklin/LibreFranklin-Italic-VariableFont_wght.ttf" id="2_xvmui"]
+[ext_resource type="Script" uid="uid://cb1cir1361i51" path="res://scenes/virtualmachinemode/ghost_text.gd" id="5_34egl"]
+
+[sub_resource type="Gradient" id="Gradient_ysedr"]
+colors = PackedColorArray(0.13725491, 0.22352941, 0.2784314, 0.6784314, 0.13725491, 0.22352941, 0.2784314, 0.47058824)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h28so"]
+gradient = SubResource("Gradient_ysedr")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_meqeb"]
+script = ExtResource("5_34egl")
+metadata/_custom_type_script = "uid://cb1cir1361i51"
+
+[sub_resource type="Animation" id="Animation_meqeb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_34egl"]
+resource_name = "vm_pop"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333333, 0.19999999, 0.2333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Overlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_meqeb"]
+_data = {
+&"RESET": SubResource("Animation_meqeb"),
+&"vm_pop": SubResource("Animation_34egl")
+}
+
+[node name="VmDescOverlay" type="CanvasLayer" unique_id=1370449254 groups=["animate3"]]
+script = ExtResource("1_xvmui")
+
+[node name="Control" type="Control" parent="." unique_id=1072210149]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Overlay" type="TextureRect" parent="Control" unique_id=95322078]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_h28so")
+
+[node name="Overlay2" type="ColorRect" parent="Control" unique_id=602496590]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.2537037
+anchor_right = 1.0
+anchor_bottom = 0.73703706
+offset_top = -26.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 1
+color = Color(0.015791116, 0.098434515, 0.14269495, 1)
+
+[node name="Map1" type="TextureRect" parent="Control/Overlay2" unique_id=291757019]
+z_index = 1
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0072916667
+anchor_top = -0.15708812
+anchor_right = 0.60011566
+anchor_bottom = 1.0996169
+offset_right = 0.00012207031
+pivot_offset = Vector2(430.71912, 210.21875)
+texture = ExtResource("1_bt7my")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="vmName" type="Label" parent="Control/Overlay2/Map1" unique_id=1956551865]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8900534
+anchor_top = 0.38109758
+anchor_right = 1.5597371
+anchor_bottom = 0.50457317
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 70
+text = "Ticking Bomb"
+vertical_alignment = 2
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" type="Label" parent="Control/Overlay2/Map1/vmName" unique_id=1216967275]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 22.999939
+offset_top = 47.0
+offset_right = 707.99994
+offset_bottom = 104.0
+grow_vertical = 2
+pivot_offset = Vector2(330.5, 0)
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_xvmui")
+theme_override_font_sizes/font_size = 21
+text = "Defeat 200 virus enemies before the S.E.R.V.E.R. health reaches 0. Every 50 kills, the enemies gain massive health and speed increase."
+horizontal_alignment = 3
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Overlay2/Map1/vmName/Description" unique_id=110661854]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 477.0
+offset_top = 145.5
+offset_right = 746.0
+offset_bottom = 166.5
+grow_vertical = 0
+mouse_filter = 1
+bbcode_enabled = true
+text = "[ghost]Tap anywhere to continue[/ghost]"
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_meqeb")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control" unique_id=2032945091]
+libraries/ = SubResource("AnimationLibrary_meqeb")
+
+[connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]
+[connection signal="animation_finished" from="Control/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

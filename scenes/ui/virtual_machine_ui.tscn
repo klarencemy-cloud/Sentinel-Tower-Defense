@@ -740,6 +740,7 @@ ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="gui_input" from="MapContainer/Map" to="." method="_on_map_gui_input"]
 [connection signal="gui_input" from="MapContainer/Map/Challenge9" to="." method="_on_final_gui_input"]
 [connection signal="pressed" from="MapContainer/Map/Challenge9" to="." method="_on_challenge_9_pressed"]
@@ -762,4 +763,3 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="ButtonManager/MapBtn" to="." method="_on_map_btn_pressed"]
 [connection signal="pressed" from="ButtonManager/RightBtn" to="." method="_on_right_btn_pressed"]
 [connection signal="pressed" from="ButtonManager/LeftBtn" to="." method="_on_left_btn_pressed"]
-[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
