@@ -115,13 +115,16 @@ func _result_text(_won: bool) -> String:
 
 
 func _serialize_progress() -> Dictionary:
-	return {"virus_kills": virus_kills, "virus_spawned": virus_spawned, "difficulty_tier": difficulty_tier}
+	return {"virus_kills": virus_kills, "difficulty_tier": difficulty_tier}
 
 
 func _restore_progress(progress: Dictionary) -> void:
 	virus_kills = int(progress.get("virus_kills", 0))
-	virus_spawned = int(progress.get("virus_spawned", virus_kills))
-	difficulty_tier = int(progress.get("difficulty_tier", virus_kills / TIER_KILL_INTERVAL))
+	virus_spawned = virus_kills
+
+	@warning_ignore("integer_division")
+	var default_tier: int = virus_kills / TIER_KILL_INTERVAL
+	difficulty_tier = int(progress.get("difficulty_tier", default_tier))
 	if progress.has("health"):
 		Data.health = float(progress["health"])
 	if difficulty_tier > 0:

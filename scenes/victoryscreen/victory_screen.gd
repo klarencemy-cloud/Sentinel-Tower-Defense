@@ -25,6 +25,7 @@ func _on_main_menu_pressed() -> void:
 func _restore_vmmode_state() -> void:
 	Data.current_level_index = Data.before_level_index
 	Data.current_wave = Data.before_current_wave
+	Data.money = Data.before_total_money
 	Data.max_health = Data.before_max_health
 	Data.health = Data.before_total_health
 	Data.maxserverload = Data.before_max_server_load

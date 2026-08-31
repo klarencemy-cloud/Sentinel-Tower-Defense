@@ -60,6 +60,7 @@ func save_game() -> void:
 	all_data["maps"][str(Data.vmmode_map_number)] = {
 		"progress": vmmode_node._serialize_progress() if vmmode_node else {},
 		"health": Data.health,
+		"money": Data.money,
 		"placed_towers": placed_towers,
 		"placed_sentinels": placed_sentinels,
 		"placed_abilities": placed_abilities,
@@ -90,6 +91,8 @@ func load_into_data(map_number: int) -> Dictionary:
 	var progress: Dictionary = slot.get("progress", {}).duplicate()
 	if slot.has("health"):
 		progress["health"] = slot["health"]
+	if slot.has("money"):
+		progress["money"] = slot["money"]
 	if slot.has("stats"):
 		progress["stats"] = slot["stats"]
 	return progress

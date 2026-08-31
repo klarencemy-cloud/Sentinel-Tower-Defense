@@ -88,18 +88,15 @@ func _result_text(_won: bool) -> String:
 
 
 func _serialize_progress() -> Dictionary:
-	return {
-		"enemy_kills": enemy_kills,
-		"worm_budget": _budget.get(Data.Enemy.WORM, 0),
-		"spam_budget": _budget.get(Data.Enemy.DEFAULT, 0),
-	}
+	return {"enemy_kills": enemy_kills}
 
 
 func _restore_progress(progress: Dictionary) -> void:
 	enemy_kills = int(progress.get("enemy_kills", 0))
-	if progress.has("worm_budget"):
-		_budget[Data.Enemy.WORM] = int(progress["worm_budget"])
-	if progress.has("spam_budget"):
-		_budget[Data.Enemy.DEFAULT] = int(progress["spam_budget"])
+	var remaining: int = max(KILL_TARGET - enemy_kills, 0)
+	var worm_share: int = int(ceil(remaining / 2.0))
+	_budget[Data.Enemy.WORM] = worm_share
+	_budget[Data.Enemy.DEFAULT] = remaining - worm_share
+
 	if progress.has("health"):
 		Data.health = float(progress["health"])

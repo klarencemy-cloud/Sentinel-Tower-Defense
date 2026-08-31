@@ -33,6 +33,8 @@ func _ready() -> void:
 	Data.current_wave = 1
 	session_active = false
 
+	Data.money = Data.default_money
+
 	EnemyStats.enemy_killed.connect(_on_challenge_enemy_killed)
 
 	vm_save_timer = Timer.new()
@@ -43,6 +45,8 @@ func _ready() -> void:
 	_challenge_setup()
 	_restore_progress(Data.vmmode_resume_progress)
 	_restore_stats_counters(Data.vmmode_resume_progress)
+	if Data.vmmode_resume_progress.has("money"):
+		Data.money = int(Data.vmmode_resume_progress["money"])
 	_refresh_progress_label()
 
 	_build_end_overlay()
@@ -117,6 +121,7 @@ func _refresh_progress_label() -> void:
 func _restore_backed_up_state() -> void:
 	Data.current_level_index = Data.before_level_index
 	Data.current_wave = Data.before_current_wave
+	Data.money = Data.before_total_money
 	Data.max_health = Data.before_max_health
 	Data.health = Data.before_total_health
 	Data.maxserverload = Data.before_max_server_load

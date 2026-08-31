@@ -186,6 +186,7 @@ func _on_start_game_pressed() -> void:
 		return
 	Data.before_level_index = Data.current_level_index
 	Data.before_current_wave = Data.current_wave
+	Data.before_total_money = Data.money
 	Data.before_total_health = Data.health
 	Data.before_max_health = Data.max_health
 	Data.before_max_server_load = Data.maxserverload
