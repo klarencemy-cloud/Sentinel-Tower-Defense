@@ -48,10 +48,13 @@ func update_wave_state() -> void:
 			if ui:
 				ui.update_wave_label()
 
+		#for dialogue trigger
 		if Data.current_wave == 2 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_defeat_spam:
+			GameDialogueManager.is_defeat_spam = true
 			GameDialogueManager.show_dialogue_spam_defeat()
 
 		if Data.current_wave == 3 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_wave2_defeated:
+			GameDialogueManager.is_wave2_defeated = true
 			GameDialogueManager.play_scene("2nd_scene")
 
 		if Data.current_wave == 5 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_firewall_shown:
@@ -86,6 +89,14 @@ func start_wave() -> void:
 		return
 	Data.clear_notpetya_enemy_speed_effect()
 	Data.wave_started = true
+
+
+	# for unlocking towers
+	var tower_pop = get_tree().get_first_node_in_group("animate3")
+	if Data.current_wave == 3 and wave_active == false and !Data.is_sandbox:
+		tower_pop.play_animation("antivirus")
+
+
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.update_wave_label()

@@ -2,12 +2,6 @@ extends CanvasLayer
 
 var is_skippable: bool = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$Pop/Animation/RedPop/TextureRect.rotation += .005
 
@@ -15,6 +9,7 @@ func _process(delta: float) -> void:
 func _on_info_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and is_skippable:
+			UISound.play_close()
 			$Pop/Info/AnimationPlayer.play_backwards("info_pop")
 			await get_tree().create_timer(0.3).timeout
 			is_skippable = false

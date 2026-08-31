@@ -75,7 +75,7 @@ _data = {
 &"vm_pop": SubResource("Animation_34egl")
 }
 
-[node name="VmDescOverlay" type="CanvasLayer" unique_id=1370449254 groups=["animate3"]]
+[node name="VmDescOverlay" type="CanvasLayer" unique_id=1370449254]
 script = ExtResource("1_xvmui")
 
 [node name="Control" type="Control" parent="." unique_id=1072210149]

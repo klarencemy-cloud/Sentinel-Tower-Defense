@@ -531,6 +531,9 @@ func hide_pop2(state: bool):
 func hide_pop3(state: bool):
 	$SentinelPop.visible = state
 
+func hide_pop4(state: bool):
+	$TowerPop.visible = state
+
 func play_sentinel_pop(sentinel: String):
 	$SentinelPop.play_animation(sentinel)
 	$SentinelPop/Info/TextureRect/AnimatedSprite2D.play(sentinel)
@@ -539,7 +542,6 @@ func play_sentinel_pop(sentinel: String):
 func play_scene(scene: String):
 	$Cutscene.visible = true
 	$Cutscene/Control/AnimationPlayer.play(scene)
-
 
 func toggle_fade():
 	$AnimationPlayer.play("overlay_fade")

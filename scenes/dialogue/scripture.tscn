@@ -193,7 +193,7 @@ anchors_preset = -1
 anchor_top = 0.46944445
 anchor_right = 1.0
 anchor_bottom = 1.0000011
-offset_bottom = -0.00036621094
+offset_bottom = -0.00048828125
 texture = ExtResource("4_ebn4j")
 metadata/_edit_use_anchors_ = true
 
@@ -263,7 +263,7 @@ anchor_right = 0.94030374
 anchor_bottom = 0.94710636
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.9499999, 0.9499999)
+scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(861.4274, 485.50006)
 texture = ExtResource("8_4ekns")
 metadata/_edit_use_anchors_ = true
