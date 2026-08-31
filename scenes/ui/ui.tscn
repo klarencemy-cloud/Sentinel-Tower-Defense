@@ -247,19 +247,6 @@ theme_override_font_sizes/font_size = 41
 text = "Wave 1/50"
 metadata/_edit_use_anchors_ = true
 
-[node name="VirusNum" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=1994024870]
-visible = false
-z_index = 2
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 41.775
-anchor_top = 2.075
-anchor_right = 46.7
-anchor_bottom = 3.275
-theme_override_font_sizes/font_size = 41
-text = "Virus 0/200"
-metadata/_edit_use_anchors_ = true
-
 [node name="ServerHealth" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=1597613385]
 layout_mode = 0
 anchor_left = 30.4
@@ -624,6 +611,24 @@ theme_override_font_sizes/font_size = 23
 text = "Boss Name"
 metadata/_edit_use_anchors_ = true
 
+[node name="VirusNum" type="Label" parent="Control" unique_id=1994024870]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.03
+anchor_right = 0.5
+anchor_bottom = 0.03
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 41
+text = "Virus 0/200"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="smallhpbar1" type="TextureProgressBar" parent="Control" unique_id=1301150721]
 visible = false
 layout_mode = 1
@@ -852,6 +857,7 @@ z_index = 2
 
 [node name="Overlay" type="TextureRect" parent="." unique_id=1622159644]
 process_mode = 3
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 z_index = 4
 anchors_preset = 15

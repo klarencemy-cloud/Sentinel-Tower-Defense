@@ -47,6 +47,8 @@ func _ready() -> void:
 	$Facts/Details.text = tips[index]
 	if Data.is_vmmode:
 		next_scene_path = Data.VM_MAP_DATA[Data.vmmode_map_number]['scene']
+		EnemyStats.reset()
+		EnemyTower.reset()
 	elif Data.is_sandbox:
 		next_scene_path = next_scene_path2
 	else:

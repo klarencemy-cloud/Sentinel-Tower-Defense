@@ -225,7 +225,7 @@ func change_weather() -> void:
 			$'../WeatherEffects/LightningEffects'.visible = true
 			$'../WeatherEffects/BloomParticles'.visible = false
 
-func _spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D) -> void:
+func _spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D) -> Node:
 	var path_follow = PathFollow2D.new()
 	var enemy = enemy_scene.instantiate()
 
@@ -236,12 +236,15 @@ func _spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D) -> void:
 
 	path.move_child(path_follow, 0)
 
-func spawn_sandbox_enemy(enemy_enum: Data.Enemy) -> void:
+	return enemy
+
+func spawn_sandbox_enemy(enemy_enum: Data.Enemy) -> Node:
 	wave_active = true
 	var paths = _get_paths()
 	if paths.size() > 0:
 		var path = paths[randi() % paths.size()]
-		_spawn_enemy_on_path(enemy_enum, path)
+		return _spawn_enemy_on_path(enemy_enum, path)
+	return null
 
 
 func _get_paths() -> Array[Path2D]:

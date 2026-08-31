@@ -63,6 +63,10 @@ func save_game() -> void:
 		"placed_towers": placed_towers,
 		"placed_sentinels": placed_sentinels,
 		"placed_abilities": placed_abilities,
+		"stats": {
+			"enemy_kills": EnemyStats.get_save_data(),
+			"tower_damage": EnemyTower.get_save_data(),
+		},
 	}
 
 	_write_all(all_data)
@@ -86,6 +90,8 @@ func load_into_data(map_number: int) -> Dictionary:
 	var progress: Dictionary = slot.get("progress", {}).duplicate()
 	if slot.has("health"):
 		progress["health"] = slot["health"]
+	if slot.has("stats"):
+		progress["stats"] = slot["stats"]
 	return progress
 
 

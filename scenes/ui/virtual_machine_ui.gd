@@ -192,7 +192,10 @@ func _on_start_game_pressed() -> void:
 	Data.before_current_server_load = Data.currentserverload
 	Data.before_server_points = Data.server_points
 	Data.server_points = Data.default_server_points
-	Data.currentserverload = 0 # 
+	Data.currentserverload = 0 #
+
+	EnemyStats.backup()
+	EnemyTower.backup()
 
 	Data._initialize_base_tower_stats()
 	Data._backup_tower_upgrades()

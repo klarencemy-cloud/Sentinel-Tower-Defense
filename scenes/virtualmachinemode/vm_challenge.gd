@@ -22,7 +22,7 @@ func _ready() -> void:
 	ui_node = $Level/UI
 	var wave_num_label: Label = ui_node.get_node("Control/TextureRect/PlayerCurrentStats/WaveNum")
 	wave_num_label.visible = false
-	progress_label = ui_node.get_node("Control/TextureRect/PlayerCurrentStats/VirusNum")
+	progress_label = ui_node.get_node("Control/VirusNum")
 	progress_label.visible = true
 	wave_button = ui_node.get_node("Control/TextureRect/HBoxContainer/WaveButton")
 
@@ -42,6 +42,7 @@ func _ready() -> void:
 
 	_challenge_setup()
 	_restore_progress(Data.vmmode_resume_progress)
+	_restore_stats_counters(Data.vmmode_resume_progress)
 	_refresh_progress_label()
 
 	_build_end_overlay()
@@ -93,8 +94,19 @@ func _end_session(won: bool) -> void:
 	_on_session_ended()
 	VMSave.clear_save(Data.vmmode_map_number)
 
-	end_overlay.show_result(won, _result_text(won))
-	get_tree().paused = true
+	if won:
+		$Level.level_completed()
+	else:
+		end_overlay.show_result(false, _result_text(false))
+		get_tree().paused = true
+
+
+func _restore_stats_counters(progress: Dictionary) -> void:
+	var stats: Dictionary = progress.get("stats", {})
+	if stats.has("enemy_kills"):
+		EnemyStats.load_save_data(stats["enemy_kills"])
+	if stats.has("tower_damage"):
+		EnemyTower.load_damage_save_data(stats["tower_damage"])
 
 
 func _refresh_progress_label() -> void:
@@ -115,6 +127,9 @@ func _restore_backed_up_state() -> void:
 	Offense._restore_original_server_stats()
 	Defense._restore_original_server_stats()
 	Economy._restore_original_server_stats()
+
+	EnemyStats.restore_backup()
+	EnemyTower.restore_backup()
 
 	Data.is_vmmode = false
 

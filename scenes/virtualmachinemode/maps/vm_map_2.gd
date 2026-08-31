@@ -17,7 +17,8 @@ var _run_left: int = 0
 
 
 func _challenge_setup() -> void:
-	Data.health = Data.max_health
+	Data.max_health = 1
+	Data.health = 1
 
 	_budget = {Data.Enemy.WORM: WORM_BUDGET, Data.Enemy.DEFAULT: SPAM_BUDGET}
 	_run_left = 0

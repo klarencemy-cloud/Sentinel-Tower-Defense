@@ -39,3 +39,33 @@ func get_max_kills() -> int:
     for enemy_type in enemy_kills:
         max_kills = max(max_kills, enemy_kills[enemy_type])
     return max_kills
+
+func reset() -> void:
+    enemy_kills.clear()
+    enemy_info.clear()
+
+var _backup_kills: Dictionary = {}
+var _backup_info: Dictionary = {}
+
+func backup() -> void:
+    _backup_kills = enemy_kills.duplicate(true)
+    _backup_info = enemy_info.duplicate(true)
+
+func restore_backup() -> void:
+    enemy_kills = _backup_kills.duplicate(true)
+    enemy_info = _backup_info.duplicate(true)
+    _backup_kills = {}
+    _backup_info = {}
+
+func get_save_data() -> Dictionary:
+    var data := {}
+    for enemy_type in enemy_kills:
+        data[str(int(enemy_type))] = enemy_kills[enemy_type]
+    return data
+
+func load_save_data(data: Dictionary) -> void:
+    for key in data:
+        var enemy_type: Data.Enemy = (int(key) as Data.Enemy)
+        register_enemy_type(enemy_type)
+        enemy_kills[enemy_type] = int(data[key])
+        enemy_killed.emit(enemy_type, enemy_kills[enemy_type])

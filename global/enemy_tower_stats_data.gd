@@ -43,3 +43,34 @@ func get_max_damage() -> int:
 	for tower_id in tower_damage:
 		max_dmg = max(max_dmg, tower_damage[tower_id])
 	return max_dmg
+
+func reset() -> void:
+	tower_info.clear()
+	tower_damage.clear()
+
+var _backup_damage: Dictionary = {}
+var _backup_info: Dictionary = {}
+
+func backup() -> void:
+	_backup_damage = tower_damage.duplicate(true)
+	_backup_info = tower_info.duplicate(true)
+
+func restore_backup() -> void:
+	tower_damage = _backup_damage.duplicate(true)
+	tower_info = _backup_info.duplicate(true)
+	_backup_damage = {}
+	_backup_info = {}
+
+func get_save_data() -> Dictionary:
+	var data := {}
+	for tower_id in tower_damage:
+		data[str(tower_id)] = tower_damage[tower_id]
+	return data
+
+func load_damage_save_data(data: Dictionary) -> void:
+	for key in data:
+		var tower_id := int(key)
+		if not tower_damage.has(tower_id):
+			continue
+		tower_damage[tower_id] = int(data[key])
+		tower_damage_changed.emit(tower_id)
