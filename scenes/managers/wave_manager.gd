@@ -225,26 +225,56 @@ func change_weather() -> void:
 			$'../WeatherEffects/LightningEffects'.visible = true
 			$'../WeatherEffects/BloomParticles'.visible = false
 
-func _spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D) -> Node:
+func _spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D, lane_offset: float = 0.0) -> Node:
 	var path_follow = PathFollow2D.new()
 	var enemy = enemy_scene.instantiate()
 
 	path.add_child(path_follow)
 	path_follow.add_child(enemy)
 
+	enemy.lane_offset = lane_offset
 	enemy.setup(path_follow, enemy_enum)
 
 	path.move_child(path_follow, 0)
 
 	return enemy
 
-func spawn_sandbox_enemy(enemy_enum: Data.Enemy) -> Node:
+func spawn_sandbox_enemy(enemy_enum: Data.Enemy, lane_offset: float = 0.0) -> Node:
 	wave_active = true
 	var paths = _get_paths()
 	if paths.size() > 0:
 		var path = paths[randi() % paths.size()]
-		return _spawn_enemy_on_path(enemy_enum, path)
+		return _spawn_enemy_on_path(enemy_enum, path, lane_offset)
 	return null
+
+
+const LANE_GROUP_SPAWN_STAGGER: float = 0.3
+
+func spawn_enemy_lane_group(enemy_enums: Array, path: Path2D = null, lane_offsets: Array = [], spawn_stagger: float = LANE_GROUP_SPAWN_STAGGER, on_enemy_spawned: Callable = Callable()) -> Array:
+	var spawned: Array = []
+	if enemy_enums.is_empty():
+		return spawned
+
+	if path == null:
+		var paths := _get_paths()
+		if paths.is_empty():
+			return spawned
+		path = paths[randi() % paths.size()]
+
+	wave_active = true
+
+	for i in range(enemy_enums.size()):
+		var offset: float = 0.0
+		if i < lane_offsets.size():
+			offset = float(lane_offsets[i])
+		var enemy := _spawn_enemy_on_path(enemy_enums[i], path, offset)
+		if on_enemy_spawned.is_valid():
+			on_enemy_spawned.call(enemy)
+		spawned.append(enemy)
+		if spawn_stagger > 0.0 and i < enemy_enums.size() - 1:
+			await get_tree().create_timer(spawn_stagger, false).timeout
+
+	return spawned
 
 
 func _get_paths() -> Array[Path2D]:

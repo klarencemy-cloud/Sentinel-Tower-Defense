@@ -39,6 +39,9 @@ var ethical_hacker_freeze: bool = false
 
 var previous_pos: Vector2
 
+var lane_offset: float = 0.0
+var _spawn_jitter: Vector2 = Vector2.ZERO
+const LANE_SAMPLE_WINDOW: float = 24.0
 const NORMAL_TINT: Color = Color(1, 1, 1, 1)
 const SLOWED_TINT: Color = Color(0.6, 0.8, 1.0, 1.0)
 const FROZEN_TINT: Color = Color(0.1, 0.2, 0.6, 1.0)
@@ -269,11 +272,14 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$hpbar.visible = false
 			call_deferred("_boss5_spawn_loop")
 			
-	position += Vector2(randi_range(-4, 4), randi_range(-4, 4))
+	_spawn_jitter = Vector2(randi_range(-4, 4), randi_range(-4, 4))
+	position += _spawn_jitter
 
 	if enemy_type != $Worm:
 		path_follow.rotates = false
-	
+
+	_update_lane_offset()
+
 	if enemy_type_stats in [
 		Data.Enemy.BOSS1,
 		Data.Enemy.BOSS2,
@@ -346,7 +352,8 @@ func _process(delta: float):
 	current_speed = int(round(float(current_speed) * Data.notpetya_enemy_speed_multiplier))
 
 	path_follow.progress += (current_speed * delta) * direction
-	
+	_update_lane_offset()
+
 	if enemy_type_stats == Data.Enemy.ROOTKIT and !rootkit_skill_used:
 		if path_follow.progress_ratio >= randf_range(0.2, 0.3):
 			rootkit_skill_used = true
@@ -740,6 +747,33 @@ func _on_stun_end():
 	if pending_slow_duration > 0.0:
 		slow(pending_slow_duration)
 		pending_slow_duration = 0.0
+
+func _update_lane_offset() -> void:
+	if is_zero_approx(lane_offset):
+		return
+
+	var path := path_follow.get_parent() as Path2D
+	if path == null or path.curve == null or path.curve.point_count < 2:
+		return
+
+	if path_follow.rotates:
+		# Worm: the PathFollow2D is already aligned to the tangent, so local Y is the normal.
+		position = Vector2(0.0, lane_offset) + _spawn_jitter
+		return
+
+	# rotates == false, so the enemy's local axes match the Path2D's local axes -
+	# the same space sample_baked() returns.
+	var curve := path.curve
+	var length := curve.get_baked_length()
+	var p := clampf(path_follow.progress, 0.0, length)
+	var behind := curve.sample_baked(maxf(p - LANE_SAMPLE_WINDOW, 0.0))
+	var ahead := curve.sample_baked(minf(p + LANE_SAMPLE_WINDOW, length))
+	var tangent := ahead - behind
+	if tangent.length_squared() < 0.0001:
+		return
+
+	position = tangent.normalized().orthogonal() * lane_offset + _spawn_jitter
+
 
 func spawn_rootkit_portal():
 	var entrance = ROOTKIT_PORTAL.instantiate()

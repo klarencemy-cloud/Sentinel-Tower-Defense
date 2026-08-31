@@ -3,6 +3,9 @@ class_name VMChallenge
 
 const VM_SAVE_INTERVAL := 5.0
 
+const LANE_SPACING := 32.0
+const DEFAULT_LANE_COUNT := 3
+
 var session_active: bool = false
 var session_ended: bool = false
 var _scripted_drain_guard: bool = false
@@ -10,6 +13,7 @@ var _scripted_drain_guard: bool = false
 var vm_save_timer: Timer
 
 var ui_node: Node
+var wave_manager: Node
 var wave_button: TextureButton
 var progress_label: Label
 
@@ -20,6 +24,7 @@ func _ready() -> void:
 	add_to_group("vmmode_session")
 
 	ui_node = $Level/UI
+	wave_manager = $Level/WaveManager
 	var wave_num_label: Label = ui_node.get_node("Control/TextureRect/PlayerCurrentStats/WaveNum")
 	wave_num_label.visible = false
 	progress_label = ui_node.get_node("Control/VirusNum")
@@ -92,10 +97,9 @@ func _on_server_health_depleted() -> void:
 
 
 func _end_session(won: bool) -> void:
-	session_active = false
+	_halt_session_activity()
 	session_ended = true
 	vm_save_timer.stop()
-	_on_session_ended()
 	VMSave.clear_save(Data.vmmode_map_number)
 
 	if won:
@@ -103,6 +107,26 @@ func _end_session(won: bool) -> void:
 	else:
 		end_overlay.show_result(false, _result_text(false))
 		get_tree().paused = true
+
+
+# Stops the challenge's own spawn/timer logic and clears any enemies/bullets
+# still active, so combat doesn't keep visibly running after the player has left
+# the session, however they left it. Relying on scene teardown alone leaves a
+# window where the old tree - and its still-ticking spawn timer - keeps running:
+# quitting mid-session from the pause menu (pause_menu.gd -> call_group
+# ("vmmode_session", "_on_quit_pressed")) bypasses _end_session entirely, so this
+# must be called from every exit path (_end_session, retry, quit), not just win.
+func _halt_session_activity() -> void:
+	session_active = false
+	_on_session_ended()
+	_clear_remaining_combat()
+
+
+func _clear_remaining_combat() -> void:
+	for enemy in get_tree().get_nodes_in_group("Enemies"):
+		enemy.queue_free()
+	for bullet in get_tree().get_nodes_in_group("bullet"):
+		bullet.queue_free()
 
 
 func _restore_stats_counters(progress: Dictionary) -> void:
@@ -142,6 +166,7 @@ func _restore_backed_up_state() -> void:
 func _on_retry_pressed() -> void:
 	UISound.play_click()
 	get_tree().paused = false
+	_halt_session_activity()
 	VMSave.clear_save(Data.vmmode_map_number)
 	Data.currentserverload = 0
 	Data.vmmode_resume_progress = {}
@@ -151,6 +176,7 @@ func _on_retry_pressed() -> void:
 func _on_quit_pressed() -> void:
 	UISound.play_click()
 	get_tree().paused = false
+	_halt_session_activity()
 	if not session_ended:
 		VMSave.save_game()
 	_restore_backed_up_state()
@@ -163,6 +189,29 @@ func _build_end_overlay() -> void:
 	add_child(end_overlay)
 	end_overlay.retry_pressed.connect(_on_retry_pressed)
 	end_overlay.quit_pressed.connect(_on_quit_pressed)
+
+
+static func lane_offsets_for(count: int, spacing: float = LANE_SPACING) -> Array:
+	var offsets: Array = []
+	for i in range(count):
+		offsets.append((float(i) - (count - 1) / 2.0) * spacing)
+	return offsets
+
+
+func _spawn_lane_group(enemy_types: Array, lane_offsets: Array = [], on_enemy_spawned: Callable = Callable(), spawn_stagger: float = -1.0) -> Array:
+	if wave_manager == null or enemy_types.is_empty():
+		return []
+	if lane_offsets.is_empty():
+		lane_offsets = lane_offsets_for(enemy_types.size())
+	var guarded_callback := func(enemy: Node) -> void:
+		if not session_active:
+			if enemy:
+				enemy.queue_free()
+			return
+		if on_enemy_spawned.is_valid():
+			on_enemy_spawned.call(enemy)
+	var stagger: float = wave_manager.LANE_GROUP_SPAWN_STAGGER if spawn_stagger < 0.0 else spawn_stagger
+	return await wave_manager.spawn_enemy_lane_group(enemy_types, null, lane_offsets, stagger, guarded_callback)
 
 
 func _challenge_setup() -> void:

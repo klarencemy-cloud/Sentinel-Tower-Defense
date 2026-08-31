@@ -2,7 +2,9 @@
 .godot/
 /android/
 CLAUDE.md
+skills-lock.json
 .mcp.json
+.agents/skills/thermo-nuclear-code-quality-review
 .vscode/settings.json
 .vscode/settings.json
 graphics/bosses/Virus.png.import
