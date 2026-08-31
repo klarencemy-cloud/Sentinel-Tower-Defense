@@ -61,6 +61,15 @@ const VM_MAP_DATA := {
 		'unlock_wave': 10,
 		'desc': "A massive outbreak of Worms and Spam floods the path. Defeat 1,000 enemies without taking any damage.",
 	},
+	3: {
+		'title': "Malware Interruption",
+		'scene': "res://scenes/virtualmachinemode/maps/vm_map_3.tscn",
+		'terrain_level_index': 1,
+		'difficulty': "Hard",
+		'recommended_wave': 16,
+		'unlock_wave': 16,
+		'desc': "The S.E.R.V.E.R. has only 1 HP left. Survive 7 waves of malware without taking any damage. A single hit costs everything.",
+	},
 }
 
 

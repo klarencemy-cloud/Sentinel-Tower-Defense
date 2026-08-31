@@ -16,6 +16,7 @@ var ui_node: Node
 var wave_manager: Node
 var wave_button: TextureButton
 var progress_label: Label
+var countdown_label: Label
 
 var end_overlay: CanvasLayer
 
@@ -29,6 +30,7 @@ func _ready() -> void:
 	wave_num_label.visible = false
 	progress_label = ui_node.get_node("Control/VirusNum")
 	progress_label.visible = true
+	countdown_label = ui_node.get_node_or_null("Control/WaveCountdown")
 	wave_button = ui_node.get_node("Control/TextureRect/HBoxContainer/WaveButton")
 
 	var auto_label = ui_node.get_node_or_null("Control/AutoLabel")
@@ -120,6 +122,7 @@ func _halt_session_activity() -> void:
 	session_active = false
 	_on_session_ended()
 	_clear_remaining_combat()
+	_hide_countdown()
 
 
 func _clear_remaining_combat() -> void:
@@ -140,6 +143,17 @@ func _restore_stats_counters(progress: Dictionary) -> void:
 func _refresh_progress_label() -> void:
 	if progress_label:
 		progress_label.text = _progress_text()
+
+
+func _set_countdown_text(text: String) -> void:
+	if countdown_label:
+		countdown_label.text = text
+		countdown_label.visible = true
+
+
+func _hide_countdown() -> void:
+	if countdown_label:
+		countdown_label.visible = false
 
 
 func _restore_backed_up_state() -> void:
