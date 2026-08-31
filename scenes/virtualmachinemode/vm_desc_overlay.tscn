@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://c507xxnt0mfeq" path="res://graphics/map/challenge1.png" id="1_bt7my"]
 [ext_resource type="Script" uid="uid://dr8sqdqc4bj7x" path="res://scenes/virtualmachinemode/vm_desc_overlay.gd" id="1_xvmui"]
+[ext_resource type="Shader" uid="uid://cjs8i8o0vubhe" path="res://texture/shaders/pulse_shader.gdshader" id="2_34egl"]
+[ext_resource type="Texture2D" uid="uid://d1wi5o7sgfhyu" path="res://graphics/backgrounds/vm_popbg.png" id="2_meqeb"]
 [ext_resource type="FontFile" uid="uid://tujnohddqv1k" path="res://font/Libre_Franklin/LibreFranklin-Italic-VariableFont_wght.ttf" id="2_xvmui"]
 [ext_resource type="Script" uid="uid://cb1cir1361i51" path="res://scenes/virtualmachinemode/ghost_text.gd" id="5_34egl"]
 
@@ -10,6 +12,15 @@ colors = PackedColorArray(0.13725491, 0.22352941, 0.2784314, 0.6784314, 0.137254
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_h28so"]
 gradient = SubResource("Gradient_ysedr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_meqeb"]
+shader = ExtResource("2_34egl")
+shader_parameter/beat_speed = 0.78300003393262
+shader_parameter/pulse_intensity = 0.04400000209
+shader_parameter/glow_intensity = 0.030000001425
+shader_parameter/pulse_color = Color(1, 0.2, 0.2, 1)
+shader_parameter/use_glow = true
+shader_parameter/use_tint = false
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_meqeb"]
 script = ExtResource("5_34egl")
@@ -74,6 +85,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_force_pass_scroll_events = false
 
 [node name="Overlay" type="TextureRect" parent="Control" unique_id=95322078]
 z_index = -1
@@ -85,7 +97,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_h28so")
 
-[node name="Overlay2" type="ColorRect" parent="Control" unique_id=602496590]
+[node name="Overlay2" type="TextureRect" parent="Control" unique_id=2106128041]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.2537037
@@ -96,12 +108,12 @@ offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 1
-color = Color(0.015791116, 0.098434515, 0.14269495, 1)
+texture = ExtResource("2_meqeb")
 
 [node name="Map1" type="TextureRect" parent="Control/Overlay2" unique_id=291757019]
 z_index = 1
 texture_filter = 2
+material = SubResource("ShaderMaterial_meqeb")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.0072916667

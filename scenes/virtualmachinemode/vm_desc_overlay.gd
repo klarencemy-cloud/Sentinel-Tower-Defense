@@ -37,6 +37,7 @@ func _ready() -> void:
 	if Data.is_vmmode:
 		$'.'.show()
 		$Control/AnimationPlayer.play("vm_pop")
+		UISound.play_click()
 	skippable = false
 
 func _process(delta: float) -> void:
