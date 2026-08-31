@@ -429,13 +429,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Pop/Overlay/Animation" unique_id=74128809]
 layout_mode = 0
-offset_left = 1447.0
-offset_top = 1018.0
-offset_right = 1858.0
-offset_bottom = 1057.0
+anchor_left = 0.75364584
+anchor_top = 0.9425926
+anchor_right = 0.96770835
+anchor_bottom = 0.9787037
 theme_override_fonts/font = ExtResource("5_in6l3")
 theme_override_font_sizes/font_size = 32
 text = "SENTINEL UNLOCKED"
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pop/Overlay/Animation" unique_id=397421522]
 libraries/ = SubResource("AnimationLibrary_ult64")

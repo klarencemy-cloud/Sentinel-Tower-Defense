@@ -994,13 +994,14 @@ frame_progress = 0.3162996
 
 [node name="Label" type="Label" parent="Pop/Animation" unique_id=1896812019]
 layout_mode = 0
-offset_left = 1447.0
-offset_top = 1018.0
-offset_right = 1858.0
-offset_bottom = 1057.0
+anchor_left = 0.75364584
+anchor_top = 0.9425926
+anchor_right = 0.96770835
+anchor_bottom = 0.9787037
 theme_override_fonts/font = ExtResource("10_bxm1x")
 theme_override_font_sizes/font_size = 32
 text = "Threat Signature Identified"
+metadata/_edit_use_anchors_ = true
 
 [node name="Info" type="Control" parent="Pop" unique_id=137236267]
 visible = false

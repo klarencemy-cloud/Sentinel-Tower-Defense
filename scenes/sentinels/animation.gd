@@ -5,6 +5,7 @@ var is_skippable: bool = false
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and GameDialogueManager.clicked == 0 and is_skippable == true:
+			UISound.play_click()
 			GameDialogueManager.clicked += 1
 			var ui = get_tree().get_first_node_in_group("UI")
 			ui.trigger_shake()

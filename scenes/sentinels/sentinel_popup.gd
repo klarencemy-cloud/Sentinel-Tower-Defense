@@ -1,13 +1,9 @@
 extends CanvasLayer
 var is_skippable: bool = false
 
-
-# func _ready() -> void:
-# 	play_animation(1)
-
 func _on_info_gui_input(event: InputEvent) -> void:
-	UISound.play_click()
 	if event is InputEventMouseButton:
+		UISound.play_close()
 		if event.button_index == MOUSE_BUTTON_LEFT and is_skippable:
 			$Info/AnimationPlayer.play_backwards("pop_info")
 			await get_tree().create_timer(0.3).timeout
