@@ -56,6 +56,7 @@ do GameDialogueManager.pause_game(false)
 do GameDialogueManager.pause_game(true)
 CREDENTIAL STUFFING: Let’s see what works.
 do GameDialogueManager.show_enemy("creds", 6)
+do GameDialogueManager.unlock_towers(6, "acs")
 #function to activate credential stuffing pop-up card
 => END
 
@@ -138,6 +139,7 @@ Player: When did that get through there?
 Player: I didn’t even see it enter our area of resistance.
 #function to activate insider threat pop-up card
 do GameDialogueManager.show_enemy("insider", 8)
+do GameDialogueManager.unlock_towers(7, "ai")
 => END
 
 ~ insider_threat2

@@ -91,12 +91,6 @@ func start_wave() -> void:
 	Data.wave_started = true
 
 
-	# for unlocking towers
-	var tower_pop = get_tree().get_first_node_in_group("animate3")
-	if Data.current_wave == 3 and wave_active == false and !Data.is_sandbox:
-		tower_pop.play_animation("antivirus")
-
-
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.update_wave_label()

@@ -184,7 +184,8 @@ func _process(_delta: float) -> void:
 	
 	if patch_on_cooldown:
 		skill2_cooldown.value = patch_timer.time_left
-		
+	$Control/TextureRect/HBoxContainer/WaveButton.visible = GameDialogueManager.button_state
+
 func _on_skill_2_pressed() -> void:
 	if patch_on_cooldown:
 		return
@@ -645,6 +646,13 @@ func update_tower_enemies_button_texture() -> void:
 	elif enemy_cards_container.visible:
 		tower_enemies_button.texture_normal = enemy_card_button_texture
 		
+
+func pop_tower(tower_enum: Data.Tower, tower: String):
+	# # for unlocking towers
+	var tower_pop = get_tree().get_first_node_in_group("animate3")
+	tower_pop.play_animation(tower)
+	unlock_tower_card(tower_enum)
+
 func unlock_tower_card(tower_enum: Data.Tower) -> void:
 	# Don't create a duplicate card
 	for card in tower_cards_container.get_children():

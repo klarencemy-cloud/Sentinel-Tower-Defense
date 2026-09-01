@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://b246c4s7bkq30" path="res://scenes/sentinels/sentinel_popup.tscn" id="31_knhlc"]
 [ext_resource type="PackedScene" uid="uid://b2vs7ambqxntk" path="res://scenes/towers/tower_popup.tscn" id="36_67jad"]
 [ext_resource type="PackedScene" uid="uid://spkch0xigt7p" path="res://scenes/virtualmachinemode/vm_desc_overlay.tscn" id="36_lkvmi"]
+[ext_resource type="Script" uid="uid://cq0d4xcdugoxl" path="res://scenes/managers/game_dialogue_manager.gd" id="39_0xdx3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vp6q"]
 texture = ExtResource("2_g5kmx")
@@ -631,7 +632,7 @@ text = "Virus 0/200"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="WaveCountdown" type="Label" parent="Control"]
+[node name="WaveCountdown" type="Label" parent="Control" unique_id=1373488613]
 visible = false
 z_index = 2
 layout_mode = 1
@@ -899,6 +900,9 @@ metadata/_edit_use_anchors_ = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2069898942]
 process_mode = 3
 libraries/ = SubResource("AnimationLibrary_vnqvi")
+
+[node name="Node" type="Node" parent="." unique_id=766881482]
+script = ExtResource("39_0xdx3")
 
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/SandboxSetting" to="." method="_on_sandbox_setting_pressed"]
 [connection signal="pressed" from="Control/TextureRect/HBoxContainer/TowerEnemiesButton" to="." method="_on_tower_enemies_button_pressed"]

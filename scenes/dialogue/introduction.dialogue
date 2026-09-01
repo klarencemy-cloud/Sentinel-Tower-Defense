@@ -107,15 +107,17 @@ do GameDialogueManager.toggle_fade_transition()
 do GameDialogueManager.delay_dialogue(3)
 	
 ~ preparation
+do GameDialogueManager.button_state = false
 Player: Fighting non-stop really takes a toll on your energy.
 Odysseus: It really does. But it seems things have settled down for a bit. 
 Player: It might be the calm before the storm. Better get ready before threats swarm their way in!
 Odysseus: Now that’s the mindset of a strategist! Contingent planning and anticipating cyber attacks are important to minimize damage and to have room to formulate smart decisions on how to deal with the unforeseen.
 Player: Let's spent all our resources first before we lower the force field.
-if ((Data.maxserverload - Data.currentserverload) < 15 or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and Data.current_wave == 4
+if ((Data.maxserverload - Data.currentserverload) < 50 or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and Data.current_wave == 4
 	do GameDialogueManager.toggle_fade_transition()
 	do GameDialogueManager.delay_dialogue(3)
 	do GameDialogueManager.show_dialogue_preparation_end()
+
 	
 => END
 
@@ -126,11 +128,14 @@ do GameDialogueManager.show_play()
 #function to activate virus pop-up card
 do GameDialogueManager.is_autoplay = false
 do GameDialogueManager.show_enemy("virus", 1)
+do GameDialogueManager.button_state = true
 => END
 
 ~ virus
+do GameDialogueManager.pause_game(true)
 Player: Well, this is new.
 Odysseus: Those are Virus. They are malicious software that can infect our defenses, steal information, weaken our towers and damage and disrupt  the server.
+do GameDialogueManager.unlock_towers(1, "antivirus")
 => END
 
 ~ firewall
@@ -193,7 +198,9 @@ do GameDialogueManager.show_enemy("adware",2)
 => END
 
 ~ adware2
+do GameDialogueManager.pause_game(true)
 Odysseus: That is an Adware. They may not look dangerous, but don’t get yourself too comfortable. They slow down operation by showing an ad and redirection. Their slowing capability can make it easier for the enemy to reach our server. 	
+do GameDialogueManager.unlock_towers(2, "adblocker")
 => END
 
 ~ specialist

@@ -28,6 +28,13 @@ var is_level2_start_shown: bool = false
 
 var is_autoplay: bool = true
 
+var button_state: bool = true # to toggle start button visibility in ui.gd
+
+func unlock_towers(tower_enum: Data.Tower, tower: String):
+	var ui = get_tree().get_first_node_in_group("UI")
+	ui.pop_tower(tower_enum, tower)
+	
+
 func show_character(name: String):
 	show_char.emit(name)
 
