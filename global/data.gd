@@ -32,6 +32,7 @@ var before_max_health: float
 var before_max_server_load: int
 var before_current_server_load: int
 var before_owned_towers: Dictionary
+var before_free_towers: Dictionary
 var before_server_points: int
 var before_player_level: int
 var before_total_experience: int
@@ -41,6 +42,7 @@ var before_tower_upgrades: Dictionary = {} # Stores backup of all tower upgrade 
 var base_tower_stats: Dictionary = {} # Stores original base stats for all towers (set once at startup)
 var vmmode_map_number: int = 1
 var vmmode_resume_progress: Dictionary = {}
+var vmmode_sentinels_disabled: bool = false
 
 const VM_MAP_DATA := {
 	1: {
@@ -69,6 +71,61 @@ const VM_MAP_DATA := {
 		'recommended_wave': 16,
 		'unlock_wave': 16,
 		'desc': "The S.E.R.V.E.R. has only 1 HP left. Survive 7 waves of malware without taking any damage. A single hit costs everything.",
+	},
+	4: {
+		'title': "Mirai Botnet",
+		'scene': "res://scenes/virtualmachinemode/maps/vm_map_4.tscn",
+		'terrain_level_index': 2,
+		'difficulty': "Hard",
+		'recommended_wave': 25,
+		'unlock_wave': 25,
+		'desc': "Inspired by a real-world exploit, a large number of Botnet drone that mainly compromise low-power devices swarms fast to attack the S.E.R.V.E.R., but are fragile as individuals. Win 7 waves to win the challenge.",
+	},
+	5: {
+		'title': "Packet Loss",
+		'scene': "res://scenes/virtualmachinemode/maps/vm_map_5.tscn",
+		'terrain_level_index': 3,
+		'difficulty': "Hard",
+		'recommended_wave': 30,
+		'unlock_wave': 30,
+		'desc': "The map has blind spots (fog), whenever enemies are in that location, they cannot be targeted. Win 7 waves to win the challenge.",
+	},
+	6: {
+		'title': "DDoS Stress Test",
+		'scene': "res://scenes/virtualmachinemode/maps/vm_map_6.tscn",
+		'terrain_level_index': 3,
+		'difficulty': "Hard",
+		'recommended_wave': 35,
+		'unlock_wave': 35,
+		'desc': "Only Distributed Denial-of-Service (DDoS) attacks the S.E.R.V.E.R. to test how it handles floods of internet traffic. The player must defeat 300 enemies before the timer runs out.",
+	},
+	7: {
+		'title': "Random Defense",
+		'scene': "res://scenes/virtualmachinemode/maps/vm_map_7.tscn",
+		'terrain_level_index': 4,
+		'difficulty': "Extreme",
+		'recommended_wave': 40,
+		'unlock_wave': 40,
+		'desc': "Random towers randomly appear. The player must place them correctly and strategically. Win 7 waves to win the challenge.",
+	},
+	8: {
+		'title': "Automatic Defense",
+		'scene': "res://scenes/virtualmachinemode/maps/vm_map_8.tscn",
+		'terrain_level_index': 4,
+		'difficulty': "Extreme",
+		'recommended_wave': 45,
+		'unlock_wave': 45,
+		'desc': "All sentinels are disabled during the challenge. Win 7 waves to win the challenge.",
+		'disable_sentinels': true,
+	},
+	9: {
+		'title': "Endless Onslaught",
+		'scene': "res://scenes/virtualmachinemode/maps/vm_map_9.tscn",
+		'terrain_level_index': 5,
+		'difficulty': "Survival",
+		'recommended_wave': 51,
+		'unlock_wave': 51,
+		'desc': "This challenge is endless. A survival game where the player must defend the S.E.R.V.E.R. with an endless number of waves.",
 	},
 }
 

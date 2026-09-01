@@ -165,6 +165,7 @@ func _restore_backed_up_state() -> void:
 	Data.maxserverload = Data.before_max_server_load
 	Data.currentserverload = Data.before_current_server_load
 	Data.server_points = Data.before_server_points
+	Data.free_towers = Data.before_free_towers.duplicate()
 
 	Data._restore_tower_upgrades()
 	Offense._restore_original_server_stats()
@@ -175,6 +176,7 @@ func _restore_backed_up_state() -> void:
 	EnemyTower.restore_backup()
 
 	Data.is_vmmode = false
+	Data.vmmode_sentinels_disabled = false
 
 
 func _on_retry_pressed() -> void:

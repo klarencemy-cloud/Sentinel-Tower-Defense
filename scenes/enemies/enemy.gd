@@ -20,6 +20,7 @@ var is_slowed: bool = false
 var original_speed: int
 var pending_slow_duration: float = 0.0
 var invisible: bool = false
+var fog_hidden: bool = false # VM Map 5 untargetable inside a fog zone
 var acs_in_range: bool = false
 var acs_slow_multiplier: float = 1.0
 var acs_lockdown_remaining: float = 0.0
@@ -323,7 +324,7 @@ func _process(delta: float):
 			backup_server_recently_knocked_back = false
 			backup_server_knockback()
 			return
-	if invisible:
+	if invisible or fog_hidden:
 		enemy_type.modulate = INVISIBLE_TINT
 	else:
 		enemy_type.modulate = NORMAL_TINT
@@ -446,7 +447,7 @@ func _process(delta: float):
 	if spyware_count > 0:
 		print(name, speed)
 		
-	if invisible:
+	if invisible or fog_hidden:
 		enemy_type.modulate = INVISIBLE_TINT
 	else:
 		enemy_type.modulate = NORMAL_TINT
@@ -678,12 +679,24 @@ func set_invisible(value: bool) -> void:
 	invisible = value
 
 	if enemy_type_stats == Data.Enemy.INSIDERTHREAT and enemy_type:
-		if invisible:
+		if invisible or fog_hidden:
 			enemy_type.modulate = INVISIBLE_TINT
 		else:
 			enemy_type.modulate = NORMAL_TINT
 
-		$CollisionShape2D.disabled = invisible
+	$CollisionShape2D.disabled = invisible or fog_hidden
+
+
+func set_fog_hidden(value: bool) -> void:
+	fog_hidden = value
+
+	if enemy_type:
+		if invisible or fog_hidden:
+			enemy_type.modulate = INVISIBLE_TINT
+		else:
+			enemy_type.modulate = NORMAL_TINT
+
+	$CollisionShape2D.disabled = invisible or fog_hidden
 
 func show_damage(damage: int):
 	if damage <= 0:

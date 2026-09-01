@@ -167,6 +167,8 @@ func create_bullet(pos, angle, bullet_enum, damage, tower_type, tower_id := -1, 
 				tower_range = tower_data.get("range", 100)
 		
 		for enemy in get_tree().get_nodes_in_group("Enemies"):
+			if enemy.fog_hidden:
+				continue
 			if pos.distance_to(enemy.global_position) < tower_range:
 				# IDPS can hit invisible enemies and disables their invisibility
 				if tower_type == Data.Tower.IDPS and enemy.invisible:

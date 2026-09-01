@@ -215,6 +215,9 @@ func _on_start_game_pressed() -> void:
 	Data.saved_sentinel_placements.clear()
 	Data.saved_ability_placements.clear()
 
+	Data.before_free_towers = Data.free_towers.duplicate()
+	Data.free_towers.clear()
+
 	Data.vmmode_map_number = map_number
 	Data.vmmode_resume_progress = {}
 
@@ -282,11 +285,11 @@ func _toggle_tween(tween_num: int) -> void:
 	if !is_tween or container != prev:
 		tween.tween_property(container, "scale", Vector2(1.3, 1.3), 0.1)
 		is_tween = true
-		if prev != container:
+		if prev != container and prev != null:
 			tween.tween_property(prev, "scale", Vector2(1, 1), 0.1)
 		prev = container
 	elif is_tween:
 		tween.tween_property(container, "scale", Vector2(1, 1), 0.1)
 		is_tween = false
-		if prev != container:
+		if prev != container and prev != null:
 			tween.tween_property(prev, "scale", Vector2(1, 1), 0.1)
