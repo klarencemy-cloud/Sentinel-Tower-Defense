@@ -143,6 +143,9 @@ func cancel_selection() -> void:
 	current_placement_kind = ""
 	tower_menu = false
 	current_tower = null
+	var counter = get_tree().get_first_node_in_group("TowerStatsCounter")
+	if counter:
+		counter.select_tower(-1)
 
 	for tower in get_tree().get_nodes_in_group("Towers"):
 		tower.hide_ui()
@@ -195,6 +198,10 @@ func tower_selection(tower: Tower) -> void:
 	tower_menu = true
 
 	tower.show_range()
+
+	var counter = get_tree().get_first_node_in_group("TowerStatsCounter")
+	if counter:
+		counter.select_tower(tower.tower_id)
 
 
 func _try_place_current_building(cell_pos: Vector2i, world_pos: Vector2) -> void:

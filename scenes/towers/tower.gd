@@ -172,6 +172,10 @@ func hide_ui():
 	$TowerMenu.hide()
 	hide_range()
 
+	var counter = get_tree().get_first_node_in_group("TowerStatsCounter")
+	if counter:
+		counter.select_tower(-1)
+
 func refresh_stats():
 	var data = Data.TOWER_DATA.get(type, {})
 

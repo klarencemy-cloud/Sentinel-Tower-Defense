@@ -18,8 +18,10 @@ extends CanvasLayer
 
 var tower_entries: Dictionary = {}
 var enemy_entries: Dictionary = {}
+var selected_tower_id: int = -1
 
 func _ready() -> void:
+	add_to_group("TowerStatsCounter")
 	# Setup tower section
 	tower_vbox.remove_child(tower_entry_template)
 
@@ -78,6 +80,12 @@ func _add_or_update_tower_entry(tower_id: int) -> void:
 
 	var tower_image = entry.find_child("TowerImage", true, false) as TextureRect
 	if tower_image:
+		tower_image.visible = true
+
+		var circle = tower_image.get_node_or_null("SelectionCircle")
+		if circle:
+			circle.visible = (tower_id == selected_tower_id)
+
 		tower_image.texture = null
 		if thumbnail != "":
 			var tex = load(thumbnail)
@@ -192,3 +200,14 @@ func _on_tower_button_pressed() -> void:
 	scroll_container_2.visible = false
 	kill_button.texture_normal = preload("res://graphics/ui/tmid_counter_button.png")
 	tower_button.texture_normal = preload("res://graphics/ui/tmid_counter_tower_active.png")
+
+func select_tower(tower_id: int) -> void:
+	selected_tower_id = tower_id
+
+	for id in tower_entries:
+		var entry = tower_entries[id]
+		var tower_image = entry.find_child("TowerImage", true, false) as TextureRect
+		if tower_image:
+			var circle = tower_image.get_node_or_null("SelectionCircle")
+			if circle:
+				circle.visible = (id == tower_id)
