@@ -47,6 +47,7 @@ func _ready() -> void:
 	$Facts/Details.text = tips[index]
 	if Data.is_vmmode:
 		next_scene_path = Data.VM_MAP_DATA[Data.vmmode_map_number]['scene']
+		Data.vmmode_sentinels_disabled = Data.VM_MAP_DATA[Data.vmmode_map_number].get('disable_sentinels', false)
 		EnemyStats.reset()
 		EnemyTower.reset()
 	elif Data.is_sandbox:

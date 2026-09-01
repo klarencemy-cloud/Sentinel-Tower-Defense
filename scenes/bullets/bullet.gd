@@ -144,7 +144,10 @@ func ricochet(from_enemy: Node) -> void:
 	for e in enemies:
 		if e == from_enemy:
 			continue
-		
+
+		if e.fog_hidden:
+			continue
+
 		# Skip enemies already hit by this ricochet chain
 		if e in hit_enemies:
 			continue

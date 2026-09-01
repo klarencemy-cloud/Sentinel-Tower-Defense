@@ -143,17 +143,18 @@ func _ready() -> void:
 		unlock_tower_card(tower_enum)
 
 
-	for sentinel_enum in Data.Sentinel.values():
-		var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
-		
-		if not Data.is_sandbox:
-			if not sentinel_data.isUnlocked:
-				continue
-			
-		var sentinel_card = sentinel_card_scene.instantiate()
-		sentinel_card.setup(sentinel_enum)
-		$Control/TextureRect/ScrollContainer/SentinelCardsContainer.add_child(sentinel_card)
-		sentinel_card.connect('press', sentinel_select)
+	if not (Data.is_vmmode and Data.vmmode_sentinels_disabled):
+		for sentinel_enum in Data.Sentinel.values():
+			var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
+
+			if not Data.is_sandbox:
+				if not sentinel_data.isUnlocked:
+					continue
+
+			var sentinel_card = sentinel_card_scene.instantiate()
+			sentinel_card.setup(sentinel_enum)
+			$Control/TextureRect/ScrollContainer/SentinelCardsContainer.add_child(sentinel_card)
+			sentinel_card.connect('press', sentinel_select)
 
 
 	for enemy_enum in Data.Enemy.values():
@@ -263,6 +264,9 @@ func show_card_category(category: int) -> void:
 	if not Data.is_sandbox and category == CardCategory.ENEMY:
 		category = CardCategory.TOWER
 
+	if Data.is_vmmode and Data.vmmode_sentinels_disabled and category == CardCategory.SENTINEL:
+		category = CardCategory.TOWER
+
 	# Set visibility
 	tower_cards_container.visible = category == CardCategory.TOWER
 	sentinel_cards_container.visible = category == CardCategory.SENTINEL
@@ -281,6 +285,9 @@ func _on_tower_enemies_button_pressed() -> void:
 
 		elif enemy_cards_container.visible:
 			show_card_category(CardCategory.TOWER)
+
+	elif Data.is_vmmode and Data.vmmode_sentinels_disabled:
+		pass
 
 	else:
 		if tower_cards_container.visible:
