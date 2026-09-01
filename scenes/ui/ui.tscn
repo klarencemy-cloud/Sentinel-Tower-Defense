@@ -22,12 +22,12 @@
 [ext_resource type="FontFile" uid="uid://8rhcrd13glb1" path="res://font/Libre_Franklin/static/LibreFranklin-SemiBold.ttf" id="18_fqqne"]
 [ext_resource type="Texture2D" uid="uid://cyeder3q2c60c" path="res://graphics/ui/progressbar.png" id="18_qhbcy"]
 [ext_resource type="Texture2D" uid="uid://6u8psv1lt3ce" path="res://graphics/ui/firewallbutton.png" id="19_272wc"]
-[ext_resource type="Texture2D" uid="uid://wwyemyf8s3x7" path="res://graphics/container/skillcontainer.png" id="19_o71gb"]
 [ext_resource type="Texture2D" uid="uid://ddayndvqnoild" path="res://graphics/ui/expprogressbar.png" id="19_qhbcy"]
 [ext_resource type="Texture2D" uid="uid://b2ivf813gi1aa" path="res://graphics/ui/progress-circle.png" id="19_svq4k"]
 [ext_resource type="Texture2D" uid="uid://dtjdnfyfg17xh" path="res://graphics/ui/abilitycd.png" id="19_ydrdt"]
 [ext_resource type="Texture2D" uid="uid://bubyrkehmuahc" path="res://graphics/ui/progress-bg.png" id="19_ygedu"]
 [ext_resource type="Texture2D" uid="uid://clsup5ti6o6u8" path="res://graphics/ui/patch.png" id="19_yy7ol"]
+[ext_resource type="Texture2D" uid="uid://dhvels2q6x2up" path="res://graphics/ui/backupskill.png" id="21_0xdx3"]
 [ext_resource type="FontFile" uid="uid://cqus3kybakmf8" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraBold.ttf" id="21_oopc8"]
 [ext_resource type="Texture2D" uid="uid://csv6mnj4uo2vr" path="res://graphics/currency/small_gold.png" id="22_272wc"]
 [ext_resource type="Texture2D" uid="uid://i5c8je4b0012" path="res://graphics/ui/long_bar.png" id="27_knhlc"]
@@ -421,9 +421,25 @@ texture_progress = ExtResource("19_ydrdt")
 [node name="Skill3" type="TextureButton" parent="Control/HBoxContainer" unique_id=1922029326]
 custom_minimum_size = Vector2(77, 77)
 layout_mode = 2
-texture_normal = ExtResource("19_o71gb")
+texture_normal = ExtResource("21_0xdx3")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="cooldown" type="TextureProgressBar" parent="Control/HBoxContainer/Skill3" unique_id=2077965804]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("19_ydrdt")
+
+[node name="Locked" type="TextureRect" parent="Control/HBoxContainer/Skill3" unique_id=446338118]
+visible = false
+layout_mode = 0
+offset_right = 77.0
+offset_bottom = 77.0
+texture = ExtResource("19_ydrdt")
 
 [node name="StatsContainer" type="VBoxContainer" parent="Control" unique_id=1023310108]
 custom_minimum_size = Vector2(150, 0)
@@ -913,5 +929,6 @@ script = ExtResource("39_0xdx3")
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliHealth" to="." method="_on_unli_health_toggled"]
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliSentiCap" to="." method="_on_unli_senti_cap_toggled"]
 [connection signal="pressed" from="Control/HBoxContainer/Skill2" to="." method="_on_skill_2_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Skill3" to="." method="_on_skill_3_pressed"]
 [connection signal="pressed" from="Control/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="StatsCounterButton" to="." method="_on_stats_counter_button_pressed"]

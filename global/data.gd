@@ -336,8 +336,6 @@ var TOWER_DATA = {
 	Tower.BACKUP_SERVER: {
 		'name': "Backup Server",
 		'isUnlocked': false,
-		'waveUnlocked': 40,
-		'unlockable': false,
 		'cost': 550,
 		'damage': 5000,
 		'server_load': 65,
@@ -1255,6 +1253,10 @@ var experience: int = 0:
 
 func activate_backup_server():
 	backup_server_placed = false
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.start_backup_server_cooldown()
+		ui.update_skill3_locked()
 	for card in get_tree().get_nodes_in_group("TowerCard"):
 		card.toggle_active(money)
 	backup_server_invincible = true
