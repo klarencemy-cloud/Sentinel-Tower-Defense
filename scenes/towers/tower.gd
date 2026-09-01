@@ -50,6 +50,8 @@ var range_indicator: Line2D
 func _ready() -> void:
 	add_to_group("towers")
 	original_reload_time = reload_time
+	if type == Data.Tower.BACKUP_SERVER:
+		tree_exiting.connect(_on_backup_server_tree_exiting)
 
 	pay_button.visible = false
 	pay_button.disabled = true
@@ -155,9 +157,25 @@ func _on_click_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: 
 			show_range()
 
 
+func _on_backup_server_tree_exiting() -> void:
+	if type != Data.Tower.BACKUP_SERVER:
+		return
+	if not Data.backup_server_placed:
+		return
+
+	Data.backup_server_placed = false
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.start_backup_server_cooldown()
+		ui.update_skill3_locked()
+
 func _on_tower_menu_delete_press() -> void:
 	if type == Data.Tower.BACKUP_SERVER:
 		Data.backup_server_placed = false
+		var ui = get_tree().get_first_node_in_group("UI")
+		if ui:
+			ui.start_backup_server_cooldown()
+			ui.update_skill3_locked()
 		
 	Data.money += cost
 	Data.currentserverload -= currentserverload

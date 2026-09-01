@@ -336,8 +336,6 @@ var TOWER_DATA = {
 	Tower.BACKUP_SERVER: {
 		'name': "Backup Server",
 		'isUnlocked': false,
-		'waveUnlocked': 40,
-		'unlockable': false,
 		'cost': 550,
 		'damage': 5000,
 		'server_load': 65,
@@ -1162,15 +1160,23 @@ func _apply_vmmode_fixed_tower_upgrades(map_number: int) -> void:
 		var tower_data: Dictionary = TOWER_DATA[tower_enum]
 		if not tower_data.has("upgrade1"):
 			continue
-		for slot_index in range(1, 7):
-			var upgrade_key := "upgrade%d" % slot_index
-			if not tower_data.has(upgrade_key):
+		var remaining_budget: int = map_number
+		for tier in range(3):
+			if remaining_budget <= 0:
+				break
+			var slot_a := tier * 2 + 1
+			var slot_b := tier * 2 + 2
+			var cap_a: int = tower_data.get("upgrade%dcost" % slot_a, []).size()
+			var cap_b: int = tower_data.get("upgrade%dcost" % slot_b, []).size()
+			var tier_cap: int = max(cap_a, cap_b)
+			if tier_cap <= 0:
 				continue
-			var cost_key := "upgrade%dcost" % slot_index
-			var cap: int = tower_data.get(cost_key, []).size()
-			if cap <= 0:
-				continue
-			_apply_tower_upgrade_slot_to_level(tower_enum, slot_index, mini(map_number, cap))
+			var tier_level: int = mini(remaining_budget, tier_cap)
+			if tower_data.has("upgrade%d" % slot_a) and cap_a > 0:
+				_apply_tower_upgrade_slot_to_level(tower_enum, slot_a, mini(tier_level, cap_a))
+			if tower_data.has("upgrade%d" % slot_b) and cap_b > 0:
+				_apply_tower_upgrade_slot_to_level(tower_enum, slot_b, mini(tier_level, cap_b))
+			remaining_budget -= tier_level
 
 
 func _apply_tower_upgrade_slot_to_level(tower_enum: int, slot_index: int, target_level: int) -> void:
@@ -1255,6 +1261,10 @@ var experience: int = 0:
 
 func activate_backup_server():
 	backup_server_placed = false
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.start_backup_server_cooldown()
+		ui.update_skill3_locked()
 	for card in get_tree().get_nodes_in_group("TowerCard"):
 		card.toggle_active(money)
 	backup_server_invincible = true

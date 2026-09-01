@@ -273,6 +273,10 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if selected_tower == Data.Tower.BACKUP_SERVER:
 		Data.backup_server_placed = true
 	
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.update_skill3_locked()
+	
 	place_tower = false
 	for card in get_tree().get_nodes_in_group("TowerCard"):
 		card.set_selected(false)
@@ -300,7 +304,6 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		Data.owned_towers[selected_tower] = Data.owned_towers.get(selected_tower, 0) + 1
 	Data.currentserverload += systemload
 	
-	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.refresh_tower_cards()
 		

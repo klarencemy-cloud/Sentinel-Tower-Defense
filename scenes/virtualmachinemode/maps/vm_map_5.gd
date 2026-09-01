@@ -3,7 +3,7 @@ extends VMWaveChallenge
 const TOTAL_WAVES := 7
 
 const FOG_ZONE_FRACTIONS: Array[float] = [0.35, 0.70]
-const FOG_RADIUS := 220.0
+const FOG_RADIUS := 160.0
 const FOG_CHECK_INTERVAL := 0.1
 
 const WAVES: Array[Dictionary] = [
@@ -109,7 +109,7 @@ func _spawn_fog_visual(zone_center: Vector2) -> void:
 	var visual := ColorRect.new()
 	visual.size = Vector2(FOG_RADIUS * 2.0, FOG_RADIUS * 2.0)
 	visual.position = zone_center - Vector2(FOG_RADIUS, FOG_RADIUS)
-	visual.color = Color(1, 1, 1, 0.55)
+	visual.color = Color(0.49, 0.87, 0.78, 0.55)
 	visual.material = _fog_shader_material
 	visual.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	visual.z_index = 5
@@ -118,19 +118,23 @@ func _spawn_fog_visual(zone_center: Vector2) -> void:
 
 func _build_fog_material() -> ShaderMaterial:
 	var noise := FastNoiseLite.new()
-	noise.frequency = 0.0075
+	noise.frequency = 0.012
 
 	var noise_tex := NoiseTexture2D.new()
-	noise_tex.width = 320
-	noise_tex.height = 180
+	noise_tex.width = 200
+	noise_tex.height = 200
 	noise_tex.seamless = true
 	noise_tex.seamless_blend_skirt = 0.75
 	noise_tex.noise = noise
 
 	var mat := ShaderMaterial.new()
-	mat.shader = preload("res://scenes/levels/fog.gdshader")
+	mat.shader = preload("res://scenes/virtualmachinemode/maps/vm_map_5_fog.gdshader")
 	mat.set_shader_parameter("noise_texture", noise_tex)
 	mat.set_shader_parameter("speed", Vector2(0.02, 0.01))
+	mat.set_shader_parameter("density_low", 0.22)
+	mat.set_shader_parameter("density_high", 0.68)
+	mat.set_shader_parameter("edge_softness", 0.62)
+	mat.set_shader_parameter("edge_warp", 0.35)
 	return mat
 
 

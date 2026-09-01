@@ -27,6 +27,8 @@ func _ready() -> void:
 	ui.signal_unlock_tower.connect(_on_unlock_pressed)
 	update_money_display()
 	for tower_enum in Data.Tower.values():
+		if tower_enum == Data.Tower.BACKUP_SERVER:
+			continue
 		if not Data.TOWER_DATA[tower_enum]["name"] == "PATCH":
 			var tower_card = tower_card_scene.instantiate()
 			tower_card.setup(tower_enum)
