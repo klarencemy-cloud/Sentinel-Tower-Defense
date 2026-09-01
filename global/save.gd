@@ -76,6 +76,12 @@ func save_game() -> void:
 				"isUnlocked": tower_data.get("isUnlocked", false),
 				"unlockable": tower_data.get("unlockable", false)
 			}
+			
+		var enemy_met := {}
+
+		for enemy_enum in Data.Enemy.values():
+			var enemy_data: Dictionary = Data.ENEMY_DATA[enemy_enum]
+			enemy_met[str(enemy_enum)] = enemy_data.get("isMet", false)
 		
 		print("SAVED TOWERS: ", placed_towers)
 		print("SAVED SENTINELS: ", placed_sentinels)
@@ -93,6 +99,7 @@ func save_game() -> void:
 			"placed_abilities": placed_abilities,
 			"tower_unlocks": tower_unlocks,
 			"sentinel_unlocks": sentinel_unlocks,
+			"enemy_met": enemy_met,
 			"sentinels": [Data.sentinel_ethical_deployed, Data.sentinel_sysad_deployed,
 				Data.sentinel_intrusion_deployed, Data.sentinel_security_deployed,
 				Data.sentinel_malware_deployed, Data.sentinel_deception_deployed],
@@ -173,7 +180,15 @@ func _load_game() -> void:
 
 			if Data.SENTINEL_DATA.has(sentinel_enum):
 				Data.SENTINEL_DATA[sentinel_enum]["isUnlocked"] = bool(sentinel_unlocks[sentinel_key])
+		
+		var enemy_met: Dictionary = parsed.get("enemy_met", {})
 
+		for enemy_key in enemy_met:
+			var enemy_enum := int(enemy_key)
+
+			if Data.ENEMY_DATA.has(enemy_enum):
+				Data.ENEMY_DATA[enemy_enum]["isMet"] = bool(enemy_met[enemy_key])
+		
 
 		var tower_upgrades: Dictionary = parsed.get("tower_upgrades", {})
 		for tower_key in tower_upgrades:
