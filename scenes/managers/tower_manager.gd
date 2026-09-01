@@ -470,6 +470,13 @@ func restore_saved_towers() -> void:
 
 		EnemyTower.register_tower(tower.tower_id, tower_type)
 
+		# Restore saved tower damage
+		var saved_damage := int(saved_tower.get("damage", 0))
+		EnemyTower.tower_damage[tower.tower_id] = saved_damage
+
+		# Notify the damage UI that this tower has been restored
+		EnemyTower.tower_damage_changed.emit(tower.tower_id)
+
 		if tower_type == Data.Tower.BACKUP_SERVER:
 			Data.backup_server_placed = true
 
