@@ -209,15 +209,15 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		return
 
 	var tile_data = layer.get_cell_tile_data(cell_pos) as TileData
-	var asset_tile_data = asset_layer.get_cell_tile_data(cell_pos) as TileData
+	# var asset_tile_data = asset_layer.get_cell_tile_data(cell_pos) as TileData
 
 	if tile_data == null or not tile_data.get_custom_data("Usable"):
 		return
 
-	if not asset_tile_data == null:
-		if not asset_tile_data.get_custom_data("Usable") == null:
-			if not asset_tile_data.get_custom_data("Usable"):
-				return
+	# if not asset_tile_data == null:
+	# 	if not asset_tile_data.get_custom_data("Usable") == null:
+	# 		if not asset_tile_data.get_custom_data("Usable"):
+	# 			return
 
 	if not Data.is_tower_placeable:
 		return
