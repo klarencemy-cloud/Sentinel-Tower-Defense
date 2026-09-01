@@ -1,12 +1,24 @@
 [gd_scene format=3 uid="uid://wnmy3xplx5ym"]
 
-[ext_resource type="Script" path="res://scenes/virtualmachinemode/maps/vm_map_5.gd" id="1_vm5"]
+[ext_resource type="Script" uid="uid://cm88s7qoyn7k2" path="res://scenes/virtualmachinemode/maps/vm_map_5.gd" id="1_vm5"]
 [ext_resource type="PackedScene" uid="uid://cnj438cs45i3f" path="res://scenes/levels/level.tscn" id="2_vm5"]
+[ext_resource type="Shader" uid="uid://ff5s04aovju4" path="res://texture/shaders/indicator.gdshader" id="3_hxyde"]
 
-[node name="VMMap5" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddcrw"]
+resource_local_to_scene = true
+shader = ExtResource("3_hxyde")
+shader_parameter/corner_scale = 0.0950000045125
+
+[node name="VMMap5" type="Node2D" unique_id=1421869195]
 script = ExtResource("1_vm5")
 
-[node name="Level" parent="." instance=ExtResource("2_vm5")]
+[node name="Level" parent="." unique_id=1404773438 instance=ExtResource("2_vm5")]
+
+[node name="ColorRect" parent="Level/BG/TowerPreview" parent_id_path=PackedInt32Array(1404773438, 613422467) index="1" unique_id=84144201]
+material = SubResource("ShaderMaterial_ddcrw")
+
+[node name="ColorRect" parent="Level/BG/SentinelPreview" parent_id_path=PackedInt32Array(1404773438, 1358483307) index="1" unique_id=2054375140]
+material = SubResource("ShaderMaterial_ddcrw")
 
 [editable path="Level"]
 [editable path="Level/UI"]

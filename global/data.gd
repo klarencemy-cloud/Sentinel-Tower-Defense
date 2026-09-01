@@ -1123,15 +1123,23 @@ func _apply_vmmode_fixed_tower_upgrades(map_number: int) -> void:
 		var tower_data: Dictionary = TOWER_DATA[tower_enum]
 		if not tower_data.has("upgrade1"):
 			continue
-		for slot_index in range(1, 7):
-			var upgrade_key := "upgrade%d" % slot_index
-			if not tower_data.has(upgrade_key):
+		var remaining_budget: int = map_number
+		for tier in range(3):
+			if remaining_budget <= 0:
+				break
+			var slot_a := tier * 2 + 1
+			var slot_b := tier * 2 + 2
+			var cap_a: int = tower_data.get("upgrade%dcost" % slot_a, []).size()
+			var cap_b: int = tower_data.get("upgrade%dcost" % slot_b, []).size()
+			var tier_cap: int = max(cap_a, cap_b)
+			if tier_cap <= 0:
 				continue
-			var cost_key := "upgrade%dcost" % slot_index
-			var cap: int = tower_data.get(cost_key, []).size()
-			if cap <= 0:
-				continue
-			_apply_tower_upgrade_slot_to_level(tower_enum, slot_index, mini(map_number, cap))
+			var tier_level: int = mini(remaining_budget, tier_cap)
+			if tower_data.has("upgrade%d" % slot_a) and cap_a > 0:
+				_apply_tower_upgrade_slot_to_level(tower_enum, slot_a, mini(tier_level, cap_a))
+			if tower_data.has("upgrade%d" % slot_b) and cap_b > 0:
+				_apply_tower_upgrade_slot_to_level(tower_enum, slot_b, mini(tier_level, cap_b))
+			remaining_budget -= tier_level
 
 
 func _apply_tower_upgrade_slot_to_level(tower_enum: int, slot_index: int, target_level: int) -> void:

@@ -139,10 +139,6 @@ func _upgrade(index: int) -> void:
 		for child in children[index]:
 			if child.name == target_names[index]:
 				child.texture = load("res://graphics/upgrade/Upgraded.png")
-				
-				# CHANGED: Increment persistent level in Offense autoload
-				Offense.offense_levels[index] += 1
-				
 				letters[index] = char(letters[index].unicode_at(0) + 1)
 				target_names[index] = base_names[index] + letters[index]
 				break
@@ -151,21 +147,21 @@ func _upgrade(index: int) -> void:
 
 
 func _damage_max_level() -> void:
-	if Offense.offense_levels[0] + 1 >= counts[0]:
+	if Offense.offense_levels[0] >= counts[0]:
 		damage_cost.text = "Max"
 		Offense.maxed[0] = true
 		maxed[0] = true
 
 
 func _speed_max_level() -> void:
-	if Offense.offense_levels[1] + 1 >= counts[1]:
+	if Offense.offense_levels[1] >= counts[1]:
 		speed_cost.text = "Max"
 		Offense.maxed[1] = true
 		maxed[1] = true
 
 
 func _crit_max_level() -> void:
-	if Offense.offense_levels[2] + 1 >= counts[2]:
+	if Offense.offense_levels[2] >= counts[2]:
 		crit_cost.text = "Max"
 		Offense.maxed[2] = true
 		maxed[2] = true

@@ -26,14 +26,17 @@ var maxed: Array[bool] = [false, false, false]
 
 func _inc_dmg() -> void:
 	multiplied_total_dmg += dmg_multiplier
+	offense_levels[0] += 1
 
 
 func _tower_speed() -> void:
 	multiplied_atk_speed += atk_speed_multiplier
+	offense_levels[1] += 1
 
 
 func _crit_chance() -> void:
 	multiplied_crit_chance += crit_chance_multiplier
+	offense_levels[2] += 1
 
 
 func _sandbox_mode() -> void:
