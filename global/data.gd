@@ -734,7 +734,9 @@ var ENEMY_DATA = {
 		'name': "spam",
 		'damage': 5,
 		'atkspd': 0.5,
-		"exp": 2},
+		"exp": 2,
+		"isMet": false,
+		"waveUnlocked": 1},
 	Enemy.VIRUS: {
 		'health': 40,
 		'texture': "uid://c6j3u1ewdc7ry",
@@ -742,7 +744,9 @@ var ENEMY_DATA = {
 		'name': "virus",
 		'damage': 10,
 		'atkspd': 0.6,
-		"exp": 3},
+		"exp": 3,
+		"isMet": false,
+		"waveUnlocked": 4},
 	Enemy.ADWARE: {
 		'health': 80,
 		'texture': "uid://uv3lkpfkcqb1",
@@ -750,7 +754,9 @@ var ENEMY_DATA = {
 		'name': "adware",
 		'damage': 12,
 		'atkspd': 0.7,
-		"exp": 4},
+		"exp": 4,
+		"isMet": false,
+		"waveUnlocked": 8},
 	Enemy.WORM: {
 		'health': 30,
 		'texture': "uid://cq83i85lk0drt",
@@ -758,7 +764,9 @@ var ENEMY_DATA = {
 		'name': "worm",
 		'damage': 15,
 		'atkspd': 0.8,
-		"exp": 5},
+		"exp": 5,
+		"isMet": false,
+		"waveUnlocked": 12},
 	Enemy.SPYWARE: {
 		'health': 100,
 		'texture': "uid://brqrfbf3rnun3",
@@ -766,7 +774,9 @@ var ENEMY_DATA = {
 		'name': "spyware",
 		'damage': 35,
 		'atkspd': 1,
-		"exp": 6},
+		"exp": 6,
+		"isMet": false,
+		"waveUnlocked": 16},
 	Enemy.TROJAN: {
 		'health': 350,
 		'texture': "uid://dg8b5ek5g0byi",
@@ -774,7 +784,9 @@ var ENEMY_DATA = {
 		'name': "trojan",
 		'damage': 55,
 		'atkspd': 1,
-		"exp": 9},
+		"exp": 9,
+		"isMet": false,
+		"waveUnlocked": 24},
 	Enemy.BOTNET: {
 		'health': 200,
 		'texture': "uid://dcx6ley5pknyn",
@@ -782,7 +794,9 @@ var ENEMY_DATA = {
 		'name': "botnet",
 		'damage': 55,
 		'atkspd': 1.2,
-		"exp": 8},
+		"exp": 8,
+		"isMet": false,
+		"waveUnlocked": 19},
 	Enemy.CREDS: {
 		'health': 20,
 		'texture': "uid://ie82cokh85on",
@@ -790,7 +804,9 @@ var ENEMY_DATA = {
 		'name': "creds",
 		'damage': 5,
 		'atkspd': 1,
-		"exp": 9},
+		"exp": 9,
+		"isMet": false,
+		"waveUnlocked": 22},
 	Enemy.INSIDERTHREAT: {
 		'health': 120,
 		'texture': "uid://f3kmwgwtwhby",
@@ -798,7 +814,9 @@ var ENEMY_DATA = {
 		'name': "insiderthreat",
 		'damage': 80,
 		'atkspd': 1.3,
-		"exp": 10},
+		"exp": 10,
+		"isMet": false,
+		"waveUnlocked": 28},
 	Enemy.ROOTKIT: {
 		'health': 200,
 		'texture': "uid://chs1nrp5s1cne",
@@ -806,7 +824,9 @@ var ENEMY_DATA = {
 		'name': "rootkit",
 		'damage': 100,
 		'atkspd': 1.4,
-		"exp": 11},
+		"exp": 11,
+		"isMet": false,
+		"waveUnlocked": 32},
 	Enemy.SQL: {
 		'health': 150,
 		'texture': "uid://diyet18ahl6mf",
@@ -814,7 +834,9 @@ var ENEMY_DATA = {
 		'name': "sql",
 		'damage': 120,
 		'atkspd': 1.5,
-		"exp": 12},
+		"exp": 12,
+		"isMet": false,
+		"waveUnlocked": 34},
 	Enemy.DDOS: {
 		'health': 500,
 		'texture': "uid://bfaik0etx7yif",
@@ -822,7 +844,9 @@ var ENEMY_DATA = {
 		'name': "ddos",
 		'damage': 150,
 		'atkspd': 1.6,
-		"exp": 13},
+		"exp": 13,
+		"isMet": false,
+		"waveUnlocked": 36},
 	Enemy.RANSOMWARE: {
 		'health': 150,
 		'texture': "uid://c654gnfm0an4n",
@@ -830,7 +854,9 @@ var ENEMY_DATA = {
 		'name': "ransomware",
 		'damage': 250,
 		'atkspd': 1.8,
-		"exp": 15},
+		"exp": 15,
+		"isMet": false,
+		"waveUnlocked":38},
 	Enemy.ZERO: {
 		'health': 220,
 		'texture': "uid://bgewpl0g08iay",
@@ -838,7 +864,9 @@ var ENEMY_DATA = {
 		'name': "zero",
 		'damage': 350,
 		'atkspd': 2,
-		"exp": 16},
+		"exp": 16,
+		"isMet": false,
+		"waveUnlocked": 43},
 	Enemy.BOSS1: { # I LOVE YOU
 		'health': 5000,
 		'texture': "uid://bh62x426nayqs",
@@ -846,7 +874,9 @@ var ENEMY_DATA = {
 		'name': "boss1",
 		'damage': 99999,
 		'atkspd': 1,
-		"exp": 100},
+		"exp": 100,
+		"isMet": false,
+		"waveUnlocked": 10},
 	Enemy.BOSS2: { # CONFICKER
 		'health': 8000,
 		'texture': "uid://btscyncy6p42a",
@@ -854,7 +884,9 @@ var ENEMY_DATA = {
 		'name': "boss2",
 		'damage': 99999,
 		'atkspd': 1.2,
-		"exp": 145},
+		"exp": 145,
+		"isMet": false,
+		"waveUnlocked": 20},
 	Enemy.BOSS3: { # WANNA CRY
 		'health': 10000,
 		'texture': "uid://b7ojhou6ogpwf",
@@ -862,7 +894,9 @@ var ENEMY_DATA = {
 		'name': "boss3",
 		'damage': 99999,
 		'atkspd': 1.5,
-		"exp": 200},
+		"exp": 200,
+		"isMet": false,
+		"waveUnlocked": 30},
 	Enemy.BOSS4: { # NOT PETYA
 		'health': 12000,
 		'texture': "uid://he2k33y4efo3",
@@ -870,7 +904,9 @@ var ENEMY_DATA = {
 		'name': "boss4",
 		'damage': 99999,
 		'atkspd': 2,
-		"exp": 325},
+		"exp": 325,
+		"isMet": false,
+		"waveUnlocked": 40},
 	Enemy.BOSS5: { # MY DOOM
 		'health': 15000,
 		'texture': "uid://bsbw28l1xncts",
@@ -878,7 +914,9 @@ var ENEMY_DATA = {
 		'name': "boss5",
 		'damage': 99999,
 		'atkspd': 2,
-		"exp": 450}
+		"exp": 450,
+		"isMet": false,
+		"waveUnlocked": 50}
 }
 
 var ads_visible := false:
@@ -1181,3 +1219,10 @@ func update_wave_unlocks() -> void:
 		if tower_data.has("waveUnlocked") and tower_data.has("unlockable"):
 			if current_wave >= tower_data["waveUnlocked"]:
 				tower_data["unlockable"] = true
+
+	for enemy_enum in Enemy.values():
+		var enemy_data = ENEMY_DATA[enemy_enum]
+
+		if enemy_data.has("waveUnlocked"):
+			if current_wave >= enemy_data["waveUnlocked"]:
+				enemy_data["isMet"] = true

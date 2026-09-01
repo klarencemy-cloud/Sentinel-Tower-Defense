@@ -157,10 +157,16 @@ func _ready() -> void:
 
 
 	for enemy_enum in Data.Enemy.values():
+		var enemy_data = Data.ENEMY_DATA[enemy_enum]
+
+		# Only show enemy cards if the enemy has been met
+		if not enemy_data.isMet:
+			continue
+
 		var enemy_card = enemy_card_scene.instantiate()
 		enemy_card.setup(enemy_enum)
 		$Control/TextureRect/ScrollContainer/EnemyCardsContainer.add_child(enemy_card)
-		enemy_card.connect('press', sandbox_spawn_enemy)
+		enemy_card.connect("press", sandbox_spawn_enemy)
 
 	Economy.points_changed.connect(update_server_load)
 	update_stats(Data.money, Data.health)
