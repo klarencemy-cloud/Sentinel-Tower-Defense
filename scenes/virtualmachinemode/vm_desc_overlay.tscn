@@ -143,14 +143,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Description" type="Label" parent="Control/Overlay2/Map1/vmName" unique_id=1216967275]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = 22.999939
-offset_top = 47.0
+offset_top = 6.5
 offset_right = 707.99994
-offset_bottom = 104.0
-grow_vertical = 2
+offset_bottom = 63.5
 pivot_offset = Vector2(330.5, 0)
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("2_xvmui")
