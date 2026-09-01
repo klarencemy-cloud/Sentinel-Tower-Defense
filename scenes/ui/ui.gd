@@ -646,10 +646,13 @@ func update_tower_enemies_button_texture() -> void:
 	elif enemy_cards_container.visible:
 		tower_enemies_button.texture_normal = enemy_card_button_texture
 		
-
+signal signal_unlock_tower()
 func pop_tower(tower_enum: Data.Tower, tower: String):
 	# # for unlocking towers
 	var tower_pop = get_tree().get_first_node_in_group("animate3")
+
+	%Upgrade.selected_tower = tower_enum
+	signal_unlock_tower.emit()
 	tower_pop.play_animation(tower)
 	unlock_tower_card(tower_enum)
 
