@@ -18,6 +18,7 @@ signal ads_visible_changed
 
 signal open_server_cyber
 
+var DEVMODE = false
 var is_server_cyber_shown: bool = false
 signal toggle_server_scene # to toggle server upgrade visibility
 signal change_challenge() # for vm

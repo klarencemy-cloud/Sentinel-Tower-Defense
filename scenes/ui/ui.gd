@@ -137,9 +137,12 @@ func _ready() -> void:
 		toggle_skill_activation()
 	
 	for tower_enum in Data.Tower.values():
-		if not Data.is_sandbox:
-			if not Data.TOWER_DATA[tower_enum].isUnlocked:
+		var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
+
+		if not tower_data.get("isUnlocked", false):
+			if not (Data.is_sandbox and Data.DEVMODE):
 				continue
+
 		unlock_tower_card(tower_enum)
 
 
@@ -147,22 +150,22 @@ func _ready() -> void:
 		for sentinel_enum in Data.Sentinel.values():
 			var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
 
-			if not Data.is_sandbox:
-				if not sentinel_data.isUnlocked:
+			if not sentinel_data.get("isUnlocked", false):
+				if not (Data.is_sandbox and Data.DEVMODE):
 					continue
 
 			var sentinel_card = sentinel_card_scene.instantiate()
 			sentinel_card.setup(sentinel_enum)
 			$Control/TextureRect/ScrollContainer/SentinelCardsContainer.add_child(sentinel_card)
-			sentinel_card.connect('press', sentinel_select)
+			sentinel_card.connect("press", sentinel_select)
 
 
 	for enemy_enum in Data.Enemy.values():
 		var enemy_data = Data.ENEMY_DATA[enemy_enum]
 
-		# Only show enemy cards if the enemy has been met
-		if not enemy_data.isMet:
-			continue
+		if not enemy_data.get("isMet", false):
+			if not (Data.is_sandbox and Data.DEVMODE):
+				continue
 
 		var enemy_card = enemy_card_scene.instantiate()
 		enemy_card.setup(enemy_enum)
