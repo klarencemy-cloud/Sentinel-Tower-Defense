@@ -44,23 +44,23 @@ func _ready() -> void:
 		var locked_image: TextureRect = sentinel_card.get_node("TextureRect/locked")
 		var label: Label = sentinel_card.get_node("TextureRect/Label")
 
-		if Data.is_sandbox:
-			# Sandbox: all sentinels are treated as unlocked
+		# if Data.is_sandbox:
+		# 	# Sandbox: all sentinels are treated as unlocked
+		# 	locked_image.visible = false
+		# 	image.modulate = Color.WHITE
+		# 	label.text = sentinel_data.get("name", "")
+		# else:
+			# Normal mode: use the actual unlock status
+		var is_unlocked: bool = sentinel_data.get("isUnlocked", false)
+
+		if is_unlocked:
 			locked_image.visible = false
 			image.modulate = Color.WHITE
 			label.text = sentinel_data.get("name", "")
 		else:
-			# Normal mode: use the actual unlock status
-			var is_unlocked: bool = sentinel_data.get("isUnlocked", false)
-
-			if is_unlocked:
-				locked_image.visible = false
-				image.modulate = Color.WHITE
-				label.text = sentinel_data.get("name", "")
-			else:
-				locked_image.visible = true
-				image.modulate = Color.BLACK
-				label.text = "???"
+			locked_image.visible = true
+			image.modulate = Color.BLACK
+			label.text = "???"
 
 		$SentinelStuff/ScrollContainer/RealSentinelContainer.add_child(sentinel_card)
 		sentinel_card.press.connect(change_info)
@@ -76,38 +76,38 @@ func set_selected_tower(tower_enum: Data.Tower) -> void:
 	$TextureRect/BigTowerName.text = tower_data["name"]
 	%BigPic.texture = load(tower_data["thumbnail"])
 
-	if Data.is_sandbox:
-		# Sandbox: everything is unlocked
+	# if Data.is_sandbox:
+	# 	# Sandbox: everything is unlocked
+	# 	%BigPic.modulate = Color(1, 1, 1, 1)
+	# 	$TextureRect/BigTowerName.text = tower_data["name"]
+	# 	$TextureRect/UpgradeButton.visible = true
+	# 	$TextureRect/BigTowerName.visible = true
+	# 	%BigPic.visible = true
+	# 	$TextureRect/Unlock.visible = false
+	# 	$SentinelStuff/Rollbtn.visible = false
+
+	# else:
+		# Normal mode
+	var is_unlocked: bool = bool(tower_data.get("isUnlocked", false))
+
+	if !is_unlocked:
+		# LOCKED
+		%BigPic.modulate = Color(0, 0, 0, 0.5)
+		%BigPic.visible = true
+		$TextureRect/BigTowerName.text = "???"
+		$TextureRect/UpgradeButton.visible = false
+		$TextureRect/BigTowerName.visible = true
+
+		_update_unlock_button()
+
+	else:
+		# UNLOCKED
+		%BigPic.visible = true
 		%BigPic.modulate = Color(1, 1, 1, 1)
 		$TextureRect/BigTowerName.text = tower_data["name"]
 		$TextureRect/UpgradeButton.visible = true
 		$TextureRect/BigTowerName.visible = true
-		%BigPic.visible = true
 		$TextureRect/Unlock.visible = false
-		$SentinelStuff/Rollbtn.visible = false
-
-	else:
-		# Normal mode
-		var is_unlocked: bool = bool(tower_data.get("isUnlocked", false))
-
-		if !is_unlocked:
-			# LOCKED
-			%BigPic.modulate = Color(0, 0, 0, 0.5)
-			%BigPic.visible = true
-			$TextureRect/BigTowerName.text = "???"
-			$TextureRect/UpgradeButton.visible = false
-			$TextureRect/BigTowerName.visible = true
-
-			_update_unlock_button()
-
-		else:
-			# UNLOCKED
-			%BigPic.visible = true
-			%BigPic.modulate = Color(1, 1, 1, 1)
-			$TextureRect/BigTowerName.text = tower_data["name"]
-			$TextureRect/UpgradeButton.visible = true
-			$TextureRect/BigTowerName.visible = true
-			$TextureRect/Unlock.visible = false
 
 	var upgradeable: bool = bool(tower_data.get("upgradeable", true))
 
@@ -910,52 +910,138 @@ var SENTINEL_DATA = {
 @onready var sentinel_passive_card = $SentinelStuff/Databasebg/Special/Cooldown/Passive
 @onready var sentinel_irldesc_card = $SentinelStuff/Databasebg/Special/Cooldown/Passive/RealLifeDesc/Description
 @onready var animation: AnimatedSprite2D = $SentinelStuff/Databasebg/AnimatedSprite2D
+@onready var real_life_desc: Label = $SentinelStuff/Databasebg/Special/Cooldown/Passive/RealLifeDesc
 
 func change_info(id: Data.Sentinel):
 	match id:
 		0:
-			sentinel_name_card.text = sentinel_name[id]
-			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
-			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
-			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
-			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
-			animation.play("EthicalHacker")
+			if Data.SENTINEL_DATA[id]["isUnlocked"]:
+				sentinel_name_card.text = sentinel_name[id]
+				sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+				sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+				sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+				sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+				real_life_desc.text = "Real World Description"
+				animation.play("EthicalHacker")
+				animation.modulate = Color(1, 1, 1, 1)
+				$SentinelStuff/Databasebg.show()
+			else:
+				sentinel_name_card.text = ""
+				sentinel_special_card.text = ""
+				sentinel_cooldown_card.text = ""
+				sentinel_passive_card.text = ""
+				sentinel_irldesc_card.text = ""
+				real_life_desc.text = ""
+				animation.play("EthicalHacker")
+				animation.modulate = Color(0, 0, 0, 0)
+				$SentinelStuff/Databasebg.hide()
+
 		1:
-			sentinel_name_card.text = sentinel_name[id]
-			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
-			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
-			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
-			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
-			animation.play("SystemAdmin")
+			if Data.SENTINEL_DATA[id]["isUnlocked"]:
+				sentinel_name_card.text = sentinel_name[id]
+				sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+				sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+				sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+				sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+				real_life_desc.text = "Real World Description"
+				animation.play("SystemAdmin")
+				animation.modulate = Color(1, 1, 1, 1)
+				$SentinelStuff/Databasebg.show()
+			else:
+				sentinel_name_card.text = ""
+				sentinel_special_card.text = ""
+				sentinel_cooldown_card.text = ""
+				sentinel_passive_card.text = ""
+				sentinel_irldesc_card.text = ""
+				real_life_desc.text = ""
+				animation.play("SystemAdmin")
+				animation.modulate = Color(0, 0, 0, 0)
+				$SentinelStuff/Databasebg.hide()
 		2:
-			sentinel_name_card.text = sentinel_name[id]
-			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
-			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
-			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
-			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
-			animation.play("IntrusionAnalyst")
+			if Data.SENTINEL_DATA[id]["isUnlocked"]:
+				sentinel_name_card.text = sentinel_name[id]
+				sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+				sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+				sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+				sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+				real_life_desc.text = "Real World Description"
+				animation.play("IntrusionAnalyst")
+				animation.modulate = Color(1, 1, 1, 1)
+				$SentinelStuff/Databasebg.show()
+			else:
+				sentinel_name_card.text = ""
+				sentinel_special_card.text = ""
+				sentinel_cooldown_card.text = ""
+				sentinel_passive_card.text = ""
+				sentinel_irldesc_card.text = ""
+				real_life_desc.text = ""
+				animation.play("IntrusionAnalyst")
+				animation.modulate = Color(0, 0, 0, 0)
+				$SentinelStuff/Databasebg.hide()
 		3:
-			sentinel_name_card.text = sentinel_name[id]
-			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
-			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
-			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
-			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
-			animation.play("SecurityArchitect")
+			if Data.SENTINEL_DATA[id]["isUnlocked"]:
+				sentinel_name_card.text = sentinel_name[id]
+				sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+				sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+				sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+				sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+				real_life_desc.text = "Real World Description"
+				animation.play("SecurityArchitect")
+				animation.modulate = Color(1, 1, 1, 1)
+				$SentinelStuff/Databasebg.show()
+			else:
+				sentinel_name_card.text = ""
+				sentinel_special_card.text = ""
+				sentinel_cooldown_card.text = ""
+				sentinel_passive_card.text = ""
+				sentinel_irldesc_card.text = ""
+				real_life_desc.text = ""
+				animation.play("SecurityArchitect")
+				animation.modulate = Color(0, 0, 0, 0)
+				$SentinelStuff/Databasebg.hide()
 		4:
-			sentinel_name_card.text = sentinel_name[id]
-			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
-			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
-			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
-			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
-			animation.play("MalwareAnalyst")
+			if Data.SENTINEL_DATA[id]["isUnlocked"]:
+				sentinel_name_card.text = sentinel_name[id]
+				sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+				sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+				sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+				sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+				real_life_desc.text = "Real World Description"
+				animation.play("MalwareAnalyst")
+				animation.modulate = Color(1, 1, 1, 1)
+				$SentinelStuff/Databasebg.show()
+			else:
+				sentinel_name_card.text = ""
+				sentinel_special_card.text = ""
+				sentinel_cooldown_card.text = ""
+				sentinel_passive_card.text = ""
+				sentinel_irldesc_card.text = ""
+				real_life_desc.text = ""
+				animation.play("MalwareAnalyst")
+				animation.modulate = Color(0, 0, 0, 0)
+				$SentinelStuff/Databasebg.hide()
 		5:
-			sentinel_name_card.text = sentinel_name[id]
-			sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
-			sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
-			sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
-			sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
-			animation.play("DeceptionAnalyst")
-	$SentinelStuff/Databasebg.show()
+			if Data.SENTINEL_DATA[id]["isUnlocked"]:
+				sentinel_name_card.text = sentinel_name[id]
+				sentinel_special_card.text = "Ability: %s"%SENTINEL_DATA[id]["special_ability"]
+				sentinel_cooldown_card.text = "Cooldown: %s"%SENTINEL_DATA[id]["cooldown"]
+				sentinel_passive_card.text = "Passive: %s"%SENTINEL_DATA[id]["passive_ability"]
+				sentinel_irldesc_card.text = SENTINEL_DATA[id]["irl_desc"]
+				real_life_desc.text = "Real World Description"
+				animation.play("DeceptionAnalyst")
+				animation.modulate = Color(1, 1, 1, 1)
+				$SentinelStuff/Databasebg.show()
+			else:
+				sentinel_name_card.text = ""
+				sentinel_special_card.text = ""
+				sentinel_cooldown_card.text = ""
+				sentinel_passive_card.text = ""
+				sentinel_irldesc_card.text = ""
+				real_life_desc.text = ""
+				animation.play("DeceptionAnalyst")
+				animation.modulate = Color(0, 0, 0, 0)
+				$SentinelStuff/Databasebg.hide()
+
 
 func _update_unlock_button() -> void:
 	if selected_tower == null:

@@ -914,7 +914,7 @@ var ENEMY_DATA = {
 		'atkspd': 1.8,
 		"exp": 15,
 		"isMet": false,
-		"waveUnlocked":38},
+		"waveUnlocked": 38},
 	Enemy.ZERO: {
 		'health': 220,
 		'texture': "uid://bgewpl0g08iay",
