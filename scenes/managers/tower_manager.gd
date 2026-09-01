@@ -143,6 +143,9 @@ func cancel_selection() -> void:
 	current_placement_kind = ""
 	tower_menu = false
 	current_tower = null
+	var counter = get_tree().get_first_node_in_group("TowerStatsCounter")
+	if counter:
+		counter.select_tower(-1)
 
 	for tower in get_tree().get_nodes_in_group("Towers"):
 		tower.hide_ui()
@@ -195,6 +198,10 @@ func tower_selection(tower: Tower) -> void:
 	tower_menu = true
 
 	tower.show_range()
+
+	var counter = get_tree().get_first_node_in_group("TowerStatsCounter")
+	if counter:
+		counter.select_tower(tower.tower_id)
 
 
 func _try_place_current_building(cell_pos: Vector2i, world_pos: Vector2) -> void:
@@ -266,6 +273,10 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if selected_tower == Data.Tower.BACKUP_SERVER:
 		Data.backup_server_placed = true
 	
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.update_skill3_locked()
+	
 	place_tower = false
 	for card in get_tree().get_nodes_in_group("TowerCard"):
 		card.set_selected(false)
@@ -293,7 +304,6 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		Data.owned_towers[selected_tower] = Data.owned_towers.get(selected_tower, 0) + 1
 	Data.currentserverload += systemload
 	
-	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.refresh_tower_cards()
 		
@@ -469,6 +479,13 @@ func restore_saved_towers() -> void:
 		_get_tower_parent().add_child(tower)
 
 		EnemyTower.register_tower(tower.tower_id, tower_type)
+
+		# Restore saved tower damage
+		var saved_damage := int(saved_tower.get("damage", 0))
+		EnemyTower.tower_damage[tower.tower_id] = saved_damage
+
+		# Notify the damage UI that this tower has been restored
+		EnemyTower.tower_damage_changed.emit(tower.tower_id)
 
 		if tower_type == Data.Tower.BACKUP_SERVER:
 			Data.backup_server_placed = true

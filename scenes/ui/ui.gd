@@ -16,8 +16,10 @@ extends CanvasLayer
 @onready var boss_name = $Control/bosshpbar/bossname
 @onready var skill1_button: TextureButton = $Control/HBoxContainer/Skill1
 @onready var skill2_button: TextureButton = $Control/HBoxContainer/Skill2
+@onready var skill3_button: TextureButton = $Control/HBoxContainer/Skill3
 @onready var skill1_cooldown: TextureProgressBar = $Control/HBoxContainer/Skill1/cooldown
 @onready var skill2_cooldown: TextureProgressBar = $Control/HBoxContainer/Skill2/cooldown
+@onready var skill3_cooldown: TextureProgressBar = $Control/HBoxContainer/Skill3/cooldown
 @onready var boss_bars := [
 	$Control/bosshpbar,
 	$Control/smallhpbar1,
@@ -27,6 +29,7 @@ extends CanvasLayer
 	$Control/smallhpbar5,
 	$Control/smallhpbar6
 ]
+@onready var skill3_locked: TextureRect = $Control/HBoxContainer/Skill3/Locked
 
 var boss_bar_assignments := {} # boss_id -> ProgressBar
 
@@ -59,6 +62,10 @@ var firewall_timer := Timer.new()
 var patch_cooldown := 15.0
 var patch_on_cooldown := false
 var patch_timer := Timer.new()
+
+var backup_server_cooldown := 60.0
+var backup_server_on_cooldown := false
+var backup_server_timer := Timer.new()
 
 
 @onready var ad_textures := [
@@ -112,6 +119,13 @@ func _ready() -> void:
 	skill2_cooldown.visible = false
 	skill2_cooldown.value = 0
 
+	add_child(backup_server_timer)
+	backup_server_timer.one_shot = true
+	backup_server_timer.wait_time = backup_server_cooldown
+	backup_server_timer.timeout.connect(_on_backup_server_cooldown_finished)
+
+	skill3_cooldown.visible = false
+	skill3_cooldown.value = 0
 
 	if Data.is_sandbox:
 		$Control/TextureRect/HBoxContainer/WaveButton.visible = true
@@ -137,9 +151,14 @@ func _ready() -> void:
 		toggle_skill_activation()
 	
 	for tower_enum in Data.Tower.values():
-		if not Data.is_sandbox:
-			if not Data.TOWER_DATA[tower_enum].isUnlocked:
+		if tower_enum == Data.Tower.BACKUP_SERVER:
+			continue
+		var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
+
+		if not tower_data.get("isUnlocked", false):
+			if not (Data.is_sandbox and Data.DEVMODE):
 				continue
+
 		unlock_tower_card(tower_enum)
 
 
@@ -147,21 +166,27 @@ func _ready() -> void:
 		for sentinel_enum in Data.Sentinel.values():
 			var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
 
-			if not Data.is_sandbox:
-				if not sentinel_data.isUnlocked:
+			if not sentinel_data.get("isUnlocked", false):
+				if not (Data.is_sandbox and Data.DEVMODE):
 					continue
 
 			var sentinel_card = sentinel_card_scene.instantiate()
 			sentinel_card.setup(sentinel_enum)
 			$Control/TextureRect/ScrollContainer/SentinelCardsContainer.add_child(sentinel_card)
-			sentinel_card.connect('press', sentinel_select)
+			sentinel_card.connect("press", sentinel_select)
 
 
 	for enemy_enum in Data.Enemy.values():
+		var enemy_data = Data.ENEMY_DATA[enemy_enum]
+
+		if not enemy_data.get("isMet", false):
+			if not (Data.is_sandbox and Data.DEVMODE):
+				continue
+
 		var enemy_card = enemy_card_scene.instantiate()
 		enemy_card.setup(enemy_enum)
 		$Control/TextureRect/ScrollContainer/EnemyCardsContainer.add_child(enemy_card)
-		enemy_card.connect('press', sandbox_spawn_enemy)
+		enemy_card.connect("press", sandbox_spawn_enemy)
 
 	Economy.points_changed.connect(update_server_load)
 	update_stats(Data.money, Data.health)
@@ -179,12 +204,17 @@ func _ready() -> void:
 	for bar in boss_bars:
 		bar.visible = false
 
+	skill3_locked.visible = Data.backup_server_placed
+
 func _process(_delta: float) -> void:
 	if firewall_on_cooldown:
 		skill1_cooldown.value = firewall_timer.time_left
 	
 	if patch_on_cooldown:
 		skill2_cooldown.value = patch_timer.time_left
+
+	if backup_server_on_cooldown:
+		skill3_cooldown.value = backup_server_timer.time_left
 	$Control/TextureRect/HBoxContainer/WaveButton.visible = GameDialogueManager.button_state
 
 func _on_skill_2_pressed() -> void:
@@ -233,6 +263,13 @@ func _on_patch_cooldown_finished() -> void:
 	patch_on_cooldown = false
 	skill2_button.disabled = false
 
+func _on_backup_server_cooldown_finished() -> void:
+	backup_server_on_cooldown = false
+	skill3_button.disabled = false
+	skill3_cooldown.visible = false
+	skill3_cooldown.value = 0
+	update_skill3_locked()
+
 func start_patch_cooldown() -> void:
 	if patch_on_cooldown:
 		return
@@ -245,6 +282,18 @@ func start_patch_cooldown() -> void:
 	skill2_cooldown.value = patch_cooldown
 
 	patch_timer.start()
+
+func start_backup_server_cooldown() -> void:
+	if backup_server_on_cooldown:
+		return
+
+	backup_server_on_cooldown = true
+	skill3_button.disabled = true
+	skill3_locked.visible = false
+	skill3_cooldown.visible = true
+	skill3_cooldown.max_value = backup_server_cooldown
+	skill3_cooldown.value = backup_server_cooldown
+	backup_server_timer.start()
 	
 func trigger_shake():
 	var camera = get_tree().get_first_node_in_group("camera")
@@ -664,6 +713,8 @@ func pop_tower(tower_enum: Data.Tower, tower: String):
 	unlock_tower_card(tower_enum)
 
 func unlock_tower_card(tower_enum: Data.Tower) -> void:
+	if tower_enum == Data.Tower.BACKUP_SERVER:
+		return
 	# Don't create a duplicate card
 	for card in tower_cards_container.get_children():
 		if card.id == tower_enum:
@@ -704,3 +755,22 @@ func unlock_sentinel_card(sentinel_enum: Data.Sentinel) -> void:
 	sentinel_cards_container.move_child(sentinel_card, insert_index)
 
 	sentinel_card.connect("press", sentinel_select)
+
+
+func _on_skill_3_pressed() -> void:
+	if backup_server_on_cooldown:
+		return
+	if Data.backup_server_placed:
+		return
+	tower_select(8)
+
+func update_skill3_locked() -> void:
+	skill3_locked.visible = Data.backup_server_placed and not backup_server_on_cooldown
+	skill3_cooldown.visible = backup_server_on_cooldown
+	if backup_server_on_cooldown:
+		skill3_button.disabled = true
+	else:
+		skill3_button.disabled = false
+		if Data.backup_server_placed:
+			skill3_locked.visible = true
+			skill3_cooldown.visible = false

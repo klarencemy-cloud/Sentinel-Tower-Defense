@@ -38,9 +38,13 @@ func save_game() -> void:
 
 		for tower in get_tree().get_nodes_in_group("Towers"):
 			if tower is Tower:
+				var tower_id = tower.tower_id
+				var damage = EnemyTower.tower_damage.get(tower_id, 0)
+
 				placed_towers.append({
 					"type": int(tower.type),
-					"cell_pos": [tower.cell_pos.x, tower.cell_pos.y]
+					"cell_pos": [tower.cell_pos.x, tower.cell_pos.y],
+					"damage": damage
 				})
 		# print(placed_towers)
 		# print(Data.saved_tower_placements)
@@ -76,7 +80,19 @@ func save_game() -> void:
 				"isUnlocked": tower_data.get("isUnlocked", false),
 				"unlockable": tower_data.get("unlockable", false)
 			}
+			
+		var enemy_met := {}
+
+		for enemy_enum in Data.Enemy.values():
+			var enemy_data: Dictionary = Data.ENEMY_DATA[enemy_enum]
+			enemy_met[str(enemy_enum)] = enemy_data.get("isMet", false)
 		
+		# Save enemy kill counts
+		var enemy_kills := {}
+
+		for enemy_type in EnemyStats.enemy_kills:
+			enemy_kills[str(enemy_type)] = EnemyStats.enemy_kills[enemy_type]
+
 		print("SAVED TOWERS: ", placed_towers)
 		print("SAVED SENTINELS: ", placed_sentinels)
 		print("SAVED ABILITIES: ", placed_abilities)
@@ -93,9 +109,11 @@ func save_game() -> void:
 			"placed_abilities": placed_abilities,
 			"tower_unlocks": tower_unlocks,
 			"sentinel_unlocks": sentinel_unlocks,
+			"enemy_met": enemy_met,
 			"sentinels": [Data.sentinel_ethical_deployed, Data.sentinel_sysad_deployed,
 				Data.sentinel_intrusion_deployed, Data.sentinel_security_deployed,
 				Data.sentinel_malware_deployed, Data.sentinel_deception_deployed],
+			"enemy_kills": enemy_kills,
 			"tower_upgrades": tower_upgrades,
 			"offense_levels": Offense.offense_levels, "offense_maxed": Offense.maxed,
 			"offense_stats": [Offense.multiplied_total_dmg, Offense.multiplied_atk_speed, Offense.multiplied_crit_chance],
@@ -173,7 +191,15 @@ func _load_game() -> void:
 
 			if Data.SENTINEL_DATA.has(sentinel_enum):
 				Data.SENTINEL_DATA[sentinel_enum]["isUnlocked"] = bool(sentinel_unlocks[sentinel_key])
+		
+		var enemy_met: Dictionary = parsed.get("enemy_met", {})
 
+		for enemy_key in enemy_met:
+			var enemy_enum := int(enemy_key)
+
+			if Data.ENEMY_DATA.has(enemy_enum):
+				Data.ENEMY_DATA[enemy_enum]["isMet"] = bool(enemy_met[enemy_key])
+		
 
 		var tower_upgrades: Dictionary = parsed.get("tower_upgrades", {})
 		for tower_key in tower_upgrades:
@@ -212,7 +238,15 @@ func _load_game() -> void:
 		if economy_stats.size() >= 2:
 			Economy.gold_multiplier = float(economy_stats[0])
 			Economy.exp_multiplier = float(economy_stats[1])
+		
+		var enemy_kills: Dictionary = parsed.get("enemy_kills", {})
 
+		EnemyStats.enemy_kills.clear()
+
+		for enemy_key in enemy_kills:
+			var enemy_type := int(enemy_key)
+			EnemyStats.enemy_kills[enemy_type as Data.Enemy] = int(enemy_kills[enemy_key])
+		
 
 func _restore_saved_objects() -> void:
 	_restore_saved_sentinels()
