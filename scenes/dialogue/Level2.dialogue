@@ -34,6 +34,7 @@ WORM: REPLICATE.
 WORM: ONE BECAME THREE.
 #function to activate worms pop-up card
 do GameDialogueManager.show_enemy("worm",3)
+do GameDialogueManager.unlock_towers(3, "dlp")
 => END
 
 ~ worms2
@@ -70,6 +71,7 @@ do GameDialogueManager.pause_game(false)
 do GameDialogueManager.pause_game(true)
 SPYWARE: D̶A̶T̶A̶... C̷O̷N̷S̷U̷M̷E̷... 
 do GameDialogueManager.show_enemy("spyware", 4)
+do GameDialogueManager.unlock_towers(4, "idps")
 => END
 
 ~ spyware2
@@ -83,6 +85,7 @@ Odysseus: Eliminate them first to decrease the intensity of the battlefield.
 do GameDialogueManager.pause_game(true)
 BOTNET NODE: Syncing… C0NNECT3D..
 do GameDialogueManager.show_enemy("botnet", 5)
+do GameDialogueManager.unlock_towers(5, "qcannon")
 #function to activate botnet pop-up card
 => END
 

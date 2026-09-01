@@ -23,6 +23,8 @@ var active_scroll: ScrollContainer = null
 const DRAG_THRESHOLD := 10.0
 
 func _ready() -> void:
+	var ui = get_tree().get_first_node_in_group("UI")
+	ui.signal_unlock_tower.connect(_on_unlock_pressed)
 	update_money_display()
 	for tower_enum in Data.Tower.values():
 		if not Data.TOWER_DATA[tower_enum]["name"] == "PATCH":
@@ -981,4 +983,3 @@ func _update_unlock_button() -> void:
 		$TextureRect/Unlock/Label.text = "Unlock (Wave %d)" % required_wave
 	else:
 		$TextureRect/Unlock/Label.text = "Unlock"
-		

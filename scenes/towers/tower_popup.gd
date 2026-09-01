@@ -120,6 +120,8 @@ func play_animation(tower: String):
 			speed.text = TOWER_DATA[0]["atk_speed"]
 			special.text = TOWER_DATA[0]["special_ability"]
 			irl_description.text = TOWER_DATA[0]["irl_desc"]
+
+			ui.unlock_tower_card(1)
 		"adblocker":
 			tower_name.text = towers_name[1]
 			damage.text = TOWER_DATA[1]["damage"]
@@ -176,7 +178,7 @@ func play_animation(tower: String):
 			speed.text = TOWER_DATA[8]["atk_speed"]
 			special.text = TOWER_DATA[8]["special_ability"]
 			irl_description.text = TOWER_DATA[8]["irl_desc"]
-
+	$Info/TextureRect/AnimatedSprite2D.play(tower)
 	$Pop/AnimationPlayer.play("pop_tower")
 	$Pop/DirectionalLight2D.energy = 3
 	while $Pop/DirectionalLight2D.energy > 0:

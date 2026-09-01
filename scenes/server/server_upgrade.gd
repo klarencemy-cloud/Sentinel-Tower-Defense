@@ -22,7 +22,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_refresh_server_pts()
-	if Data.current_wave == 7:
+	if Data.current_wave >= 7:
 		$UIContainer/CyberBtn.visible = true
 	$UIContainer/CyberthreatUpdate/ThreatContainer/Stats1/Stat_Desc1.text = "Enemies has +%s%% Health" % int(Data.incremental_enemy_health_bonus * 100)
 	$UIContainer/CyberthreatUpdate/ThreatContainer/Stats2/Stat_Desc2.text = "Enemies has +%s%% Damage" % int(Data.incremental_enemy_damage_bonus * 100)

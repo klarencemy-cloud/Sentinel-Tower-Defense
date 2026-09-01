@@ -43,6 +43,7 @@ Player: Now they can attack underneath too?
 Odysseus: They are learning. *Smirk*
 #function to activate rootkit pop-up card
 do GameDialogueManager.show_enemy("rootkit", 9)
+do GameDialogueManager.unlock_towers(8, "epprotection")
 => END
 
 ~ sql
@@ -91,6 +92,7 @@ Odysseus: Yes. They are weak individually.
 Odysseus: So they group to be overwhelming.
 DDoS: We are one
 do GameDialogueManager.show_enemy("ddos", 11)
+do GameDialogueManager.unlock_towers(9, "sandbox")
 #function to activate DDOS pop-up card
 => END
 
