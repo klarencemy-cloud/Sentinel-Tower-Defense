@@ -347,7 +347,6 @@ func confirm_current_placement() -> void:
 	_try_place_current_building(cell_pos, world_pos)
 	
 	
-
 func cancel_current_placement() -> void:
 	var preview = _get_tower_preview()
 
