@@ -336,9 +336,9 @@ var TOWER_DATA = {
 	Tower.BACKUP_SERVER: {
 		'name': "Backup Server",
 		'isUnlocked': false,
-		'cost': 550,
+		'cost': 0,
 		'damage': 5000,
-		'server_load': 65,
+		'server_load': 0,
 		'thumbnail': "res://graphics/ui/tower thumbnails 2/BACKUP.png",
 		'scene': "res://scenes/towers/tower_backup_server.tscn",
 		'bullet': Bullet.FIRE,

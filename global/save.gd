@@ -127,7 +127,7 @@ func save_game() -> void:
 		if file:
 			file.store_string(JSON.stringify(save_data))
 
-func _load_game() -> void:
+func _load_game() -> void:	
 	if Data.is_vmmode:
 		return
 	if !Data.is_sandbox:
@@ -249,8 +249,9 @@ func _load_game() -> void:
 		
 
 func _restore_saved_objects() -> void:
-	_restore_saved_sentinels()
-	_restore_saved_abilities()
+	if !Data.is_sandbox:
+		_restore_saved_sentinels()
+		_restore_saved_abilities()
 
 
 func _restore_saved_sentinels() -> void:
