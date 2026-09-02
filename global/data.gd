@@ -24,7 +24,7 @@ signal toggle_server_scene # to toggle server upgrade visibility
 signal change_challenge() # for vm
 
 
-signal deactivate(selected_sentinel: Data.Sentinel) # for sentinel
+signal deactivate(selected_sentinel: Sentinel) # for sentinel
 
 # "before" variables to store the original values before entering sandbox mode
 var before_total_money: int
@@ -262,7 +262,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.QUARANTINE_CANNON: {
 		'name': 'Quarantine Cannon',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 19,
 		'unlockable': false,
 		'cost': 60,
@@ -313,7 +313,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.IDPS: {
 		'name': 'IDPS',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 16,
 		'unlockable': false,
 		'cost': 30,
@@ -361,10 +361,10 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.BACKUP_SERVER: {
 		'name': "Backup Server",
-		'isUnlocked': true,
-		'cost': 550,
+		'isUnlocked': false,
+		'cost': 0,
 		'damage': 5000,
-		'server_load': 65,
+		'server_load': 0,
 		'thumbnail': "res://graphics/ui/tower thumbnails 2/BACKUP.png",
 		'scene': "res://scenes/towers/tower_backup_server.tscn",
 		'bullet': Bullet.FIRE,
@@ -372,7 +372,7 @@ var TOWER_DATA = {
 		},
 	Tower.AD_BLOCKER: {
 		'name': 'Ad Blocker',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 8,
 		'unlockable': false,
 		'cost': 75,
@@ -423,7 +423,7 @@ var TOWER_DATA = {
 		},
 	Tower.ANTIVIRUS: {
 		'name': 'Antivirus',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 4,
 		'unlockable': false,
 		'cost': 50,
@@ -474,7 +474,7 @@ var TOWER_DATA = {
 		},
 		Tower.ACCESS_CONTROL_SYSTEM: {
 		'name': 'Access Control System',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 22,
 		'unlockable': false,
 		'cost': 225,
@@ -525,7 +525,7 @@ var TOWER_DATA = {
 		},
 		Tower.ENDPOINT_PROTECTION: {
 		'name': 'Endpoint Protection',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 32,
 		'unlockable': false,
 		'cost': 350,
@@ -576,7 +576,7 @@ var TOWER_DATA = {
 		},
 		Tower.SANDBOX_ANALYZER: {
 		'name': 'Sandbox Analyzer',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 36,
 		'unlockable': false,
 		'cost': 150,
@@ -627,7 +627,7 @@ var TOWER_DATA = {
 		},
 		Tower.AI_SECURITY: {
 		'name': 'AI Security',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 28,
 		'unlockable': false,
 		'cost': 275,
@@ -678,7 +678,7 @@ var TOWER_DATA = {
 		},
 		Tower.DATA_LOSS_PREVENTION: {
 		'name': 'DLP',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 12,
 		'unlockable': false,
 		'cost': 50,
@@ -729,7 +729,7 @@ var TOWER_DATA = {
 		},
 		Tower.PATCH: {
 		'name': 'PATCH',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'cost': 0,
 		'server_load': 0,
 		'damage': 10.0,
@@ -938,7 +938,7 @@ var ENEMY_DATA = {
 		'atkspd': 1.8,
 		"exp": 15,
 		"isMet": false,
-		"waveUnlocked":38},
+		"waveUnlocked": 38},
 	Enemy.ZERO: {
 		'health': 220,
 		'texture': "uid://bgewpl0g08iay",
