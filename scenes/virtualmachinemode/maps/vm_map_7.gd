@@ -7,7 +7,7 @@ const MIN_INTERVAL := 5.0
 const INTERVAL_STEP := (INITIAL_INTERVAL - MIN_INTERVAL) / float(TOTAL_WAVES - 1)
 
 const SENTINEL_ROLL_CHANCE := 0.20
-const WAVE_START_DELAY := 3.0
+const SESSION_START_DELAY := 1.0
 
 const WAVES: Array[Dictionary] = [
 	{
@@ -85,14 +85,8 @@ func _wave_challenge_setup() -> void:
 
 	call_deferred("_hide_tower_ui_for_belt")
 
-	var overlay = ui_node.get_node_or_null("VmDescOverlay")
-	if overlay and not overlay.dismissed.is_connected(_on_desc_dismissed):
-		overlay.dismissed.connect(_on_desc_dismissed, CONNECT_ONE_SHOT)
-
 
 func _hide_tower_ui_for_belt() -> void:
-	wave_button.visible = false
-
 	var scroll = ui_node.get_node_or_null("Control/TextureRect/ScrollContainer")
 	if scroll:
 		scroll.visible = false
@@ -106,8 +100,8 @@ func _hide_tower_ui_for_belt() -> void:
 		skills.visible = false
 
 
-func _on_desc_dismissed() -> void:
-	await get_tree().create_timer(WAVE_START_DELAY, false).timeout
+func _on_session_started() -> void:
+	await get_tree().create_timer(SESSION_START_DELAY, false).timeout
 	if not is_inside_tree() or session_ended:
 		return
 
@@ -119,7 +113,7 @@ func _on_desc_dismissed() -> void:
 	_belt_timer.wait_time = _current_interval
 	_belt_timer.start()
 
-	_on_wave_button_pressed()
+	super._on_session_started()
 
 
 func _seed_first_belt_item() -> void:

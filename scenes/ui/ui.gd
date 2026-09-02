@@ -215,7 +215,9 @@ func _process(_delta: float) -> void:
 
 	if backup_server_on_cooldown:
 		skill3_cooldown.value = backup_server_timer.time_left
-	$Control/TextureRect/HBoxContainer/WaveButton.visible = GameDialogueManager.button_state
+
+	if not Data.is_vmmode:
+		$Control/TextureRect/HBoxContainer/WaveButton.visible = GameDialogueManager.button_state
 
 func _on_skill_2_pressed() -> void:
 	if patch_on_cooldown:
