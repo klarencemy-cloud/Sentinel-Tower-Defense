@@ -177,6 +177,8 @@ func _restore_backed_up_state() -> void:
 
 	Data.is_vmmode = false
 	Data.vmmode_sentinels_disabled = false
+	Data.vm_belt = []
+	Data.vm_belt_selected_id = -1
 
 
 func _on_retry_pressed() -> void:

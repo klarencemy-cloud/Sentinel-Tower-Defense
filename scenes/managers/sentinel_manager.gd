@@ -141,6 +141,9 @@ func cancel_selection() -> void:
 	if range_indicator:
 		range_indicator.visible = false
 	place_sentinel = false
+	
+	if Data.vm_belt_selected_kind() == "sentinel":
+		Data.vm_belt_selected_id = -1
 	current_placement_kind = ""
 
 	var preview = _get_sentinel_preview()
@@ -179,6 +182,9 @@ func _try_place_sentinel(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if not Data.is_sentinel_placeable:
 		return
 
+	var using_belt: bool = Data.vm_belt_selected_id >= 0
+	var belt_item_id: int = Data.vm_belt_selected_id
+
 	used_cells.append(cell_pos)
 
 	var sentinel = load(sentinel_scenes[selected_sentinel]).instantiate()
@@ -195,6 +201,9 @@ func _try_place_sentinel(cell_pos: Vector2i, world_pos: Vector2) -> void:
 			save.save_game()
 
 	cancel_selection()
+
+	if using_belt:
+		Data.consume_vm_belt_item(belt_item_id)
 
 	match selected_sentinel:
 		0:

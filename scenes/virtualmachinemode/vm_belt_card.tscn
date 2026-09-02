@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://c8vmbelt7card"]
+
+[ext_resource type="Texture2D" uid="uid://5fcgjf624a6x" path="res://graphics/ui/frame.png" id="1_frame"]
+[ext_resource type="Texture2D" uid="uid://c1h1ita4iifbw" path="res://graphics/ui/tower_card_game.png" id="2_bg"]
+[ext_resource type="FontFile" uid="uid://bqm53gushpubk" path="res://graphics/ui/Digitalt.otf" id="3_font"]
+[ext_resource type="Script" path="res://scenes/virtualmachinemode/vm_belt_card.gd" id="4_script"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ra2tf"]
+texture = ExtResource("1_frame")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[node name="VMBeltCard" type="Button"]
+clip_children = 1
+custom_minimum_size = Vector2(179, 244)
+offset_right = 179.0
+offset_bottom = 244.0
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_ra2tf")
+script = ExtResource("4_script")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 2
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 242.0
+texture = ExtResource("2_bg")
+expand_mode = 1
+
+[node name="ItemName" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 190.0
+offset_right = 163.0
+offset_bottom = 231.0
+theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
+theme_override_constants/line_spacing = -5
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+text = "Item name"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ItemCost" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 8.0
+offset_right = 172.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 22
+text = "0"
+horizontal_alignment = 1
+
+[node name="ItemLoad" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 199.0
+offset_right = 39.0
+offset_bottom = 218.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Thumbnail" type="TextureRect" parent="TextureRect"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = 72.0
+offset_right = 37.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

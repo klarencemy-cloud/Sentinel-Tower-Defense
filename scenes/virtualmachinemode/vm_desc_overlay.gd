@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal dismissed()
+
 var skippable: bool = false
 
 
@@ -59,3 +61,4 @@ func _on_control_gui_input(event: InputEvent) -> void:
 			skippable = false
 			await get_tree().create_timer(0.5).timeout
 			$'.'.hide()
+			dismissed.emit()

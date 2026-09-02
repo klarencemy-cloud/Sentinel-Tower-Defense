@@ -129,6 +129,9 @@ func start_tower_placement(tower_type: Data.Tower) -> void:
 
 func cancel_selection() -> void:
 	place_tower = false
+
+	if Data.vm_belt_selected_kind() == "tower":
+		Data.vm_belt_selected_id = -1
 	var preview = _get_tower_preview()
 	if preview:
 		preview.hide()
@@ -233,15 +236,17 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 
 	var cost = Data.TOWER_DATA[selected_tower]["cost"]
 	var using_free: bool = Data.free_towers.get(selected_tower, 0) > 0
+	var using_belt: bool = Data.vm_belt_selected_id >= 0
 	var systemload = Data.TOWER_DATA[selected_tower]["server_load"]
-	
+
 	if Data.currentserverload >= Data.maxserverload:
 		place_tower = false
+		Data.vm_belt_selected_id = -1
 		for card in get_tree().get_nodes_in_group("TowerCard"):
 			card.set_selected(false)
 		return
-		
-	if !using_free:
+
+	if !using_free and !using_belt:
 		if not Data.is_unli_money and Data.money < cost:
 			place_tower = false
 			for card in get_tree().get_nodes_in_group("TowerCard"):
@@ -289,7 +294,9 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		preview.position = Vector2.ZERO
 		preview.get_node("PlaceTower").hide()
 		preview.get_node("CancelPlace").hide()
-	if using_free:
+	if using_belt:
+		Data.consume_vm_belt_item(Data.vm_belt_selected_id)
+	elif using_free:
 		var remaining: int = Data.free_towers.get(selected_tower, 0)
 
 		if remaining > 1:

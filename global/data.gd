@@ -18,7 +18,7 @@ signal ads_visible_changed
 
 signal open_server_cyber
 
-var DEVMODE = false
+var DEVMODE = true
 var is_server_cyber_shown: bool = false
 signal toggle_server_scene # to toggle server upgrade visibility
 signal change_challenge() # for vm
@@ -180,6 +180,32 @@ var saved_ability_placements: Array = []
 
 var owned_towers: Dictionary = {}
 var free_towers: Dictionary = {}
+
+signal vm_belt_changed()
+signal vm_belt_selection_changed()
+var vm_belt: Array = []
+var vm_belt_next_id: int = 1
+var vm_belt_selected_id: int = -1:
+	set(value):
+		vm_belt_selected_id = value
+		vm_belt_selection_changed.emit()
+
+func consume_vm_belt_item(item_id: int) -> void:
+	for i in range(vm_belt.size()):
+		if vm_belt[i]["id"] == item_id:
+			vm_belt.remove_at(i)
+			break
+	vm_belt_selected_id = -1
+	vm_belt_changed.emit()
+
+# "" if nothing is selected or the selected item was already consumed/removed. Lets
+# tower_manager/sentinel_manager's cancel_selection() clear vm_belt_selected_id only when
+# it's their own kind being cancelled - see the notes in both managers' cancel_selection().
+func vm_belt_selected_kind() -> String:
+	for item in vm_belt:
+		if item["id"] == vm_belt_selected_id:
+			return item["kind"]
+	return ""
 enum Tower {SPAM_FILTER, ANTIVIRUS, AD_BLOCKER, DATA_LOSS_PREVENTION, IDPS, QUARANTINE_CANNON, ACCESS_CONTROL_SYSTEM, AI_SECURITY, BACKUP_SERVER, ENDPOINT_PROTECTION, SANDBOX_ANALYZER, PATCH}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION, LASER}
 enum Sentinel {ETHICAL, SYSAD, INTRUSION, SECURITY, MALWARE, DECEPTION}
@@ -236,7 +262,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.QUARANTINE_CANNON: {
 		'name': 'Quarantine Cannon',
-		'isUnlocked': false,
+		'isUnlocked': true,
 		'waveUnlocked': 19,
 		'unlockable': false,
 		'cost': 60,
@@ -287,7 +313,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.IDPS: {
 		'name': 'IDPS',
-		'isUnlocked': false,
+		'isUnlocked': true,
 		'waveUnlocked': 16,
 		'unlockable': false,
 		'cost': 30,
@@ -335,7 +361,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.BACKUP_SERVER: {
 		'name': "Backup Server",
-		'isUnlocked': false,
+		'isUnlocked': true,
 		'cost': 550,
 		'damage': 5000,
 		'server_load': 65,
@@ -346,7 +372,7 @@ var TOWER_DATA = {
 		},
 	Tower.AD_BLOCKER: {
 		'name': 'Ad Blocker',
-		'isUnlocked': false,
+		'isUnlocked': true,
 		'waveUnlocked': 8,
 		'unlockable': false,
 		'cost': 75,
@@ -397,7 +423,7 @@ var TOWER_DATA = {
 		},
 	Tower.ANTIVIRUS: {
 		'name': 'Antivirus',
-		'isUnlocked': false,
+		'isUnlocked': true,
 		'waveUnlocked': 4,
 		'unlockable': false,
 		'cost': 50,
@@ -448,7 +474,7 @@ var TOWER_DATA = {
 		},
 		Tower.ACCESS_CONTROL_SYSTEM: {
 		'name': 'Access Control System',
-		'isUnlocked': false,
+		'isUnlocked': true,
 		'waveUnlocked': 22,
 		'unlockable': false,
 		'cost': 225,
@@ -499,7 +525,7 @@ var TOWER_DATA = {
 		},
 		Tower.ENDPOINT_PROTECTION: {
 		'name': 'Endpoint Protection',
-		'isUnlocked': false,
+		'isUnlocked': true,
 		'waveUnlocked': 32,
 		'unlockable': false,
 		'cost': 350,
@@ -550,7 +576,7 @@ var TOWER_DATA = {
 		},
 		Tower.SANDBOX_ANALYZER: {
 		'name': 'Sandbox Analyzer',
-		'isUnlocked': false,
+		'isUnlocked': true,
 		'waveUnlocked': 36,
 		'unlockable': false,
 		'cost': 150,
@@ -601,7 +627,7 @@ var TOWER_DATA = {
 		},
 		Tower.AI_SECURITY: {
 		'name': 'AI Security',
-		'isUnlocked': false,
+		'isUnlocked': true,
 		'waveUnlocked': 28,
 		'unlockable': false,
 		'cost': 275,
@@ -652,7 +678,7 @@ var TOWER_DATA = {
 		},
 		Tower.DATA_LOSS_PREVENTION: {
 		'name': 'DLP',
-		'isUnlocked': false,
+		'isUnlocked': true,
 		'waveUnlocked': 12,
 		'unlockable': false,
 		'cost': 50,
@@ -703,7 +729,7 @@ var TOWER_DATA = {
 		},
 		Tower.PATCH: {
 		'name': 'PATCH',
-		'isUnlocked': false,
+		'isUnlocked': true,
 		'cost': 0,
 		'server_load': 0,
 		'damage': 10.0,

@@ -84,6 +84,7 @@ func _process(_delta: float) -> void:
 
 	if Data.is_placing_tower:
 		_position_edge_scroll(_delta)
+		drag = false
 
 	if shake_strength > 0:
 		shake_strength = lerp(shake_strength, 0.0, shake_fade * _delta)
