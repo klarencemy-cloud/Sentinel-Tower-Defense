@@ -1020,6 +1020,9 @@ func _boss4_dialogue_loop() -> void:
 	if enemy_type_stats != Data.Enemy.BOSS4:
 		return
 
+	if Data.is_vmmode or Data.is_sandbox:
+		return
+
 	await get_tree().create_timer(10.0, false).timeout
 	if dead or is_queued_for_deletion() or enemy_type_stats != Data.Enemy.BOSS4:
 		return

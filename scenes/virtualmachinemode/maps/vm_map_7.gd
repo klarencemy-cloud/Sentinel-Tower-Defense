@@ -8,6 +8,7 @@ const INTERVAL_STEP := (INITIAL_INTERVAL - MIN_INTERVAL) / float(TOTAL_WAVES - 1
 
 const SENTINEL_ROLL_CHANCE := 0.20
 const SESSION_START_DELAY := 1.0
+const IDPS_BOOST_WEIGHT := 1.7 
 
 const WAVES: Array[Dictionary] = [
 	{
@@ -59,6 +60,10 @@ var _belt
 var _belt_timer: Timer
 var _current_interval: float = INITIAL_INTERVAL
 var _seeded_first_item: bool = false
+var _idps_offered: bool = false
+var _force_idps_next_roll: bool = false 
+
+const INSIDER_WAVE_INDEX := 3
 
 
 func _wave_challenge_setup() -> void:
@@ -71,6 +76,8 @@ func _wave_challenge_setup() -> void:
 	Data.vm_belt_next_id = 1
 	Data.vm_belt_selected_id = -1
 	_seeded_first_item = false
+	_idps_offered = false
+	_force_idps_next_roll = false
 	_current_interval = INITIAL_INTERVAL
 
 	_belt = preload("res://scenes/virtualmachinemode/vm_belt.gd").new()
@@ -109,6 +116,8 @@ func _on_session_started() -> void:
 		_seed_first_belt_item()
 		_seeded_first_item = true
 
+	_arm_idps_guarantee()
+
 	_current_interval = _interval_for_wave(_waves_cleared)
 	_belt_timer.wait_time = _current_interval
 	_belt_timer.start()
@@ -117,10 +126,11 @@ func _on_session_started() -> void:
 
 
 func _seed_first_belt_item() -> void:
-	var item := _roll_belt_item()
+	var item := _roll_belt_item(false)
 	if item.is_empty():
 		return
 	Data.vm_belt.append(item)
+	_note_belt_item(item)
 	Data.vm_belt_changed.emit()
 
 
@@ -133,14 +143,35 @@ func _on_belt_timer_tick() -> void:
 	if item.is_empty():
 		return
 	Data.vm_belt.append(item)
+	_note_belt_item(item)
 	Data.vm_belt_changed.emit()
+
+
+func _note_belt_item(item: Dictionary) -> void:
+	if item.get("kind") == "tower" and int(item.get("type", -1)) == int(Data.Tower.IDPS):
+		_idps_offered = true
+
+func _arm_idps_guarantee() -> void:
+	if _idps_offered or _force_idps_next_roll:
+		return
+	if _waves_cleared < INSIDER_WAVE_INDEX:
+		return
+	if not Data.TOWER_DATA[Data.Tower.IDPS].get('isUnlocked', false):
+		return 
+
+	_force_idps_next_roll = true
 
 
 func _interval_for_wave(wave_index: int) -> float:
 	return max(MIN_INTERVAL, INITIAL_INTERVAL - INTERVAL_STEP * wave_index)
 
 
-func _roll_belt_item() -> Dictionary:
+func _roll_belt_item(allow_boost: bool = true) -> Dictionary:
+	if allow_boost and _force_idps_next_roll:
+		_force_idps_next_roll = false
+		if Data.TOWER_DATA[Data.Tower.IDPS].get('isUnlocked', false):
+			return {"id": _next_belt_id(), "kind": "tower", "type": int(Data.Tower.IDPS)}
+
 	var sentinel_candidates: Array = []
 	for sentinel_enum in Data.Sentinel.values():
 		if not Data.SENTINEL_DATA[sentinel_enum].get('isUnlocked', false):
@@ -163,7 +194,8 @@ func _roll_belt_item() -> Dictionary:
 		return {"id": _next_belt_id(), "kind": "sentinel", "type": int(sentinel_candidates.pick_random())}
 
 	if not tower_candidates.is_empty():
-		return {"id": _next_belt_id(), "kind": "tower", "type": int(tower_candidates.pick_random())}
+		var chosen_tower: int = _pick_tower_candidate(tower_candidates, allow_boost)
+		return {"id": _next_belt_id(), "kind": "tower", "type": chosen_tower}
 
 	if not sentinel_candidates.is_empty():
 		return {"id": _next_belt_id(), "kind": "sentinel", "type": int(sentinel_candidates.pick_random())}
@@ -171,6 +203,33 @@ func _roll_belt_item() -> Dictionary:
 	return {}
 
 
+func _pick_tower_candidate(tower_candidates: Array, allow_boost: bool) -> int:
+	var boost_active: bool = (
+		allow_boost
+		and not _idps_offered
+		and _waves_cleared < INSIDER_WAVE_INDEX
+		and tower_candidates.has(Data.Tower.IDPS)
+	)
+	if not boost_active:
+		return int(tower_candidates.pick_random())
+
+	var total_weight := 0.0
+	var weights: Array = []
+	for t in tower_candidates:
+		var w: float = IDPS_BOOST_WEIGHT if int(t) == int(Data.Tower.IDPS) else 1.0
+		weights.append(w)
+		total_weight += w
+
+	var roll := randf() * total_weight
+	var cumulative := 0.0
+	for i in range(tower_candidates.size()):
+		cumulative += weights[i]
+		if roll < cumulative:
+			return int(tower_candidates[i])
+
+	return int(tower_candidates[tower_candidates.size() - 1]) 
+
+	
 func _next_belt_id() -> int:
 	var id := Data.vm_belt_next_id
 	Data.vm_belt_next_id += 1
@@ -213,6 +272,7 @@ func _on_intermission_started() -> void:
 	_current_interval = _interval_for_wave(_waves_cleared)
 	if _belt_timer:
 		_belt_timer.wait_time = _current_interval
+	_arm_idps_guarantee()
 
 
 func _on_session_ended() -> void:
@@ -229,6 +289,8 @@ func _serialize_progress() -> Dictionary:
 		saved_belt.append({"id": int(item["id"]), "kind": str(item["kind"]), "type": int(item["type"])})
 	progress["belt"] = saved_belt
 	progress["seeded"] = _seeded_first_item
+	progress["idps_offered"] = _idps_offered
+	progress["force_idps_next_roll"] = _force_idps_next_roll
 
 	return progress
 
@@ -251,6 +313,8 @@ func _restore_progress(progress: Dictionary) -> void:
 	Data.vm_belt_next_id = max_id + 1
 
 	_seeded_first_item = bool(progress.get("seeded", _waves_cleared > 0))
+	_idps_offered = bool(progress.get("idps_offered", false))
+	_force_idps_next_roll = bool(progress.get("force_idps_next_roll", false))
 	_current_interval = _interval_for_wave(_waves_cleared)
 	if _belt_timer:
 		_belt_timer.wait_time = _current_interval

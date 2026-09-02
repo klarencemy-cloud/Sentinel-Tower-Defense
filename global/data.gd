@@ -727,7 +727,7 @@ var TOWER_DATA = {
 		},
 		Tower.PATCH: {
 		'name': 'PATCH',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'cost': 0,
 		'server_load': 0,
 		'damage': 10.0,
