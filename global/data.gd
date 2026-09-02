@@ -744,6 +744,7 @@ var TOWER_DATA = {
 func calculate_crit_damage(tower_type: int, base_damage: int, crit_chance_buff: int) -> int:
 	var tower_data = TOWER_DATA.get(tower_type, {})
 	var crit_chance = (tower_data.get("crit rate", 0) + crit_chance_buff) / 100.0
+	crit_chance += Offense.multiplied_crit_chance
 	var crit_multiplier = tower_data.get("crit damage", 0) / 100.0
 	print(crit_chance)
 	if randf() < crit_chance:

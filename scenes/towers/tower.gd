@@ -218,15 +218,6 @@ func refresh_stats():
 	if range_indicator and range_indicator.visible:
 		show_range()
 
-func apply_crit_to_damage(base_damage: int) -> int:
-	var tower_data = Data.TOWER_DATA.get(type, {})
-	var crit_chance = tower_data.get("crit rate", 0) / 100.0
-	var crit_multiplier = tower_data.get("crit damage", 0) / 100.0
-	var total_crit_chance = Offense.multiplied_crit_chance + crit_chance # Applies server upgrade crit
-	if randf() < total_crit_chance:
-		return int(base_damage * (1.0 + crit_multiplier))
-	return base_damage
-
 func show_ad():
 	if ad_active or ransomware_active:
 		return
