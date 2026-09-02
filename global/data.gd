@@ -260,7 +260,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.QUARANTINE_CANNON: {
 		'name': 'Quarantine Cannon',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 19,
 		'unlockable': false,
 		'cost': 60,
@@ -311,7 +311,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.IDPS: {
 		'name': 'IDPS',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 16,
 		'unlockable': false,
 		'cost': 30,
@@ -370,7 +370,7 @@ var TOWER_DATA = {
 		},
 	Tower.AD_BLOCKER: {
 		'name': 'Ad Blocker',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 8,
 		'unlockable': false,
 		'cost': 75,
@@ -421,7 +421,7 @@ var TOWER_DATA = {
 		},
 	Tower.ANTIVIRUS: {
 		'name': 'Antivirus',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 4,
 		'unlockable': false,
 		'cost': 50,
@@ -472,7 +472,7 @@ var TOWER_DATA = {
 		},
 		Tower.ACCESS_CONTROL_SYSTEM: {
 		'name': 'Access Control System',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 22,
 		'unlockable': false,
 		'cost': 225,
@@ -523,7 +523,7 @@ var TOWER_DATA = {
 		},
 		Tower.ENDPOINT_PROTECTION: {
 		'name': 'Endpoint Protection',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 32,
 		'unlockable': false,
 		'cost': 350,
@@ -574,7 +574,7 @@ var TOWER_DATA = {
 		},
 		Tower.SANDBOX_ANALYZER: {
 		'name': 'Sandbox Analyzer',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 36,
 		'unlockable': false,
 		'cost': 150,
@@ -625,7 +625,7 @@ var TOWER_DATA = {
 		},
 		Tower.AI_SECURITY: {
 		'name': 'AI Security',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 28,
 		'unlockable': false,
 		'cost': 275,
@@ -676,7 +676,7 @@ var TOWER_DATA = {
 		},
 		Tower.DATA_LOSS_PREVENTION: {
 		'name': 'DLP',
-		'isUnlocked': true,
+		'isUnlocked': false,
 		'waveUnlocked': 12,
 		'unlockable': false,
 		'cost': 50,
