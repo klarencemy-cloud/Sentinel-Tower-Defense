@@ -220,6 +220,7 @@ func _process(_delta: float) -> void:
 		$Control/TextureRect/HBoxContainer/WaveButton.visible = GameDialogueManager.button_state
 
 func _on_skill_2_pressed() -> void:
+	UISound.play_click()
 	if patch_on_cooldown:
 		return
 	tower_select(11)
@@ -237,6 +238,7 @@ func toggle_skill_activation():
 	$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
 
 func _on_skill1_pressed() -> void:
+	UISound.play_click()
 	if firewall_on_cooldown:
 		return
 
@@ -328,6 +330,7 @@ func show_card_category(category: int) -> void:
 	update_tower_enemies_button_texture()
 
 func _on_tower_enemies_button_pressed() -> void:
+	UISound.play_click()
 	if Data.is_sandbox:
 		if tower_cards_container.visible:
 			show_card_category(CardCategory.SENTINEL)
@@ -396,7 +399,14 @@ func disable_auto():
 	var auto_button = $Control/AutoLabel/AutoButton
 	auto_button.button_pressed = false
 
+func _on_auto_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		UISound.play_click()
+	else:
+		UISound.play_close()
+
 func _on_wave_button_pressed() -> void:
+	UISound.play_click()
 	start_wave.emit()
 
 
@@ -544,23 +554,27 @@ func _on_maxed_lvl_toggled(toggled_on: bool) -> void:
 
 func _on_unli_money_toggled(toggled_on: bool) -> void:
 	if toggled_on:
+		UISound.play_click()
 		Data.is_unli_money = true
 		Data.before_total_money = Data.money
 
 		Data.money = 999999
-	
+
 	else:
+		UISound.play_close()
 		Data.is_unli_money = false
 		Data.money = Data.before_total_money
 
 		
 func _on_unli_health_toggled(toggled_on: bool) -> void:
 	if toggled_on:
+		UISound.play_click()
 		Data.is_unli_health = true
 		Data.before_total_health = Data.health
 		Data.health = 999999
-	
+
 	else:
+		UISound.play_close()
 		Data.is_unli_health = false
 		Data.health = Data.before_total_health
 
@@ -760,6 +774,7 @@ func unlock_sentinel_card(sentinel_enum: Data.Sentinel) -> void:
 
 
 func _on_skill_3_pressed() -> void:
+	UISound.play_click()
 	if backup_server_on_cooldown:
 		return
 	if Data.backup_server_placed:

@@ -9,6 +9,7 @@ func _ready() -> void:
 		$Label2.text = "You've completed level %s!" % Data.current_level_index
 
 func _on_next_level_pressed() -> void:
+	UISound.play_click()
 	if Data.is_vmmode:
 		VMSave.clear_save(Data.vmmode_map_number)
 		Data.vmmode_resume_progress = {}
@@ -17,6 +18,7 @@ func _on_next_level_pressed() -> void:
 
 
 func _on_main_menu_pressed() -> void:
+	UISound.play_click()
 	if Data.is_vmmode:
 		_restore_vmmode_state()
 	get_tree().change_scene_to_file("res://scenes/mainmenu/main_menu.tscn")

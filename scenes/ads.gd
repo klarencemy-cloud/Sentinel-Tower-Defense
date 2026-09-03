@@ -11,6 +11,7 @@ func setup(texture: Texture2D):
 	
 
 func _on_button_pressed():
+	UISound.play_close()
 	queue_free()
 	var remaining := get_tree().get_nodes_in_group("AdPopup").size() - 1
 

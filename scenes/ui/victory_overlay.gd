@@ -33,6 +33,7 @@ func _show_victory_overlay() -> void:
 
 
 func _on_continue_button_pressed() -> void:
+	UISound.play_click()
 	if not can_click:
 		return
 	get_tree().change_scene_to_file("res://scenes/victoryscreen/victory_screen.tscn")

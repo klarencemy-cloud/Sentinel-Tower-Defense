@@ -171,6 +171,7 @@ func _get_ability_preview() -> Sprite2D:
 	return preview as Sprite2D
 
 func confirm_current_placement():
+	UISound.play_click()
 	if !place_ability:
 		return
 
@@ -182,6 +183,7 @@ func confirm_current_placement():
 	_try_place_ability(preview.position)
 
 func cancel_current_placement():
+	UISound.play_close()
 	var preview = _get_ability_preview()
 
 	if preview:

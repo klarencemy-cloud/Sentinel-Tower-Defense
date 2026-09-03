@@ -247,5 +247,6 @@ autostart = true
 [connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ButtonManager/Database" to="." method="_on_database_pressed"]
 [connection signal="pressed" from="ButtonManager/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ButtonManager/Config" to="." method="_on_config_pressed"]
 [connection signal="pressed" from="ButtonManager/Exit" to="." method="_on_exit_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

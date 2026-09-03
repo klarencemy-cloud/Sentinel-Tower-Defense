@@ -928,6 +928,7 @@ script = ExtResource("39_0xdx3")
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliMoney" to="." method="_on_unli_money_toggled"]
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliHealth" to="." method="_on_unli_health_toggled"]
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliSentiCap" to="." method="_on_unli_senti_cap_toggled"]
+[connection signal="toggled" from="Control/AutoLabel/AutoButton" to="." method="_on_auto_button_toggled"]
 [connection signal="pressed" from="Control/HBoxContainer/Skill2" to="." method="_on_skill_2_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/Skill3" to="." method="_on_skill_3_pressed"]
 [connection signal="pressed" from="Control/PauseButton" to="." method="_on_pause_button_pressed"]

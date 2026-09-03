@@ -777,8 +777,11 @@ func _on_unlock_pressed() -> void:
 	var is_unlockable: bool = bool(tower_data.get("unlockable", false))
 
 	if not is_unlockable:
+		UISound.play_close()
 		print("Tower is not unlockable: ", tower_data.get("name", "Unknown"))
 		return
+
+	UISound.play_unlock()
 
 	# Already unlocked
 	if bool(tower_data.get("isUnlocked", false)):

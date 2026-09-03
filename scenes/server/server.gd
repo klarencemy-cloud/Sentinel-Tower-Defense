@@ -23,6 +23,7 @@ func toggle_particle(state: bool):
 	$GPUParticles2D.visible = state
 
 func _on_pressed() -> void:
+	UISound.play_click()
 	get_tree().paused = true
 	Data.toggle_server_scene.emit()
 

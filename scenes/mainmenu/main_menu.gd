@@ -36,3 +36,7 @@ func _on_settings_pressed() -> void:
 func _on_timer_timeout() -> void:
 	$AnimationPlayer.play("opening")
 	$Timer.start()
+
+
+func _on_config_pressed() -> void:
+	UISound.play_click()

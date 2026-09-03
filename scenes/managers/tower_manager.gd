@@ -353,6 +353,7 @@ func create_mortar_projectile(start_pos, target_enemy, damage, tower_type, tower
 	_get_bullet_parent().add_child(projectile)
 	
 func confirm_current_placement() -> void:
+	UISound.play_click()
 	if !place_tower:
 		return
 
@@ -367,6 +368,7 @@ func confirm_current_placement() -> void:
 	
 	
 func cancel_current_placement() -> void:
+	UISound.play_close()
 	var preview = _get_tower_preview()
 
 	if preview:

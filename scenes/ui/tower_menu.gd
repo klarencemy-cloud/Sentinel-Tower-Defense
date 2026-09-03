@@ -12,6 +12,7 @@ func reveal():
 
 
 func _on_delete_button_pressed() -> void:
+	UISound.play_close()
 	delete_press.emit()
 	Data.is_tower_placeable = true
 

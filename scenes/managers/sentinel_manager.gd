@@ -231,6 +231,7 @@ func _get_sentinel_preview() -> Sprite2D:
 	return preview as Sprite2D
 	
 func confirm_current_placement():
+	UISound.play_click()
 	if !place_sentinel:
 		return
 
@@ -245,6 +246,7 @@ func confirm_current_placement():
 	_try_place_sentinel_current(cell_pos, world_pos)
 
 func cancel_current_placement():
+	UISound.play_close()
 	if range_indicator:
 		range_indicator.visible = false
 	var preview = _get_sentinel_preview()

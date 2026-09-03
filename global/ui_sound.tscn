@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://eesl3yy5xgq3" path="res://audio/UI/dialogue2.wav" id="11_0u66a"]
 [ext_resource type="AudioStream" uid="uid://cfy4kq7why6ue" path="res://audio/UI/dialogue3.wav" id="12_73dq3"]
 [ext_resource type="AudioStream" uid="uid://cqiwp5ed8lvq" path="res://audio/UI/dialogue4.wav" id="13_h1od4"]
+[ext_resource type="AudioStream" uid="uid://fxbbigpp11cw" path="res://audio/unlock.wav" id="14_0u66a"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q17wm"]
 streams_count = 3
@@ -34,6 +35,7 @@ stream_2/stream = ExtResource("12_73dq3")
 stream_3/stream = ExtResource("13_h1od4")
 
 [node name="UISound" type="Node" unique_id=134395415]
+process_mode = 3
 script = ExtResource("1_n4w8n")
 
 [node name="ClickOpen" type="AudioStreamPlayer" parent="." unique_id=807617012]
@@ -44,9 +46,11 @@ bus = &"Sounds"
 [node name="ClickClose" type="AudioStreamPlayer" parent="." unique_id=2042576880]
 stream = SubResource("AudioStreamRandomizer_q17wm")
 volume_db = -3.0
+bus = &"Sounds"
 
 [node name="ClickCarousel" type="AudioStreamPlayer" parent="." unique_id=1209734964]
 stream = SubResource("AudioStreamRandomizer_yt6xl")
+bus = &"Sounds"
 
 [node name="UIBackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1808766913]
 stream = ExtResource("6_5sf5e")
@@ -62,4 +66,9 @@ bus = &"Music"
 [node name="DialogueTyping" type="AudioStreamPlayer" parent="." unique_id=1332762566]
 stream = SubResource("AudioStreamRandomizer_7g3sw")
 volume_db = -15.053
+bus = &"Sounds"
+
+[node name="ClickUnlock" type="AudioStreamPlayer" parent="." unique_id=1805250307]
+stream = ExtResource("14_0u66a")
+volume_db = -3.0
 bus = &"Sounds"
