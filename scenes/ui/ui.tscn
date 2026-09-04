@@ -250,6 +250,19 @@ theme_override_font_sizes/font_size = 41
 text = "Wave 1/50"
 metadata/_edit_use_anchors_ = true
 
+[node name="VMWaveNum" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=890659222]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 41.775
+anchor_top = 2.075
+anchor_right = 46.7
+anchor_bottom = 3.275
+theme_override_font_sizes/font_size = 41
+text = "Wave 1/7"
+metadata/_edit_use_anchors_ = true
+
 [node name="ServerHealth" type="Label" parent="Control/TextureRect/PlayerCurrentStats" unique_id=1597613385]
 layout_mode = 0
 anchor_left = 30.4
@@ -658,11 +671,11 @@ anchor_top = 0.03
 anchor_right = 0.5
 anchor_bottom = 0.03
 offset_left = -200.0
-offset_top = 60.0
+offset_top = 18.670002
 offset_right = 200.0
-offset_bottom = 95.0
+offset_bottom = 58.670002
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 38
 text = "Next wave in 10s"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -928,8 +941,8 @@ script = ExtResource("39_0xdx3")
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliMoney" to="." method="_on_unli_money_toggled"]
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliHealth" to="." method="_on_unli_health_toggled"]
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliSentiCap" to="." method="_on_unli_senti_cap_toggled"]
-[connection signal="toggled" from="Control/AutoLabel/AutoButton" to="." method="_on_auto_button_toggled"]
 [connection signal="pressed" from="Control/HBoxContainer/Skill2" to="." method="_on_skill_2_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/Skill3" to="." method="_on_skill_3_pressed"]
+[connection signal="toggled" from="Control/AutoLabel/AutoButton" to="." method="_on_auto_button_toggled"]
 [connection signal="pressed" from="Control/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="StatsCounterButton" to="." method="_on_stats_counter_button_pressed"]

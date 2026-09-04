@@ -49,6 +49,10 @@ const WAVES: Array[Dictionary] = [
 ]
 
 
+func _use_story_wave_position() -> bool:
+	return true
+
+
 func _wave_challenge_setup() -> void:
 	Data.max_health = 1
 	Data.health = 1

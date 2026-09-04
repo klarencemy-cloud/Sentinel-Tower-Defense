@@ -66,6 +66,10 @@ var _force_idps_next_roll: bool = false
 const INSIDER_WAVE_INDEX := 3
 
 
+func _use_story_wave_position() -> bool:
+	return true
+
+
 func _wave_challenge_setup() -> void:
 	Data.clear_notpetya_enemy_speed_effect()
 	Data.free_towers.clear()
@@ -319,4 +323,4 @@ func _restore_progress(progress: Dictionary) -> void:
 	if _belt_timer:
 		_belt_timer.wait_time = _current_interval
 
-	Data.vm_belt_changed.emit()
+	_belt.sync_visuals_instant()

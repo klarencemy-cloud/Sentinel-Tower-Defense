@@ -57,6 +57,10 @@ var _fog_shader_material: ShaderMaterial
 var fog_check_timer: Timer
 
 
+func _use_story_wave_position() -> bool:
+	return true
+
+
 func _wave_challenge_setup() -> void:
 	Data.clear_notpetya_enemy_speed_effect()
 	_build_fog_zones()

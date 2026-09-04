@@ -28,7 +28,10 @@ func _ready() -> void:
 	wave_manager = $Level/WaveManager
 	var wave_num_label: Label = ui_node.get_node("Control/TextureRect/PlayerCurrentStats/WaveNum")
 	wave_num_label.visible = false
-	progress_label = ui_node.get_node("Control/VirusNum")
+	if _use_story_wave_position():
+		progress_label = ui_node.get_node("Control/TextureRect/PlayerCurrentStats/VMWaveNum")
+	else:
+		progress_label = ui_node.get_node("Control/VirusNum")
 	progress_label.visible = true
 	countdown_label = ui_node.get_node_or_null("Control/WaveCountdown")
 	wave_button = ui_node.get_node("Control/TextureRect/HBoxContainer/WaveButton")
@@ -230,6 +233,10 @@ func _spawn_lane_group(enemy_types: Array, lane_offsets: Array = [], on_enemy_sp
 			on_enemy_spawned.call(enemy)
 	var stagger: float = wave_manager.LANE_GROUP_SPAWN_STAGGER if spawn_stagger < 0.0 else spawn_stagger
 	return await wave_manager.spawn_enemy_lane_group(enemy_types, null, lane_offsets, stagger, guarded_callback)
+
+
+func _use_story_wave_position() -> bool:
+	return false
 
 
 func _challenge_setup() -> void:

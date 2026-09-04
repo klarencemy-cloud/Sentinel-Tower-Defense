@@ -5,12 +5,13 @@ const SLOT_HEIGHT := 244.0
 const SLOT_GAP := 22.0
 const SLOT_STEP := SLOT_WIDTH + SLOT_GAP
 const SLOT_COUNT := 5
-const SHIFT_DURATION := 2.5
+const SHIFT_SPEED := (SLOT_WIDTH + SLOT_GAP) / 1.0
 
 var belt_card_scene := preload("res://scenes/virtualmachinemode/vm_belt_card.tscn")
 
 var _ui_node
 var _cards: Dictionary = {}
+var _card_tweens: Dictionary = {}
 
 
 func setup(ui_node) -> void:
@@ -29,7 +30,11 @@ func setup(ui_node) -> void:
 	_sync_visuals()
 
 
-func _sync_visuals() -> void:
+func sync_visuals_instant() -> void:
+	_sync_visuals(true)
+
+
+func _sync_visuals(instant: bool = false) -> void:
 	var current_ids: Dictionary = {}
 	for item in Data.vm_belt:
 		current_ids[int(item["id"])] = true
@@ -38,6 +43,9 @@ func _sync_visuals() -> void:
 		if not current_ids.has(id):
 			_cards[id].queue_free()
 			_cards.erase(id)
+			if _card_tweens.has(id):
+				_card_tweens[id].kill()
+				_card_tweens.erase(id)
 
 	for i in range(Data.vm_belt.size()):
 		var item: Dictionary = Data.vm_belt[i]
@@ -47,15 +55,25 @@ func _sync_visuals() -> void:
 		if not _cards.has(id):
 			var card = belt_card_scene.instantiate()
 			card.setup(item)
-			card.position = Vector2(SLOT_COUNT * SLOT_STEP, 0)
+			card.position = Vector2(target_x if instant else SLOT_COUNT * SLOT_STEP, 0)
 			card.press.connect(_on_card_pressed)
 			add_child(card)
 			_cards[id] = card
 			card.set_selected(Data.vm_belt_selected_id == id)
 
 		var card = _cards[id]
-		var tween := create_tween()
-		tween.tween_property(card, "position:x", target_x, SHIFT_DURATION).set_trans(Tween.TRANS_LINEAR)
+		if _card_tweens.has(id):
+			_card_tweens[id].kill()
+			_card_tweens.erase(id)
+
+		if instant:
+			card.position.x = target_x
+		else:
+			var distance: float = abs(target_x - card.position.x)
+			var duration: float = distance / SHIFT_SPEED
+			var tween := create_tween()
+			tween.tween_property(card, "position:x", target_x, duration).set_trans(Tween.TRANS_LINEAR)
+			_card_tweens[id] = tween
 
 
 func _on_card_pressed(item_id: int) -> void:
