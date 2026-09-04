@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var offense_container: Control = $UIContainer/ServerUpdate/OffenseContainer
 @onready var defense_container: Control = $UIContainer/ServerUpdate/DefenseContainer
 @onready var economy_container: Control = $UIContainer/ServerUpdate/EconomyContainer
+@onready var server_visual: AnimatedSprite2D = $UIContainer/ServerUpdate/ServerLevel1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +13,7 @@ func _ready() -> void:
 	economy_container.refresh_pts.connect(_on_upgrade_purchased)
 
 	Data.open_server_cyber.connect(toggle_open_server_cyber)
+	Data.server_upgrade_purchased.connect(_update_server_visual)
 
 	if Data.is_sandbox:
 		Data.before_server_points = Data.server_points
@@ -19,6 +21,16 @@ func _ready() -> void:
 		$UIContainer/CyberBtn.visible = true
 
 	_refresh_server_pts()
+	_update_server_visual()
+
+
+func _update_server_visual() -> void:
+	var level = Data.get_server_visual_level()
+	var target_animation = "default" if level == 1 else "default_%d" % level
+	if server_visual.animation != target_animation:
+		server_visual.play(target_animation)
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_refresh_server_pts()
@@ -97,5 +109,6 @@ func _on_economy_pressed() -> void:
 
 func _on_upgrade_purchased() -> void:
 	_refresh_server_pts()
+	Data.server_upgrade_purchased.emit()
 	if !Data.is_sandbox and !Data.is_vmmode:
 		Save.save_game()

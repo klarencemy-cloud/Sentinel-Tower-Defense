@@ -17,6 +17,7 @@ signal server_load_changed
 signal ads_visible_changed
 
 signal open_server_cyber
+signal server_upgrade_purchased()
 
 var DEVMODE = true
 var is_server_cyber_shown: bool = false
@@ -750,6 +751,23 @@ func calculate_crit_damage(tower_type: int, base_damage: int, crit_chance_buff: 
 	if randf() < crit_chance:
 		return int(base_damage * (1.0 + crit_multiplier))
 	return base_damage
+
+
+# Server visual level (1-6), purely cosmetic: reflects total Offense+Defense+Economy
+# upgrades purchased. 70 max upgrades total / 5 steps = 14 upgrades per level.
+const SERVER_VISUAL_TOTAL_UPGRADES_MAX: int = 70
+const SERVER_VISUAL_UPGRADES_PER_LEVEL: int = 14
+
+func get_server_visual_level() -> int:
+	var total := 0
+	for lvl in Offense.offense_levels:
+		total += lvl
+	for lvl in Defense.defense_levels:
+		total += lvl
+	for lvl in Economy.economy_levels:
+		total += lvl
+	total = mini(total, SERVER_VISUAL_TOTAL_UPGRADES_MAX)
+	return clampi(1 + (total / SERVER_VISUAL_UPGRADES_PER_LEVEL), 1, 6)
 
 
 var SENTINEL_DATA = {

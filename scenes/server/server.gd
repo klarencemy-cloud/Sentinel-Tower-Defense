@@ -6,6 +6,12 @@ var health: float
 var max_health: float
 var tween = Tween
 
+@onready var server_level_sprites: Array[AnimatedSprite2D] = [
+	$ServerLevel1, $ServerLevel2, $ServerLevel3, $ServerLevel4, $ServerLevel5, $ServerlLevel6
+]
+
+var current_server_level: int = 0
+
 func _ready() -> void:
 	destroy_shield()
 	health = Data.ABILITY_DATA[Data.Ability.FIREWALL]['health']
@@ -13,6 +19,19 @@ func _ready() -> void:
 	Data.deploy_shield.connect(deploy_shield)
 	Data.destroy_shield.connect(destroy_shield)
 	Data.deploy_deception.connect(deception_active)
+	Data.server_upgrade_purchased.connect(_update_server_level_visual)
+	_update_server_level_visual()
+
+
+func _update_server_level_visual() -> void:
+	var target_level = Data.get_server_visual_level()
+
+	if target_level == current_server_level:
+		return
+
+	current_server_level = target_level
+	for i in range(server_level_sprites.size()):
+		server_level_sprites[i].visible = (i + 1 == current_server_level)
 
 func deploy_shield():
 	$IntrusionShield/Shield.monitoring = true

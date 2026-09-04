@@ -5,24 +5,15 @@ CLAUDE.md
 skills-lock.json
 .mcp.json
 .agents/skills/thermo-nuclear-code-quality-review
-.vscode/settings.json
-.vscode/settings.json
 graphics/bosses/Virus.png.import
 graphics/bosses/Virus.png.import
 project.godot
-.vscode/settings.json
-.vscode/settings.json
-.vscode/settings.json
-.vscode/settings.json
 project.godot
 .vscode/settings.json
 .vscode/settings.json
 graphics/bosses/Virus.png.import
 graphics/bosses/Virus.png.import
 project.godot
-.vscode/settings.json
-.vscode/settings.json
-.vscode/settings.json
 graphics/bosses/Virus.png.import
 project.godot
 .vscode/settings.json
@@ -37,4 +28,5 @@ graphics/ui/tower thumbnails/SANDBOX.png.import
 graphics/ui/tower thumbnails/SOAR.png.import
 graphics/ui/tower thumbnails/SPAM_FILTER.png.import
 .vscode/settings.json
-.vscode/settings.json
+.claude/skills/thermo-nuclear-code-quality-review
+.claude/skills/thermo-nuclear-code-quality-review/SKILL.md
