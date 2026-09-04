@@ -752,9 +752,15 @@ func _on_sentinel_btn_pressed() -> void:
 		$SentinelStuff/Rollbtn.visible = false
 	else:
 		$SentinelStuff/Rollbtn.visible = true
-	
+
+	if Data.is_vmmode:
+		_show_sentinel_list_view()
+
 func _on_sentinel_list_pressed() -> void:
 	UISound.play_click()
+	_show_sentinel_list_view()
+
+func _show_sentinel_list_view() -> void:
 	$SentinelStuff/SentinelRoll.visible = false
 	$SentinelStuff/ScrollContainer.visible = true
 	$SentinelStuff/Rollbtn.visible = false
