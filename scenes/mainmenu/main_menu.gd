@@ -39,4 +39,4 @@ func _on_timer_timeout() -> void:
 
 
 func _on_config_pressed() -> void:
-	UISound.play_click()
+	$VolumeSettingsPanel.open()

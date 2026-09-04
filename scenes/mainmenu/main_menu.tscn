@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://5nwlyarf5y3v" path="res://graphics/buttons/exit.svg" id="6_otieh"]
 [ext_resource type="Script" uid="uid://cfksw4o72tltq" path="res://scenes/mainmenu/title.gd" id="8_l3hwl"]
 [ext_resource type="Script" uid="uid://bvhgan4888lei" path="res://scenes/mainmenu/ghost_effect.gd" id="10_n3o3g"]
+[ext_resource type="PackedScene" uid="uid://cmfmidg1nxftm" path="res://scenes/ui/volume_settings_panel.tscn" id="11_volset"]
 
 [sub_resource type="Gradient" id="Gradient_otieh"]
 offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
@@ -243,6 +244,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Timer" type="Timer" parent="." unique_id=381866674]
 wait_time = 2.0
 autostart = true
+
+[node name="VolumeSettingsPanel" parent="." unique_id=2033515175 instance=ExtResource("11_volset")]
+visible = false
 
 [connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ButtonManager/Database" to="." method="_on_database_pressed"]

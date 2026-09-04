@@ -8,6 +8,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass # void of emptiness and nothingness just like my wallet
 
+func _on_settings_pressed() -> void:
+	$VolumeSettingsPanel.open()
+
 func _on_resume_pressed() -> void:
 	UISound.play_click()
 	get_tree().paused = false # unfreezes game, pag kase cinlick pause button ipapause nya game

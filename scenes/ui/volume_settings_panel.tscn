@@ -1,0 +1,213 @@
+[gd_scene format=3 uid="uid://cmfmidg1nxftm"]
+
+[ext_resource type="Script" uid="uid://dpmqpuejgkpi7" path="res://scenes/ui/volume_settings_panel.gd" id="1_settings"]
+[ext_resource type="Texture2D" uid="uid://dlncx00y63ycl" path="res://graphics/ui/settings-rectangle.png" id="2_rect"]
+[ext_resource type="Texture2D" uid="uid://xr78s0cxmj20" path="res://graphics/ui/settings-upper.png" id="3_upper"]
+[ext_resource type="Texture2D" uid="uid://dp2cnddqldctv" path="res://graphics/ui/setting-sound-icon.png" id="4_icon"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slider_track"]
+content_margin_top = 7.0
+content_margin_bottom = 7.0
+bg_color = Color(1, 1, 1, 0.25)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slider_fill"]
+content_margin_top = 7.0
+content_margin_bottom = 7.0
+bg_color = Color(0.3137255, 0.654902, 0.8705882, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="VolumeSettingsPanel" type="CanvasLayer" unique_id=29370878]
+process_mode = 3
+layer = 10
+script = ExtResource("1_settings")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1288217818]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.55)
+
+[node name="Panel" type="Control" parent="." unique_id=1130756409]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -452.0
+offset_top = -350.0
+offset_right = 452.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Panel" unique_id=70601298]
+layout_mode = 0
+offset_right = 904.0
+offset_bottom = 700.0
+texture = ExtResource("2_rect")
+
+[node name="Flap" type="TextureRect" parent="Panel" unique_id=155691702]
+layout_mode = 0
+offset_left = 462.0
+offset_right = 898.0
+offset_bottom = 189.0
+texture = ExtResource("3_upper")
+
+[node name="Title" type="Label" parent="Panel" unique_id=1535885892]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 63.0
+offset_right = 520.0
+offset_bottom = 182.0
+theme_override_font_sizes/font_size = 103
+text = "Settings"
+
+[node name="MasterLabel" type="Label" parent="Panel" unique_id=900551896]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 216.0
+offset_right = 460.0
+offset_bottom = 262.0
+theme_override_font_sizes/font_size = 40
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="Panel" unique_id=1927826712]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 266.0
+offset_right = 660.0
+offset_bottom = 296.0
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider_track")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_slider_fill")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_slider_fill")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MasterIcon" type="TextureButton" parent="Panel" unique_id=1526622943]
+layout_mode = 0
+offset_left = 690.0
+offset_top = 260.0
+offset_right = 736.0
+offset_bottom = 302.0
+toggle_mode = true
+texture_normal = ExtResource("4_icon")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Slash" type="Line2D" parent="Panel/MasterIcon" unique_id=1434294326]
+visible = false
+points = PackedVector2Array(8, 8, 38, 34)
+width = 4.0
+default_color = Color(0.92, 0.25, 0.25, 1)
+
+[node name="SoundLabel" type="Label" parent="Panel" unique_id=1285664750]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 334.0
+offset_right = 460.0
+offset_bottom = 380.0
+theme_override_font_sizes/font_size = 40
+text = "Sound Effects"
+
+[node name="SoundSlider" type="HSlider" parent="Panel" unique_id=343435199]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 384.0
+offset_right = 660.0
+offset_bottom = 414.0
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider_track")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_slider_fill")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_slider_fill")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SoundIcon" type="TextureButton" parent="Panel" unique_id=290332017]
+layout_mode = 0
+offset_left = 690.0
+offset_top = 378.0
+offset_right = 736.0
+offset_bottom = 420.0
+toggle_mode = true
+texture_normal = ExtResource("4_icon")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Slash" type="Line2D" parent="Panel/SoundIcon" unique_id=1715147422]
+visible = false
+points = PackedVector2Array(8, 8, 38, 34)
+width = 4.0
+default_color = Color(0.92, 0.25, 0.25, 1)
+
+[node name="MusicLabel" type="Label" parent="Panel" unique_id=917655131]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 452.0
+offset_right = 460.0
+offset_bottom = 498.0
+theme_override_font_sizes/font_size = 40
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="Panel" unique_id=210781552]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 502.0
+offset_right = 660.0
+offset_bottom = 532.0
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider_track")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_slider_fill")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_slider_fill")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicIcon" type="TextureButton" parent="Panel" unique_id=237359552]
+layout_mode = 0
+offset_left = 690.0
+offset_top = 496.0
+offset_right = 736.0
+offset_bottom = 538.0
+toggle_mode = true
+texture_normal = ExtResource("4_icon")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Slash" type="Line2D" parent="Panel/MusicIcon" unique_id=510618909]
+visible = false
+points = PackedVector2Array(8, 8, 38, 34)
+width = 4.0
+default_color = Color(0.92, 0.25, 0.25, 1)
+
+[node name="CancelButton" type="Button" parent="Panel" unique_id=1030694402]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 592.0
+offset_right = 687.0
+offset_bottom = 657.0
+theme_override_colors/font_color = Color(0.95, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 49
+text = "Cancel"
+flat = true
+
+[node name="SaveButton" type="Button" parent="Panel" unique_id=484016872]
+layout_mode = 0
+offset_left = 733.0
+offset_top = 592.0
+offset_right = 842.0
+offset_bottom = 657.0
+theme_override_colors/font_color = Color(0.3273128, 0.61982703, 0.88803005, 1)
+theme_override_font_sizes/font_size = 49
+text = "Save"
+flat = true
