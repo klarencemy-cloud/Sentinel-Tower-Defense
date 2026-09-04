@@ -198,24 +198,28 @@ func change_weather() -> void:
 			$'../WeatherEffects/RainParticles'.visible = false
 			$'../WeatherEffects/LightningEffects'.visible = false
 			$'../WeatherEffects/BloomParticles'.visible = true
+			UISound.stop_rain_bg()
 		11:
 			$'../WeatherEffects/DustParticles'.visible = true
 			$'../WeatherEffects/WindParticles'.visible = false
 			$'../WeatherEffects/RainParticles'.visible = false
 			$'../WeatherEffects/LightningEffects'.visible = false
 			$'../WeatherEffects/BloomParticles'.visible = false
+			UISound.stop_rain_bg()
 		21:
 			$'../WeatherEffects/DustParticles'.visible = true
 			$'../WeatherEffects/WindParticles'.visible = true
 			$'../WeatherEffects/RainParticles'.visible = false
 			$'../WeatherEffects/LightningEffects'.visible = false
 			$'../WeatherEffects/BloomParticles'.visible = false
+			UISound.stop_rain_bg()
 		31:
 			$'../WeatherEffects/DustParticles'.visible = true
 			$'../WeatherEffects/WindParticles'.visible = true
 			$'../WeatherEffects/RainParticles'.visible = false
 			$'../WeatherEffects/LightningEffects'.visible = true
 			$'../WeatherEffects/BloomParticles'.visible = false
+			UISound.stop_rain_bg()
 
 		41:
 			$'../WeatherEffects/DustParticles'.visible = true
@@ -223,12 +227,14 @@ func change_weather() -> void:
 			$'../WeatherEffects/RainParticles'.visible = true
 			$'../WeatherEffects/LightningEffects'.visible = true
 			$'../WeatherEffects/BloomParticles'.visible = false
+			UISound.play_rain_bg()
 		51:
 			$'../WeatherEffects/DustParticles'.visible = true
 			$'../WeatherEffects/WindParticles'.visible = true
 			$'../WeatherEffects/RainParticles'.visible = true
 			$'../WeatherEffects/LightningEffects'.visible = true
 			$'../WeatherEffects/BloomParticles'.visible = false
+			UISound.play_rain_bg()
 
 func _spawn_enemy_on_path(enemy_enum: Data.Enemy, path: Path2D, lane_offset: float = 0.0) -> Node:
 	var path_follow = PathFollow2D.new()

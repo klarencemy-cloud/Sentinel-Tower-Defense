@@ -75,6 +75,7 @@ var backup_server_timer := Timer.new()
 func _ready() -> void:
 	UISound.stop_bg()
 	await UISound.play_game_bg()
+	UISound.play_air_bg()
 
 	Defense.server_health_upgraded.connect(_on_server_health_upgraded)
 	boss_hp_bar.visible = false

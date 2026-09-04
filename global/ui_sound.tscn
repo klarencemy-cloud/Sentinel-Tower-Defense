@@ -14,6 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://cfy4kq7why6ue" path="res://audio/UI/dialogue3.wav" id="12_73dq3"]
 [ext_resource type="AudioStream" uid="uid://cqiwp5ed8lvq" path="res://audio/UI/dialogue4.wav" id="13_h1od4"]
 [ext_resource type="AudioStream" uid="uid://fxbbigpp11cw" path="res://audio/unlock.wav" id="14_0u66a"]
+[ext_resource type="AudioStream" uid="uid://c6xi6il8p6vvu" path="res://audio/SFX/BackgroundSFX/air.wav" id="15_h1od4"]
+[ext_resource type="AudioStream" uid="uid://dxu4t84embc1f" path="res://audio/SFX/BackgroundSFX/rain.wav" id="16_qwse3"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q17wm"]
 streams_count = 3
@@ -71,4 +73,14 @@ bus = &"Sounds"
 [node name="ClickUnlock" type="AudioStreamPlayer" parent="." unique_id=1805250307]
 stream = ExtResource("14_0u66a")
 volume_db = -3.0
+bus = &"Sounds"
+
+[node name="AirBackground" type="AudioStreamPlayer" parent="." unique_id=1115093429]
+stream = ExtResource("15_h1od4")
+volume_db = -20.276
+bus = &"Sounds"
+
+[node name="RainBackground" type="AudioStreamPlayer" parent="." unique_id=102173809]
+stream = ExtResource("16_qwse3")
+volume_db = -25.508
 bus = &"Sounds"

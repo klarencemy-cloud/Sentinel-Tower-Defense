@@ -19,7 +19,6 @@
 [ext_resource type="Script" uid="uid://c3hjlymhbui53" path="res://scenes/levels/color_rect2.gd" id="13_lp2ca"]
 [ext_resource type="Script" uid="uid://djmtfsuaukiga" path="res://scenes/levels/lightning_effects.gd" id="13_qogh7"]
 [ext_resource type="Shader" uid="uid://cxvfcab5jmldp" path="res://scenes/levels/fog.gdshader" id="14_8iyoh"]
-[ext_resource type="AudioStream" uid="uid://cwfyy8xbqspec" path="res://audio/UI/rain.wav" id="16_lp2ca"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xb4v1"]
 texture = ExtResource("2_b2cq8")
@@ -819,12 +818,6 @@ position = Vector2(2851, 1564)
 acceleration = 0.7
 max_shake = 100.0
 shake_fade = 5.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=752247016]
-stream = ExtResource("16_lp2ca")
-volume_db = -11.119
-autoplay = true
-bus = &"Sounds"
 
 [node name="WeatherEffects" type="Node2D" parent="." unique_id=2129595724]
 z_index = 1

@@ -7,15 +7,23 @@ extends Node
 @onready var game_background_music: AudioStreamPlayer = $GameBackgroundMusic
 @onready var dialogue_typing: AudioStreamPlayer = $DialogueTyping
 @onready var click_unlock: AudioStreamPlayer = $ClickUnlock
+@onready var air_background: AudioStreamPlayer = $AirBackground
+@onready var rain_background: AudioStreamPlayer = $RainBackground
 
 var _ui_bg_tween: Tween
 var _game_bg_tween: Tween
+var _air_bg_tween: Tween
+var _rain_bg_tween: Tween
 var _ui_bg_volume: float
 var _game_bg_volume: float
+var _air_bg_volume: float
+var _rain_bg_volume: float
 
 func _ready():
 	_ui_bg_volume = uibackground_music.volume_db
 	_game_bg_volume = game_background_music.volume_db
+	_air_bg_volume = air_background.volume_db
+	_rain_bg_volume = rain_background.volume_db
 
 func play_click():
 	click_open.play()
@@ -83,6 +91,51 @@ func stop_game_bg():
 	await _game_bg_tween.finished
 	game_background_music.stop()
 	game_background_music.volume_db = _game_bg_volume  # restore for next play
+
+
+func play_air_bg():
+	_kill_tween(_air_bg_tween)
+	if air_background.playing:
+		return
+
+	air_background.volume_db = -80.0
+	air_background.play()
+
+	_air_bg_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	_air_bg_tween.tween_property(air_background, "volume_db", _air_bg_volume, 2.0)
+
+func stop_air_bg():
+	_kill_tween(_air_bg_tween)
+	if !air_background.playing:
+		return
+
+	_air_bg_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	_air_bg_tween.tween_property(air_background, "volume_db", -80.0, 2.0)
+	await _air_bg_tween.finished
+	air_background.stop()
+	air_background.volume_db = _air_bg_volume
+
+func play_rain_bg():
+	_kill_tween(_rain_bg_tween)
+	if rain_background.playing:
+		return
+
+	rain_background.volume_db = -80.0
+	rain_background.play()
+
+	_rain_bg_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	_rain_bg_tween.tween_property(rain_background, "volume_db", _rain_bg_volume, 2.0)
+
+func stop_rain_bg():
+	_kill_tween(_rain_bg_tween)
+	if !rain_background.playing:
+		return
+
+	_rain_bg_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	_rain_bg_tween.tween_property(rain_background, "volume_db", -80.0, 2.0)
+	await _rain_bg_tween.finished
+	rain_background.stop()
+	rain_background.volume_db = _rain_bg_volume
 
 func _kill_tween(tween: Tween):
 	if tween and tween.is_valid():

@@ -4,6 +4,8 @@ extends Node
 func _ready() -> void:
 	$AnimationPlayer.play("opening")
 	UISound.stop_game_bg()
+	UISound.stop_air_bg()
+	UISound.stop_rain_bg()
 	await UISound.play_bg()
 
 
