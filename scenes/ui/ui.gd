@@ -758,6 +758,7 @@ func pop_tower(tower_enum: Data.Tower, tower: String):
 	signal_unlock_tower.emit()
 	tower_pop.play_animation(tower)
 	unlock_tower_card(tower_enum)
+	print(tower_enum)
 
 func unlock_tower_card(tower_enum: Data.Tower) -> void:
 	if tower_enum == Data.Tower.BACKUP_SERVER:

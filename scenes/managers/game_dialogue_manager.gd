@@ -28,6 +28,11 @@ var is_skill3_activated: bool = false
 
 var is_level2_start_shown: bool = false
 
+
+var is_ep_unlocked: bool = false
+var is_sandbox_unlocked: bool = false
+
+
 var is_autoplay: bool = true
 
 var button_state: bool = true # to toggle start button visibility in ui.gd

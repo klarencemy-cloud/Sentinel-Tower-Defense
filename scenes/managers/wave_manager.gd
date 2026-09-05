@@ -63,6 +63,14 @@ func update_wave_state() -> void:
 		if Data.current_wave == 7 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2:
 			GameDialogueManager.show_dialogue_server_upgrade_2()
 
+		if Data.current_wave == 32 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_ep_unlocked:
+			GameDialogueManager.is_ep_unlocked = true
+			GameDialogueManager.unlock_towers(9, "epprotection")
+		
+		if Data.current_wave == 36 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_sandbox_unlocked:
+			GameDialogueManager.is_sandbox_unlocked = true
+			GameDialogueManager.unlock_towers(10, "sandbox")
+
 		if Data.current_wave == 38 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_strange_discovery_shown:
 			GameDialogueManager.show_dialogue_level4_strange_discovery()
 

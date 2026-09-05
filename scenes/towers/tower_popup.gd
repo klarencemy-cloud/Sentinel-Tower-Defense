@@ -2,8 +2,8 @@ extends CanvasLayer
 var is_skippable: bool = false
 
 func _process(delta: float) -> void:
-	$Info/TextureRect/Name/Medium_Spinner.rotation += .1
-	$Info/TextureRect/Name/Small_Spinner.rotation += .05
+	$Info/TextureRect/Medium_Spinner.rotation += .1
+	$Info/TextureRect/Small_Spinner.rotation += .05
 
 func _on_info_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -178,7 +178,7 @@ func play_animation(tower: String):
 			speed.text = TOWER_DATA[8]["atk_speed"]
 			special.text = TOWER_DATA[8]["special_ability"]
 			irl_description.text = TOWER_DATA[8]["irl_desc"]
-	$Info/TextureRect/AnimatedSprite2D.play(tower)
+	$Info/TextureRect/Control/AnimatedSprite2D.play(tower)
 	$Pop/AnimationPlayer.play("pop_tower")
 	$Pop/DirectionalLight2D.energy = 3
 	while $Pop/DirectionalLight2D.energy > 0:

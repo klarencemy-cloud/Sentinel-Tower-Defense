@@ -56,7 +56,6 @@ do GameDialogueManager.pause_game(false)
 do GameDialogueManager.pause_game(true)
 CREDENTIAL STUFFING: Let’s see what works.
 do GameDialogueManager.show_enemy("creds", 6)
-do GameDialogueManager.unlock_towers(6, "acs")
 #function to activate credential stuffing pop-up card
 => END
 
@@ -65,10 +64,10 @@ do GameDialogueManager.pause_game(true)
 CREDENTIAL STUFFING: I'll take that.
 Player: What’s that thing doing?
 Odysseus: That’s the CS,  it copies the ability of a nearby threat and uses it to attack. They do that by using stolen credentials, to gain access, and execute criminal activity.
-do GameDialogueManager.pause_game(false)
 Player: So it learns from others.
 Odysseus: Yeah, legend says it can also copy high-threat enemies.
 Player: Let’s hope that’s only a myth
+do GameDialogueManager.unlock_towers(6, "acs")
 => END
 
 ~ trojan_horse
@@ -139,7 +138,6 @@ Player: When did that get through there?
 Player: I didn’t even see it enter our area of resistance.
 #function to activate insider threat pop-up card
 do GameDialogueManager.show_enemy("insider", 8)
-do GameDialogueManager.unlock_towers(7, "ai")
 => END
 
 ~ insider_threat2
@@ -147,6 +145,7 @@ do GameDialogueManager.pause_game(true)
 Odysseus: Insider threats can conceal themselves.  These are the users who misuse their authorized access— whether intentionally or accidentally.
 Odysseus: They remain invisible until they get close enough to attack.
 Player: That’s infiltration!
+do GameDialogueManager.unlock_towers(7, "ai")
 => END
 
 ~ Boss3
