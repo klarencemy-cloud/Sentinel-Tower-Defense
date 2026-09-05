@@ -22,7 +22,9 @@ var is_boss1_shown: bool = false
 var is_boss1_2_shown: bool = false
 var is_boss1_defeated: bool = false
 
-var is_skill_activated: bool = false
+var is_skill1_activated: bool = false
+var is_skill2_activated: bool = false
+var is_skill3_activated: bool = false
 
 var is_level2_start_shown: bool = false
 
@@ -204,7 +206,7 @@ var is_firewall_shown: bool = false # used in wave manager
 func show_dialogue_firewall():
 	_disable_auto()
 	var ui = get_tree().get_first_node_in_group("UI")
-	ui.toggle_skill_activation()
+	ui.toggle_skill_activation("firewall")
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "firewall")
 	is_firewall_shown = true
 
@@ -536,6 +538,9 @@ func show_dialogue_level5_zero_day(): # used wave manager
 var is_zero_day_shown2: bool = false
 func show_dialogue_level5_zero_day2(): # used in popup
 	_disable_auto()
+	var ui = get_tree().get_first_node_in_group("UI")
+	ui.toggle_skill_activation("patch")
+	ui.toggle_skill_activation("backup")
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "zero_day2")
 	is_zero_day_shown2 = true
 

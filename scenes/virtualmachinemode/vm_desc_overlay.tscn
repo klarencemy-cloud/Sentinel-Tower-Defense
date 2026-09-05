@@ -154,20 +154,18 @@ pivot_offset = Vector2(330.5, 0)
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("2_xvmui")
 theme_override_font_sizes/font_size = 21
-text = "Defeat 200 virus enemies before the S.E.R.V.E.R. health reaches 0. Every 50 kills, the enemies gain massive health and speed increase."
+text = "The S.E.R.V.E.R. is malfunctioning and is losing health every 5 seconds! Defeat 200 Virus enemies before its health reaches zero. Gear up and keep the system alive!"
 horizontal_alignment = 3
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/Overlay2/Map1/vmName/Description" unique_id=110661854]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 477.0
-offset_top = 145.5
-offset_right = 746.0
-offset_bottom = 166.5
+anchors_preset = -1
+offset_left = 468.0
+offset_top = 204.5
+offset_right = 737.0
+offset_bottom = 225.5
 grow_vertical = 0
 mouse_filter = 1
 bbcode_enabled = true
@@ -176,6 +174,7 @@ scroll_active = false
 horizontal_alignment = 2
 vertical_alignment = 1
 custom_effects = [SubResource("RichTextEffect_meqeb")]
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control" unique_id=2032945091]
 libraries/ = SubResource("AnimationLibrary_meqeb")

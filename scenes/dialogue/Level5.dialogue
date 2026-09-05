@@ -54,8 +54,13 @@ do GameDialogueManager.show_enemy("zero", 13)
 => END
 
 ~ zero_day2
+do GameDialogueManager.pause_game(true)
 Player: How do we stop it?
-Odysseus: Deploy Patch Management System.
+Odysseus: Deploy Patch Management System!
+Player: What's the other one?
+Odysseus: That's a backup system.
+Odysseus: A temporary solution to avoid total destruction of the server.
+do GameDialogueManager.pause_game(false)
 => END
 
 ~ wrong_question9
