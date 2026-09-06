@@ -19,7 +19,7 @@ signal ads_visible_changed
 signal open_server_cyber
 signal server_upgrade_purchased()
 
-var DEVMODE = true
+var DEVMODE = false
 var is_server_cyber_shown: bool = false
 signal toggle_server_scene # to toggle server upgrade visibility
 signal change_challenge() # for vm
@@ -141,7 +141,7 @@ var before_level_index: int
 var before_current_wave: int
 var current_level_index: int = 0 # map count 0 = level 1
 var checkpoint_wave: int = 0 # checkpoint count
-var current_wave: int = 51 # wave count
+var current_wave: int = 1 # wave count
 
 var incremental_enemy_health_bonus: float = current_wave * .02
 var incremental_enemy_movespeed_bonus: float = current_wave * .01
