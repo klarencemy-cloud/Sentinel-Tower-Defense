@@ -210,7 +210,7 @@ func apply_dialogue_line() -> void:
 			"ILY VIRUS":
 				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/iloveyou.png")
 			"TROJAN":
-				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/iloveyou.png")
+				$Balloon/Show/Character.texture = load("res://graphics/character/trojanpfp.png")
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
