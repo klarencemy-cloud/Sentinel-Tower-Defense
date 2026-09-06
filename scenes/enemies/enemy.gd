@@ -153,9 +153,10 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	$Boss3.visible = false
 	$Boss4.visible = false
 	$Boss5.visible = false
+	$Boss6.visible = false
 
 
-	if Data.ENEMY_DATA[type]['name'] == "boss1" or Data.ENEMY_DATA[type]['name'] == "boss2" or Data.ENEMY_DATA[type]['name'] == "boss3" or Data.ENEMY_DATA[type]['name'] == "boss4" or Data.ENEMY_DATA[type]['name'] == "boss5":
+	if Data.ENEMY_DATA[type]['name'] == "boss1" or Data.ENEMY_DATA[type]['name'] == "boss2" or Data.ENEMY_DATA[type]['name'] == "boss3" or Data.ENEMY_DATA[type]['name'] == "boss4" or Data.ENEMY_DATA[type]['name'] == "boss5" or Data.ENEMY_DATA[type]['name'] == "boss6":
 		$EpParticles.scale = Vector2(2, 2)
 	else:
 		$EpParticles.scale = Vector2(1, 1)
@@ -272,6 +273,12 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Boss5.material = $Boss5.material.duplicate()
 			$hpbar.visible = false
 			call_deferred("_boss5_spawn_loop")
+		"boss6":
+			$Boss6.visible = true
+			enemy_type = $Boss6
+			$Boss6.material = $Boss6.material.duplicate()
+			$hpbar.visible = false
+			call_deferred("_boss6_spawn_loop")
 			
 	_spawn_jitter = Vector2(randi_range(-4, 4), randi_range(-4, 4))
 	position += _spawn_jitter
@@ -286,7 +293,8 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 		Data.Enemy.BOSS2,
 		Data.Enemy.BOSS3,
 		Data.Enemy.BOSS4,
-		Data.Enemy.BOSS5
+		Data.Enemy.BOSS5,
+		Data.Enemy.BOSS6
 	]:
 		var ui = get_tree().get_first_node_in_group("UI")
 		if ui:
@@ -303,6 +311,9 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 					boss_name = "NotPetya"
 				Data.Enemy.BOSS5:
 					boss_name = "MyDoom"
+				Data.Enemy.BOSS6:
+					boss_name = "TROJAN"
+
 
 			ui.register_boss(
 				get_instance_id(),
@@ -403,7 +414,8 @@ func _process(delta: float):
 			Data.Enemy.BOSS2,
 			Data.Enemy.BOSS3,
 			Data.Enemy.BOSS4,
-			Data.Enemy.BOSS5
+			Data.Enemy.BOSS5,
+			Data.Enemy.BOSS6
 		]:
 			backup_server_knockback()
 			return
@@ -413,7 +425,8 @@ func _process(delta: float):
 			Data.Enemy.BOSS2,
 			Data.Enemy.BOSS3,
 			Data.Enemy.BOSS4,
-			Data.Enemy.BOSS5
+			Data.Enemy.BOSS5,
+			Data.Enemy.BOSS6
 		]:
 			Data.activate_backup_server()
 			return
@@ -433,7 +446,8 @@ func _process(delta: float):
 			Data.Enemy.BOSS2,
 			Data.Enemy.BOSS3,
 			Data.Enemy.BOSS4,
-			Data.Enemy.BOSS5
+			Data.Enemy.BOSS5,
+			Data.Enemy.BOSS6
 		]:
 			var ui = get_tree().get_first_node_in_group("UI")
 			if ui:
@@ -497,7 +511,8 @@ func hit(damage: int = 1, tower_id: int = -1):
 		Data.Enemy.BOSS2,
 		Data.Enemy.BOSS3,
 		Data.Enemy.BOSS4,
-		Data.Enemy.BOSS5
+		Data.Enemy.BOSS5,
+		Data.Enemy.BOSS6
 	]:
 		var ui = get_tree().get_first_node_in_group("UI")
 		if ui:
@@ -605,7 +620,8 @@ func hit(damage: int = 1, tower_id: int = -1):
 		Data.Enemy.BOSS2,
 		Data.Enemy.BOSS3,
 		Data.Enemy.BOSS4,
-		Data.Enemy.BOSS5
+		Data.Enemy.BOSS5,
+		Data.Enemy.BOSS6
 	]:
 		var ui = get_tree().get_first_node_in_group("UI")
 		if ui:
@@ -654,7 +670,8 @@ func update_hp_bar_position():
 				Data.Enemy.BOSS2,
 				Data.Enemy.BOSS3,
 				Data.Enemy.BOSS4,
-				Data.Enemy.BOSS5
+				Data.Enemy.BOSS5,
+				Data.Enemy.BOSS6
 			]:
 				$hpbar.position.y -= 70
 

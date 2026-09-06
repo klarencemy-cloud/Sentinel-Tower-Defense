@@ -19,7 +19,7 @@ signal ads_visible_changed
 signal open_server_cyber
 signal server_upgrade_purchased()
 
-var DEVMODE = false
+var DEVMODE = true
 var is_server_cyber_shown: bool = false
 signal toggle_server_scene # to toggle server upgrade visibility
 signal change_challenge() # for vm
@@ -208,7 +208,7 @@ func vm_belt_selected_kind() -> String:
 enum Tower {SPAM_FILTER, ANTIVIRUS, AD_BLOCKER, DATA_LOSS_PREVENTION, IDPS, QUARANTINE_CANNON, ACCESS_CONTROL_SYSTEM, AI_SECURITY, BACKUP_SERVER, ENDPOINT_PROTECTION, SANDBOX_ANALYZER, PATCH}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION, LASER}
 enum Sentinel {ETHICAL, SYSAD, INTRUSION, SECURITY, MALWARE, DECEPTION}
-enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2, BOSS3, BOSS4, BOSS5}
+enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2, BOSS3, BOSS4, BOSS5, BOSS6}
 enum Ability {FIREWALL}
 var TOWER_DATA = {
 	Tower.SPAM_FILTER: {
@@ -1011,6 +1011,16 @@ var ENEMY_DATA = {
 		'texture': "uid://bsbw28l1xncts",
 		'speed': 100,
 		'name': "boss5",
+		'damage': 99999,
+		'atkspd': 2,
+		"exp": 450,
+		"isMet": false,
+		"waveUnlocked": 50},
+	Enemy.BOSS6: { # MY TROJAN
+		'health': 20000,
+		'texture': "uid://djls2dab0ajxy",
+		'speed': 100,
+		'name': "boss6",
 		'damage': 99999,
 		'atkspd': 2,
 		"exp": 450,

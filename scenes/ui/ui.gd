@@ -158,6 +158,8 @@ func _ready() -> void:
 	for tower_enum in Data.Tower.values():
 		if tower_enum == Data.Tower.BACKUP_SERVER:
 			continue
+		if tower_enum == Data.Tower.PATCH:
+			continue
 		var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
 
 		if not tower_data.get("isUnlocked", false):

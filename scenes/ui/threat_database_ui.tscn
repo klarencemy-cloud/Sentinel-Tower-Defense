@@ -14,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://couylhx13i6ip" path="res://graphics/enemies/enemies3.png" id="9_sry3f"]
 [ext_resource type="Texture2D" uid="uid://qde702xowd7u" path="res://graphics/icons/heart.png" id="11_fe30g"]
 [ext_resource type="Texture2D" uid="uid://dc1008xax0yk6" path="res://graphics/enemies/enemies4.png" id="11_jg1md"]
+[ext_resource type="Texture2D" uid="uid://djls2dab0ajxy" path="res://graphics/enemies/enemies thumbnail/trojanboss.png" id="12_5ycqj"]
 [ext_resource type="Texture2D" uid="uid://bgd5c2bukefyk" path="res://graphics/icons/damage.png" id="12_qkl14"]
 [ext_resource type="Texture2D" uid="uid://dvk31x3ftr3ux" path="res://graphics/icons/ms.png" id="13_qkl14"]
+[ext_resource type="Texture2D" uid="uid://db21wjgvrep2i" path="res://graphics/enemies/boss_trojan1.png" id="18_3st52"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ky4o8"]
 atlas = ExtResource("7_ky4o8")
@@ -309,6 +311,38 @@ region = Rect2(512, 768, 256, 256)
 atlas = ExtResource("9_sry3f")
 region = Rect2(256, 768, 256, 256)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndjn5"]
+atlas = ExtResource("18_3st52")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sdlc"]
+atlas = ExtResource("18_3st52")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qapde"]
+atlas = ExtResource("18_3st52")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq7v1"]
+atlas = ExtResource("18_3st52")
+region = Rect2(1344, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qtss"]
+atlas = ExtResource("18_3st52")
+region = Rect2(0, 448, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewfma"]
+atlas = ExtResource("18_3st52")
+region = Rect2(448, 448, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gld6w"]
+atlas = ExtResource("18_3st52")
+region = Rect2(896, 448, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1l00"]
+atlas = ExtResource("18_3st52")
+region = Rect2(1344, 448, 448, 448)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndtrb"]
 atlas = ExtResource("8_mkhnq")
 region = Rect2(0, 0, 192, 192)
@@ -586,6 +620,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ndjn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sdlc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qapde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq7v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qtss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewfma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gld6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1l00")
+}],
+"loop": true,
+"name": &"trojanb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ndtrb")
 }, {
 "duration": 1.0,
@@ -813,9 +876,14 @@ metadata/_edit_use_anchors_ = true
 [node name="CardContainer" type="Control" parent="ThreatContainer" unique_id=961428850]
 texture_filter = 2
 layout_mode = 1
-anchor_top = 0.013613861
-anchor_right = 0.9978678
-anchor_bottom = 4.553218
+anchor_left = -0.0554371
+anchor_top = -2.6695545
+anchor_right = 0.9424307
+anchor_bottom = 1.8700495
+offset_left = 26.0
+offset_top = 2168.0
+offset_right = 26.0
+offset_bottom = 2168.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Threat1" type="TextureButton" parent="ThreatContainer/CardContainer" unique_id=767183370]
@@ -1588,6 +1656,15 @@ autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="ThreatContainer/CardContainer/Threat20" unique_id=317849096]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 51.0
+offset_right = 175.0
+offset_bottom = 187.0
+texture = ExtResource("12_5ycqj")
+expand_mode = 1
+
 [node name="Reddatabasebg" type="TextureRect" parent="." unique_id=1701079266]
 texture_filter = 2
 layout_mode = 1
@@ -1759,9 +1836,8 @@ texture_filter = 2
 position = Vector2(687, 221)
 scale = Vector2(1.2617182, 1.2617182)
 sprite_frames = SubResource("SpriteFrames_ndtrb")
-animation = &"spam"
+animation = &"spyware"
 autoplay = "spam"
-frame_progress = 0.4396239
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Reddatabasebg" unique_id=212389795]
 visible = false
