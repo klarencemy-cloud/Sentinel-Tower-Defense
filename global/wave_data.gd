@@ -612,12 +612,17 @@ var WAVE_DATA: Dictionary = {
 	# MAP 6
 	51: {
 		"enemies": {
-			Data.Enemy.BOSS5: [1, 0, 0],
+			Data.Enemy.BOSS6: [1, 0, 0],
 			Data.Enemy.DEFAULT: [4, 3, 3],
+			Data.Enemy.BOSS5: [1, 0, 0],
 			Data.Enemy.VIRUS: [4, 3, 3],
+			Data.Enemy.BOSS4: [1, 0, 0],
 			Data.Enemy.ADWARE: [4, 3, 3],
+			Data.Enemy.BOSS3: [1, 0, 0],
 			Data.Enemy.WORM: [4, 3, 3],
+			Data.Enemy.BOSS2: [1, 0, 0],
 			Data.Enemy.SPYWARE: [4, 3, 3],
+			Data.Enemy.BOSS1: [1, 0, 0],
 			Data.Enemy.BOTNET: [4, 3, 3],
 			Data.Enemy.CREDS: [4, 3, 3],
 			Data.Enemy.TROJAN: [4, 3, 3],
