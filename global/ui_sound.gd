@@ -25,6 +25,7 @@ var _rain_bg_volume: float
 var _emergency_volume: float
 var _boss_bg_volume: float
 var _emergency_looping: bool = false
+const EMERGENCY_LOOP := false
 
 func _ready():
 	_ui_bg_volume = uibackground_music.volume_db
@@ -49,7 +50,7 @@ func play_unlock():
 
 func play_emergency():
 	_kill_tween(_emergency_tween)
-	_emergency_looping = true
+	_emergency_looping = EMERGENCY_LOOP
 	emergency.volume_db = _emergency_volume
 	if !emergency.playing:
 		emergency.play()
