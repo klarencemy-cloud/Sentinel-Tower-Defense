@@ -66,6 +66,10 @@ var backup_server_recently_knocked_back: bool = false
 
 var is_patch_applied: bool = false
 
+var is_boss6_spawned: bool = false
+var is_resurrected: bool = false
+var is_hologram: bool = false
+
 @onready var hit_particles: GPUParticles2D = $HitParticles
 
 func _ready() -> void:
@@ -239,45 +243,77 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			$Zero.visible = true
 			enemy_type = $Zero
 			$Zero.material = $Zero.material.duplicate()
+			
 		"boss1":
 			$Boss1.visible = true
 			enemy_type = $Boss1
 			$Boss1.material = $Boss1.material.duplicate()
-			print("Boss1 spawned, starting virus timer")
-			$hpbar.visible = false
-			call_deferred("_start_boss1_spawn_timer")
+			if is_boss6_spawned:
+				# Boss6 hologram boss uses normal HP bar
+				$hpbar.visible = true
+			else:
+				# Normal Boss1 uses big boss UI
+				$hpbar.visible = false
 			
+			call_deferred("_start_boss1_spawn_timer")
 		"boss2":
 			$Boss2.visible = true
 			enemy_type = $Boss2
 			$Boss2.material = $Boss2.material.duplicate()
-			print("Boss2 spawned, starting botnet timer")
-			$hpbar.visible = false
+			if is_boss6_spawned:
+				$hpbar.visible = true
+			else:
+				$hpbar.visible = false
+
 			call_deferred("_start_boss2_spawn_timer")
+
+
 		"boss3":
 			$Boss3.visible = true
 			enemy_type = $Boss3
 			$Boss3.material = $Boss3.material.duplicate()
-			$hpbar.visible = false
+
+			if is_boss6_spawned:
+				$hpbar.visible = true
+			else:
+				$hpbar.visible = false
+
 			call_deferred("_boss3_stun_loop")
-			
+
+
 		"boss4":
 			$Boss4.visible = true
 			enemy_type = $Boss4
 			$Boss4.material = $Boss4.material.duplicate()
-			$hpbar.visible = false
+
+			if is_boss6_spawned:
+				$hpbar.visible = true
+			else:
+				$hpbar.visible = false
+
 			call_deferred("_boss4_dialogue_loop")
+
+
 		"boss5":
 			$Boss5.visible = true
 			enemy_type = $Boss5
 			$Boss5.material = $Boss5.material.duplicate()
-			$hpbar.visible = false
+
+			if is_boss6_spawned:
+				$hpbar.visible = true
+			else:
+				$hpbar.visible = false
+
 			call_deferred("_boss5_spawn_loop")
+
+
 		"boss6":
 			$Boss6.visible = true
 			enemy_type = $Boss6
 			$Boss6.material = $Boss6.material.duplicate()
+
 			$hpbar.visible = false
+
 			call_deferred("_boss6_spawn_loop")
 			
 	_spawn_jitter = Vector2(randi_range(-4, 4), randi_range(-4, 4))
@@ -314,13 +350,13 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 				Data.Enemy.BOSS6:
 					boss_name = "TROJAN"
 
-
-			ui.register_boss(
-				get_instance_id(),
-				boss_name,
-				health,
-				health
-			)
+			if not is_boss6_spawned:
+				ui.register_boss(
+					get_instance_id(),
+					boss_name,
+					health,
+					health
+				)
 		
 
 var direction = 1
@@ -335,10 +371,6 @@ func _process(delta: float):
 			backup_server_recently_knocked_back = false
 			backup_server_knockback()
 			return
-	if invisible or fog_hidden:
-		enemy_type.modulate = INVISIBLE_TINT
-	else:
-		enemy_type.modulate = NORMAL_TINT
 	var current_speed = speed
 	if acs_lockdown_remaining > 0.0:
 		acs_lockdown_remaining = max(acs_lockdown_remaining - delta, 0.0)
@@ -448,7 +480,7 @@ func _process(delta: float):
 			Data.Enemy.BOSS4,
 			Data.Enemy.BOSS5,
 			Data.Enemy.BOSS6
-		]:
+		] and not is_boss6_spawned:
 			var ui = get_tree().get_first_node_in_group("UI")
 			if ui:
 				ui.unregister_boss(get_instance_id())
@@ -461,10 +493,7 @@ func _process(delta: float):
 	if spyware_count > 0:
 		print(name, speed)
 		
-	if invisible or fog_hidden:
-		enemy_type.modulate = INVISIBLE_TINT
-	else:
-		enemy_type.modulate = NORMAL_TINT
+	_update_visual_tint()
 
 ##func _on_area_entered(bullet: Area2D) -> void:
 ##	bullet.queue_free()
@@ -513,7 +542,7 @@ func hit(damage: int = 1, tower_id: int = -1):
 		Data.Enemy.BOSS4,
 		Data.Enemy.BOSS5,
 		Data.Enemy.BOSS6
-	]:
+	] and not is_boss6_spawned:
 		var ui = get_tree().get_first_node_in_group("UI")
 		if ui:
 			ui.update_boss_bar(
@@ -582,6 +611,10 @@ func hit(damage: int = 1, tower_id: int = -1):
 		$AudioStreamPlayer2D.play(0.0)
 		return
 
+	# Boss6 resurrection check
+	# Only normal enemies can be resurrected.
+	_try_boss6_resurrection()
+
 	EnemyStats.add_kill(enemy_type_stats)
 	# Lethal hit: detach the audio player so it keeps playing after this node is freed
 	var audio = $AudioStreamPlayer2D
@@ -622,7 +655,7 @@ func hit(damage: int = 1, tower_id: int = -1):
 		Data.Enemy.BOSS4,
 		Data.Enemy.BOSS5,
 		Data.Enemy.BOSS6
-	]:
+	] and not is_boss6_spawned:
 		var ui = get_tree().get_first_node_in_group("UI")
 		if ui:
 			ui.unregister_boss(get_instance_id())
@@ -748,7 +781,7 @@ func stun(duration: float = 0.5, vulnerable: bool = false):
 	is_frozen = true
 	is_frozen_vulnerable = vulnerable
 	if enemy_type:
-		enemy_type.modulate = FROZEN_TINT
+		_update_visual_tint()
 	stun_timer.wait_time = duration
 	stun_timer.start()
 
@@ -759,7 +792,7 @@ func stun_then_slow(stun_duration: float = 0.5, slow_duration: float = 2.0, vuln
 func slow(duration: float = 2.0):
 	is_slowed = true
 	if enemy_type and not is_frozen:
-		enemy_type.modulate = SLOWED_TINT
+		_update_visual_tint()
 	await get_tree().create_timer(duration).timeout
 	is_slowed = false
 	if enemy_type and not is_frozen:
@@ -1118,3 +1151,107 @@ func release_from_infect_trap() -> void:
 func toggle_ep_particles():
 	$AnimationPlayer.stop()
 	$AnimationPlayer.play("ep_particles")
+
+func _boss6_spawn_loop() -> void:
+	while not dead and enemy_type_stats == Data.Enemy.BOSS6:
+
+		await get_tree().create_timer(10.0).timeout
+
+		if dead or is_queued_for_deletion():
+			break
+
+		if enemy_type_stats != Data.Enemy.BOSS6:
+			break
+
+		var wave_manager = get_tree().get_first_node_in_group("WaveManager")
+
+		if wave_manager:
+			wave_manager.spawn_boss6_hologram_bosses()
+
+func _is_boss6_alive() -> bool:
+	for enemy in get_tree().get_nodes_in_group("Enemies"):
+		if not is_instance_valid(enemy):
+			continue
+
+		if enemy.is_queued_for_deletion():
+			continue
+
+		if enemy.dead:
+			continue
+
+		if enemy.enemy_type_stats == Data.Enemy.BOSS6:
+			return true
+
+	return false
+
+func _can_be_resurrected() -> bool:
+	return enemy_type_stats != Data.Enemy.BOSS1 \
+		and enemy_type_stats != Data.Enemy.BOSS2 \
+		and enemy_type_stats != Data.Enemy.BOSS3 \
+		and enemy_type_stats != Data.Enemy.BOSS4 \
+		and enemy_type_stats != Data.Enemy.BOSS5 \
+		and enemy_type_stats != Data.Enemy.BOSS6 \
+		and not is_resurrected
+
+func _try_boss6_resurrection() -> void:
+	if not _is_boss6_alive():
+		return
+
+	if not _can_be_resurrected():
+		return
+
+	# 50% chance
+	if randf() >= 0.5:
+		return
+
+	if not is_instance_valid(path_follow):
+		return
+
+	var path := path_follow.get_parent()
+
+	if not path is Path2D:
+		return
+
+	var wave_manager = get_tree().get_first_node_in_group("WaveManager")
+
+	if not wave_manager:
+		return
+
+	var resurrected_enemy = wave_manager.spawn_boss6_resurrected_enemy(
+		enemy_type_stats,
+		path
+	)
+
+	if resurrected_enemy:
+		print("Boss6 resurrected: ", Data.ENEMY_DATA[enemy_type_stats]["name"])
+
+func _update_visual_tint() -> void:
+	if enemy_type == null:
+		return
+
+	var tint := NORMAL_TINT
+
+	# Hologram base effect
+	if is_hologram:
+		var pulse := 0.55 + (sin(Time.get_ticks_msec() * 0.006) * 0.08)
+		tint = Color(0.25, 0.8, 1.0, pulse)
+
+	# Stack status effects on top of hologram
+	if invisible or fog_hidden:
+		tint.a *= 0.3
+
+	if is_frozen:
+		tint.r *= 0.4
+		tint.g *= 0.6
+		tint.b = min(tint.b * 1.4, 1.0)
+
+	elif is_slowed:
+		tint.r *= 0.7
+		tint.g = min(tint.g * 1.15, 1.0)
+		tint.b = min(tint.b * 1.15, 1.0)
+
+	if dlp_damage_reduction < 1.0:
+		tint.r *= 0.7
+		tint.g = min(tint.g * 1.2, 1.0)
+
+	enemy_type.modulate = tint

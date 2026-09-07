@@ -327,3 +327,10 @@ func show_patch_update() -> void:
 	tween.parallel().tween_property($Patch, "modulate:a", 1, 1)
 	tween.tween_property($Patch, "modulate:a", 0, 1)
 	tween.tween_property($Patch, "position:y", -193.812, 0)
+
+func get_botnet_fire_rotation(normal_rotation: float) -> float:
+	if botnet_count <= 0:
+		return normal_rotation
+
+	var spread = min(botnet_count * 15.0, 60.0)
+	return normal_rotation + deg_to_rad(randf_range(-spread, spread))

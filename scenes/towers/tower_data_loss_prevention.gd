@@ -56,10 +56,7 @@ func _on_reload_timer_timeout() -> void:
 		var target = enemies[0]
 		var dir = (target.global_position - global_position).normalized()
 		var fire_rotation = Vector2.DOWN.angle_to(dir)
-
-		# Botnet effect: make the tower fire inaccurately
-		if botnet_count > 0:
-			fire_rotation += deg_to_rad(randf_range(-20.0, 20.0))
+		fire_rotation = get_botnet_fire_rotation(fire_rotation)
 
 		var base_damage = damage + (damage * malware_analyst_damage_buff)
 		var final_damage = Data.calculate_crit_damage(type, base_damage, malware_analyst_crit_buff)

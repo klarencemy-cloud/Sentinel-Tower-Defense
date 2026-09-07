@@ -404,3 +404,114 @@ func spawn_boss5_wave():
 	for path in paths:
 		var random_enemy = enemies.pick_random()
 		spawn_enemy_on_path(random_enemy, path)
+	
+func spawn_boss6_hologram_bosses() -> void:
+	var paths: Array[Path2D] = _get_paths()
+
+	if paths.is_empty():
+		return
+
+	var available_bosses: Array[Data.Enemy] = []
+
+	var boss_types = [
+		Data.Enemy.BOSS1,
+		Data.Enemy.BOSS2,
+		Data.Enemy.BOSS3,
+		Data.Enemy.BOSS4,
+		Data.Enemy.BOSS5
+	]
+
+	# Find which Boss1-5 types are already alive
+	for boss_type in boss_types:
+		var already_alive := false
+
+		for enemy in get_tree().get_nodes_in_group("Enemies"):
+			if not is_instance_valid(enemy):
+				continue
+
+			if enemy.is_queued_for_deletion():
+				continue
+
+			if enemy.dead:
+				continue
+
+			if enemy.enemy_type_stats == boss_type:
+				already_alive = true
+				break
+
+		if not already_alive:
+			available_bosses.append(boss_type)
+
+	# All Boss1-5 are currently alive
+	if available_bosses.is_empty():
+		print("Boss6: No boss to spawn")
+		return
+
+	# Shuffle available bosses
+	available_bosses.shuffle()
+
+	# Spawn one boss on each path.
+	var bosses_to_spawn: Array[Data.Enemy] = []
+
+	for i in range(min(paths.size(), available_bosses.size())):
+		bosses_to_spawn.append(available_bosses[i])
+
+	for i in range(bosses_to_spawn.size()):
+		var boss_type: Data.Enemy = bosses_to_spawn[i]
+		var path: Path2D = paths[i]
+
+		_spawn_boss6_hologram_on_path(boss_type, path)
+		
+func _spawn_boss6_hologram_on_path(enemy_enum: Data.Enemy, path: Path2D) -> Node:
+	var path_follow := PathFollow2D.new()
+	var enemy = enemy_scene.instantiate()
+
+	path.add_child(path_follow)
+	path_follow.add_child(enemy)
+
+	enemy.is_boss6_spawned = true
+	enemy.is_hologram = true
+
+	enemy.setup(path_follow, enemy_enum)
+
+	# 50% HP
+	var hologram_hp := int(enemy.health * 0.5)
+
+	enemy.health = hologram_hp
+	enemy.get_node("hpbar").max_value = hologram_hp
+	enemy.get_node("hpbar").value = hologram_hp
+	enemy.get_node("hpbar").visible = true
+
+	path.move_child(path_follow, 0)
+
+	return enemy
+
+func spawn_boss6_resurrected_enemy(enemy_enum: Data.Enemy, path: Path2D) -> Node:
+	if not is_instance_valid(path):
+		return null
+
+	var path_follow := PathFollow2D.new()
+	var enemy = enemy_scene.instantiate()
+
+	path.add_child(path_follow)
+	path_follow.add_child(enemy)
+
+	enemy.is_resurrected = true
+	enemy.is_hologram = true
+
+	# Start at the beginning of the path
+	path_follow.progress = 0.0
+
+	enemy.setup(path_follow, enemy_enum)
+
+	# 50% of the enemy's wave-scaled HP
+	var resurrected_hp := int(enemy.health * 0.5)
+
+	enemy.health = resurrected_hp
+	enemy.get_node("hpbar").max_value = resurrected_hp
+	enemy.get_node("hpbar").value = resurrected_hp
+	enemy.get_node("hpbar").visible = true
+
+	path.move_child(path_follow, 0)
+
+	return enemy
