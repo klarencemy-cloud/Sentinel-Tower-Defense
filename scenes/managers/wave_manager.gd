@@ -32,6 +32,8 @@ func update_wave_state() -> void:
 			Data.checkpoint_wave = Data.current_wave
 
 		if Data.current_wave % 10 == 0:
+			if Data.current_wave in BOSS_WAVES:
+				UISound.stop_boss_bg()
 			if !Data.is_sandbox and !Data.is_vmmode:
 				if ui:
 					ui.disable_auto()
@@ -183,8 +185,10 @@ func start_wave() -> void:
 
 func _play_boss_alarm() -> void:
 	UISound.play_emergency()
+	UISound.stop_game_bg()
 	await GameDialogueManager.wait_for_dialogue_sequence_end()
-	UISound.stop_emergency()
+	UISound.stop_emergency(0.6)
+	UISound.play_boss_bg()
 
 
 # Predefined wave spawning

@@ -1,7 +1,8 @@
 extends Node
 signal show_char()
 
-const DIALOGUE_SEQUENCE_GRACE: float = 1.5
+const DIALOGUE_SEQUENCE_GRACE: float = 0.3
+const DIALOGUE_SEQUENCE_POLL: float = 0.05
 
 var _open_dialogues: int = 0
 
@@ -27,17 +28,17 @@ func wait_for_dialogue_sequence_end() -> void:
 	var tree := get_tree()
 
 	var waited: float = 0.0
-	while waited < 2.0 and not is_dialogue_sequence_active():
-		await tree.create_timer(0.1).timeout
-		waited += 0.1
+	while waited < 1.0 and not is_dialogue_sequence_active():
+		await tree.create_timer(DIALOGUE_SEQUENCE_POLL).timeout
+		waited += DIALOGUE_SEQUENCE_POLL
 
 	var quiet: float = 0.0
 	while quiet < DIALOGUE_SEQUENCE_GRACE:
-		await tree.create_timer(0.1).timeout
+		await tree.create_timer(DIALOGUE_SEQUENCE_POLL).timeout
 		if is_dialogue_sequence_active():
 			quiet = 0.0
 		else:
-			quiet += 0.1
+			quiet += DIALOGUE_SEQUENCE_POLL
 
 
 var is_introduction_shown: bool = false

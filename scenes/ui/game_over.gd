@@ -14,6 +14,8 @@ func update_display() -> void:
 func _on_visibility_changed() -> void:
 	if visible:
 		update_display()
+		UISound.stop_emergency()
+		UISound.stop_boss_bg(false)
 
 func _on_btn_checkpoint_pressed() -> void:
 	UISound.play_click()

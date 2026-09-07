@@ -10,17 +10,20 @@ extends Node
 @onready var air_background: AudioStreamPlayer = $AirBackground
 @onready var rain_background: AudioStreamPlayer = $RainBackground
 @onready var emergency: AudioStreamPlayer = $Emergency
+@onready var boss_battle_background_music: AudioStreamPlayer = $BossBattleBackgroundMusic
 
 var _ui_bg_tween: Tween
 var _game_bg_tween: Tween
 var _air_bg_tween: Tween
 var _rain_bg_tween: Tween
 var _emergency_tween: Tween
+var _boss_bg_tween: Tween
 var _ui_bg_volume: float
 var _game_bg_volume: float
 var _air_bg_volume: float
 var _rain_bg_volume: float
 var _emergency_volume: float
+var _boss_bg_volume: float
 var _emergency_looping: bool = false
 
 func _ready():
@@ -29,6 +32,7 @@ func _ready():
 	_air_bg_volume = air_background.volume_db
 	_rain_bg_volume = rain_background.volume_db
 	_emergency_volume = emergency.volume_db
+	_boss_bg_volume = boss_battle_background_music.volume_db
 	emergency.finished.connect(_on_emergency_finished)
 
 func play_click():
@@ -103,6 +107,10 @@ func stop_bg():
 func play_game_bg():
 	_kill_tween(_game_bg_tween)
 	if game_background_music.playing:
+		if is_equal_approx(game_background_music.volume_db, _game_bg_volume):
+			return
+		_game_bg_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		_game_bg_tween.tween_property(game_background_music, "volume_db", _game_bg_volume, 2.0)
 		return
 	
 	await get_tree().create_timer(0.5).timeout
@@ -122,6 +130,40 @@ func stop_game_bg():
 	await _game_bg_tween.finished
 	game_background_music.stop()
 	game_background_music.volume_db = _game_bg_volume  # restore for next play
+
+
+func play_boss_bg(fade: float = 0.0):
+	_kill_tween(_boss_bg_tween)
+	stop_game_bg()
+	if boss_battle_background_music.playing:
+		return
+
+	if fade <= 0.0:
+		boss_battle_background_music.volume_db = _boss_bg_volume
+		boss_battle_background_music.play()
+		return
+
+	boss_battle_background_music.volume_db = -80.0
+	boss_battle_background_music.play()
+
+	_boss_bg_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	_boss_bg_tween.tween_property(boss_battle_background_music, "volume_db", _boss_bg_volume, fade)
+
+
+func stop_boss_bg(resume_game_bg: bool = true):
+	_kill_tween(_boss_bg_tween)
+	if !boss_battle_background_music.playing:
+		if resume_game_bg:
+			play_game_bg()
+		return
+
+	_boss_bg_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	_boss_bg_tween.tween_property(boss_battle_background_music, "volume_db", -80.0, 2.0)
+	await _boss_bg_tween.finished
+	boss_battle_background_music.stop()
+	boss_battle_background_music.volume_db = _boss_bg_volume
+	if resume_game_bg:
+		play_game_bg()
 
 
 func play_air_bg():
