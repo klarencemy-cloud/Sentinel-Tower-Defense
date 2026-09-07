@@ -1,6 +1,44 @@
 extends Node
 signal show_char()
 
+const DIALOGUE_SEQUENCE_GRACE: float = 1.5
+
+var _open_dialogues: int = 0
+
+func _ready() -> void:
+	DialogueManager.dialogue_started.connect(_on_any_dialogue_started)
+	DialogueManager.dialogue_ended.connect(_on_any_dialogue_ended)
+
+func _on_any_dialogue_started(_resource) -> void:
+	_open_dialogues += 1
+
+func _on_any_dialogue_ended(_resource) -> void:
+	_open_dialogues = maxi(0, _open_dialogues - 1)
+
+func is_dialogue_sequence_active() -> bool:
+	if _open_dialogues > 0:
+		return true
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui and ui.has_method("is_pop_open") and ui.is_pop_open():
+		return true
+	return false
+
+func wait_for_dialogue_sequence_end() -> void:
+	var tree := get_tree()
+
+	var waited: float = 0.0
+	while waited < 2.0 and not is_dialogue_sequence_active():
+		await tree.create_timer(0.1).timeout
+		waited += 0.1
+
+	var quiet: float = 0.0
+	while quiet < DIALOGUE_SEQUENCE_GRACE:
+		await tree.create_timer(0.1).timeout
+		if is_dialogue_sequence_active():
+			quiet = 0.0
+		else:
+			quiet += 0.1
+
 
 var is_introduction_shown: bool = false
 var is_override: bool = false # check to override what is being shown

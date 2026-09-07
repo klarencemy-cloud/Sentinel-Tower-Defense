@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://fxbbigpp11cw" path="res://audio/unlock.wav" id="14_0u66a"]
 [ext_resource type="AudioStream" uid="uid://c6xi6il8p6vvu" path="res://audio/SFX/BackgroundSFX/air.wav" id="15_h1od4"]
 [ext_resource type="AudioStream" uid="uid://dxu4t84embc1f" path="res://audio/SFX/BackgroundSFX/rain.wav" id="16_qwse3"]
+[ext_resource type="AudioStream" uid="uid://3ep022xgwr8" path="res://audio/SFX/BackgroundSFX/emergency 3x.wav" id="17_qwse3"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q17wm"]
 streams_count = 3
@@ -83,4 +84,10 @@ bus = &"Sounds"
 [node name="RainBackground" type="AudioStreamPlayer" parent="." unique_id=102173809]
 stream = ExtResource("16_qwse3")
 volume_db = -25.508
+bus = &"Sounds"
+
+[node name="Emergency" type="AudioStreamPlayer" parent="." unique_id=1140327530]
+process_mode = 3
+stream = ExtResource("17_qwse3")
+volume_db = -6.541
 bus = &"Sounds"

@@ -599,6 +599,9 @@ func _on_unli_senti_cap_toggled(toggled_on: bool) -> void: # UNLI SERVER CAPACIT
 func hide_pop(state: bool):
 	$PopUp.visible = state
 
+func is_pop_open() -> bool:
+	return $PopUp.visible or $Scripture.visible or $SentinelPop.visible or $TowerPop.visible
+
 func hide_pop2(state: bool):
 	$Scripture.visible = state
 

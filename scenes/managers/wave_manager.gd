@@ -5,6 +5,8 @@ signal next_map
 
 var enemy_scene = preload("res://scenes/enemies/enemy.tscn")
 
+const BOSS_WAVES: Array[int] = [10, 20, 30, 40, 50]
+
 var level_root: Control
 var level_manager: Node
 var wave_active: bool = false
@@ -94,6 +96,10 @@ func start_wave() -> void:
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.update_wave_label()
+
+	if Data.current_wave in BOSS_WAVES:
+		_play_boss_alarm()
+
 	if Data.current_wave == 6 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_question_1_shown:
 			GameDialogueManager.show_dialogue_question1()
 	if Data.current_wave == 8 and !Data.is_sandbox and !GameDialogueManager.is_adware_shown:
@@ -165,6 +171,12 @@ func start_wave() -> void:
 	if wave_data != null:
 		await _spawn_predefined_wave(wave_data)
 	spawning_wave = false
+
+
+func _play_boss_alarm() -> void:
+	UISound.play_emergency()
+	await GameDialogueManager.wait_for_dialogue_sequence_end()
+	UISound.stop_emergency()
 
 
 # Predefined wave spawning

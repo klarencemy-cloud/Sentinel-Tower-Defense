@@ -9,21 +9,27 @@ extends Node
 @onready var click_unlock: AudioStreamPlayer = $ClickUnlock
 @onready var air_background: AudioStreamPlayer = $AirBackground
 @onready var rain_background: AudioStreamPlayer = $RainBackground
+@onready var emergency: AudioStreamPlayer = $Emergency
 
 var _ui_bg_tween: Tween
 var _game_bg_tween: Tween
 var _air_bg_tween: Tween
 var _rain_bg_tween: Tween
+var _emergency_tween: Tween
 var _ui_bg_volume: float
 var _game_bg_volume: float
 var _air_bg_volume: float
 var _rain_bg_volume: float
+var _emergency_volume: float
+var _emergency_looping: bool = false
 
 func _ready():
 	_ui_bg_volume = uibackground_music.volume_db
 	_game_bg_volume = game_background_music.volume_db
 	_air_bg_volume = air_background.volume_db
 	_rain_bg_volume = rain_background.volume_db
+	_emergency_volume = emergency.volume_db
+	emergency.finished.connect(_on_emergency_finished)
 
 func play_click():
 	click_open.play()
@@ -36,6 +42,31 @@ func play_carousel():
 
 func play_unlock():
 	click_unlock.play()
+
+func play_emergency():
+	_kill_tween(_emergency_tween)
+	_emergency_looping = true
+	emergency.volume_db = _emergency_volume
+	if !emergency.playing:
+		emergency.play()
+
+func _on_emergency_finished():
+	if _emergency_looping:
+		emergency.play()
+
+func stop_emergency(fade: float = 1.0):
+	_emergency_looping = false
+	_kill_tween(_emergency_tween)
+	if !emergency.playing:
+		emergency.volume_db = _emergency_volume
+		return
+
+	_emergency_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	_emergency_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	_emergency_tween.tween_property(emergency, "volume_db", -80.0, fade)
+	await _emergency_tween.finished
+	emergency.stop()
+	emergency.volume_db = _emergency_volume
 
 func play_dialogue_typing():
 	dialogue_typing.play()
