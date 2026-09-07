@@ -16,11 +16,7 @@ func _on_reload_timer_timeout() -> void:
 		return
 
 	if enemies:
-		var fire_rotation = $Turret.rotation
-
-		# Botnet effect: make the tower fire inaccurately
-		if botnet_count > 0:
-			fire_rotation += deg_to_rad(randf_range(-20.0, 20.0))
+		var fire_rotation = get_botnet_fire_rotation($Turret.rotation)
 
 		var dir = Vector2.DOWN.rotated(fire_rotation).normalized()
 
@@ -36,7 +32,7 @@ func _on_reload_timer_timeout() -> void:
 			final_damage,
 			type,
 			tower_id,
-			enemies[0]
+			null if botnet_count > 0 else enemies[0]
 		)
 
 		$ShootSound.play()

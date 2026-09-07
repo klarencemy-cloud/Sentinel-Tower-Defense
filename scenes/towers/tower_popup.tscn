@@ -330,10 +330,14 @@ libraries/ = SubResource("AnimationLibrary_rqhcg")
 [node name="TextureRect" type="TextureRect" parent="Info" unique_id=177073091]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0429835
-anchor_top = 0.048032243
-anchor_right = 0.94030374
-anchor_bottom = 0.94710636
+anchor_left = 0.13271551
+anchor_top = 0.13793965
+anchor_right = 0.8505717
+anchor_bottom = 0.857199
+offset_left = -172.28546
+offset_top = -97.100006
+offset_right = 172.28552
+offset_bottom = 97.099915
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
@@ -344,26 +348,28 @@ metadata/_edit_use_anchors_ = true
 [node name="Name" type="Label" parent="Info/TextureRect" unique_id=2017673046]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.06340057
-anchor_top = 0.23030366
-anchor_right = 0.2456562
-anchor_bottom = 0.2807674
+anchor_left = 0.059629392
+anchor_top = 0.24555932
+anchor_right = 0.4683086
+anchor_bottom = 0.33105937
+offset_right = -0.5923157
+offset_bottom = -15.020569
+grow_vertical = 0
 theme_override_colors/font_color = Color(0.011764706, 0.88235295, 0.9764706, 1)
-theme_override_font_sizes/font_size = 59
+theme_override_font_sizes/font_size = 52
 text = "ANTIVIRUS"
+autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="Sword" type="TextureRect" parent="Info/TextureRect/Name" unique_id=1584723503]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.425
-anchor_top = 1.5640001
-anchor_right = 0.425
-anchor_bottom = 1.5640001
-offset_left = 0.05281067
-offset_top = -8.979858
-offset_right = 51.261032
-offset_bottom = 30.801025
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 133.5028
+offset_top = 23.406631
+offset_right = 184.71103
+offset_bottom = 63.187515
 scale = Vector2(0.4512191, 0.45121938)
 texture = ExtResource("7_3av22")
 expand_mode = 1
@@ -373,10 +379,12 @@ metadata/_edit_use_anchors_ = true
 [node name="Damage" type="Label" parent="Info/TextureRect/Name" unique_id=2038513792]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.512748
-anchor_top = 1.2276787
-anchor_right = 0.69109184
-anchor_bottom = 1.8399196
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 161.00287
+offset_top = 15.482155
+offset_right = 217.00284
+offset_bottom = 57.11454
 theme_override_font_sizes/font_size = 25
 text = "20"
 metadata/_edit_use_anchors_ = true
@@ -384,12 +392,12 @@ metadata/_edit_use_anchors_ = true
 [node name="Sword2" type="TextureRect" parent="Info/TextureRect/Name" unique_id=703008062]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.7436394
-anchor_top = 1.3297181
-anchor_right = 0.8079486
-anchor_bottom = 1.6964147
-offset_right = 29.619415
-offset_bottom = 26.355972
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 236.00276
+offset_top = 20.980812
+offset_right = 280.27472
+offset_bottom = 66.56712
 scale = Vector2(0.4512191, 0.45121938)
 texture = ExtResource("8_0b1uo")
 expand_mode = 1
@@ -398,10 +406,12 @@ metadata/_edit_use_anchors_ = true
 [node name="Speed" type="Label" parent="Info/TextureRect/Name" unique_id=1171740717]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.82723826
-anchor_top = 1.2021686
-anchor_right = 1.050168
-anchor_bottom = 1.8144095
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 259.7528
+offset_top = 13.747467
+offset_right = 329.75278
+offset_bottom = 55.37986
 theme_override_font_sizes/font_size = 25
 text = "0.75"
 metadata/_edit_use_anchors_ = true
@@ -409,24 +419,25 @@ metadata/_edit_use_anchors_ = true
 [node name="Sword3" type="TextureRect" parent="Info/TextureRect/Name" unique_id=20169546]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.019117221
-anchor_top = 1.3807383
-anchor_right = 0.019117221
-anchor_bottom = 1.3807383
-offset_right = 37.993053
-offset_bottom = 29.51471
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0028076
+offset_top = 23.406609
+offset_right = 43.99586
+offset_bottom = 52.921318
 scale = Vector2(0.4512191, 0.45121938)
 texture = ExtResource("9_rqhcg")
 expand_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Type" type="Label" parent="Info/TextureRect/Name" unique_id=1414988112]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.09475414
-anchor_top = 1.2021686
-anchor_right = 0.29539108
-anchor_bottom = 1.8144095
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 29.7528
+offset_top = 13.747467
+offset_right = 92.7528
+offset_bottom = 55.37986
 theme_override_font_sizes/font_size = 25
 text = "Bullet"
 metadata/_edit_use_anchors_ = true
@@ -434,10 +445,13 @@ metadata/_edit_use_anchors_ = true
 [node name="Special" type="Label" parent="Info/TextureRect/Name" unique_id=1732838842]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.019117245
-anchor_top = 2.3736267
-anchor_right = 1.2253274
-anchor_bottom = 4.3532057
+anchor_left = 0.010233127
+anchor_top = 1.0
+anchor_right = 0.010233132
+anchor_bottom = 1.0
+offset_top = 93.40662
+offset_right = 378.75
+offset_bottom = 228.01797
 theme_override_colors/font_color = Color(0.137, 1, 1, 1)
 theme_override_fonts/font = ExtResource("10_kq65a")
 theme_override_font_sizes/font_size = 20
@@ -447,36 +461,19 @@ autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
-[node name="Medium_Spinner" type="TextureRect" parent="Info/TextureRect/Name" unique_id=936159805]
+[node name="Control" type="Control" parent="Info/TextureRect" unique_id=720968461]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.4172064
-anchor_top = 5.811127
-anchor_right = 1.1910918
-anchor_bottom = 9.384656
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("11_3av22")
-stretch_mode = 3
+anchor_left = 0.39047557
+anchor_top = 0.10945569
+anchor_right = 0.6117652
+anchor_bottom = 0.83293647
 metadata/_edit_use_anchors_ = true
 
-[node name="Small_Spinner" type="TextureRect" parent="Info/TextureRect/Name" unique_id=739776885]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.01911727
-anchor_top = 5.8846564
-anchor_right = 0.4044675
-anchor_bottom = 7.8258324
-offset_right = 3.0517578e-05
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("12_0b1uo")
-stretch_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Info/TextureRect" unique_id=1271087630]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Info/TextureRect/Control" unique_id=1271087630]
 light_mask = 2
 texture_filter = 2
-position = Vector2(863.9828, 420.03146)
-scale = Vector2(2.4153666, 2.4153666)
+position = Vector2(191.25002, 392.5)
+scale = Vector2(2.4153664, 2.4153664)
 sprite_frames = SubResource("SpriteFrames_ctvfx")
 animation = &"dlp"
 autoplay = "antivirus"
@@ -505,6 +502,34 @@ theme_override_font_sizes/font_size = 19
 text = "This is a cybersecurity expert who lawfully intrudes on a computer or network. They have the permission and approval to hack into a certain computing device. Lastly, they usually provide a security assessment to  provide a comprehensive way to further improve a system."
 horizontal_alignment = 3
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Medium_Spinner" type="TextureRect" parent="Info/TextureRect" unique_id=936159805]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13943875
+anchor_top = 0.6372618
+anchor_right = 0.13943875
+anchor_bottom = 0.6372618
+offset_right = 243.0
+offset_bottom = 243.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("11_3av22")
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Small_Spinner" type="TextureRect" parent="Info/TextureRect" unique_id=739776885]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06688477
+anchor_top = 0.6424111
+anchor_right = 0.06688477
+anchor_bottom = 0.6424111
+offset_right = 121.00001
+offset_bottom = 132.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("12_0b1uo")
+stretch_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [connection signal="gui_input" from="Pop/Overlay/Animation" to="Pop/Overlay/Animation" method="_on_gui_input"]

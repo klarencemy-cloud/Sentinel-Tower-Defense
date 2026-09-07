@@ -68,7 +68,7 @@ bus = &"Music"
 
 [node name="DialogueTyping" type="AudioStreamPlayer" parent="." unique_id=1332762566]
 stream = SubResource("AudioStreamRandomizer_7g3sw")
-volume_db = -15.053
+volume_db = -26.196
 bus = &"Sounds"
 
 [node name="ClickUnlock" type="AudioStreamPlayer" parent="." unique_id=1805250307]

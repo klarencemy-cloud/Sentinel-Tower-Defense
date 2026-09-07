@@ -164,6 +164,7 @@ func apply_dialogue_line() -> void:
 
 
 	if !GameDialogueManager.is_override:
+		$Balloon/Show.show()
 		match character_label.text:
 			"Player":
 				$Balloon/Show/Character.texture = load("res://graphics/character/pfp 2.png")
@@ -210,7 +211,17 @@ func apply_dialogue_line() -> void:
 			"ILY VIRUS":
 				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/iloveyou.png")
 			"TROJAN":
-				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/iloveyou.png")
+				$Balloon/Show/Character.texture = load("res://graphics/character/trojanpfp.png")
+			"System":
+				$Balloon/Show/Character.texture = null
+				$Balloon/Show.hide()
+			"Unknown Voice":
+				$Balloon/Show/Character.texture = null
+				$Balloon/Show.hide()
+			"Unknown":
+				$Balloon/Show/Character.texture = null
+				$Balloon/Show.hide()
+
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line

@@ -41,6 +41,10 @@ func setup(root: Node2D, map_manager: Node) -> void:
 func _ready() -> void:
 	Data.cancel_tower_placement.connect(cancel_selection)
 
+func _exit_tree() -> void:
+	cancel_selection()
+
+
 func _process(delta: float) -> void:
 	var preview = _get_tower_preview()
 	var place_btn = preview.get_node("PlaceTower")

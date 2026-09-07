@@ -10,7 +10,6 @@
 [ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="7_a1sfb"]
 [ext_resource type="Texture2D" uid="uid://dxpj7ubvxif7n" path="res://graphics/sentinels/sentinel2.png" id="8_m0kj8"]
 [ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="9_8qfsx"]
-[ext_resource type="Texture2D" uid="uid://bglyuypj0sahq" path="res://graphics/ui/sword.png" id="9_cfr7g"]
 [ext_resource type="Texture2D" uid="uid://b82cq14jn2r1" path="res://graphics/buttons/UpgradeBtn.png" id="9_x71o2"]
 [ext_resource type="FontFile" uid="uid://le60lmnqi5fk" path="res://font/Libre_Franklin/static/LibreFranklin-Thin.ttf" id="10_86m51"]
 [ext_resource type="Texture2D" uid="uid://bj686dqri1xme" path="res://graphics/container/upgrade_container.png" id="10_qujrc"]
@@ -18,10 +17,15 @@
 [ext_resource type="Texture2D" uid="uid://bsnmf7dwoo18l" path="res://graphics/buttons/2ndTierUnclicked.png" id="12_lg71s"]
 [ext_resource type="Texture2D" uid="uid://dme0d0pdsfgpo" path="res://graphics/buttons/3rdTierUnclicked.png" id="13_86m51"]
 [ext_resource type="Texture2D" uid="uid://dwu3dv78jklkp" path="res://graphics/buttons/UpgradeButtonPanel.png" id="14_aprt0"]
+[ext_resource type="Texture2D" uid="uid://bgd5c2bukefyk" path="res://graphics/icons/damage.png" id="15_8qfsx"]
 [ext_resource type="Texture2D" uid="uid://dmtujmh840v6" path="res://graphics/upgrade/NotUpgraded.png" id="15_lg71s"]
+[ext_resource type="Texture2D" uid="uid://cucr0amsi6y6h" path="res://graphics/icons/Group 303.png" id="16_a1sfb"]
+[ext_resource type="Texture2D" uid="uid://57wufxm4w484" path="res://graphics/icons/atk_speed.png" id="16_m0kj8"]
 [ext_resource type="Texture2D" uid="uid://bg144y74pe5wb" path="res://graphics/container/sentinel_room_bg.png" id="17_pafe5"]
 [ext_resource type="Texture2D" uid="uid://v6nn418cpr87" path="res://graphics/currency/gold.png" id="17_qujrc"]
+[ext_resource type="Texture2D" uid="uid://bs7ofk53pnlkr" path="res://graphics/icons/crit rate.png" id="18_676yw"]
 [ext_resource type="Texture2D" uid="uid://cwdjmra2f5hj2" path="res://graphics/sentinels/thumbnail/DECEPTIONANALYST.png" id="18_dq7wj"]
+[ext_resource type="Texture2D" uid="uid://ba1jsny8xykus" path="res://graphics/icons/crit.png" id="19_676yw"]
 [ext_resource type="Texture2D" uid="uid://5phvhu808has" path="res://graphics/currency/sentinel_core2.png" id="19_pafe5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fad81"]
@@ -736,39 +740,41 @@ layout_mode = 0
 offset_left = 46.0
 offset_top = 234.0
 offset_right = 480.0
-offset_bottom = 480.0
+offset_bottom = 446.0
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/StatPanel/ScrollContainer" unique_id=1608570701]
 clip_contents = true
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+theme_override_constants/separation = 21
 
 [node name="DamageContainer" type="HBoxContainer" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer" unique_id=2142359704]
 layout_mode = 2
 theme_override_constants/separation = 62
 
 [node name="DamagePic" type="TextureRect" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/DamageContainer" unique_id=1074086505]
-custom_minimum_size = Vector2(400, 80)
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
-texture = ExtResource("9_cfr7g")
-stretch_mode = 2
+texture = ExtResource("15_8qfsx")
+expand_mode = 1
 
 [node name="Damage" type="Label" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/DamageContainer/DamagePic" unique_id=474868836]
 layout_mode = 0
 offset_left = 86.0
-offset_top = 29.0
+offset_top = 11.0
 offset_right = 162.0
-offset_bottom = 55.0
+offset_bottom = 37.0
 theme_override_font_sizes/font_size = 22
 text = "Damage"
 
 [node name="DamageText" type="Label" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/DamageContainer/DamagePic" unique_id=781873042]
 layout_mode = 0
-offset_left = 171.0
-offset_top = 23.0
+offset_left = 254.0
+offset_top = 11.0
 offset_right = 377.0
-offset_bottom = 61.0
-theme_override_font_sizes/font_size = 23
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 22
 text = "D"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -778,16 +784,18 @@ layout_mode = 2
 theme_override_constants/separation = 62
 
 [node name="SpeedPic" type="TextureRect" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/SpeedContainer" unique_id=937710025]
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
-texture = ExtResource("9_cfr7g")
+texture = ExtResource("16_m0kj8")
+expand_mode = 1
 
 [node name="SpeedText" type="Label" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic" unique_id=2064383427]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 23.0
+offset_left = 250.0
+offset_top = 11.0
 offset_right = 377.0
-offset_bottom = 59.0
-theme_override_font_sizes/font_size = 23
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 22
 text = "D"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -795,27 +803,30 @@ vertical_alignment = 1
 [node name="Speed" type="Label" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/SpeedContainer/SpeedPic" unique_id=598963538]
 layout_mode = 0
 offset_left = 81.0
-offset_top = 27.0
+offset_top = 11.0
 offset_right = 206.0
-offset_bottom = 53.0
+offset_bottom = 37.0
 theme_override_font_sizes/font_size = 22
 text = "Attack Speed"
 
 [node name="RangeContainer" type="HBoxContainer" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer" unique_id=1383838392]
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 theme_override_constants/separation = 62
 
 [node name="RangePic" type="TextureRect" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer" unique_id=285373382]
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
-texture = ExtResource("9_cfr7g")
+texture = ExtResource("16_a1sfb")
+expand_mode = 1
 
 [node name="RangeText" type="Label" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic" unique_id=4270268]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 23.0
+offset_left = 239.0
+offset_top = 11.0
 offset_right = 377.0
-offset_bottom = 59.0
-theme_override_font_sizes/font_size = 23
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 22
 text = "D"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -823,27 +834,30 @@ vertical_alignment = 1
 [node name="Range" type="Label" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/RangeContainer/RangePic" unique_id=1666378236]
 layout_mode = 0
 offset_left = 84.0
-offset_top = 26.0
+offset_top = 11.0
 offset_right = 143.0
-offset_bottom = 52.0
+offset_bottom = 37.0
 theme_override_font_sizes/font_size = 22
 text = "Range"
 
 [node name="CritRContainer" type="HBoxContainer" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer" unique_id=267435717]
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 theme_override_constants/separation = 62
 
 [node name="CritRPic" type="TextureRect" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/CritRContainer" unique_id=4429148]
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
-texture = ExtResource("9_cfr7g")
+texture = ExtResource("18_676yw")
+expand_mode = 1
 
 [node name="CritRText" type="Label" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/CritRContainer/CritRPic" unique_id=1357225679]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 23.0
+offset_left = 276.0
+offset_top = 11.0
 offset_right = 377.0
-offset_bottom = 59.0
-theme_override_font_sizes/font_size = 23
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 22
 text = "D"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -851,27 +865,30 @@ vertical_alignment = 1
 [node name="CritR" type="Label" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/CritRContainer/CritRPic" unique_id=765900639]
 layout_mode = 0
 offset_left = 84.0
-offset_top = 26.0
-offset_right = 143.0
-offset_bottom = 52.0
+offset_top = 11.0
+offset_right = 166.0
+offset_bottom = 37.0
 theme_override_font_sizes/font_size = 22
 text = "Crit Rate"
 
 [node name="CritDContainer" type="HBoxContainer" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer" unique_id=1826825440]
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 theme_override_constants/separation = 62
 
 [node name="CritDPic" type="TextureRect" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/CritDContainer" unique_id=1213587786]
+custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
-texture = ExtResource("9_cfr7g")
+texture = ExtResource("19_676yw")
+expand_mode = 1
 
 [node name="CritDText" type="Label" parent="TextureRect/StatPanel/ScrollContainer/VBoxContainer/CritDContainer/CritDPic" unique_id=803766323]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 23.0
+offset_left = 259.0
+offset_top = 11.0
 offset_right = 377.0
-offset_bottom = 59.0
-theme_override_font_sizes/font_size = 23
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 22
 text = "D"
 horizontal_alignment = 2
 vertical_alignment = 1

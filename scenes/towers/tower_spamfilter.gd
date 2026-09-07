@@ -14,17 +14,31 @@ func _on_reload_timer_timeout() -> void:
 		return
 
 	if enemies.size() > 0:
+		var target = enemies[0]
 		var fire_rotation = $Turret.rotation
 
-		# Botnet effect
+		# Botnet makes the tower intentionally miss.
 		if botnet_count > 0:
-			var spread = min(botnet_count * 10.0, 45.0)
+			var spread = min(botnet_count * 15.0, 60.0)
 			fire_rotation += deg_to_rad(randf_range(-spread, spread))
 
 		var dir = Vector2.DOWN.rotated(fire_rotation).normalized()
 
-		var base_damage = Data.TOWER_DATA[type]["damage"] + (Data.TOWER_DATA[type]["damage"] * malware_analyst_damage_buff)
-		var final_damage = Data.calculate_crit_damage(type, base_damage, malware_analyst_crit_buff)
+		var base_damage = Data.TOWER_DATA[type]["damage"] + \
+			(Data.TOWER_DATA[type]["damage"] * malware_analyst_damage_buff)
+
+		var final_damage = Data.calculate_crit_damage(
+			type,
+			base_damage,
+			malware_analyst_crit_buff
+		)
+
+		# If Botnet is active, don't give the projectile the real target.
+		# This prevents homing/projectile logic from correcting the miss.
+		var projectile_target = target
+
+		if botnet_count > 0:
+			projectile_target = null
 
 		shoot.emit(
 			position + dir * 16,
@@ -33,8 +47,9 @@ func _on_reload_timer_timeout() -> void:
 			final_damage,
 			type,
 			tower_id,
-			enemies[0] # <-- target
+			projectile_target
 		)
+
 		fire_animation()
 		$ShootSound.play()
 

@@ -149,10 +149,16 @@ func _ready() -> void:
 
 	
 	if Data.current_wave >= 5 or Data.is_sandbox:
-		toggle_skill_activation()
+		toggle_skill_activation("firewall")
+	if Data.current_wave >= 43 or Data.is_sandbox:
+		toggle_skill_activation("patch")
+	if Data.current_wave >= 43 or Data.is_sandbox:
+		toggle_skill_activation("backup")
 	
 	for tower_enum in Data.Tower.values():
 		if tower_enum == Data.Tower.BACKUP_SERVER:
+			continue
+		if tower_enum == Data.Tower.PATCH:
 			continue
 		var tower_data: Dictionary = Data.TOWER_DATA[tower_enum]
 
@@ -194,13 +200,29 @@ func _ready() -> void:
 	update_experience(Data.experience, Data.player_level, Data.default_level_pool)
 	update_wave_label()
 
-	if not GameDialogueManager.is_skill_activated:
+	if not GameDialogueManager.is_skill1_activated:
 		$Control/HBoxContainer/Skill1.disabled = true
 		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/container/skillcontainer.png")
 	
 	else:
 		$Control/HBoxContainer/Skill1.disabled = false
 		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
+
+	if not GameDialogueManager.is_skill2_activated:
+		$Control/HBoxContainer/Skill2.disabled = true
+		$Control/HBoxContainer/Skill2.texture_normal = load("res://graphics/container/skillcontainer.png")
+	
+	else:
+		$Control/HBoxContainer/Skill2.disabled = false
+		$Control/HBoxContainer/Skill2.texture_normal = load("res://graphics/ui/patch.png")
+
+	if not GameDialogueManager.is_skill3_activated:
+		$Control/HBoxContainer/Skill3.disabled = true
+		$Control/HBoxContainer/Skill3.texture_normal = load("res://graphics/container/skillcontainer.png")
+	
+	else:
+		$Control/HBoxContainer/Skill3.disabled = false
+		$Control/HBoxContainer/Skill3.texture_normal = load("res://graphics/ui/backupskill.png")
 	
 	for bar in boss_bars:
 		bar.visible = false
@@ -233,10 +255,20 @@ func tower_select(tower_enum: Data.Tower):
 func sentinel_select(sentinel_enum: Data.Sentinel):
 	place_sentinel.emit(sentinel_enum)
 
-func toggle_skill_activation():
-	GameDialogueManager.is_skill_activated = true
-	$Control/HBoxContainer/Skill1.disabled = false
-	$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
+func toggle_skill_activation(skill: String):
+	if skill == "firewall":
+		GameDialogueManager.is_skill1_activated = true
+		$Control/HBoxContainer/Skill1.disabled = false
+		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
+	if skill == "patch":
+		GameDialogueManager.is_skill2_activated = true
+		$Control/HBoxContainer/Skill2.disabled = false
+		$Control/HBoxContainer/Skill2.texture_normal = load("res://graphics/ui/patch.png")
+	if skill == "backup":
+		GameDialogueManager.is_skill3_activated = true
+		$Control/HBoxContainer/Skill3.disabled = false
+		$Control/HBoxContainer/Skill3.texture_normal = load("res://graphics/ui/backupskill.png")
+	
 
 func _on_skill1_pressed() -> void:
 	UISound.play_click()
@@ -731,6 +763,7 @@ func pop_tower(tower_enum: Data.Tower, tower: String):
 	signal_unlock_tower.emit()
 	tower_pop.play_animation(tower)
 	unlock_tower_card(tower_enum)
+	print(tower_enum)
 
 func unlock_tower_card(tower_enum: Data.Tower) -> void:
 	if tower_enum == Data.Tower.BACKUP_SERVER:
