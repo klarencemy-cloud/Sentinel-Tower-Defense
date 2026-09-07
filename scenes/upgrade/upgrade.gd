@@ -25,6 +25,7 @@ const DRAG_THRESHOLD := 10.0
 func _ready() -> void:
 	var ui = get_tree().get_first_node_in_group("UI")
 	ui.signal_unlock_tower.connect(_on_unlock_pressed)
+	visibility_changed.connect(_on_visibility_changed)
 	update_money_display()
 	for tower_enum in Data.Tower.values():
 		if tower_enum == Data.Tower.BACKUP_SERVER:
@@ -69,6 +70,11 @@ func _ready() -> void:
 	sentinel_roll_thumbnails = _build_sentinel_roll_thumbnails()
 	$SentinelStuff/Rollbtn.connect("pressed", Callable(self, "_on_Rollbtn_pressed"))
 	update_tier_buttons()
+
+func _on_visibility_changed() -> void:
+	if visible:
+		update_money_display()
+
 
 func set_selected_tower(tower_enum: Data.Tower) -> void:
 	selected_tower = tower_enum
@@ -263,7 +269,10 @@ func _set_upgrade_visual(node: Node, level: int) -> void:
 
 
 func update_money_display() -> void:
-	$TextureRect/UpgradePanel/Money.text = str(Data.money)
+	if Data.is_unli_money:
+		$TextureRect/UpgradePanel/Money.text = "∞"
+	else:
+		$TextureRect/UpgradePanel/Money.text = str(Data.money)
 
 
 func _get_upgrade_cost(slot_index: int, current_level: int) -> int:
