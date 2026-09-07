@@ -40,7 +40,7 @@ func toggle_active(_money := 0):
 func update_free_label():
 	var amount = Data.free_towers.get(id, 0)
 
-	free_badge.visible = amount > 0
+	free_badge.visible = amount > 0 and not Data.is_sandbox
 
 	if amount > 0:
 		free_label.text = str(amount)

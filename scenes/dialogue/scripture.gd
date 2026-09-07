@@ -107,6 +107,7 @@ var SCRIPTURE = {
 func play_animation(index: int):
 	var ui = get_tree().get_first_node_in_group("UI")
 	ui.hide_pop2(true)
+	GameDialogueManager.pause_game(true)
 
 	$Info/TextureRect/Title.text = SCRIPTURE[index]['Title']
 	$Info/TextureRect/Title/Label.text = SCRIPTURE[index]['Brief_Desc']

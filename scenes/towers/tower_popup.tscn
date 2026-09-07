@@ -291,6 +291,7 @@ offset_right = -27.53711
 offset_bottom = -7.588745
 scale = Vector2(1.1, 1.1)
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 120
 bbcode_enabled = true
 text = "[wave]NEW TOWER[/wave]"

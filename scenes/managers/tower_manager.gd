@@ -300,9 +300,8 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 		preview.get_node("CancelPlace").hide()
 	if using_belt:
 		Data.consume_vm_belt_item(Data.vm_belt_selected_id)
-	elif using_free:
+	elif using_free and not Data.is_sandbox:
 		var remaining: int = Data.free_towers.get(selected_tower, 0)
-
 		if remaining > 1:
 			Data.free_towers[selected_tower] = remaining - 1
 		else:
@@ -330,7 +329,7 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if Data.TOWER_DATA[selected_tower]["name"] == "Spam Filter" and !GameDialogueManager.is_introduction_spam_filter and !Data.is_sandbox and !Data.is_vmmode and (Data.current_wave == 0 or Data.current_wave == 1):
 		GameDialogueManager.show_dialogue_spam_filter()
 
-	if ((Data.maxserverload - Data.currentserverload) < 15 or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and !Data.is_vmmode and Data.current_wave == 4:
+	if (Data.currentserverload < 150 or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and !Data.is_vmmode and Data.current_wave == 4:
 		GameDialogueManager.show_dialogue_preparation_end()
 	
 

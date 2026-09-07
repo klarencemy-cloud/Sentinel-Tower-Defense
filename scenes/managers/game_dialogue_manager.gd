@@ -307,7 +307,7 @@ func show_dialogue_boss1_defeated(): # used in enemy
 	is_boss1_defeated = true
 
 var is_boss1_defeated2: bool = false
-func show_dialogue_boss1_defeated2(): # used in enemy
+func show_dialogue_boss1_defeated2(): # used in scripture
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1_defeated2")
 	is_boss1_defeated2 = true
