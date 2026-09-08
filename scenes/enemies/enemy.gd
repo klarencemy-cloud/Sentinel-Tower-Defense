@@ -523,7 +523,7 @@ func hit(damage: int = 1, tower_id: int = -1):
 	var actual_damage: int = damage
 	print("MULTIPLIED DMG: " + str(actual_damage))
 	if is_frozen and is_frozen_vulnerable:
-		actual_damage = int(ceil(damage * 10))
+		actual_damage = int(ceil(damage * 1.15))
 	
 	# Apply vulnerability multiplier (e.g., IDPS tier3)
 	actual_damage = int(actual_damage * vulnerability_multiplier)
