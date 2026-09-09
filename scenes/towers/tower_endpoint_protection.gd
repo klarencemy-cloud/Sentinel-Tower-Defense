@@ -7,11 +7,20 @@ var malware_analyst_crit_buff: int = 0
 func _ready() -> void:
 	super._ready()
 	debuff_clear_timer = Timer.new()
-	var tower_data = Data.TOWER_DATA.get(type, {})
-	debuff_clear_timer.wait_time = 1.0 if tower_data.get("tier2abilityunlocked", false) else 2.0
 	debuff_clear_timer.autostart = true
 	debuff_clear_timer.timeout.connect(_clear_nearby_debuffs)
 	add_child(debuff_clear_timer)
+	_update_debuff_clear_interval()
+
+func refresh_stats():
+	super.refresh_stats()
+	_update_debuff_clear_interval()
+
+func _update_debuff_clear_interval() -> void:
+	if not debuff_clear_timer:
+		return
+	var tower_data = Data.TOWER_DATA.get(type, {})
+	debuff_clear_timer.wait_time = 1.0 if tower_data.get("tier2abilityunlocked", false) else 2.0
 
 
 func _clear_nearby_debuffs() -> void:
