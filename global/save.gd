@@ -86,7 +86,13 @@ func save_game() -> void:
 		for enemy_enum in Data.Enemy.values():
 			var enemy_data: Dictionary = Data.ENEMY_DATA[enemy_enum]
 			enemy_met[str(enemy_enum)] = enemy_data.get("isMet", false)
-		
+
+		var vm_map_unlocks := {}
+
+		for map_number in Data.VM_MAP_DATA:
+			var map_data: Dictionary = Data.VM_MAP_DATA[map_number]
+			vm_map_unlocks[str(map_number)] = map_data.get("unlocked", false)
+
 		# Save enemy kill counts
 		var enemy_kills := {}
 
@@ -110,6 +116,7 @@ func save_game() -> void:
 			"tower_unlocks": tower_unlocks,
 			"sentinel_unlocks": sentinel_unlocks,
 			"enemy_met": enemy_met,
+			"vm_map_unlocks": vm_map_unlocks,
 			"sentinels": [Data.sentinel_ethical_deployed, Data.sentinel_sysad_deployed,
 				Data.sentinel_intrusion_deployed, Data.sentinel_security_deployed,
 				Data.sentinel_malware_deployed, Data.sentinel_deception_deployed],
@@ -199,7 +206,14 @@ func _load_game() -> void:
 
 			if Data.ENEMY_DATA.has(enemy_enum):
 				Data.ENEMY_DATA[enemy_enum]["isMet"] = bool(enemy_met[enemy_key])
-		
+
+		var vm_map_unlocks: Dictionary = parsed.get("vm_map_unlocks", {})
+
+		for map_key in vm_map_unlocks:
+			var map_number := int(map_key)
+
+			if Data.VM_MAP_DATA.has(map_number):
+				Data.VM_MAP_DATA[map_number]["unlocked"] = bool(vm_map_unlocks[map_key])
 
 		var tower_upgrades: Dictionary = parsed.get("tower_upgrades", {})
 		for tower_key in tower_upgrades:

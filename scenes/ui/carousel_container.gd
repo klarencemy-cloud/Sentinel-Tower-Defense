@@ -33,6 +33,7 @@ signal toggle_tween()
 @onready var level_recommendation: Label = $"../MapDetails/Suggested"
 @onready var vm_description: Label = $"../MapDetails/Description"
 @onready var vm_difficulty_label := $"../MapDetails/Difficulty"
+@onready var start_game_button: TextureButton = $"../StartGame"
 
 var title_array: Array = ["Treatment Area", "Courtyard", "Konbini", "Hellbent", "The Maze", "Requiem"]
 var path_num: Array = ["1", "1", "2", "4", "3", "3"]
@@ -94,11 +95,39 @@ func _vm_difficulty(index: int) -> String:
 	return _vm_field(index, 'difficulty', vm_difficulty[index])
 
 
+func _vm_unlocked(index: int) -> bool:
+	return bool(_vm_field(index, 'unlocked', false))
+
+
+func _refresh_vm_lock_state(index: int) -> void:
+	if _vm_unlocked(index):
+		start_game_button.disabled = false
+	else:
+		var required_wave: int = int(_vm_field(index, 'unlock_wave', 0))
+		vm_description.text = "Locked - reach Wave %d in Story Mode.\n\n" % required_wave + vm_description.text
+		start_game_button.disabled = true
+
+
+func _refresh_vm_card_dim() -> void:
+	if not position_offset_node:
+		return
+
+	for child in position_offset_node.get_children():
+		if _vm_unlocked(child.get_index()):
+			child.self_modulate = Color.WHITE
+		else:
+			child.self_modulate = Color(0.35, 0.35, 0.35)
+
+
 var count: int = 0
 
 
 func _ready() -> void:
 	Data.change_challenge.connect(_change_challenge)
+
+	if is_vm:
+		_refresh_vm_card_dim()
+		_refresh_vm_lock_state(count)
 
 func _process(delta: float) -> void:
 	if !position_offset_node or position_offset_node.get_child_count() == 0:
@@ -171,6 +200,8 @@ func _left():
 			"Survival":
 				vm_difficulty_label.add_theme_color_override("font_color", Color(0.8, 0.004, 0.788))
 
+		_refresh_vm_lock_state(count)
+
 	if !Data.is_vmmode:
 		title.text = title_array[count]
 		path.text = path_num[count]
@@ -217,6 +248,8 @@ func _right():
 			"Survival":
 				vm_difficulty_label.add_theme_color_override("font_color", Color(0.8, 0.004, 0.788))
 
+		_refresh_vm_lock_state(count)
+
 	if !Data.is_vmmode:
 		if count == 6:
 			count = 5
@@ -258,6 +291,8 @@ func _change_challenge(index: int) -> void:
 				vm_difficulty_label.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
 			"Survival":
 				vm_difficulty_label.add_theme_color_override("font_color", Color(0.8, 0.004, 0.788))
+
+		_refresh_vm_lock_state(count)
 
 	if is_vm == null:
 		return

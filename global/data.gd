@@ -53,7 +53,8 @@ const VM_MAP_DATA := {
 		'terrain_level_index': 0,
 		'difficulty': "Easy",
 		'recommended_wave': 5,
-		'unlock_wave': 0,
+		'unlock_wave': 5,
+		'unlocked': false,
 		'desc': "The S.E.R.V.E.R. malfunctions; it loses health every 5 seconds. Defeat 200 virus enemies before the S.E.R.V.E.R. health reaches 0.",
 	},
 	2: {
@@ -63,6 +64,7 @@ const VM_MAP_DATA := {
 		'difficulty': "Moderate",
 		'recommended_wave': 10,
 		'unlock_wave': 10,
+		'unlocked': false,
 		'desc': "A massive outbreak of Worms and Spam floods the path. Defeat 1,000 enemies without taking any damage.",
 	},
 	3: {
@@ -72,6 +74,7 @@ const VM_MAP_DATA := {
 		'difficulty': "Hard",
 		'recommended_wave': 16,
 		'unlock_wave': 16,
+		'unlocked': false,
 		'desc': "The S.E.R.V.E.R. has only 1 HP left. Survive 7 waves of malware without taking any damage. A single hit costs everything.",
 	},
 	4: {
@@ -81,6 +84,7 @@ const VM_MAP_DATA := {
 		'difficulty': "Hard",
 		'recommended_wave': 25,
 		'unlock_wave': 25,
+		'unlocked': false,
 		'desc': "Inspired by a real-world exploit, a large number of Botnet drone that mainly compromise low-power devices swarms fast to attack the S.E.R.V.E.R., but are fragile as individuals. Win 7 waves to win the challenge.",
 	},
 	5: {
@@ -90,6 +94,7 @@ const VM_MAP_DATA := {
 		'difficulty': "Hard",
 		'recommended_wave': 30,
 		'unlock_wave': 30,
+		'unlocked': false,
 		'desc': "The map has blind spots (fog), whenever enemies are in that location, they cannot be targeted. Win 7 waves to win the challenge.",
 	},
 	6: {
@@ -99,6 +104,7 @@ const VM_MAP_DATA := {
 		'difficulty': "Hard",
 		'recommended_wave': 35,
 		'unlock_wave': 35,
+		'unlocked': false,
 		'desc': "Only Distributed Denial-of-Service (DDoS) attacks the S.E.R.V.E.R. to test how it handles floods of internet traffic. The player must defeat 300 enemies before the timer runs out.",
 	},
 	7: {
@@ -108,6 +114,7 @@ const VM_MAP_DATA := {
 		'difficulty': "Extreme",
 		'recommended_wave': 40,
 		'unlock_wave': 40,
+		'unlocked': false,
 		'desc': "Random towers randomly appear. The player must place them correctly and strategically. Win 7 waves to win the challenge.",
 	},
 	8: {
@@ -117,6 +124,7 @@ const VM_MAP_DATA := {
 		'difficulty': "Extreme",
 		'recommended_wave': 45,
 		'unlock_wave': 45,
+		'unlocked': false,
 		'desc': "All sentinels are disabled during the challenge. Win 7 waves to win the challenge.",
 		'disable_sentinels': true,
 	},
@@ -127,6 +135,7 @@ const VM_MAP_DATA := {
 		'difficulty': "Survival",
 		'recommended_wave': 51,
 		'unlock_wave': 51,
+		'unlocked': false,
 		'desc': "This challenge is endless. A survival game where the player must defend the S.E.R.V.E.R. with an endless number of waves.",
 	},
 }
@@ -1347,3 +1356,10 @@ func update_wave_unlocks() -> void:
 		if enemy_data.has("waveUnlocked"):
 			if current_wave >= enemy_data["waveUnlocked"]:
 				enemy_data["isMet"] = true
+
+	for map_number in VM_MAP_DATA.keys():
+		var map_data = VM_MAP_DATA[map_number]
+
+		if map_data.has("unlock_wave") and not map_data.get("unlocked", false):
+			if current_wave >= map_data["unlock_wave"]:
+				map_data["unlocked"] = true
