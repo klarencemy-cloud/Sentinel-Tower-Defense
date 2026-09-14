@@ -109,7 +109,9 @@ func start_wave() -> void:
 
 	if Data.current_wave in BOSS_WAVES:
 		_play_boss_alarm()
-
+		
+	# if Data.current_wave == 4 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_virus_shown:
+	# 	GameDialogueManager.show_dialogue_virus()
 	if Data.current_wave == 6 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_question_1_shown:
 			GameDialogueManager.show_dialogue_question1()
 	if Data.current_wave == 8 and !Data.is_sandbox and !GameDialogueManager.is_adware_shown:
