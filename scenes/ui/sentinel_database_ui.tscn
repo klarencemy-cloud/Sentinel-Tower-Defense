@@ -660,6 +660,22 @@ autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
+[node name="BigPic" type="TextureRect" parent="Databasebg" unique_id=573774330]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08125316
+anchor_top = -0.12980564
+anchor_right = 0.3127644
+anchor_bottom = 0.2175816
+offset_left = 587.1908
+offset_top = 204.88792
+offset_right = 587.1908
+offset_bottom = 204.88794
+texture = SubResource("AtlasTexture_lavis")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Databasebg" unique_id=1774010106]
 position = Vector2(771, 237)
 scale = Vector2(0.6113281, 0.6113281)
