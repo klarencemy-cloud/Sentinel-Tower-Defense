@@ -843,7 +843,7 @@ var ENEMY_DATA = {
 		'damage': 5,
 		'atkspd': 0.5,
 		"exp": 2,
-		"isMet": false,
+		"isMet": true,
 		"waveUnlocked": 1},
 	Enemy.VIRUS: {
 		'health': 40,

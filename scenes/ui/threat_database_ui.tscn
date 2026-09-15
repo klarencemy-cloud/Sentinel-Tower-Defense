@@ -1089,7 +1089,7 @@ texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="ThreatContainer/CardContainer/Threat6" unique_id=430622547]
+[node name="TextureRect" type="TextureRect" parent="ThreatContainer/CardContainer/Threat6" unique_id=430622547]
 texture_filter = 2
 layout_mode = 0
 offset_left = 41.0
@@ -1282,7 +1282,7 @@ texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Threat_Name_1" type="Label" parent="ThreatContainer/CardContainer/Threat11" unique_id=178204922]
+[node name="Threat_Name_11" type="Label" parent="ThreatContainer/CardContainer/Threat11" unique_id=178204922]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
@@ -1322,7 +1322,7 @@ texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Threat_Name_2" type="Label" parent="ThreatContainer/CardContainer/Threat12" unique_id=274185125]
+[node name="Threat_Name_12" type="Label" parent="ThreatContainer/CardContainer/Threat12" unique_id=274185125]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
@@ -1362,7 +1362,7 @@ texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Threat_Name_3" type="Label" parent="ThreatContainer/CardContainer/Threat13" unique_id=1269674247]
+[node name="Threat_Name_13" type="Label" parent="ThreatContainer/CardContainer/Threat13" unique_id=1269674247]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
@@ -1403,7 +1403,7 @@ texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Threat_Name_4" type="Label" parent="ThreatContainer/CardContainer/Threat14" unique_id=1069607078]
+[node name="Threat_Name_14" type="Label" parent="ThreatContainer/CardContainer/Threat14" unique_id=1069607078]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
@@ -1443,7 +1443,7 @@ texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Threat_Name_5" type="Label" parent="ThreatContainer/CardContainer/Threat15" unique_id=512975790]
+[node name="Threat_Name_15" type="Label" parent="ThreatContainer/CardContainer/Threat15" unique_id=512975790]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
@@ -1484,7 +1484,7 @@ texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Threat_Name_6" type="Label" parent="ThreatContainer/CardContainer/Threat16" unique_id=330453350]
+[node name="Threat_Name_16" type="Label" parent="ThreatContainer/CardContainer/Threat16" unique_id=330453350]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
@@ -1522,7 +1522,7 @@ texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Threat_Name_7" type="Label" parent="ThreatContainer/CardContainer/Threat17" unique_id=1751566734]
+[node name="Threat_Name_17" type="Label" parent="ThreatContainer/CardContainer/Threat17" unique_id=1751566734]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
@@ -1561,7 +1561,7 @@ texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Threat_Name_8" type="Label" parent="ThreatContainer/CardContainer/Threat18" unique_id=27104371]
+[node name="Threat_Name_18" type="Label" parent="ThreatContainer/CardContainer/Threat18" unique_id=27104371]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
@@ -1599,7 +1599,7 @@ texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Threat_Name_9" type="Label" parent="ThreatContainer/CardContainer/Threat19" unique_id=1719401700]
+[node name="Threat_Name_19" type="Label" parent="ThreatContainer/CardContainer/Threat19" unique_id=1719401700]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
@@ -1638,7 +1638,7 @@ texture_normal = ExtResource("5_bxw4m")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Threat_Name_10" type="Label" parent="ThreatContainer/CardContainer/Threat20" unique_id=1624727395]
+[node name="Threat_Name_20" type="Label" parent="ThreatContainer/CardContainer/Threat20" unique_id=1624727395]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
@@ -1688,7 +1688,7 @@ anchor_top = 0.19425444
 anchor_right = 0.58949625
 anchor_bottom = 0.2900137
 theme_override_font_sizes/font_size = 50
-text = "Spam"
+text = "Threat Name"
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
@@ -1788,7 +1788,7 @@ anchor_bottom = 0.46922025
 theme_override_colors/font_color = Color(1, 0.4123333, 0.13999999, 1)
 theme_override_fonts/font = ExtResource("7_jjgt1")
 theme_override_font_sizes/font_size = 17
-text = "Appears in large groups. Individually weak but dangerous when left unchecked and filtered. They spawn in swarms or in groups, making towers less efficient as they come in groups."
+text = "Threat Behavior"
 horizontal_alignment = 3
 autowrap_mode = 3
 justification_flags = 42
@@ -1825,18 +1825,18 @@ offset_right = 425.80698
 offset_bottom = 221.98999
 theme_override_fonts/font = ExtResource("7_jjgt1")
 theme_override_font_sizes/font_size = 17
-text = "Spam is unsolicited, unwelcome digital communication that is transmitted in large quantities, mostly via email but sometimes via texts, phone calls, and social media."
 horizontal_alignment = 3
 autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Reddatabasebg" unique_id=522095626]
+modulate = Color(0, 0, 0, 1)
 texture_filter = 2
 position = Vector2(687, 221)
 scale = Vector2(1.2617182, 1.2617182)
 sprite_frames = SubResource("SpriteFrames_ndtrb")
-animation = &"spyware"
+animation = &"spam"
 autoplay = "spam"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Reddatabasebg" unique_id=212389795]

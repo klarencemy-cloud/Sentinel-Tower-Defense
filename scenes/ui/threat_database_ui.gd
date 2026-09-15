@@ -3,7 +3,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	update_threat_display()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -438,16 +438,43 @@ var THREAT_DATA = {
 @onready var worm_animation = $Reddatabasebg/AnimatedSprite2D2
 
 func _on_threat_20_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(0.7, 0.7)
+	if not Data.ENEMY_DATA[19]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		
+		animation.play("trojanb")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[19]
 	desc_damage.text = str(THREAT_DATA[19]['damage'])
 	desc_speed.text = str(THREAT_DATA[19]['speed'])
 	desc_health.text = str(THREAT_DATA[19]['health'])
 	desc_sp.text = str(THREAT_DATA[19]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[19]['irl_desc'])
-	animation.visible = true
-	worm_animation.visible = false
+	animation.play("trojanb")
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_threat_19_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[18]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("doom")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[18]
 	desc_damage.text = str(THREAT_DATA[18]['damage'])
 	desc_speed.text = str(THREAT_DATA[18]['speed'])
@@ -455,10 +482,22 @@ func _on_threat_19_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[18]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[18]['irl_desc'])
 	animation.play("doom")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_threat_18_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[17]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("notpetya")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[17]
 	desc_damage.text = str(THREAT_DATA[17]['damage'])
 	desc_speed.text = str(THREAT_DATA[17]['speed'])
@@ -466,10 +505,22 @@ func _on_threat_18_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[17]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[17]['irl_desc'])
 	animation.play("notpetya")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_threat_17_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[16]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("wannacry")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[16]
 	desc_damage.text = str(THREAT_DATA[16]['damage'])
 	desc_speed.text = str(THREAT_DATA[16]['speed'])
@@ -477,10 +528,22 @@ func _on_threat_17_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[16]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[16]['irl_desc'])
 	animation.play("wannacry")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_threat_16_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[15]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("conficker")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[15]
 	desc_damage.text = str(THREAT_DATA[15]['damage'])
 	desc_speed.text = str(THREAT_DATA[15]['speed'])
@@ -488,10 +551,22 @@ func _on_threat_16_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[15]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[15]['irl_desc'])
 	animation.play("conficker")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_threat_15_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[14]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("ilu")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[14]
 	desc_damage.text = str(THREAT_DATA[14]['damage'])
 	desc_speed.text = str(THREAT_DATA[14]['speed'])
@@ -499,10 +574,22 @@ func _on_threat_15_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[14]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[14]['irl_desc'])
 	animation.play("ilu")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_threat_14_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[13]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("zero")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[13]
 	desc_damage.text = str(THREAT_DATA[13]['damage'])
 	desc_speed.text = str(THREAT_DATA[13]['speed'])
@@ -510,10 +597,22 @@ func _on_threat_14_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[13]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[13]['irl_desc'])
 	animation.play("zero")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_threat_13_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[12]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("ransomware")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[12]
 	desc_damage.text = str(THREAT_DATA[12]['damage'])
 	desc_speed.text = str(THREAT_DATA[12]['speed'])
@@ -521,10 +620,22 @@ func _on_threat_13_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[12]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[12]['irl_desc'])
 	animation.play("ransomware")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_threat_12_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[11]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("ddos")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[11]
 	desc_damage.text = str(THREAT_DATA[11]['damage'])
 	desc_speed.text = str(THREAT_DATA[11]['speed'])
@@ -532,11 +643,23 @@ func _on_threat_12_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[11]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[11]['irl_desc'])
 	animation.play("ddos")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 
 func _on_threat_11_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[10]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("sql")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[10]
 	desc_damage.text = str(THREAT_DATA[10]['damage'])
 	desc_speed.text = str(THREAT_DATA[10]['speed'])
@@ -544,10 +667,22 @@ func _on_threat_11_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[10]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[10]['irl_desc'])
 	animation.play("sql")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_threat_9_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[8]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("insider")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[8]
 	desc_damage.text = str(THREAT_DATA[8]['damage'])
 	desc_speed.text = str(THREAT_DATA[8]['speed'])
@@ -555,10 +690,22 @@ func _on_threat_9_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[8]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[8]['irl_desc'])
 	animation.play("insider")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_threat_8_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[7]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("trojan")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[7]
 	desc_damage.text = str(THREAT_DATA[7]['damage'])
 	desc_speed.text = str(THREAT_DATA[7]['speed'])
@@ -566,10 +713,22 @@ func _on_threat_8_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[7]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[7]['irl_desc'])
 	animation.play("trojan")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_threat_7_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[6]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("creds")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[6]
 	desc_damage.text = str(THREAT_DATA[6]['damage'])
 	desc_speed.text = str(THREAT_DATA[6]['speed'])
@@ -577,11 +736,23 @@ func _on_threat_7_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[6]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[6]['irl_desc'])
 	animation.play("creds")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 
 func _on_threat_6_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[5]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("botnet")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[5]
 	desc_damage.text = str(THREAT_DATA[5]['damage'])
 	desc_speed.text = str(THREAT_DATA[5]['speed'])
@@ -589,11 +760,23 @@ func _on_threat_6_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[5]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[5]['irl_desc'])
 	animation.play("botnet")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	
 
 func _on_threat_5_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[4]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("spyware")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[4]
 	desc_damage.text = str(THREAT_DATA[4]['damage'])
 	desc_speed.text = str(THREAT_DATA[4]['speed'])
@@ -601,21 +784,46 @@ func _on_threat_5_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[4]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[4]['irl_desc'])
 	animation.play("spyware")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 
 func _on_threat_4_pressed() -> void:
+	animation.scale = Vector2(1.26, 1.26)
+	animation.visible = false
+	worm_animation.visible = true
+	if not Data.ENEMY_DATA[3]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		$Reddatabasebg/AnimatedSprite2D2.modulate = Color(0, 0, 0, 1)
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[3]
 	desc_damage.text = str(THREAT_DATA[3]['damage'])
 	desc_speed.text = str(THREAT_DATA[3]['speed'])
 	desc_health.text = str(THREAT_DATA[3]['health'])
 	desc_sp.text = str(THREAT_DATA[3]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[3]['irl_desc'])
-	animation.visible = false
-	worm_animation.visible = true
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+	
 
 func _on_threat_3_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[2]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("adware")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[2]
 	desc_damage.text = str(THREAT_DATA[2]['damage'])
 	desc_speed.text = str(THREAT_DATA[2]['speed'])
@@ -623,10 +831,22 @@ func _on_threat_3_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[2]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[2]['irl_desc'])
 	animation.play("adware")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_threat_2_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[1]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("virus")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[1]
 	desc_damage.text = str(THREAT_DATA[1]['damage'])
 	desc_speed.text = str(THREAT_DATA[1]['speed'])
@@ -634,10 +854,22 @@ func _on_threat_2_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[1]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[1]['irl_desc'])
 	animation.play("virus")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _on_threat_1_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[0]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("spam")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[0]
 	desc_damage.text = str(THREAT_DATA[0]['damage'])
 	desc_speed.text = str(THREAT_DATA[0]['speed'])
@@ -645,11 +877,23 @@ func _on_threat_1_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[0]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[0]['irl_desc'])
 	animation.play("spam")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 
 func _on_threat_10_pressed() -> void:
+	animation.visible = true
+	worm_animation.visible = false
+	animation.scale = Vector2(1.26, 1.26)
+	if not Data.ENEMY_DATA[9]["isMet"]:
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_health.text = "???"
+		desc_sp.text = "???"
+		desc_desc.text = "???"
+		animation.play("rootkit")
+		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		return
 	desc_name.text = threat_name[9]
 	desc_damage.text = str(THREAT_DATA[9]['damage'])
 	desc_speed.text = str(THREAT_DATA[9]['speed'])
@@ -657,5 +901,12 @@ func _on_threat_10_pressed() -> void:
 	desc_sp.text = str(THREAT_DATA[9]['special_ability'])
 	desc_desc.text = str(THREAT_DATA[9]['irl_desc'])
 	animation.play("rootkit")
-	animation.visible = true
-	worm_animation.visible = false
+	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+
+func update_threat_display():
+	for threats in Data.ENEMY_DATA:
+		if not Data.ENEMY_DATA[threats]["isMet"]:
+			var texture = get_node("ThreatContainer/CardContainer/Threat%d/TextureRect" % (threats + 1))
+			var name = get_node("ThreatContainer/CardContainer/Threat%d/Threat_Name_%d" % [(threats + 1), (threats + 1)])
+			texture.modulate = Color(0, 0, 0, 1)
+			name.text = "???"

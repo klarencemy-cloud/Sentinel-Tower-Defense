@@ -322,8 +322,7 @@ anchors_preset = -1
 anchor_left = 0.36714977
 anchor_top = 0.80991733
 anchor_right = 0.90821254
-anchor_bottom = 0.91735536
-offset_bottom = 216.0
+anchor_bottom = 0.90909094
 theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
 theme_override_fonts/font = ExtResource("6_72m6s")
 theme_override_font_sizes/font_size = 20
@@ -694,7 +693,7 @@ anchor_right = 0.6795284
 anchor_bottom = 0.29001367
 theme_override_constants/line_spacing = -18
 theme_override_font_sizes/font_size = 50
-text = "Spam Filter"
+text = "Tower Name"
 vertical_alignment = 2
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
@@ -724,7 +723,7 @@ anchor_bottom = 0.31737345
 offset_right = 56.0
 offset_bottom = 19.0
 theme_override_font_sizes/font_size = 25
-text = "20"
+text = "Dmg"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sword2" type="TextureRect" parent="Databasebg" unique_id=1073644303]
@@ -753,7 +752,7 @@ anchor_bottom = 0.31737345
 offset_right = 70.0
 offset_bottom = 19.0
 theme_override_font_sizes/font_size = 25
-text = "0.75"
+text = "Atk Speed"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sword3" type="TextureRect" parent="Databasebg" unique_id=123416035]
@@ -791,7 +790,7 @@ anchor_bottom = 0.4008208
 theme_override_colors/font_color = Color(0.137, 1, 1, 1)
 theme_override_fonts/font = ExtResource("7_07cd3")
 theme_override_font_sizes/font_size = 17
-text = "Attacks bounce to nearby enemies. Deals bonus damage to Spam"
+text = "Attack Description"
 horizontal_alignment = 3
 autowrap_mode = 3
 justification_flags = 42
@@ -827,7 +826,6 @@ offset_right = 319.09424
 offset_bottom = 154.81476
 theme_override_fonts/font = ExtResource("7_07cd3")
 theme_override_font_sizes/font_size = 17
-text = "These are automated security tools that are used to identify, block, redirect, or allow bulk, unwanted, or malicious emails before it reaches the primary inbox of a user's email."
 horizontal_alignment = 3
 autowrap_mode = 3
 justification_flags = 42
@@ -844,9 +842,10 @@ texture = SubResource("AtlasTexture_vcypq")
 expand_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Databasebg" unique_id=883112235]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(730, 209)
 sprite_frames = SubResource("SpriteFrames_p434n")
-animation = &"adblocker"
+animation = &"spam"
 autoplay = "spam"
 
 [connection signal="gui_input" from="ScrollBarContainer/Bar/Scroll" to="." method="_on_texture_button_gui_input"]
