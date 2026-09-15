@@ -446,8 +446,8 @@ func _on_threat_20_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		
 		animation.play("trojanb")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
@@ -470,8 +470,8 @@ func _on_threat_19_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("doom")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -493,8 +493,8 @@ func _on_threat_18_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("notpetya")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -516,8 +516,8 @@ func _on_threat_17_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("wannacry")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -539,8 +539,8 @@ func _on_threat_16_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("conficker")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -562,8 +562,8 @@ func _on_threat_15_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("ilu")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -585,8 +585,8 @@ func _on_threat_14_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("zero")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -608,8 +608,8 @@ func _on_threat_13_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("ransomware")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -631,8 +631,8 @@ func _on_threat_12_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("ddos")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -655,8 +655,8 @@ func _on_threat_11_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("sql")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -678,8 +678,8 @@ func _on_threat_9_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("insider")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -701,8 +701,8 @@ func _on_threat_8_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("trojan")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -724,8 +724,8 @@ func _on_threat_7_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("creds")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -748,8 +748,8 @@ func _on_threat_6_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("botnet")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -772,8 +772,8 @@ func _on_threat_5_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("spyware")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -796,8 +796,8 @@ func _on_threat_4_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		$Reddatabasebg/AnimatedSprite2D2.modulate = Color(0, 0, 0, 1)
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -819,8 +819,8 @@ func _on_threat_3_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("adware")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -842,8 +842,8 @@ func _on_threat_2_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("virus")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -865,8 +865,8 @@ func _on_threat_1_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("spam")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
@@ -889,8 +889,8 @@ func _on_threat_10_pressed() -> void:
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_health.text = "???"
-		desc_sp.text = "???"
-		desc_desc.text = "???"
+		desc_sp.text = "Threat Behavior: Uknown"
+		desc_desc.text = "No Available Data"
 		animation.play("rootkit")
 		$Reddatabasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
 		return
