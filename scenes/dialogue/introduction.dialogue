@@ -87,7 +87,7 @@ do GameDialogueManager.start_wave()
 => END
 
 ~ server_upgrade
-do GameDialogueManager.delay_dialogue(2.0)
+do GameDialogueManager.delay_dialogue(1.0)
 do GameDialogueManager.pause_game(true)
 Odysseus: You’ve leveled up! You can now upgrade the server!
 do GameDialogueManager.pause_game(false)
@@ -113,7 +113,7 @@ Odysseus: It really does. But it seems things have settled down for a bit.
 Player: It might be the calm before the storm. Better get ready before threats swarm their way in!
 Odysseus: Now that’s the mindset of a strategist! Contingent planning and anticipating cyber attacks are important to minimize damage and to have room to formulate smart decisions on how to deal with the unforeseen.
 Player: Let's spent all our resources first before we lower the force field.
-if ((Data.currentserverload < 150) or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and Data.current_wave == 4
+if ((Data.currentserverload > 150) or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and Data.current_wave == 4
 	do GameDialogueManager.toggle_fade_transition()
 	do GameDialogueManager.delay_dialogue(3)
 	do GameDialogueManager.show_dialogue_preparation_end()
@@ -124,15 +124,17 @@ if ((Data.currentserverload < 150) or Data.money < 30) and !GameDialogueManager.
 ~ preparation_end
 Odysseus: The threats are already inside the perimeter. Press START to commence.
 VIRUS: 010101… INfeCt tHe sYSTem....
+do GameDialogueManager.show_enemy("virus", 1)
 do GameDialogueManager.show_play()
 #function to activate virus pop-up card
-do GameDialogueManager.is_autoplay = false
-do GameDialogueManager.show_enemy("virus", 1)
+#do GameDialogueManager.is_autoplay = false
+
 do GameDialogueManager.button_state = true
 => END
 
 ~ virus
 do GameDialogueManager.pause_game(true)
+
 Player: Well, this is new.
 Odysseus: Those are Virus. They are malicious software that can infect our defenses, steal information, weaken our towers and damage and disrupt  the server.
 do GameDialogueManager.unlock_towers(1, "antivirus")

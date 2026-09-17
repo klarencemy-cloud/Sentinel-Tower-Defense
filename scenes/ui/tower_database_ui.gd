@@ -3,7 +3,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	_refresh_tower_image_states()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -253,70 +253,80 @@ var TOWER_DATA = {
 		'atk_speed': 0.75,
 		'type': "Bullet",
 		'special_ability': "Attacks bounce to nearby enemies. Deals bonus damage to Spam",
-		'irl_desc': "These are automated security tools that are used to identify, block, redirect, or allow bulk, unwanted, or malicious emails before it reaches the primary inbox of a user's email."
+		'irl_desc': "These are automated security tools that are used to identify, block, redirect, or allow bulk, unwanted, or malicious emails before it reaches the primary inbox of a user's email.",
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/SPAM_FILTER.png"
 	},
 	Tower.ANTIVIRUS: {
 		'damage': 30,
 		'atk_speed': 1.00,
 		'type': "Bullet",
 		'special_ability': "Deals increased damage to malware enemies such as Viruses, Worms, and Trojan horses.",
-		'irl_desc': "Antivirus protection refers to software designed to monitor, detect, prevent, and eliminate malicious threats before they infect, corrupt, or entirely damage data or devices. The threats include software viruses and malware, such as worms, ransomware, and more. For this, it monitors and scans incoming data from the internet, including emails, websites, and external devices like hard drives, helping identify network security vulnerabilities that malware could exploit."
+		'irl_desc': "Antivirus protection refers to software designed to monitor, detect, prevent, and eliminate malicious threats before they infect, corrupt, or entirely damage data or devices. The threats include software viruses and malware, such as worms, ransomware, and more. For this, it monitors and scans incoming data from the internet, including emails, websites, and external devices like hard drives, helping identify network security vulnerabilities that malware could exploit.",
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/ANTIVIRUS.png"
 	},
 	Tower.ADBLOCKER: {
 		'damage': 40,
 		'atk_speed': 0.75,
 		'type': "Area",
 		'special_ability': "Automatically removes the disable effect caused by Adware. Deals bonus damage to Adware. ",
-		'irl_desc': "Adblock technology makes use of straightforward lists, known as filter lists, to decide what should be hidden or blocked from appearing on the pages a user visits."
+		'irl_desc': "Adblock technology makes use of straightforward lists, known as filter lists, to decide what should be hidden or blocked from appearing on the pages a user visits.",
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/ADBLOCKER.png"
 	},
 	Tower.DLP: {
 		'damage': 0,
 		'atk_speed': 1.50,
 		'type': "Bullet",
 		'special_ability': "Infects enemies and reduces their damage by 50%. ",
-		'irl_desc': "Data Loss Prevention classifies sensitive data to prevent unauthorized users from stealing or misusing proprietary information. The technology monitors data across endpoints, networks, and cloud storage, immediately stopping violations like uploading customer PII (Personally Identifiable Information), corporate secrets, or financial records to personal drives, enforcing corporate compliance mandates, tracking unauthorized file sharing, preventing accidental leaks by distracted employees, and securing intellectual assets. "
+		'irl_desc': "Data Loss Prevention classifies sensitive data to prevent unauthorized users from stealing or misusing proprietary information. The technology monitors data across endpoints, networks, and cloud storage, immediately stopping violations like uploading customer PII (Personally Identifiable Information), corporate secrets, or financial records to personal drives, enforcing corporate compliance mandates, tracking unauthorized file sharing, preventing accidental leaks by distracted employees, and securing intellectual assets. ",
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/DLP.png"
 	},
 		Tower.IDPS: {
 		'damage': 75,
 		'atk_speed': 1.00,
 		'type': "Area",
 		'special_ability': "Reveals stealth enemies, allowing all towers to target them.",
-		'irl_desc': "An Intrusion Detection System (IDS) and an Intrusion Prevention System (IPS) are cybersecurity technologies that work together, often combined as an Intrusion Detection and Prevention System (IDPS), to identify and block malicious activity in networks. They are essential for safeguarding networks from cyber threats such as malware, intrusions, and denial-of-service attacks."
+		'irl_desc': "An Intrusion Detection System (IDS) and an Intrusion Prevention System (IPS) are cybersecurity technologies that work together, often combined as an Intrusion Detection and Prevention System (IDPS), to identify and block malicious activity in networks. They are essential for safeguarding networks from cyber threats such as malware, intrusions, and denial-of-service attacks.",
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/IDPS.png"
 	},
 		Tower.QUARANTINE_CANNON: {
 		'damage': 100,
 		'atk_speed': 2.00,
 		'type': "Splash",
 		'special_ability': "Freezes enemies and slows them after thawing.",
-		'irl_desc': "It is the separation, isolation, or restriction of certain files or programs from others to stop the spread of malicious intent or damage."
+		'irl_desc': "It is the separation, isolation, or restriction of certain files or programs from others to stop the spread of malicious intent or damage.",
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/QUARANTINE.png"
 	},
 		Tower.ACS: {
 		'damage': 120,
 		'atk_speed': 1.30,
 		'type': "Area",
 		'special_ability': "Slows enemies and deals bonus damage to Insider Threats.",
-		'irl_desc': "It is a security system known as an access control system that is aimed at restricting and regulating employee access to specific locations or levels within a facility or system. It uses multiple verification methods, including personal identification numbers, cards, tokens, fingerprints, or iris recognition, to either allow or block access."
+		'irl_desc': "It is a security system known as an access control system that is aimed at restricting and regulating employee access to specific locations or levels within a facility or system. It uses multiple verification methods, including personal identification numbers, cards, tokens, fingerprints, or iris recognition, to either allow or block access.",
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/ACS.png"
 	},
 	Tower.AI_SECURITY: {
 		'damage': 130,
 		'atk_speed': "N/A",
 		'type': "Bullet",
 		'special_ability': "It eliminates the enemies using a laser. The laser will continuously hit the enemy and provide damage until it is eliminated.",
-		'irl_desc': "AI security is the process of using AI to enhance an organization's security posture. With AI systems, organizations can automate threat detection, prevention, and remediation to better combat cyberattacks and data breaches."
+		'irl_desc': "AI security is the process of using AI to enhance an organization's security posture. With AI systems, organizations can automate threat detection, prevention, and remediation to better combat cyberattacks and data breaches.",
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/AI_SEC.png"
 	},
 	Tower.ENDPOINT: {
 		'damage': 180,
 		'atk_speed': 1.25,
 		'type': "Area",
 		'special_ability': "Grants immunity to malware debuffs to two selected towers.",
-		'irl_desc': "Endpoint protection involves monitoring and protecting endpoints against cyber threats. Protected endpoints include desktops, laptops, smartphones, tablet computers, and other devices. Various cybersecurity solutions can be installed on and monitor these devices to protect them against cyber threats, regardless of where they are located on or off the corporate network."
+		'irl_desc': "Endpoint protection involves monitoring and protecting endpoints against cyber threats. Protected endpoints include desktops, laptops, smartphones, tablet computers, and other devices. Various cybersecurity solutions can be installed on and monitor these devices to protect them against cyber threats, regardless of where they are located on or off the corporate network.",
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/ENDPOINT_PROTECTION.png"
 	},
 	Tower.SANDBOX: {
 		'damage': 220,
 		'atk_speed': 3.00,
 		'type': "Bullet",
 		'special_ability': "Traps one enemy in a force cage until it dies, but it cannot target another enemy while occupied. Nearby enemies become infected as well. ",
-		'irl_desc': "Suspicious files or links execute safely within this isolated virtual environment without risking production infrastructure. The environment records internal process behaviors, keeping an eye out for registry modifications, hidden logic bombs, and sleeper malware, flagging the file if malicious actions are observed, which provides analysts with highly detailed threat intelligence about completely unclassified zero-day exploits before they ever touch physical hard drives. "
+		'irl_desc': "Suspicious files or links execute safely within this isolated virtual environment without risking production infrastructure. The environment records internal process behaviors, keeping an eye out for registry modifications, hidden logic bombs, and sleeper malware, flagging the file if malicious actions are observed, which provides analysts with highly detailed threat intelligence about completely unclassified zero-day exploits before they ever touch physical hard drives. ",
+		'thumbnail': "res://graphics/ui/tower thumbnails 2/SANDBOX.png"
 	},
 }
 
@@ -328,6 +338,34 @@ var TOWER_DATA = {
 @onready var desc_sp: Label = $Databasebg/Special
 @onready var desc_desc: Label = $Databasebg/Special/RealLifeDesc/Description
 
+	
+func _refresh_tower_image_states() -> void:
+	var tower_map := {
+		1: Data.Tower.SPAM_FILTER,
+		2: Data.Tower.ANTIVIRUS,
+		3: Data.Tower.AD_BLOCKER,
+		4: Data.Tower.DATA_LOSS_PREVENTION,
+		5: Data.Tower.IDPS,
+		6: Data.Tower.QUARANTINE_CANNON,
+		7: Data.Tower.ACCESS_CONTROL_SYSTEM,
+		8: Data.Tower.AI_SECURITY,
+		9: Data.Tower.ENDPOINT_PROTECTION,
+		10: Data.Tower.SANDBOX_ANALYZER,
+	}
+
+	for card_index in tower_map.keys():
+		var button_path := "TowerContainer/CardContainer/Tower%d" % card_index
+		var button: TextureButton = get_node_or_null(button_path)
+		if button == null:
+			continue
+
+		var image: TextureRect = button.get_node_or_null("TextureRect")
+		if image == null:
+			continue
+
+		var is_unlocked := is_tower_unlocked(tower_map[card_index])
+		image.modulate = Color(1, 1, 1, 1) if is_unlocked else Color(0, 0, 0, 1)
+
 func _on_tower_1_pressed() -> void:
 	UISound.play_click()
 	desc_name.text = tower_name[0]
@@ -336,9 +374,25 @@ func _on_tower_1_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[0]['type'])
 	desc_sp.text = str(TOWER_DATA[0]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[0]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/TowerPic.visible = false
 	$Databasebg/AnimatedSprite2D.play("spam")
 
 func _on_tower_2_pressed() -> void:
+	if not is_tower_unlocked(Data.Tower.ANTIVIRUS):
+		UISound.play_click()
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_type.text = "???"
+		desc_sp.text = "Attack Descrption: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = false
+		$Databasebg/TowerPic.visible = true
+		$Databasebg/TowerPic.texture = load(TOWER_DATA[1]['thumbnail'])
+		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		return
+		
 	UISound.play_click()
 	desc_name.text = tower_name[1]
 	desc_damage.text = str(TOWER_DATA[1]['damage'])
@@ -346,10 +400,26 @@ func _on_tower_2_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[1]['type'])
 	desc_sp.text = str(TOWER_DATA[1]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[1]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/TowerPic.visible = false
 	$Databasebg/AnimatedSprite2D.play("antivirus")
 
 
 func _on_tower_3_pressed() -> void:
+	if not is_tower_unlocked(Data.Tower.AD_BLOCKER):
+		UISound.play_click()
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_type.text = "???"
+		desc_sp.text = "Attack Descrption: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = false
+		$Databasebg/TowerPic.visible = true
+		$Databasebg/TowerPic.texture = load(TOWER_DATA[2]['thumbnail'])
+		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		return
+		
 	UISound.play_click()
 	desc_name.text = tower_name[2]
 	desc_damage.text = str(TOWER_DATA[2]['damage'])
@@ -357,10 +427,26 @@ func _on_tower_3_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[2]['type'])
 	desc_sp.text = str(TOWER_DATA[2]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[2]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/TowerPic.visible = false
 	$Databasebg/AnimatedSprite2D.play("adblocker")
 
 
 func _on_tower_4_pressed() -> void:
+	if not is_tower_unlocked(Data.Tower.DATA_LOSS_PREVENTION):
+		UISound.play_click()
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_type.text = "???"
+		desc_sp.text = "Attack Descrption: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = false
+		$Databasebg/TowerPic.visible = true
+		$Databasebg/TowerPic.texture = load(TOWER_DATA[3]['thumbnail'])
+		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		return
+		
 	UISound.play_click()
 	desc_name.text = tower_name[3]
 	desc_damage.text = str(TOWER_DATA[3]['damage'])
@@ -368,9 +454,24 @@ func _on_tower_4_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[3]['type'])
 	desc_sp.text = str(TOWER_DATA[3]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[3]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/TowerPic.visible = false
 	$Databasebg/AnimatedSprite2D.play("dlp")
 
 func _on_tower_5_pressed() -> void:
+	if not is_tower_unlocked(Data.Tower.IDPS):
+		UISound.play_click()
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_type.text = "???"
+		desc_sp.text = "Attack Descrption: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = false
+		$Databasebg/TowerPic.visible = true
+		$Databasebg/TowerPic.texture = load(TOWER_DATA[4]['thumbnail'])
+		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		return
 	UISound.play_click()
 	desc_name.text = tower_name[4]
 	desc_damage.text = str(TOWER_DATA[4]['damage'])
@@ -378,10 +479,25 @@ func _on_tower_5_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[4]['type'])
 	desc_sp.text = str(TOWER_DATA[4]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[4]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/TowerPic.visible = false
 	$Databasebg/AnimatedSprite2D.play("idps")
 
 
 func _on_tower_6_pressed() -> void:
+	if not is_tower_unlocked(Data.Tower.QUARANTINE_CANNON):
+		UISound.play_click()
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_type.text = "???"
+		desc_sp.text = "Attack Descrption: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = false
+		$Databasebg/TowerPic.visible = true
+		$Databasebg/TowerPic.texture = load(TOWER_DATA[5]['thumbnail'])
+		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		return
 	UISound.play_click()
 	desc_name.text = tower_name[5]
 	desc_damage.text = str(TOWER_DATA[5]['damage'])
@@ -389,10 +505,25 @@ func _on_tower_6_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[5]['type'])
 	desc_sp.text = str(TOWER_DATA[5]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[5]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/TowerPic.visible = false
 	$Databasebg/AnimatedSprite2D.play("qcannon")
 
 
 func _on_tower_7_pressed() -> void:
+	if not is_tower_unlocked(Data.Tower.ACCESS_CONTROL_SYSTEM):
+		UISound.play_click()
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_type.text = "???"
+		desc_sp.text = "Attack Descrption: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = false
+		$Databasebg/TowerPic.visible = true
+		$Databasebg/TowerPic.texture = load(TOWER_DATA[6]['thumbnail'])
+		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		return
 	UISound.play_click()
 	desc_name.text = tower_name[6]
 	desc_damage.text = str(TOWER_DATA[6]['damage'])
@@ -400,10 +531,25 @@ func _on_tower_7_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[6]['type'])
 	desc_sp.text = str(TOWER_DATA[6]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[6]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/TowerPic.visible = false
 	$Databasebg/AnimatedSprite2D.play("acs")
 
 
 func _on_tower_8_pressed() -> void:
+	if not is_tower_unlocked(Data.Tower.AI_SECURITY):
+		UISound.play_click()
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_type.text = "???"
+		desc_sp.text = "Attack Descrption: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = false
+		$Databasebg/TowerPic.visible = true
+		$Databasebg/TowerPic.texture = load(TOWER_DATA[7]['thumbnail'])
+		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		return
 	UISound.play_click()
 	desc_name.text = tower_name[7]
 	desc_damage.text = str(TOWER_DATA[7]['damage'])
@@ -411,10 +557,25 @@ func _on_tower_8_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[7]['type'])
 	desc_sp.text = str(TOWER_DATA[7]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[7]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/TowerPic.visible = false
 	$Databasebg/AnimatedSprite2D.play("aisec")
 
 
 func _on_tower_9_pressed() -> void:
+	if not is_tower_unlocked(Data.Tower.ENDPOINT_PROTECTION):
+		UISound.play_click()
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_type.text = "???"
+		desc_sp.text = "Attack Descrption: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = false
+		$Databasebg/TowerPic.visible = true
+		$Databasebg/TowerPic.texture = load(TOWER_DATA[8]['thumbnail'])
+		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		return
 	UISound.play_click()
 	desc_name.text = tower_name[8]
 	desc_damage.text = str(TOWER_DATA[8]['damage'])
@@ -422,9 +583,24 @@ func _on_tower_9_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[8]['type'])
 	desc_sp.text = str(TOWER_DATA[8]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[8]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/TowerPic.visible = false
 	$Databasebg/AnimatedSprite2D.play("epprotection")
 
 func _on_tower_10_pressed() -> void:
+	if not is_tower_unlocked(Data.Tower.SANDBOX_ANALYZER):
+		UISound.play_click()
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_type.text = "???"
+		desc_sp.text = "Attack Descrption: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = false
+		$Databasebg/TowerPic.visible = true
+		$Databasebg/TowerPic.texture = load(TOWER_DATA[9]['thumbnail'])
+		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		return
 	UISound.play_click()
 	desc_name.text = tower_name[9]
 	desc_damage.text = str(TOWER_DATA[9]['damage'])
@@ -432,4 +608,12 @@ func _on_tower_10_pressed() -> void:
 	desc_type.text = str(TOWER_DATA[9]['type'])
 	desc_sp.text = str(TOWER_DATA[9]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[9]['irl_desc'])
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/TowerPic.visible = false
 	$Databasebg/AnimatedSprite2D.play("sbanalyzer")
+
+func is_tower_unlocked(tower_enum: Data.Tower) -> bool:
+	return Data.TOWER_DATA[tower_enum].get("isUnlocked", false)
+
+func refresh_tower_unlock_visuals() -> void:
+	_refresh_tower_image_states()

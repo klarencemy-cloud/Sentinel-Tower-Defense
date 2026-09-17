@@ -46,7 +46,7 @@ var vmmode_map_number: int = 1
 var vmmode_resume_progress: Dictionary = {}
 var vmmode_sentinels_disabled: bool = false
 
-const VM_MAP_DATA := {
+var VM_MAP_DATA := {
 	1: {
 		'title': "Ticking Bomb",
 		'scene': "res://scenes/virtualmachinemode/maps/vm_map_1.tscn",
@@ -843,7 +843,7 @@ var ENEMY_DATA = {
 		'damage': 5,
 		'atkspd': 0.5,
 		"exp": 2,
-		"isMet": false,
+		"isMet": true,
 		"waveUnlocked": 1},
 	Enemy.VIRUS: {
 		'health': 40,

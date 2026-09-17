@@ -28,8 +28,8 @@ func _ready():
 	$Sprite2D.material = $Sprite2D.material.duplicate()
 	mat = material as ShaderMaterial
 	add_to_group("bullet")
-	monitoring = true
-	monitorable = true
+	set_deferred("monitoring", true)
+	set_deferred("monitorable", true)
 
 	area_entered.connect(_on_area_entered)
 
@@ -77,7 +77,7 @@ func _process(delta: float) -> void:
 
 	lifetime -= delta
 	if lifetime <= 0:
-		queue_free()
+		call_deferred("queue_free")
 
 func _on_area_entered(area: Area2D) -> void:
 	if already_hit:
@@ -99,7 +99,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if _can_ricochet(): # Spam Filter
 		ricochet(area)
 	else:
-		queue_free()
+		call_deferred("queue_free")
 
 	if owner_tower_type == Data.Tower.DATA_LOSS_PREVENTION:
 		var tower = _get_owner_tower()
@@ -162,7 +162,7 @@ func ricochet(from_enemy: Node) -> void:
 			nearest = e
 
 	if nearest == null:
-		queue_free()
+		call_deferred("queue_free")
 		return
 
 	print("RICOCHET -> ", nearest.name)
@@ -191,6 +191,6 @@ func ricochet(from_enemy: Node) -> void:
 
 	new_bullet.tower_id = tower_id
 
-
-	get_parent().add_child(new_bullet)
-	queue_free()
+	if get_parent() != null:
+		get_parent().call_deferred("add_child", new_bullet)
+	call_deferred("queue_free")
