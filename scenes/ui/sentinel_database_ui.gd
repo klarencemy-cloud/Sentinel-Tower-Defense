@@ -309,10 +309,12 @@ func _refresh_sentinel_image_states() -> void:
 			continue
 
 		var image: TextureRect = button.get_node_or_null("TextureRect")
-
-		if image == null:
-			continue
+		var name_label: Label = button.get_node_or_null("Sentinel_Name_%d" % card_index)
 
 		var is_unlocked := is_sentinel_unlocked(sentinel_map[card_index])
 
-		image.modulate = Color(1, 1, 1, 1) if is_unlocked else Color(0, 0, 0, 1)
+		if image:
+			image.modulate = Color(1, 1, 1, 1) if is_unlocked else Color(0, 0, 0, 1)
+
+		if name_label:
+			name_label.text = sentinel_name[card_index - 1] if is_unlocked else "???"

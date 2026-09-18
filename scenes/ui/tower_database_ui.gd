@@ -360,12 +360,16 @@ func _refresh_tower_image_states() -> void:
 			continue
 
 		var image: TextureRect = button.get_node_or_null("TextureRect")
-		if image == null:
-			continue
+		var name_label: Label = button.get_node_or_null("Tower_Name_%d" % card_index)
 
 		var is_unlocked := is_tower_unlocked(tower_map[card_index])
-		image.modulate = Color(1, 1, 1, 1) if is_unlocked else Color(0, 0, 0, 1)
 
+		if image:
+			image.modulate = Color(1, 1, 1, 1) if is_unlocked else Color(0, 0, 0, 1)
+
+		if name_label:
+			name_label.text = tower_name[card_index - 1] if is_unlocked else "???"
+			
 func _on_tower_1_pressed() -> void:
 	UISound.play_click()
 	desc_name.text = tower_name[0]
