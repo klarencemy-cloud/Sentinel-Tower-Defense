@@ -538,7 +538,7 @@ var TOWER_DATA = {
 		'unlockable': false,
 		'cost': 350,
 		'server_load': 45,
-		'damage': 180,
+		'damage': 150,
 		'reload_time': 1.25,
 		'range': 350,
 		'crit rate': 0,
@@ -836,7 +836,7 @@ var SENTINEL_DATA = {
 
 var ENEMY_DATA = {
 	Enemy.DEFAULT: {
-		'health': 20,
+		'health': 40,
 		'texture': "uid://biixy5e8v8how",
 		'speed': 105,
 		'name': "spam",
@@ -846,7 +846,7 @@ var ENEMY_DATA = {
 		"isMet": true,
 		"waveUnlocked": 1},
 	Enemy.VIRUS: {
-		'health': 40,
+		'health': 80,
 		'texture': "uid://c6j3u1ewdc7ry",
 		'speed': 100,
 		'name': "virus",
@@ -856,7 +856,7 @@ var ENEMY_DATA = {
 		"isMet": false,
 		"waveUnlocked": 4},
 	Enemy.ADWARE: {
-		'health': 80,
+		'health': 100,
 		'texture': "uid://uv3lkpfkcqb1",
 		'speed': 105,
 		'name': "adware",
@@ -866,7 +866,7 @@ var ENEMY_DATA = {
 		"isMet": false,
 		"waveUnlocked": 8},
 	Enemy.WORM: {
-		'health': 30,
+		'health': 120,
 		'texture': "uid://cq83i85lk0drt",
 		'speed': 120,
 		'name': "worm",
@@ -876,7 +876,7 @@ var ENEMY_DATA = {
 		"isMet": false,
 		"waveUnlocked": 12},
 	Enemy.SPYWARE: {
-		'health': 100,
+		'health': 130,
 		'texture': "uid://brqrfbf3rnun3",
 		'speed': 115,
 		'name': "spyware",
@@ -906,7 +906,7 @@ var ENEMY_DATA = {
 		"isMet": false,
 		"waveUnlocked": 19},
 	Enemy.CREDS: {
-		'health': 20,
+		'health': 150,
 		'texture': "uid://ie82cokh85on",
 		'speed': 100,
 		'name': "creds",
@@ -926,7 +926,7 @@ var ENEMY_DATA = {
 		"isMet": false,
 		"waveUnlocked": 28},
 	Enemy.ROOTKIT: {
-		'health': 200,
+		'health': 400,
 		'texture': "uid://chs1nrp5s1cne",
 		'speed': 100,
 		'name': "rootkit",
@@ -936,7 +936,7 @@ var ENEMY_DATA = {
 		"isMet": false,
 		"waveUnlocked": 32},
 	Enemy.SQL: {
-		'health': 150,
+		'health': 500,
 		'texture': "uid://diyet18ahl6mf",
 		'speed': 118,
 		'name': "sql",
@@ -946,7 +946,7 @@ var ENEMY_DATA = {
 		"isMet": false,
 		"waveUnlocked": 34},
 	Enemy.DDOS: {
-		'health': 500,
+		'health': 650,
 		'texture': "uid://bfaik0etx7yif",
 		'speed': 95,
 		'name': "ddos",
@@ -956,7 +956,7 @@ var ENEMY_DATA = {
 		"isMet": false,
 		"waveUnlocked": 36},
 	Enemy.RANSOMWARE: {
-		'health': 150,
+		'health': 600,
 		'texture': "uid://c654gnfm0an4n",
 		'speed': 105,
 		'name': "ransomware",
@@ -966,7 +966,7 @@ var ENEMY_DATA = {
 		"isMet": false,
 		"waveUnlocked": 38},
 	Enemy.ZERO: {
-		'health': 220,
+		'health': 1000,
 		'texture': "uid://bgewpl0g08iay",
 		'speed': 110,
 		'name': "zero",

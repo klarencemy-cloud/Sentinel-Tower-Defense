@@ -112,7 +112,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	
 
 	Data.incremental_enemy_health_bonus = Data.current_wave * .02
-	Data.incremental_enemy_movespeed_bonus = Data.current_wave * .01
+	Data.incremental_enemy_movespeed_bonus = Data.current_wave * .005
 	Data.incremental_enemy_damage_bonus = Data.current_wave * .01
 	health = Data.ENEMY_DATA[type]['health'] + (Data.incremental_enemy_health_bonus * Data.ENEMY_DATA[type]['health'])
 	speed = Data.ENEMY_DATA[type]['speed'] + (Data.incremental_enemy_movespeed_bonus * Data.ENEMY_DATA[type]['speed'])
@@ -1154,7 +1154,6 @@ func toggle_ep_particles():
 
 func _boss6_spawn_loop() -> void:
 	while not dead and enemy_type_stats == Data.Enemy.BOSS6:
-
 		await get_tree().create_timer(10.0).timeout
 
 		if dead or is_queued_for_deletion():
