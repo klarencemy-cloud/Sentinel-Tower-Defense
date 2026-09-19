@@ -13,6 +13,7 @@ var enemy_type: Node
 var enemy_type_stats: Data.Enemy
 
 var is_stunned: bool = false
+var is_credential_stopped: bool = false
 var is_frozen: bool = false
 var is_frozen_vulnerable: bool = false
 var stun_timer: Timer
@@ -52,6 +53,8 @@ const INVISIBLE_TINT: Color = Color(1, 1, 1, 0.3)
 var rootkit_skill_used := false
 const ROOTKIT_PORTAL = preload("res://scenes/enemies/rootkit_skill.tscn")
 var worm_spawn_timer: Timer
+var credential_ability_timer: Timer
+var credential_stop_timer: Timer
 var worm_spawn_interval: float = 15.0
 var can_clone: bool = true
 @export var spacing: int = 32
@@ -83,6 +86,17 @@ func _ready() -> void:
 	stun_timer.wait_time = 0.5
 	stun_timer.timeout.connect(_on_stun_end)
 	add_child(stun_timer)
+	credential_ability_timer = Timer.new()
+	credential_ability_timer.one_shot = true
+	credential_ability_timer.wait_time = 10.0
+	credential_ability_timer.timeout.connect(_on_credential_ability_timer_timeout)
+	add_child(credential_ability_timer)
+
+	credential_stop_timer = Timer.new()
+	credential_stop_timer.one_shot = true
+	credential_stop_timer.wait_time = 3.0
+	credential_stop_timer.timeout.connect(_on_credential_stop_timer_timeout)
+	add_child(credential_stop_timer)
 	
 	worm_spawn_timer = Timer.new()
 	worm_spawn_timer.one_shot = false
@@ -357,11 +371,14 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 					health,
 					health
 				)
+
+	if enemy_type_stats == Data.Enemy.CREDS:
+		credential_ability_timer.start()
 		
 
 var direction = 1
 func _process(delta: float):
-	if is_stunned or blocked_by_firewall or is_trapped:
+	if is_stunned or is_credential_stopped or blocked_by_firewall or is_trapped:
 		return
 	
 	if backup_server_recently_knocked_back:
@@ -616,6 +633,9 @@ func hit(damage: int = 1, tower_id: int = -1):
 	_try_boss6_resurrection()
 
 	EnemyStats.add_kill(enemy_type_stats)
+	_release_credential_locks()
+	credential_ability_timer.stop()
+	credential_stop_timer.stop()
 	# Lethal hit: detach the audio player so it keeps playing after this node is freed
 	var audio = $AudioStreamPlayer2D
 	# make sure stream exists on the node
@@ -671,6 +691,34 @@ func _update_active_enemy_counter(enemy_type: Data.Enemy, delta: int) -> void:
 	elif enemy_type == Data.Enemy.RANSOMWARE:
 		Data.active_ransomware = max(0, Data.active_ransomware + delta)
 		Data.active_ransomware_changed.emit()
+
+func _on_credential_ability_timer_timeout() -> void:
+	if dead or enemy_type_stats != Data.Enemy.CREDS:
+		return
+	is_credential_stopped = true
+	credential_stop_timer.start()
+
+func _on_credential_stop_timer_timeout() -> void:
+	if dead or enemy_type_stats != Data.Enemy.CREDS:
+		return
+	_disable_random_tower_card()
+	is_credential_stopped = false
+	credential_ability_timer.start()
+
+func _disable_random_tower_card() -> void:
+	var candidates := []
+	for card in get_tree().get_nodes_in_group("TowerCard"):
+		if not card.is_credential_disabled_by(self):
+			candidates.append(card)
+	if candidates.is_empty():
+		return
+	var selected_card = candidates.pick_random()
+	selected_card.set_credential_disabled(self, true)
+
+func _release_credential_locks() -> void:
+	for card in get_tree().get_nodes_in_group("TowerCard"):
+		if card.is_credential_disabled_by(self):
+			card.set_credential_disabled(self, false)
 
 func flash():
 	if enemy_tween:

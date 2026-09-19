@@ -2,6 +2,7 @@ extends Button
 
 var id: Data.Tower
 var cost: int
+var credential_disable_sources: Array[Node] = []
 signal press(tower_enum: Data.Tower)
 @onready var free_label = $TextureRect/Free/FreeLabel
 @onready var free_badge = $TextureRect/Free
@@ -32,10 +33,24 @@ func toggle_active(_money := 0):
 	var can_buy = Data.is_unli_money or Data.money >= cost
 	var can_use = has_free or can_buy
 	var can_load = Data.currentserverload + load <= Data.maxserverload
+	if not credential_disable_sources.is_empty():
+		disabled = true
+		return
 	if id == Data.Tower.BACKUP_SERVER and Data.backup_server_placed:
 		disabled = true
 		return
 	disabled = !(can_use and can_load)
+
+func set_credential_disabled(source: Node, should_disable: bool) -> void:
+	if should_disable:
+		if not credential_disable_sources.has(source):
+			credential_disable_sources.append(source)
+	else:
+		credential_disable_sources.erase(source)
+	toggle_active(Data.money)
+
+func is_credential_disabled_by(source: Node) -> bool:
+	return credential_disable_sources.has(source)
 	
 func update_free_label():
 	var amount = Data.free_towers.get(id, 0)
