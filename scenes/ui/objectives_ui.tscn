@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://di41cmkt4yvg7"]
+
+[ext_resource type="Script" uid="uid://c3huqqujufuhu" path="res://scenes/ui/objectives_ui.gd" id="1_8vsa2"]
+[ext_resource type="Texture2D" uid="uid://baw3cq4xb5vj" path="res://graphics/buttons/SentinelRollButton.png" id="2_rrv3r"]
+[ext_resource type="FontFile" uid="uid://0muji4cf8v35" path="res://font/Libre_Franklin/static/LibreFranklin-Italic.ttf" id="2_ywp2a"]
+
+[node name="ObjectivesUi" type="CanvasLayer" unique_id=1129301990]
+script = ExtResource("1_8vsa2")
+
+[node name="Control" type="Control" parent="." unique_id=2093345462]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=485745251]
+layout_mode = 0
+anchor_left = 0.034375
+anchor_top = 0.29074073
+anchor_right = 0.045833334
+anchor_bottom = 0.31111112
+texture = ExtResource("2_rrv3r")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Control/TextureRect" unique_id=31838941]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 6.0
+offset_top = -2.0
+offset_right = 375.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_ywp2a")
+theme_override_font_sizes/font_size = 20
+text = "Place some towers before commencing"
+metadata/_edit_use_anchors_ = true

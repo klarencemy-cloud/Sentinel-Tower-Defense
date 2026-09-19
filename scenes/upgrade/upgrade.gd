@@ -720,6 +720,8 @@ func _on_back_btn_pressed() -> void:
 	else:
 		if %SentinelsContainer.visible == true:
 			get_tree().paused = false
+			$TextureRect/UpgradeButton.visible = false
+			$TextureRect/BigTowerName.visible = false
 			%BigPic.visible = false
 			visible = false
 

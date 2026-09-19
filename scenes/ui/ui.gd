@@ -830,3 +830,6 @@ func update_skill3_locked() -> void:
 		if Data.backup_server_placed:
 			skill3_locked.visible = true
 			skill3_cooldown.visible = false
+
+func show_objective(state: bool):
+	$ObjectivesUi.visible = state

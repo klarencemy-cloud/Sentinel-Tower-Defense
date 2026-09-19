@@ -80,7 +80,10 @@ func unlock_towers(tower_enum: Data.Tower, tower: String):
 	var ui = get_tree().get_first_node_in_group("UI")
 	ui.pop_tower(tower_enum, tower)
 	
-
+func show_objectives(state: bool):
+	var ui = get_tree().get_first_node_in_group("UI")
+	ui.show_objective(state)
+	
 func show_character(name: String):
 	show_char.emit(name)
 

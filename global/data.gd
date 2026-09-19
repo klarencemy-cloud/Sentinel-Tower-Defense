@@ -864,9 +864,9 @@ var SENTINEL_DATA = {
 
 var ENEMY_DATA = {
 	Enemy.DEFAULT: {
-		'health': 40,
+		'health': 30,
 		'texture': "uid://biixy5e8v8how",
-		'speed': 105,
+		'speed': 90,
 		'name': "spam",
 		'damage': 5,
 		'atkspd': 0.5,

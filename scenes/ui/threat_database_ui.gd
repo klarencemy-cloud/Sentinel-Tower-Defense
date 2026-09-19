@@ -4,12 +4,6 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_threat_display()
-	for i in range(1, 20):
-		print(Data.ENEMY_DATA[i - 1]["name"], Data.ENEMY_DATA[i - 1]["health"],
-		 Data.ENEMY_DATA[i - 1]["damage"],
-		 Data.ENEMY_DATA[i - 1]["speed"],
-		 
-		 )
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

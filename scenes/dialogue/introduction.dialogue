@@ -79,8 +79,8 @@ do GameDialogueManager.delay_dialogue(1.0)
 do GameDialogueManager.is_override=true
 do GameDialogueManager.show_character("Level")
 Odysseus: This gauge gets filled up when you defeat enemies. When it gets full, 
-do GameDialogueManager.show_character("Core")
-Odysseus: it will give you a core to upgrade your server.
+#do GameDialogueManager.show_character("Core")
+Odysseus: it will give you a point to upgrade your server.
 do GameDialogueManager.is_override=false
 Player: Bring it on!
 do GameDialogueManager.start_wave()
@@ -113,22 +113,22 @@ Odysseus: It really does. But it seems things have settled down for a bit.
 Player: It might be the calm before the storm. Better get ready before threats swarm their way in!
 Odysseus: Now that’s the mindset of a strategist! Contingent planning and anticipating cyber attacks are important to minimize damage and to have room to formulate smart decisions on how to deal with the unforeseen.
 Player: Let's spent all our resources first before we lower the force field.
+do GameDialogueManager.show_objectives(true)
 if ((Data.currentserverload > 150) or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and Data.current_wave == 4
 	do GameDialogueManager.toggle_fade_transition()
 	do GameDialogueManager.delay_dialogue(3)
 	do GameDialogueManager.show_dialogue_preparation_end()
 
-	
 => END
 
 ~ preparation_end
+do GameDialogueManager.show_objectives(false)
 Odysseus: The threats are already inside the perimeter. Press START to commence.
 VIRUS: 010101… INfeCt tHe sYSTem....
 do GameDialogueManager.show_enemy("virus", 1)
 do GameDialogueManager.show_play()
 #function to activate virus pop-up card
 #do GameDialogueManager.is_autoplay = false
-
 do GameDialogueManager.button_state = true
 => END
 

@@ -565,7 +565,8 @@ func hit(damage: int = 1, tower_id: int = -1):
 			ui.update_boss_bar(
 				get_instance_id(),
 				health,
-				Data.ENEMY_DATA[enemy_type_stats]["health"]
+				# Data.ENEMY_DATA[enemy_type_stats]["health"]
+				Data.ENEMY_DATA[enemy_type_stats]['health'] + (Data.incremental_enemy_health_bonus * Data.ENEMY_DATA[enemy_type_stats]['health'])
 			)
 	# ensure an audio stream is present
 	if not $AudioStreamPlayer2D.stream:

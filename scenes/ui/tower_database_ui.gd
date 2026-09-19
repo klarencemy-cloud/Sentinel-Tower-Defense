@@ -625,6 +625,5 @@ func is_tower_unlocked(tower_enum: Data.Tower) -> bool:
 	return Data.TOWER_DATA[tower_enum].get("isUnlocked", false)
 
 
-	
 func refresh_tower_unlock_visuals() -> void:
 	_refresh_tower_image_states()

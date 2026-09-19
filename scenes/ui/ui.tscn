@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="7_hl07w"]
 [ext_resource type="PackedScene" uid="uid://n0x1dg8naleh" path="res://scenes/ui/pause_menu.tscn" id="7_jcn1r"]
 [ext_resource type="PackedScene" uid="uid://cyglh5x7ci5ra" path="res://scenes/server/server_upgrade.tscn" id="8_fv78h"]
+[ext_resource type="PackedScene" uid="uid://di41cmkt4yvg7" path="res://scenes/ui/objectives_ui.tscn" id="8_y0kyo"]
 [ext_resource type="Texture2D" uid="uid://b4lb0nrlipf4j" path="res://graphics/ui/TowersRectangle.png" id="9_4kltc"]
 [ext_resource type="PackedScene" uid="uid://0caonkrjweq0" path="res://scenes/enemies/pop_up.tscn" id="9_khplb"]
 [ext_resource type="Texture2D" uid="uid://dh1ehslhpji6n" path="res://graphics/ui/pause.png" id="10_4kltc"]
@@ -138,6 +139,8 @@ visible = false
 [node name="ServerUpgrade" parent="." unique_id=986532546 instance=ExtResource("8_fv78h")]
 layer = 2
 visible = false
+
+[node name="ObjectivesUi" parent="." unique_id=1129301990 instance=ExtResource("8_y0kyo")]
 
 [node name="Control" type="Control" parent="." unique_id=818495937]
 layout_mode = 3
