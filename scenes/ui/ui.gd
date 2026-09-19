@@ -511,7 +511,7 @@ func _schedule_next_ad():
 		return
 
 	var ad_count: int = min(Data.active_adware, 10)
-	var wait_time: float = 15.0 - (float(ad_count - 1) * 11.0 / 9.0)
+	var wait_time: float = 12.0 - (float(ad_count - 1) * 7.0 / 9.0)
 	ad_timer.start(wait_time)
 
 func _spawn_random_ad():
@@ -547,7 +547,9 @@ func _schedule_next_ransomware():
 		ransomware_timer.stop()
 		return
 
-	ransomware_timer.start(20.0)
+	var ransomware_count: int = min(Data.active_ransomware, 10)
+	var wait_time: float = 12.0 - (float(ransomware_count - 1) * 7.0 / 9.0)
+	ransomware_timer.start(wait_time)
 	
 func _spawn_random_ransomware():
 	if Data.active_ransomware <= 0:

@@ -63,10 +63,11 @@ func tower_upgrade():
 
 
 func _on_pay_button_pressed() -> void:
-	if Data.money < 50:
+	var ransom_cost: int = currentserverload * 5
+	if Data.money < ransom_cost:
 		return
 
-	Data.money -= 50
+	Data.money -= ransom_cost
 	remove_ransomware()
 
 	
