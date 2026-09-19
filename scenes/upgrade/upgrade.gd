@@ -660,8 +660,9 @@ func _animate_sentinel_roll(locked_sentinels: Array) -> void:
 
 	#unlocks sentinel
 	Data.SENTINEL_DATA[chosen_enum]["isUnlocked"] = true
-	
-	
+	UISound.play_unlock()
+
+
 	_update_sentinel_card_visual(chosen_enum)
 	
 	# Add the newly unlocked sentinel to the main game UI
