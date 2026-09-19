@@ -313,7 +313,7 @@ var TOWER_DATA = {
 		'thumbnail': "res://graphics/ui/tower thumbnails 2/AI_SEC.png"
 	},
 	Tower.ENDPOINT: {
-		'damage': 180,
+		'damage': 150,
 		'atk_speed': 1.25,
 		'type': "Area",
 		'special_ability': "Grants immunity to malware debuffs to two selected towers.",

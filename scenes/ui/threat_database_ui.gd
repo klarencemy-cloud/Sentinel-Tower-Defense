@@ -4,6 +4,12 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_threat_display()
+	for i in range(1, 20):
+		print(Data.ENEMY_DATA[i - 1]["name"], Data.ENEMY_DATA[i - 1]["health"],
+		 Data.ENEMY_DATA[i - 1]["damage"],
+		 Data.ENEMY_DATA[i - 1]["speed"],
+		 
+		 )
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -281,45 +287,45 @@ enum Threat {SPAM, VIRUS, ADWARE, WORM, SPYWARE, BOTNET, CREDS, TROJAN_HORSE, IN
 
 var THREAT_DATA = {
 	Threat.SPAM: {
-		'health': 20,
-		'damage': 5,
-		'speed': 105,
+		'health': Data.ENEMY_DATA[0]["health"],
+		'damage': Data.ENEMY_DATA[0]["damage"],
+		'speed': Data.ENEMY_DATA[0]["speed"],
 		'special_ability': "Appears in large groups. Individually weak but dangerous when left unchecked and filtered. They spawn in swarms or in groups, making towers less efficient as they come in groups.",
 		'irl_desc': "Spam is unsolicited, unwelcome digital communication that is transmitted in large quantities, mostly via email but sometimes via texts, phone calls, and social media."
 	},
 	Threat.VIRUS: {
-		'health': 40,
-		'damage': 40,
-		'speed': 100,
+		'health': Data.ENEMY_DATA[1]["health"],
+		'damage': Data.ENEMY_DATA[1]["damage"],
+		'speed': Data.ENEMY_DATA[1]["speed"],
 		'special_ability': "It debuffs towers by reducing their attack speed and corrupts data (damage) in the server.",
 		'irl_desc': "A computer virus is a malicious software program or code that can attach itself to files and programs and replicate itself. It can also spread to other devices. When it is activated, the virus modifies other software by embedding its code within the file. And, if the virus successfully replicates itself, the device is considered infected with a computer virus. Additionally, the harmful actions performed by the virus code can damage the local file system, steal data, disrupt services, download additional malware, or execute any other tasks that the malicious actor programmed into the software. Numerous viruses are disguised as legitimate programs to deceive users into running them on their devices, thus delivering the computer virus payload into their system."
 		},
 	Threat.ADWARE: {
-		'health': 80,
-		'damage': 12,
-		'speed': 105,
+		'health': Data.ENEMY_DATA[2]["health"],
+		'damage': Data.ENEMY_DATA[2]["damage"],
+		'speed': Data.ENEMY_DATA[2]["speed"],
 		'special_ability': "Disables a random tower placed on the map by using ads; the CISO must click or tap the tower to make it available again.",
 		'irl_desc': "Adware is any program that shows users online advertisements for the developer to make money. These can be in the form of pop-ups, messages, new browser windows, or new browser tabs."
 		},
 	Threat.WORM: {
-		'health': 30,
-		'damage': 15,
-		'speed': 120,
+		'health': Data.ENEMY_DATA[3]["health"],
+		'damage': Data.ENEMY_DATA[3]["damage"],
+		'speed': Data.ENEMY_DATA[3]["speed"],
 		'special_ability': "It deals little damage, and it replicates itself as long as it is alive.",
 		'irl_desc': "A worm is a type of malicious software that spreads quickly among devices connected to a network. A worm uses a bandwidth as it spreads, then it overwhelms the compromised systems, hence leaving them unavailable or unreliable. Additionally, worms can add additional malware or modify and delete files."
 		},
 		Threat.SPYWARE: {
-		'health': 100,
-		'damage': 35,
-		'speed': 115,
+		'health': Data.ENEMY_DATA[4]["health"],
+		'damage': Data.ENEMY_DATA[4]["damage"],
+		'speed': Data.ENEMY_DATA[4]["speed"],
 		'special_ability': "Infects the tower, reducing its range, and it increases enemy speed and damage to the enemies nearby.",
 		'irl_desc': "Spyware is a type of software that unethically, without proper permissions or authorization, steals a user's personal or business information and sends it to a third party."
 		},
 
 		Threat.BOTNET: {
-		'health': 200,
-		'damage': 55,
-		'speed': 105,
+		'health': Data.ENEMY_DATA[6]["health"],
+		'damage': Data.ENEMY_DATA[6]["damage"],
+		'speed': Data.ENEMY_DATA[6]["speed"],
 		'special_ability': "Infects then control towers to malfunction, causing them to fire inaccurately or in different directions.",
 		'irl_desc': "Botnets are networks of hijacked computer devices used to carry out various scams and cyberattacks. The term “botnet” is formed from the words “robot” and “network.” The assembly of a botnet is usually the infiltration stage of a multi-layer scheme. The bots serve as a tool to automate mass attacks, such as data theft, server crashing, and malware distribution."
 		},
@@ -333,94 +339,94 @@ var THREAT_DATA = {
 		},
 
 		Threat.TROJAN_HORSE: {
-		'health': 350,
-		'damage': 40,
-		'speed': 110,
+		'health': Data.ENEMY_DATA[5]["health"],
+		'damage': Data.ENEMY_DATA[5]["damage"],
+		'speed': Data.ENEMY_DATA[5]["speed"],
 		'special_ability': "Appears as a friendly unit at first, but when it is near a defense tower, it reveals itself and rushes to attack (increase in speed).",
 		'irl_desc': "Trojan horse attacks deceive people into running programs that appear to be trusted and safe but are actually malicious by using social engineering and deception. Trojans are programs that appear as attachments, downloads, or video downloads, or programs that pretend to do one thing but actually do another thing maliciously."
 		},
 	
 	Threat.INSIDER: {
-		'health': 120,
-		'damage': 80,
-		'speed': 110,
+		'health': Data.ENEMY_DATA[8]["health"],
+		'damage': Data.ENEMY_DATA[8]["damage"],
+		'speed': Data.ENEMY_DATA[8]["speed"],
 		'special_ability': "Has the ability to be invisible",
 		'irl_desc': "An insider threat occurs when an individual exploits their permitted access to harm a company's essential information or systems. This individual does not have to be an employee; it can be third-party vendors, contractors, and partners."
 		},
 	Threat.ROOTKIT: {
-		'health': 200,
-		'damage': 100,
-		'speed': 110,
+		'health': Data.ENEMY_DATA[9]["health"],
+		'damage': Data.ENEMY_DATA[9]["damage"],
+		'speed': Data.ENEMY_DATA[9]["speed"],
 		'special_ability': "Digs a route underground, bypassing a tower that can also be used by the other enemies. The route can only be used in one wave.",
 		'irl_desc': "A rootkit is a type of malicious software used to obtain and maintain privileged access to a computer or system, while hiding its presence and activities from the system’s legitimate users, system administrators, and other security mechanisms. Rootkits are highly appealing for threat actors as they can operate deep in the system, allowing them to execute high-privileged commands and operations"
 		},
 	Threat.SQL: {
-		'health': 150,
-		'damage': 120,
-		'speed': 118,
+		'health': Data.ENEMY_DATA[10]["health"],
+		'damage': Data.ENEMY_DATA[10]["damage"],
+		'speed': Data.ENEMY_DATA[10]["speed"],
 		'special_ability': "Exploits weaknesses in the network that bypass or jump security checkpoints and advance closer to the server. ",
 		'irl_desc': "Also known as SQLI, it is an attack that is aimed at accessing and modifying the backend database where data should not be displayed to unauthorized people."
 		},
 	Threat.DDOS: {
-		'health': 500 - 20,
+		'health': 650 - 20,
 		'damage': 150,
 		'speed': 100,
 		'special_ability': "A group of DoS that combine and work together to form a larger entity, then split back when their health drops, making them individually weaker and easier to eliminate",
 		'irl_desc': "A Distributed Denial of Service (DDoS) attack is designed to force a website, computer, or online service offline. This is accomplished by flooding the target with many requests, consuming its capacity and rendering it unable to respond to legitimate requests. The malicious traffic comes from a variety of different IP addresses, often from members of a botnet. This makes the attack more difficult to defend against and enables the attackers to generate a larger volume of malicious traffic than a single system can generate on its own."
 		},
 	Threat.RANSOMWARE: {
-		'health': 150,
-		'damage': 250,
-		'speed': 105,
+		'health': Data.ENEMY_DATA[12]["health"],
+		'damage': Data.ENEMY_DATA[12]["damage"],
+		'speed': Data.ENEMY_DATA[12]["speed"],
 		'special_ability': "It locks a tower and demands gold.",
 		'irl_desc': "Ransomware is an advanced type of malicious software that locks out files and systems in order to take the user's data hostage. It uses sophisticated algorithms to encrypt data, making it unreadable or inaccessible without a special decryption key that is exclusively in the possession of the attackers. Additionally, access to the hostage data can be restored by paying a ransom, which is often demanded in cryptocurrency. Lastly, there is a saying, “Never Pay The Ransom”, as retrieving the hostage data is not guaranteed."
 		},
 	Threat.ZERO: {
-		'health': 220,
-		'damage': 350,
-		'speed': 110,
+		'health': Data.ENEMY_DATA[13]["health"],
+		'damage': Data.ENEMY_DATA[13]["damage"],
+		'speed': Data.ENEMY_DATA[13]["speed"],
 		'special_ability': "Ignored by the defense tower at first (such as antivirus, firewall, and other defenses), a patch management system is needed.",
 		'irl_desc': "A zero-day exploit is a software vulnerability that is either known yet unpatched or is completely unknown to the developers. The name comes from the concept that developers have zero days to address the vulnerability before it is actively exploited."
 		},
 	Threat.ILOVEYOU: {
-		'health': 15000,
-		'damage': 100,
-		'speed': 100,
+		'health': Data.ENEMY_DATA[14]["health"],
+		'damage': Data.ENEMY_DATA[14]["damage"],
+		'speed': Data.ENEMY_DATA[14]["speed"],
 		'special_ability': "Spawns multiple viruses on other routes/lanes at specific health, while normal threats are spawned continuously ",
 		'irl_desc': "In May 2000, a computer worm called ILOVEYOU quickly spread by email throughout the world. This software, also referred to as the LoveLetter worm, was based on a straightforward yet incredibly powerful social engineering technique. The subject line \"ILOVEYOU\" and the attachment \"LOVE - LETTER - FOR - YOU.txt.vbs\" appeared in users' inboxes. The file's actual nature as a Visual Basic Script was concealed by the double extension. The worm would start running as soon as the user opened the attachment, erasing files from the victim's computer and—most notably—sending a copy of itself to each contact in the user's Microsoft Outlook address book."
 			},
 	Threat.CONFICKER: {
-		'health': 30000,
-		'damage': 200,
-		'speed': 100,
+		'health': Data.ENEMY_DATA[15]["health"],
+		'damage': Data.ENEMY_DATA[15]["damage"],
+		'speed': Data.ENEMY_DATA[15]["speed"],
 		'special_ability': "Periodically spawns botnet drones on the battlefield.",
 		'irl_desc': "The computer worm Conficker, also referred to as Downup, Downadup, or Kido, was first discovered in November 2008, and it targets the Microsoft Windows operating system, specifically in Windows Server Service. It goes along with a number of advanced malware techniques, and it has proven super challenging to stop. It spreads by using dictionary attacks on administrator passwords and vulnerabilities in Windows OS software to create a botnet. The Conflicker takes advantage of the vulnerability in the buffer overflow of the Windows Server Service through the RPC requests, where it then allows attackers to install malware, steal data, or control the machine as part of a botnet. Moreover, it can also download arbitrary files, including malware, and deactivate important system services and security programs."
 		},
 	Threat.WANNACRY: {
-		'health': 50000,
-		'damage': 320,
-		'speed': 100,
+		'health': Data.ENEMY_DATA[16]["health"],
+		'damage': Data.ENEMY_DATA[16]["damage"],
+		'speed': Data.ENEMY_DATA[16]["speed"],
 		'special_ability': "Periodically stuns defensive towers on the battlefield. ",
 		'irl_desc': "Ransomware is a kind of malicious software that is used to extort money, and the WannaCry Ransomware that attacked Windows OS in May 2017 is one example. It is one of the most infamous operating system vulnerabilities, and it spreads to more than 300,000 computers across 150 countries. It encrypts important user data and demands Bitcoin as ransom. The attackers exploit a flaw in the Microsoft Windows operating system, the EternalBlue Windows vulnerability in the Server Message Block protocol. The WannaCry ransomware spreads quickly like a worm by remotely running its malware on susceptible computers, then automatically scans and infects more machines. An attacker can transmit specially crafted network packets to cause the target to execute arbitrary code."
 		},
 	Threat.NOTPETYA: {
-		'health': 90000,
-		'damage': 200,
-		'speed': 100,
+		'health': Data.ENEMY_DATA[17]["health"],
+		'damage': Data.ENEMY_DATA[17]["damage"],
+		'speed': Data.ENEMY_DATA[17]["speed"],
 		'special_ability': "Displays a fake ransom message offering server health recovery in exchange for payment. If the player chooses to pay, the malware intensifies its attack, moves faster, and gives the tower an actual health so it can be destroyed. If ignored, it continues to spread and damage the system normally. ",
 		'irl_desc': "NotPetya is a destructive malware variant that appeared in June 2017, initially targeting Ukraine before spreading globally. It masquerades as ransomware but was built primarily to destroy data rather than generate ransom payments. Even when victims paid, recovery was effectively impossible because NotPetya's encryption routine does not preserve the information needed for decryption."
 		},
 	Threat.DOOM: {
-		'health': 110000,
-		'damage': 200,
-		'speed': 100,
+		'health': Data.ENEMY_DATA[18]["health"],
+		'damage': Data.ENEMY_DATA[18]["damage"],
+		'speed': Data.ENEMY_DATA[18]["speed"],
 		'special_ability': "Spawns swarm enemies along the paths, such as botnet drones, DDoS, spam emails, worms, and even insider threats.",
 		'irl_desc': "MyDoom was actually a computer worm rather than a virus. However, it is sometimes called the MyDoom Virus, which is a highly destructive malware first discovered in January 2004. It remains the fastest-spreading mass-mailing threat in history. It infected an estimated millions of computers and caused billions in damages by turning machines into botnets, causing massive Distributed Denial-of-Service (DDoS) attacks. "
 		},
 	Threat.TROJAN: {
-		'health': 150000,
-		'damage': 150,
-		'speed': 100,
+		'health': Data.ENEMY_DATA[19]["health"],
+		'damage': Data.ENEMY_DATA[19]["damage"],
+		'speed': Data.ENEMY_DATA[19]["speed"],
 		'special_ability': "Initially introduced as a guide at the start of the game. Revive dead enemies and periodically spawns types of enemies.",
 		'irl_desc': "Trojan horse attacks deceive people into running programs that appear harmless but actually have malicious intent by using social engineering and deception. Trojans are programs that appear as attachments, downloads, or fraudulent files or programs that pretend to do one thing but actually do another, usually maliciously."
 		},
