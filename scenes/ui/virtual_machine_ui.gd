@@ -12,6 +12,23 @@ func _ready() -> void:
 			var hotspot: TextureButton = get_node("MapContainer/Map/Challenge%d" % map_number)
 			hotspot.self_modulate = Color(0.35, 0.35, 0.35)
 
+		if Data.VM_MAP_DATA[map_number].get('reward_collected', false):
+			var world_hotspot: Control = get_node("MapContainer/Map/Challenge%d" % map_number)
+			_add_reward_check_label(world_hotspot)
+
+
+func _add_reward_check_label(parent: Control) -> void:
+	var check := Label.new()
+	check.name = "RewardCheck"
+	check.text = "✓"
+	check.add_theme_color_override("font_color", Color(0.2, 0.85, 0.35, 1))
+	check.add_theme_font_size_override("font_size", 36)
+	check.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	check.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	check.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	check.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+	parent.add_child(check)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -227,6 +244,7 @@ func _on_start_game_pressed() -> void:
 
 	Data.vmmode_map_number = map_number
 	Data.vmmode_resume_progress = {}
+	Data.vmmode_reward_granted = false
 
 	if VMSave.has_save(map_number):
 		Data.vmmode_resume_progress = VMSave.load_into_data(map_number)

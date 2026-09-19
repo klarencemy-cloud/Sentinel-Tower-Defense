@@ -2,9 +2,17 @@ extends Control
 
 func _ready() -> void:
 	if Data.is_vmmode:
-		var map_name: String = Data.VM_MAP_DATA.get(Data.vmmode_map_number, {}).get("title", "")
+		var map_data: Dictionary = Data.VM_MAP_DATA.get(Data.vmmode_map_number, {})
+		var map_name: String = map_data.get("title", "")
 		$Label2.text = "Congratulation for finishing %s" % map_name
 		$NextLevel/Label.text = "Play Again"
+
+		if Data.vmmode_reward_granted:
+			$RewardContainer/GoldGroup/GoldLabel.text = "+%d" % map_data.get("reward_gold", 0)
+			$RewardContainer/ServerGroup/ServerLabel.text = "+%d" % map_data.get("reward_server_points", 0)
+			$RewardContainer.visible = true
+		else:
+			$AlreadyCollectedLabel.visible = true
 	else:
 		$Label2.text = "You've completed level %s!" % Data.current_level_index
 

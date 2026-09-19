@@ -34,6 +34,9 @@ signal toggle_tween()
 @onready var vm_description: Label = $"../MapDetails/Description"
 @onready var vm_difficulty_label := $"../MapDetails/Difficulty"
 @onready var start_game_button: TextureButton = $"../StartGame"
+@onready var vm_gold: Label = $"../MapDetails/Description/Gold"
+@onready var vm_server_points: Label = $"../MapDetails/Description/Serverpt"
+@onready var vm_collected: Label = $"../MapDetails/Description/Collected"
 
 var title_array: Array = ["Treatment Area", "Courtyard", "Konbini", "Hellbent", "The Maze", "Requiem"]
 var path_num: Array = ["1", "1", "2", "4", "3", "3"]
@@ -99,6 +102,18 @@ func _vm_unlocked(index: int) -> bool:
 	return bool(_vm_field(index, 'unlocked', false))
 
 
+func _vm_reward_gold(index: int) -> int:
+	return int(_vm_field(index, 'reward_gold', 0))
+
+
+func _vm_reward_server_points(index: int) -> int:
+	return int(_vm_field(index, 'reward_server_points', 0))
+
+
+func _vm_reward_collected(index: int) -> bool:
+	return bool(_vm_field(index, 'reward_collected', false))
+
+
 func _refresh_vm_lock_state(index: int) -> void:
 	if _vm_unlocked(index):
 		start_game_button.disabled = false
@@ -106,6 +121,30 @@ func _refresh_vm_lock_state(index: int) -> void:
 		var required_wave: int = int(_vm_field(index, 'unlock_wave', 0))
 		vm_description.text = "Locked - reach Wave %d in Story Mode.\n\n" % required_wave + vm_description.text
 		start_game_button.disabled = true
+
+
+func _refresh_vm_details(index: int) -> void:
+	vm_title.text = _vm_title(index)
+	vm_description.text = _vm_desc(index)
+	level_recommendation.text = _vm_recommended(index)
+	vm_difficulty_label.text = _vm_difficulty(index)
+	vm_gold.text = str(_vm_reward_gold(index))
+	vm_server_points.text = str(_vm_reward_server_points(index))
+	vm_collected.visible = _vm_reward_collected(index)
+
+	match _vm_difficulty(index):
+		"Easy":
+			vm_difficulty_label.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
+		"Moderate":
+			vm_difficulty_label.add_theme_color_override("font_color", Color(0.277, 0.622, 0.287))
+		"Hard":
+			vm_difficulty_label.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
+		"Extreme":
+			vm_difficulty_label.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
+		"Survival":
+			vm_difficulty_label.add_theme_color_override("font_color", Color(0.8, 0.004, 0.788))
+
+	_refresh_vm_lock_state(index)
 
 
 func _refresh_vm_card_dim() -> void:
@@ -127,7 +166,7 @@ func _ready() -> void:
 
 	if is_vm:
 		_refresh_vm_card_dim()
-		_refresh_vm_lock_state(count)
+		_refresh_vm_details(count)
 
 func _process(delta: float) -> void:
 	if !position_offset_node or position_offset_node.get_child_count() == 0:
@@ -182,25 +221,8 @@ func _left():
 		return
 
 	if Data.is_vmmode:
-		vm_title.text = _vm_title(count)
-		vm_description.text = _vm_desc(count)
-		level_recommendation.text = _vm_recommended(count)
-		vm_difficulty_label.text = _vm_difficulty(count)
+		_refresh_vm_details(count)
 		toggle_tween.emit(count + 1)
-
-		match _vm_difficulty(count):
-			"Easy":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
-			"Moderate":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(0.277, 0.622, 0.287))
-			"Hard":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
-			"Extreme":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
-			"Survival":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(0.8, 0.004, 0.788))
-
-		_refresh_vm_lock_state(count)
 
 	if !Data.is_vmmode:
 		title.text = title_array[count]
@@ -230,25 +252,8 @@ func _right():
 		if count == 9:
 			count = 8
 			return
-		vm_title.text = _vm_title(count)
-		vm_description.text = _vm_desc(count)
-		level_recommendation.text = _vm_recommended(count)
-		vm_difficulty_label.text = _vm_difficulty(count)
+		_refresh_vm_details(count)
 		toggle_tween.emit(count + 1)
-
-		match _vm_difficulty(count):
-			"Easy":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
-			"Moderate":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(0.277, 0.622, 0.287))
-			"Hard":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
-			"Extreme":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
-			"Survival":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(0.8, 0.004, 0.788))
-
-		_refresh_vm_lock_state(count)
 
 	if !Data.is_vmmode:
 		if count == 6:
@@ -274,25 +279,7 @@ func _change_challenge(index: int) -> void:
 	if is_vm:
 		selected_index = index
 		count = index
-		vm_title.text = _vm_title(count)
-		vm_description.text = _vm_desc(count)
-		level_recommendation.text = _vm_recommended(count)
-		vm_difficulty_label.text = _vm_difficulty(count)
-
-
-		match _vm_difficulty(count):
-			"Easy":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(0.129, 0.596, 0.678))
-			"Moderate":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(0.277, 0.622, 0.287))
-			"Hard":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
-			"Extreme":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
-			"Survival":
-				vm_difficulty_label.add_theme_color_override("font_color", Color(0.8, 0.004, 0.788))
-
-		_refresh_vm_lock_state(count)
+		_refresh_vm_details(count)
 
 	if is_vm == null:
 		return

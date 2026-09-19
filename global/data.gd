@@ -45,6 +45,7 @@ var base_tower_stats: Dictionary = {} # Stores original base stats for all tower
 var vmmode_map_number: int = 1
 var vmmode_resume_progress: Dictionary = {}
 var vmmode_sentinels_disabled: bool = false
+var vmmode_reward_granted: bool = false
 
 var VM_MAP_DATA := {
 	1: {
@@ -56,6 +57,9 @@ var VM_MAP_DATA := {
 		'unlock_wave': 5,
 		'unlocked': false,
 		'desc': "The S.E.R.V.E.R. malfunctions; it loses health every 5 seconds. Defeat 200 virus enemies before the S.E.R.V.E.R. health reaches 0.",
+		'reward_gold': 200,
+		'reward_server_points': 1,
+		'reward_collected': false,
 	},
 	2: {
 		'title': "Swarm Overload",
@@ -66,6 +70,9 @@ var VM_MAP_DATA := {
 		'unlock_wave': 10,
 		'unlocked': false,
 		'desc': "A massive outbreak of Worms and Spam floods the path. Defeat 1,000 enemies without taking any damage.",
+		'reward_gold': 300,
+		'reward_server_points': 1,
+		'reward_collected': false,
 	},
 	3: {
 		'title': "Malware Interruption",
@@ -76,6 +83,9 @@ var VM_MAP_DATA := {
 		'unlock_wave': 16,
 		'unlocked': false,
 		'desc': "The S.E.R.V.E.R. has only 1 HP left. Survive 7 waves of malware without taking any damage. A single hit costs everything.",
+		'reward_gold': 400,
+		'reward_server_points': 1,
+		'reward_collected': false,
 	},
 	4: {
 		'title': "Mirai Botnet",
@@ -86,6 +96,9 @@ var VM_MAP_DATA := {
 		'unlock_wave': 25,
 		'unlocked': false,
 		'desc': "Inspired by a real-world exploit, a large number of Botnet drone that mainly compromise low-power devices swarms fast to attack the S.E.R.V.E.R., but are fragile as individuals. Win 7 waves to win the challenge.",
+		'reward_gold': 450,
+		'reward_server_points': 1,
+		'reward_collected': false,
 	},
 	5: {
 		'title': "Packet Loss",
@@ -96,6 +109,9 @@ var VM_MAP_DATA := {
 		'unlock_wave': 30,
 		'unlocked': false,
 		'desc': "The map has blind spots (fog), whenever enemies are in that location, they cannot be targeted. Win 7 waves to win the challenge.",
+		'reward_gold': 500,
+		'reward_server_points': 1,
+		'reward_collected': false,
 	},
 	6: {
 		'title': "DDoS Stress Test",
@@ -106,6 +122,9 @@ var VM_MAP_DATA := {
 		'unlock_wave': 35,
 		'unlocked': false,
 		'desc': "Only Distributed Denial-of-Service (DDoS) attacks the S.E.R.V.E.R. to test how it handles floods of internet traffic. The player must defeat 300 enemies before the timer runs out.",
+		'reward_gold': 550,
+		'reward_server_points': 1,
+		'reward_collected': false,
 	},
 	7: {
 		'title': "Random Defense",
@@ -116,6 +135,9 @@ var VM_MAP_DATA := {
 		'unlock_wave': 40,
 		'unlocked': false,
 		'desc': "Random towers randomly appear. The player must place them correctly and strategically. Win 7 waves to win the challenge.",
+		'reward_gold': 700,
+		'reward_server_points': 1,
+		'reward_collected': false,
 	},
 	8: {
 		'title': "Automatic Defense",
@@ -127,6 +149,9 @@ var VM_MAP_DATA := {
 		'unlocked': false,
 		'desc': "All sentinels are disabled during the challenge. Win 7 waves to win the challenge.",
 		'disable_sentinels': true,
+		'reward_gold': 800,
+		'reward_server_points': 1,
+		'reward_collected': false,
 	},
 	9: {
 		'title': "Endless Onslaught",
@@ -137,6 +162,9 @@ var VM_MAP_DATA := {
 		'unlock_wave': 51,
 		'unlocked': false,
 		'desc': "This challenge is endless. A survival game where the player must defend the S.E.R.V.E.R. with an endless number of waves.",
+		'reward_gold': 0,
+		'reward_server_points': 0,
+		'reward_collected': false,
 	},
 }
 
@@ -1363,3 +1391,30 @@ func update_wave_unlocks() -> void:
 		if map_data.has("unlock_wave") and not map_data.get("unlocked", false):
 			if current_wave >= map_data["unlock_wave"]:
 				map_data["unlocked"] = true
+
+
+# Grants a VM map's one-time Gold/Server Points reward on first successful completion.
+# Persists into the Story save via Save.apply_vm_map_reward (VM currency is isolated in
+# before_total_money/before_server_points during a session, see root CLAUDE.md Sandbox mode).
+# Returns false (no-op) if the map is unknown or its reward was already collected.
+func grant_vm_map_reward(map_number: int) -> bool:
+	vmmode_reward_granted = false
+
+	if not VM_MAP_DATA.has(map_number):
+		return false
+
+	var map_data: Dictionary = VM_MAP_DATA[map_number]
+
+	if map_data.get("reward_collected", false):
+		return false
+
+	var gold: int = int(map_data.get("reward_gold", 0))
+	var points: int = int(map_data.get("reward_server_points", 0))
+
+	Save.apply_vm_map_reward(map_number, gold, points)
+
+	before_total_money += gold
+	before_server_points += points
+	map_data["reward_collected"] = true
+	vmmode_reward_granted = true
+	return true

@@ -88,10 +88,12 @@ func save_game() -> void:
 			enemy_met[str(enemy_enum)] = enemy_data.get("isMet", false)
 
 		var vm_map_unlocks := {}
+		var vm_map_rewards := {}
 
 		for map_number in Data.VM_MAP_DATA:
 			var map_data: Dictionary = Data.VM_MAP_DATA[map_number]
 			vm_map_unlocks[str(map_number)] = map_data.get("unlocked", false)
+			vm_map_rewards[str(map_number)] = map_data.get("reward_collected", false)
 
 		# Save enemy kill counts
 		var enemy_kills := {}
@@ -117,6 +119,7 @@ func save_game() -> void:
 			"sentinel_unlocks": sentinel_unlocks,
 			"enemy_met": enemy_met,
 			"vm_map_unlocks": vm_map_unlocks,
+			"vm_map_rewards": vm_map_rewards,
 			"sentinels": [Data.sentinel_ethical_deployed, Data.sentinel_sysad_deployed,
 				Data.sentinel_intrusion_deployed, Data.sentinel_security_deployed,
 				Data.sentinel_malware_deployed, Data.sentinel_deception_deployed],
@@ -134,7 +137,31 @@ func save_game() -> void:
 		if file:
 			file.store_string(JSON.stringify(save_data))
 
-func _load_game() -> void:	
+
+
+func apply_vm_map_reward(map_number: int, gold: int, points: int) -> void:
+	var parsed: Dictionary = {"version": SAVE_VERSION}
+
+	if FileAccess.file_exists(SAVE_PATH):
+		var read_file := FileAccess.open(SAVE_PATH, FileAccess.READ)
+		if read_file:
+			var loaded = JSON.parse_string(read_file.get_as_text())
+			if loaded is Dictionary and loaded.get("version", 0) == SAVE_VERSION:
+				parsed = loaded
+
+	parsed["money"] = int(parsed.get("money", Data.before_total_money)) + gold
+	parsed["server_points"] = int(parsed.get("server_points", Data.before_server_points)) + points
+
+	var vm_map_rewards: Dictionary = parsed.get("vm_map_rewards", {})
+	vm_map_rewards[str(map_number)] = true
+	parsed["vm_map_rewards"] = vm_map_rewards
+
+	var write_file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if write_file:
+		write_file.store_string(JSON.stringify(parsed))
+
+
+func _load_game() -> void:
 	if Data.is_vmmode:
 		return
 	if !Data.is_sandbox:
@@ -214,6 +241,14 @@ func _load_game() -> void:
 
 			if Data.VM_MAP_DATA.has(map_number):
 				Data.VM_MAP_DATA[map_number]["unlocked"] = bool(vm_map_unlocks[map_key])
+
+		var vm_map_rewards: Dictionary = parsed.get("vm_map_rewards", {})
+
+		for reward_map_key in vm_map_rewards:
+			var reward_map_number := int(reward_map_key)
+
+			if Data.VM_MAP_DATA.has(reward_map_number):
+				Data.VM_MAP_DATA[reward_map_number]["reward_collected"] = bool(vm_map_rewards[reward_map_key])
 
 		var tower_upgrades: Dictionary = parsed.get("tower_upgrades", {})
 		for tower_key in tower_upgrades:

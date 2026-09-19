@@ -5,6 +5,8 @@
 [ext_resource type="FontFile" uid="uid://b7hyqpewtr52n" path="res://font/Lilita_One/LilitaOne-Regular.ttf" id="3_r3k0k"]
 [ext_resource type="FontFile" uid="uid://cuu8uxwlh6c8t" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraLightItalic.ttf" id="4_5lopo"]
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="5_68wtw"]
+[ext_resource type="Texture2D" uid="uid://v6nn418cpr87" path="res://graphics/currency/gold.png" id="6_gld01"]
+[ext_resource type="Texture2D" uid="uid://clw64leoblwkc" path="res://graphics/currency/core.png" id="7_cor01"]
 
 [sub_resource type="Gradient" id="Gradient_t1hsp"]
 offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
@@ -80,6 +82,88 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_5lopo")
 theme_override_font_sizes/font_size = 40
 text = "You've completed level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RewardContainer" type="HBoxContainer" parent="." unique_id=847215063]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.46
+anchor_right = 0.5
+anchor_bottom = 0.46
+offset_left = -200.0
+offset_top = 0.0
+offset_right = 200.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="GoldGroup" type="HBoxContainer" parent="RewardContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="GoldIcon" type="TextureRect" parent="RewardContainer/GoldGroup"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_gld01")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldLabel" type="Label" parent="RewardContainer/GoldGroup"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_5lopo")
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_font_sizes/font_size = 28
+text = "+0"
+vertical_alignment = 1
+
+[node name="ServerGroup" type="HBoxContainer" parent="RewardContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="ServerIcon" type="TextureRect" parent="RewardContainer/ServerGroup"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_cor01")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ServerLabel" type="Label" parent="RewardContainer/ServerGroup"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_5lopo")
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_font_sizes/font_size = 28
+text = "+0"
+vertical_alignment = 1
+
+[node name="AlreadyCollectedLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.46
+anchor_right = 0.5
+anchor_bottom = 0.46
+offset_left = -270.0
+offset_top = 0.0
+offset_right = 270.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_5lopo")
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_font_sizes/font_size = 28
+text = "Reward already collected"
 horizontal_alignment = 1
 vertical_alignment = 1
 

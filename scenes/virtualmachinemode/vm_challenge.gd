@@ -108,6 +108,7 @@ func _end_session(won: bool) -> void:
 	VMSave.clear_save(Data.vmmode_map_number)
 
 	if won:
+		Data.grant_vm_map_reward(Data.vmmode_map_number)
 		$Level.level_completed()
 	else:
 		end_overlay.show_result(false, _result_text(false))
