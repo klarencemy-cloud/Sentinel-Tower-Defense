@@ -831,16 +831,6 @@ autowrap_mode = 3
 justification_flags = 42
 metadata/_edit_use_anchors_ = true
 
-[node name="TowerPic" type="TextureRect" parent="Databasebg" unique_id=1436600538]
-visible = false
-layout_mode = 0
-offset_left = 632.0
-offset_top = 95.0
-offset_right = 829.0
-offset_bottom = 336.0
-texture = SubResource("AtlasTexture_vcypq")
-expand_mode = 1
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Databasebg" unique_id=883112235]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(730, 209)

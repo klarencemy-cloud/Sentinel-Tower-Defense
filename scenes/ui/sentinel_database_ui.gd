@@ -4,7 +4,6 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_refresh_sentinel_image_states()
-	$Databasebg/BigPic.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -100,193 +99,143 @@ var SENTINEL_DATA = {
 @onready var desc_desc: Label = $Databasebg/Special/Cooldown/Passive/RealLifeDesc/Description
 @onready var animation: AnimatedSprite2D = $Databasebg/AnimatedSprite2D
 
-func _on_sentinel_6_pressed() -> void:
-	if not is_sentinel_unlocked(Data.Sentinel.DECEPTION):
-		UISound.play_click()
-
-		desc_name.text = "???"
-		desc_sp.text = "Ability: Unknown"
-		desc_cd.text = "Cooldown: Unknown"
-		desc_passive.text = "Passive: Unknown"
-		desc_desc.text = "No Available Data"
-
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/BigPic.visible = true
-		$Databasebg/BigPic.texture = load(SENTINEL_DATA[5]["thumbnail"])
-		$Databasebg/BigPic.modulate = Color(0, 0, 0, 1)
-
-		return
-
-	UISound.play_click()
-
-	desc_name.text = sentinel_name[5]
-	desc_sp.text = "Ability: %s" % SENTINEL_DATA[5]["special_ability"]
-	desc_cd.text = "Cooldown: %s" % SENTINEL_DATA[5]["cooldown"]
-	desc_passive.text = "Passive: %s" % SENTINEL_DATA[5]["passive_ability"]
-	desc_desc.text = SENTINEL_DATA[5]["irl_desc"]
-
-	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/BigPic.visible = false
-	$Databasebg/BigPic.modulate = Color(1, 1, 1, 1)
-
-	$Databasebg/AnimatedSprite2D.play("DeceptionAnalyst")
-
-func _on_sentinel_5_pressed() -> void:
-	if not is_sentinel_unlocked(Data.Sentinel.MALWARE):
-		UISound.play_click()
-
-		desc_name.text = "???"
-		desc_sp.text = "Ability: Unknown"
-		desc_cd.text = "Cooldown: Unknown"
-		desc_passive.text = "Passive: Unknown"
-		desc_desc.text = "No Available Data"
-
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/BigPic.visible = true
-		$Databasebg/BigPic.texture = load(SENTINEL_DATA[4]["thumbnail"])
-		$Databasebg/BigPic.modulate = Color(0, 0, 0, 1)
-
-		return
-
-	UISound.play_click()
-
-	desc_name.text = sentinel_name[4]
-	desc_sp.text = "Ability: %s" % SENTINEL_DATA[4]["special_ability"]
-	desc_cd.text = "Cooldown: %s" % SENTINEL_DATA[4]["cooldown"]
-	desc_passive.text = "Passive: %s" % SENTINEL_DATA[4]["passive_ability"]
-	desc_desc.text = SENTINEL_DATA[4]["irl_desc"]
-
-	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/BigPic.visible = false
-	$Databasebg/BigPic.modulate = Color(1, 1, 1, 1)
-
-	$Databasebg/AnimatedSprite2D.play("MalwareAnalyst")
-
-func _on_sentinel_4_pressed() -> void:
-	if not is_sentinel_unlocked(Data.Sentinel.SECURITY):
-		UISound.play_click()
-
-		desc_name.text = "???"
-		desc_sp.text = "Ability: Unknown"
-		desc_cd.text = "Cooldown: Unknown"
-		desc_passive.text = "Passive: Unknown"
-		desc_desc.text = "No Available Data"
-
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/BigPic.visible = true
-		$Databasebg/BigPic.texture = load(SENTINEL_DATA[3]["thumbnail"])
-		$Databasebg/BigPic.modulate = Color(0, 0, 0, 1)
-
-		return
-
-	UISound.play_click()
-
-	desc_name.text = sentinel_name[3]
-	desc_sp.text = "Ability: %s" % SENTINEL_DATA[3]["special_ability"]
-	desc_cd.text = "Cooldown: %s" % SENTINEL_DATA[3]["cooldown"]
-	desc_passive.text = "Passive: %s" % SENTINEL_DATA[3]["passive_ability"]
-	desc_desc.text = SENTINEL_DATA[3]["irl_desc"]
-
-	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/BigPic.visible = false
-	$Databasebg/BigPic.modulate = Color(1, 1, 1, 1)
-
-	$Databasebg/AnimatedSprite2D.play("SecurityArchitect")
-
-func _on_sentinel_3_pressed() -> void:
-	if not is_sentinel_unlocked(Data.Sentinel.INTRUSION):
-		UISound.play_click()
-
-		desc_name.text = "???"
-		desc_sp.text = "Ability: Unknown"
-		desc_cd.text = "Cooldown: Unknown"
-		desc_passive.text = "Passive: Unknown"
-		desc_desc.text = "No Available Data"
-
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/BigPic.visible = true
-		$Databasebg/BigPic.texture = load(SENTINEL_DATA[2]["thumbnail"])
-		$Databasebg/BigPic.modulate = Color(0, 0, 0, 1)
-
-		return
-
-	UISound.play_click()
-
-	desc_name.text = sentinel_name[2]
-	desc_sp.text = "Ability: %s" % SENTINEL_DATA[2]["special_ability"]
-	desc_cd.text = "Cooldown: %s" % SENTINEL_DATA[2]["cooldown"]
-	desc_passive.text = "Passive: %s" % SENTINEL_DATA[2]["passive_ability"]
-	desc_desc.text = SENTINEL_DATA[2]["irl_desc"]
-
-	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/BigPic.visible = false
-	$Databasebg/BigPic.modulate = Color(1, 1, 1, 1)
-
-	$Databasebg/AnimatedSprite2D.play("IntrusionAnalyst")
-
-
-func _on_sentinel_2_pressed() -> void:
-	if not is_sentinel_unlocked(Data.Sentinel.SYSAD):
-		UISound.play_click()
-
-		desc_name.text = "???"
-		desc_sp.text = "Ability: Unknown"
-		desc_cd.text = "Cooldown: Unknown"
-		desc_passive.text = "Passive: Unknown"
-		desc_desc.text = "No Available Data"
-
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/BigPic.visible = true
-		$Databasebg/BigPic.texture = load(SENTINEL_DATA[1]["thumbnail"])
-		$Databasebg/BigPic.modulate = Color(0, 0, 0, 1)
-
-		return
-
-	UISound.play_click()
-
-	desc_name.text = sentinel_name[1]
-	desc_sp.text = "Ability: %s" % SENTINEL_DATA[1]["special_ability"]
-	desc_cd.text = "Cooldown: %s" % SENTINEL_DATA[1]["cooldown"]
-	desc_passive.text = "Passive: %s" % SENTINEL_DATA[1]["passive_ability"]
-	desc_desc.text = SENTINEL_DATA[1]["irl_desc"]
-
-	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/BigPic.visible = false
-	$Databasebg/BigPic.modulate = Color(1, 1, 1, 1)
-
-	$Databasebg/AnimatedSprite2D.play("SystemAdmin")
-
-
 func _on_sentinel_1_pressed() -> void:
+	UISound.play_click()
 	if not is_sentinel_unlocked(Data.Sentinel.ETHICAL):
-		UISound.play_click()
-
 		desc_name.text = "???"
 		desc_sp.text = "Ability: Unknown"
 		desc_cd.text = "Cooldown: Unknown"
 		desc_passive.text = "Passive: Unknown"
 		desc_desc.text = "No Available Data"
-
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/BigPic.visible = true
-		$Databasebg/BigPic.texture = load(SENTINEL_DATA[0]["thumbnail"])
-		$Databasebg/BigPic.modulate = Color(0, 0, 0, 1)
-
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("EthicalHacker")
 		return
-
-	UISound.play_click()
 
 	desc_name.text = sentinel_name[0]
 	desc_sp.text = "Ability: %s" % SENTINEL_DATA[0]["special_ability"]
 	desc_cd.text = "Cooldown: %s" % SENTINEL_DATA[0]["cooldown"]
 	desc_passive.text = "Passive: %s" % SENTINEL_DATA[0]["passive_ability"]
 	desc_desc.text = SENTINEL_DATA[0]["irl_desc"]
-
 	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/BigPic.visible = false
-	$Databasebg/BigPic.modulate = Color(1, 1, 1, 1)
-
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	$Databasebg/AnimatedSprite2D.play("EthicalHacker")
+
+
+func _on_sentinel_2_pressed() -> void:
+	UISound.play_click()
+	if not is_sentinel_unlocked(Data.Sentinel.SYSAD):
+		desc_name.text = "???"
+		desc_sp.text = "Ability: Unknown"
+		desc_cd.text = "Cooldown: Unknown"
+		desc_passive.text = "Passive: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("SystemAdmin")
+		return
+
+	desc_name.text = sentinel_name[1]
+	desc_sp.text = "Ability: %s" % SENTINEL_DATA[1]["special_ability"]
+	desc_cd.text = "Cooldown: %s" % SENTINEL_DATA[1]["cooldown"]
+	desc_passive.text = "Passive: %s" % SENTINEL_DATA[1]["passive_ability"]
+	desc_desc.text = SENTINEL_DATA[1]["irl_desc"]
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+	$Databasebg/AnimatedSprite2D.play("SystemAdmin")
+
+
+func _on_sentinel_3_pressed() -> void:
+	UISound.play_click()
+	if not is_sentinel_unlocked(Data.Sentinel.INTRUSION):
+		desc_name.text = "???"
+		desc_sp.text = "Ability: Unknown"
+		desc_cd.text = "Cooldown: Unknown"
+		desc_passive.text = "Passive: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("IntrusionAnalyst")
+		return
+
+	desc_name.text = sentinel_name[2]
+	desc_sp.text = "Ability: %s" % SENTINEL_DATA[2]["special_ability"]
+	desc_cd.text = "Cooldown: %s" % SENTINEL_DATA[2]["cooldown"]
+	desc_passive.text = "Passive: %s" % SENTINEL_DATA[2]["passive_ability"]
+	desc_desc.text = SENTINEL_DATA[2]["irl_desc"]
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+	$Databasebg/AnimatedSprite2D.play("IntrusionAnalyst")
+
+
+func _on_sentinel_4_pressed() -> void:
+	UISound.play_click()
+	if not is_sentinel_unlocked(Data.Sentinel.SECURITY):
+		desc_name.text = "???"
+		desc_sp.text = "Ability: Unknown"
+		desc_cd.text = "Cooldown: Unknown"
+		desc_passive.text = "Passive: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("SecurityArchitect")
+		return
+
+	desc_name.text = sentinel_name[3]
+	desc_sp.text = "Ability: %s" % SENTINEL_DATA[3]["special_ability"]
+	desc_cd.text = "Cooldown: %s" % SENTINEL_DATA[3]["cooldown"]
+	desc_passive.text = "Passive: %s" % SENTINEL_DATA[3]["passive_ability"]
+	desc_desc.text = SENTINEL_DATA[3]["irl_desc"]
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+	$Databasebg/AnimatedSprite2D.play("SecurityArchitect")
+
+
+func _on_sentinel_5_pressed() -> void:
+	UISound.play_click()
+	if not is_sentinel_unlocked(Data.Sentinel.MALWARE):
+		desc_name.text = "???"
+		desc_sp.text = "Ability: Unknown"
+		desc_cd.text = "Cooldown: Unknown"
+		desc_passive.text = "Passive: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("MalwareAnalyst")
+		return
+
+	desc_name.text = sentinel_name[4]
+	desc_sp.text = "Ability: %s" % SENTINEL_DATA[4]["special_ability"]
+	desc_cd.text = "Cooldown: %s" % SENTINEL_DATA[4]["cooldown"]
+	desc_passive.text = "Passive: %s" % SENTINEL_DATA[4]["passive_ability"]
+	desc_desc.text = SENTINEL_DATA[4]["irl_desc"]
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+	$Databasebg/AnimatedSprite2D.play("MalwareAnalyst")
+
+
+func _on_sentinel_6_pressed() -> void:
+	UISound.play_click()
+	if not is_sentinel_unlocked(Data.Sentinel.DECEPTION):
+		desc_name.text = "???"
+		desc_sp.text = "Ability: Unknown"
+		desc_cd.text = "Cooldown: Unknown"
+		desc_passive.text = "Passive: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("DeceptionAnalyst")
+		return
+
+	desc_name.text = sentinel_name[5]
+	desc_sp.text = "Ability: %s" % SENTINEL_DATA[5]["special_ability"]
+	desc_cd.text = "Cooldown: %s" % SENTINEL_DATA[5]["cooldown"]
+	desc_passive.text = "Passive: %s" % SENTINEL_DATA[5]["passive_ability"]
+	desc_desc.text = SENTINEL_DATA[5]["irl_desc"]
+	$Databasebg/AnimatedSprite2D.visible = true
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+	$Databasebg/AnimatedSprite2D.play("DeceptionAnalyst")
+
 
 func is_sentinel_unlocked(sentinel_enum: Data.Sentinel) -> bool:
 	return Data.SENTINEL_DATA[sentinel_enum].get("isUnlocked", false)

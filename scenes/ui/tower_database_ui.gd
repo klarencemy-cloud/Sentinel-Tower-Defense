@@ -369,9 +369,22 @@ func _refresh_tower_image_states() -> void:
 
 		if name_label:
 			name_label.text = tower_name[card_index - 1] if is_unlocked else "???"
-			
+
+
 func _on_tower_1_pressed() -> void:
 	UISound.play_click()
+	if not is_tower_unlocked(Data.Tower.SPAM_FILTER):
+		desc_name.text = "???"
+		desc_damage.text = "???"
+		desc_speed.text = "???"
+		desc_type.text = "???"
+		desc_sp.text = "Attack Descrption: Unknown"
+		desc_desc.text = "No Available Data"
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("spam")
+		return
+
 	desc_name.text = tower_name[0]
 	desc_damage.text = str(TOWER_DATA[0]['damage'])
 	desc_speed.text = str(TOWER_DATA[0]['atk_speed'])
@@ -379,25 +392,24 @@ func _on_tower_1_pressed() -> void:
 	desc_sp.text = str(TOWER_DATA[0]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[0]['irl_desc'])
 	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/TowerPic.visible = false
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	$Databasebg/AnimatedSprite2D.play("spam")
 
+
 func _on_tower_2_pressed() -> void:
+	UISound.play_click()
 	if not is_tower_unlocked(Data.Tower.ANTIVIRUS):
-		UISound.play_click()
 		desc_name.text = "???"
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_type.text = "???"
 		desc_sp.text = "Attack Descrption: Unknown"
 		desc_desc.text = "No Available Data"
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/TowerPic.visible = true
-		$Databasebg/TowerPic.texture = load(TOWER_DATA[1]['thumbnail'])
-		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("antivirus")
 		return
-		
-	UISound.play_click()
+
 	desc_name.text = tower_name[1]
 	desc_damage.text = str(TOWER_DATA[1]['damage'])
 	desc_speed.text = str(TOWER_DATA[1]['atk_speed'])
@@ -405,26 +417,24 @@ func _on_tower_2_pressed() -> void:
 	desc_sp.text = str(TOWER_DATA[1]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[1]['irl_desc'])
 	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/TowerPic.visible = false
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	$Databasebg/AnimatedSprite2D.play("antivirus")
 
 
 func _on_tower_3_pressed() -> void:
+	UISound.play_click()
 	if not is_tower_unlocked(Data.Tower.AD_BLOCKER):
-		UISound.play_click()
 		desc_name.text = "???"
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_type.text = "???"
 		desc_sp.text = "Attack Descrption: Unknown"
 		desc_desc.text = "No Available Data"
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/TowerPic.visible = true
-		$Databasebg/TowerPic.texture = load(TOWER_DATA[2]['thumbnail'])
-		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("adblocker")
 		return
-		
-	UISound.play_click()
+
 	desc_name.text = tower_name[2]
 	desc_damage.text = str(TOWER_DATA[2]['damage'])
 	desc_speed.text = str(TOWER_DATA[2]['atk_speed'])
@@ -432,26 +442,24 @@ func _on_tower_3_pressed() -> void:
 	desc_sp.text = str(TOWER_DATA[2]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[2]['irl_desc'])
 	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/TowerPic.visible = false
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	$Databasebg/AnimatedSprite2D.play("adblocker")
 
 
 func _on_tower_4_pressed() -> void:
+	UISound.play_click()
 	if not is_tower_unlocked(Data.Tower.DATA_LOSS_PREVENTION):
-		UISound.play_click()
 		desc_name.text = "???"
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_type.text = "???"
 		desc_sp.text = "Attack Descrption: Unknown"
 		desc_desc.text = "No Available Data"
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/TowerPic.visible = true
-		$Databasebg/TowerPic.texture = load(TOWER_DATA[3]['thumbnail'])
-		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("dlp")
 		return
-		
-	UISound.play_click()
+
 	desc_name.text = tower_name[3]
 	desc_damage.text = str(TOWER_DATA[3]['damage'])
 	desc_speed.text = str(TOWER_DATA[3]['atk_speed'])
@@ -459,24 +467,24 @@ func _on_tower_4_pressed() -> void:
 	desc_sp.text = str(TOWER_DATA[3]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[3]['irl_desc'])
 	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/TowerPic.visible = false
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	$Databasebg/AnimatedSprite2D.play("dlp")
 
+
 func _on_tower_5_pressed() -> void:
+	UISound.play_click()
 	if not is_tower_unlocked(Data.Tower.IDPS):
-		UISound.play_click()
 		desc_name.text = "???"
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_type.text = "???"
 		desc_sp.text = "Attack Descrption: Unknown"
 		desc_desc.text = "No Available Data"
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/TowerPic.visible = true
-		$Databasebg/TowerPic.texture = load(TOWER_DATA[4]['thumbnail'])
-		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("idps")
 		return
-	UISound.play_click()
+
 	desc_name.text = tower_name[4]
 	desc_damage.text = str(TOWER_DATA[4]['damage'])
 	desc_speed.text = str(TOWER_DATA[4]['atk_speed'])
@@ -484,25 +492,24 @@ func _on_tower_5_pressed() -> void:
 	desc_sp.text = str(TOWER_DATA[4]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[4]['irl_desc'])
 	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/TowerPic.visible = false
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	$Databasebg/AnimatedSprite2D.play("idps")
 
 
 func _on_tower_6_pressed() -> void:
+	UISound.play_click()
 	if not is_tower_unlocked(Data.Tower.QUARANTINE_CANNON):
-		UISound.play_click()
 		desc_name.text = "???"
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_type.text = "???"
 		desc_sp.text = "Attack Descrption: Unknown"
 		desc_desc.text = "No Available Data"
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/TowerPic.visible = true
-		$Databasebg/TowerPic.texture = load(TOWER_DATA[5]['thumbnail'])
-		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("qcannon")
 		return
-	UISound.play_click()
+
 	desc_name.text = tower_name[5]
 	desc_damage.text = str(TOWER_DATA[5]['damage'])
 	desc_speed.text = str(TOWER_DATA[5]['atk_speed'])
@@ -510,25 +517,24 @@ func _on_tower_6_pressed() -> void:
 	desc_sp.text = str(TOWER_DATA[5]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[5]['irl_desc'])
 	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/TowerPic.visible = false
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	$Databasebg/AnimatedSprite2D.play("qcannon")
 
 
 func _on_tower_7_pressed() -> void:
+	UISound.play_click()
 	if not is_tower_unlocked(Data.Tower.ACCESS_CONTROL_SYSTEM):
-		UISound.play_click()
 		desc_name.text = "???"
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_type.text = "???"
 		desc_sp.text = "Attack Descrption: Unknown"
 		desc_desc.text = "No Available Data"
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/TowerPic.visible = true
-		$Databasebg/TowerPic.texture = load(TOWER_DATA[6]['thumbnail'])
-		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("acs")
 		return
-	UISound.play_click()
+
 	desc_name.text = tower_name[6]
 	desc_damage.text = str(TOWER_DATA[6]['damage'])
 	desc_speed.text = str(TOWER_DATA[6]['atk_speed'])
@@ -536,25 +542,24 @@ func _on_tower_7_pressed() -> void:
 	desc_sp.text = str(TOWER_DATA[6]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[6]['irl_desc'])
 	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/TowerPic.visible = false
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	$Databasebg/AnimatedSprite2D.play("acs")
 
 
 func _on_tower_8_pressed() -> void:
+	UISound.play_click()
 	if not is_tower_unlocked(Data.Tower.AI_SECURITY):
-		UISound.play_click()
 		desc_name.text = "???"
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_type.text = "???"
 		desc_sp.text = "Attack Descrption: Unknown"
 		desc_desc.text = "No Available Data"
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/TowerPic.visible = true
-		$Databasebg/TowerPic.texture = load(TOWER_DATA[7]['thumbnail'])
-		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("aisec")
 		return
-	UISound.play_click()
+
 	desc_name.text = tower_name[7]
 	desc_damage.text = str(TOWER_DATA[7]['damage'])
 	desc_speed.text = str(TOWER_DATA[7]['atk_speed'])
@@ -562,25 +567,24 @@ func _on_tower_8_pressed() -> void:
 	desc_sp.text = str(TOWER_DATA[7]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[7]['irl_desc'])
 	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/TowerPic.visible = false
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	$Databasebg/AnimatedSprite2D.play("aisec")
 
 
 func _on_tower_9_pressed() -> void:
+	UISound.play_click()
 	if not is_tower_unlocked(Data.Tower.ENDPOINT_PROTECTION):
-		UISound.play_click()
 		desc_name.text = "???"
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_type.text = "???"
 		desc_sp.text = "Attack Descrption: Unknown"
 		desc_desc.text = "No Available Data"
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/TowerPic.visible = true
-		$Databasebg/TowerPic.texture = load(TOWER_DATA[8]['thumbnail'])
-		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("epprotection")
 		return
-	UISound.play_click()
+
 	desc_name.text = tower_name[8]
 	desc_damage.text = str(TOWER_DATA[8]['damage'])
 	desc_speed.text = str(TOWER_DATA[8]['atk_speed'])
@@ -588,24 +592,24 @@ func _on_tower_9_pressed() -> void:
 	desc_sp.text = str(TOWER_DATA[8]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[8]['irl_desc'])
 	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/TowerPic.visible = false
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	$Databasebg/AnimatedSprite2D.play("epprotection")
 
+
 func _on_tower_10_pressed() -> void:
+	UISound.play_click()
 	if not is_tower_unlocked(Data.Tower.SANDBOX_ANALYZER):
-		UISound.play_click()
 		desc_name.text = "???"
 		desc_damage.text = "???"
 		desc_speed.text = "???"
 		desc_type.text = "???"
 		desc_sp.text = "Attack Descrption: Unknown"
 		desc_desc.text = "No Available Data"
-		$Databasebg/AnimatedSprite2D.visible = false
-		$Databasebg/TowerPic.visible = true
-		$Databasebg/TowerPic.texture = load(TOWER_DATA[9]['thumbnail'])
-		$Databasebg/TowerPic.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.visible = true
+		$Databasebg/AnimatedSprite2D.modulate = Color(0, 0, 0, 1)
+		$Databasebg/AnimatedSprite2D.play("sbanalyzer")
 		return
-	UISound.play_click()
+
 	desc_name.text = tower_name[9]
 	desc_damage.text = str(TOWER_DATA[9]['damage'])
 	desc_speed.text = str(TOWER_DATA[9]['atk_speed'])
@@ -613,11 +617,14 @@ func _on_tower_10_pressed() -> void:
 	desc_sp.text = str(TOWER_DATA[9]['special_ability'])
 	desc_desc.text = str(TOWER_DATA[9]['irl_desc'])
 	$Databasebg/AnimatedSprite2D.visible = true
-	$Databasebg/TowerPic.visible = false
+	$Databasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 	$Databasebg/AnimatedSprite2D.play("sbanalyzer")
+
 
 func is_tower_unlocked(tower_enum: Data.Tower) -> bool:
 	return Data.TOWER_DATA[tower_enum].get("isUnlocked", false)
 
+
+	
 func refresh_tower_unlock_visuals() -> void:
 	_refresh_tower_image_states()
