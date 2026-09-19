@@ -9,7 +9,7 @@ func _ready() -> void:
 
 		if Data.vmmode_reward_granted:
 			$RewardContainer/GoldGroup/GoldLabel.text = "+%d" % map_data.get("reward_gold", 0)
-			$RewardContainer/ServerGroup/ServerLabel.text = "+%d" % map_data.get("reward_server_points", 0)
+			$RewardContainer/ServerGroup/ServerLabel.text = "+%d" % map_data.get("reward_sentinel_cores", 0)
 			$RewardContainer.visible = true
 		else:
 			$AlreadyCollectedLabel.visible = true

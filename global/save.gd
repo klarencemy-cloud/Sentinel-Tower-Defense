@@ -110,6 +110,7 @@ func save_game() -> void:
 			"current_level_index": Data.current_level_index, "checkpoint_wave": Data.checkpoint_wave,
 			"current_wave": Data.current_wave, "money": Data.money, "max_health": Data.max_health,
 			"maxserverload": Data.maxserverload, "server_points": Data.server_points,
+			"sentinel_cores": Data.sentinel_cores,
 			"player_level": Data.player_level, "experience": Data.experience,
 			"owned_towers": Data.owned_towers,
 			"placed_towers": placed_towers,
@@ -139,7 +140,7 @@ func save_game() -> void:
 
 
 
-func apply_vm_map_reward(map_number: int, gold: int, points: int) -> void:
+func apply_vm_map_reward(map_number: int, gold: int, cores: int) -> void:
 	var parsed: Dictionary = {"version": SAVE_VERSION}
 
 	if FileAccess.file_exists(SAVE_PATH):
@@ -150,7 +151,7 @@ func apply_vm_map_reward(map_number: int, gold: int, points: int) -> void:
 				parsed = loaded
 
 	parsed["money"] = int(parsed.get("money", Data.before_total_money)) + gold
-	parsed["server_points"] = int(parsed.get("server_points", Data.before_server_points)) + points
+	parsed["sentinel_cores"] = int(parsed.get("sentinel_cores", Data.sentinel_cores)) + cores
 
 	var vm_map_rewards: Dictionary = parsed.get("vm_map_rewards", {})
 	vm_map_rewards[str(map_number)] = true
@@ -185,6 +186,7 @@ func _load_game() -> void:
 		Data.max_health = float(parsed.get("max_health", Data.max_health))
 		Data.maxserverload = int(parsed.get("maxserverload", Data.maxserverload))
 		Data.server_points = int(parsed.get("server_points", Data.server_points))
+		Data.sentinel_cores = int(parsed.get("sentinel_cores", Data.sentinel_cores))
 		Data.player_level = int(parsed.get("player_level", Data.player_level))
 		Data.experience = int(parsed.get("experience", Data.experience))
 

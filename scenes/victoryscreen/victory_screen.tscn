@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="5_68wtw"]
 [ext_resource type="Texture2D" uid="uid://v6nn418cpr87" path="res://graphics/currency/gold.png" id="6_gld01"]
 [ext_resource type="Texture2D" uid="uid://clw64leoblwkc" path="res://graphics/currency/core.png" id="7_cor01"]
+[ext_resource type="FontFile" uid="uid://8pl0pe2glt3g" path="res://font/Libre_Franklin/static/LibreFranklin-ExtraLight.ttf" id="8_regfnt"]
 
 [sub_resource type="Gradient" id="Gradient_t1hsp"]
 offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
@@ -86,7 +87,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RewardContainer" type="HBoxContainer" parent="." unique_id=847215063]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -94,7 +94,6 @@ anchor_top = 0.46
 anchor_right = 0.5
 anchor_bottom = 0.46
 offset_left = -200.0
-offset_top = 0.0
 offset_right = 200.0
 offset_bottom = 44.0
 grow_horizontal = 2
@@ -102,12 +101,12 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="GoldGroup" type="HBoxContainer" parent="RewardContainer"]
+[node name="GoldGroup" type="HBoxContainer" parent="RewardContainer" unique_id=1688497122]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 8
 
-[node name="GoldIcon" type="TextureRect" parent="RewardContainer/GoldGroup"]
+[node name="GoldIcon" type="TextureRect" parent="RewardContainer/GoldGroup" unique_id=1799193083]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 size_flags_vertical = 4
@@ -115,21 +114,19 @@ texture = ExtResource("6_gld01")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="GoldLabel" type="Label" parent="RewardContainer/GoldGroup"]
+[node name="GoldLabel" type="Label" parent="RewardContainer/GoldGroup" unique_id=1787632561]
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("4_5lopo")
-theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_fonts/font = ExtResource("8_regfnt")
 theme_override_font_sizes/font_size = 28
 text = "+0"
 vertical_alignment = 1
 
-[node name="ServerGroup" type="HBoxContainer" parent="RewardContainer"]
+[node name="ServerGroup" type="HBoxContainer" parent="RewardContainer" unique_id=2142506618]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 8
 
-[node name="ServerIcon" type="TextureRect" parent="RewardContainer/ServerGroup"]
+[node name="ServerIcon" type="TextureRect" parent="RewardContainer/ServerGroup" unique_id=866113697]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 size_flags_vertical = 4
@@ -137,16 +134,15 @@ texture = ExtResource("7_cor01")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ServerLabel" type="Label" parent="RewardContainer/ServerGroup"]
+[node name="ServerLabel" type="Label" parent="RewardContainer/ServerGroup" unique_id=1477262762]
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("4_5lopo")
-theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_colors/font_color = Color(0.14901961, 0.29803923, 0.39215687, 1)
+theme_override_fonts/font = ExtResource("8_regfnt")
 theme_override_font_sizes/font_size = 28
 text = "+0"
 vertical_alignment = 1
 
-[node name="AlreadyCollectedLabel" type="Label" parent="."]
+[node name="AlreadyCollectedLabel" type="Label" parent="." unique_id=240894029]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -155,13 +151,12 @@ anchor_top = 0.46
 anchor_right = 0.5
 anchor_bottom = 0.46
 offset_left = -270.0
-offset_top = 0.0
 offset_right = 270.0
 offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_5lopo")
 theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_fonts/font = ExtResource("4_5lopo")
 theme_override_font_sizes/font_size = 28
 text = "Reward already collected"
 horizontal_alignment = 1

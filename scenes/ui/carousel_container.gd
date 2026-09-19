@@ -35,7 +35,7 @@ signal toggle_tween()
 @onready var vm_difficulty_label := $"../MapDetails/Difficulty"
 @onready var start_game_button: TextureButton = $"../StartGame"
 @onready var vm_gold: Label = $"../MapDetails/Description/Gold"
-@onready var vm_server_points: Label = $"../MapDetails/Description/Serverpt"
+@onready var vm_sentinel_cores: Label = $"../MapDetails/Description/Serverpt" # Serverpt node actually displays Sentinel Cores
 @onready var vm_collected: Label = $"../MapDetails/Description/Collected"
 
 var title_array: Array = ["Treatment Area", "Courtyard", "Konbini", "Hellbent", "The Maze", "Requiem"]
@@ -106,8 +106,8 @@ func _vm_reward_gold(index: int) -> int:
 	return int(_vm_field(index, 'reward_gold', 0))
 
 
-func _vm_reward_server_points(index: int) -> int:
-	return int(_vm_field(index, 'reward_server_points', 0))
+func _vm_reward_sentinel_cores(index: int) -> int:
+	return int(_vm_field(index, 'reward_sentinel_cores', 0))
 
 
 func _vm_reward_collected(index: int) -> bool:
@@ -129,7 +129,7 @@ func _refresh_vm_details(index: int) -> void:
 	level_recommendation.text = _vm_recommended(index)
 	vm_difficulty_label.text = _vm_difficulty(index)
 	vm_gold.text = str(_vm_reward_gold(index))
-	vm_server_points.text = str(_vm_reward_server_points(index))
+	vm_sentinel_cores.text = str(_vm_reward_sentinel_cores(index))
 	vm_collected.visible = _vm_reward_collected(index)
 
 	match _vm_difficulty(index):

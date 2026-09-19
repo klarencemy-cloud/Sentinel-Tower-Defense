@@ -58,7 +58,7 @@ var VM_MAP_DATA := {
 		'unlocked': false,
 		'desc': "The S.E.R.V.E.R. malfunctions; it loses health every 5 seconds. Defeat 200 virus enemies before the S.E.R.V.E.R. health reaches 0.",
 		'reward_gold': 200,
-		'reward_server_points': 1,
+		'reward_sentinel_cores': 1,
 		'reward_collected': false,
 	},
 	2: {
@@ -71,7 +71,7 @@ var VM_MAP_DATA := {
 		'unlocked': false,
 		'desc': "A massive outbreak of Worms and Spam floods the path. Defeat 1,000 enemies without taking any damage.",
 		'reward_gold': 300,
-		'reward_server_points': 1,
+		'reward_sentinel_cores': 2,
 		'reward_collected': false,
 	},
 	3: {
@@ -84,7 +84,7 @@ var VM_MAP_DATA := {
 		'unlocked': false,
 		'desc': "The S.E.R.V.E.R. has only 1 HP left. Survive 7 waves of malware without taking any damage. A single hit costs everything.",
 		'reward_gold': 400,
-		'reward_server_points': 1,
+		'reward_sentinel_cores': 2,
 		'reward_collected': false,
 	},
 	4: {
@@ -97,7 +97,7 @@ var VM_MAP_DATA := {
 		'unlocked': false,
 		'desc': "Inspired by a real-world exploit, a large number of Botnet drone that mainly compromise low-power devices swarms fast to attack the S.E.R.V.E.R., but are fragile as individuals. Win 7 waves to win the challenge.",
 		'reward_gold': 450,
-		'reward_server_points': 1,
+		'reward_sentinel_cores': 3,
 		'reward_collected': false,
 	},
 	5: {
@@ -110,7 +110,7 @@ var VM_MAP_DATA := {
 		'unlocked': false,
 		'desc': "The map has blind spots (fog), whenever enemies are in that location, they cannot be targeted. Win 7 waves to win the challenge.",
 		'reward_gold': 500,
-		'reward_server_points': 1,
+		'reward_sentinel_cores': 3,
 		'reward_collected': false,
 	},
 	6: {
@@ -123,7 +123,7 @@ var VM_MAP_DATA := {
 		'unlocked': false,
 		'desc': "Only Distributed Denial-of-Service (DDoS) attacks the S.E.R.V.E.R. to test how it handles floods of internet traffic. The player must defeat 300 enemies before the timer runs out.",
 		'reward_gold': 550,
-		'reward_server_points': 1,
+		'reward_sentinel_cores': 3,
 		'reward_collected': false,
 	},
 	7: {
@@ -136,7 +136,7 @@ var VM_MAP_DATA := {
 		'unlocked': false,
 		'desc': "Random towers randomly appear. The player must place them correctly and strategically. Win 7 waves to win the challenge.",
 		'reward_gold': 700,
-		'reward_server_points': 1,
+		'reward_sentinel_cores': 3,
 		'reward_collected': false,
 	},
 	8: {
@@ -150,7 +150,7 @@ var VM_MAP_DATA := {
 		'desc': "All sentinels are disabled during the challenge. Win 7 waves to win the challenge.",
 		'disable_sentinels': true,
 		'reward_gold': 800,
-		'reward_server_points': 1,
+		'reward_sentinel_cores': 4,
 		'reward_collected': false,
 	},
 	9: {
@@ -163,7 +163,7 @@ var VM_MAP_DATA := {
 		'unlocked': false,
 		'desc': "This challenge is endless. A survival game where the player must defend the S.E.R.V.E.R. with an endless number of waves.",
 		'reward_gold': 0,
-		'reward_server_points': 0,
+		'reward_sentinel_cores': 0,
 		'reward_collected': false,
 	},
 }
@@ -1314,6 +1314,10 @@ var server_points: int = 1:
 			if server_points == 0:
 				server.toggle_particle(false)
 
+# Sentinel Core currency: spent to Roll Sentinel (scenes/upgrade/upgrade.gd).
+# Kept separate from server_points (Server Points) - see root CLAUDE.md Sandbox mode.
+var sentinel_cores: int = 0
+
 var default_level_pool: float = 50
 var player_level: int = 1
 var experience: int = 0:
@@ -1393,9 +1397,6 @@ func update_wave_unlocks() -> void:
 				map_data["unlocked"] = true
 
 
-# Grants a VM map's one-time Gold/Server Points reward on first successful completion.
-# Persists into the Story save via Save.apply_vm_map_reward (VM currency is isolated in
-# before_total_money/before_server_points during a session, see root CLAUDE.md Sandbox mode).
 # Returns false (no-op) if the map is unknown or its reward was already collected.
 func grant_vm_map_reward(map_number: int) -> bool:
 	vmmode_reward_granted = false
@@ -1409,12 +1410,27 @@ func grant_vm_map_reward(map_number: int) -> bool:
 		return false
 
 	var gold: int = int(map_data.get("reward_gold", 0))
-	var points: int = int(map_data.get("reward_server_points", 0))
+	var cores: int = int(map_data.get("reward_sentinel_cores", 0))
 
-	Save.apply_vm_map_reward(map_number, gold, points)
+	Save.apply_vm_map_reward(map_number, gold, cores)
 
 	before_total_money += gold
-	before_server_points += points
+	sentinel_cores += cores
 	map_data["reward_collected"] = true
 	vmmode_reward_granted = true
 	return true
+
+
+func get_locked_sentinels() -> Array:
+	var locked: Array = []
+
+	for sentinel_enum in Sentinel.values():
+		if not SENTINEL_DATA[sentinel_enum].get("isUnlocked", false):
+			locked.append(sentinel_enum)
+
+	return locked
+
+
+func get_sentinel_roll_cost() -> int:
+	var unlocked_count: int = Sentinel.values().size() - get_locked_sentinels().size()
+	return unlocked_count + 1

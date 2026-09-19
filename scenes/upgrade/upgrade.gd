@@ -68,7 +68,7 @@ func _ready() -> void:
 		$SentinelStuff/ScrollContainer/RealSentinelContainer.add_child(sentinel_card)
 		sentinel_card.press.connect(change_info)
 	sentinel_roll_thumbnails = _build_sentinel_roll_thumbnails()
-	$SentinelStuff/Rollbtn.connect("pressed", Callable(self, "_on_Rollbtn_pressed"))
+	_refresh_core_labels()
 	update_tier_buttons()
 
 func _on_visibility_changed() -> void:
@@ -605,19 +605,22 @@ func _build_sentinel_roll_thumbnails() -> Array:
 
 
 func _get_locked_sentinels() -> Array:
-	var locked_sentinels: Array = []
-
-	for sentinel_enum in Data.Sentinel.values():
-		var sentinel_data = Data.SENTINEL_DATA[sentinel_enum]
-
-		if not sentinel_data.get("isUnlocked", false):
-			locked_sentinels.append(sentinel_enum)
-
-	return locked_sentinels
+	return Data.get_locked_sentinels()
 
 
-func _on_Rollbtn_pressed() -> void:
-	print("Roll")
+func _refresh_core_labels() -> void:
+	var core_inventory: Label = $SentinelStuff/Core/CoreInventory
+	var core_requirement: Label = $SentinelStuff/Core/CoreRequirement
+
+	core_inventory.text = "%d CORES" % Data.sentinel_cores
+
+	if _get_locked_sentinels().is_empty():
+		core_requirement.text = "All Sentinels Unlocked"
+		$SentinelStuff/Rollbtn.disabled = true
+	else:
+		var cost: int = Data.get_sentinel_roll_cost()
+		core_requirement.text = "Core Per Roll: %d Core%s" % [cost, "" if cost == 1 else "s"]
+		$SentinelStuff/Rollbtn.disabled = false
 
 
 func _animate_sentinel_roll(locked_sentinels: Array) -> void:
@@ -667,11 +670,15 @@ func _animate_sentinel_roll(locked_sentinels: Array) -> void:
 		ui.unlock_sentinel_card(chosen_enum)
 		#show sentinel popup animation
 		ui.play_sentinel_pop(Data.SENTINEL_DATA[chosen_enum]["name"])
-	
+
 
 	# Rebuild the animation list.
 	# All sentinels are still allowed to appear while rolling.
 	sentinel_roll_thumbnails = _build_sentinel_roll_thumbnails()
+
+	var save = get_tree().get_first_node_in_group("save")
+	if save:
+		save.save_game()
 	
 func _update_sentinel_card_visual(sentinel_enum: Data.Sentinel) -> void:
 	var container = $SentinelStuff/ScrollContainer/RealSentinelContainer
@@ -701,6 +708,7 @@ func _on_back_btn_pressed() -> void:
 			$SentinelStuff/Rollbtn.visible = false
 		else:
 			$SentinelStuff/Rollbtn.visible = true
+			_refresh_core_labels()
 
 	elif $SentinelStuff.visible:
 		$SentinelStuff.hide()
@@ -761,6 +769,7 @@ func _on_sentinel_btn_pressed() -> void:
 		$SentinelStuff/Rollbtn.visible = false
 	else:
 		$SentinelStuff/Rollbtn.visible = true
+		_refresh_core_labels()
 
 	if Data.is_vmmode:
 		_show_sentinel_list_view()
@@ -850,7 +859,6 @@ func _on_unlock_pressed() -> void:
 		
 
 func _on_rollbtn_pressed() -> void:
-	UISound.play_click()
 	if sentinel_roll_active:
 		return
 
@@ -858,10 +866,21 @@ func _on_rollbtn_pressed() -> void:
 
 	# All sentinels have already been unlocked
 	if locked_sentinels.is_empty():
+		UISound.play_close()
 		return
 
 	if sentinel_roll_thumbnails.is_empty():
 		return
+
+	var roll_cost: int = Data.get_sentinel_roll_cost()
+
+	if Data.sentinel_cores < roll_cost:
+		UISound.play_close()
+		return
+
+	UISound.play_click()
+
+	Data.sentinel_cores -= roll_cost
 
 	$SentinelStuff/SentinelRoll/Sentinel.visible = true
 	sentinel_roll_active = true
@@ -869,7 +888,7 @@ func _on_rollbtn_pressed() -> void:
 
 	await _animate_sentinel_roll(locked_sentinels)
 
-	$SentinelStuff/Rollbtn.disabled = false
+	_refresh_core_labels()
 	sentinel_roll_active = false
 
 
