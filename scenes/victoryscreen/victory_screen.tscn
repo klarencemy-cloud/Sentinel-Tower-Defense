@@ -87,6 +87,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RewardContainer" type="HBoxContainer" parent="." unique_id=847215063]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -155,10 +156,10 @@ offset_right = 270.0
 offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
-theme_override_fonts/font = ExtResource("4_5lopo")
+theme_override_colors/font_color = Color(0.12941177, 0.59607846, 0.6784314, 1)
+theme_override_fonts/font = ExtResource("8_regfnt")
 theme_override_font_sizes/font_size = 28
-text = "Reward already collected"
+text = "Rewards already collected"
 horizontal_alignment = 1
 vertical_alignment = 1
 
