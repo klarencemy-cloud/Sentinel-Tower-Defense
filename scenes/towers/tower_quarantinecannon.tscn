@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://decyie3x0j0su" path="res://graphics/ui/crosshair.png" id="4_0c3ac"]
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="4_qhywc"]
 [ext_resource type="Texture2D" uid="uid://bwj40wgb4ivd7" path="res://graphics/towers/mortar/mortar tower effect.png" id="5_qhywc"]
-[ext_resource type="AudioStream" uid="uid://jfpfkfr44fx3" path="res://audio/SFX/TOWERS/quarantine cannon shoot.wav" id="7_0hga0"]
+[ext_resource type="AudioStream" path="res://audio/SFX/TOWERS/quarantine cannon shoot.ogg" id="7_0hga0"]
 [ext_resource type="Texture2D" uid="uid://c5mv5ldsp1675" path="res://graphics/currency/small_gold_glow.png" id="8_qhywc"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="9_0c3ac"]
 [ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="10_qhywc"]

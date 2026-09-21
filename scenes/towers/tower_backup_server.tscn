@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bs7mlpxrwhrat" path="res://scenes/ui/tower_menu.tscn" id="5_6gdv8"]
 [ext_resource type="Shader" uid="uid://do4j1qwe3ki1u" path="res://texture/shaders/lightning.tres" id="5_frx7f"]
 [ext_resource type="Texture2D" uid="uid://jqakj3mjmfi3" path="res://texture/shaders/vfx_lightning.jpg" id="6_s3ndn"]
-[ext_resource type="AudioStream" uid="uid://dq1828lqw2k8r" path="res://audio/SFX/TOWERS/backup electricity.wav" id="7_s3ndn"]
+[ext_resource type="AudioStream" path="res://audio/SFX/TOWERS/backup electricity.ogg" id="7_s3ndn"]
 
 [sub_resource type="Gradient" id="Gradient_frx7f"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)

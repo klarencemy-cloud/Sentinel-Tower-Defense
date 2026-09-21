@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ckwq2ydu23lef"
+path="res://.godot/imported/idps shoot.ogg-e356f5b45ef9893d10ac54e6cabf465c.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/SFX/TOWERS/idps shoot.ogg"
+dest_files=["res://.godot/imported/idps shoot.ogg-e356f5b45ef9893d10ac54e6cabf465c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

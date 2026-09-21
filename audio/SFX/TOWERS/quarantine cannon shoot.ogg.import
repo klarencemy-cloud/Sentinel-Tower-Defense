@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ckswc0rd5drel"
+path="res://.godot/imported/quarantine cannon shoot.ogg-c7e69cfa5b62571838caf405024f025f.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/SFX/TOWERS/quarantine cannon shoot.ogg"
+dest_files=["res://.godot/imported/quarantine cannon shoot.ogg-c7e69cfa5b62571838caf405024f025f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

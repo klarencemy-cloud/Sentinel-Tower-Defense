@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cyrax1gn4pupg"
+path="res://.godot/imported/ai sec shoot.ogg-c981b7478b0fc0535a74f50be3e04bda.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/SFX/TOWERS/ai sec shoot.ogg"
+dest_files=["res://.godot/imported/ai sec shoot.ogg-c981b7478b0fc0535a74f50be3e04bda.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

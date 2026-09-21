@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cmm627fmpgk3g"
+path="res://.godot/imported/ai sec electricity.ogg-a01c6ccd09f7ceeaeb2deb0ec65d610d.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/SFX/TOWERS/ai sec electricity.ogg"
+dest_files=["res://.godot/imported/ai sec electricity.ogg-a01c6ccd09f7ceeaeb2deb0ec65d610d.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

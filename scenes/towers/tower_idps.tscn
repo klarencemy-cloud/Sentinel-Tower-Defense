@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="6_5ge8c"]
 [ext_resource type="Texture2D" uid="uid://fv2nsp2ceytq" path="res://texture/offset_glow.png" id="6_dbesr"]
 [ext_resource type="Shader" uid="uid://betoupj84mtmb" path="res://texture/shaders/radar_shader.gdshader" id="6_hginv"]
-[ext_resource type="AudioStream" uid="uid://bqovvu4y00vxj" path="res://audio/SFX/TOWERS/idps shoot.wav" id="8_dbesr"]
+[ext_resource type="AudioStream" path="res://audio/SFX/TOWERS/idps shoot.ogg" id="8_dbesr"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="8_u1lur"]
-[ext_resource type="AudioStream" uid="uid://bktf276m6cpty" path="res://audio/SFX/TOWERS/idps air.wav" id="9_dbesr"]
+[ext_resource type="AudioStream" path="res://audio/SFX/TOWERS/idps air.ogg" id="9_dbesr"]
 [ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="9_jofp6"]
 [ext_resource type="Texture2D" uid="uid://c5mv5ldsp1675" path="res://graphics/currency/small_gold_glow.png" id="12_jofp6"]
 

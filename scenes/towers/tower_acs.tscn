@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c7ynl5cmiqorn" path="res://graphics/towers/acs/acs_turret.png" id="4_jhwlm"]
 [ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="5_yw1f8"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="6_jhwlm"]
-[ext_resource type="AudioStream" uid="uid://do4lx8recvkag" path="res://audio/SFX/TOWERS/acs shoot.wav" id="6_qdga5"]
+[ext_resource type="AudioStream" path="res://audio/SFX/TOWERS/acs shoot.ogg" id="6_qdga5"]
 [ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="7_n7eo6"]
 [ext_resource type="Texture2D" uid="uid://c5mv5ldsp1675" path="res://graphics/currency/small_gold_glow.png" id="9_n7eo6"]
 

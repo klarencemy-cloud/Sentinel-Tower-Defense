@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cbae7vfa786ej" path="res://scenes/towers/tower_data_loss_prevention.gd" id="2_shd4j"]
 [ext_resource type="Texture2D" uid="uid://bbpa81fwgiswi" path="res://graphics/towers/base/tower_base.png" id="3_gbk4y"]
 [ext_resource type="Texture2D" uid="uid://c5kgnafqu803o" path="res://graphics/towers/dlp/dlp_turret.png" id="4_1r1eg"]
-[ext_resource type="AudioStream" uid="uid://msdlyogcyfpv" path="res://audio/SFX/TOWERS/SPAM FILTERsss.wav" id="5_shd4j"]
+[ext_resource type="AudioStream" path="res://audio/SFX/TOWERS/SPAM FILTERsss.ogg" id="5_shd4j"]
 [ext_resource type="Texture2D" uid="uid://c5mv5ldsp1675" path="res://graphics/currency/small_gold_glow.png" id="6_gbk4y"]
 [ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="8_gbk4y"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="9_kebbf"]

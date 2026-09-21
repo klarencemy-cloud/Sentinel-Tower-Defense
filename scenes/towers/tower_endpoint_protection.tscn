@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="5_i1106"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="6_tm11s"]
 [ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="7_nnykp"]
-[ext_resource type="AudioStream" uid="uid://b7rxapjdaua38" path="res://audio/SFX/TOWERS/endpoint shoot.wav" id="8_mw1ky"]
-[ext_resource type="AudioStream" uid="uid://dycloyp48gjme" path="res://audio/SFX/TOWERS/fire ambience.wav" id="9_i1106"]
+[ext_resource type="AudioStream" path="res://audio/SFX/TOWERS/endpoint shoot.ogg" id="8_mw1ky"]
+[ext_resource type="AudioStream" path="res://audio/SFX/TOWERS/fire ambience.ogg" id="9_i1106"]
 [ext_resource type="Texture2D" uid="uid://c5mv5ldsp1675" path="res://graphics/currency/small_gold_glow.png" id="10_mw1ky"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_56y0f"]

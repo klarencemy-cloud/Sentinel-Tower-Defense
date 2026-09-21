@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cmsgc1m1iuifh" path="res://graphics/explosion animations/mortar frost explosion.png" id="1_npy6q"]
 [ext_resource type="Script" uid="uid://chma1t40gg4b4" path="res://scenes/bullets/explosion.gd" id="2_npy6q"]
-[ext_resource type="AudioStream" uid="uid://c4eps6y231ocw" path="res://audio/explosion.wav" id="3_npy6q"]
+[ext_resource type="AudioStream" path="res://audio/explosion.ogg" id="3_npy6q"]
 
 [sub_resource type="Animation" id="Animation_uimni"]
 length = 0.001
