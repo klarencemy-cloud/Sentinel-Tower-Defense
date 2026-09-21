@@ -18,6 +18,11 @@
 [ext_resource type="AudioStream" uid="uid://dxu4t84embc1f" path="res://audio/SFX/BackgroundSFX/rain.wav" id="16_qwse3"]
 [ext_resource type="AudioStream" uid="uid://3ep022xgwr8" path="res://audio/SFX/BackgroundSFX/emergency 3x.wav" id="17_qwse3"]
 [ext_resource type="AudioStream" uid="uid://d320ujndaakxd" path="res://audio/MUSIC/Boss Battle.wav" id="18_3k7dx"]
+[ext_resource type="AudioStream" uid="uid://dyy38lnnhaif3" path="res://audio/UI/gacha.wav" id="19_fw7pc"]
+[ext_resource type="AudioStream" uid="uid://cmjyvl18h7ult" path="res://audio/UI/gacha 2.wav" id="20_b1lcm"]
+[ext_resource type="AudioStream" uid="uid://crcfxemhye40k" path="res://audio/UI/gacha 3.wav" id="21_qvo23"]
+[ext_resource type="AudioStream" uid="uid://cp406hwbemx50" path="res://audio/UI/gacha 4.wav" id="22_q21rh"]
+[ext_resource type="AudioStream" uid="uid://cpllexkqqu2bq" path="res://audio/UI/gacha continuous.wav" id="23_b1lcm"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q17wm"]
 streams_count = 3
@@ -37,6 +42,13 @@ stream_0/stream = ExtResource("10_n4s08")
 stream_1/stream = ExtResource("11_0u66a")
 stream_2/stream = ExtResource("12_73dq3")
 stream_3/stream = ExtResource("13_h1od4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1rfma"]
+streams_count = 4
+stream_0/stream = ExtResource("19_fw7pc")
+stream_1/stream = ExtResource("20_b1lcm")
+stream_2/stream = ExtResource("21_qvo23")
+stream_3/stream = ExtResource("22_q21rh")
 
 [node name="UISound" type="Node" unique_id=134395415]
 process_mode = 3
@@ -97,3 +109,9 @@ bus = &"Sounds"
 stream = ExtResource("18_3k7dx")
 volume_db = -13.0
 bus = &"Music"
+
+[node name="Gacha" type="AudioStreamPlayer" parent="." unique_id=825595118]
+stream = SubResource("AudioStreamRandomizer_1rfma")
+
+[node name="GachaRoll" type="AudioStreamPlayer" parent="." unique_id=543814670]
+stream = ExtResource("23_b1lcm")

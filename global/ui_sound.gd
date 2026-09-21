@@ -11,6 +11,8 @@ extends Node
 @onready var rain_background: AudioStreamPlayer = $RainBackground
 @onready var emergency: AudioStreamPlayer = $Emergency
 @onready var boss_battle_background_music: AudioStreamPlayer = $BossBattleBackgroundMusic
+@onready var gacha: AudioStreamPlayer = $Gacha
+@onready var gacha_roll: AudioStreamPlayer = $GachaRoll
 
 var _ui_bg_tween: Tween
 var _game_bg_tween: Tween
@@ -47,6 +49,12 @@ func play_carousel():
 
 func play_unlock():
 	click_unlock.play()
+
+func play_gacha():
+	gacha.play()
+
+func play_gacha_roll():
+	gacha_roll.play()
 
 func play_emergency():
 	_kill_tween(_emergency_tween)

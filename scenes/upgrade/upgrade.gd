@@ -882,6 +882,7 @@ func _on_rollbtn_pressed() -> void:
 		return
 
 	UISound.play_click()
+	UISound.play_gacha_roll()
 
 	Data.sentinel_cores -= roll_cost
 
