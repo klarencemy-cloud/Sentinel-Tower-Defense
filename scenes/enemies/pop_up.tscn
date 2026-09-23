@@ -1018,7 +1018,8 @@ metadata/_edit_use_anchors_ = true
 libraries/ = SubResource("AnimationLibrary_pntdg")
 
 [node name="TextureRect" type="TextureRect" parent="Pop/Info" unique_id=1770208282]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.0453125
 anchor_top = 0.043518517
 anchor_right = 0.9426327
@@ -1111,10 +1112,10 @@ metadata/_edit_use_anchors_ = true
 [node name="InG_desc" type="Label" parent="Pop/Info/DisplayContainer/Label2" unique_id=1571268256]
 layout_mode = 0
 offset_top = 54.0
-offset_right = 788.0
-offset_bottom = 97.0
+offset_right = 959.0
+offset_bottom = 219.0
 theme_override_fonts/font = ExtResource("5_nnuf7")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 20
 text = "Once nothing more than just a harmless digital junk, Spam has evolved into a stubborn threat that swarms the S.E.R.V.E.R. with endless numbers. Individually weak, they exist only to exhaust the system's defenses through large volumes. They appear in large groups. Individually weak but dangerous when left unchecked and filtered. Spam is unsolicited, unwelcome digital communication that is transmitted in large quantities, mostly via email but sometimes via texts, phone calls, and social media."
 horizontal_alignment = 3
 autowrap_mode = 2
@@ -1122,10 +1123,10 @@ autowrap_mode = 2
 [node name="Label3" type="Label" parent="Pop/Info/DisplayContainer/Label2/InG_desc" unique_id=2139048189]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.11732996
-anchor_top = 1.0
-anchor_right = 0.11732996
-anchor_bottom = 1.0
+anchor_left = 0.098494284
+anchor_top = 0.9939394
+anchor_right = 0.09849428
+anchor_bottom = 0.9939394
 offset_left = -92.45601
 offset_top = 20.0
 offset_right = 207.54399
@@ -1138,10 +1139,10 @@ metadata/_edit_use_anchors_ = true
 [node name="RL_desc" type="Label" parent="Pop/Info/DisplayContainer/Label2/InG_desc/Label3" unique_id=1126347985]
 layout_mode = 0
 offset_top = 54.0
-offset_right = 788.0
-offset_bottom = 103.0
+offset_right = 957.0
+offset_bottom = 107.0
 theme_override_fonts/font = ExtResource("5_nnuf7")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 20
 text = "Spam is unsolicited, unwelcome digital communication that is transmitted in large quantities, mostly via email but sometimes via texts, phone calls, and social media."
 horizontal_alignment = 3
 autowrap_mode = 2
