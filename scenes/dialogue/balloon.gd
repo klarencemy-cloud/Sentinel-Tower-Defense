@@ -170,6 +170,8 @@ func apply_dialogue_line() -> void:
 				$Balloon/Show/Character.texture = load("res://graphics/character/pfp 2.png")
 			"Odysseus":
 				$Balloon/Show/Character.texture = load("res://graphics/character/pfp 3.png")
+			"VIRUS":
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/virus.png")
 			"WORM":
 				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/worm2.png")
 			"SPYWARE":
@@ -182,12 +184,8 @@ func apply_dialogue_line() -> void:
 				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/creds.png")
 			"TROJAN HORSE":
 				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/trojanhorse.png")
-			"TROJAN HORSE":
-				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/trojanhorse.png")
 			"INSIDER THREAT":
 				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/insider.png")
-			"WANNACRY":
-				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/wannacry.png")
 			"WANNACRY":
 				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/wannacry.png")
 			"ROOTKIT":
@@ -200,10 +198,8 @@ func apply_dialogue_line() -> void:
 				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/ransomware.png")
 			"NOTPETYA":
 				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/notpetya.png")
-			"NOTPETYA":
-				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/notpetya.png")
 			"ZERO-DAY":
-				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/notpetya.png")
+				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/zeroday.png")
 			"MYDOOM":
 				$Balloon/Show/Character.texture = load("res://graphics/enemies/enemies thumbnail/mydoom.png")
 			"SPAM":
@@ -214,13 +210,13 @@ func apply_dialogue_line() -> void:
 				$Balloon/Show/Character.texture = load("res://graphics/character/trojanpfp.png")
 			"System":
 				$Balloon/Show/Character.texture = null
-				$Balloon/Show.hide()
+				# $Balloon/Show.hide()
 			"Unknown Voice":
 				$Balloon/Show/Character.texture = null
-				$Balloon/Show.hide()
+				# $Balloon/Show.hide()
 			"Unknown":
 				$Balloon/Show/Character.texture = null
-				$Balloon/Show.hide()
+				# $Balloon/Show.hide()
 
 
 	dialogue_label.hide()

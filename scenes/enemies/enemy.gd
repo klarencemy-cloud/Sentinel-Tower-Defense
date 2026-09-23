@@ -125,7 +125,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	path_follow.rotation = 0.0
 	
 
-	Data.incremental_enemy_health_bonus = Data.current_wave * .02
+	Data.incremental_enemy_health_bonus = Data.current_wave * .05
 	Data.incremental_enemy_movespeed_bonus = Data.current_wave * .005
 	Data.incremental_enemy_damage_bonus = Data.current_wave * .01
 	health = Data.ENEMY_DATA[type]['health'] + (Data.incremental_enemy_health_bonus * Data.ENEMY_DATA[type]['health'])

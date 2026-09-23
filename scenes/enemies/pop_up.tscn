@@ -1089,21 +1089,23 @@ sprite_frames = SubResource("SpriteFrames_5dcfn")
 autoplay = "default"
 
 [node name="Name" type="Label" parent="Pop/Info/DisplayContainer" unique_id=2134197941]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.104166664
-anchor_top = 0.2037037
-anchor_right = 0.4296875
-anchor_bottom = 0.3101852
+anchor_top = 0.19629629
+anchor_right = 0.5307292
+anchor_bottom = 0.30277777
 theme_override_font_sizes/font_size = 100
 text = "Credential Stuffing"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="Pop/Info/DisplayContainer" unique_id=1410305698]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.104166664
-anchor_top = 0.34166667
+anchor_top = 0.33425927
 anchor_right = 0.24322917
-anchor_bottom = 0.37407407
+anchor_bottom = 0.36666667
 theme_override_colors/font_color = Color(0.86, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "In-game Description"
@@ -1112,24 +1114,23 @@ metadata/_edit_use_anchors_ = true
 [node name="InG_desc" type="Label" parent="Pop/Info/DisplayContainer/Label2" unique_id=1571268256]
 layout_mode = 0
 offset_top = 54.0
-offset_right = 959.0
-offset_bottom = 219.0
+offset_right = 1004.0
+offset_bottom = 79.0
 theme_override_fonts/font = ExtResource("5_nnuf7")
 theme_override_font_sizes/font_size = 20
-text = "Once nothing more than just a harmless digital junk, Spam has evolved into a stubborn threat that swarms the S.E.R.V.E.R. with endless numbers. Individually weak, they exist only to exhaust the system's defenses through large volumes. They appear in large groups. Individually weak but dangerous when left unchecked and filtered. Spam is unsolicited, unwelcome digital communication that is transmitted in large quantities, mostly via email but sometimes via texts, phone calls, and social media."
 horizontal_alignment = 3
 autowrap_mode = 2
 
 [node name="Label3" type="Label" parent="Pop/Info/DisplayContainer/Label2/InG_desc" unique_id=2139048189]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.098494284
-anchor_top = 0.9939394
-anchor_right = 0.09849428
-anchor_bottom = 0.9939394
+anchor_left = 0.093083665
+anchor_top = 0.9659866
+anchor_right = 0.09308366
+anchor_bottom = 0.9659866
 offset_left = -92.45601
 offset_top = 20.0
-offset_right = 207.54399
+offset_right = 207.544
 offset_bottom = 55.0
 theme_override_colors/font_color = Color(0.86, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
@@ -1139,11 +1140,10 @@ metadata/_edit_use_anchors_ = true
 [node name="RL_desc" type="Label" parent="Pop/Info/DisplayContainer/Label2/InG_desc/Label3" unique_id=1126347985]
 layout_mode = 0
 offset_top = 54.0
-offset_right = 957.0
-offset_bottom = 107.0
+offset_right = 992.56775
+offset_bottom = 79.0
 theme_override_fonts/font = ExtResource("5_nnuf7")
 theme_override_font_sizes/font_size = 20
-text = "Spam is unsolicited, unwelcome digital communication that is transmitted in large quantities, mostly via email but sometimes via texts, phone calls, and social media."
 horizontal_alignment = 3
 autowrap_mode = 2
 

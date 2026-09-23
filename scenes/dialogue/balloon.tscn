@@ -218,7 +218,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("4_t5syq")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 27
 text = "Dialogue..."
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1162966119]
@@ -255,7 +255,7 @@ metadata/_edit_use_anchors_ = true
 [node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu" unique_id=914537232]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_t5syq")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_f8dtn")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_0hms4")
 theme_override_styles/hover = SubResource("StyleBoxTexture_h2u8y")
