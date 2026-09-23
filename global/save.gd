@@ -184,6 +184,7 @@ func _load_game() -> void:
 		Data.current_wave = int(parsed.get("current_wave", Data.current_wave))
 		Data.money = int(parsed.get("money", Data.money))
 		Data.max_health = float(parsed.get("max_health", Data.max_health))
+		Data.health = Data.max_health
 		Data.maxserverload = int(parsed.get("maxserverload", Data.maxserverload))
 		Data.server_points = int(parsed.get("server_points", Data.server_points))
 		Data.sentinel_cores = int(parsed.get("sentinel_cores", Data.sentinel_cores))

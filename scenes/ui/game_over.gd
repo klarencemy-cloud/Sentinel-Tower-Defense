@@ -24,7 +24,7 @@ func _on_btn_checkpoint_pressed() -> void:
 
 	get_tree().paused = false
 	visible = false
-	Data.health = 100
+	Data.health = Data.max_health
 	Data.current_wave = max(Data.checkpoint_wave - 1, 0)
 	get_tree().change_scene_to_file("uid://h7qi8y7uyyai") # Loading screen
 	
@@ -53,7 +53,7 @@ func _on_btn_retry_pressed() -> void:
 func _reset_game_stats() -> void:
 	Data.current_wave = 0
 	Data.checkpoint_wave = 0
-	Data.health = 100
+	Data.health = Data.max_health
 	Data.money = 200
 	Data.currentserverload = 0
 	Data.player_level = 1

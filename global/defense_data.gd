@@ -40,7 +40,8 @@ func _armor_damage_reduction() -> void:
 func _server_health() -> void:
 	total_server_health += server_health_add
 	defense_levels[1] += 1
-	Data.max_health += server_health_add  # Increases max health but not the current health
+	Data.max_health += server_health_add
+	Data.health += server_health_add   
 	server_health_upgraded.emit(Data.max_health)
 
 

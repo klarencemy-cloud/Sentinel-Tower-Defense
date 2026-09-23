@@ -46,7 +46,7 @@ func hide_ui():
 	hide_range()
 
 func _on_reload_timer_timeout() -> void:
-	if Data.health < Data.default_health:
+	if Data.health < Data.max_health:
 		var heal_amount = Data.health * heal_percentage
 		Data.health += heal_amount
 		$HealGain.position.y = -193.01
