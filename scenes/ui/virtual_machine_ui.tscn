@@ -194,7 +194,6 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.2, 0.85, 0.35, 1)
 theme_override_font_sizes/font_size = 24
 text = "✓ COLLECTED"
-horizontal_alignment = 0
 vertical_alignment = 1
 
 [node name="Gold2" type="TextureRect" parent="MapDetails/Description" unique_id=1070007890]
@@ -224,6 +223,22 @@ grow_vertical = 2
 texture = ExtResource("6_pwh5r")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="LockedLabel" type="Label" parent="MapDetails" unique_id=657947782]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 22.999939
+offset_top = 19.0
+offset_right = 778.99994
+offset_bottom = 49.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0.016, 1)
+theme_override_fonts/font = ExtResource("2_kp6ki")
+theme_override_font_sizes/font_size = 21
+autowrap_mode = 2
 
 [node name="StartGame" type="TextureButton" parent="." unique_id=470087992]
 texture_filter = 2

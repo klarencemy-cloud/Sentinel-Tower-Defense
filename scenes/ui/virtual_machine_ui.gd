@@ -10,7 +10,7 @@ func _ready() -> void:
 	for map_number in range(1, 10):
 		if not Data.VM_MAP_DATA[map_number].get('unlocked', false):
 			var hotspot: TextureButton = get_node("MapContainer/Map/Challenge%d" % map_number)
-			hotspot.self_modulate = Color(0.35, 0.35, 0.35)
+			hotspot.modulate = Color(0.35, 0.35, 0.35)
 
 		if Data.VM_MAP_DATA[map_number].get('reward_collected', false):
 			var world_hotspot: Control = get_node("MapContainer/Map/Challenge%d" % map_number)

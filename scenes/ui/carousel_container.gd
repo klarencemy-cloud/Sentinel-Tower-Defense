@@ -37,6 +37,11 @@ signal toggle_tween()
 @onready var vm_gold: Label = $"../MapDetails/Description/Gold"
 @onready var vm_sentinel_cores: Label = $"../MapDetails/Description/Serverpt" # Serverpt node actually displays Sentinel Cores
 @onready var vm_collected: Label = $"../MapDetails/Description/Collected"
+@onready var vm_locked_label: Label = $"../MapDetails/LockedLabel"
+
+const LOCKED_LABEL_SHIFT: float = 34.0
+var description_default_offset_top: float = 0.0
+var description_default_offset_bottom: float = 0.0
 
 var title_array: Array = ["Treatment Area", "Courtyard", "Konbini", "Hellbent", "The Maze", "Requiem"]
 var path_num: Array = ["1", "1", "2", "4", "3", "3"]
@@ -117,9 +122,15 @@ func _vm_reward_collected(index: int) -> bool:
 func _refresh_vm_lock_state(index: int) -> void:
 	if _vm_unlocked(index):
 		start_game_button.disabled = false
+		vm_locked_label.visible = false
+		vm_description.offset_top = description_default_offset_top
+		vm_description.offset_bottom = description_default_offset_bottom
 	else:
 		var required_wave: int = int(_vm_field(index, 'unlock_wave', 0))
-		vm_description.text = "Locked - reach Wave %d in Story Mode.\n\n" % required_wave + vm_description.text
+		vm_locked_label.text = "Locked - reach Wave %d in Story Mode." % required_wave
+		vm_locked_label.visible = true
+		vm_description.offset_top = description_default_offset_top + LOCKED_LABEL_SHIFT
+		vm_description.offset_bottom = description_default_offset_bottom + LOCKED_LABEL_SHIFT
 		start_game_button.disabled = true
 
 
@@ -165,6 +176,8 @@ func _ready() -> void:
 	Data.change_challenge.connect(_change_challenge)
 
 	if is_vm:
+		description_default_offset_top = vm_description.offset_top
+		description_default_offset_bottom = vm_description.offset_bottom
 		_refresh_vm_card_dim()
 		_refresh_vm_details(count)
 
