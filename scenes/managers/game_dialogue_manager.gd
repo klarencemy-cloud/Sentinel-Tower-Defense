@@ -790,3 +790,11 @@ func activate_notpetya_dialogue() -> void:
 		get_tree().paused = true
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended, CONNECT_ONE_SHOT)
 	DialogueManager.show_dialogue_balloon(load("res://Notpetya.dialogue"), "SkillActivate")
+
+
+signal level_completed
+signal next_level
+
+func show_victory() -> void:
+	level_completed.emit()
+	next_level.emit()

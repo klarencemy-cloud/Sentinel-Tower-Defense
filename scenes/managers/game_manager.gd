@@ -27,6 +27,8 @@ func _ready() -> void:
 	wave_manager.level_completed.connect(level_completed)
 	wave_manager.next_map.connect(next_map)
 
+	GameDialogueManager.level_completed.connect(level_completed)
+	GameDialogueManager.next_level.connect(next_map)
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.place_ability.connect(_on_ui_place_ability)
@@ -56,7 +58,7 @@ func next_map() -> void:
 	
 	for sentinel in get_tree().get_nodes_in_group("Sentinels"):
 		sentinel.queue_free()
-	for ability in get_tree().get_nodes_in_group("Abilities"): 
+	for ability in get_tree().get_nodes_in_group("Abilities"):
 		ability.queue_free()
 		
 	# Clear saved placements so they aren't restored on the next map

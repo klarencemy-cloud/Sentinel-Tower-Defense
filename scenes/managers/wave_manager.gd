@@ -37,8 +37,8 @@ func update_wave_state() -> void:
 			if !Data.is_sandbox and !Data.is_vmmode:
 				if ui:
 					ui.disable_auto()
-				level_completed.emit()
-				next_map.emit()
+				# level_completed.emit()
+				# next_map.emit()
 			return
 
 	if not wave_active and not spawning_wave and enemies.size() == 0:

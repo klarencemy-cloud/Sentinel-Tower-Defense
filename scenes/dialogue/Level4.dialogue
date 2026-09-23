@@ -231,5 +231,6 @@ Odysseus: Which means we don’t have much time left.
 Odysseus: Let’s recover the remaining fragments.
 Odysseus: That’s where we will find it.
 do GameDialogueManager.pause_game(false)
+do GameDialogueManager.show_victory()
 => END
 
