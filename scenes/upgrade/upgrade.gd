@@ -21,8 +21,10 @@ var scroll_start_position := Vector2.ZERO
 var active_scroll: ScrollContainer = null
 
 const DRAG_THRESHOLD := 10.0
+var bigpic_default_x: float
 
 func _ready() -> void:
+	bigpic_default_x = %BigPic.position.x
 	var ui = get_tree().get_first_node_in_group("UI")
 	ui.signal_unlock_tower.connect(_on_unlock_pressed)
 	visibility_changed.connect(_on_visibility_changed)
@@ -70,11 +72,12 @@ func _ready() -> void:
 	sentinel_roll_thumbnails = _build_sentinel_roll_thumbnails()
 	_refresh_core_labels()
 	update_tier_buttons()
+	
 
 func _on_visibility_changed() -> void:
 	if visible:
 		update_money_display()
-
+		_reset_to_default_view()
 
 func set_selected_tower(tower_enum: Data.Tower) -> void:
 	selected_tower = tower_enum
@@ -712,10 +715,10 @@ func _on_back_btn_pressed() -> void:
 			_refresh_core_labels()
 
 	elif $SentinelStuff.visible:
-		$SentinelStuff.hide()
-		$TextureRect/ScrollContainer.visible = true
+		get_tree().paused = false
 		$SentinelStuff.visible = false
 		%BigPic.visible = false
+		visible = false
 
 	else:
 		if %SentinelsContainer.visible == true:
@@ -749,7 +752,8 @@ func _on_tower_btn_pressed() -> void:
 	%BigPic.visible = true
 	%BigPic.texture = null
 	$SentinelStuff/Databasebg.visible = false
-	
+	%SentinelsContainer.visible = true
+	%BigPic.position.x += 340
 
 func _on_sentinel_btn_pressed() -> void:
 	UISound.play_click()
@@ -1112,3 +1116,24 @@ func _update_unlock_button() -> void:
 		$TextureRect/Unlock/Label.text = "Unlock (Wave %d)" % required_wave
 	else:
 		$TextureRect/Unlock/Label.text = "Unlock"
+		
+func _reset_to_default_view() -> void:
+	# Tower tab, list view, nothing selected
+	$TextureRect/ScrollContainer.visible = true
+	%SentinelsContainer.visible = true
+	%BigPic.visible = true
+	%BigPic.texture = null
+
+	$TextureRect/BigTowerName.visible = false
+	$TextureRect/UpgradeButton.visible = false
+	$TextureRect/StatPanel.visible = false
+	$TextureRect/UpgradePanel.visible = false
+	$TextureRect/StatPanel/AbilityPanel.visible = false
+	$TextureRect/StatPanel/ScrollContainer/VBoxContainer.visible = true
+
+	$SentinelStuff.visible = false
+	$SentinelStuff/ScrollContainer.visible = false
+	$SentinelStuff/SentinelRoll.visible = true
+	$SentinelStuff/SentinelList.visible = true
+	$SentinelStuff/Core.visible = true
+	$SentinelStuff/Databasebg.visible = false
