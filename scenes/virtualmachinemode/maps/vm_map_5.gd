@@ -33,22 +33,22 @@ const WAVES: Array[Dictionary] = [
 	},
 	{
 		"name": "Blackout Window",
-		"composition": {Data.Enemy.TROJAN: 12, Data.Enemy.INSIDERTHREAT: 10, Data.Enemy.BOTNET: 10, Data.Enemy.CREDS: 8},
+		"composition": {Data.Enemy.TROJAN: 12, Data.Enemy.INSIDERTHREAT: 8, Data.Enemy.BOTNET: 10, Data.Enemy.CREDS: 8},
 		"spawn_interval": 0.75,
-		"hp_mult": 1.20,
+		"hp_mult": 1.35,
 	},
 	{
 		"name": "Total Desync",
 		"composition": {Data.Enemy.INSIDERTHREAT: 16, Data.Enemy.TROJAN: 12, Data.Enemy.SPYWARE: 10, Data.Enemy.BOTNET: 10},
 		"spawn_interval": 0.72,
-		"hp_mult": 1.25,
+		"hp_mult": 1.45,
 	},
 	{
 		"name": "WannaCry",
 		"boss": Data.Enemy.BOSS3,
 		"composition": {Data.Enemy.INSIDERTHREAT: 16, Data.Enemy.TROJAN: 14, Data.Enemy.BOTNET: 12, Data.Enemy.SPYWARE: 10},
 		"spawn_interval": 0.70,
-		"hp_mult": 1.30,
+		"hp_mult": 1.50,
 	},
 ]
 

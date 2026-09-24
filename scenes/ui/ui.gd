@@ -292,6 +292,9 @@ func _on_firewall_cooldown_finished() -> void:
 	skill1_button.disabled = false
 	skill1_cooldown.visible = false
 
+func _get_effective_skill_cooldown(base_cooldown: float) -> float:
+	return base_cooldown * (1.0 - Defense.total_skill_cooldown)
+
 func start_firewall_cooldown() -> void:
 	if firewall_on_cooldown:
 		return
@@ -299,10 +302,12 @@ func start_firewall_cooldown() -> void:
 	firewall_on_cooldown = true
 	skill1_button.disabled = true
 
+	var effective_cooldown := _get_effective_skill_cooldown(firewall_cooldown)
 	skill1_cooldown.visible = true
-	skill1_cooldown.max_value = firewall_cooldown
-	skill1_cooldown.value = firewall_cooldown
+	skill1_cooldown.max_value = effective_cooldown
+	skill1_cooldown.value = effective_cooldown
 
+	firewall_timer.wait_time = effective_cooldown
 	firewall_timer.start()
 	skill1_cooldown.visible = true
 	
@@ -324,10 +329,12 @@ func start_patch_cooldown() -> void:
 	patch_on_cooldown = true
 	skill2_button.disabled = true
 
+	var effective_cooldown := _get_effective_skill_cooldown(patch_cooldown)
 	skill2_cooldown.visible = true
-	skill2_cooldown.max_value = patch_cooldown
-	skill2_cooldown.value = patch_cooldown
+	skill2_cooldown.max_value = effective_cooldown
+	skill2_cooldown.value = effective_cooldown
 
+	patch_timer.wait_time = effective_cooldown
 	patch_timer.start()
 
 func start_backup_server_cooldown() -> void:
@@ -337,9 +344,12 @@ func start_backup_server_cooldown() -> void:
 	backup_server_on_cooldown = true
 	skill3_button.disabled = true
 	skill3_locked.visible = false
+
+	var effective_cooldown := _get_effective_skill_cooldown(backup_server_cooldown)
 	skill3_cooldown.visible = true
-	skill3_cooldown.max_value = backup_server_cooldown
-	skill3_cooldown.value = backup_server_cooldown
+	skill3_cooldown.max_value = effective_cooldown
+	skill3_cooldown.value = effective_cooldown
+	backup_server_timer.wait_time = effective_cooldown
 	backup_server_timer.start()
 	
 func trigger_shake():

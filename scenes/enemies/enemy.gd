@@ -103,10 +103,7 @@ func _ready() -> void:
 	worm_spawn_timer.wait_time = worm_spawn_interval
 	worm_spawn_timer.timeout.connect(_spawn_worm_clone)
 	add_child(worm_spawn_timer)
-	
-	if enemy_type_stats == Data.Enemy.WORM:
-		worm_spawn_timer.start()
-	
+
 
 func apply_dlp_damage_reduction(multiplier: float = 0.65) -> void:
 	# Applies the dmg reduction if the new reduction is higher than the applied one
@@ -374,7 +371,10 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 
 	if enemy_type_stats == Data.Enemy.CREDS:
 		credential_ability_timer.start()
-		
+
+	if Data.is_vmmode and enemy_type_stats == Data.Enemy.WORM:
+		worm_spawn_timer.start()
+
 
 var direction = 1
 func _process(delta: float):

@@ -146,10 +146,10 @@ func _apply_wave_stats(enemy: Node, wave_data: Dictionary) -> void:
 	var changed := false
 
 	if hp_override != null:
-		enemy.health = clampi(int(hp_override), 1, WAVE_HP_MULTIPLIER_MAX)
+		enemy.health = _clamp_wave_hp(int(hp_override))
 		changed = true
 	elif hp_mult > 1.0:
-		enemy.health = clampi(int(round(enemy.health * hp_mult)), 1, WAVE_HP_MULTIPLIER_MAX)
+		enemy.health = _clamp_wave_hp(int(round(enemy.health * hp_mult)))
 		changed = true
 
 	if changed:
@@ -164,6 +164,12 @@ func _apply_wave_stats(enemy: Node, wave_data: Dictionary) -> void:
 	elif speed_mult > 1.0:
 		enemy.speed = clampi(int(round(enemy.speed * speed_mult)), 1, WAVE_SPEED_MULTIPLIER_MAX)
 		enemy.base_speed = enemy.speed
+
+
+func _clamp_wave_hp(hp_value: int) -> int:
+	if Data.vmmode_map_number == 9:
+		return clampi(hp_value, 1, WAVE_HP_MULTIPLIER_MAX)
+	return maxi(1, hp_value)
 
 
 func _on_wave_clear_poll() -> void:
