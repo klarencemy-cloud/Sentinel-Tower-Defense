@@ -4,6 +4,7 @@ class_name CarouselContainer
 
 
 @export var is_vm: Control = null
+@export var is_sandbox: Control = null
 @export var spacing: float = 20.0
 
 @export var wraparound_enabled: bool = false
@@ -27,6 +28,7 @@ signal toggle_tween()
 @onready var path: Label = $"../MapDetails/Difficulty"
 @onready var description: Label = $"../MapDetails/Description"
 @onready var paragraph: Label = $"../MapDetails/Description/Paragraph"
+@onready var sb_locked_label: Label = $"../MapDetails/LockedLabel"
 
 #variables for vmmode
 @onready var vm_title: Label = $"../MapDetails/vmName"
@@ -174,6 +176,35 @@ func _refresh_vm_card_dim() -> void:
 			child.self_modulate = Color(0.35, 0.35, 0.35)
 
 
+func _sb_unlocked(index: int) -> bool:
+	return Data.current_level_index >= index
+
+
+func _refresh_sb_lock_state(index: int) -> void:
+	if _sb_unlocked(index):
+		start_game_button.disabled = false
+		sb_locked_label.visible = false
+		description.offset_top = description_default_offset_top
+		description.offset_bottom = description_default_offset_bottom
+	else:
+		sb_locked_label.text = "Locked - reach this level in Story Mode first."
+		sb_locked_label.visible = true
+		description.offset_top = description_default_offset_top + LOCKED_LABEL_SHIFT
+		description.offset_bottom = description_default_offset_bottom + LOCKED_LABEL_SHIFT
+		start_game_button.disabled = true
+
+
+func _refresh_sb_card_dim() -> void:
+	if not position_offset_node:
+		return
+
+	for child in position_offset_node.get_children():
+		if _sb_unlocked(child.get_index()):
+			child.self_modulate = Color.WHITE
+		else:
+			child.self_modulate = Color(0.35, 0.35, 0.35)
+
+
 var count: int = 0
 
 
@@ -185,6 +216,12 @@ func _ready() -> void:
 		description_default_offset_bottom = vm_description.offset_bottom
 		_refresh_vm_card_dim()
 		_refresh_vm_details(count)
+
+	if is_sandbox:
+		description_default_offset_top = description.offset_top
+		description_default_offset_bottom = description.offset_bottom
+		_refresh_sb_card_dim()
+		_refresh_sb_lock_state(count)
 
 func _process(delta: float) -> void:
 	if !position_offset_node or position_offset_node.get_child_count() == 0:
@@ -256,6 +293,8 @@ func _left():
 				path.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
 			"4":
 					path.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
+		if is_sandbox:
+			_refresh_sb_lock_state(count)
 
 
 func _right():
@@ -292,6 +331,9 @@ func _right():
 				path.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
 			"4":
 				path.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
+
+		if is_sandbox:
+			_refresh_sb_lock_state(count)
 
 func _change_challenge(index: int) -> void:
 	if is_vm:
