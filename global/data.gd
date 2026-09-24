@@ -47,6 +47,9 @@ var vmmode_resume_progress: Dictionary = {}
 var vmmode_sentinels_disabled: bool = false
 var vmmode_reward_granted: bool = false
 
+func _ready() -> void:
+	_initialize_base_tower_stats()
+
 var VM_MAP_DATA := {
 	1: {
 		'title': "Ticking Bomb",
