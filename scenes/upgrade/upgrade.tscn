@@ -965,7 +965,7 @@ theme_override_constants/separation = 28
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("10_86m51")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 21
 text = "Bullet bounces to the nearby enemy that deals 50% of the original damage."
 autowrap_mode = 2
 
@@ -973,21 +973,21 @@ autowrap_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("10_86m51")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 21
 text = "aa"
 autowrap_mode = 3
 
 [node name="Tier2Ability" type="Label" parent="TextureRect/StatPanel/AbilityPanel/VBoxContainer" unique_id=265199765]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_86m51")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 21
 text = "a"
 autowrap_mode = 3
 
 [node name="Tier3Ability" type="Label" parent="TextureRect/StatPanel/AbilityPanel/VBoxContainer" unique_id=1228887189]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_86m51")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 21
 text = "a"
 autowrap_mode = 3
 
