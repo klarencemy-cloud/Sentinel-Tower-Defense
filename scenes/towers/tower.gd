@@ -178,7 +178,8 @@ func _on_tower_menu_delete_press() -> void:
 			ui.start_backup_server_cooldown()
 			ui.update_skill3_locked()
 		
-	Data.money += cost
+	var refund_amount := int(round(cost * 0.4))
+	Data.money += refund_amount
 	Data.currentserverload -= currentserverload
 	emit_signal("removed", cell_pos)
 	queue_free()
