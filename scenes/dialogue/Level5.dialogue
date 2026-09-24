@@ -250,8 +250,9 @@ Player: Why would you do that?
 Odysseus: Because only the strongest deserve to stand at the pinnacle of it all.
 Odysseus: And now I have my answer.
 #[The World began
- shaking violently.]
+# shaking violently.]
 #[Screen fades.]
+do GameDialogueManager.is_boss5_defeated2_done = true
 => END
 
 ~ Boss6

@@ -59,6 +59,11 @@ func update_wave_state() -> void:
 								return
 							level_completed.emit()
 							next_map.emit()
+						50:
+							while not GameDialogueManager.is_boss5_defeated2_done:
+								return
+							level_completed.emit()
+							next_map.emit()
 			return
 
 	if not wave_active and not spawning_wave and enemies.size() == 0:
