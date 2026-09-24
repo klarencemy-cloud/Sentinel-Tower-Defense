@@ -478,7 +478,13 @@ func _on_stats_counter_button_pressed() -> void:
 	else:
 		$EnemyTowerStatsCounter.visible = false
 
+
+func refresh_server_hp() -> void:
+	$Control/TextureRect/PlayerCurrentStats/HPBar.value = $Control/TextureRect/PlayerCurrentStats/HPBar.max_value
+	$Control/TextureRect/PlayerCurrentStats/LabelHP.text = str(int($Control/TextureRect/PlayerCurrentStats/HPBar.max_value))
+
 var is_shown: bool
+
 
 func _show_server_upgrade() -> void:
 	if !is_shown:
@@ -678,6 +684,7 @@ func update_boss_hp(enemy: Data.Enemy, current_hp: int, max_hp: int):
 
 func _on_server_health_upgraded(new_max_health: float) -> void:
 	update_stats(Data.money, Data.health)
+	refresh_server_hp()
 	
 func register_boss(boss_id: int, boss_name_text: String, current_hp: int, max_hp: int):
 	# already assigned
