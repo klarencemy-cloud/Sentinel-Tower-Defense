@@ -116,7 +116,7 @@ Player: It might be the calm before the storm. Better get ready before threats s
 Odysseus: Now that’s the mindset of a strategist! Contingent planning and anticipating cyber attacks are important to minimize damage and to have room to formulate smart decisions on how to deal with the unforeseen.
 Player: Let's spent all our resources first before we lower the force field.
 do GameDialogueManager.show_objectives(true)
-if ((Data.currentserverload > 150) or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and Data.current_wave == 4
+if ((Data.currentserverload > 100) or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and Data.current_wave == 4
 	do GameDialogueManager.toggle_fade_transition()
 	do GameDialogueManager.delay_dialogue(3)
 	do GameDialogueManager.show_dialogue_preparation_end()
