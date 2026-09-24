@@ -241,6 +241,7 @@ func _process(_delta: float) -> void:
 
 	if not Data.is_vmmode:
 		$Control/TextureRect/HBoxContainer/WaveButton.visible = GameDialogueManager.button_state
+		$Control/AutoLabel.visible = GameDialogueManager.button_state
 
 func _on_skill_2_pressed() -> void:
 	UISound.play_click()
