@@ -826,6 +826,8 @@ func show_damage(damage: int):
 func stun(duration: float = 0.5, vulnerable: bool = false):
 	if invisible:
 		return
+	if enemy_type == $Zero and not is_patch_applied:
+		return
 	is_stunned = true
 	is_frozen = true
 	is_frozen_vulnerable = vulnerable

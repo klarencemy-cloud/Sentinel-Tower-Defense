@@ -35,6 +35,9 @@ func hit_enemies():
 			# Skip invisible insider threat - should not be affected by explosions when invisible
 			if enemy.enemy_type_stats == Data.Enemy.INSIDERTHREAT and enemy.invisible:
 				continue
+			# Unpatched zero-day should be immune to quarantine freeze/damage effects
+			if enemy.enemy_type_stats == Data.Enemy.ZERO and not enemy.is_patch_applied:
+				continue
 			
 			if tower_type == Data.Tower.QUARANTINE_CANNON:
 				var vulnerable = tower_data.get('tier3abilityunlocked', false)
