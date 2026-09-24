@@ -34,6 +34,10 @@ func _ready():
 	firing_sound_playing = false
 	
 func _process(_delta):
+	if get_tree().paused:
+		clear_target()
+		return
+
 	timer += _delta + .08
 	if timer >= 1.0:
 		timer = 0.0
@@ -49,6 +53,7 @@ func _process(_delta):
 		acquire_target()
 
 	if target == null:
+		clear_target()
 		return
 
 	if !is_instance_valid(target):
