@@ -1,9 +1,12 @@
 extends VMChallenge
 
-const KILL_TARGET := 300
+const KILL_TARGET := 260
 const PARENT_BUDGET := 75
 const TIME_LIMIT := 300.0
 const SPAWN_INTERVAL := 2.0
+const LANE_RAMP_LANE_COUNT := 2
+const LANE_RAMP_PARENT_THRESHOLD := 30
+const STARTING_GOLD := 225
 
 var _ddos_kills: int = 0
 var _ddos_spawned: int = 0
@@ -17,6 +20,7 @@ var _spawn_tick_active: bool = false
 func _challenge_setup() -> void:
 	Data.health = Data.max_health
 	Data.clear_notpetya_enemy_speed_effect()
+	Data.money = STARTING_GOLD
 
 	_ddos_kills = 0
 	_ddos_spawned = 0
@@ -57,6 +61,8 @@ func _on_spawn_tick() -> void:
 	var paths: Array = wave_manager._get_paths()
 	if paths.is_empty():
 		return
+	if _ddos_spawned < LANE_RAMP_PARENT_THRESHOLD:
+		paths = paths.slice(0, mini(LANE_RAMP_LANE_COUNT, paths.size()))
 
 	_spawn_tick_active = true
 	for path in paths:

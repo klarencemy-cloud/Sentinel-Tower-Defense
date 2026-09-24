@@ -664,7 +664,8 @@ func hit(damage: int = 1, tower_id: int = -1):
 		if wave_manager:
 			wave_manager.spawn_ddos_clones(
 				path_follow.get_parent(),
-				path_follow.progress
+				path_follow.progress,
+				int($hpbar.max_value)
 			)
 	dead = true
 	Data.money += int(round(10 * Economy.gold_multiplier))
