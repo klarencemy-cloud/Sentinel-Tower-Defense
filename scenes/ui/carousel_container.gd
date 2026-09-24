@@ -4,6 +4,7 @@ class_name CarouselContainer
 
 
 @export var is_vm: Control = null
+@export var is_sandbox: Control = null
 @export var spacing: float = 20.0
 
 @export var wraparound_enabled: bool = false
@@ -27,6 +28,7 @@ signal toggle_tween()
 @onready var path: Label = $"../MapDetails/Difficulty"
 @onready var description: Label = $"../MapDetails/Description"
 @onready var paragraph: Label = $"../MapDetails/Description/Paragraph"
+@onready var sb_locked_label: Label = $"../MapDetails/LockedLabel"
 
 #variables for vmmode
 @onready var vm_title: Label = $"../MapDetails/vmName"
@@ -127,7 +129,7 @@ func _refresh_vm_lock_state(index: int) -> void:
 		vm_description.offset_bottom = description_default_offset_bottom
 	else:
 		var required_wave: int = int(_vm_field(index, 'unlock_wave', 0))
-		vm_locked_label.text = "Locked - reach Wave %d in Story Mode." % required_wave
+		vm_locked_label.text = "Locked - reach Wave %d in Story Mode." % (required_wave - 1)
 		vm_locked_label.visible = true
 		vm_description.offset_top = description_default_offset_top + LOCKED_LABEL_SHIFT
 		vm_description.offset_bottom = description_default_offset_bottom + LOCKED_LABEL_SHIFT
@@ -136,7 +138,12 @@ func _refresh_vm_lock_state(index: int) -> void:
 
 func _refresh_vm_details(index: int) -> void:
 	vm_title.text = _vm_title(index)
-	vm_description.text = _vm_desc(index)
+	if _vm_unlocked(index):
+		vm_description.text = _vm_desc(index)
+		vm_description.remove_theme_color_override("font_color")
+	else:
+		vm_description.text = "???"
+		vm_description.add_theme_color_override("font_color", Color(0.35, 0.35, 0.35))
 	level_recommendation.text = _vm_recommended(index)
 	vm_difficulty_label.text = _vm_difficulty(index)
 	vm_gold.text = str(_vm_reward_gold(index))
@@ -169,6 +176,35 @@ func _refresh_vm_card_dim() -> void:
 			child.self_modulate = Color(0.35, 0.35, 0.35)
 
 
+func _sb_unlocked(index: int) -> bool:
+	return Data.current_level_index >= index
+
+
+func _refresh_sb_lock_state(index: int) -> void:
+	if _sb_unlocked(index):
+		start_game_button.disabled = false
+		sb_locked_label.visible = false
+		description.offset_top = description_default_offset_top
+		description.offset_bottom = description_default_offset_bottom
+	else:
+		sb_locked_label.text = "Locked - reach this level in Story Mode first."
+		sb_locked_label.visible = true
+		description.offset_top = description_default_offset_top + LOCKED_LABEL_SHIFT
+		description.offset_bottom = description_default_offset_bottom + LOCKED_LABEL_SHIFT
+		start_game_button.disabled = true
+
+
+func _refresh_sb_card_dim() -> void:
+	if not position_offset_node:
+		return
+
+	for child in position_offset_node.get_children():
+		if _sb_unlocked(child.get_index()):
+			child.self_modulate = Color.WHITE
+		else:
+			child.self_modulate = Color(0.35, 0.35, 0.35)
+
+
 var count: int = 0
 
 
@@ -180,6 +216,12 @@ func _ready() -> void:
 		description_default_offset_bottom = vm_description.offset_bottom
 		_refresh_vm_card_dim()
 		_refresh_vm_details(count)
+
+	if is_sandbox:
+		description_default_offset_top = description.offset_top
+		description_default_offset_bottom = description.offset_bottom
+		_refresh_sb_card_dim()
+		_refresh_sb_lock_state(count)
 
 func _process(delta: float) -> void:
 	if !position_offset_node or position_offset_node.get_child_count() == 0:
@@ -251,6 +293,8 @@ func _left():
 				path.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
 			"4":
 					path.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
+		if is_sandbox:
+			_refresh_sb_lock_state(count)
 
 
 func _right():
@@ -287,6 +331,9 @@ func _right():
 				path.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
 			"4":
 				path.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
+
+		if is_sandbox:
+			_refresh_sb_lock_state(count)
 
 func _change_challenge(index: int) -> void:
 	if is_vm:

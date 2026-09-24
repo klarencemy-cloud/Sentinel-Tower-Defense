@@ -15,6 +15,10 @@ func _on_start_game_pressed() -> void:
 	UISound.play_click()
 	var selected_carousel_node = $CarouselContainer.position_offset_node.get_child($CarouselContainer.selected_index)
 
+	var map_index: int = selected_carousel_node.get_index()
+	if Data.current_level_index < map_index:
+		return
+
 	selected_map = selected_carousel_node.name
 	var temp_level_index = Data.current_level_index
 	match selected_map:

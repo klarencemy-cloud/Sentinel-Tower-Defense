@@ -105,6 +105,22 @@ text = "After the collapse of Earth’s Core, several facilities were converted 
 horizontal_alignment = 3
 autowrap_mode = 2
 
+[node name="LockedLabel" type="Label" parent="MapDetails" unique_id=657947782]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 22.999939
+offset_top = 15.0
+offset_right = 778.99994
+offset_bottom = 45.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0.016, 1)
+theme_override_fonts/font = ExtResource("4_03fy7")
+theme_override_font_sizes/font_size = 21
+autowrap_mode = 2
+
 [node name="Image" type="Control" parent="." unique_id=16854379]
 layout_mode = 1
 anchors_preset = 0
@@ -181,10 +197,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="CarouselContainer" type="Node2D" parent="." unique_id=1285329790 node_paths=PackedStringArray("position_offset_node")]
+[node name="CarouselContainer" type="Node2D" parent="." unique_id=1285329790 node_paths=PackedStringArray("is_sandbox", "position_offset_node")]
 z_index = 1
 position = Vector2(551, 538)
 script = ExtResource("10_fa42h")
+is_sandbox = NodePath("..")
 opacity_strength = 1.0
 follow_button_focus = true
 position_offset_node = NodePath("Control")
