@@ -75,6 +75,10 @@ var is_hologram: bool = false
 
 @onready var hit_particles: GPUParticles2D = $HitParticles
 
+func _exit_tree() -> void:
+	if enemy_type_stats == Data.Enemy.CREDS:
+		_release_credential_locks()
+
 func _ready() -> void:
 	add_to_group('Enemies')
 	damage_label_template = $DamageLabel.duplicate() as Label
