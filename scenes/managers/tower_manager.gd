@@ -451,6 +451,9 @@ func _update_preview_range(preview: Node2D) -> void:
 	range_indicator.visible = true
 
 func restore_saved_towers() -> void:
+	if Data.is_sandbox:
+		return
+
 	if Data.saved_tower_placements.is_empty():
 		return
 
