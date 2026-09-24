@@ -49,6 +49,7 @@ var range_indicator: Line2D
 
 func _ready() -> void:
 	add_to_group("towers")
+	add_to_group("Towers")
 	original_reload_time = reload_time
 	if type == Data.Tower.BACKUP_SERVER:
 		tree_exiting.connect(_on_backup_server_tree_exiting)
