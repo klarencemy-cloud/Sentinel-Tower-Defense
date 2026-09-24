@@ -747,6 +747,7 @@ func _on_back_btn_pressed() -> void:
 
 func _on_tower_btn_pressed() -> void:
 	UISound.play_click()
+	_reset_to_default_view()
 	$TextureRect/ScrollContainer.visible = true
 	$SentinelStuff.visible = false
 	%BigPic.visible = true
