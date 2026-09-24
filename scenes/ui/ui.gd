@@ -97,6 +97,7 @@ func _ready() -> void:
 	_schedule_next_ad()
 	Data.active_adware = 0
 	
+	Data.active_ransomware = 0
 	Data.active_ransomware_changed.connect(_schedule_next_ransomware)
 	add_child(ransomware_timer)
 	ransomware_timer.one_shot = true

@@ -11,6 +11,7 @@ var enemy_tween: Tween
 var damage: int
 var enemy_type: Node
 var enemy_type_stats: Data.Enemy
+var _active_counter_removed: bool = false
 
 var is_stunned: bool = false
 var is_credential_stopped: bool = false
@@ -78,6 +79,7 @@ var is_hologram: bool = false
 func _exit_tree() -> void:
 	if enemy_type_stats == Data.Enemy.CREDS:
 		_release_credential_locks()
+	_remove_active_counter()
 
 func _ready() -> void:
 	add_to_group('Enemies')
@@ -506,7 +508,7 @@ func _process(delta: float):
 			if ui:
 				ui.unregister_boss(get_instance_id())
 
-		_update_active_enemy_counter(enemy_type_stats, -1)
+		_remove_active_counter()
 		queue_free()
 	
 	if enemy_type_stats == Data.Enemy.SPYWARE:
@@ -656,7 +658,7 @@ func hit(damage: int = 1, tower_id: int = -1):
 	# schedule the detached audio to be freed after a short delay
 	get_tree().create_timer(2.0).connect("timeout", Callable(audio, "queue_free"))
 
-	_update_active_enemy_counter(enemy_type_stats, -1)
+	_remove_active_counter()
 	if enemy_type_stats == Data.Enemy.DDOS and !is_ddos_clone:
 		dead = true
 		$CollisionShape2D.disabled = true
@@ -690,6 +692,12 @@ func hit(damage: int = 1, tower_id: int = -1):
 	await get_tree().create_timer(0.1).timeout
 	queue_free()
 	
+func _remove_active_counter() -> void:
+	if _active_counter_removed:
+		return
+	_active_counter_removed = true
+	_update_active_enemy_counter(enemy_type_stats, -1)
+
 func _update_active_enemy_counter(enemy_type: Data.Enemy, delta: int) -> void:
 	if enemy_type == Data.Enemy.ADWARE:
 		Data.active_adware = max(0, Data.active_adware + delta)
