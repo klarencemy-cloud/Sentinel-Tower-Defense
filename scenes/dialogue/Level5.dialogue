@@ -392,6 +392,9 @@ System: Origin Unknown.
 System: Status: Encrypted
 Player: .. *Smirks*
 Player: LOOKS LIKE MY WORK ISN’T OVER YET.
+do GameDialogueManager.toggle_fade_transition()
+do GameDialogueManager.delay_dialogue(3)
+do GameDialogueManager.end_game()
 #[SCREEN FADES]
 => END
 

@@ -1827,12 +1827,11 @@ frame_progress = 0.67781234
 [node name="Boss6" type="AnimatedSprite2D" parent="." unique_id=94804827]
 visible = false
 material = SubResource("ShaderMaterial_rme1b")
-position = Vector2(0, -90)
-scale = Vector2(0.9, 0.9)
+position = Vector2(0, -41)
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_p7r6w")
 animation = &"Right"
 autoplay = "Right"
-frame_progress = 0.5780357
 
 [node name="SpywareAbility" type="Area2D" parent="." unique_id=1638499242]
 visible = false
