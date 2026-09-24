@@ -8,7 +8,9 @@ const DRAIN_AMOUNT := 4.0
 const TIER_KILL_INTERVAL := 50
 const TIER_SPAWN_DECREASE := 0.2
 const TIER_HP_MULTIPLIER := 1.35
+const TIER_HP_MULTIPLIER_LATE := 1.25 
 const TIER_SPEED_MULTIPLIER := 1.5
+const TIER_SPEED_MULTIPLIER_LATE := 1.2 
 const MIN_SPAWN_INTERVAL := 0.1
 
 var virus_kills: int = 0
@@ -59,8 +61,14 @@ func _on_spawn_tick() -> void:
 
 
 func _apply_virus_difficulty(enemy: Node) -> void:
-	var hp_multiplier: float = pow(TIER_HP_MULTIPLIER, difficulty_tier)
-	var speed_multiplier: float = pow(TIER_SPEED_MULTIPLIER, difficulty_tier)
+	var hp_multiplier: float
+	var speed_multiplier: float
+	if difficulty_tier <= 2:
+		hp_multiplier = pow(TIER_HP_MULTIPLIER, difficulty_tier)
+		speed_multiplier = pow(TIER_SPEED_MULTIPLIER, difficulty_tier)
+	else:
+		hp_multiplier = pow(TIER_HP_MULTIPLIER, 2) * pow(TIER_HP_MULTIPLIER_LATE, difficulty_tier - 2)
+		speed_multiplier = pow(TIER_SPEED_MULTIPLIER, 2) * pow(TIER_SPEED_MULTIPLIER_LATE, difficulty_tier - 2)
 
 	enemy.health = max(1, int(enemy.health * hp_multiplier))
 	var hpbar = enemy.get_node_or_null("hpbar")

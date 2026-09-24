@@ -11,40 +11,40 @@ const WAVES: Array[Dictionary] = [
 	},
 	{
 		"name": "Propagation",
-		"composition": {Data.Enemy.VIRUS: 12, Data.Enemy.WORM: 16, Data.Enemy.ADWARE: 8},
+		"composition": {Data.Enemy.VIRUS: 16, Data.Enemy.WORM: 12, Data.Enemy.ADWARE: 8},
 		"spawn_interval": 1.00,
 		"hp_mult": 1.00,
 	},
 	{
 		"name": "Surveillance",
 		"composition": {Data.Enemy.ADWARE: 14, Data.Enemy.SPYWARE: 12, Data.Enemy.WORM: 10},
-		"spawn_interval": 0.95,
+		"spawn_interval": 0.90,
 		"hp_mult": 1.05,
 	},
 	{
 		"name": "Command & Control",
-		"composition": {Data.Enemy.BOTNET: 14, Data.Enemy.SPYWARE: 10, Data.Enemy.VIRUS: 12},
+		"composition": {Data.Enemy.BOTNET: 10, Data.Enemy.SPYWARE: 10, Data.Enemy.VIRUS: 16},
 		"spawn_interval": 0.90,
 		"hp_mult": 1.10,
 	},
 	{
-		"name": "Payload Delivery",
-		"composition": {Data.Enemy.TROJAN: 10, Data.Enemy.ROOTKIT: 10, Data.Enemy.BOTNET: 10},
-		"spawn_interval": 0.90,
-		"hp_mult": 1.15,
-	},
-	{
-		"name": "Encryption",
-		"composition": {Data.Enemy.RANSOMWARE: 14, Data.Enemy.ZERO: 8, Data.Enemy.ROOTKIT: 8, Data.Enemy.TROJAN: 6},
+		"name": "Botnet Swarm",
+		"composition": {Data.Enemy.BOTNET: 14, Data.Enemy.SPYWARE: 12, Data.Enemy.WORM: 10, Data.Enemy.ADWARE: 6},
 		"spawn_interval": 0.85,
 		"hp_mult": 1.20,
 	},
 	{
+		"name": "Total Saturation",
+		"composition": {Data.Enemy.BOTNET: 16, Data.Enemy.SPYWARE: 14, Data.Enemy.ADWARE: 10, Data.Enemy.VIRUS: 8},
+		"spawn_interval": 0.80,
+		"hp_mult": 1.30,
+	},
+	{
 		"name": "ILOVEYOU",
 		"boss": Data.Enemy.BOSS1,
-		"composition": {Data.Enemy.WORM: 20, Data.Enemy.BOTNET: 10, Data.Enemy.RANSOMWARE: 8, Data.Enemy.ZERO: 6},
+		"composition": {Data.Enemy.WORM: 12, Data.Enemy.BOTNET: 12, Data.Enemy.SPYWARE: 10, Data.Enemy.VIRUS: 10},
 		"spawn_interval": 0.80,
-		"hp_mult": 1.25,
+		"hp_mult": 1.35,
 	},
 ]
 
