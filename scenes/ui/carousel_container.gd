@@ -127,7 +127,7 @@ func _refresh_vm_lock_state(index: int) -> void:
 		vm_description.offset_bottom = description_default_offset_bottom
 	else:
 		var required_wave: int = int(_vm_field(index, 'unlock_wave', 0))
-		vm_locked_label.text = "Locked - reach Wave %d in Story Mode." % required_wave
+		vm_locked_label.text = "Locked - reach Wave %d in Story Mode." % (required_wave - 1)
 		vm_locked_label.visible = true
 		vm_description.offset_top = description_default_offset_top + LOCKED_LABEL_SHIFT
 		vm_description.offset_bottom = description_default_offset_bottom + LOCKED_LABEL_SHIFT
@@ -136,7 +136,12 @@ func _refresh_vm_lock_state(index: int) -> void:
 
 func _refresh_vm_details(index: int) -> void:
 	vm_title.text = _vm_title(index)
-	vm_description.text = _vm_desc(index)
+	if _vm_unlocked(index):
+		vm_description.text = _vm_desc(index)
+		vm_description.remove_theme_color_override("font_color")
+	else:
+		vm_description.text = "???"
+		vm_description.add_theme_color_override("font_color", Color(0.35, 0.35, 0.35))
 	level_recommendation.text = _vm_recommended(index)
 	vm_difficulty_label.text = _vm_difficulty(index)
 	vm_gold.text = str(_vm_reward_gold(index))
