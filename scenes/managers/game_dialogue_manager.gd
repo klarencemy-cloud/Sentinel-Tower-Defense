@@ -314,7 +314,11 @@ func show_dialogue_boss1_defeated2(): # used in scripture
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "Boss1_defeated2")
 	is_boss1_defeated2 = true
-
+var is_boss1_defeated2_done: bool = false
+var is_boss2_defeated2_done: bool = false
+var is_boss3_defeated2_done: bool = false
+var is_boss4_defeated2_done: bool = false
+var is_boss5_defeated2_done: bool = false
 func show_dialogue_level2_start(): # used in loading
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level2.dialogue"), "start")

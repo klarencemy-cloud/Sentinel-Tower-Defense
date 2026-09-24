@@ -49,6 +49,7 @@ var range_indicator: Line2D
 
 func _ready() -> void:
 	add_to_group("towers")
+	add_to_group("Towers")
 	original_reload_time = reload_time
 	if type == Data.Tower.BACKUP_SERVER:
 		tree_exiting.connect(_on_backup_server_tree_exiting)
@@ -177,7 +178,8 @@ func _on_tower_menu_delete_press() -> void:
 			ui.start_backup_server_cooldown()
 			ui.update_skill3_locked()
 		
-	Data.money += cost
+	var refund_amount := int(round(cost * 0.4))
+	Data.money += refund_amount
 	Data.currentserverload -= currentserverload
 	emit_signal("removed", cell_pos)
 	queue_free()
