@@ -10,6 +10,7 @@ const WAVE_SPEED_MULTIPLIER_MAX := 400
 var _waves_cleared: int = 0
 var _spawning: bool = false
 var _between_waves: bool = false
+var _lane_rotation_offset: int = 0
 
 var intermission_timer: Timer
 var wave_clear_poll_timer: Timer
@@ -109,7 +110,8 @@ func _spawn_across_paths(enemy_types: Array, on_enemy_spawned: Callable = Callab
 	for i in range(paths.size()):
 		per_path.append([])
 	for i in range(enemy_types.size()):
-		per_path[i % paths.size()].append(enemy_types[i])
+		per_path[(i + _lane_rotation_offset) % paths.size()].append(enemy_types[i])
+	_lane_rotation_offset = (_lane_rotation_offset + enemy_types.size()) % paths.size()
 
 	for path_index in range(paths.size()):
 		var chunk: Array = per_path[path_index]

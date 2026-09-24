@@ -52,6 +52,15 @@ var enemy_card_button_texture = preload("res://graphics/ui/enemy_card_button.png
 enum CardCategory {TOWER, SENTINEL, ENEMY}
 var fade_tween: Tween
 
+const VM_FIREWALL_UNLOCK_WAVE := 5
+const VM_PATCH_BACKUP_UNLOCK_WAVE := 43
+
+func _vm_skill_unlocked(required_wave: int) -> bool:
+	if not Data.is_vmmode:
+		return false
+	var map_data: Dictionary = Data.VM_MAP_DATA.get(Data.vmmode_map_number, {})
+	return int(map_data.get("unlock_wave", 0)) >= required_wave
+
 var ad_timer := Timer.new()
 var ransomware_timer := Timer.new()
 
@@ -200,26 +209,26 @@ func _ready() -> void:
 	update_experience(Data.experience, Data.player_level, Data.default_level_pool)
 	update_wave_label()
 
-	if not GameDialogueManager.is_skill1_activated:
+	if not GameDialogueManager.is_skill1_activated and not _vm_skill_unlocked(VM_FIREWALL_UNLOCK_WAVE):
 		$Control/HBoxContainer/Skill1.disabled = true
 		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/container/skillcontainer.png")
-	
+
 	else:
 		$Control/HBoxContainer/Skill1.disabled = false
 		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
 
-	if not GameDialogueManager.is_skill2_activated:
+	if not GameDialogueManager.is_skill2_activated and not _vm_skill_unlocked(VM_PATCH_BACKUP_UNLOCK_WAVE):
 		$Control/HBoxContainer/Skill2.disabled = true
 		$Control/HBoxContainer/Skill2.texture_normal = load("res://graphics/container/skillcontainer.png")
-	
+
 	else:
 		$Control/HBoxContainer/Skill2.disabled = false
 		$Control/HBoxContainer/Skill2.texture_normal = load("res://graphics/ui/patch.png")
 
-	if not GameDialogueManager.is_skill3_activated:
+	if not GameDialogueManager.is_skill3_activated and not _vm_skill_unlocked(VM_PATCH_BACKUP_UNLOCK_WAVE):
 		$Control/HBoxContainer/Skill3.disabled = true
 		$Control/HBoxContainer/Skill3.texture_normal = load("res://graphics/container/skillcontainer.png")
-	
+
 	else:
 		$Control/HBoxContainer/Skill3.disabled = false
 		$Control/HBoxContainer/Skill3.texture_normal = load("res://graphics/ui/backupskill.png")
