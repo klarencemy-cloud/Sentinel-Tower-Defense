@@ -798,3 +798,9 @@ signal next_level
 func show_victory() -> void:
 	level_completed.emit()
 	next_level.emit()
+
+
+signal quit_game
+
+func end_game() -> void:
+	quit_game.emit()

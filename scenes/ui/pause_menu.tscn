@@ -19,9 +19,9 @@ metadata/_edit_use_anchors_ = true
 [node name="quit" type="TextureButton" parent="." unique_id=1981021553]
 anchors_preset = -1
 anchor_left = 0.34322917
-anchor_top = 0.65157408
+anchor_top = 0.6515741
 anchor_right = 0.65208334
-anchor_bottom = 0.83120371
+anchor_bottom = 0.8312037
 texture_normal = ExtResource("2_0lmf7")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
@@ -40,9 +40,9 @@ metadata/_edit_use_anchors_ = true
 [node name="resume" type="TextureButton" parent="." unique_id=1328112455]
 anchors_preset = -1
 anchor_left = 0.34322917
-anchor_top = 0.16879630
+anchor_top = 0.1687963
 anchor_right = 0.65208334
-anchor_bottom = 0.34842593
+anchor_bottom = 0.34842592
 texture_normal = ExtResource("2_0lmf7")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
@@ -63,9 +63,9 @@ metadata/_edit_use_anchors_ = true
 [node name="settings" type="TextureButton" parent="." unique_id=-475692695]
 anchors_preset = -1
 anchor_left = 0.34322917
-anchor_top = 0.41018519
+anchor_top = 0.4101852
 anchor_right = 0.65208334
-anchor_bottom = 0.58981482
+anchor_bottom = 0.58981484
 texture_normal = ExtResource("2_0lmf7")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true

@@ -30,7 +30,8 @@ func update_wave_state() -> void:
 
 		if Data.current_wave > 0 and Data.current_wave % 5 == 0 and Data.checkpoint_wave < Data.current_wave:
 			Data.checkpoint_wave = Data.current_wave
-
+			ui.refresh_server_hp()
+			
 		if Data.current_wave % 10 == 0:
 			if Data.current_wave in BOSS_WAVES:
 				UISound.stop_boss_bg()
