@@ -192,6 +192,7 @@ Player: The Project Sentinel again.. Every scripture keeps pointing back to it.
 Odysseus: Perhaps, It’s more important than we thought.
 Player: Whatever it is, something tells me I’m getting closer to the answer.
 do GameDialogueManager.pause_game(false)
-do GameDialogueManager.show_victory()
+do GameDialogueManager.is_boss3_defeated2_done = true
+#do GameDialogueManager.show_victory()
 => END
 

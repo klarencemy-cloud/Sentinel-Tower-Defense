@@ -268,5 +268,6 @@ do GameDialogueManager.pause_game(true)
 Player: It looks like we have recovered historical data.
 Odysseus: Yes, every High-Threat you defeat drops Remnants containing Scriptures. Some Scriptures can also be recovered as you progress.
 do GameDialogueManager.pause_game(false)
-do GameDialogueManager.show_victory()
+do GameDialogueManager.is_boss1_defeated2_done = true
+#do GameDialogueManager.show_victory()
 => END

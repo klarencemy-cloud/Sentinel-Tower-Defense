@@ -157,5 +157,6 @@ Odysseus: Whatever it said, threats can’t be trusted, especially from those hi
 Player: Anyways, looks like it’s another remnant.
 Odysseus: Then let’s see what untold stories history is willing to share.
 do GameDialogueManager.pause_game(false)
-do GameDialogueManager.show_victory()
+do GameDialogueManager.is_boss2_defeated2_done = true
+#do GameDialogueManager.show_victory()
 => END

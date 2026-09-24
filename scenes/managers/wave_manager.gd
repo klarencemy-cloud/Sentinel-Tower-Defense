@@ -38,8 +38,27 @@ func update_wave_state() -> void:
 			if !Data.is_sandbox and !Data.is_vmmode:
 				if ui:
 					ui.disable_auto()
-				# level_completed.emit()
-				# next_map.emit()
+					match Data.current_wave:
+						10:
+							while not GameDialogueManager.is_boss1_defeated2_done:
+								return
+							level_completed.emit()
+							next_map.emit()
+						20:
+							while not GameDialogueManager.is_boss2_defeated2_done:
+								return
+							level_completed.emit()
+							next_map.emit()
+						30:
+							while not GameDialogueManager.is_boss3_defeated2_done:
+								return
+							level_completed.emit()
+							next_map.emit()
+						40:
+							while not GameDialogueManager.is_boss4_defeated2_done:
+								return
+							level_completed.emit()
+							next_map.emit()
 			return
 
 	if not wave_active and not spawning_wave and enemies.size() == 0:
