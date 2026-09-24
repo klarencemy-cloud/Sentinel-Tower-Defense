@@ -402,7 +402,7 @@ func spawn_boss_botnets():
 
 func spawn_boss5_wave():
 	var enemies = [
-		Data.Enemy.DEFAULT,
+		Data.Enemy.SPAM,
 		Data.Enemy.VIRUS,
 		Data.Enemy.ADWARE,
 		Data.Enemy.SPYWARE,

@@ -1,4 +1,4 @@
-extends VMWaveChallenge
+﻿extends VMWaveChallenge
 
 const TOTAL_WAVES := 7
 
@@ -9,7 +9,7 @@ const FOG_CHECK_INTERVAL := 0.1
 const WAVES: Array[Dictionary] = [
 	{
 		"name": "Signal Noise",
-		"composition": {Data.Enemy.DEFAULT: 14, Data.Enemy.VIRUS: 10, Data.Enemy.ADWARE: 8},
+		"composition": {Data.Enemy.SPAM: 14, Data.Enemy.VIRUS: 10, Data.Enemy.ADWARE: 8},
 		"spawn_interval": 0.90,
 		"hp_mult": 1.00,
 	},
@@ -156,3 +156,4 @@ func _is_in_any_fog(pos: Vector2) -> bool:
 		if pos.distance_to(zone_center) <= FOG_RADIUS:
 			return true
 	return false
+

@@ -1,4 +1,4 @@
-extends VMChallenge
+﻿extends VMChallenge
 
 const KILL_TARGET := 1000
 const SPAWN_INTERVAL := 1.0
@@ -32,7 +32,7 @@ func _challenge_setup() -> void:
 	Data.health = 1
 	Data.clear_notpetya_enemy_speed_effect()
 
-	_budget = {Data.Enemy.WORM: WORM_BUDGET, Data.Enemy.DEFAULT: SPAM_BUDGET}
+	_budget = {Data.Enemy.WORM: WORM_BUDGET, Data.Enemy.SPAM: SPAM_BUDGET}
 	_run_left = 0
 	difficulty_level = 1
 
@@ -179,7 +179,7 @@ func _restore_progress(progress: Dictionary) -> void:
 	var remaining: int = max(KILL_TARGET - enemy_kills, 0)
 	var worm_share: int = int(ceil(remaining / 2.0))
 	_budget[Data.Enemy.WORM] = worm_share
-	_budget[Data.Enemy.DEFAULT] = remaining - worm_share
+	_budget[Data.Enemy.SPAM] = remaining - worm_share
 
 	# Re-derived from kills, never trusted from the save - same rule as the
 	# budget re-derivation above, so a stale/edited save can't desync difficulty.
@@ -188,3 +188,4 @@ func _restore_progress(progress: Dictionary) -> void:
 
 	if progress.has("health"):
 		Data.health = float(progress["health"])
+

@@ -1,4 +1,4 @@
-extends VMWaveChallenge
+﻿extends VMWaveChallenge
 
 const TOTAL_WAVES := 7
 
@@ -13,7 +13,7 @@ const IDPS_BOOST_WEIGHT := 1.7
 const WAVES: Array[Dictionary] = [
 	{
 		"name": "First Contact",
-		"composition": {Data.Enemy.DEFAULT: 14, Data.Enemy.VIRUS: 12, Data.Enemy.ADWARE: 8},
+		"composition": {Data.Enemy.SPAM: 14, Data.Enemy.VIRUS: 12, Data.Enemy.ADWARE: 8},
 		"spawn_interval": 0.90,
 		"hp_mult": 1.00,
 	},
@@ -324,3 +324,4 @@ func _restore_progress(progress: Dictionary) -> void:
 		_belt_timer.wait_time = _current_interval
 
 	_belt.sync_visuals_instant()
+

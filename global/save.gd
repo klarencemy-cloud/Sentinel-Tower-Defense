@@ -237,6 +237,10 @@ func _load_game() -> void:
 			if Data.ENEMY_DATA.has(enemy_enum):
 				Data.ENEMY_DATA[enemy_enum]["isMet"] = bool(enemy_met[enemy_key])
 
+		# Spam is the tutorial/default threat and should never stay locked just because a stale save says false.
+		if Data.ENEMY_DATA.has(Data.Enemy.SPAM):
+			Data.ENEMY_DATA[Data.Enemy.SPAM]["isMet"] = true
+
 		var vm_map_unlocks: Dictionary = parsed.get("vm_map_unlocks", {})
 
 		for map_key in vm_map_unlocks:

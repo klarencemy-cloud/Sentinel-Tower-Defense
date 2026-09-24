@@ -1,4 +1,4 @@
-extends Node
+﻿extends Node
 
 signal level_completed
 signal next_map
@@ -256,7 +256,7 @@ func _choose_random_enemy_type(difficulty: int) -> Data.Enemy:
 
 	var roll = randi() % 100
 	if roll < default_chance:
-		return Data.Enemy.DEFAULT
+		return Data.Enemy.SPAM
 	elif roll < default_chance + big_chance:
 		return Data.Enemy.ADWARE
 	elif roll < default_chance + fast_chance + strong_chance:
@@ -353,7 +353,7 @@ func spawn_boss_botnets():
 
 func spawn_boss5_wave():
 	var enemies = [
-		Data.Enemy.DEFAULT,
+		Data.Enemy.SPAM,
 		Data.Enemy.VIRUS,
 		Data.Enemy.ADWARE,
 		Data.Enemy.SPYWARE,
@@ -374,3 +374,4 @@ func spawn_boss5_wave():
 	for path in paths:
 		var random_enemy = enemies.pick_random()
 		spawn_enemy_on_path(random_enemy, path)
+

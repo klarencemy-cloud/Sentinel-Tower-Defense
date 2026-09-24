@@ -1,6 +1,6 @@
-extends Button
+﻿extends Button
 
-var id: Data.Enemy = Data.Enemy.DEFAULT
+var id: Data.Enemy = Data.Enemy.SPAM
 signal press(enemy_enum: Data.Enemy)
 
 func setup(new_id: Data.Enemy) -> void:
@@ -15,3 +15,4 @@ func setup(new_id: Data.Enemy) -> void:
 func _on_pressed() -> void:
 	UISound.play_click()
 	press.emit(id)
+

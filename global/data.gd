@@ -245,7 +245,7 @@ func vm_belt_selected_kind() -> String:
 enum Tower {SPAM_FILTER, ANTIVIRUS, AD_BLOCKER, DATA_LOSS_PREVENTION, IDPS, QUARANTINE_CANNON, ACCESS_CONTROL_SYSTEM, AI_SECURITY, BACKUP_SERVER, ENDPOINT_PROTECTION, SANDBOX_ANALYZER, PATCH}
 enum Bullet {SINGLE, FIRE, MORTAR_EXPLOSION, LASER}
 enum Sentinel {ETHICAL, SYSAD, INTRUSION, SECURITY, MALWARE, DECEPTION}
-enum Enemy {DEFAULT, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2, BOSS3, BOSS4, BOSS5, BOSS6}
+enum Enemy {SPAM, VIRUS, ADWARE, WORM, SPYWARE, TROJAN, BOTNET, CREDS, INSIDERTHREAT, ROOTKIT, SQL, DDOS, RANSOMWARE, ZERO, BOSS1, BOSS2, BOSS3, BOSS4, BOSS5, BOSS6}
 enum Ability {FIREWALL}
 var TOWER_DATA = {
 	Tower.SPAM_FILTER: {
@@ -863,7 +863,7 @@ var SENTINEL_DATA = {
 }
 
 var ENEMY_DATA = {
-	Enemy.DEFAULT: {
+	Enemy.SPAM: {
 		'health': 30,
 		'texture': "uid://biixy5e8v8how",
 		'speed': 90,
@@ -1388,6 +1388,10 @@ func update_wave_unlocks() -> void:
 		if enemy_data.has("waveUnlocked"):
 			if current_wave >= enemy_data["waveUnlocked"]:
 				enemy_data["isMet"] = true
+
+	# Spam is always the starting threat and must remain unlocked.
+	if ENEMY_DATA.has(Enemy.SPAM):
+		ENEMY_DATA[Enemy.SPAM]["isMet"] = true
 
 	for map_number in VM_MAP_DATA.keys():
 		var map_data = VM_MAP_DATA[map_number]

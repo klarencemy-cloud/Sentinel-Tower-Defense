@@ -1,4 +1,4 @@
-extends VMWaveChallenge
+﻿extends VMWaveChallenge
 
 const BASE_COUNT := 12
 const COUNT_PER_WAVE := 3
@@ -10,7 +10,7 @@ const SPAWN_INTERVAL_MIN := 0.30
 const BOSS_INTERVAL := 10
 
 const ROSTER_UNLOCKS: Array[Dictionary] = [
-	{"wave": 1, "type": Data.Enemy.DEFAULT},
+	{"wave": 1, "type": Data.Enemy.SPAM},
 	{"wave": 1, "type": Data.Enemy.VIRUS},
 	{"wave": 3, "type": Data.Enemy.ADWARE},
 	{"wave": 5, "type": Data.Enemy.WORM},
@@ -79,5 +79,6 @@ func _roster_for_wave(wave_num: int) -> Array:
 		if wave_num >= int(entry["wave"]):
 			roster.append(entry["type"])
 	if roster.is_empty():
-		roster.append(Data.Enemy.DEFAULT)
+		roster.append(Data.Enemy.SPAM)
 	return roster
+
