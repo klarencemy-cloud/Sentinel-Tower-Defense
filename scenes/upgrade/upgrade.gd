@@ -754,7 +754,7 @@ func _on_tower_btn_pressed() -> void:
 	%BigPic.texture = null
 	$SentinelStuff/Databasebg.visible = false
 	%SentinelsContainer.visible = true
-	%BigPic.position.x += 340
+	%BigPic.position.x = bigpic_default_x
 
 func _on_sentinel_btn_pressed() -> void:
 	UISound.play_click()
