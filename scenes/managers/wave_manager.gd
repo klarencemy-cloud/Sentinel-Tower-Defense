@@ -86,6 +86,10 @@ func update_wave_state() -> void:
 		if Data.current_wave == 3 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_wave2_defeated:
 			GameDialogueManager.is_wave2_defeated = true
 			GameDialogueManager.play_scene("2nd_scene")
+		
+		if Data.current_wave == 4 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_preparation_shown:
+			GameDialogueManager.is_preparation_shown = true
+			GameDialogueManager.show_dialogue_preparation()
 
 		if Data.current_wave == 5 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_firewall_shown:
 			GameDialogueManager.show_dialogue_firewall()
