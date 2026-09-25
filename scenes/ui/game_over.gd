@@ -24,8 +24,14 @@ func _on_btn_checkpoint_pressed() -> void:
 
 	get_tree().paused = false
 	visible = false
+
+	Save._load_game() # Reload saved game state from last checkpoint
+
+	Data.current_level_index = Data.checkpoint_level_index
+	Data.current_wave = Data.checkpoint_wave
+	Data.wave_started = false
 	Data.health = Data.max_health
-	Data.current_wave = max(Data.checkpoint_wave - 1, 0)
+
 	get_tree().change_scene_to_file("uid://h7qi8y7uyyai") # Loading screen
 	
 
