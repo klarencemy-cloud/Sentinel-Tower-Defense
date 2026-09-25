@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bqm53gushpubk" path="res://graphics/ui/Digitalt.otf" id="3_yp74u"]
 [ext_resource type="Script" uid="uid://bgume5aolyxmi" path="res://scenes/ui/tower_card.gd" id="4_script"]
 [ext_resource type="Texture2D" uid="uid://drwbfsen2gyus" path="res://graphics/ui/red.png" id="6_5r7sl"]
+[ext_resource type="Texture2D" uid="uid://2qn6tip66ub0" path="res://graphics/ui/towercd.png" id="7_jcs28"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ra2tf"]
 texture = ExtResource("1_d5ir0")
@@ -105,5 +106,16 @@ offset_bottom = 57.25
 theme_override_font_sizes/font_size = 20
 text = "1
 "
+
+[node name="cooldown" type="TextureProgressBar" parent="." unique_id=219566042]
+visible = false
+layout_mode = 0
+offset_left = 1.5258789e-05
+offset_right = 169.0
+offset_bottom = 246.0
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("7_jcs28")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

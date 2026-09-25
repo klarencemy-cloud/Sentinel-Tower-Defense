@@ -491,6 +491,12 @@ func refresh_tower_cards():
 		card.toggle_active()
 		card.update_free_label()
 
+func start_tower_cooldown(tower_enum: Data.Tower) -> void:
+	for card in get_tree().get_nodes_in_group("TowerCard"):
+		if card.id == tower_enum:
+			card.start_cooldown()
+			return
+
 
 func _on_stats_counter_button_pressed() -> void:
 	UISound.play_click()

@@ -3,9 +3,13 @@ extends Button
 var id: Data.Tower
 var cost: int
 var credential_disable_sources: Array[Node] = []
+const TOWER_COOLDOWN := 10.0
+var cooldown_timer := Timer.new()
+var on_cooldown := false
 signal press(tower_enum: Data.Tower)
 @onready var free_label = $TextureRect/Free/FreeLabel
 @onready var free_badge = $TextureRect/Free
+@onready var cooldown_bar: TextureProgressBar = $cooldown
 func setup(new_id: Data.Tower):
 	id = new_id
 	cost = Data.TOWER_DATA[id]["cost"]
@@ -19,6 +23,13 @@ func _ready() -> void:
 	if not is_in_group("TowerCard"):
 		add_to_group("TowerCard")
 
+	add_child(cooldown_timer)
+	cooldown_timer.one_shot = true
+	cooldown_timer.wait_time = TOWER_COOLDOWN
+	cooldown_timer.timeout.connect(_on_cooldown_finished)
+	cooldown_bar.visible = false
+	cooldown_bar.value = 0
+
 	Data.server_load_changed.connect(_on_server_load_changed)
 	# ensure cost is set even if setup wasn't called before ready
 	cost = Data.TOWER_DATA[id]['cost']
@@ -28,6 +39,9 @@ func _ready() -> void:
 
 
 func toggle_active(_money := 0):
+	if on_cooldown:
+		return
+
 	var load = Data.TOWER_DATA[id]["server_load"]
 	var has_free = Data.free_towers.get(id, 0) > 0
 	var can_buy = Data.is_unli_money or Data.money >= cost
@@ -49,6 +63,23 @@ func set_credential_disabled(source: Node, should_disable: bool) -> void:
 		credential_disable_sources.erase(source)
 	toggle_active(Data.money)
 
+func start_cooldown() -> void:
+	on_cooldown = true
+	cooldown_bar.visible = true
+	cooldown_bar.max_value = TOWER_COOLDOWN
+	cooldown_bar.value = TOWER_COOLDOWN
+	cooldown_timer.start(TOWER_COOLDOWN)
+
+func _process(_delta: float) -> void:
+	if on_cooldown:
+		cooldown_bar.value = cooldown_timer.time_left
+
+func _on_cooldown_finished() -> void:
+	on_cooldown = false
+	cooldown_bar.visible = false
+	cooldown_bar.value = 0
+	toggle_active(Data.money)
+
 func is_credential_disabled_by(source: Node) -> bool:
 	return credential_disable_sources.has(source)
 	
@@ -61,6 +92,9 @@ func update_free_label():
 		free_label.text = str(amount)
 
 func _on_pressed() -> void:
+	if on_cooldown:
+		return
+
 	UISound.play_click()
 	for card in get_tree().get_nodes_in_group("TowerCard"):
 		card.set_selected(false)
