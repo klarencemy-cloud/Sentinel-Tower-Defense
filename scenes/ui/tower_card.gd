@@ -3,7 +3,7 @@ extends Button
 var id: Data.Tower
 var cost: int
 var credential_disable_sources: Array[Node] = []
-const TOWER_COOLDOWN := 10.0
+const TOWER_COOLDOWN := 5.0
 var cooldown_timer := Timer.new()
 var on_cooldown := false
 signal press(tower_enum: Data.Tower)

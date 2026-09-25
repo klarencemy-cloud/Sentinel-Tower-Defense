@@ -112,6 +112,8 @@ bus = &"Music"
 
 [node name="Gacha" type="AudioStreamPlayer" parent="." unique_id=825595118]
 stream = SubResource("AudioStreamRandomizer_1rfma")
+bus = &"Sounds"
 
 [node name="GachaRoll" type="AudioStreamPlayer" parent="." unique_id=543814670]
 stream = ExtResource("23_b1lcm")
+bus = &"Sounds"
