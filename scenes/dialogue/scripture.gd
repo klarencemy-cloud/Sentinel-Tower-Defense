@@ -17,23 +17,30 @@ func _on_info_gui_input(event: InputEvent) -> void:
 			$Pop/Overlay/Animation.visible = true
 			$Info.visible = false
 			GameDialogueManager.clicked = 0
+			var boss_dialogue_shown: bool = false
 			if !GameDialogueManager.is_boss1_defeated2 and Data.current_wave == 10:
 				GameDialogueManager.show_dialogue_boss1_defeated2()
 				GameDialogueManager.is_boss1_defeated2 = true
+				boss_dialogue_shown = true
 			if !GameDialogueManager.is_level2_boss2_defeated2 and Data.current_wave == 20:
 				GameDialogueManager.show_dialogue_level2_boss2_defeated2()
 				GameDialogueManager.is_level2_boss2_defeated2 = true
+				boss_dialogue_shown = true
 			if !GameDialogueManager.is_boss3_defeated2 and Data.current_wave == 30:
 				GameDialogueManager.show_dialogue_level3_boss3_defeated2()
 				GameDialogueManager.is_boss3_defeated2 = true
+				boss_dialogue_shown = true
 			if !GameDialogueManager.is_boss4_defeated_shown2 and Data.current_wave == 40:
 				GameDialogueManager.show_dialogue_level4_boss4_defeated2()
 				GameDialogueManager.is_boss4_defeated_shown2 = true
+				boss_dialogue_shown = true
 			if !GameDialogueManager.is_story_ends and Data.current_wave == 52:
 				GameDialogueManager.show_dialogue_story_ends()
 				GameDialogueManager.is_story_ends = true
+				boss_dialogue_shown = true
 			await get_tree().create_timer(1).timeout
-			get_tree().paused = true
+			if !boss_dialogue_shown:
+				get_tree().paused = false
 
 enum Scriptures {SCRIPTUREI, SCRIPTUREII, SCRIPTUREIII, SCRIPTUREIV, SCRIPTUREV}
 
