@@ -378,7 +378,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 	if enemy_type_stats == Data.Enemy.CREDS:
 		credential_ability_timer.start()
 
-	if Data.is_vmmode and enemy_type_stats == Data.Enemy.WORM:
+	if enemy_type_stats == Data.Enemy.WORM:
 		worm_spawn_timer.start()
 
 
