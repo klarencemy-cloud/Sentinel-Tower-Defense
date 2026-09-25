@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene format=3 uid="uid://c1uvvm2prkl8o"]
 
-[ext_resource type="Script" path="res://scenes/virtualmachinemode/vm_game_over.gd" id="1_vmgo1"]
+[ext_resource type="Script" uid="uid://bpk0oshxsb3gh" path="res://scenes/virtualmachinemode/vm_game_over.gd" id="1_vmgo1"]
 [ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="2_vmgo1"]
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="3_vmgo1"]
 [ext_resource type="Texture2D" uid="uid://ds225f3jg8tik" path="res://graphics/enemies/enemies.png" id="4_vmgo1"]
@@ -34,12 +34,12 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="VMGameOver" type="CanvasLayer"]
+[node name="VMGameOver" type="CanvasLayer" unique_id=770374630]
 process_mode = 3
 layer = 2
 script = ExtResource("1_vmgo1")
 
-[node name="ColorRect" type="TextureRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=279304081]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -48,7 +48,7 @@ grow_vertical = 2
 texture = ExtResource("2_vmgo1")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=1693472307]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -60,7 +60,7 @@ offset_top = -891.0
 offset_right = 455.0
 offset_bottom = -191.0
 
-[node name="Label" type="Label" parent="ColorRect/TextureRect"]
+[node name="Label" type="Label" parent="ColorRect/TextureRect" unique_id=732528345]
 layout_mode = 0
 anchor_left = 0.03982301
 anchor_top = 0.12142857
@@ -71,7 +71,7 @@ theme_override_font_sizes/font_size = 60
 text = "Virtual Mode"
 metadata/_edit_use_anchors_ = true
 
-[node name="txtScore" type="Label" parent="ColorRect/TextureRect"]
+[node name="txtScore" type="Label" parent="ColorRect/TextureRect" unique_id=557641785]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_left = 0.045353983
@@ -82,7 +82,7 @@ theme_override_font_sizes/font_size = 40
 text = "SERVER SECURED!"
 metadata/_edit_use_anchors_ = true
 
-[node name="txtKills" type="Label" parent="ColorRect/TextureRect"]
+[node name="txtKills" type="Label" parent="ColorRect/TextureRect" unique_id=1020520857]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_left = 0.045353983
@@ -93,7 +93,7 @@ theme_override_font_sizes/font_size = 26
 text = "Defeated 0 / 200 viruses"
 metadata/_edit_use_anchors_ = true
 
-[node name="btnRetry" type="TextureButton" parent="ColorRect/TextureRect"]
+[node name="btnRetry" type="TextureButton" parent="ColorRect/TextureRect" unique_id=1039567152]
 layout_mode = 0
 anchor_left = 0.045353983
 anchor_top = 0.55285716
@@ -104,7 +104,7 @@ ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="ColorRect/TextureRect/btnRetry"]
+[node name="Label" type="Label" parent="ColorRect/TextureRect/btnRetry" unique_id=775040391]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -118,11 +118,11 @@ offset_bottom = 22.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 38
-text = "Retry"
+text = "New Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="btnQuit" type="TextureButton" parent="ColorRect/TextureRect"]
+[node name="btnQuit" type="TextureButton" parent="ColorRect/TextureRect" unique_id=1231276240]
 layout_mode = 0
 anchor_left = 0.6825221
 anchor_top = 0.55285716
@@ -133,7 +133,7 @@ ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="ColorRect/TextureRect/btnQuit"]
+[node name="Label" type="Label" parent="ColorRect/TextureRect/btnQuit" unique_id=77621292]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -151,7 +151,7 @@ text = "Exit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect/TextureRect"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect/TextureRect" unique_id=921838842]
 position = Vector2(585, 171)
 sprite_frames = SubResource("SpriteFrames_vmgo1")
 autoplay = "default"

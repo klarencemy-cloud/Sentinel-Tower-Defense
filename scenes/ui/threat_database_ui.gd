@@ -325,10 +325,10 @@ var THREAT_DATA = {
 		},
 	
 		Threat.CREDS: {
-		'health': "N/A",
-		'damage': "N/A",
-		'speed': "N/A",
-		'special_ability': "Copies the ability of a near enemy and uses it",
+		'health': Data.ENEMY_DATA[7]["health"],
+		'damage': Data.ENEMY_DATA[7]["damage"],
+		'speed': Data.ENEMY_DATA[7]["speed"],
+		'special_ability': "Disables random tower cards",
 		'irl_desc': "Credential stuffing is a cyberattack that uses stolen login credentials from one breach to gain access to accounts on other services."
 		},
 
