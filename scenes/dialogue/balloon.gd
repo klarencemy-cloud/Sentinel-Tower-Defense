@@ -209,13 +209,13 @@ func apply_dialogue_line() -> void:
 			"TROJAN":
 				$Balloon/Show/Character.texture = load("res://graphics/character/trojanpfp.png")
 			"System":
-				$Balloon/Show/Character.texture = null
+				$Balloon/Show/Character.texture = load("res://graphics/character/system.png")
 				# $Balloon/Show.hide()
 			"Unknown Voice":
-				$Balloon/Show/Character.texture = null
+				$Balloon/Show/Character.texture = load("res://graphics/character/unknown.png")
 				# $Balloon/Show.hide()
 			"Unknown":
-				$Balloon/Show/Character.texture = null
+				$Balloon/Show/Character.texture = load("res://graphics/character/unknown.png")
 				# $Balloon/Show.hide()
 
 
