@@ -37,7 +37,7 @@ func save_game() -> void:
 		var placed_towers: Array = []
 
 		for tower in get_tree().get_nodes_in_group("Towers"):
-			if tower is Tower:
+			if tower is Tower and not tower.is_queued_for_deletion():
 				var tower_id = tower.tower_id
 				var damage = EnemyTower.tower_damage.get(tower_id, 0)
 
@@ -51,7 +51,7 @@ func save_game() -> void:
 		var placed_sentinels: Array = []
 
 		for sentinel in get_tree().get_nodes_in_group("Sentinels"):
-			if sentinel.has_meta("sentinel_type"):
+			if sentinel.has_meta("sentinel_type") and not sentinel.is_queued_for_deletion():
 				placed_sentinels.append({
 					"type": int(sentinel.get_meta("sentinel_type")),
 					"cell_pos": [sentinel.cell_pos.x, sentinel.cell_pos.y]
@@ -60,10 +60,11 @@ func save_game() -> void:
 		var placed_abilities: Array = []
 
 		for ability in get_tree().get_nodes_in_group("Abilities"):
-			placed_abilities.append({
-				"type": "firewall",
-				"position": [ability.position.x, ability.position.y]
-			})
+			if not ability.is_queued_for_deletion():
+				placed_abilities.append({
+					"type": "firewall",
+					"position": [ability.position.x, ability.position.y]
+				})
 
 		var sentinel_unlocks := {}
 
@@ -113,6 +114,7 @@ func save_game() -> void:
 			"sentinel_cores": Data.sentinel_cores,
 			"player_level": Data.player_level, "experience": Data.experience,
 			"owned_towers": Data.owned_towers,
+			"free_towers": Data.free_towers,
 			"placed_towers": placed_towers,
 			"placed_sentinels": placed_sentinels,
 			"placed_abilities": placed_abilities,
@@ -195,7 +197,12 @@ func _load_game() -> void:
 		Data.owned_towers.clear()
 		for tower_key in saved_owned_towers:
 			Data.owned_towers[int(tower_key)] = int(saved_owned_towers[tower_key])
-		
+
+		var saved_free_towers: Dictionary = parsed.get("free_towers", {})
+		Data.free_towers.clear()
+		for tower_key in saved_free_towers:
+			Data.free_towers[int(tower_key)] = int(saved_free_towers[tower_key])
+
 		var tower_unlocks: Dictionary = parsed.get("tower_unlocks", {})
 
 		for tower_key in tower_unlocks:
