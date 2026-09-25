@@ -175,6 +175,8 @@ var VM_MAP_DATA := {
 var bullet_angle: Vector2
 
 var wave_started: bool = false
+signal wave_cleared(wave: int)
+signal wave_incoming(wave: int)
 
 
 var before_level_index: int

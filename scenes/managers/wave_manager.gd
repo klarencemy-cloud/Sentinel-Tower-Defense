@@ -27,6 +27,8 @@ func update_wave_state() -> void:
 
 	if wave_active and not spawning_wave and enemies.size() == 0:
 		wave_active = false
+		if Data.wave_started:
+			Data.wave_cleared.emit(Data.current_wave)
 
 		if Data.current_wave > 0 and Data.current_wave % 5 == 0 and Data.checkpoint_wave < Data.current_wave:
 			Data.checkpoint_wave = Data.current_wave
@@ -131,7 +133,7 @@ func start_wave() -> void:
 		return
 	Data.clear_notpetya_enemy_speed_effect()
 	Data.wave_started = true
-
+	Data.wave_incoming.emit(Data.current_wave)
 
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:

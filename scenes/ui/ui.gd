@@ -30,6 +30,7 @@ extends CanvasLayer
 	$Control/smallhpbar6
 ]
 @onready var skill3_locked: TextureRect = $Control/HBoxContainer/Skill3/Locked
+@onready var wave_banner = $WaveBanner
 
 var boss_bar_assignments := {} # boss_id -> ProgressBar
 
@@ -108,6 +109,8 @@ func _ready() -> void:
 	
 
 	Data.toggle_server_scene.connect(_show_server_upgrade)
+	Data.wave_cleared.connect(_on_wave_cleared)
+	Data.wave_incoming.connect(_on_wave_incoming)
 	skill1_button.texture_normal = preload("res://graphics/ui/firewallbutton.png")
 	skill1_button.pressed.connect(_on_skill1_pressed)
 
@@ -439,7 +442,15 @@ func update_stats(money: int, health: int):
 
 func update_wave_label() -> void:
 	$Control/TextureRect/PlayerCurrentStats/WaveNum.text = "Wave " + str(Data.current_wave) + " /50"
-	
+
+func _on_wave_cleared(wave: int) -> void:
+	wave_banner.show_message("Wave %d Complete" % wave)
+	UISound.play_unlock()
+
+func _on_wave_incoming(wave: int) -> void:
+	wave_banner.show_message("Wave %d Incoming" % wave)
+	UISound.play_unlock()
+
 
 func show_play_button(state: bool):
 	$Control/TextureRect/HBoxContainer/WaveButton.visible = true
