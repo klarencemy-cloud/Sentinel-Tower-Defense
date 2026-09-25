@@ -31,8 +31,8 @@ Odysseus: I don’t know. But I guess that we will encounter it eventually.
 
 ~ wrong_question4
 System: Wrong answer! Conficker spreads like a worm and turning infected computers into botnets.
-do GameDialogueManager.penalty("money", 300) 
-System: Ransomware demanded 300 Gold!
+do GameDialogueManager.penalty("money", 500) 
+System: Ransomware demanded 500 Gold!
 do GameDialogueManager.pause_game(false)
 => END
 
@@ -42,8 +42,8 @@ System: What is Conficker best known for?
 - Encrypting files for ransom.
 	=>< wrong_question4
 - Spreading like a worm and turning infected computers into botnets.
-	System: Correct! You gained 700 Gold.
-	do GameDialogueManager.reward("money", 700)
+	System: Correct! You gained 1000 Gold.
+	do GameDialogueManager.reward("money", 1000)
 - Displaying unwanted advertisements on a website.
 	=>< wrong_question4
 - Permanently damaging computer hardware.
@@ -86,8 +86,8 @@ TROJAN HORSE: Deception successful, Attack!
 
 ~ wrong_question5
 System: Wrong answer! Creating a unique and strong password for each account and enabling multi-factor authentication is the way to go!
-do GameDialogueManager.penalty("money", 350) 
-System: Ransomware demanded 350 Gold!
+do GameDialogueManager.penalty("money", 500) 
+System: Ransomware demanded 500 Gold!
 do GameDialogueManager.pause_game(false)
 => END
 
@@ -95,8 +95,8 @@ do GameDialogueManager.pause_game(false)
 do GameDialogueManager.pause_game(true)
 System: Which action would best reduce the risk of your account being compromised through Credential Stuffing?
 - Creating a unique and strong password for each account and enabling multi-factor authentication. 
-	System: Correct! You gained 750 Gold.
-	do GameDialogueManager.reward("money", 750)
+	System: Correct! You gained 1000 Gold.
+	do GameDialogueManager.reward("money", 1000)
 - Saving your password in a file.
 	=>< wrong_question5
 - Reusing the same password for every account.
@@ -110,7 +110,7 @@ do GameDialogueManager.pause_game(false)
 ~ wrong_ans1
 do GameDialogueManager.penalty("money", 1000)
 Odysseus: Think carefully..
-Odysseus: How do you stop something that you can’t see?
+Odysseus: How do you stop something that is trying to evade security measures by disguising itself?
 Odysseus: Now, Try again. => quiz1
 => END
 
@@ -118,13 +118,13 @@ Odysseus: Now, Try again. => quiz1
 ~ quiz1
 do GameDialogueManager.pause_game(true)
 Odysseus: I’m detecting multiple Trojan Horses ahead, what should we do?
-- Let them reveal themselves first before placing a tower.
+- Horses are pets!
 	=>< wrong_ans1
 - Allocate resources toward the other enemies, they are the most vulnerable.
 	=>< wrong_ans1
 - Distribute our defenses evenly across the battlefield to avoid creating weak points. 
 	=>< wrong_ans1
-- Deploy detection towers to reveal the Insider Threats, then eliminate them before they infiltrate our defenses.
+- Deploy firewall to slow them down and prevent it from communicating outward.
 	Odysseus: [[Good| Goodjob]].
 	Player: I’m getting better at this!
 	Odysseus: You are. => insider_threat

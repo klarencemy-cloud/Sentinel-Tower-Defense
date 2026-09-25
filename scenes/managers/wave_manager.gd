@@ -41,28 +41,23 @@ func update_wave_state() -> void:
 					ui.disable_auto()
 					match Data.current_wave:
 						10:
-							while not GameDialogueManager.is_boss1_defeated2_done:
-								return
+							await GameDialogueManager.is_boss1_defeated2_done
 							level_completed.emit()
 							next_map.emit()
 						20:
-							while not GameDialogueManager.is_boss2_defeated2_done:
-								return
+							await GameDialogueManager.is_boss2_defeated2_done
 							level_completed.emit()
 							next_map.emit()
 						30:
-							while not GameDialogueManager.is_boss3_defeated2_done:
-								return
+							await GameDialogueManager.is_boss3_defeated2_done
 							level_completed.emit()
 							next_map.emit()
 						40:
-							while not GameDialogueManager.is_boss4_defeated2_done:
-								return
+							await GameDialogueManager.is_boss4_defeated2_done
 							level_completed.emit()
 							next_map.emit()
 						50:
-							while not GameDialogueManager.is_boss5_defeated2_done:
-								return
+							await GameDialogueManager.is_boss5_defeated2_done
 							level_completed.emit()
 							next_map.emit()
 			return

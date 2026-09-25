@@ -340,6 +340,18 @@ var TOWER_DATA = {
 
 	
 func _refresh_tower_image_states() -> void:
+	var shorten_tower_name: Array = [
+	"Spam Filter",
+	"Antivirus",
+	"Adblocker",
+	"DLP",
+	"IDPS",
+	"Q Cannon",
+	"ACS",
+	"AI Sec",
+	"Ep Protection",
+	"Sb Analyzer",
+	]
 	var tower_map := {
 		1: Data.Tower.SPAM_FILTER,
 		2: Data.Tower.ANTIVIRUS,
@@ -360,15 +372,15 @@ func _refresh_tower_image_states() -> void:
 			continue
 
 		var image: TextureRect = button.get_node_or_null("TextureRect")
-		# var name_label: Label = button.get_node_or_null("Tower_Name_%d" % card_index)
+		var name_label: Label = button.get_node_or_null("Tower_Name_%d" % card_index)
 
 		var is_unlocked := is_tower_unlocked(tower_map[card_index])
 
 		if image:
 			image.modulate = Color(1, 1, 1, 1) if is_unlocked else Color(0, 0, 0, 1)
 
-		# if name_label:
-		# 	name_label.text = tower_name[card_index - 1] if is_unlocked else "???"
+		if name_label:
+			name_label.text = shorten_tower_name[card_index - 1] if is_unlocked else "???"
 
 
 func _on_tower_1_pressed() -> void:
