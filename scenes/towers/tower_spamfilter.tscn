@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bgijljt2l6qml" path="res://graphics/towers/spam filter/spam_filter_base.png" id="5_dmts7"]
 [ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="5_uin2q"]
 [ext_resource type="Texture2D" uid="uid://v6nn418cpr87" path="res://graphics/currency/gold.png" id="6_l7y1m"]
-[ext_resource type="AudioStream" path="res://audio/SFX/TOWERS/SPAM FILTERsss.ogg" id="6_uin2q"]
-[ext_resource type="AudioStream" path="res://audio/SFX/TOWERS/Particles.ogg" id="7_81w6i"]
+[ext_resource type="AudioStream" uid="uid://d3wurkpfu03cr" path="res://audio/SFX/TOWERS/SPAM FILTERsss.ogg" id="6_uin2q"]
+[ext_resource type="AudioStream" uid="uid://d1bdne8o00sls" path="res://audio/SFX/TOWERS/Particles.ogg" id="7_81w6i"]
 [ext_resource type="Texture2D" uid="uid://c2ilp4gnl1kii" path="res://graphics/icons/damage_buff.png" id="9_dmts7"]
 [ext_resource type="Texture2D" uid="uid://bxslv8rfp034c" path="res://graphics/icons/range_buff.png" id="10_gbq2t"]
 

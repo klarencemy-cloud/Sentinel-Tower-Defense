@@ -86,9 +86,13 @@ func _on_area_entered(area: Area2D) -> void:
 	if !area.is_in_group("Enemies"):
 		return
 
+	if area in hit_enemies:
+		return
+
 	already_hit = true
 	area.hit(damage, tower_id)
-	hit_enemies.append(area) # Track this enemy as hit
+	hit_enemies.append(area)
+	
 
 	# sandbox analyzer traps enemy
 	if owner_tower_type == Data.Tower.SANDBOX_ANALYZER:
@@ -96,7 +100,7 @@ func _on_area_entered(area: Area2D) -> void:
 		if tower != null:
 			tower.on_bullet_hit_enemy(area)
 
-	if _can_ricochet(): # Spam Filter
+	if _can_ricochet(): # Spam Filter	
 		ricochet(area)
 	else:
 		call_deferred("queue_free")
@@ -141,31 +145,32 @@ func ricochet(from_enemy: Node) -> void:
 	var nearest = null
 	var nearest_dist = INF
 
+	# Decouple bounce range from the tower's normal attack range.
+	var bounce_radius = max(ricochet_range, 250) # tune this base value to taste
+
+	var tower_data = Data.TOWER_DATA.get(owner_tower_type, {})
+	if owner_tower_type == Data.Tower.SPAM_FILTER and tower_data.get("tier2abilityunlocked", false):
+		bounce_radius *= 1.3
+
 	for e in enemies:
 		if e == from_enemy:
 			continue
-
 		if e.fog_hidden:
 			continue
-
-		# Skip enemies already hit by this ricochet chain
 		if e in hit_enemies:
 			continue
 
 		var dist = from_enemy.global_position.distance_to(e.global_position)
-
-		if dist > ricochet_range:
+		if dist > bounce_radius:
 			continue
 
 		if dist < nearest_dist:
 			nearest_dist = dist
 			nearest = e
-
+	
 	if nearest == null:
 		call_deferred("queue_free")
 		return
-
-	print("RICOCHET -> ", nearest.name)
 
 	var new_bullet = preload("res://scenes/bullets/bullet.tscn").instantiate()
 
@@ -174,21 +179,19 @@ func ricochet(from_enemy: Node) -> void:
 	new_bullet.global_position = from_enemy.global_position + dir * 10
 	new_bullet.direction = dir
 	new_bullet.rotation = dir.angle()
+	new_bullet.target = nearest
 
 	var ricochet_damage_factor = 0.5
-	var tower_data = Data.TOWER_DATA.get(owner_tower_type, {})
 	if owner_tower_type == Data.Tower.SPAM_FILTER and tower_data.get("tier2abilityunlocked", false):
 		ricochet_damage_factor = 0.75
 
 	new_bullet.damage = int(damage * ricochet_damage_factor)
-
 	new_bullet.bullet_enum = bullet_enum
 	new_bullet.owner_tower_type = owner_tower_type
 	new_bullet.bounce_count = bounce_count + 1
 	new_bullet.max_bounce = max_bounce
 	new_bullet.ricochet_range = ricochet_range
-	new_bullet.hit_enemies = hit_enemies.duplicate() # Pass the hit list to the new bullet
-
+	new_bullet.hit_enemies = hit_enemies.duplicate()
 	new_bullet.tower_id = tower_id
 
 	if get_parent() != null:
