@@ -57,7 +57,7 @@ func _on_btn_retry_pressed() -> void:
 	
 
 func _reset_game_stats() -> void:
-	Data.current_wave = 0
+	Data.current_wave = 1
 	Data.checkpoint_wave = 0
 	Data.health = Data.max_health
 	Data.money = 200
