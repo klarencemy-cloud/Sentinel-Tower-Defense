@@ -109,6 +109,7 @@ func save_game() -> void:
 		var save_data := {
 			"version": SAVE_VERSION,
 			"current_level_index": Data.current_level_index, "checkpoint_wave": Data.checkpoint_wave,
+			"checkpoint_level_index": Data.checkpoint_level_index,
 			"current_wave": Data.current_wave, "money": Data.money, "max_health": Data.max_health,
 			"maxserverload": Data.maxserverload, "server_points": Data.server_points,
 			"sentinel_cores": Data.sentinel_cores,
@@ -183,6 +184,7 @@ func _load_game() -> void:
 		Data.saved_ability_placements = parsed.get("placed_abilities", [])
 		Data.current_level_index = int(parsed.get("current_level_index", Data.current_level_index))
 		Data.checkpoint_wave = int(parsed.get("checkpoint_wave", Data.checkpoint_wave))
+		Data.checkpoint_level_index = int(parsed.get("checkpoint_level_index", Data.checkpoint_level_index))
 		Data.current_wave = int(parsed.get("current_wave", Data.current_wave))
 		Data.money = int(parsed.get("money", Data.money))
 		Data.max_health = float(parsed.get("max_health", Data.max_health))

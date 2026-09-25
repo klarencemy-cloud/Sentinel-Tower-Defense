@@ -181,6 +181,7 @@ var before_level_index: int
 var before_current_wave: int
 var current_level_index: int = 0 # map count 0 = level 1
 var checkpoint_wave: int = 0 # checkpoint count
+var checkpoint_level_index: int = 0 # save the checkpoint_wave which map is the wave
 var current_wave: int = 1 # wave count
 
 var incremental_enemy_health_bonus: float = current_wave * .02
@@ -1146,6 +1147,7 @@ func reset_game():
 	currentserverload = 0
 	max_health = default_health
 	health = default_health
+	wave_started = false
 	clear_notpetya_enemy_speed_effect()
 
 

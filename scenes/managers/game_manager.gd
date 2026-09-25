@@ -14,6 +14,8 @@ func _ready() -> void:
 	$BG/TowerPreview.hide()
 	$BG/SentinelPreview.hide()
 
+	Data.wave_started = false
+
 	level_manager.setup(self)
 
 	tower_manager.setup(self, level_manager)
