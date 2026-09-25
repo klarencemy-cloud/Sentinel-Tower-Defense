@@ -4,7 +4,7 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_threat_display()
-
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -761,8 +761,8 @@ func _on_threat_6_pressed() -> void:
 	desc_desc.text = str(THREAT_DATA[5]['irl_desc'])
 	animation.play("botnet")
 	$Reddatabasebg/AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
-	
 
+	
 func _on_threat_5_pressed() -> void:
 	animation.visible = true
 	worm_animation.visible = false
@@ -910,3 +910,7 @@ func update_threat_display():
 			var name = get_node("ThreatContainer/CardContainer/Threat%d/Threat_Name_%d" % [(threats + 1), (threats + 1)])
 			texture.modulate = Color(0, 0, 0, 1)
 			name.text = "???"
+		else:
+			var texture = get_node("ThreatContainer/CardContainer/Threat%d/TextureRect" % (threats + 1))
+			var name = get_node("ThreatContainer/CardContainer/Threat%d/Threat_Name_%d" % [(threats + 1), (threats + 1)])
+			texture.modulate = Color(1, 1, 1, 1)

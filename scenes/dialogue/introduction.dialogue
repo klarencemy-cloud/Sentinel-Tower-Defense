@@ -162,8 +162,8 @@ Odysseus: Firewall prevents unauthorized traffic from entering the system while 
 
 ~ wrong_question1
 System: Wrong answer! Spam emails may contain phishing links, scams, or malware that can spread through the network.
-do GameDialogueManager.penalty("money", 100) 
-System: Ransomware demanded 100 Gold!
+do GameDialogueManager.penalty("money", 500) 
+System: Ransomware demanded 500 Gold!
 do GameDialogueManager.pause_game(false)
 => END
 
@@ -175,8 +175,8 @@ System: Why can spam emails become a cybersecurity threat?
 - They slow down the internet speed by flooding emails.   
 	=>< wrong_question1
 - They may contain phishing links, scams, or malware that can spread through the network. 
-	System: Correct! You gained 500 Gold.
-	do GameDialogueManager.reward("money", 500)
+	System: Correct! You gained 1000 Gold.
+	do GameDialogueManager.reward("money", 1000)
 - They automatically encrypt files, making them inaccessible to users.
 	=>< wrong_question1
 do GameDialogueManager.pause_game(false)
@@ -188,7 +188,7 @@ do Data.toggle_server_scene.emit()
 => END
 
 ~ server_open_cyber
-do GameDialogueManager.delay_dialogue(1)
+do GameDialogueManager.delay_dialogue(0.5)
 #insert function that opens the server, on the threat page
 Player: Player: Now this is new.
 Odysseus: Even I didn't know about that. I guess the S.E.R.V.E.R can scan the threats of their current strength after being defeated. It does not show other threats yet.

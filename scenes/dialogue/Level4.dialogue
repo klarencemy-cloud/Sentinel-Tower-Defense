@@ -98,8 +98,8 @@ do GameDialogueManager.show_enemy("ddos", 11)
 
 ~ wrong_question7
 System:  Wrong answer! It was a DDoS attack.
-do GameDialogueManager.penalty("money", 2500) 
-System: Ransomware demanded 2500 Gold!
+do GameDialogueManager.penalty("money", 500) 
+System: Ransomware demanded 500 Gold!
 do GameDialogueManager.pause_game(false)
 => END
 
@@ -111,8 +111,8 @@ System: An online banking website becomes unavailable after receiving millions o
 - Worm  
 	=>< wrong_question7
 - DDoS attack
-	System: Correct! You gained 3000 Gold.
-	do GameDialogueManager.reward("money", 3000)
+	System: Correct! You gained 1000 Gold.
+	do GameDialogueManager.reward("money", 1000)
 - SQL Injection
 	=>< wrong_question7
 do GameDialogueManager.pause_game(false)

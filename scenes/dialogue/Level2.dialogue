@@ -6,8 +6,8 @@ Odysseus: Stay alert. This may be over for now, but our next visitors are alread
 
 ~ wrong_question2
 System: Wrong answer! ILoveYou Virus used deception, a harmless-looking message, to trick users into opening it. 
-do GameDialogueManager.penalty("money", 200) 
-System: Ransomware demanded 200 Gold!
+do GameDialogueManager.penalty("money", 500) 
+System: Ransomware demanded 500 Gold!
 do GameDialogueManager.pause_game(false)
 => END
 
@@ -19,8 +19,8 @@ System: Why was the "ILoveYou" Virus so effective and cost millions in damage?
 - It spread through Wi-Fi alone.
 	=>< wrong_question2
 - It used a deception, a harmless-looking message, to trick users into opening it. 
-	System: Correct! You gained 600 Gold.
-	do GameDialogueManager.reward("money", 600)
+	System: Correct! You gained 1000 Gold.
+	do GameDialogueManager.reward("money", 1000)
 - It shut downs the computer permanently.
 	=>< wrong_question2
 do GameDialogueManager.pause_game(false)
@@ -46,8 +46,8 @@ do GameDialogueManager.unlock_towers(3, "dlp")
 
 ~ wrong_question3
 System: Wrong answer! Worms spread rapidly across networks, consuming resources and infecting many devices.
-do GameDialogueManager.penalty("money", 250) 
-System: Ransomware demanded 250 Gold!
+do GameDialogueManager.penalty("money", 500) 
+System: Ransomware demanded 500 Gold!
 do GameDialogueManager.pause_game(false)
 => END
 
@@ -61,8 +61,8 @@ System: Why are computer worms considered dangerous?
 - They slow down the internet connection.
 	=>< wrong_question3
 - They spread rapidly across networks, consuming resources and infecting many devices.
-	System: Correct! You gained 650 Gold.
-	do GameDialogueManager.reward("money", 650)
+	System: Correct! You gained 1000 Gold.
+	do GameDialogueManager.reward("money", 1000)
 do GameDialogueManager.pause_game(false)
 => END
 

@@ -117,27 +117,27 @@ var ENEMIES = {
 		'name': "BOTNET NODE",
 		'InG_desc': " Once an ordinary machine connected to the network. Now, compromised and controlled, wandering the corrupted world without purpose until commanded. Infects then control towers to malfunction, causing them to fire inaccurately or in different directions",
 		'RL_desc': "Botnets are networks of hijacked computer devices used to carry out various scams and cyberattacks. The term \"botnet\" is formed from the words \"robot\" and \"network\". The assembly of a botnet is usually the infiltration stage of a multi-layer scheme. The bots serve as a tool to automate mass attacks, such as data theft, server crashing, and malware distribution.",
-		'health': Data.ENEMY_DATA[6]["health"],
-		'damage': Data.ENEMY_DATA[6]["damage"],
-		'speed': Data.ENEMY_DATA[6]["speed"]
+		'health': Data.ENEMY_DATA[5]["health"],
+		'damage': Data.ENEMY_DATA[5]["damage"],
+		'speed': Data.ENEMY_DATA[5]["speed"]
 	},
 
 	Enemies_Name.CREDS: {
 		'name': "CREDENTIAL STUFFING",
 		'InG_desc': "Born from unsecured accounts, weak passwords, and stolen usernames. Credential Stuffing is a threat that relies on the power of others to gain benefit. Instead of possessing a unique ability, it imitates nearby enemies to exploit compromised credentials to bypass the S.E.R.V.E.R.'s defenses. It copies the ability of a near enemy and uses it to attack the S.E.R.V.E.R. ",
 		'RL_desc': "Credential stuffing is a cyberattack that uses stolen login credentials from one breach to gain access to accounts on other services.",
-		'health': Data.ENEMY_DATA[7]["health"],
-		'damage': Data.ENEMY_DATA[7]["damage"],
-		'speed': Data.ENEMY_DATA[7]["speed"]
+		'health': Data.ENEMY_DATA[6]["health"],
+		'damage': Data.ENEMY_DATA[6]["damage"],
+		'speed': Data.ENEMY_DATA[6]["speed"]
 	},
 
 		Enemies_Name.TROJAN_HORSE: {
 		'name': "TROJAN HORSE",
 		'InG_desc': "Among the most deceptive threats within the S.E.R.V.E.R., the Trojan Horse disguises itself as a harmless or friendly program to bypass security measures. Only appearing after its target, it reveals its true form and launches a sudden attack.",
 		'RL_desc': "Trojan horse attacks deceive people into running programs that appear to be trusted and safe but are actually malicious by using social engineering and deception. Trojans are programs that appear as attachments, downloads, or video downloads, or programs that pretend to do one thing but actually do another thing maliciously.",
-		'health': Data.ENEMY_DATA[5]["health"],
-		'damage': Data.ENEMY_DATA[5]["damage"],
-		'speed': Data.ENEMY_DATA[5]["speed"]
+		'health': Data.ENEMY_DATA[7]["health"],
+		'damage': Data.ENEMY_DATA[7]["damage"],
+		'speed': Data.ENEMY_DATA[7]["speed"]
 	},
 
 	Enemies_Name.INSIDER: {

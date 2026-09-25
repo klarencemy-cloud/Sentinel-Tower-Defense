@@ -22,8 +22,8 @@ Odysseus: Maybe we'll find additional hints along the way.
 
 ~ wrong_question8
 System:  Wrong answer! NotPetya primarily aims to cause widespread destruction rather than to earn ransom payments.
-do GameDialogueManager.penalty("money", 4000) 
-System: Ransomware demanded 4000 Gold!
+do GameDialogueManager.penalty("money", 500) 
+System: Ransomware demanded 500 Gold!
 do GameDialogueManager.pause_game(false)
 => END
 
@@ -35,8 +35,8 @@ System: Which characteristic best differentiates NotPetya from most ransomware?
 - It disguises itself as legitimate software and then installs malicious software.
 	=>< wrong_question8
 - It primarily aims to cause widespread destruction rather than to earn ransom payments.
-	System: Correct! You gained 5000 Gold.
-	do GameDialogueManager.reward("money", 5000)
+	System: Correct! You gained 1000 Gold.
+	do GameDialogueManager.reward("money", 1000)
 - It only infects personal computers from private users.
 	=>< wrong_question8
 do GameDialogueManager.pause_game(false)
@@ -65,8 +65,8 @@ do GameDialogueManager.pause_game(false)
 
 ~ wrong_question9
 System:  Wrong answer! NotPetya primarily aims to cause widespread destruction rather than to earn ransom payments.
-do GameDialogueManager.penalty("money", 5000) 
-System: Ransomware demanded 5000 Gold!
+do GameDialogueManager.penalty("money", 500) 
+System: Ransomware demanded 500 Gold!
 do GameDialogueManager.pause_game(false)
 => END
 
@@ -80,8 +80,8 @@ System: What do you call a software vulnerability that is discovered by attacker
 - Trojan Horse
 	=>< wrong_question9
 - Zero-Day
-	System: Correct! You gained 7000 Gold.
-	do GameDialogueManager.reward("money", 7000)
+	System: Correct! You gained 1000 Gold.
+	do GameDialogueManager.reward("money", 1000)
 do GameDialogueManager.pause_game(false)
 => END
 
