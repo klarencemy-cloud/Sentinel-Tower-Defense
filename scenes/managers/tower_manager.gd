@@ -271,12 +271,9 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	tower.connect("select", tower_selection)
 	tower.connect("removed", _on_tower_removed)
 	_get_tower_parent().add_child(tower)
-
-	var ui = get_tree().get_first_node_in_group("UI")
-	if ui:
-		ui.start_tower_cooldown(selected_tower)
 	
 	if selected_tower == Data.Tower.PATCH:
+		var ui = get_tree().get_first_node_in_group("UI")
 		if ui:
 			ui.start_patch_cooldown()
 		
@@ -285,6 +282,7 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if selected_tower == Data.Tower.BACKUP_SERVER:
 		Data.backup_server_placed = true
 	
+	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
 		ui.update_skill3_locked()
 	
@@ -331,7 +329,7 @@ func _try_place_tower(cell_pos: Vector2i, world_pos: Vector2) -> void:
 	if Data.TOWER_DATA[selected_tower]["name"] == "Spam Filter" and !GameDialogueManager.is_introduction_spam_filter and !Data.is_sandbox and !Data.is_vmmode and (Data.current_wave == 0 or Data.current_wave == 1):
 		GameDialogueManager.show_dialogue_spam_filter()
 
-	if (Data.currentserverload > 70 or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and !Data.is_vmmode and Data.current_wave == 4:
+	if (Data.currentserverload > 100 or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and !Data.is_vmmode and Data.current_wave == 4:
 		GameDialogueManager.show_dialogue_preparation_end()
 	
 

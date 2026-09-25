@@ -239,6 +239,12 @@ func show_dialogue_wave3_defeat(): # used in server_upgrade
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "wave3_defeat")
 	is_wave3_defeated = true
 
+var is_preparation_shown: bool = false
+func show_dialogue_preparation(): # used in wave manager
+	_disable_auto()
+	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "preparation")
+	is_preparation_shown = true
+
 func show_dialogue_preparation_end(): # used in tower manager
 	_disable_auto()
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/introduction.dialogue"), "preparation_end")
