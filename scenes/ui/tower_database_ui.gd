@@ -249,63 +249,63 @@ enum Tower {SPAM, ANTIVIRUS, ADBLOCKER, DLP, IDPS, QUARANTINE_CANNON, ACS, AI_SE
 
 var TOWER_DATA = {
 	Tower.SPAM: {
-		'damage': 20,
-		'atk_speed': 0.75,
+		'damage': Data.TOWER_DATA[0]["damage"],
+		'atk_speed': Data.TOWER_DATA[0]["reload_time"],
 		'type': "Bullet",
 		'special_ability': "Attacks bounce to nearby enemies. Deals bonus damage to Spam",
 		'irl_desc': "These are automated security tools that are used to identify, block, redirect, or allow bulk, unwanted, or malicious emails before it reaches the primary inbox of a user's email.",
 		'thumbnail': "res://graphics/ui/tower thumbnails 2/SPAM_FILTER.png"
 	},
 	Tower.ANTIVIRUS: {
-		'damage': 30,
-		'atk_speed': 1.00,
+		'damage': Data.TOWER_DATA[1]["damage"],
+		'atk_speed': Data.TOWER_DATA[1]["reload_time"],
 		'type': "Bullet",
 		'special_ability': "Deals increased damage to malware enemies such as Viruses, Worms, and Trojan horses.",
 		'irl_desc': "Antivirus protection refers to software designed to monitor, detect, prevent, and eliminate malicious threats before they infect, corrupt, or entirely damage data or devices. The threats include software viruses and malware, such as worms, ransomware, and more. For this, it monitors and scans incoming data from the internet, including emails, websites, and external devices like hard drives, helping identify network security vulnerabilities that malware could exploit.",
 		'thumbnail': "res://graphics/ui/tower thumbnails 2/ANTIVIRUS.png"
 	},
 	Tower.ADBLOCKER: {
-		'damage': 40,
-		'atk_speed': 0.75,
+		'damage': Data.TOWER_DATA[2]["damage"],
+		'atk_speed': Data.TOWER_DATA[2]["reload_time"],
 		'type': "Area",
 		'special_ability': "Automatically removes the disable effect caused by Adware. Deals bonus damage to Adware. ",
 		'irl_desc': "Adblock technology makes use of straightforward lists, known as filter lists, to decide what should be hidden or blocked from appearing on the pages a user visits.",
 		'thumbnail': "res://graphics/ui/tower thumbnails 2/ADBLOCKER.png"
 	},
 	Tower.DLP: {
-		'damage': 0,
-		'atk_speed': 1.50,
+		'damage': Data.TOWER_DATA[3]["damage"],
+		'atk_speed': Data.TOWER_DATA[3]["reload_time"],
 		'type': "Bullet",
 		'special_ability': "Infects enemies and reduces their damage by 50%. ",
 		'irl_desc': "Data Loss Prevention classifies sensitive data to prevent unauthorized users from stealing or misusing proprietary information. The technology monitors data across endpoints, networks, and cloud storage, immediately stopping violations like uploading customer PII (Personally Identifiable Information), corporate secrets, or financial records to personal drives, enforcing corporate compliance mandates, tracking unauthorized file sharing, preventing accidental leaks by distracted employees, and securing intellectual assets. ",
 		'thumbnail': "res://graphics/ui/tower thumbnails 2/DLP.png"
 	},
 		Tower.IDPS: {
-		'damage': 75,
-		'atk_speed': 1.00,
+		'damage': Data.TOWER_DATA[4]["damage"],
+		'atk_speed': Data.TOWER_DATA[4]["reload_time"],
 		'type': "Area",
 		'special_ability': "Reveals stealth enemies, allowing all towers to target them.",
 		'irl_desc': "An Intrusion Detection System (IDS) and an Intrusion Prevention System (IPS) are cybersecurity technologies that work together, often combined as an Intrusion Detection and Prevention System (IDPS), to identify and block malicious activity in networks. They are essential for safeguarding networks from cyber threats such as malware, intrusions, and denial-of-service attacks.",
 		'thumbnail': "res://graphics/ui/tower thumbnails 2/IDPS.png"
 	},
 		Tower.QUARANTINE_CANNON: {
-		'damage': 100,
-		'atk_speed': 2.00,
+		'damage': Data.TOWER_DATA[5]["damage"],
+		'atk_speed': Data.TOWER_DATA[5]["reload_time"],
 		'type': "Splash",
 		'special_ability': "Freezes enemies and slows them after thawing.",
 		'irl_desc': "It is the separation, isolation, or restriction of certain files or programs from others to stop the spread of malicious intent or damage.",
 		'thumbnail': "res://graphics/ui/tower thumbnails 2/QUARANTINE.png"
 	},
 		Tower.ACS: {
-		'damage': 120,
-		'atk_speed': 1.30,
+		'damage': Data.TOWER_DATA[6]["damage"],
+		'atk_speed': Data.TOWER_DATA[6]["reload_time"],
 		'type': "Area",
 		'special_ability': "Slows enemies and deals bonus damage to Insider Threats.",
 		'irl_desc': "It is a security system known as an access control system that is aimed at restricting and regulating employee access to specific locations or levels within a facility or system. It uses multiple verification methods, including personal identification numbers, cards, tokens, fingerprints, or iris recognition, to either allow or block access.",
 		'thumbnail': "res://graphics/ui/tower thumbnails 2/ACS.png"
 	},
 	Tower.AI_SECURITY: {
-		'damage': 130,
+		'damage': Data.TOWER_DATA[7]["damage"],
 		'atk_speed': "N/A",
 		'type': "Bullet",
 		'special_ability': "It eliminates the enemies using a laser. The laser will continuously hit the enemy and provide damage until it is eliminated.",
@@ -313,16 +313,16 @@ var TOWER_DATA = {
 		'thumbnail': "res://graphics/ui/tower thumbnails 2/AI_SEC.png"
 	},
 	Tower.ENDPOINT: {
-		'damage': 150,
-		'atk_speed': 1.25,
+		'damage': Data.TOWER_DATA[9]["damage"],
+		'atk_speed': Data.TOWER_DATA[9]["reload_time"],
 		'type': "Area",
 		'special_ability': "Grants immunity to malware debuffs to two selected towers.",
 		'irl_desc': "Endpoint protection involves monitoring and protecting endpoints against cyber threats. Protected endpoints include desktops, laptops, smartphones, tablet computers, and other devices. Various cybersecurity solutions can be installed on and monitor these devices to protect them against cyber threats, regardless of where they are located on or off the corporate network.",
 		'thumbnail': "res://graphics/ui/tower thumbnails 2/ENDPOINT_PROTECTION.png"
 	},
 	Tower.SANDBOX: {
-		'damage': 220,
-		'atk_speed': 3.00,
+		'damage': Data.TOWER_DATA[10]["damage"],
+		'atk_speed': Data.TOWER_DATA[10]["reload_time"],
 		'type': "Bullet",
 		'special_ability': "Traps one enemy in a force cage until it dies, but it cannot target another enemy while occupied. Nearby enemies become infected as well. ",
 		'irl_desc': "Suspicious files or links execute safely within this isolated virtual environment without risking production infrastructure. The environment records internal process behaviors, keeping an eye out for registry modifications, hidden logic bombs, and sleeper malware, flagging the file if malicious actions are observed, which provides analysts with highly detailed threat intelligence about completely unclassified zero-day exploits before they ever touch physical hard drives. ",
@@ -360,15 +360,15 @@ func _refresh_tower_image_states() -> void:
 			continue
 
 		var image: TextureRect = button.get_node_or_null("TextureRect")
-		var name_label: Label = button.get_node_or_null("Tower_Name_%d" % card_index)
+		# var name_label: Label = button.get_node_or_null("Tower_Name_%d" % card_index)
 
 		var is_unlocked := is_tower_unlocked(tower_map[card_index])
 
 		if image:
 			image.modulate = Color(1, 1, 1, 1) if is_unlocked else Color(0, 0, 0, 1)
 
-		if name_label:
-			name_label.text = tower_name[card_index - 1] if is_unlocked else "???"
+		# if name_label:
+		# 	name_label.text = tower_name[card_index - 1] if is_unlocked else "???"
 
 
 func _on_tower_1_pressed() -> void:

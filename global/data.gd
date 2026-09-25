@@ -19,7 +19,7 @@ signal ads_visible_changed
 signal open_server_cyber
 signal server_upgrade_purchased()
 
-var DEVMODE = true
+var DEVMODE = false
 var is_server_cyber_shown: bool = false
 signal toggle_server_scene # to toggle server upgrade visibility
 signal change_challenge() # for vm
@@ -301,7 +301,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.QUARANTINE_CANNON: {
 		'name': 'Quarantine Cannon',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'waveUnlocked': 19,
 		'unlockable': false,
 		'cost': 60,
@@ -352,7 +352,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.IDPS: {
 		'name': 'IDPS',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'waveUnlocked': 16,
 		'unlockable': false,
 		'cost': 30,
@@ -400,7 +400,7 @@ var TOWER_DATA = {
 		'tier3abilityunlocked': false, },
 	Tower.BACKUP_SERVER: {
 		'name': "Backup Server",
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'cost': 0,
 		'damage': 5000,
 		'server_load': 0,
@@ -411,7 +411,7 @@ var TOWER_DATA = {
 		},
 	Tower.AD_BLOCKER: {
 		'name': 'Ad Blocker',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'waveUnlocked': 8,
 		'unlockable': false,
 		'cost': 75,
@@ -462,7 +462,7 @@ var TOWER_DATA = {
 		},
 	Tower.ANTIVIRUS: {
 		'name': 'Antivirus',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'waveUnlocked': 4,
 		'unlockable': false,
 		'cost': 50,
@@ -513,7 +513,7 @@ var TOWER_DATA = {
 		},
 		Tower.ACCESS_CONTROL_SYSTEM: {
 		'name': 'Access Control System',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'waveUnlocked': 22,
 		'unlockable': false,
 		'cost': 225,
@@ -564,7 +564,7 @@ var TOWER_DATA = {
 		},
 		Tower.ENDPOINT_PROTECTION: {
 		'name': 'Endpoint Protection',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'waveUnlocked': 32,
 		'unlockable': false,
 		'cost': 350,
@@ -615,7 +615,7 @@ var TOWER_DATA = {
 		},
 		Tower.SANDBOX_ANALYZER: {
 		'name': 'Sandbox Analyzer',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'waveUnlocked': 36,
 		'unlockable': false,
 		'cost': 150,
@@ -666,7 +666,7 @@ var TOWER_DATA = {
 		},
 		Tower.AI_SECURITY: {
 		'name': 'AI Security',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'waveUnlocked': 28,
 		'unlockable': false,
 		'cost': 275,
@@ -717,7 +717,7 @@ var TOWER_DATA = {
 		},
 		Tower.DATA_LOSS_PREVENTION: {
 		'name': 'DLP',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'waveUnlocked': 12,
 		'unlockable': false,
 		'cost': 50,
@@ -768,7 +768,7 @@ var TOWER_DATA = {
 		},
 		Tower.PATCH: {
 		'name': 'PATCH',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'cost': 0,
 		'server_load': 0,
 		'damage': 10.0,
@@ -813,7 +813,7 @@ func get_server_visual_level() -> int:
 var SENTINEL_DATA = {
 	Sentinel.ETHICAL: {
 		'name': 'Ethical Hacker',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'cooldown': 15,
 		'duration': 3,
 		'range': 500,
@@ -822,7 +822,7 @@ var SENTINEL_DATA = {
 	},
 	Sentinel.SYSAD: {
 		'name': 'System Administrator',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'cooldown': 60,
 		'range': 0,
 		'thumbnail': "res://graphics/sentinels/thumbnail/SYSTEMADMIN.png",
@@ -830,7 +830,7 @@ var SENTINEL_DATA = {
 	},
 	Sentinel.INTRUSION: {
 		'name': 'Intrusion Analyst',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'cooldown': 30,
 		'range': 0,
 		'thumbnail': "res://graphics/sentinels/thumbnail/INTRUSIONANALYST.png",
@@ -838,7 +838,7 @@ var SENTINEL_DATA = {
 		 },
 	Sentinel.SECURITY: {
 		'name': 'Security Architect',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'cooldown': 15,
 		'duration': 10,
 		'range': 500,
@@ -847,7 +847,7 @@ var SENTINEL_DATA = {
 		},
 	Sentinel.MALWARE: {
 		'name': 'Malware Analyst',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'cooldown': 25,
 		'duration': 15,
 		'range': 500,
@@ -856,7 +856,7 @@ var SENTINEL_DATA = {
 		},
 	Sentinel.DECEPTION: {
 		'name': 'Deception Analyst',
-		'isUnlocked': false,
+		'isUnlocked': false or DEVMODE,
 		'cooldown': 30,
 		'duration': 15,
 		'range': 500,
@@ -884,7 +884,7 @@ var ENEMY_DATA = {
 		'damage': 10,
 		'atkspd': 0.6,
 		"exp": 3,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 4},
 	Enemy.ADWARE: {
 		'health': 100,
@@ -894,7 +894,7 @@ var ENEMY_DATA = {
 		'damage': 12,
 		'atkspd': 0.7,
 		"exp": 4,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 8},
 	Enemy.WORM: {
 		'health': 120,
@@ -904,7 +904,7 @@ var ENEMY_DATA = {
 		'damage': 15,
 		'atkspd': 0.8,
 		"exp": 5,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 12},
 	Enemy.SPYWARE: {
 		'health': 130,
@@ -914,7 +914,7 @@ var ENEMY_DATA = {
 		'damage': 35,
 		'atkspd': 1,
 		"exp": 6,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 16},
 	Enemy.TROJAN: {
 		'health': 350,
@@ -924,7 +924,7 @@ var ENEMY_DATA = {
 		'damage': 55,
 		'atkspd': 1,
 		"exp": 9,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 24},
 	Enemy.BOTNET: {
 		'health': 200,
@@ -934,7 +934,7 @@ var ENEMY_DATA = {
 		'damage': 55,
 		'atkspd': 1.2,
 		"exp": 8,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 19},
 	Enemy.CREDS: {
 		'health': 150,
@@ -944,7 +944,7 @@ var ENEMY_DATA = {
 		'damage': 5,
 		'atkspd': 1,
 		"exp": 9,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 22},
 	Enemy.INSIDERTHREAT: {
 		'health': 120,
@@ -954,7 +954,7 @@ var ENEMY_DATA = {
 		'damage': 80,
 		'atkspd': 1.3,
 		"exp": 10,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 28},
 	Enemy.ROOTKIT: {
 		'health': 400,
@@ -964,7 +964,7 @@ var ENEMY_DATA = {
 		'damage': 100,
 		'atkspd': 1.4,
 		"exp": 11,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 32},
 	Enemy.SQL: {
 		'health': 500,
@@ -974,7 +974,7 @@ var ENEMY_DATA = {
 		'damage': 120,
 		'atkspd': 1.5,
 		"exp": 12,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 34},
 	Enemy.DDOS: {
 		'health': 650,
@@ -984,7 +984,7 @@ var ENEMY_DATA = {
 		'damage': 150,
 		'atkspd': 1.6,
 		"exp": 13,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 36},
 	Enemy.RANSOMWARE: {
 		'health': 600,
@@ -994,7 +994,7 @@ var ENEMY_DATA = {
 		'damage': 250,
 		'atkspd': 1.8,
 		"exp": 15,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 38},
 	Enemy.ZERO: {
 		'health': 1000,
@@ -1004,7 +1004,7 @@ var ENEMY_DATA = {
 		'damage': 350,
 		'atkspd': 2,
 		"exp": 16,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 43},
 	Enemy.BOSS1: { # I LOVE YOU
 		'health': 5000,
@@ -1014,7 +1014,7 @@ var ENEMY_DATA = {
 		'damage': 99999,
 		'atkspd': 1,
 		"exp": 100,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 10},
 	Enemy.BOSS2: { # CONFICKER
 		'health': 8000,
@@ -1024,7 +1024,7 @@ var ENEMY_DATA = {
 		'damage': 99999,
 		'atkspd': 1.2,
 		"exp": 145,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 20},
 	Enemy.BOSS3: { # WANNA CRY
 		'health': 10000,
@@ -1034,7 +1034,7 @@ var ENEMY_DATA = {
 		'damage': 99999,
 		'atkspd': 1.5,
 		"exp": 200,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 30},
 	Enemy.BOSS4: { # NOT PETYA
 		'health': 12000,
@@ -1044,7 +1044,7 @@ var ENEMY_DATA = {
 		'damage': 99999,
 		'atkspd': 2,
 		"exp": 325,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 40},
 	Enemy.BOSS5: { # MY DOOM
 		'health': 15000,
@@ -1054,7 +1054,7 @@ var ENEMY_DATA = {
 		'damage': 99999,
 		'atkspd': 2,
 		"exp": 450,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 50},
 	Enemy.BOSS6: { # MY TROJAN
 		'health': 20000,
@@ -1064,7 +1064,7 @@ var ENEMY_DATA = {
 		'damage': 99999,
 		'atkspd': 2,
 		"exp": 450,
-		"isMet": false,
+		"isMet": false or DEVMODE,
 		"waveUnlocked": 50}
 }
 
