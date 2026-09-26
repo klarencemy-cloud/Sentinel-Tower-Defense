@@ -100,6 +100,10 @@ func update_wave_state() -> void:
 		if Data.current_wave == 7 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_server2:
 			GameDialogueManager.show_dialogue_server_upgrade_2()
 
+		if Data.current_wave == 25 and wave_active == false and !Data.is_sandbox and !Data.is_vmmode and !GameDialogueManager.is_skill3_activated:
+			if ui:
+				ui.toggle_skill_activation("backup")
+
 		if Data.current_wave == 32 and wave_active == false and !Data.is_sandbox and !GameDialogueManager.is_ep_unlocked:
 			GameDialogueManager.is_ep_unlocked = true
 			GameDialogueManager.unlock_towers(9, "epprotection")

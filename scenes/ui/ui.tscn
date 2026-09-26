@@ -422,22 +422,6 @@ value = 100.0
 fill_mode = 5
 texture_progress = ExtResource("19_ydrdt")
 
-[node name="Skill2" type="TextureButton" parent="Control/HBoxContainer" unique_id=1811858695]
-custom_minimum_size = Vector2(77, 77)
-layout_mode = 2
-texture_normal = ExtResource("19_yy7ol")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="cooldown" type="TextureProgressBar" parent="Control/HBoxContainer/Skill2" unique_id=2099663605]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-value = 100.0
-fill_mode = 5
-texture_progress = ExtResource("19_ydrdt")
-
 [node name="Skill3" type="TextureButton" parent="Control/HBoxContainer" unique_id=1922029326]
 custom_minimum_size = Vector2(77, 77)
 layout_mode = 2
@@ -460,6 +444,22 @@ layout_mode = 0
 offset_right = 77.0
 offset_bottom = 77.0
 texture = ExtResource("19_ydrdt")
+
+[node name="Skill2" type="TextureButton" parent="Control/HBoxContainer" unique_id=1811858695]
+custom_minimum_size = Vector2(77, 77)
+layout_mode = 2
+texture_normal = ExtResource("19_yy7ol")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="cooldown" type="TextureProgressBar" parent="Control/HBoxContainer/Skill2" unique_id=2099663605]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("19_ydrdt")
 
 [node name="StatsContainer" type="VBoxContainer" parent="Control" unique_id=1023310108]
 custom_minimum_size = Vector2(150, 0)
@@ -926,6 +926,8 @@ z_index = 4
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -947,8 +949,8 @@ script = ExtResource("39_0xdx3")
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliMoney" to="." method="_on_unli_money_toggled"]
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliHealth" to="." method="_on_unli_health_toggled"]
 [connection signal="toggled" from="Control/TextureRect/SandboxMenuContainer/UnliSentiCap" to="." method="_on_unli_senti_cap_toggled"]
-[connection signal="pressed" from="Control/HBoxContainer/Skill2" to="." method="_on_skill_2_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/Skill3" to="." method="_on_skill_3_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Skill2" to="." method="_on_skill_2_pressed"]
 [connection signal="toggled" from="Control/AutoLabel/AutoButton" to="." method="_on_auto_button_toggled"]
 [connection signal="pressed" from="Control/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="StatsCounterButton" to="." method="_on_stats_counter_button_pressed"]

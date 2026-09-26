@@ -54,7 +54,8 @@ enum CardCategory {TOWER, SENTINEL, ENEMY}
 var fade_tween: Tween
 
 const VM_FIREWALL_UNLOCK_WAVE := 5
-const VM_PATCH_BACKUP_UNLOCK_WAVE := 43
+const VM_PATCH_UNLOCK_WAVE := 43
+const VM_BACKUP_UNLOCK_WAVE := 25
 
 func _vm_skill_unlocked(required_wave: int) -> bool:
 	if not Data.is_vmmode:
@@ -165,7 +166,7 @@ func _ready() -> void:
 		toggle_skill_activation("firewall")
 	if Data.current_wave >= 43 or Data.is_sandbox:
 		toggle_skill_activation("patch")
-	if Data.current_wave >= 43 or Data.is_sandbox:
+	if Data.is_sandbox or (not Data.is_vmmode and Data.current_wave >= VM_BACKUP_UNLOCK_WAVE):
 		toggle_skill_activation("backup")
 	
 	for tower_enum in Data.Tower.values():
@@ -221,7 +222,7 @@ func _ready() -> void:
 		$Control/HBoxContainer/Skill1.disabled = false
 		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
 
-	if not GameDialogueManager.is_skill2_activated and not _vm_skill_unlocked(VM_PATCH_BACKUP_UNLOCK_WAVE):
+	if not GameDialogueManager.is_skill2_activated and not _vm_skill_unlocked(VM_PATCH_UNLOCK_WAVE):
 		$Control/HBoxContainer/Skill2.disabled = true
 		$Control/HBoxContainer/Skill2.texture_normal = load("res://graphics/container/skillcontainer.png")
 
@@ -229,7 +230,7 @@ func _ready() -> void:
 		$Control/HBoxContainer/Skill2.disabled = false
 		$Control/HBoxContainer/Skill2.texture_normal = load("res://graphics/ui/patch.png")
 
-	if not GameDialogueManager.is_skill3_activated and not _vm_skill_unlocked(VM_PATCH_BACKUP_UNLOCK_WAVE):
+	if not GameDialogueManager.is_skill3_activated and not _vm_skill_unlocked(VM_BACKUP_UNLOCK_WAVE):
 		$Control/HBoxContainer/Skill3.disabled = true
 		$Control/HBoxContainer/Skill3.texture_normal = load("res://graphics/container/skillcontainer.png")
 
@@ -262,10 +263,13 @@ func _process(_delta: float) -> void:
 		wave_button.modulate = Color(1, 1, 1, 0.4) if should_disable else Color(1, 1, 1, 1)
 		
 func _on_skill_2_pressed() -> void:
-	UISound.play_click()
-	if patch_on_cooldown:
+	if Data.current_wave >= 43:
+		UISound.play_click()
+		if patch_on_cooldown:
+			return
+		tower_select(11)
+	else:
 		return
-	tower_select(11)
 
 func tower_select(tower_enum: Data.Tower):
 	place_tower.emit(tower_enum)
@@ -290,11 +294,14 @@ func toggle_skill_activation(skill: String):
 	
 
 func _on_skill1_pressed() -> void:
-	UISound.play_click()
-	if firewall_on_cooldown:
-		return
+	if Data.current_wave >= 5:
+		UISound.play_click()
+		if firewall_on_cooldown:
+			return
 
-	place_ability.emit(Data.Ability.FIREWALL)
+		place_ability.emit(Data.Ability.FIREWALL)
+	else:
+		return
 
 func _on_firewall_cooldown_finished() -> void:
 	firewall_on_cooldown = false
@@ -863,12 +870,15 @@ func unlock_sentinel_card(sentinel_enum: Data.Sentinel) -> void:
 
 
 func _on_skill_3_pressed() -> void:
-	UISound.play_click()
-	if backup_server_on_cooldown:
+	if Data.current_wave >= 25:
+		UISound.play_click()
+		if backup_server_on_cooldown:
+			return
+		if Data.backup_server_placed:
+			return
+		tower_select(8)
+	else:
 		return
-	if Data.backup_server_placed:
-		return
-	tower_select(8)
 
 func update_skill3_locked() -> void:
 	skill3_locked.visible = Data.backup_server_placed and not backup_server_on_cooldown
