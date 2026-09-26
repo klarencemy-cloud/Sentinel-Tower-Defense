@@ -66,6 +66,12 @@ func update_wave_state() -> void:
 
 	if not wave_active and not spawning_wave and enemies.size() == 0:
 		if Data.wave_started:
+			if not Wave.WAVE_DATA.has(Data.current_wave + 1):
+				Data.wave_started = false
+				if ui:
+					ui.disable_auto()
+				return
+
 			Data.wave_started = false
 			Data.current_wave += 1
 			Data.update_wave_unlocks()
