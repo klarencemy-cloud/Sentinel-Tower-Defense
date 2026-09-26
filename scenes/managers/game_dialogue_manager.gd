@@ -596,7 +596,7 @@ func show_dialogue_level5_zero_day2(): # used in popup
 	_disable_auto()
 	var ui = get_tree().get_first_node_in_group("UI")
 	ui.toggle_skill_activation("patch")
-	ui.toggle_skill_activation("backup")
+	# ui.toggle_skill_activation("backup")
 	DialogueManager.show_dialogue_balloon(load("res://scenes/dialogue/Level5.dialogue"), "zero_day2")
 	is_zero_day_shown2 = true
 
