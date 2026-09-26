@@ -16,7 +16,8 @@ Player: What? Wait, where are we?
 do GameDialogueManager.move_camera(240,135,1.5)
 Odysseus: Save the chatter for later! See those? Ohh, Spams! They come unwelcome, unsolicited, and in large quantities. So be ready!
 do GameDialogueManager.show_enemy("spam", 0)
-
+do GameDialogueManager.toggle_highlight(true)
+do GameDialogueManager.show_objectives(true,"Place the Spam Filter tower")
 => END
 
 #~ server_health
@@ -26,6 +27,8 @@ do GameDialogueManager.show_enemy("spam", 0)
 #=> END
 
 ~ spam_filter
+do GameDialogueManager.toggle_highlight(false)
+do GameDialogueManager.show_objectives(false,"")
 Odysseus: Good choice! That tower is called Spam Filter; this was specifically built for this cyber threat.  They have automated security tools that identify, block, redirect, or allow bulk, unwanted, or malicious emails.
 Player: Since when do cyberthreats turn into monsters? 
 Odysseus: I'll explain later. 
@@ -116,7 +119,7 @@ Odysseus: It really does. But it seems things have settled down for a bit.
 Player: It might be the calm before the storm. Better get ready before threats swarm their way in!
 Odysseus: Now that’s the mindset of a strategist! Contingent planning and anticipating cyber attacks are important to minimize damage and to have room to formulate smart decisions on how to deal with the unforeseen.
 Player: Let's spent all our resources first before we lower the force field.
-do GameDialogueManager.show_objectives(true)
+do GameDialogueManager.show_objectives(true, "Place some towers before commencing")
 if ((Data.currentserverload > 100) or Data.money < 30) and !GameDialogueManager.is_prep and !Data.is_sandbox and Data.current_wave == 4
 	do GameDialogueManager.toggle_fade_transition()
 	do GameDialogueManager.delay_dialogue(3)
@@ -125,7 +128,7 @@ if ((Data.currentserverload > 100) or Data.money < 30) and !GameDialogueManager.
 => END
 
 ~ preparation_end
-do GameDialogueManager.show_objectives(false)
+do GameDialogueManager.show_objectives(false,"")
 Odysseus: The threats are already inside the perimeter. Press START to commence.
 VIRUS: 010101… INfeCt tHe sYSTem....
 do GameDialogueManager.show_enemy("virus", 1)

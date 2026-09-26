@@ -876,5 +876,6 @@ func update_skill3_locked() -> void:
 			skill3_locked.visible = true
 			skill3_cooldown.visible = false
 
-func show_objective(state: bool):
+func show_objective(state: bool, obj: String):
 	$ObjectivesUi.visible = state
+	$ObjectivesUi/Control/TextureRect/Label.text = obj

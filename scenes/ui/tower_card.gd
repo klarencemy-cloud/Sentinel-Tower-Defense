@@ -18,7 +18,8 @@ func setup(new_id: Data.Tower):
 	$TextureRect/ServerLoad.text = str(Data.TOWER_DATA[id]["server_load"])
 	$TextureRect/TowerCost.text = str(cost)
 	$TextureRect/TextureRect.texture = load(Data.TOWER_DATA[id]["thumbnail"])
-	
+	if id == 0:
+		$GPUParticles2D5.show()
 func _ready() -> void:
 	if not is_in_group("TowerCard"):
 		add_to_group("TowerCard")
@@ -36,7 +37,11 @@ func _ready() -> void:
 	$TextureRect/TowerCost.text = str(cost)
 	toggle_active(Data.money)
 	update_free_label()
+	GameDialogueManager.signal_highlight.connect(toggle_hightlight)
 
+func toggle_hightlight(state: bool):
+		$GPUParticles2D5.restart()
+		$GPUParticles2D5.emitting = state
 
 func toggle_active(_money := 0):
 	if on_cooldown:
