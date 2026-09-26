@@ -42,6 +42,9 @@ signal toggle_tween()
 @onready var vm_locked_label: Label = $"../MapDetails/LockedLabel"
 
 const LOCKED_LABEL_SHIFT: float = 34.0
+const ENDLESS_MAP_NUMBER: int = 9
+const EXTREME_RED: Color = Color(1.0, 0.0, 0.016)
+const SUGGESTED_LABEL_DEFAULT_COLOR: Color = Color(0.3137255, 0.654902, 0.87058824)
 var description_default_offset_top: float = 0.0
 var description_default_offset_bottom: float = 0.0
 
@@ -98,6 +101,8 @@ func _vm_desc(index: int) -> String:
 
 
 func _vm_recommended(index: int) -> String:
+	if index + 1 == ENDLESS_MAP_NUMBER and not _vm_unlocked(index):
+		return "?"
 	return str(_vm_field(index, 'recommended_wave', recommended[index]))
 
 
@@ -129,7 +134,7 @@ func _refresh_vm_lock_state(index: int) -> void:
 		vm_description.offset_bottom = description_default_offset_bottom
 	else:
 		var required_wave: int = int(_vm_field(index, 'unlock_wave', 0))
-		vm_locked_label.text = "Locked - reach Wave %d in Story Mode." % (required_wave - 1)
+		vm_locked_label.text = "Locked - reach Wave %d in Story Mode." % required_wave
 		vm_locked_label.visible = true
 		vm_description.offset_top = description_default_offset_top + LOCKED_LABEL_SHIFT
 		vm_description.offset_bottom = description_default_offset_bottom + LOCKED_LABEL_SHIFT
@@ -145,6 +150,11 @@ func _refresh_vm_details(index: int) -> void:
 		vm_description.text = "???"
 		vm_description.add_theme_color_override("font_color", Color(0.35, 0.35, 0.35))
 	level_recommendation.text = _vm_recommended(index)
+	if index + 1 == ENDLESS_MAP_NUMBER:
+		if _vm_unlocked(index):
+			level_recommendation.add_theme_color_override("font_color", SUGGESTED_LABEL_DEFAULT_COLOR)
+		else:
+			level_recommendation.add_theme_color_override("font_color", EXTREME_RED)
 	vm_difficulty_label.text = _vm_difficulty(index)
 	vm_gold.text = str(_vm_reward_gold(index))
 	vm_sentinel_cores.text = str(_vm_reward_sentinel_cores(index))
@@ -158,7 +168,7 @@ func _refresh_vm_details(index: int) -> void:
 		"Hard":
 			vm_difficulty_label.add_theme_color_override("font_color", Color(0.784, 0.431, 0.118))
 		"Extreme":
-			vm_difficulty_label.add_theme_color_override("font_color", Color(1.0, 0.0, 0.016))
+			vm_difficulty_label.add_theme_color_override("font_color", EXTREME_RED)
 		"Survival":
 			vm_difficulty_label.add_theme_color_override("font_color", Color(0.8, 0.004, 0.788))
 
