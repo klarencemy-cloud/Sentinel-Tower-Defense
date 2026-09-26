@@ -137,7 +137,7 @@ visible = false
 layer = 10
 visible = false
 
-[node name="WaveBanner" parent="." instance=ExtResource("5_wb001")]
+[node name="WaveBanner" parent="." unique_id=559857633 instance=ExtResource("5_wb001")]
 layer = 8
 
 [node name="ServerUpgrade" parent="." unique_id=986532546 instance=ExtResource("8_fv78h")]

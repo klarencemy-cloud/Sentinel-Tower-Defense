@@ -80,9 +80,9 @@ func unlock_towers(tower_enum: Data.Tower, tower: String):
 	var ui = get_tree().get_first_node_in_group("UI")
 	ui.pop_tower(tower_enum, tower)
 	
-func show_objectives(state: bool):
+func show_objectives(state: bool, obj: String):
 	var ui = get_tree().get_first_node_in_group("UI")
-	ui.show_objective(state)
+	ui.show_objective(state, obj)
 	
 func show_character(name: String):
 	show_char.emit(name)
@@ -814,3 +814,8 @@ signal quit_game
 
 func end_game() -> void:
 	quit_game.emit()
+
+
+signal signal_highlight()
+func toggle_highlight(state: bool):
+	signal_highlight.emit(state)

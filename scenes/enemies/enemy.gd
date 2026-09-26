@@ -208,6 +208,7 @@ func setup(new_path_follow: PathFollow2D, type: Data.Enemy):
 			enemy_type = $Spyware
 			$Spyware.material = $Spyware.material.duplicate()
 			$SpywareAbility.visible = true
+			set_invisible(true)
 		"trojan":
 			$Trojan.visible = true
 			enemy_type = $Trojan
@@ -790,14 +791,13 @@ func flash_dlp_debuff() -> void:
 func set_invisible(value: bool) -> void:
 	invisible = value
 
-	if enemy_type_stats == Data.Enemy.INSIDERTHREAT and enemy_type:
+	if enemy_type_stats in [Data.Enemy.INSIDERTHREAT, Data.Enemy.SPYWARE] and enemy_type:
 		if invisible or fog_hidden:
 			enemy_type.modulate = INVISIBLE_TINT
 		else:
 			enemy_type.modulate = NORMAL_TINT
 
 	$CollisionShape2D.disabled = invisible or fog_hidden
-
 
 func set_fog_hidden(value: bool) -> void:
 	fog_hidden = value

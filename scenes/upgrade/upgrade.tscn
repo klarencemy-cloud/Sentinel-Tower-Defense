@@ -3,10 +3,8 @@
 [ext_resource type="Script" uid="uid://di6r580otnkle" path="res://scenes/upgrade/upgrade.gd" id="1_6bmsu"]
 [ext_resource type="Texture2D" uid="uid://dkxa0ricjglch" path="res://graphics/backgrounds/bluebg.png" id="2_gukx4"]
 [ext_resource type="Texture2D" uid="uid://dn30hv2mjhygn" path="res://graphics/buttons/upgradebg.png" id="4_01d24"]
-[ext_resource type="Texture2D" uid="uid://ml3kegt85f83" path="res://graphics/towers/placeholdertowers/tower1.png" id="5_gukx4"]
 [ext_resource type="Texture2D" uid="uid://dkbo44ptrnvvt" path="res://graphics/buttons/regularbuttonbg.png" id="5_gvuwm"]
 [ext_resource type="Texture2D" uid="uid://cdpfmjb5ui3he" path="res://graphics/backgrounds/databasebg.png" id="6_woq4y"]
-[ext_resource type="Texture2D" uid="uid://dxmkoip2h3t7j" path="res://graphics/sentinels/placeholdersentinels/sentinel.png" id="6_x71o2"]
 [ext_resource type="FontFile" uid="uid://cl4ynbf31d2gw" path="res://font/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf" id="7_a1sfb"]
 [ext_resource type="Texture2D" uid="uid://dxpj7ubvxif7n" path="res://graphics/sentinels/sentinel2.png" id="8_m0kj8"]
 [ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="9_8qfsx"]
@@ -16,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://dw8ga7758gp7i" path="res://graphics/buttons/1stTierClicked.png" id="11_aprt0"]
 [ext_resource type="Texture2D" uid="uid://bsnmf7dwoo18l" path="res://graphics/buttons/2ndTierUnclicked.png" id="12_lg71s"]
 [ext_resource type="Texture2D" uid="uid://dme0d0pdsfgpo" path="res://graphics/buttons/3rdTierUnclicked.png" id="13_86m51"]
+[ext_resource type="Texture2D" uid="uid://b00gbf4bkr8pr" path="res://graphics/towers/spam filter/spam_filter_turret.png" id="13_676yw"]
+[ext_resource type="Texture2D" uid="uid://c2x8hxrlexsl8" path="res://graphics/sentinels/thumbnail/ETHICALHACKER.png" id="14_676yw"]
 [ext_resource type="Texture2D" uid="uid://dwu3dv78jklkp" path="res://graphics/buttons/UpgradeButtonPanel.png" id="14_aprt0"]
 [ext_resource type="Texture2D" uid="uid://bgd5c2bukefyk" path="res://graphics/icons/damage.png" id="15_8qfsx"]
 [ext_resource type="Texture2D" uid="uid://dmtujmh840v6" path="res://graphics/upgrade/NotUpgraded.png" id="15_lg71s"]
@@ -649,45 +649,56 @@ metadata/_edit_use_anchors_ = true
 [node name="TowerBtn" type="TextureButton" parent="TextureRect/TowerSentinelBG" unique_id=37995383]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.363
-anchor_top = 0.855
-anchor_right = 0.363
-anchor_bottom = 0.855
-offset_left = -105.96002
-offset_top = -182.13501
-offset_right = 51.539978
-offset_bottom = -64.93488
-texture_normal = ExtResource("5_gukx4")
+anchor_left = 0.33489582
+anchor_top = -0.6131387
+anchor_right = 0.37864584
+anchor_bottom = 0.27883306
+texture_normal = ExtResource("13_676yw")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="TextureRect/TowerSentinelBG/TowerBtn" unique_id=563123946]
-layout_mode = 0
-offset_top = 118.0
-offset_right = 159.0
-offset_bottom = 178.0
-theme_override_font_sizes/font_size = 52
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53000003
+anchor_top = 1.0
+anchor_right = 0.53000003
+anchor_bottom = 1.0
+offset_left = -78.520004
+offset_top = 12.799873
+offset_right = 80.479996
+offset_bottom = 72.79987
+theme_override_font_sizes/font_size = 45
 text = "Towers"
+horizontal_alignment = 1
 
 [node name="SentinelBtn" type="TextureButton" parent="TextureRect/TowerSentinelBG" unique_id=1937966616]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.5833333
-anchor_top = -0.46715328
+anchor_top = -0.7883212
 anchor_right = 0.6483854
-anchor_bottom = 0.38613135
-texture_normal = ExtResource("6_x71o2")
+anchor_bottom = 0.30583936
+texture_normal = ExtResource("14_676yw")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="TextureRect/TowerSentinelBG/SentinelBtn" unique_id=2396796]
-layout_mode = 0
-offset_left = -39.0
-offset_top = 118.0
-offset_right = 167.0
-offset_bottom = 178.0
-theme_override_font_sizes/font_size = 52
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.45001
+offset_top = 10.100006
+offset_right = 103.54999
+offset_bottom = 70.100006
+theme_override_font_sizes/font_size = 45
 text = "Sentinels"
+horizontal_alignment = 1
 
 [node name="BackBtn" type="TextureButton" parent="TextureRect" unique_id=482983186]
 layout_mode = 0

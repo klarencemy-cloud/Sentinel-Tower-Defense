@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bgume5aolyxmi" path="res://scenes/ui/tower_card.gd" id="4_script"]
 [ext_resource type="Texture2D" uid="uid://drwbfsen2gyus" path="res://graphics/ui/red.png" id="6_5r7sl"]
 [ext_resource type="Texture2D" uid="uid://2qn6tip66ub0" path="res://graphics/ui/towercd.png" id="7_jcs28"]
+[ext_resource type="Texture2D" uid="uid://cx8o08unyjkwb" path="res://graphics/particles/floaty_128.png" id="8_5kugn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ra2tf"]
 texture = ExtResource("1_d5ir0")
@@ -14,6 +15,24 @@ texture_margin_left = 6.0
 texture_margin_top = 6.0
 texture_margin_right = 6.0
 texture_margin_bottom = 6.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fjvfp"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tuoyl"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 100, 1)
+angle_min = 1.0728835e-05
+angle_max = 350.00003
+spread = 180.0
+gravity = Vector3(0, -20, 0)
+color = Color(0, 0.6996187, 0.6823587, 1)
+anim_speed_max = 1.0
 
 [node name="TowerCard" type="Button" unique_id=1837765590 groups=["TowerCard"]]
 clip_children = 1
@@ -23,6 +42,16 @@ offset_bottom = 244.0
 mouse_filter = 1
 theme_override_styles/normal = SubResource("StyleBoxTexture_ra2tf")
 script = ExtResource("4_script")
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="." unique_id=829400569]
+visible = false
+z_index = 1
+material = SubResource("CanvasItemMaterial_fjvfp")
+position = Vector2(84, 128)
+emitting = false
+texture = ExtResource("8_5kugn")
+visibility_rect = Rect2(-650, -850, 1300, 1700)
+process_material = SubResource("ParticleProcessMaterial_tuoyl")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=795388518]
 texture_filter = 2

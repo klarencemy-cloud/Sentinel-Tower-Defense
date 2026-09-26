@@ -255,7 +255,12 @@ func _process(_delta: float) -> void:
 	if not Data.is_vmmode:
 		$Control/TextureRect/HBoxContainer/WaveButton.visible = GameDialogueManager.button_state
 		$Control/AutoLabel.visible = GameDialogueManager.button_state
-
+	
+	if not Data.is_sandbox:
+		var should_disable: bool = Data.wave_started
+		wave_button.disabled = should_disable
+		wave_button.modulate = Color(1, 1, 1, 0.4) if should_disable else Color(1, 1, 1, 1)
+		
 func _on_skill_2_pressed() -> void:
 	UISound.play_click()
 	if patch_on_cooldown:
@@ -876,5 +881,6 @@ func update_skill3_locked() -> void:
 			skill3_locked.visible = true
 			skill3_cooldown.visible = false
 
-func show_objective(state: bool):
+func show_objective(state: bool, obj: String):
 	$ObjectivesUi.visible = state
+	$ObjectivesUi/Control/TextureRect/Label.text = obj

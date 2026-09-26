@@ -39,3 +39,15 @@ theme_override_fonts/font = ExtResource("2_ywp2a")
 theme_override_font_sizes/font_size = 20
 text = "Place some towers before commencing"
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="ColorRect" parent="Control" unique_id=384178607]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.12156863, 0.12156863, 0.3254902)
+metadata/_edit_use_anchors_ = true
