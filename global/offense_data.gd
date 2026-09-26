@@ -25,7 +25,7 @@ var offense_levels: Array[int] = [0, 0, 0]
 var maxed: Array[bool] = [false, false, false]
 
 func _inc_dmg() -> void:
-	multiplied_total_dmg += dmg_multiplier
+	multiplied_total_dmg += dmg_multiplier	
 	offense_levels[0] += 1
 
 

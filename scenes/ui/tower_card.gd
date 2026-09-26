@@ -64,6 +64,8 @@ func set_credential_disabled(source: Node, should_disable: bool) -> void:
 	toggle_active(Data.money)
 
 func start_cooldown() -> void:
+	if not Data.wave_started:
+		return
 	on_cooldown = true
 	cooldown_bar.visible = true
 	cooldown_bar.max_value = TOWER_COOLDOWN
