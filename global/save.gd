@@ -343,6 +343,8 @@ func _restore_saved_sentinels() -> void:
 			cell_pos
 		)
 
+	Data.saved_sentinel_placements.clear()
+
 func _restore_saved_abilities() -> void:
 	if Data.saved_ability_placements.is_empty():
 		return
@@ -366,3 +368,5 @@ func _restore_saved_abilities() -> void:
 			ability_type,
 			position
 		)
+
+	Data.saved_ability_placements.clear()
