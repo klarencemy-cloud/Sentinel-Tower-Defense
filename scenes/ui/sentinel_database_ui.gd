@@ -63,7 +63,7 @@ var SENTINEL_DATA = {
 		'thumbnail': "res://graphics/sentinels/thumbnail/SYSTEMADMIN.png"
 	},
 		Sentinel.INTRUSION: {
-		'special_ability': "Deploys a shield with 1500 hit points around the Server that reflects damage to attackers.",
+		'special_ability': "Deploys a shield with 500 hit points around the Server that absorbs damage from attackers.",
 		'cooldown': "30 seconds",
 		'passive_ability': "Reduce damage to the server by 5%.",
 		'irl_desc': "An Intrusion Analyst is responsible for detecting, analyzing, and responding to cybersecurity threats or unauthorized access within an organization's computer networks. They monitor network traffic, investigate security incidents, and use specialized tools to identify potential breaches or vulnerabilities. Their work helps prevent data loss and protects sensitive information by quickly addressing and mitigating cyber threats. Additionally, they often collaborate with other IT and security teams to improve overall security posture and may assist in developing security policies and response plans.",
