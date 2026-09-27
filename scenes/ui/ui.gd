@@ -63,6 +63,12 @@ func _vm_skill_unlocked(required_wave: int) -> bool:
 	var map_data: Dictionary = Data.VM_MAP_DATA.get(Data.vmmode_map_number, {})
 	return int(map_data.get("unlock_wave", 0)) >= required_wave
 
+
+func _skill_action_allowed(required_wave: int) -> bool:
+	if Data.is_vmmode:
+		return _vm_skill_unlocked(required_wave)
+	return Data.current_wave >= required_wave
+
 var ad_timer := Timer.new()
 var ransomware_timer := Timer.new()
 
@@ -162,11 +168,11 @@ func _ready() -> void:
 		$Control/HBoxContainer.position.y = 780
 
 	
-	if Data.current_wave >= 5 or Data.is_sandbox:
+	if not Data.is_vmmode and Data.current_wave >= VM_FIREWALL_UNLOCK_WAVE:
 		toggle_skill_activation("firewall")
-	if Data.current_wave >= 43 or Data.is_sandbox:
+	if not Data.is_vmmode and Data.current_wave >= VM_PATCH_UNLOCK_WAVE:
 		toggle_skill_activation("patch")
-	if Data.is_sandbox or (not Data.is_vmmode and Data.current_wave >= VM_BACKUP_UNLOCK_WAVE):
+	if not Data.is_vmmode and Data.current_wave >= VM_BACKUP_UNLOCK_WAVE:
 		toggle_skill_activation("backup")
 	
 	for tower_enum in Data.Tower.values():
@@ -214,29 +220,29 @@ func _ready() -> void:
 	update_experience(Data.experience, Data.player_level, Data.default_level_pool)
 	update_wave_label()
 
-	if not GameDialogueManager.is_skill1_activated and not _vm_skill_unlocked(VM_FIREWALL_UNLOCK_WAVE):
-		$Control/HBoxContainer/Skill1.disabled = true
-		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/container/skillcontainer.png")
-
-	else:
+	if _skill_action_allowed(VM_FIREWALL_UNLOCK_WAVE):
 		$Control/HBoxContainer/Skill1.disabled = false
 		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/ui/firewallbutton.png")
 
-	if not GameDialogueManager.is_skill2_activated and not _vm_skill_unlocked(VM_PATCH_UNLOCK_WAVE):
-		$Control/HBoxContainer/Skill2.disabled = true
-		$Control/HBoxContainer/Skill2.texture_normal = load("res://graphics/container/skillcontainer.png")
-
 	else:
+		$Control/HBoxContainer/Skill1.disabled = true
+		$Control/HBoxContainer/Skill1.texture_normal = load("res://graphics/container/skillcontainer.png")
+
+	if _skill_action_allowed(VM_PATCH_UNLOCK_WAVE):
 		$Control/HBoxContainer/Skill2.disabled = false
 		$Control/HBoxContainer/Skill2.texture_normal = load("res://graphics/ui/patch.png")
 
-	if not GameDialogueManager.is_skill3_activated and not _vm_skill_unlocked(VM_BACKUP_UNLOCK_WAVE):
-		$Control/HBoxContainer/Skill3.disabled = true
-		$Control/HBoxContainer/Skill3.texture_normal = load("res://graphics/container/skillcontainer.png")
-
 	else:
+		$Control/HBoxContainer/Skill2.disabled = true
+		$Control/HBoxContainer/Skill2.texture_normal = load("res://graphics/container/skillcontainer.png")
+
+	if _skill_action_allowed(VM_BACKUP_UNLOCK_WAVE):
 		$Control/HBoxContainer/Skill3.disabled = false
 		$Control/HBoxContainer/Skill3.texture_normal = load("res://graphics/ui/backupskill.png")
+
+	else:
+		$Control/HBoxContainer/Skill3.disabled = true
+		$Control/HBoxContainer/Skill3.texture_normal = load("res://graphics/container/skillcontainer.png")
 	
 	for bar in boss_bars:
 		bar.visible = false
@@ -263,7 +269,7 @@ func _process(_delta: float) -> void:
 		wave_button.modulate = Color(1, 1, 1, 0.4) if should_disable else Color(1, 1, 1, 1)
 		
 func _on_skill_2_pressed() -> void:
-	if Data.current_wave >= 43:
+	if _skill_action_allowed(VM_PATCH_UNLOCK_WAVE):
 		UISound.play_click()
 		if patch_on_cooldown:
 			return
@@ -294,7 +300,7 @@ func toggle_skill_activation(skill: String):
 	
 
 func _on_skill1_pressed() -> void:
-	if Data.current_wave >= 5:
+	if _skill_action_allowed(VM_FIREWALL_UNLOCK_WAVE):
 		UISound.play_click()
 		if firewall_on_cooldown:
 			return
@@ -868,7 +874,7 @@ func unlock_sentinel_card(sentinel_enum: Data.Sentinel) -> void:
 
 
 func _on_skill_3_pressed() -> void:
-	if Data.current_wave >= 25:
+	if _skill_action_allowed(VM_BACKUP_UNLOCK_WAVE):
 		UISound.play_click()
 		if backup_server_on_cooldown:
 			return
