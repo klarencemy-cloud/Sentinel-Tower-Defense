@@ -1012,7 +1012,7 @@ var ENEMY_DATA = {
 	Enemy.BOSS1: { # I LOVE YOU
 		'health': 5000,
 		'texture': "uid://bh62x426nayqs",
-		'speed': 100,
+		'speed': 50,
 		'name': "boss1",
 		'damage': 99999,
 		'atkspd': 1,
@@ -1022,7 +1022,7 @@ var ENEMY_DATA = {
 	Enemy.BOSS2: { # CONFICKER
 		'health': 8000,
 		'texture': "uid://btscyncy6p42a",
-		'speed': 100,
+		'speed': 50,
 		'name': "boss2",
 		'damage': 99999,
 		'atkspd': 1.2,
@@ -1032,7 +1032,7 @@ var ENEMY_DATA = {
 	Enemy.BOSS3: { # WANNA CRY
 		'health': 10000,
 		'texture': "uid://b7ojhou6ogpwf",
-		'speed': 100,
+		'speed': 50,
 		'name': "boss3",
 		'damage': 99999,
 		'atkspd': 1.5,
@@ -1042,7 +1042,7 @@ var ENEMY_DATA = {
 	Enemy.BOSS4: { # NOT PETYA
 		'health': 12000,
 		'texture': "uid://he2k33y4efo3",
-		'speed': 100,
+		'speed': 50,
 		'name': "boss4",
 		'damage': 99999,
 		'atkspd': 2,
@@ -1052,7 +1052,7 @@ var ENEMY_DATA = {
 	Enemy.BOSS5: { # MY DOOM
 		'health': 15000,
 		'texture': "uid://bsbw28l1xncts",
-		'speed': 100,
+		'speed': 50,
 		'name': "boss5",
 		'damage': 99999,
 		'atkspd': 2,
@@ -1062,7 +1062,7 @@ var ENEMY_DATA = {
 	Enemy.BOSS6: { # MY TROJAN
 		'health': 20000,
 		'texture': "uid://djls2dab0ajxy",
-		'speed': 100,
+		'speed': 50,
 		'name': "boss6",
 		'damage': 99999,
 		'atkspd': 2,
