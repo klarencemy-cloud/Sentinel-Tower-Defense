@@ -263,7 +263,7 @@ func _process(_delta: float) -> void:
 		wave_button.modulate = Color(1, 1, 1, 0.4) if should_disable else Color(1, 1, 1, 1)
 		
 func _on_skill_2_pressed() -> void:
-	if Data.current_wave >= 43:
+	if Data.current_wave >= 43 or (Data.is_sandbox and Data.DEVMODE):
 		UISound.play_click()
 		if patch_on_cooldown:
 			return
@@ -294,7 +294,7 @@ func toggle_skill_activation(skill: String):
 	
 
 func _on_skill1_pressed() -> void:
-	if Data.current_wave >= 5:
+	if Data.current_wave >= 5 or (Data.is_sandbox and Data.DEVMODE):
 		UISound.play_click()
 		if firewall_on_cooldown:
 			return
@@ -868,7 +868,7 @@ func unlock_sentinel_card(sentinel_enum: Data.Sentinel) -> void:
 
 
 func _on_skill_3_pressed() -> void:
-	if Data.current_wave >= 25:
+	if Data.current_wave >= 25 or (Data.is_sandbox and Data.DEVMODE):
 		UISound.play_click()
 		if backup_server_on_cooldown:
 			return
