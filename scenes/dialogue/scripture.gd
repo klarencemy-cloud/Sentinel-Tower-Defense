@@ -34,7 +34,7 @@ func _on_info_gui_input(event: InputEvent) -> void:
 				GameDialogueManager.show_dialogue_level4_boss4_defeated2()
 				GameDialogueManager.is_boss4_defeated_shown2 = true
 				boss_dialogue_shown = true
-			if !GameDialogueManager.is_story_ends and Data.current_wave == 52:
+			if !GameDialogueManager.is_story_ends and GameDialogueManager.is_level6_boss6_defeated_shown:
 				GameDialogueManager.show_dialogue_story_ends()
 				GameDialogueManager.is_story_ends = true
 				boss_dialogue_shown = true
