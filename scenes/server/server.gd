@@ -14,7 +14,7 @@ var current_server_level: int = 0
 
 func _ready() -> void:
 	destroy_shield()
-	health = Data.ABILITY_DATA[Data.Ability.FIREWALL]['health']
+	health = 500
 	max_health = health
 	Data.deploy_shield.connect(deploy_shield)
 	Data.destroy_shield.connect(destroy_shield)
@@ -134,11 +134,9 @@ func _on_enemy_attack(enemy: Area2D) -> void:
 
 func take_damage(damage: int) -> void:
 	health -= damage
-	print("Firewall hit! Health: ", health, "/", max_health)
 	
 	if health <= 0:
-		print("Firewall destroyed!")
-	destroy_shield()
+		destroy_shield()
 
 
 func _on_shield_area_exited(area: Area2D) -> void:
