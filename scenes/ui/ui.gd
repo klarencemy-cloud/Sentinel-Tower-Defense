@@ -457,11 +457,9 @@ func update_wave_label() -> void:
 
 func _on_wave_cleared(wave: int) -> void:
 	wave_banner.show_message("Wave %d Complete" % wave)
-	UISound.play_unlock()
 
 func _on_wave_incoming(wave: int) -> void:
 	wave_banner.show_message("Wave %d Incoming" % wave)
-	UISound.play_unlock()
 
 
 func show_play_button(state: bool):
