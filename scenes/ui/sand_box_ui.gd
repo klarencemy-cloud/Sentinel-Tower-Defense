@@ -16,7 +16,7 @@ func _on_start_game_pressed() -> void:
 	var selected_carousel_node = $CarouselContainer.position_offset_node.get_child($CarouselContainer.selected_index)
 
 	var map_index: int = selected_carousel_node.get_index()
-	if Data.current_level_index < map_index:
+	if Data.current_level_index < map_index and not Data.DEVMODE:
 		return
 
 	selected_map = selected_carousel_node.name

@@ -111,7 +111,7 @@ func _vm_difficulty(index: int) -> String:
 
 
 func _vm_unlocked(index: int) -> bool:
-	return bool(_vm_field(index, 'unlocked', false))
+	return bool(_vm_field(index, 'unlocked', false)) or Data.DEVMODE
 
 
 func _vm_reward_gold(index: int) -> int:
@@ -187,7 +187,7 @@ func _refresh_vm_card_dim() -> void:
 
 
 func _sb_unlocked(index: int) -> bool:
-	return Data.current_level_index >= index
+	return Data.current_level_index >= index or Data.DEVMODE
 
 
 func _refresh_sb_lock_state(index: int) -> void:

@@ -8,7 +8,7 @@ func _ready() -> void:
 	$CarouselContainer.toggle_tween.connect(_toggle_tween)
 
 	for map_number in range(1, 10):
-		if not Data.VM_MAP_DATA[map_number].get('unlocked', false):
+		if not (Data.VM_MAP_DATA[map_number].get('unlocked', false) or Data.DEVMODE):
 			var hotspot: TextureButton = get_node("MapContainer/Map/Challenge%d" % map_number)
 			hotspot.modulate = Color(0.35, 0.35, 0.35)
 
@@ -206,7 +206,7 @@ func _on_start_game_pressed() -> void:
 	var map_number := int(selected_carousel_node.name.trim_prefix("Map"))
 	if not Data.VM_MAP_DATA.has(map_number):
 		return
-	if not Data.VM_MAP_DATA[map_number].get('unlocked', false):
+	if not (Data.VM_MAP_DATA[map_number].get('unlocked', false) or Data.DEVMODE):
 		return
 	Data.before_level_index = Data.current_level_index
 	Data.before_current_wave = Data.current_wave
