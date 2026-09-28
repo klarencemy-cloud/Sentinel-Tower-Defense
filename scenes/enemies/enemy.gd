@@ -402,7 +402,8 @@ func _process(delta: float):
 	# Apply the strongest passive slow affecting this enemy.
 	if ethical_hacker_freeze:
 		current_speed = 0
-		enemy_type.modulate = FROZEN_TINT
+		# enemy_type.modulate = FROZEN_TINT
+
 	elif acs_lockdown_remaining > 0.0:
 		current_speed = int(speed * 0.4)
 	elif acs_slow_multiplier < 1.0:
@@ -1303,7 +1304,7 @@ func _update_visual_tint() -> void:
 	if invisible or fog_hidden:
 		tint.a *= 0.3
 
-	if is_frozen:
+	if is_frozen or ethical_hacker_freeze:
 		tint.r *= 0.4
 		tint.g *= 0.6
 		tint.b = min(tint.b * 1.4, 1.0)

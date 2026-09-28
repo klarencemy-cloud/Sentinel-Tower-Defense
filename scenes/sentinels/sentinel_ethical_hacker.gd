@@ -49,6 +49,10 @@ func _on_tower_menu_delete_press() -> void:
 		ui.refresh_tower_cards()
 	Data.sentinel_ethical_deployed = false
 	Data.deactivate.emit()
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	if enemies:
+		for enemy in enemies:
+			enemy.ethical_hacker_freeze = false
 
 
 func hide_ui():

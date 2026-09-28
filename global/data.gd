@@ -259,7 +259,7 @@ var TOWER_DATA = {
 		'isUnlocked': true,
 		'cost': 45,
 		'server_load': 15,
-		'damage': 10,
+		'damage': 1000,
 		'reload_time': 1.15,
 		'range': 500,
 		'crit rate': 0,
