@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var tower_card_scene = preload("res://scenes/ui/tower_card_for_upgrades.tscn")
-var sentinel_card_scene = preload("res://scenes/ui/sentinel_card.tscn")
+var sentinel_card_scene = preload("res://scenes/ui/sentinel_card_upgrade.tscn")
 
 var upgrade1_level := 0
 var upgrade2_level := 0
