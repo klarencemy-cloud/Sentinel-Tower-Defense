@@ -10,7 +10,7 @@ do GameDialogueManager.show_messages(false)
 do GameDialogueManager.apply_notpetya_correct_answer()
 Odysseus: Great going!
 System: You gained 1000 Gold.
-do GameDialogueManager.reward("money", 1000)
+do GameDialogueManager.reward("money", 500)
 NOTPETYA: You really think this is the END!
 => END
 
