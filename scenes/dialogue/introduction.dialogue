@@ -99,6 +99,7 @@ do GameDialogueManager.pause_game(false)
 do GameDialogueManager.delay_dialogue(1.0)
 do GameDialogueManager.move_camera(2851.0,1564.0, 2.0)
 do Data.toggle_server_scene.emit()
+do GameDialogueManager.pause_game(true)
 Odysseus: The server upgrades are a game-changer. It can amplify the damage of your towers, improve your overall defenses, and manage your resource economy. Be wise about where to spend those upgrades!
 => END
 
