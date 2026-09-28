@@ -86,7 +86,7 @@ do GameDialogueManager.pause_game(false)
 => END
 
 ~ wrong_ans3
-do GameDialogueManager.penalty("money", 3000)
+do GameDialogueManager.penalty("money", 1000)
 Odysseus: C’mon can your defenses detect a threat it can’t even detect? => quiz3
 => END
 

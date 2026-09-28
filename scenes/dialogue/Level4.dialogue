@@ -59,7 +59,7 @@ do GameDialogueManager.show_enemy("sql", 10)
 => END
 
 ~ wrong_ans2
-do GameDialogueManager.penalty("money", 2000)
+do GameDialogueManager.penalty("money", 1000)
 Odysseus: Focus on the question. 
 Odysseus: What do you think makes an SQL injection a dangerous enemy? => quiz2 
 => END
