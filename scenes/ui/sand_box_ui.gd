@@ -12,6 +12,7 @@ extends Control
 var selected_map: String
 
 func _on_start_game_pressed() -> void:
+	Data.is_sandbox = true
 	UISound.play_click()
 	var selected_carousel_node = $CarouselContainer.position_offset_node.get_child($CarouselContainer.selected_index)
 

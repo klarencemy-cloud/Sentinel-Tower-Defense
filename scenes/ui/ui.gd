@@ -147,7 +147,7 @@ func _ready() -> void:
 		sandbox_setting.visible = true
 		tower_enemies_button.visible = true
 		auto_label.visible = false # alis visible ng auto button
-		wave_button.disabled = true # disable start wave button
+		wave_button.visible = false # disable start wave button
 		Data.before_owned_towers = Data.owned_towers.duplicate()
 		Data.owned_towers.clear()
 		# Backup and reset tower upgrades for sandbox mode
@@ -253,7 +253,7 @@ func _process(_delta: float) -> void:
 	if backup_server_on_cooldown:
 		skill3_cooldown.value = backup_server_timer.time_left
 
-	if not Data.is_vmmode:
+	if not Data.is_vmmode and not Data.is_sandbox:
 		$Control/TextureRect/HBoxContainer/WaveButton.visible = GameDialogueManager.button_state
 		$Control/AutoLabel.visible = GameDialogueManager.button_state
 	
