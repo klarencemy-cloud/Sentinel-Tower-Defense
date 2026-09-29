@@ -73,7 +73,8 @@ func _on_wave_button_pressed() -> void:
 	if session_active:
 		return
 	session_active = true
-	wave_button.visible = false
+	wave_button.disabled = true
+	wave_button.modulate = Color(1, 1, 1, 0.4)
 	vm_save_timer.start()
 	_on_session_started()
 

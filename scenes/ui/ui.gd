@@ -266,7 +266,7 @@ func _process(_delta: float) -> void:
 		$Control/TextureRect/HBoxContainer/WaveButton.visible = GameDialogueManager.button_state
 		$Control/AutoLabel.visible = GameDialogueManager.button_state
 	
-	if not Data.is_sandbox:
+	if not Data.is_sandbox and not Data.is_vmmode:
 		var should_disable: bool = Data.wave_started
 		wave_button.disabled = should_disable
 		wave_button.modulate = Color(1, 1, 1, 0.4) if should_disable else Color(1, 1, 1, 1)
