@@ -48,12 +48,12 @@ func _ready() -> void:
 	
 	counts = [economy_1_count, economy_2_count, economy_3_count]
 
+	if Data.is_sandbox:
+		Economy._sandbox_mode()
+
 	gold_real_cost = Economy.gold_cost_tier
 	exp_rate_real_cost = Economy.exp_cost_tier
 	server_load_real_cost = Economy.server_cost_tier
-
-	if Data.is_sandbox:
-		Economy._sandbox_mode()
 
 	_update_upgrades()
 

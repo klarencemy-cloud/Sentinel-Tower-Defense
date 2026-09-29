@@ -58,11 +58,11 @@ func _ready() -> void:
 	
 	counts = [defense1_count, defense2_count, defense3_count, defense4_count]
 
-	server_health_slot_price = Defense.server_health_slot_price
-	sentinel_slot_price = Defense.sentinel_slot_price
-
 	if Data.is_sandbox:
 		Defense._sandbox_mode()
+
+	server_health_slot_price = Defense.server_health_slot_price
+	sentinel_slot_price = Defense.sentinel_slot_price
 
 	_update_upgrades()
 

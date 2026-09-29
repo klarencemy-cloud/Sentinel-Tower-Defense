@@ -9,6 +9,10 @@ var before_gold_multiplier: float = 1.0
 var before_exp_multiplier: float = 1.0
 var before_economy_levels: Array[int] = [0, 0, 0]
 var before_maxed: Array[bool] = [false, false, false]
+var before_gold_cost_tier: int = 1
+var before_exp_cost_tier: int = 1
+var before_server_cost_tier: int = 1
+var _sandbox_backed_up: bool = false
 
 const base_gold_multiplier: float = 1.0
 const base_exp_multiplier: float = 1.0
@@ -43,10 +47,15 @@ func _server_load() -> void:
 
 
 func _sandbox_mode() -> void:
-	before_gold_multiplier = gold_multiplier
-	before_exp_multiplier = exp_multiplier
-	before_economy_levels = economy_levels.duplicate()
-	before_maxed = maxed.duplicate()
+	if not _sandbox_backed_up:
+		_sandbox_backed_up = true
+		before_gold_multiplier = gold_multiplier
+		before_exp_multiplier = exp_multiplier
+		before_economy_levels = economy_levels.duplicate()
+		before_maxed = maxed.duplicate()
+		before_gold_cost_tier = gold_cost_tier
+		before_exp_cost_tier = exp_cost_tier
+		before_server_cost_tier = server_cost_tier
 	_reset_multipliers()
 	_reset_levels()
 
@@ -56,6 +65,10 @@ func _restore_original_server_stats() -> void:
 	exp_multiplier = before_exp_multiplier
 	economy_levels = before_economy_levels.duplicate()
 	maxed = before_maxed.duplicate()
+	gold_cost_tier = before_gold_cost_tier
+	exp_cost_tier = before_exp_cost_tier
+	server_cost_tier = before_server_cost_tier
+	_sandbox_backed_up = false
 
 
 func _reset_multipliers() -> void:
@@ -66,6 +79,9 @@ func _reset_multipliers() -> void:
 func _reset_levels() -> void:
 	economy_levels = [0, 0, 0]
 	maxed = [false, false, false]
+	gold_cost_tier = 1
+	exp_cost_tier = 1
+	server_cost_tier = 1
 
 const VMMODE_LEVEL_CAPS: Array[int] = [8, 8, 8]
 

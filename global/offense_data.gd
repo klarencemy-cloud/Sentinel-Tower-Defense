@@ -14,6 +14,7 @@ var before_total_crit_chance: float = 0.0
 
 var before_offense_levels: Array[int] = [0, 0, 0]
 var before_maxed: Array[bool] = [false, false, false]
+var _sandbox_backed_up: bool = false
 
 var multiplied_total_dmg: float = 1.0
 var multiplied_atk_speed: float = 0.0
@@ -40,11 +41,13 @@ func _crit_chance() -> void:
 
 
 func _sandbox_mode() -> void:
-	before_total_dmg = multiplied_total_dmg
-	before_total_atk_speed = multiplied_atk_speed
-	before_total_crit_chance = multiplied_crit_chance
-	before_offense_levels = offense_levels.duplicate()
-	before_maxed = maxed.duplicate()
+	if not _sandbox_backed_up:
+		_sandbox_backed_up = true
+		before_total_dmg = multiplied_total_dmg
+		before_total_atk_speed = multiplied_atk_speed
+		before_total_crit_chance = multiplied_crit_chance
+		before_offense_levels = offense_levels.duplicate()
+		before_maxed = maxed.duplicate()
 	_reset_multipliers()
 	_reset_levels()
 
@@ -55,6 +58,7 @@ func _restore_original_server_stats() -> void:
 	multiplied_crit_chance = before_total_crit_chance
 	offense_levels = before_offense_levels.duplicate()
 	maxed = before_maxed.duplicate()
+	_sandbox_backed_up = false
 
 
 func _reset_multipliers() -> void:

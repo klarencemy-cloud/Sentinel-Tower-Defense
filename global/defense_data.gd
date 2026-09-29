@@ -28,8 +28,14 @@ var before_maxed: Array[bool] = [false, false, false, false]
 var defense_levels: Array[int] = [0, 0, 0, 0]
 var maxed: Array[bool] = [false, false, false, false]
 
-var server_health_slot_price: int = 2
-var sentinel_slot_price: int = 2
+const BASE_SLOT_PRICE: int = 2
+
+var server_health_slot_price: int = BASE_SLOT_PRICE
+var sentinel_slot_price: int = BASE_SLOT_PRICE
+
+var before_server_health_slot_price: int = BASE_SLOT_PRICE
+var before_sentinel_slot_price: int = BASE_SLOT_PRICE
+var _sandbox_backed_up: bool = false
 
 
 func _armor_damage_reduction() -> void:
@@ -60,12 +66,17 @@ func _dmg_reduc_armor(actual_dmg: int):
 
 
 func _sandbox_mode() -> void:
-	before_dmg_reduc = total_armor
-	before_server_health = total_server_health
-	before_skill_cooldown = total_skill_cooldown
-	before_sentinel_deployed = total_sentinel_deployed
-	before_defense_levels = defense_levels.duplicate()
-	before_maxed = maxed.duplicate()
+	# Can be called more than once per sandbox session; only the first call sees the real stats.
+	if not _sandbox_backed_up:
+		_sandbox_backed_up = true
+		before_dmg_reduc = total_armor
+		before_server_health = total_server_health
+		before_skill_cooldown = total_skill_cooldown
+		before_sentinel_deployed = total_sentinel_deployed
+		before_defense_levels = defense_levels.duplicate()
+		before_maxed = maxed.duplicate()
+		before_server_health_slot_price = server_health_slot_price
+		before_sentinel_slot_price = sentinel_slot_price
 	_reset_multipliers()
 	_reset_levels()
 
@@ -77,6 +88,9 @@ func _restore_original_server_stats() -> void:
 	total_sentinel_deployed = before_sentinel_deployed
 	defense_levels = before_defense_levels.duplicate()
 	maxed = before_maxed.duplicate()
+	server_health_slot_price = before_server_health_slot_price
+	sentinel_slot_price = before_sentinel_slot_price
+	_sandbox_backed_up = false
 
 
 func _reset_multipliers() -> void:
@@ -89,6 +103,8 @@ func _reset_multipliers() -> void:
 func _reset_levels() -> void:
 	defense_levels = [0, 0, 0, 0]
 	maxed = [false, false, false, false]
+	server_health_slot_price = BASE_SLOT_PRICE
+	sentinel_slot_price = BASE_SLOT_PRICE
 
 const VMMODE_LEVEL_CAPS: Array[int] = [8, 8, 3, 3]
 
