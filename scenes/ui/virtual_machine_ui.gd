@@ -304,17 +304,18 @@ var is_tween: bool = false
 var prev: TextureButton
 func _toggle_tween(tween_num: int) -> void:
 	var container = get_node("MapContainer/Map/Challenge%d"%tween_num)
+	var select: bool = !is_tween or container != prev
 	if tween and tween.is_valid():
 		tween.kill()
-	tween = create_tween()
-	if !is_tween or container != prev:
-		tween.tween_property(container, "scale", Vector2(1.3, 1.3), 0.1)
-		is_tween = true
-		if prev != container and prev != null:
-			tween.tween_property(prev, "scale", Vector2(1, 1), 0.1)
-		prev = container
-	elif is_tween:
-		tween.tween_property(container, "scale", Vector2(1, 1), 0.1)
-		is_tween = false
-		if prev != container and prev != null:
-			tween.tween_property(prev, "scale", Vector2(1, 1), 0.1)
+	tween = create_tween().set_parallel(true)
+	var has_tweener := false
+	for i in range(1, 10):
+		var hotspot: TextureButton = get_node("MapContainer/Map/Challenge%d" % i)
+		var target := Vector2(1.3, 1.3) if (select and hotspot == container) else Vector2.ONE
+		if hotspot.scale != target:
+			tween.tween_property(hotspot, "scale", target, 0.1)
+			has_tweener = true
+	if !has_tweener:
+		tween.kill()
+	is_tween = select
+	prev = container

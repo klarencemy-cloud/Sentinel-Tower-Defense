@@ -276,14 +276,10 @@ func _process(delta: float) -> void:
 		position_offset_node.position.x = lerp(position_offset_node.position.x, - (position_offset_node.get_child(selected_index).position.x + position_offset_node.get_child(selected_index).size.x / 2.0), smoothing_speed * delta)
 
 func _left():
-	selected_index -= 1
-	if selected_index < 0:
-		selected_index += 1
-
-	count -= 1
-	if count == -1:
-		count = 1
+	if selected_index <= 0:
 		return
+	selected_index -= 1
+	count = selected_index
 
 	if Data.is_vmmode:
 		_refresh_vm_details(count)
@@ -308,25 +304,16 @@ func _left():
 
 
 func _right():
+	if selected_index >= position_offset_node.get_child_count() - 1:
+		return
 	selected_index += 1
-	if selected_index > position_offset_node.get_child_count() - 1:
-		selected_index -= 1
-
-	count += 1
-
+	count = selected_index
 
 	if Data.is_vmmode:
-		if count == 9:
-			count = 8
-			return
 		_refresh_vm_details(count)
 		toggle_tween.emit(count + 1)
 
 	if !Data.is_vmmode:
-		if count == 6:
-			count = 5
-			return
-		
 		title.text = title_array[count]
 		path.text = path_num[count]
 		description.text = sb_map_desc[count]
