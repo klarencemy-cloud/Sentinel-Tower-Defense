@@ -17,7 +17,8 @@ NOTPETYA: You really think this is the END!
 ~ SkillActivate
 do GameDialogueManager.choose_notpetya_dialogue()
 NOTPETYA: You are not getting away from me!.
-
+Odysseus: Try to look for the format, grammar, and the tone of the message!
+Odysseus: NotPetya will try to steal something from you...
 Odysseus: Quick! Is this a legitimate message?.
 do GameDialogueManager.show_messages(true)
 - Legitimate Email
