@@ -157,6 +157,7 @@ func _ready() -> void:
 		wave_button.visible = false # disable start wave button
 		Data.before_owned_towers = Data.owned_towers.duplicate()
 		Data.owned_towers.clear()
+		Data.before_max_health = Data.max_health
 		# Backup and reset tower upgrades for sandbox mode
 		Data._initialize_base_tower_stats() # Ensure base stats are captured before backing up
 		Data._backup_tower_upgrades()
