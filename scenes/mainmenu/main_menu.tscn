@@ -248,6 +248,15 @@ autostart = true
 [node name="VolumeSettingsPanel" parent="." unique_id=2033515175 instance=ExtResource("11_volset")]
 visible = false
 
+[node name="Label" type="Label" parent="." unique_id=1912509261]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 1025.0
+offset_right = 926.0
+offset_bottom = 1065.0
+theme_override_font_sizes/font_size = 34
+text = "For alpha/beta testing only. Redistribution or sale is prohibited."
+
 [connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ButtonManager/Database" to="." method="_on_database_pressed"]
 [connection signal="pressed" from="ButtonManager/Settings" to="." method="_on_settings_pressed"]
