@@ -2,11 +2,23 @@
 
 [ext_resource type="Script" uid="uid://bamdku6x718v" path="res://scenes/sandbox/sand_box.gd" id="1_r2mpb"]
 [ext_resource type="PackedScene" uid="uid://cnj438cs45i3f" path="res://scenes/levels/level.tscn" id="2_mpcbx"]
+[ext_resource type="Shader" uid="uid://ff5s04aovju4" path="res://texture/shaders/indicator.gdshader" id="3_mpcbx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnhmr"]
+resource_local_to_scene = true
+shader = ExtResource("3_mpcbx")
+shader_parameter/corner_scale = 0.0950000045125
 
 [node name="SandBox" type="Node2D" unique_id=1570976144]
 script = ExtResource("1_r2mpb")
 
 [node name="Level" parent="." unique_id=334341019 instance=ExtResource("2_mpcbx")]
+
+[node name="ColorRect" parent="Level/BG/TowerPreview" parent_id_path=PackedInt32Array(334341019, 613422467) index="1" unique_id=84144201]
+material = SubResource("ShaderMaterial_bnhmr")
+
+[node name="ColorRect" parent="Level/BG/SentinelPreview" parent_id_path=PackedInt32Array(334341019, 1358483307) index="1" unique_id=2054375140]
+material = SubResource("ShaderMaterial_bnhmr")
 
 [connection signal="pressed" from="Level/UI/Control/TextureRect/HBoxContainer/SandboxSetting" to="." method="_on_sandbox_setting_pressed"]
 [connection signal="pressed" from="Level/UI/Control/TextureRect/HBoxContainer/TowerEnemiesButton" to="." method="_on_tower_enemies_button_pressed"]

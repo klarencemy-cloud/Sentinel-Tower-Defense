@@ -10,12 +10,13 @@
 [ext_resource type="Script" uid="uid://cfksw4o72tltq" path="res://scenes/mainmenu/title.gd" id="8_l3hwl"]
 [ext_resource type="Script" uid="uid://bvhgan4888lei" path="res://scenes/mainmenu/ghost_effect.gd" id="10_n3o3g"]
 [ext_resource type="PackedScene" uid="uid://cmfmidg1nxftm" path="res://scenes/ui/volume_settings_panel.tscn" id="11_volset"]
+[ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="12_goenu"]
 
 [sub_resource type="Gradient" id="Gradient_otieh"]
 offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_bva0v"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xwbgg"]
 gradient = SubResource("Gradient_otieh")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n3o3g"]
@@ -31,7 +32,7 @@ gravity = Vector3(0, 60, 0)
 scale_min = 0.0
 scale_max = 10.0
 color = Color(0.3273128, 0.61982703, 0.88803005, 0.8901961)
-color_ramp = SubResource("GradientTexture1D_bva0v")
+color_ramp = SubResource("GradientTexture1D_xwbgg")
 
 [sub_resource type="Animation" id="Animation_otieh"]
 length = 0.001
@@ -78,6 +79,42 @@ metadata/_custom_type_script = "uid://cfksw4o72tltq"
 script = ExtResource("10_n3o3g")
 metadata/_custom_type_script = "uid://bvhgan4888lei"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_28umu"]
+atlas = ExtResource("12_goenu")
+region = Rect2(768, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmupk"]
+atlas = ExtResource("12_goenu")
+region = Rect2(1024, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt08x"]
+atlas = ExtResource("12_goenu")
+region = Rect2(1280, 0, 256, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqaay"]
+atlas = ExtResource("12_goenu")
+region = Rect2(1024, 0, 256, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_116ea"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28umu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmupk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt08x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqaay")
+}],
+"loop": true,
+"name": &"EthicalHacker",
+"speed": 5.0
+}]
+
 [node name="MainMenu" type="Control" unique_id=610381814]
 layout_mode = 3
 anchors_preset = 15
@@ -113,10 +150,10 @@ pivot_offset = Vector2(0.54, 0)
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.36543998
-anchor_top = 0.43755966
-anchor_right = 0.6362733
-anchor_bottom = 0.5384856
+anchor_left = 0.4752613
+anchor_top = 0.49053708
+anchor_right = 0.74609464
+anchor_bottom = 0.59146297
 texture_normal = ExtResource("3_jl081")
 ignore_texture_size = true
 stretch_mode = 0
@@ -144,10 +181,10 @@ vertical_alignment = 1
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.38163006
-anchor_top = 0.56373507
-anchor_right = 0.6212134
-anchor_bottom = 0.664661
+anchor_left = 0.49145132
+anchor_top = 0.61671245
+anchor_right = 0.7310347
+anchor_bottom = 0.7176384
 texture_normal = ExtResource("5_yn0lx")
 ignore_texture_size = true
 stretch_mode = 0
@@ -226,11 +263,12 @@ process_material = SubResource("ParticleProcessMaterial_n3o3g")
 libraries/ = SubResource("AnimationLibrary_otieh")
 
 [node name="Title" type="RichTextLabel" parent="." unique_id=1210088174]
-layout_mode = 0
-anchor_left = 0.24389778
-anchor_top = 0.21229675
-anchor_right = 0.755386
-anchor_bottom = 0.43755966
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3537191
+anchor_top = 0.2337927
+anchor_right = 0.8652073
+anchor_bottom = 0.45905557
 pivot_offset = Vector2(491.02863, 121.64197)
 theme_override_colors/font_shadow_color = Color(0.3382, 0.89, 0.8256234, 0.043137256)
 theme_override_font_sizes/normal_font_size = 200
@@ -256,6 +294,13 @@ offset_right = 926.0
 offset_bottom = 1065.0
 theme_override_font_sizes/font_size = 34
 text = "For alpha/beta testing only. Redistribution or sale is prohibited."
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=910582068]
+position = Vector2(513.1406, 519.4961)
+scale = Vector2(1.5557864, 1.5557863)
+sprite_frames = SubResource("SpriteFrames_116ea")
+animation = &"EthicalHacker"
+autoplay = "EthicalHacker"
 
 [connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ButtonManager/Database" to="." method="_on_database_pressed"]

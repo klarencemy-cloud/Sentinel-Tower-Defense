@@ -11,6 +11,28 @@
 [ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="7_1rcdm"]
 [ext_resource type="Texture2D" uid="uid://dxpj7ubvxif7n" path="res://graphics/sentinels/sentinel2.png" id="8_wecnc"]
 
+[sub_resource type="Gradient" id="Gradient_wecnc"]
+offsets = PackedFloat32Array(0.10561798, 0.53483146, 0.9280899)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bva0v"]
+gradient = SubResource("Gradient_wecnc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dcfot"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1920, 1080, 1)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 80.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 49.99998
+gravity = Vector3(0, 60, 0)
+scale_min = 0.0
+scale_max = 10.0
+color = Color(0.3273128, 0.61982703, 0.88803005, 0.8901961)
+color_ramp = SubResource("GradientTexture1D_bva0v")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wecnc"]
 atlas = ExtResource("7_1rcdm")
 region = Rect2(768, 0, 256, 448)
@@ -269,6 +291,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_x7vdu")
 expand_mode = 1
+
+[node name="DustParticles" type="GPUParticles2D" parent="." unique_id=1943223656]
+light_mask = 2
+position = Vector2(961.0802, 536.93976)
+amount = 100
+visibility_rect = Rect2(-960, -540, 1920, 1080)
+process_material = SubResource("ParticleProcessMaterial_dcfot")
 
 [node name="ScrollBarContainer" type="Control" parent="." unique_id=536384295]
 layout_mode = 1
