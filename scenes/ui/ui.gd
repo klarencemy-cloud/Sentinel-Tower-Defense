@@ -711,7 +711,7 @@ func hide_pop4(state: bool):
 
 func play_sentinel_pop(sentinel: String):
 	$SentinelPop.play_animation(sentinel)
-	$SentinelPop/Info/TextureRect/AnimatedSprite2D.play(sentinel)
+	$SentinelPop/Info/TextureRect/Control/AnimatedSprite2D.play(sentinel)
 
 
 func play_scene(scene: String):

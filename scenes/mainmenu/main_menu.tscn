@@ -309,16 +309,17 @@ text = "For alpha/beta testing only. Redistribution or sale is prohibited."
 
 [node name="Control" type="Control" parent="." unique_id=1862205818]
 layout_mode = 1
-anchor_left = 0.66041666
+anchor_left = 0.63072914
 anchor_top = 0.16296296
-anchor_right = 0.9390625
-anchor_bottom = 1.0
+anchor_right = 0.846875
+anchor_bottom = 0.8972222
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control" unique_id=910582068]
-position = Vector2(156, 323.99997)
+position = Vector2(213, 374.99997)
 scale = Vector2(2.0122685, 2.0122685)
 sprite_frames = SubResource("SpriteFrames_116ea")
 animation = &"EthicalHacker"
