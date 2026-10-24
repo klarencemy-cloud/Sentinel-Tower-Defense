@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://5nwlyarf5y3v" path="res://graphics/buttons/exit.svg" id="6_otieh"]
 [ext_resource type="Script" uid="uid://cfksw4o72tltq" path="res://scenes/mainmenu/title.gd" id="8_l3hwl"]
 [ext_resource type="Script" uid="uid://bvhgan4888lei" path="res://scenes/mainmenu/ghost_effect.gd" id="10_n3o3g"]
+[ext_resource type="FontFile" uid="uid://dlbo1pbx3mq5t" path="res://font/Libre_Franklin/static/LibreFranklin-Medium.ttf" id="11_pctyl"]
 [ext_resource type="PackedScene" uid="uid://cmfmidg1nxftm" path="res://scenes/ui/volume_settings_panel.tscn" id="11_volset"]
 [ext_resource type="Texture2D" uid="uid://ydox7qibhby4" path="res://graphics/sentinels/sentinel1.png" id="12_goenu"]
 
@@ -286,17 +287,38 @@ autostart = true
 [node name="VolumeSettingsPanel" parent="." unique_id=2033515175 instance=ExtResource("11_volset")]
 visible = false
 
+[node name="Version" type="Label" parent="." unique_id=609687068]
+layout_mode = 0
+anchor_left = 0.94322914
+anchor_top = 0.95555556
+anchor_right = 0.99375
+anchor_bottom = 0.9925926
+theme_override_font_sizes/font_size = 34
+text = "v1.0.0"
+metadata/_edit_use_anchors_ = true
+
 [node name="Label" type="Label" parent="." unique_id=1912509261]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 1025.0
-offset_right = 926.0
-offset_bottom = 1065.0
-theme_override_font_sizes/font_size = 34
+offset_left = 32.0
+offset_top = 1027.0
+offset_right = 950.0
+offset_bottom = 1067.0
+theme_override_fonts/font = ExtResource("11_pctyl")
+theme_override_font_sizes/font_size = 25
 text = "For alpha/beta testing only. Redistribution or sale is prohibited."
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=910582068]
-position = Vector2(1464, 505.99997)
+[node name="Control" type="Control" parent="." unique_id=1862205818]
+layout_mode = 1
+anchor_left = 0.66041666
+anchor_top = 0.16296296
+anchor_right = 0.9390625
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control" unique_id=910582068]
+position = Vector2(156, 323.99997)
 scale = Vector2(2.0122685, 2.0122685)
 sprite_frames = SubResource("SpriteFrames_116ea")
 animation = &"EthicalHacker"
