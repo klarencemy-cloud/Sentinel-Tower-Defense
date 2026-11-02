@@ -1,0 +1,69 @@
+name: Build iOS (unsigned IPA)
+
+# Manual trigger only: macOS runners are slow and (for private repos) bill at 10x.
+# Run from GitHub: Actions tab -> "Build iOS (unsigned IPA)" -> Run workflow.
+on:
+  workflow_dispatch:
+
+env:
+  GODOT_VERSION: "4.6.3"
+  GODOT_RELEASE: "stable"
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Godot and export templates
+        run: |
+          BASE="https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}-${GODOT_RELEASE}"
+          curl -fsSL -o godot.zip "$BASE/Godot_v${GODOT_VERSION}-${GODOT_RELEASE}_macos.universal.zip"
+          curl -fsSL -o templates.tpz "$BASE/Godot_v${GODOT_VERSION}-${GODOT_RELEASE}_export_templates.tpz"
+          unzip -q godot.zip
+          TEMPLATE_DIR="$HOME/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.${GODOT_RELEASE}"
+          mkdir -p "$TEMPLATE_DIR"
+          unzip -q templates.tpz -d templates_tmp
+          mv templates_tmp/templates/* "$TEMPLATE_DIR/"
+          echo "GODOT_BIN=$PWD/Godot.app/Contents/MacOS/Godot" >> "$GITHUB_ENV"
+
+      - name: Import project (builds the .godot cache)
+        run: |
+          # --import can exit non-zero on harmless warnings, so don't fail the job on it.
+          "$GODOT_BIN" --headless --path . --import || true
+
+      - name: Export Xcode project
+        run: |
+          mkdir -p build/ios
+          "$GODOT_BIN" --headless --path . --export-release "iOS" "$PWD/build/ios/Sentinel.ipa"
+          ls -la build/ios
+
+      - name: Build unsigned app with xcodebuild
+        run: |
+          xcodebuild \
+            -project build/ios/Sentinel.xcodeproj \
+            -scheme Sentinel \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build/derived \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            build
+
+      - name: Package IPA
+        run: |
+          APP=$(find build/derived/Build/Products/Release-iphoneos -maxdepth 1 -name "*.app" | head -n 1)
+          echo "Packaging $APP"
+          rm -rf Payload Sentinel-unsigned.ipa
+          mkdir Payload
+          cp -R "$APP" Payload/
+          zip -qry Sentinel-unsigned.ipa Payload
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: Sentinel-unsigned-ipa
+          path: Sentinel-unsigned.ipa
+          retention-days: 14
